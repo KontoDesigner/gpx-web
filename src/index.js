@@ -1,8 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
 import App from './App';
-import registerServiceWorker from './registerServiceWorker';
+import { Provider } from 'react-redux';
+import store from './infrastructure/configureStore';
+import { runWithAdal } from 'react-adal'
+import { authContext } from './infrastructure/adalConfig'
+import './styles/site.css';
 
-ReactDOM.render(<App />, document.getElementById('root'));
-registerServiceWorker();
+runWithAdal(authContext, () => {
+    ReactDOM.render(<Provider store={store}><App /></Provider>, document.getElementById('root'));
+})
