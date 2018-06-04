@@ -1,0 +1,33 @@
+.list-group-item
+{
+    padding: 11px 15px;
+    cursor: pointer;
+    border-left:0px;
+    border-right:0px;
+    color:#3082c7;
+}
+
+.list-group-item:first-child
+{
+    border-top:0px;
+    border-radius:0px;
+}
+
+.list-group-item:last-child
+{
+    border-bottom:0px;
+}
+
+.list-group-item.active
+{
+    background-color: #fff;
+    cursor:default;
+    border-color:#ddd;
+    color:#3082c7;
+    text-decoration: underline;
+}
+
+.list-group-item, .list-group-item:last-child
+{
+    border-radius:0px;
+}

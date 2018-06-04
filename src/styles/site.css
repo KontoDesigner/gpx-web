@@ -5,10 +5,11 @@
 @import '~react-select/dist/react-select.css';
 
 /*Custom*/
-@import './bootstrap.css';
+@import './bootstrap/bootstrap.css';
 @import './loader.css';
 @import './footer.css';
 @import './toastr.css';
+@import './sidebar.css';
 
 html
 {
@@ -41,11 +42,17 @@ body.modal-open
 .App > .container
 {
   max-width:100%;
+  margin-top:15px!important;
 }
 
 b, strong
 {
   font-weight:500;
+}
+
+.no-padding
+{
+  padding:0px;
 }
 
 .no-padding-top
