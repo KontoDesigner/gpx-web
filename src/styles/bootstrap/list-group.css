@@ -1,10 +1,10 @@
 .list-group-item
 {
-    padding: 11px 15px;
+    padding: 10px 15px;
     cursor: pointer;
     border-left:0px;
     border-right:0px;
-    color:#3082c7;
+    color:#3a6d98;
 }
 
 .list-group-item:first-child
@@ -20,11 +20,10 @@
 
 .list-group-item.active
 {
-    background-color: #fff;
+    background-color: #def7d9;
     cursor:default;
     border-color:#ddd;
-    color:#3082c7;
-    text-decoration: underline;
+    color:#3c763d;
 }
 
 .list-group-item, .list-group-item:last-child

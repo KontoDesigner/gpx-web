@@ -1,12 +1,35 @@
 .card
 {
     border-radius:0px;
+    margin-bottom: 15px;
+}
+
+.card-body
+{
+    padding:15px;
 }
 
 .card-header
 {
-    padding: 11px 15px;
+    padding: 10px 13px;
     border-radius: 0px;
     font-weight: 500;
     font-size: 14px;
+}
+
+.card-accordion > .card-header
+{
+    cursor:pointer;
+    border-bottom: 0px;    
+}
+
+.card-accordion .card-body
+{
+    border-top: 1px solid #ddd;
+}
+
+.card-header .fa
+{
+    margin-top: 3px;
+    font-size: 13px;
 }

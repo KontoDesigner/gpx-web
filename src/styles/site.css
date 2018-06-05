@@ -30,8 +30,13 @@ body {
   overflow-y: scroll; 
 }
 
+.cursor-pointer
+{
+  cursor:pointer;
+}
+
 a{
-  color: #3082c7!important;
+  color: #3a6d98!important;
 }
 
 body.modal-open

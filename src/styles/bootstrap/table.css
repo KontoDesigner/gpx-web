@@ -1,0 +1,18 @@
+.table th
+{
+    font-weight:500!important;
+}
+
+.table th, .table td, .table thead tr th
+{
+    text-align: left!important;
+    font-size:14px!important;
+    padding: 10px 13px;
+}
+
+.table th
+{
+    background: #def7d9!important;
+    color: #3c763d;
+    font-weight: 400!important;    
+}
