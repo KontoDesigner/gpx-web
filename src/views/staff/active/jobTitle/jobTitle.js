@@ -1,11 +1,21 @@
 import React, { Component } from 'react'
+import DestinationRow from './destinationRow'
+import { Card, CardBody, CardHeader } from 'reactstrap';
 
-class JobTitle extends Component {
+class HeadOf extends Component {
     render() {
         return (
-            <div>JobTitle</div>
+            <Card>
+                <CardHeader>
+                    Job Title
+                </CardHeader>
+
+                <CardBody className="no-padding-bottom">
+                    <DestinationRow />
+                </CardBody>
+            </Card>
         )
     }
 }
 
-export default JobTitle;
+export default HeadOf;

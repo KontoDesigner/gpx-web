@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
-import { Card, CardBody, CardHeader } from 'reactstrap';
-import NameTable from './nameTable'
+import { Collapse, Card, CardBody, CardHeader } from 'reactstrap'
+import PositionTable from './positionTable'
 
-class Name extends Component {
+class StatusRow extends Component {
     constructor(props) {
         super()
 
@@ -24,16 +24,18 @@ class Name extends Component {
 
         return (
             <Card className="card-accordion">
-                <CardHeader>
-                    Name
+                <CardHeader onClick={() => this.toggleCollapse()}>
+                    1. Not Applied
                 </CardHeader>
 
-                <CardBody>
-                    <NameTable />
-                </CardBody>
+                <Collapse isOpen={this.state.expanded}>
+                    <CardBody>
+                        <PositionTable />
+                    </CardBody>
+                </Collapse>
             </Card>
         )
     }
 }
 
-export default Name;
+export default StatusRow

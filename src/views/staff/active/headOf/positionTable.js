@@ -22,7 +22,7 @@ class PositionTable extends Component {
             )
 
         return (
-            <Card className="card-accordion card-table">
+            <Card className="card-accordion">
                 <CardHeader onClick={() => this.toggleCollapse()}>
                     (1) Business Support Manager {icon}
                 </CardHeader>
@@ -36,7 +36,7 @@ class PositionTable extends Component {
                                         Name
                                     </th>
                                     <th>
-                                        ?
+                                        Nationality
                                     </th>
                                     <th>
                                         Id

@@ -1,9 +1,19 @@
 import React, { Component } from 'react'
+import PositionTable from './positionTable'
+import { Card, CardBody, CardHeader } from 'reactstrap';
 
 class DepartureArrival extends Component {
     render() {
         return (
-            <div>DepartureArrival</div>
+            <Card>
+                <CardHeader>
+                    Departure & Arrival
+                </CardHeader>
+
+                <CardBody>
+                    <PositionTable />
+                </CardBody>
+            </Card>
         )
     }
 }
