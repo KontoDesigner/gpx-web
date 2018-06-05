@@ -25,7 +25,7 @@ class NationalityRow extends Component {
         return (
             <Card className="card-accordion">
                 <CardHeader onClick={() => this.toggleCollapse()}>
-                    AR
+                    AR {icon}
                 </CardHeader>
 
                 <Collapse isOpen={this.state.expanded}>

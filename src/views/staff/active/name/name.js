@@ -16,12 +16,6 @@ class Name extends Component {
     }
 
     render() {
-        const icon = this.state.expanded ? (
-            <i className="fa fa-chevron-up float-right text-danger" />
-        ) : (
-                <i className="fa fa-chevron-down float-right text-danger" />
-            )
-
         return (
             <Card className="card-accordion">
                 <CardHeader>

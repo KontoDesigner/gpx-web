@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Collapse, Card, CardBody, CardHeader, Table } from 'reactstrap'
+import { Table } from 'reactstrap'
 
 class PositionTable extends Component {
     constructor(props) {
@@ -15,12 +15,6 @@ class PositionTable extends Component {
     }
 
     render() {
-        const icon = this.state.expanded ? (
-            <i className="fa fa-chevron-up float-right text-danger" />
-        ) : (
-                <i className="fa fa-chevron-down float-right text-danger" />
-            )
-
         return (
             <Table responsive bordered>
                 <thead>

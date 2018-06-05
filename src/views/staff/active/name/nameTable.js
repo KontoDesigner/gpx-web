@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Collapse, Card, CardBody, CardHeader, Table } from 'reactstrap'
+import { Table } from 'reactstrap'
 
 class PersonTable extends Component {
     render() {

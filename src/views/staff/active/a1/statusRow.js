@@ -25,7 +25,7 @@ class StatusRow extends Component {
         return (
             <Card className="card-accordion">
                 <CardHeader onClick={() => this.toggleCollapse()}>
-                    1. Not Applied
+                    1. Not Applied {icon}
                 </CardHeader>
 
                 <Collapse isOpen={this.state.expanded}>
