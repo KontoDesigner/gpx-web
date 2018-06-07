@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
 import { TabContent, TabPane, Card, Row, Col, CardBody, CardHeader, ListGroup, ListGroupItem } from 'reactstrap';
 import classnames from 'classnames';
 import A1 from './active/a1/a1';
@@ -14,6 +15,7 @@ import ITSDAdmin from './other/itsdAdmin/itsdAdmin';
 import NewEmployees from './other/newEmployees/newEmployees';
 import SaveConflicts from './other/saveConflicts/saveConflicts';
 import TUIProfileLogin from './other/tuiProfileLogin/tuiProfileLogin';
+import * as headOfActions from '../../actions/staff/active/headOfActions'
 
 class Staff extends Component {
     constructor(props) {
@@ -24,8 +26,40 @@ class Staff extends Component {
         };
     }
 
+    componentWillMount() {
+        this.props.headOfActions.getHeadOf()
+    }
+
     toggle = (tab) => {
         if (this.state.activeTab !== tab) {
+            switch (tab) {
+                case 'headOf':
+                    this.props.headOfActions.getHeadOf()
+                    break;
+                case 'destination':
+                    break;
+                case 'name':
+                    break;
+                case 'jobTitle':
+                    break;
+                case 'departureArrival':
+                    break;
+                case 'a1':
+                    break;
+                case 'recentlyInactive':
+                    break;
+                case 'archive':
+                    break;
+                case 'itsdAdmin':
+                    break;
+                case 'saveConflicts':
+                    break;
+                case 'newEmployees':
+                    break;
+                case 'tuiProfileLogin':
+                    break;
+            }
+
             this.setState({
                 activeTab: tab
             });
@@ -135,17 +169,6 @@ class Staff extends Component {
                         <TabPane tabId="tuiProfileLogin">
                             <TUIProfileLogin />
                         </TabPane>
-                        {/*<TabPane tabId="2">
-                            <Row>
-                                <Col sm="12">
-                                    <Card body>
-                                        <CardTitle>Special Title Treatment</CardTitle>
-                                        <CardText>With supporting text below as a natural lead-in to additional content.</CardText>
-                                        <Button>Go somewhere</Button>
-                                    </Card>
-                                </Col>
-                            </Row>
-                        </TabPane>*/}
                     </TabContent>
                 </Col>
             </Row>
@@ -155,11 +178,13 @@ class Staff extends Component {
 
 function mapStateToProps(state, ownProps) {
     return {
+        headOf: state.staff.active.headOf
     }
 }
 
 function mapDispatchToProps(dispatch) {
     return {
+        headOfActions: bindActionCreators(headOfActions, dispatch)
     }
 }
 

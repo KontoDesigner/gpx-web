@@ -22,7 +22,7 @@ class PersonTable extends Component {
                     </MenuItem>
                 </ContextMenu>
 
-                <Table responsive bordered className="tableContextMenu">
+                <Table responsive bordered striped className="tableContextMenu">
                     <thead>
                         <tr>
                             <th>
@@ -38,6 +38,24 @@ class PersonTable extends Component {
                     </thead>
 
                     <tbody>
+                        <tr>
+                            <td>
+                                <ContextMenuTrigger id="headOfContextMenu">
+                                    Bojorquez, Carolina
+                                </ContextMenuTrigger>
+                            </td>
+                            <td>
+                                <ContextMenuTrigger id="headOfContextMenu">
+                                    Bojorquez, Carolina
+                                </ContextMenuTrigger>
+                            </td>
+                            <td>
+                                <ContextMenuTrigger id="headOfContextMenu">
+                                    Bojorquez, Carolina
+                                </ContextMenuTrigger>
+                            </td>
+                        </tr>
+
                         <tr>
                             <td>
                                 <ContextMenuTrigger id="headOfContextMenu">
