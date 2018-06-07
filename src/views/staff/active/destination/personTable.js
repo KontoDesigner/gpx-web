@@ -17,7 +17,6 @@ class PersonTable extends Component {
                     <MenuItem data={{ foo: 'bar' }} onClick={this.handleClick}>
                         ContextMenu Item 2
                     </MenuItem>
-                    <MenuItem divider />
                     <MenuItem data={{ foo: 'bar' }} onClick={this.handleClick}>
                         ContextMenu Item 3w
                     </MenuItem>
@@ -48,27 +47,27 @@ class PersonTable extends Component {
                         <tr>
                             <td>
                                 <ContextMenuTrigger id="destinationContextMenu">
-                                    <div className="well">Bojorquez, Carolina</div>
+                                    Bojorquez, Carolina
                                 </ContextMenuTrigger>
                             </td>
                             <td>
                                 <ContextMenuTrigger id="destinationContextMenu">
-                                    <div className="well">Bojorquez, Carolina</div>
+                                    Bojorquez, Carolina
                                 </ContextMenuTrigger>
                             </td>
                             <td>
                                 <ContextMenuTrigger id="destinationContextMenu">
-                                    <div className="well">Bojorquez, Carolina</div>
+                                    Bojorquez, Carolina
                                 </ContextMenuTrigger>
                             </td>
                             <td>
                                 <ContextMenuTrigger id="destinationContextMenu">
-                                    <div className="well">Bojorquez, Carolina</div>
+                                    Bojorquez, Carolina
                                 </ContextMenuTrigger>
                             </td>
                             <td>
                                 <ContextMenuTrigger id="destinationContextMenu">
-                                    <div className="well">Bojorquez, Carolina</div>
+                                    Bojorquez, Carolina
                                 </ContextMenuTrigger>
                             </td>
                         </tr>

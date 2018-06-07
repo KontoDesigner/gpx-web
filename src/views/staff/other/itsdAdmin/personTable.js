@@ -29,7 +29,6 @@ class PersonTable extends Component {
                     <MenuItem data={{ foo: 'bar' }} onClick={this.handleClick}>
                         ContextMenu Item 2
                     </MenuItem>
-                    <MenuItem divider />
                     <MenuItem data={{ foo: 'bar' }} onClick={this.handleClick}>
                         ContextMenu Item 3w
                     </MenuItem>
