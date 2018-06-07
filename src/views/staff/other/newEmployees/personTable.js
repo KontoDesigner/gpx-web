@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Table } from 'reactstrap'
 
-class PositionTable extends Component {
+class PersonTable extends Component {
     constructor(props) {
         super()
 
@@ -20,25 +20,40 @@ class PositionTable extends Component {
                 <thead>
                     <tr>
                         <th>
-                            Name
+                            Employee Id
                          </th>
                         <th>
-                            A1 Start
+                            First Name
                         </th>
                         <th>
-                            A1 End
+                            Last Name
                         </th>
                         <th>
-                            A1 Status
+                            Nat
                         </th>
                         <th>
-                            A1 Remarks
+                            E-Mail
                         </th>
                         <th>
-                            Id
+                            Phone Home
                         </th>
                         <th>
-                            Dest
+                            Mobile Phone
+                        </th>
+                        <th>
+                            Street Address
+                        </th>
+                        <th>
+                            Zip Code
+                        </th>
+                        <th>
+                            City
+                        </th>
+                        <th>
+                            Country
+                        </th>
+                        <th>
+                            Created
                         </th>
                     </tr>
                 </thead>
@@ -66,6 +81,21 @@ class PositionTable extends Component {
                         <td>
                             Mexico
                         </td>
+                        <td>
+                            Blue Star
+                        </td>
+                        <td>
+                            Bojorquez, Carolina
+                        </td>
+                        <td>
+                            AR
+                        </td>
+                        <td>
+                            Mexico
+                        </td>
+                        <td>
+                            Blue Star
+                        </td>
                     </tr>
                 </tbody>
             </Table>
@@ -73,4 +103,4 @@ class PositionTable extends Component {
     }
 }
 
-export default PositionTable
+export default PersonTable

@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Card, CardBody, CardHeader } from 'reactstrap';
-import NameTable from './nameTable'
+import PersonTable from './personTable'
 
 class Name extends Component {
     constructor(props) {
@@ -23,7 +23,7 @@ class Name extends Component {
                 </CardHeader>
 
                 <CardBody>
-                    <NameTable />
+                    <PersonTable />
                 </CardBody>
             </Card>
         )

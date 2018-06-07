@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Collapse, Card, CardBody, CardHeader } from 'reactstrap'
-import PositionTable from './positionTable'
+import PersonTable from './personTable'
 
 class StatusRow extends Component {
     constructor(props) {
@@ -30,7 +30,7 @@ class StatusRow extends Component {
 
                 <Collapse isOpen={this.state.expanded}>
                     <CardBody>
-                        <PositionTable />
+                        <PersonTable />
                     </CardBody>
                 </Collapse>
             </Card>

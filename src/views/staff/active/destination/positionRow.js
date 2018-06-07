@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { Collapse, Card, CardBody, CardHeader } from 'reactstrap'
 import PersonTable from './personTable'
 
-class DestinationRow extends Component {
+class PositionRow extends Component {
     constructor(props) {
         super()
 
@@ -25,17 +25,17 @@ class DestinationRow extends Component {
         return (
             <Card className="card-accordion">
                 <CardHeader onClick={() => this.toggleCollapse()}>
-                    (3) Cancun {icon}
+                    (1) Business Support Manager {icon}
                 </CardHeader>
 
                 <Collapse isOpen={this.state.expanded}>
                     <CardBody>
-                        <PersonTable />
+                        <PersonTable/>
                     </CardBody>
-                </Collapse>
-            </Card>
+                </Collapse >
+            </Card >
         )
     }
 }
 
-export default DestinationRow
+export default PositionRow

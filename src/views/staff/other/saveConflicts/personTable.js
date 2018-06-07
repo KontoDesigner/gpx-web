@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Table } from 'reactstrap'
 
-class PositionTable extends Component {
+class PersonTable extends Component {
     constructor(props) {
         super()
 
@@ -31,18 +31,6 @@ class PositionTable extends Component {
                         <th>
                             NAB Full Name
                         </th>
-                        <th>
-                            E-Mail (TUI Nordic Personal)
-                        </th>
-                        <th>
-                            Next Season
-                        </th>
-                        <th>
-                            My TUI Profile
-                        </th>
-                        <th>
-                            Email Sent
-                        </th>
                     </tr>
                 </thead>
 
@@ -60,18 +48,6 @@ class PositionTable extends Component {
                         <td>
                             Blue Star
                         </td>
-                        <td>
-                            Bojorquez, Carolina
-                        </td>
-                        <td>
-                            AR
-                        </td>
-                        <td>
-                            Mexico
-                        </td>
-                        <td>
-                            Mexico
-                        </td>
                     </tr>
                 </tbody>
             </Table>
@@ -79,4 +55,4 @@ class PositionTable extends Component {
     }
 }
 
-export default PositionTable
+export default PersonTable

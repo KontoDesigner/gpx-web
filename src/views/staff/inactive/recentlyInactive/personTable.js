@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Table } from 'reactstrap'
 
-class PositionTable extends Component {
+class PersonTable extends Component {
     constructor(props) {
         super()
 
@@ -23,13 +23,25 @@ class PositionTable extends Component {
                             Name
                          </th>
                         <th>
+                            Employee Id
+                        </th>
+                        <th>
+                            Absent Between/Last Working Date
+                        </th>
+                        <th>
+                            Reason/Comments
+                        </th>
+                        <th>
                             Dest
                         </th>
                         <th>
-                            Position
+                            Source Market
                         </th>
                         <th>
-                            NAB Full Name
+                            Position Type
+                        </th>
+                        <th>
+                            Job Title
                         </th>
                     </tr>
                 </thead>
@@ -48,6 +60,18 @@ class PositionTable extends Component {
                         <td>
                             Blue Star
                         </td>
+                        <td>
+                            Bojorquez, Carolina
+                        </td>
+                        <td>
+                            AR
+                        </td>
+                        <td>
+                            Mexico
+                        </td>
+                        <td>
+                            Mexico
+                        </td>
                     </tr>
                 </tbody>
             </Table>
@@ -55,4 +79,4 @@ class PositionTable extends Component {
     }
 }
 
-export default PositionTable
+export default PersonTable

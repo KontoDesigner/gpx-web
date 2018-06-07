@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Collapse, Card, CardBody, CardHeader } from 'reactstrap'
-import PositionTable from './positionTable'
+import PositionRow from './positionRow'
 
 class DestinationRow extends Component {
     constructor(props) {
@@ -30,7 +30,7 @@ class DestinationRow extends Component {
 
                 <Collapse isOpen={this.state.expanded}>
                     <CardBody className="no-padding-bottom">
-                        <PositionTable />
+                        <PositionRow />
                     </CardBody>
                 </Collapse>
             </Card>

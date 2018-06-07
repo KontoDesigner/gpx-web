@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import PositionTable from './positionTable'
+import PersonTable from './personTable'
 import { Card, CardBody, CardHeader } from 'reactstrap';
 
 class DepartureArrival extends Component {
@@ -11,7 +11,7 @@ class DepartureArrival extends Component {
                 </CardHeader>
 
                 <CardBody>
-                    <PositionTable />
+                    <PersonTable />
                 </CardBody>
             </Card>
         )

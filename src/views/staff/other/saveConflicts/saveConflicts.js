@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Card, CardBody, CardHeader } from 'reactstrap';
-import PositionTable from './positionTable'
+import PersonTable from './personTable'
 
 class SaveConflicts extends Component {
     render() {
@@ -11,7 +11,7 @@ class SaveConflicts extends Component {
                 </CardHeader>
 
                 <CardBody>
-                    <PositionTable />
+                    <PersonTable />
                 </CardBody>
             </Card>
         )

@@ -1,19 +1,7 @@
 import React, { Component } from 'react'
 import { Table } from 'reactstrap'
 
-class PositionTable extends Component {
-    constructor(props) {
-        super()
-
-        this.state = {
-            expanded: false
-        }
-    }
-
-    toggleCollapse = () => {
-        this.setState({ expanded: !this.state.expanded })
-    }
-
+class PersonTable extends Component {
     render() {
         return (
             <Table responsive bordered>
@@ -23,25 +11,22 @@ class PositionTable extends Component {
                             Name
                          </th>
                         <th>
-                            Employee Id
+                            ID
                         </th>
                         <th>
-                            Absent Between/Last Working Date
+                            Status
                         </th>
                         <th>
-                            Reason/Comments
+                            Current Dest
                         </th>
                         <th>
-                            Dest
+                            Departure
                         </th>
                         <th>
-                            Source Market
+                            Arrival
                         </th>
                         <th>
-                            Position Type
-                        </th>
-                        <th>
-                            Job Title
+                            Next Dest
                         </th>
                     </tr>
                 </thead>
@@ -69,9 +54,6 @@ class PositionTable extends Component {
                         <td>
                             Mexico
                         </td>
-                        <td>
-                            Mexico
-                        </td>
                     </tr>
                 </tbody>
             </Table>
@@ -79,4 +61,4 @@ class PositionTable extends Component {
     }
 }
 
-export default PositionTable
+export default PersonTable
