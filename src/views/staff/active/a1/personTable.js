@@ -1,7 +1,12 @@
 import React, { Component } from 'react'
 import { Table } from 'reactstrap'
+import { ContextMenu, MenuItem, ContextMenuTrigger } from "react-contextmenu";
 
 class PersonTable extends Component {
+    handleClick = (e, data) => {
+        alert(data.foo);
+    }
+
     constructor(props) {
         super()
 
@@ -16,59 +21,88 @@ class PersonTable extends Component {
 
     render() {
         return (
-            <Table responsive bordered>
-                <thead>
-                    <tr>
-                        <th>
-                            Name
-                         </th>
-                        <th>
-                            A1 Start
-                        </th>
-                        <th>
-                            A1 End
-                        </th>
-                        <th>
-                            A1 Status
-                        </th>
-                        <th>
-                            A1 Remarks
-                        </th>
-                        <th>
-                            Id
-                        </th>
-                        <th>
-                            Dest
-                        </th>
-                    </tr>
-                </thead>
+            <div>
+                <ContextMenu id="a1ContextMenu">
+                    <MenuItem data={{ foo: 'bar' }} onClick={this.handleClick}>
+                        ContextMenu Item 1
+                    </MenuItem>
+                    <MenuItem data={{ foo: 'bar' }} onClick={this.handleClick}>
+                        ContextMenu Item 2
+                    </MenuItem>
+                    <MenuItem divider />
+                    <MenuItem data={{ foo: 'bar' }} onClick={this.handleClick}>
+                        ContextMenu Item 3w
+                    </MenuItem>
+                </ContextMenu>
 
-                <tbody>
-                    <tr>
-                        <td>
-                            Bojorquez, Carolina
-                        </td>
-                        <td>
-                            AR
-                        </td>
-                        <td>
-                            Mexico
-                        </td>
-                        <td>
-                            Blue Star
-                        </td>
-                        <td>
-                            Bojorquez, Carolina
-                        </td>
-                        <td>
-                            AR
-                        </td>
-                        <td>
-                            Mexico
-                        </td>
-                    </tr>
-                </tbody>
-            </Table>
+                <Table responsive bordered className="tableContextMenu">
+                    <thead>
+                        <tr>
+                            <th>
+                                Name
+                         </th>
+                            <th>
+                                A1 Start
+                        </th>
+                            <th>
+                                A1 End
+                        </th>
+                            <th>
+                                A1 Status
+                        </th>
+                            <th>
+                                A1 Remarks
+                        </th>
+                            <th>
+                                Id
+                        </th>
+                            <th>
+                                Dest
+                        </th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <tr>
+                            <td>
+                                <ContextMenuTrigger id="a1ContextMenu">
+                                    <div className="well">Bojorquez, Carolina</div>
+                                </ContextMenuTrigger>
+                            </td>
+                            <td>
+                                <ContextMenuTrigger id="a1ContextMenu">
+                                    <div className="well">Bojorquez, Carolina</div>
+                                </ContextMenuTrigger>
+                            </td>
+                            <td>
+                                <ContextMenuTrigger id="a1ContextMenu">
+                                    <div className="well">Bojorquez, Carolina</div>
+                                </ContextMenuTrigger>
+                            </td>
+                            <td>
+                                <ContextMenuTrigger id="a1ContextMenu">
+                                    <div className="well">Bojorquez, Carolina</div>
+                                </ContextMenuTrigger>
+                            </td>
+                            <td>
+                                <ContextMenuTrigger id="a1ContextMenu">
+                                    <div className="well">Bojorquez, Carolina</div>
+                                </ContextMenuTrigger>
+                            </td>
+                            <td>
+                                <ContextMenuTrigger id="a1ContextMenu">
+                                    <div className="well">Bojorquez, Carolina</div>
+                                </ContextMenuTrigger>
+                            </td>
+                            <td>
+                                <ContextMenuTrigger id="a1ContextMenu">
+                                    <div className="well">Bojorquez, Carolina</div>
+                                </ContextMenuTrigger>
+                            </td>
+                        </tr>
+                    </tbody>
+                </Table>
+            </div>
         )
     }
 }

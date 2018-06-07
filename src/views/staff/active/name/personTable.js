@@ -1,74 +1,112 @@
 import React, { Component } from 'react'
 import { Table } from 'reactstrap'
+import { ContextMenu, MenuItem, ContextMenuTrigger } from "react-contextmenu";
 
 class PersonTable extends Component {
+    handleClick = (e, data) => {
+        alert(data.foo);
+    }
+
     render() {
         return (
-            <Table responsive bordered>
-                <thead>
-                    <tr>
-                        <th>
-                            Name
-                        </th>
-                        <th>
-                            ?
-                        </th>
-                        <th>
-                            Id
-                        </th>
-                        <th>
-                            Season
-                        </th>
-                        <th>
-                            Dest
-                        </th>
-                        <th>
-                            Concept Hotel
-                        </th>
-                        <th>
-                            Job Title
-                        </th>
-                        <th>
-                            E-Mail 1
-                        </th>
-                        <th>
-                            E-Mail 2
-                        </th>
-                    </tr>
-                </thead>
+            <div>
+                <ContextMenu id="nameContextMenu">
+                    <MenuItem data={{ foo: 'bar' }} onClick={this.handleClick}>
+                        ContextMenu Item 1
+                    </MenuItem>
+                    <MenuItem data={{ foo: 'bar' }} onClick={this.handleClick}>
+                        ContextMenu Item 2
+                    </MenuItem>
+                    <MenuItem divider />
+                    <MenuItem data={{ foo: 'bar' }} onClick={this.handleClick}>
+                        ContextMenu Item 3w
+                    </MenuItem>
+                </ContextMenu>
 
-                <tbody>
-                    <tr>
-                        <td>
-                            Bojorquez, Carolina
-                        </td>
-                        <td>
-                            AR
-                        </td>
-                        <td>
-                            55758
-                        </td>
-                        <td>
-                            S18
-                        </td>
-                        <td>
-                            Cancur
-                        </td>
-                        <td>
-                            Business Support Manager
-                        </td>
-                        <td>
-                            filip.danielsson@tui.se
-                        </td>
-                        <td>
-                            filip.danielsson@tui.se
-                        </td>
-                        <td>
-                            55758
-                        </td>
-                    </tr>
-                </tbody>
-            </Table>
+                <Table responsive bordered className="tableContextMenu">
+                    <thead>
+                        <tr>
+                            <th>
+                                Name
+                        </th>
+                            <th>
+                                ?
+                        </th>
+                            <th>
+                                Id
+                        </th>
+                            <th>
+                                Season
+                        </th>
+                            <th>
+                                Dest
+                        </th>
+                            <th>
+                                Concept Hotel
+                        </th>
+                            <th>
+                                Job Title
+                        </th>
+                            <th>
+                                E-Mail 1
+                        </th>
+                            <th>
+                                E-Mail 2
+                        </th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <tr>
+                            <td>
+                                <ContextMenuTrigger id="nameContextMenu">
+                                    <div className="well">Bojorquez, Carolina</div>
+                                </ContextMenuTrigger>
+                            </td>
+                            <td>
+                                <ContextMenuTrigger id="nameContextMenu">
+                                    <div className="well">Bojorquez, Carolina</div>
+                                </ContextMenuTrigger>
+                            </td>
+                            <td>
+                                <ContextMenuTrigger id="nameContextMenu">
+                                    <div className="well">Bojorquez, Carolina</div>
+                                </ContextMenuTrigger>
+                            </td>
+                            <td>
+                                <ContextMenuTrigger id="nameContextMenu">
+                                    <div className="well">Bojorquez, Carolina</div>
+                                </ContextMenuTrigger>
+                            </td>
+                            <td>
+                                <ContextMenuTrigger id="nameContextMenu">
+                                    <div className="well">Bojorquez, Carolina</div>
+                                </ContextMenuTrigger>
+                            </td>
+                            <td>
+                                <ContextMenuTrigger id="nameContextMenu">
+                                    <div className="well">Bojorquez, Carolina</div>
+                                </ContextMenuTrigger>
+                            </td>
+                            <td>
+                                <ContextMenuTrigger id="nameContextMenu">
+                                    <div className="well">Bojorquez, Carolina</div>
+                                </ContextMenuTrigger>
+                            </td>
+                            <td>
+                                <ContextMenuTrigger id="nameContextMenu">
+                                    <div className="well">Bojorquez, Carolina</div>
+                                </ContextMenuTrigger>
+                            </td>
+                            <td>
+                                <ContextMenuTrigger id="nameContextMenu">
+                                    <div className="well">Bojorquez, Carolina</div>
+                                </ContextMenuTrigger>
+                            </td>
+                        </tr>
+                    </tbody>
+                </Table>
+            </div>
         )
     }
 }

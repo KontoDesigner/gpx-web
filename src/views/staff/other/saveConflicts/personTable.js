@@ -1,7 +1,12 @@
 import React, { Component } from 'react'
 import { Table } from 'reactstrap'
+import { ContextMenu, MenuItem, ContextMenuTrigger } from "react-contextmenu";
 
 class PersonTable extends Component {
+    handleClick = (e, data) => {
+        alert(data.foo);
+    }
+
     constructor(props) {
         super()
 
@@ -16,41 +21,64 @@ class PersonTable extends Component {
 
     render() {
         return (
-            <Table responsive bordered>
-                <thead>
-                    <tr>
-                        <th>
-                            Name
-                         </th>
-                        <th>
-                            Dest
-                        </th>
-                        <th>
-                            Position
-                        </th>
-                        <th>
-                            NAB Full Name
-                        </th>
-                    </tr>
-                </thead>
+            <div>
+                <ContextMenu id="saveConflictsContextMenu">
+                    <MenuItem data={{ foo: 'bar' }} onClick={this.handleClick}>
+                        ContextMenu Item 1
+                    </MenuItem>
+                    <MenuItem data={{ foo: 'bar' }} onClick={this.handleClick}>
+                        ContextMenu Item 2
+                    </MenuItem>
+                    <MenuItem divider />
+                    <MenuItem data={{ foo: 'bar' }} onClick={this.handleClick}>
+                        ContextMenu Item 3w
+                    </MenuItem>
+                </ContextMenu>
 
-                <tbody>
-                    <tr>
-                        <td>
-                            Bojorquez, Carolina
+                <Table responsive bordered className="tableContextMenu">
+                    <thead>
+                        <tr>
+                            <th>
+                                Name
+                         </th>
+                            <th>
+                                Dest
+                        </th>
+                            <th>
+                                Position
+                        </th>
+                            <th>
+                                NAB Full Name
+                        </th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <tr>
+                            <td>
+                                <ContextMenuTrigger id="saveConflictsContextMenu">
+                                    Bojorquez, Carolina
+                                </ContextMenuTrigger>
+                            </td>
+                            <td>
+                                <ContextMenuTrigger id="saveConflictsContextMenu">
+                                    Bojorquez, Carolina
+                                </ContextMenuTrigger>
                         </td>
-                        <td>
-                            AR
+                            <td>
+                                <ContextMenuTrigger id="saveConflictsContextMenu">
+                                    Bojorquez, Carolina
+                                </ContextMenuTrigger>
                         </td>
-                        <td>
-                            Mexico
+                            <td>
+                                <ContextMenuTrigger id="saveConflictsContextMenu">
+                                    Bojorquez, Carolina
+                                </ContextMenuTrigger>
                         </td>
-                        <td>
-                            Blue Star
-                        </td>
-                    </tr>
-                </tbody>
-            </Table>
+                        </tr>
+                    </tbody>
+                </Table>
+            </div>
         )
     }
 }

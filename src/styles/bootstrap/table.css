@@ -22,3 +22,13 @@
 {
     margin-bottom:0px;
 }
+
+.tableContextMenu tr td
+{
+    padding:0px;
+}
+
+.react-contextmenu-wrapper
+{
+    padding: 10px 13px;
+}

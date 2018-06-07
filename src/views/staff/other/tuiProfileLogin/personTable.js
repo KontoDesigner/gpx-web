@@ -1,7 +1,12 @@
 import React, { Component } from 'react'
 import { Table } from 'reactstrap'
+import { ContextMenu, MenuItem, ContextMenuTrigger } from "react-contextmenu";
 
 class PersonTable extends Component {
+    handleClick = (e, data) => {
+        alert(data.foo);
+    }
+
     constructor(props) {
         super()
 
@@ -16,35 +21,56 @@ class PersonTable extends Component {
 
     render() {
         return (
-            <Table responsive bordered>
-                <thead>
-                    <tr>
-                        <th>
-                            User
-                         </th>
-                        <th>
-                            No Of Logins
-                        </th>
-                        <th>
-                            Last Login
-                        </th>
-                    </tr>
-                </thead>
+            <div>
+                <ContextMenu id="tuiProfileLoginContextMenu">
+                    <MenuItem data={{ foo: 'bar' }} onClick={this.handleClick}>
+                        ContextMenu Item 1
+                    </MenuItem>
+                    <MenuItem data={{ foo: 'bar' }} onClick={this.handleClick}>
+                        ContextMenu Item 2
+                    </MenuItem>
+                    <MenuItem divider />
+                    <MenuItem data={{ foo: 'bar' }} onClick={this.handleClick}>
+                        ContextMenu Item 3w
+                    </MenuItem>
+                </ContextMenu>
 
-                <tbody>
-                    <tr>
-                        <td>
-                            Bojorquez, Carolina
-                        </td>
-                        <td>
-                            AR
-                        </td>
-                        <td>
-                            Mexico
-                        </td>
-                    </tr>
-                </tbody>
-            </Table>
+                <Table responsive bordered className="tableContextMenu">
+                    <thead>
+                        <tr>
+                            <th>
+                                User
+                            </th>
+                            <th>
+                                No Of Logins
+                            </th>
+                            <th>
+                                Last Login
+                            </th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <tr>
+                            <td>
+                                <ContextMenuTrigger id="tuiProfileLoginContextMenu">
+                                    Bojorquez, Carolina
+                                </ContextMenuTrigger>
+                            </td>
+                            <td>
+                                <ContextMenuTrigger id="tuiProfileLoginContextMenu">
+                                    Bojorquez, Carolina
+                                </ContextMenuTrigger>
+                            </td>
+                            <td>
+                                <ContextMenuTrigger id="tuiProfileLoginContextMenu">
+                                    Bojorquez, Carolina
+                                </ContextMenuTrigger>
+                            </td>
+                        </tr>
+                    </tbody>
+                </Table>
+            </div>
         )
     }
 }

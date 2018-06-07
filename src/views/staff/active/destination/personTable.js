@@ -1,10 +1,29 @@
 import React, { Component } from 'react'
 import { Table } from 'reactstrap'
+import { ContextMenu, MenuItem, ContextMenuTrigger } from "react-contextmenu";
 
 class PersonTable extends Component {
+    handleClick = (e, data) => {
+        alert(data.foo);
+    }
+
     render() {
         return (
-                <Table responsive bordered>
+            <div>
+                <ContextMenu id="destinationContextMenu">
+                    <MenuItem data={{ foo: 'bar' }} onClick={this.handleClick}>
+                        ContextMenu Item 1
+                    </MenuItem>
+                    <MenuItem data={{ foo: 'bar' }} onClick={this.handleClick}>
+                        ContextMenu Item 2
+                    </MenuItem>
+                    <MenuItem divider />
+                    <MenuItem data={{ foo: 'bar' }} onClick={this.handleClick}>
+                        ContextMenu Item 3w
+                    </MenuItem>
+                </ContextMenu>
+
+                <Table responsive bordered className="tableContextMenu">
                     <thead>
                         <tr>
                             <th>
@@ -28,23 +47,34 @@ class PersonTable extends Component {
                     <tbody>
                         <tr>
                             <td>
-                                Bojorquez, Carolina
+                                <ContextMenuTrigger id="destinationContextMenu">
+                                    <div className="well">Bojorquez, Carolina</div>
+                                </ContextMenuTrigger>
                             </td>
                             <td>
-                                AR
+                                <ContextMenuTrigger id="destinationContextMenu">
+                                    <div className="well">Bojorquez, Carolina</div>
+                                </ContextMenuTrigger>
                             </td>
                             <td>
-                                55758
+                                <ContextMenuTrigger id="destinationContextMenu">
+                                    <div className="well">Bojorquez, Carolina</div>
+                                </ContextMenuTrigger>
                             </td>
                             <td>
-                                Örjan
+                                <ContextMenuTrigger id="destinationContextMenu">
+                                    <div className="well">Bojorquez, Carolina</div>
+                                </ContextMenuTrigger>
                             </td>
                             <td>
-                                Blue Star
+                                <ContextMenuTrigger id="destinationContextMenu">
+                                    <div className="well">Bojorquez, Carolina</div>
+                                </ContextMenuTrigger>
                             </td>
                         </tr>
                     </tbody>
                 </Table>
+            </div>
         )
     }
 }
