@@ -3,24 +3,24 @@ import { beginAjaxCall, ajaxCallError } from '../../ajaxStatusActions'
 import RestClient from '../../../infrastructure/restClient'
 
 export function getHeadOfSuccess(headOf) {
-    return {
-        type: types.GET_HEADOF_SUCCESS,
-        data: { headOf: headOf }
-    }
+  return {
+    type: types.GET_HEADOF_SUCCESS,
+    data: { headOf: headOf }
+  }
 }
 
 export function getHeadOf() {
-    return async function (dispatch) {
-        dispatch(beginAjaxCall())
+  return async function(dispatch) {
+    dispatch(beginAjaxCall())
 
-        try {
-            const headOf = await RestClient.Get(`XXXXXX`)
+    try {
+      const headOf = await RestClient.Get(`staff/headof`)
 
-            dispatch(getHeadOfSuccess([]))
-        } catch (error) {
-            dispatch(ajaxCallError(error))
+      dispatch(getHeadOfSuccess(headOf))
+    } catch (error) {
+      dispatch(ajaxCallError(error))
 
-            throw error
-        }
+      throw error
     }
+  }
 }
