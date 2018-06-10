@@ -3,9 +3,6 @@ import CountryRow from './countryRow'
 import { Card, CardBody, CardHeader, UncontrolledDropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap'
 
 class HeadOf extends Component {
-  constructor(props) {
-    super(props)
-  }
   render() {
     return (
       <Card>
