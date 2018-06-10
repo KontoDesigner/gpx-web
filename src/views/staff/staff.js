@@ -22,7 +22,7 @@ class Staff extends Component {
     super(props)
 
     this.state = {
-      activeTab: 'headOf'
+      activeTab: 'destination'
     }
   }
 
@@ -30,35 +30,9 @@ class Staff extends Component {
     this.props.headOfActions.getHeadOf()
   }
 
-  toggle = tab => {
+  toggle = (tab, func) => {
     if (this.state.activeTab !== tab) {
-      switch (tab) {
-        case 'headOf':
-          this.props.headOfActions.getHeadOf()
-          break
-        case 'destination':
-          break
-        case 'name':
-          break
-        case 'jobTitle':
-          break
-        case 'departureArrival':
-          break
-        case 'a1':
-          break
-        case 'recentlyInactive':
-          break
-        case 'archive':
-          break
-        case 'itsdAdmin':
-          break
-        case 'saveConflicts':
-          break
-        case 'newEmployees':
-          break
-        case 'tuiProfileLogin':
-          break
-      }
+      func();
 
       this.setState({
         activeTab: tab
@@ -80,42 +54,42 @@ class Staff extends Component {
                     <ListGroupItem
                       className={classnames({ active: this.state.activeTab === 'headOf' })}
                       onClick={() => {
-                        this.toggle('headOf')
+                        this.toggle('headOf', this.props.headOfActions.getHeadOf)
                       }}>
                       Head Of
                     </ListGroupItem>
                     <ListGroupItem
                       className={classnames({ active: this.state.activeTab === 'destination' })}
                       onClick={() => {
-                        this.toggle('destination')
+                        this.toggle('destination', this.props.destinationActions.getDestination)
                       }}>
                       Destination
                     </ListGroupItem>
                     <ListGroupItem
                       className={classnames({ active: this.state.activeTab === 'name' })}
                       onClick={() => {
-                        this.toggle('name')
+                        this.toggle('name', this.props.nameActions.getName)
                       }}>
                       Name
                     </ListGroupItem>
                     <ListGroupItem
                       className={classnames({ active: this.state.activeTab === 'jobTitle' })}
                       onClick={() => {
-                        this.toggle('jobTitle')
+                        this.toggle('jobTitle', this.props.jobTitleActions.getJobTitle)
                       }}>
                       Job Title
                     </ListGroupItem>
                     <ListGroupItem
                       className={classnames({ active: this.state.activeTab === 'departureArrival' })}
                       onClick={() => {
-                        this.toggle('departureArrival')
+                        this.toggle('departureArrival', this.props.departureArrivalActions.getDepartureArrival)
                       }}>
                       Departure & Arrival
                     </ListGroupItem>
                     <ListGroupItem
                       className={classnames({ active: this.state.activeTab === 'a1' })}
                       onClick={() => {
-                        this.toggle('a1')
+                        this.toggle('a1', this.props.a1Actions.getA1)
                       }}>
                       A1
                     </ListGroupItem>
@@ -131,14 +105,14 @@ class Staff extends Component {
                     <ListGroupItem
                       className={classnames({ active: this.state.activeTab === 'recentlyInactive' })}
                       onClick={() => {
-                        this.toggle('recentlyInactive')
+                        this.toggle('recentlyInactive', this.props.recentlyInactiveActions.getRecentlyInactive)
                       }}>
                       Recently Inactive
                     </ListGroupItem>
                     <ListGroupItem
                       className={classnames({ active: this.state.activeTab === 'archive' })}
                       onClick={() => {
-                        this.toggle('archive')
+                        this.toggle('archive', this.props.archiveActions.getArchive)
                       }}>
                       Archive (2016-10)
                     </ListGroupItem>
@@ -154,28 +128,28 @@ class Staff extends Component {
                     <ListGroupItem
                       className={classnames({ active: this.state.activeTab === 'itsdAdmin' })}
                       onClick={() => {
-                        this.toggle('itsdAdmin')
+                        this.toggle('itsdAdmin', this.props.itsdAdminActions.getItsdAdmin)
                       }}>
                       ITSD Admin
                     </ListGroupItem>
                     <ListGroupItem
                       className={classnames({ active: this.state.activeTab === 'saveConflicts' })}
                       onClick={() => {
-                        this.toggle('saveConflicts')
+                        this.toggle('saveConflicts', this.props.saveConflictsActions.getSaveConflicts)
                       }}>
                       Save Conflicts
                     </ListGroupItem>
                     <ListGroupItem
                       className={classnames({ active: this.state.activeTab === 'newEmployees' })}
                       onClick={() => {
-                        this.toggle('newEmployees')
+                        this.toggle('newEmployees', this.props.newEmployeesActions.getNewEmployees)
                       }}>
                       New Employees
                     </ListGroupItem>
                     <ListGroupItem
                       className={classnames({ active: this.state.activeTab === 'tuiProfileLogin' })}
                       onClick={() => {
-                        this.toggle('tuiProfileLogin')
+                        this.toggle('tuiProfileLogin', this.props.tuiProfileLoginActions.getTuiProfileLogin)
                       }}>
                       TUI Profile Login
                     </ListGroupItem>
