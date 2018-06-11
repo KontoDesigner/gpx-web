@@ -3,7 +3,7 @@ import { Card, CardBody, CardHeader, UncontrolledDropdown, DropdownToggle, Dropd
 import DestinationRow from './destinationRow'
 import Filter from '../../filter';
 
-class HeadOf extends Component {
+class Destination extends Component {
     render() {
         return (
             <Card>
