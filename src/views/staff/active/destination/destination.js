@@ -28,11 +28,11 @@ class HeadOf extends Component {
                         </Col>
                     </Row>
 
-                    <DestinationRow/>
+                    <DestinationRow destination={this.props.destination} />
                 </CardBody>
             </Card>
         )
     }
 }
 
-export default HeadOf;
+export default Destination

@@ -172,7 +172,7 @@ class Staff extends Component {
             </TabPane>
 
             <TabPane tabId="destination">
-              <Destination />
+              <Destination destination={this.props.destination} />
             </TabPane>
 
             <TabPane tabId="name">
@@ -223,7 +223,8 @@ class Staff extends Component {
 
 function mapStateToProps(state, ownProps) {
   return {
-    headOf: state.staff.active.headOf
+    headOf: state.staff.active.headOf,
+    destination: state.staff.active.destination
   }
 }
 
