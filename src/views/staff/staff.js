@@ -17,7 +17,6 @@ import SaveConflicts from './other/saveConflicts/saveConflicts'
 import TUIProfileLogin from './other/tuiProfileLogin/tuiProfileLogin'
 import * as headOfActions from '../../actions/staff/active/headOfActions'
 import * as destinationActions from '../../actions/staff/active/destinationActions'
-import * as staffActions from '../../actions/staff/staffActions'
 
 class Staff extends Component {
   constructor(props) {
@@ -34,9 +33,6 @@ class Staff extends Component {
 
   toggle = (tab, func) => {
     if (this.state.activeTab !== tab) {
-      //Reset staff state
-      this.props.staffActions.resetStaff()
-
       //Set staff sub state
       func()
 
@@ -231,7 +227,6 @@ function mapStateToProps(state, ownProps) {
 function mapDispatchToProps(dispatch) {
   return {
     headOfActions: bindActionCreators(headOfActions, dispatch),
-    staffActions: bindActionCreators(staffActions, dispatch),
     destinationActions: bindActionCreators(destinationActions, dispatch)
   }
 }
