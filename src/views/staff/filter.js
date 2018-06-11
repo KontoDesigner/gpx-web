@@ -19,6 +19,8 @@ class Filter extends Component {
 
     updateFilterState = () => {
         this.props.filterActions.handleFilter()
+
+        this.props.getData()
     }
 
     updateTextState = (event) => {
