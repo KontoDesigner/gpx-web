@@ -23,9 +23,9 @@ class CountryRow extends Component {
     )
 
     return this.props.headOf.map(x => (
-      <Card key={x.headOfName} className="card-accordion">
-        <CardHeader key={x.headOfName} onClick={() => this.toggleCollapse()}>
-          {x.headOfName} {icon}
+      <Card key={x.headOf} className="card-accordion">
+        <CardHeader key={x.headOf} onClick={() => this.toggleCollapse()}>
+          {x.headOf} {icon}
         </CardHeader>
         <Collapse isOpen={this.state.expanded}>
           <CardBody className="no-padding-bottom">
