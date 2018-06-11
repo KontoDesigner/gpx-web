@@ -4,8 +4,19 @@ import TextInput from '../../components/textInput';
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import * as filterActions from '../../actions/staff/filterActions'
+import debounce from 'lodash/debounce'
 
 class Filter extends Component {
+    constructor(props) {
+        super(props);
+
+        this.getData = debounce(this.getDataDebouncer, 500);
+    }
+
+    getDataDebouncer = () => {
+        this.props.getData();
+    }
+
     updateFilterState = () => {
         this.props.filterActions.handleFilter()
     }
@@ -14,11 +25,13 @@ class Filter extends Component {
         const value = event.target.value;
 
         this.props.filterActions.handleText(value)
+
+        this.getData();
     }
 
     render() {
         return (
-            <Col sm="3" className="">
+            <Col sm="3">
                 <InputGroup>
                     <TextInput
                         name="text"

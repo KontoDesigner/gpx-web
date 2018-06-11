@@ -13,7 +13,7 @@ class HeadOf extends Component {
 
         <CardBody className="no-padding-bottom">
           <Row>
-            <Filter />
+            <Filter getData={this.props.getHeadOf} />
 
             <Col sm="9" className="text-align-right">
               <UncontrolledDropdown direction="left">

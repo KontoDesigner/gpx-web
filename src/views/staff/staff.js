@@ -168,51 +168,77 @@ class Staff extends Component {
         <Col sm="10">
           <TabContent activeTab={this.state.activeTab}>
             <TabPane tabId="headOf">
-              <HeadOf headOf={this.props.headOf} />
+              <HeadOf
+                headOf={this.props.headOf}
+                getHeadOf={this.props.headOfActions.getHeadOf}
+              />
             </TabPane>
 
             <TabPane tabId="destination">
-              <Destination destination={this.props.destination} />
+              <Destination
+                destination={this.props.destination}
+                getDestination={this.props.destinationActions.getDestination}
+              />
             </TabPane>
 
             <TabPane tabId="name">
-              <Name />
+              <Name
+              //getName={this.props.nameActions.getName}
+              />
             </TabPane>
 
             <TabPane tabId="jobTitle">
-              <JobTitle />
+              <JobTitle
+              //getJobTitle={this.props.jobTitleActions.getJobTitle}
+              />
             </TabPane>
 
             <TabPane tabId="departureArrival">
-              <DepartureArrival />
+              <DepartureArrival
+              //getDepartureArrival={this.props.departureArrivalActions.getDepartureArrival}
+              />
             </TabPane>
 
             <TabPane tabId="a1">
-              <A1 />
+              <A1
+              //getA1={this.props.a1Actions.getA1}
+              />
             </TabPane>
 
             <TabPane tabId="recentlyInactive">
-              <RecentlyInactive />
+              <RecentlyInactive
+              //getRecentlyInactive={this.props.recentlyInactiveActions.getRecentlyInactive}
+              />
             </TabPane>
 
             <TabPane tabId="archive">
-              <Archive />
+              <Archive
+              //getArchive={this.props.archiveActions.getArchive}
+              />
             </TabPane>
 
             <TabPane tabId="itsdAdmin">
-              <ITSDAdmin />
+              <ITSDAdmin
+              //getItsdAdmin={this.props.itsdAdminActions.getItsdAdmin}
+              />
             </TabPane>
 
             <TabPane tabId="saveConflicts">
-              <SaveConflicts />
+              <SaveConflicts
+              //getSaveConflicts={this.props.saveConflictsActions.getSaveConflicts}
+              />
             </TabPane>
 
             <TabPane tabId="newEmployees">
-              <NewEmployees />
+              <NewEmployees
+              //getNewEmployees={this.props.newEmployeesActions.getNewEmployees}
+              />
             </TabPane>
 
             <TabPane tabId="tuiProfileLogin">
-              <TUIProfileLogin />
+              <TUIProfileLogin
+              //getTuiProfileLogin={this.props.tuiProfileLoginActions.getTuiProfileLogin}
+              />
             </TabPane>
           </TabContent>
         </Col>
