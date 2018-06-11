@@ -1,31 +1,30 @@
 import React, { Component } from 'react'
-import { Card, CardBody, CardHeader, UncontrolledDropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
+import { Card, CardBody, CardHeader, UncontrolledDropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap'
 import DestinationRow from './destinationRow'
 
-class HeadOf extends Component {
-    render() {
-        return (
-            <Card>
-                <CardHeader>
-                    Destination
+class Destination extends Component {
+  render() {
+    return (
+      <Card>
+        <CardHeader>
+          Destination
+          <UncontrolledDropdown direction="left">
+            <DropdownToggle color="primary" size="sm">
+              Actions
+            </DropdownToggle>
+            <DropdownMenu>
+              <DropdownItem>Another Action</DropdownItem>
+              <DropdownItem>Another Action</DropdownItem>
+            </DropdownMenu>
+          </UncontrolledDropdown>
+        </CardHeader>
 
-                    <UncontrolledDropdown direction="left">
-                        <DropdownToggle color="primary" size="sm">
-                            Actions
-                        </DropdownToggle>
-                        <DropdownMenu>
-                            <DropdownItem>Another Action</DropdownItem>
-                            <DropdownItem>Another Action</DropdownItem>
-                        </DropdownMenu>
-                    </UncontrolledDropdown>
-                </CardHeader>
-
-                <CardBody className="no-padding-bottom">
-                    <DestinationRow/>
-                </CardBody>
-            </Card>
-        )
-    }
+        <CardBody className="no-padding-bottom">
+          <DestinationRow destination={this.props.destination} />
+        </CardBody>
+      </Card>
+    )
+  }
 }
 
-export default HeadOf;
+export default Destination
