@@ -23,9 +23,9 @@ class DestinationRow extends Component {
     )
 
     return this.props.destinations.map(dest => (
-      <Card key={dest.destinationName} className="card-accordion">
+      <Card key={dest.destination} className="card-accordion">
         <CardHeader onClick={() => this.toggleCollapse()}>
-          {dest.destinationName} {icon}
+          {dest.destination} {icon}
         </CardHeader>
 
         <Collapse isOpen={this.state.expanded}>
