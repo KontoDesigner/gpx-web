@@ -1,0 +1,32 @@
+.input-group > .form-group
+{
+    margin-bottom:0px;
+}
+
+.input-group
+{
+    padding-bottom: 1rem;
+}
+
+.form-control
+{
+    border-radius:0px;
+    border-color:#ddd;
+    font-size:14px;
+}
+
+.input-group .input-group-append .btn
+{
+    border-radius:0px;
+    margin:0px 0px 0px 4px!important;
+    padding:0.375rem 0.8rem;
+}
+
+.input-group .input-group-append .btn-warning
+{
+    border:1px solid #ff7702!important;
+}
+
+.form-control::-webkit-input-placeholder {
+  color: #bbb;
+}
