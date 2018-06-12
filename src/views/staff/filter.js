@@ -18,12 +18,6 @@ class Filter extends Component {
         this.props.getData();
     }
 
-    updateFilterState = () => {
-        this.props.filterActions.handleFilter()
-
-        this.props.getData()
-    }
-
     updateTextState = (event) => {
         const value = event.target.value;
 
@@ -62,8 +56,8 @@ class Filter extends Component {
                     <Col sm="6">
                         <TextInput
                             name="text"
-                            label="Search"
-                            placeholder="Search"
+                            label="Free Text"
+                            placeholder="e.g. Mallorca"
                             value={this.props.filter.text}
                             onChange={this.updateTextState}
                         />
