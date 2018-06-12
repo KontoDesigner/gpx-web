@@ -10,7 +10,7 @@ export function getDestinationSuccess(destination) {
 }
 
 export function getDestination() {
-  return async function(dispatch) {
+  return async function (dispatch) {
     dispatch(beginAjaxCall())
     try {
       const destination = await RestClient.Get(`staff/destination`)
@@ -19,5 +19,12 @@ export function getDestination() {
       dispatch(ajaxCallError(error))
       throw error
     }
+  }
+}
+
+export function handleDestination(destination) {
+  return {
+    type: types.HANDLE_DESTINATION,
+    data: { destination: destination }
   }
 }

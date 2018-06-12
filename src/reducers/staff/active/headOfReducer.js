@@ -6,6 +6,8 @@ export default function headOfReducer(state = defaultState, action) {
     switch (action.type) {
         case types.GET_HEADOF_SUCCESS:
             return action.data.headOf;
+        case types.HANDLE_HEADOF:
+            return action.data.headOf;
         default:
             return state;
     }
