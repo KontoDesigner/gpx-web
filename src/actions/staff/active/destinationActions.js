@@ -12,7 +12,6 @@ export function getDestinationSuccess(destination) {
 export function getDestination() {
   return async function(dispatch) {
     dispatch(beginAjaxCall())
-
     try {
       const destination = await RestClient.Get(`staff/destination`)
       dispatch(getDestinationSuccess(destination))

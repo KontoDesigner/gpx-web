@@ -34,8 +34,8 @@ class PersonTable extends Component {
           </thead>
 
           <tbody>
-            {this.props.persons.map((x, index) => (
-              <tr key={index}>
+            {this.props.persons.map(x => (
+              <tr key={x.staffID}>
                 <td>
                   <ContextMenuTrigger id="headOfContextMenu">
                     {x.lastName}, {x.firstName}

@@ -22,8 +22,8 @@ class PositionTable extends Component {
       <i className="fa fa-chevron-down float-right text-danger" />
     )
 
-    return this.props.positions.map((x, index) => (
-      <Card key={x.index} className="card-accordion">
+    return this.props.positions.map(x => (
+      <Card key={x.jobTitle} className="card-accordion">
         <CardHeader onClick={() => this.toggleCollapse()}>
           {x.jobTitle} {icon}
         </CardHeader>
