@@ -11,5 +11,5 @@ WORKDIR /app
 
 COPY nginx.conf /etc/nginx/
 COPY start.sh .
-RUN chmod +x /app/start.shn
+RUN chmod +x /app/start.sh
 CMD ["/app/start.sh"]
