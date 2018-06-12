@@ -4,7 +4,7 @@
 @import './table.css';
 @import './btn.css';
 @import './dropdown.css';
-@import './input.css';
+@import './form.css';
 
 .collapsing {
   transition: none !important;

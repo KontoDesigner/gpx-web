@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Row, Col, InputGroup, InputGroupAddon, Button } from 'reactstrap'
+import { Row, Col } from 'reactstrap'
 import TextInput from '../../components/textInput';
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
@@ -43,31 +43,30 @@ class Filter extends Component {
             <Col sm="4">
                 <Row>
                     <Col sm="6">
-                        <Select
-                            valueKey='id'
-                            labelKey='name'
-                            options={this.props.filter.sourceMarkets}
-                            onChange={this.props.updateSourceMarketState}
-                            value={this.props.filter.sourceMarket}
-                            placeholder='Source Market'
-                        />
+                        <div className="form-group form-group-select">
+                            <label htmlFor="sourceMarket">Source Market</label>
+
+                            <Select
+                                id="sourceMarket"
+                                valueKey='id'
+                                labelKey='name'
+                                className="form-control"
+                                options={this.props.filter.sourceMarkets}
+                                onChange={this.props.updateSourceMarketState}
+                                value={this.props.filter.sourceMarket}
+                                placeholder='Source Market'
+                            />
+                        </div>
                     </Col>
 
                     <Col sm="6">
-                        <InputGroup>
-                            <TextInput
-                                name="text"
-                                placeholder="Search"
-                                value={this.props.filter.text}
-                                onChange={this.updateTextState}
-                            />
-
-                            <InputGroupAddon addonType="append">
-                                <Button onClick={this.updateFilterState} color="danger">
-                                    <i className="fa fa-remove" />
-                                </Button>
-                            </InputGroupAddon>
-                        </InputGroup>
+                        <TextInput
+                            name="text"
+                            label="Search"
+                            placeholder="Search"
+                            value={this.props.filter.text}
+                            onChange={this.updateTextState}
+                        />
                     </Col>
                 </Row>
             </Col>

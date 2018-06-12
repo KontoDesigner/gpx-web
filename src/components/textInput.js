@@ -1,14 +1,18 @@
 import React from 'react';
 
-const TextInput = ({ name, onChange, placeholder, value }) => {
+const TextInput = ({ name, label, onChange, placeholder, value }) => {
     return (
-        <input
-            type="text"
-            name={name}
-            className="form-control"
-            placeholder={placeholder}
-            value={value}
-            onChange={onChange} />
+        <div className="form-group">
+            <label htmlFor={name}>{label}</label>
+
+            <input
+                type="text"
+                name={name}
+                className="form-control"
+                placeholder={placeholder}
+                value={value}
+                onChange={onChange} />
+        </div>
     );
 };
 

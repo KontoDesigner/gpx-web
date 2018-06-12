@@ -31,3 +31,15 @@
 .form-control::-webkit-input-placeholder {
   color: #bbb;
 }
+
+.form-group.form-group-select .form-control
+{
+    padding:0px;
+    border:0px;
+}
+
+label
+{
+    font-weight:500;
+    margin-bottom:5px;
+}
