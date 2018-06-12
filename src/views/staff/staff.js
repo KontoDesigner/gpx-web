@@ -24,25 +24,35 @@ class Staff extends Component {
     super(props)
 
     this.state = {
-      activeTab: 'headOf'
+      activeTab: 'headOf',
+      resetData: this.props.headOfActions.handleHeadOf
     }
   }
 
   componentWillMount() {
     this.props.headOfActions.getHeadOf()
-    
+
     // this.props.filterActions.getSourceMarkets()
   }
 
-  toggle = (tab, func) => {
+  resetData = () => {
+
+  }
+
+  toggle = (tab, getData, resetData) => {
     if (this.state.activeTab !== tab) {
+      //Reset current tab state
+      this.state.resetData([])
+
+      //Reset filter
       this.props.filterActions.handleFilter()
 
       //Set staff sub state
-      func()
+      getData()
 
       this.setState({
-        activeTab: tab
+        activeTab: tab,
+        resetData: resetData
       })
     }
   }
@@ -61,42 +71,42 @@ class Staff extends Component {
                     <ListGroupItem
                       className={classnames({ active: this.state.activeTab === 'headOf' })}
                       onClick={() => {
-                        this.toggle('headOf', this.props.headOfActions.getHeadOf)
+                        this.toggle('headOf', this.props.headOfActions.getHeadOf, this.props.headOfActions.handleHeadOf)
                       }}>
                       Head Of
                     </ListGroupItem>
                     <ListGroupItem
                       className={classnames({ active: this.state.activeTab === 'destination' })}
                       onClick={() => {
-                        this.toggle('destination', this.props.destinationActions.getDestination)
+                        this.toggle('destination', this.props.destinationActions.getDestination, this.props.destinationActions.handleDestination)
                       }}>
                       Destination
                     </ListGroupItem>
                     <ListGroupItem
                       className={classnames({ active: this.state.activeTab === 'name' })}
                       onClick={() => {
-                        this.toggle('name', this.props.nameActions.getName)
+                        this.toggle('name', this.props.nameActions.getName, this.props.nameActions.handleName)
                       }}>
                       Name
                     </ListGroupItem>
                     <ListGroupItem
                       className={classnames({ active: this.state.activeTab === 'jobTitle' })}
                       onClick={() => {
-                        this.toggle('jobTitle', this.props.jobTitleActions.getJobTitle)
+                        this.toggle('jobTitle', this.props.jobTitleActions.getJobTitle, this.props.jobTitleActions.handleJobTitle)
                       }}>
                       Job Title
                     </ListGroupItem>
                     <ListGroupItem
                       className={classnames({ active: this.state.activeTab === 'departureArrival' })}
                       onClick={() => {
-                        this.toggle('departureArrival', this.props.departureArrivalActions.getDepartureArrival)
+                        this.toggle('departureArrival', this.props.departureArrivalActions.getDepartureArrival, this.props.departureArrivalActions.handleDepartureArrival)
                       }}>
                       Departure & Arrival
                     </ListGroupItem>
                     <ListGroupItem
                       className={classnames({ active: this.state.activeTab === 'a1' })}
                       onClick={() => {
-                        this.toggle('a1', this.props.a1Actions.getA1)
+                        this.toggle('a1', this.props.a1Actions.getA1, this.props.a1Actions.handleA1)
                       }}>
                       A1
                     </ListGroupItem>
@@ -112,14 +122,14 @@ class Staff extends Component {
                     <ListGroupItem
                       className={classnames({ active: this.state.activeTab === 'recentlyInactive' })}
                       onClick={() => {
-                        this.toggle('recentlyInactive', this.props.recentlyInactiveActions.getRecentlyInactive)
+                        this.toggle('recentlyInactive', this.props.recentlyInactiveActions.getRecentlyInactive, this.props.recentlyInactiveActions.handleGetRecentlyInactive)
                       }}>
                       Recently Inactive
                     </ListGroupItem>
                     <ListGroupItem
                       className={classnames({ active: this.state.activeTab === 'archive' })}
                       onClick={() => {
-                        this.toggle('archive', this.props.archiveActions.getArchive)
+                        this.toggle('archive', this.props.archiveActions.getArchive, this.props.archiveActions.handleArchive)
                       }}>
                       Archive (2016-10)
                     </ListGroupItem>
@@ -135,28 +145,28 @@ class Staff extends Component {
                     <ListGroupItem
                       className={classnames({ active: this.state.activeTab === 'itsdAdmin' })}
                       onClick={() => {
-                        this.toggle('itsdAdmin', this.props.itsdAdminActions.getItsdAdmin)
+                        this.toggle('itsdAdmin', this.props.itsdAdminActions.getItsdAdmin, this.props.itsdAdminActions.handleItsdAdmin)
                       }}>
                       ITSD Admin
                     </ListGroupItem>
                     <ListGroupItem
                       className={classnames({ active: this.state.activeTab === 'saveConflicts' })}
                       onClick={() => {
-                        this.toggle('saveConflicts', this.props.saveConflictsActions.getSaveConflicts)
+                        this.toggle('saveConflicts', this.props.saveConflictsActions.getSaveConflicts, this.props.saveConflictsActions.handleSaveConflicts)
                       }}>
                       Save Conflicts
                     </ListGroupItem>
                     <ListGroupItem
                       className={classnames({ active: this.state.activeTab === 'newEmployees' })}
                       onClick={() => {
-                        this.toggle('newEmployees', this.props.newEmployeesActions.getNewEmployees)
+                        this.toggle('newEmployees', this.props.newEmployeesActions.getNewEmployees, this.props.newEmployeesActions.handleNewEmployees)
                       }}>
                       New Employees
                     </ListGroupItem>
                     <ListGroupItem
                       className={classnames({ active: this.state.activeTab === 'tuiProfileLogin' })}
                       onClick={() => {
-                        this.toggle('tuiProfileLogin', this.props.tuiProfileLoginActions.getTuiProfileLogin)
+                        this.toggle('tuiProfileLogin', this.props.tuiProfileLoginActions.getTuiProfileLogin, this.props.tuiProfileLoginActions.handleTuiProfileLogin)
                       }}>
                       TUI Profile Login
                     </ListGroupItem>

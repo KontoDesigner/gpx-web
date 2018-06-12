@@ -10,7 +10,7 @@ export function getHeadOfSuccess(headOf) {
 }
 
 export function getHeadOf() {
-  return async function(dispatch) {
+  return async function (dispatch) {
     dispatch(beginAjaxCall())
 
     try {
@@ -22,5 +22,12 @@ export function getHeadOf() {
 
       throw error
     }
+  }
+}
+
+export function handleHeadOf(headOf) {
+  return {
+    type: types.HANDLE_HEADOF,
+    data: { headOf: headOf }
   }
 }
