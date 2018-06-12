@@ -19,7 +19,9 @@ class Destination extends Component {
                         <Action />
                     </Row>
 
-                    <DestinationRow destination={this.props.destination} />
+                    {this.props.destination.map((destination, index) => (
+                        <DestinationRow key={index} destination={destination} />
+                    ))}
                 </CardBody>
             </Card>
         )

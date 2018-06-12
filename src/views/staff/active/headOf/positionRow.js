@@ -19,22 +19,22 @@ class PositionTable extends Component {
     const icon = this.state.expanded ? (
       <i className="fa fa-chevron-up float-right text-danger" />
     ) : (
-      <i className="fa fa-chevron-down float-right text-danger" />
-    )
+        <i className="fa fa-chevron-down float-right text-danger" />
+      )
 
-    return this.props.positions.map(x => (
-      <Card key={x.jobTitle} className="card-accordion">
+    return (
+      <Card key={this.props.jobTitle.jobTitle} className="card-accordion">
         <CardHeader onClick={() => this.toggleCollapse()}>
-          {x.jobTitle} {icon}
+          {this.props.jobTitle.jobTitle} {icon}
         </CardHeader>
 
         <Collapse isOpen={this.state.expanded}>
           <CardBody>
-            <PersonTable persons={x.staffs} />
+            <PersonTable persons={this.props.jobTitle.staffs} />
           </CardBody>
         </Collapse>
       </Card>
-    ))
+    )
   }
 }
 

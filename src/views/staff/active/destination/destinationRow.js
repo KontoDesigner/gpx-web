@@ -19,22 +19,24 @@ class DestinationRow extends Component {
     const icon = this.state.expanded ? (
       <i className="fa fa-chevron-up float-right text-danger" />
     ) : (
-      <i className="fa fa-chevron-down float-right text-danger" />
-    )
+        <i className="fa fa-chevron-down float-right text-danger" />
+      )
 
-    return this.props.destination.map(x => (
-      <Card key={x.destination} className="card-accordion">
+    return (
+      <Card className="card-accordion">
         <CardHeader onClick={() => this.toggleCollapse()}>
-          {x.destination} {icon}
+          {this.props.destination.destination} {icon}
         </CardHeader>
 
         <Collapse isOpen={this.state.expanded}>
           <CardBody className="no-padding-bottom">
-            <PositionRow positions={x.jobTitles} />
+            {this.props.destination.jobTitles.map((jobTitle, index) => (
+              <PositionRow key={index} jobTitle={jobTitle} />
+            ))}
           </CardBody>
         </Collapse>
       </Card>
-    ))
+    )
   }
 }
 

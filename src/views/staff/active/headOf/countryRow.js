@@ -19,21 +19,23 @@ class CountryRow extends Component {
     const icon = this.state.expanded ? (
       <i className="fa fa-chevron-up float-right text-danger" />
     ) : (
-      <i className="fa fa-chevron-down float-right text-danger" />
-    )
+        <i className="fa fa-chevron-down float-right text-danger" />
+      )
 
-    return this.props.headOf.map(x => (
-      <Card key={x.headOf} className="card-accordion">
-        <CardHeader key={x.headOf} onClick={() => this.toggleCollapse()}>
-          {x.headOf} {icon}
+    return (
+      <Card key={this.props.headOf} className="card-accordion">
+        <CardHeader key={this.props.headOf.headOf} onClick={() => this.toggleCollapse()}>
+          {this.props.headOf.headOf} {icon}
         </CardHeader>
         <Collapse isOpen={this.state.expanded}>
           <CardBody className="no-padding-bottom">
-            <DestinationRow destinations={x.destinations} />
+            {this.props.headOf.destinations.map((destination, index) => (
+              <DestinationRow key={index} destination={destination} />
+            ))}
           </CardBody>
         </Collapse>
       </Card>
-    ))
+    )
   }
 }
 
