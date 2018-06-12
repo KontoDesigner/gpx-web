@@ -1,10 +1,11 @@
 import React, { Component } from 'react'
-import { Col, InputGroup, InputGroupAddon, Button } from 'reactstrap'
+import { Row, Col, InputGroup, InputGroupAddon, Button } from 'reactstrap'
 import TextInput from '../../components/textInput';
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import * as filterActions from '../../actions/staff/filterActions'
 import debounce from 'lodash/debounce'
+import Select from 'react-select';
 
 class Filter extends Component {
     constructor(props) {
@@ -31,23 +32,44 @@ class Filter extends Component {
         this.getData();
     }
 
+    updateSourceMarketState = sourceMarket => {
+        const sourceMarketId = sourceMarket != null ? sourceMarket.id : null
+
+        this.props.filterActions.handleSourceMarket(sourceMarketId)
+    }
+
     render() {
         return (
-            <Col sm="3">
-                <InputGroup>
-                    <TextInput
-                        name="text"
-                        placeholder="Search"
-                        value={this.props.filter.text}
-                        onChange={this.updateTextState}
-                    />
+            <Col sm="4">
+                <Row>
+                    <Col sm="6">
+                        <Select
+                            valueKey='id'
+                            labelKey='name'
+                            options={this.props.filter.sourceMarkets}
+                            onChange={this.props.updateSourceMarketState}
+                            value={this.props.filter.sourceMarket}
+                            placeholder='Source Market'
+                        />
+                    </Col>
 
-                    <InputGroupAddon addonType="append">
-                        <Button onClick={this.updateFilterState} color="warning">
-                            <i className="fa fa-remove" />
-                        </Button>
-                    </InputGroupAddon>
-                </InputGroup>
+                    <Col sm="6">
+                        <InputGroup>
+                            <TextInput
+                                name="text"
+                                placeholder="Search"
+                                value={this.props.filter.text}
+                                onChange={this.updateTextState}
+                            />
+
+                            <InputGroupAddon addonType="append">
+                                <Button onClick={this.updateFilterState} color="danger">
+                                    <i className="fa fa-remove" />
+                                </Button>
+                            </InputGroupAddon>
+                        </InputGroup>
+                    </Col>
+                </Row>
             </Col>
         )
     }

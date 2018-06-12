@@ -5,3 +5,9 @@
 @import './btn.css';
 @import './dropdown.css';
 @import './input.css';
+
+.collapsing {
+  transition: none !important;
+  height:100%!important;
+  display:none!important;
+}
