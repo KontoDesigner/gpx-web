@@ -15,7 +15,7 @@ class HeadOf extends Component {
           <Row>
             <Filter getData={this.props.getHeadOf} />
 
-            <Col sm="9" className="text-align-right">
+            <Col sm="8" className="text-align-right">
               <UncontrolledDropdown direction="left">
                 <DropdownToggle color="primary">
                   Actions

@@ -1,13 +1,22 @@
 import { ActionTypes as types } from '../../constants/staff/filterConstants';
 
 var defaultState = {
-    text: ''
+    text: '',
+    sourceMarket: '',
+    sourcemarkets: []
 };
 
 export default function filterReducer(state = defaultState, action) {
     switch (action.type) {
+        case types.GET_SOURCEMARKETS_SUCCESS:
+            return action.data.sourceMarkets;
         case (types.HANDLE_FILTER):
             return defaultState
+        case types.HANDLE_SOURCEMARKET:
+            return {
+                ...state,
+                sourceMarket: action.data.sourceMarket
+            }
         case types.HANDLE_TEXT:
             return {
                 ...state,
