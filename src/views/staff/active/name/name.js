@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
-import { Card, CardBody, CardHeader, UncontrolledDropdown, DropdownToggle, DropdownMenu, DropdownItem, Row, Col } from 'reactstrap'
+import { Card, CardBody, CardHeader, Row } from 'reactstrap'
 import PersonTable from './personTable'
 import Filter from '../../filter';
+import Action from '../../action';
 
 class Name extends Component {
     constructor(props) {
@@ -27,17 +28,7 @@ class Name extends Component {
                     <Row>
                         <Filter />
 
-                        <Col sm="9" className="text-align-right">
-                            <UncontrolledDropdown direction="left">
-                                <DropdownToggle color="primary">
-                                    Actions
-                            </DropdownToggle>
-                                <DropdownMenu>
-                                    <DropdownItem>Another Action</DropdownItem>
-                                    <DropdownItem>Another Action</DropdownItem>
-                                </DropdownMenu>
-                            </UncontrolledDropdown>
-                        </Col>
+                        <Action />
                     </Row>
 
                     <PersonTable />
