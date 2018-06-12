@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import CountryRow from './countryRow'
-import { Card, CardBody, CardHeader, UncontrolledDropdown, DropdownToggle, DropdownMenu, DropdownItem, Row, Col } from 'reactstrap'
+import { Card, CardBody, CardHeader, Row } from 'reactstrap'
 import Filter from '../../filter';
+import Action from '../../action';
 
 class HeadOf extends Component {
   render() {
@@ -15,17 +16,7 @@ class HeadOf extends Component {
           <Row>
             <Filter getData={this.props.getHeadOf} />
 
-            <Col sm="8" className="text-align-right">
-              <UncontrolledDropdown direction="left">
-                <DropdownToggle color="primary">
-                  Actions
-                </DropdownToggle>
-                <DropdownMenu>
-                  <DropdownItem>Another Action</DropdownItem>
-                  <DropdownItem>Another Action</DropdownItem>
-                </DropdownMenu>
-              </UncontrolledDropdown>
-            </Col>
+            <Action />
           </Row>
 
           <CountryRow headOf={this.props.headOf} />
