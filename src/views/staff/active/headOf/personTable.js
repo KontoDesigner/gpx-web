@@ -10,7 +10,7 @@ class PersonTable extends Component {
   render() {
     return (
       <div>
-        <ContextMenu id="headOfContextMenu">
+        <ContextMenu id={this.props.index + "-destinationContextMenu"}>
           <MenuItem data={{ foo: 'bar' }} onClick={this.handleClick}>
             ContextMenu Item 1
           </MenuItem>
@@ -35,15 +35,15 @@ class PersonTable extends Component {
             {this.props.persons.map((x, index) => (
               <tr key={index}>
                 <td>
-                  <ContextMenuTrigger id="headOfContextMenu">
+                  <ContextMenuTrigger id={this.props.index + "-destinationContextMenu"}>
                     {x.lastName}, {x.firstName}
                   </ContextMenuTrigger>
                 </td>
                 <td>
-                  <ContextMenuTrigger id="headOfContextMenu">{x.nationality}</ContextMenuTrigger>
+                  <ContextMenuTrigger id={this.props.index + "-destinationContextMenu"}>{x.nationality}</ContextMenuTrigger>
                 </td>
                 <td>
-                  <ContextMenuTrigger id="headOfContextMenu">{x.staffID}</ContextMenuTrigger>
+                  <ContextMenuTrigger id={this.props.index + "-destinationContextMenu"}>{x.staffID}</ContextMenuTrigger>
                 </td>
               </tr>
             ))}

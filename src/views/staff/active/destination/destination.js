@@ -20,7 +20,7 @@ class Destination extends Component {
                     </Row>
 
                     {this.props.destination.map((destination, index) => (
-                        <DestinationRow key={index} destination={destination} />
+                        <DestinationRow key={index} index={index} destination={destination} />
                     ))}
                 </CardBody>
             </Card>

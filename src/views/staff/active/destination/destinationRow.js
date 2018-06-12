@@ -31,7 +31,7 @@ class DestinationRow extends Component {
         <Collapse isOpen={this.state.expanded}>
           <CardBody className="no-padding-bottom">
             {this.props.destination.jobTitles.map((jobTitle, index) => (
-              <PositionRow key={index} jobTitle={jobTitle} />
+              <PositionRow key={index} index={this.props.index + index} jobTitle={jobTitle} />
             ))}
           </CardBody>
         </Collapse>

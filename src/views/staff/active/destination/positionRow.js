@@ -30,7 +30,7 @@ class PositionRow extends Component {
 
         <Collapse isOpen={this.state.expanded}>
           <CardBody>
-            <PersonTable persons={this.props.jobTitle.staffs} />
+            <PersonTable index={this.props.index} persons={this.props.jobTitle.staffs} />
           </CardBody>
         </Collapse>
       </Card>

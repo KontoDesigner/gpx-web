@@ -19,7 +19,7 @@ class HeadOf extends Component {
             <Action />
           </Row>
           {this.props.headOf.map((headOf, index) => (
-            <CountryRow key={index} headOf={headOf} />
+            <CountryRow key={index} index={index} headOf={headOf} />
           ))}
         </CardBody>
       </Card>
