@@ -20,10 +20,10 @@
 
 .list-group-item.active
 {
-    background-color: #def7d9;
-    cursor:default;
-    border-color:#ddd;
-    color:#3c763d;
+    background-color: #e2f3fe;
+    cursor: default;
+    border-color: #ddd;
+    color: #3a6d98;
 }
 
 .list-group-item, .list-group-item:last-child

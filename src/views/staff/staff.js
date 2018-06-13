@@ -30,7 +30,7 @@ class Staff extends Component {
   }
 
   componentWillMount() {
-    //this.props.headOfActions.getHeadOf()
+    this.props.headOfActions.getHeadOf()
 
     this.props.filterActions.getSourceMarkets()
   }

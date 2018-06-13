@@ -22,6 +22,10 @@ class PositionTable extends Component {
         <i className="fa fa-chevron-down float-right text-danger" />
       )
 
+    const style = {
+      height: `${42 + (this.props.jobTitle.staffs.length * 41)}px`
+    }
+
     return (
       <Card key={this.props.jobTitle.jobTitle} className="card-accordion">
         <CardHeader onClick={() => this.toggleCollapse()}>
@@ -29,11 +33,11 @@ class PositionTable extends Component {
         </CardHeader>
 
         <Collapse isOpen={this.state.expanded}>
-          <CardBody>
+          <CardBody style={style} className="card-body-table">
             <PersonTable index={this.props.index} persons={this.props.jobTitle.staffs} />
           </CardBody>
         </Collapse>
-      </Card>
+      </Card >
     )
   }
 }
