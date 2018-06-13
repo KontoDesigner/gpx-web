@@ -30,14 +30,12 @@ class Staff extends Component {
   }
 
   componentWillMount() {
-    this.props.headOfActions.getHeadOf()
+    //this.props.headOfActions.getHeadOf()
 
-    // this.props.filterActions.getSourceMarkets()
+    this.props.filterActions.getSourceMarkets()
   }
 
-  resetData = () => {
-
-  }
+  resetData = () => {}
 
   toggle = (tab, getData, resetData) => {
     if (this.state.activeTab !== tab) {
@@ -99,7 +97,11 @@ class Staff extends Component {
                     <ListGroupItem
                       className={classnames({ active: this.state.activeTab === 'departureArrival' })}
                       onClick={() => {
-                        this.toggle('departureArrival', this.props.departureArrivalActions.getDepartureArrival, this.props.departureArrivalActions.handleDepartureArrival)
+                        this.toggle(
+                          'departureArrival',
+                          this.props.departureArrivalActions.getDepartureArrival,
+                          this.props.departureArrivalActions.handleDepartureArrival
+                        )
                       }}>
                       Departure & Arrival
                     </ListGroupItem>
@@ -122,7 +124,11 @@ class Staff extends Component {
                     <ListGroupItem
                       className={classnames({ active: this.state.activeTab === 'recentlyInactive' })}
                       onClick={() => {
-                        this.toggle('recentlyInactive', this.props.recentlyInactiveActions.getRecentlyInactive, this.props.recentlyInactiveActions.handleGetRecentlyInactive)
+                        this.toggle(
+                          'recentlyInactive',
+                          this.props.recentlyInactiveActions.getRecentlyInactive,
+                          this.props.recentlyInactiveActions.handleGetRecentlyInactive
+                        )
                       }}>
                       Recently Inactive
                     </ListGroupItem>
@@ -152,7 +158,11 @@ class Staff extends Component {
                     <ListGroupItem
                       className={classnames({ active: this.state.activeTab === 'saveConflicts' })}
                       onClick={() => {
-                        this.toggle('saveConflicts', this.props.saveConflictsActions.getSaveConflicts, this.props.saveConflictsActions.handleSaveConflicts)
+                        this.toggle(
+                          'saveConflicts',
+                          this.props.saveConflictsActions.getSaveConflicts,
+                          this.props.saveConflictsActions.handleSaveConflicts
+                        )
                       }}>
                       Save Conflicts
                     </ListGroupItem>
@@ -166,7 +176,11 @@ class Staff extends Component {
                     <ListGroupItem
                       className={classnames({ active: this.state.activeTab === 'tuiProfileLogin' })}
                       onClick={() => {
-                        this.toggle('tuiProfileLogin', this.props.tuiProfileLoginActions.getTuiProfileLogin, this.props.tuiProfileLoginActions.handleTuiProfileLogin)
+                        this.toggle(
+                          'tuiProfileLogin',
+                          this.props.tuiProfileLoginActions.getTuiProfileLogin,
+                          this.props.tuiProfileLoginActions.handleTuiProfileLogin
+                        )
                       }}>
                       TUI Profile Login
                     </ListGroupItem>
@@ -180,17 +194,11 @@ class Staff extends Component {
         <Col sm="10">
           <TabContent activeTab={this.state.activeTab}>
             <TabPane tabId="headOf">
-              <HeadOf
-                headOf={this.props.headOf}
-                getHeadOf={this.props.headOfActions.getHeadOf}
-              />
+              <HeadOf headOf={this.props.headOf} getHeadOf={this.props.headOfActions.getHeadOf} />
             </TabPane>
 
             <TabPane tabId="destination">
-              <Destination
-                destination={this.props.destination}
-                getDestination={this.props.destinationActions.getDestination}
-              />
+              <Destination destination={this.props.destination} getDestination={this.props.destinationActions.getDestination} />
             </TabPane>
 
             <TabPane tabId="name">
