@@ -27,9 +27,9 @@ class PositionTable extends Component {
     }
 
     return (
-      <Card key={this.props.jobTitle.jobTitle} className="card-accordion">
+      <Card className="card-accordion">
         <CardHeader onClick={() => this.toggleCollapse()}>
-          {this.props.jobTitle.jobTitle} {icon}
+          ({this.props.jobTitle.staffs.length}) {this.props.jobTitle.jobTitle} {icon}
         </CardHeader>
 
         <Collapse isOpen={this.state.expanded}>

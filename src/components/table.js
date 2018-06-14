@@ -18,7 +18,7 @@ class Table extends Component {
             (this.state.list.length < 8 ? ' hidden-scroll ' : '') + className + (index % 2 === 0 ? ' even' : ' odd') + (1 === 1 ? ' selected' : '')
 
         return (
-            <div key={props.key} style={style}>
+            <div key={index} style={style}>
                 <ContextMenuTrigger id={this.props.contextMenuId}>
                     <div className={rowClassName} role="row">
                         {columns}

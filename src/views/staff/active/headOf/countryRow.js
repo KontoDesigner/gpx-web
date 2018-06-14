@@ -23,10 +23,11 @@ class CountryRow extends Component {
       )
 
     return (
-      <Card key={this.props.headOf} className="card-accordion">
+      <Card className="card-accordion">
         <CardHeader key={this.props.headOf.headOf} onClick={() => this.toggleCollapse()}>
           {this.props.headOf.headOf} {icon}
         </CardHeader>
+
         <Collapse isOpen={this.state.expanded}>
           <CardBody className="no-padding-bottom">
             {this.props.headOf.destinations.map((destination, index) => (

@@ -3,7 +3,7 @@ import { ContextMenu, MenuItem } from 'react-contextmenu'
 import Table from '../../../../components/table.js';
 
 const columns = [
-  { label: 'Name', dataKey: 'firstName' },
+  { label: 'Name', dataKey: 'firstNameLastName' },
   { label: 'Nationality', dataKey: 'nationality' },
   { label: 'Id', dataKey: 'staffID' }
 ];

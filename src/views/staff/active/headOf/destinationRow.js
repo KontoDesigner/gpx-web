@@ -23,7 +23,7 @@ class DestinationRow extends Component {
       )
 
     return (
-      <Card key={this.props.destination.destination} className="card-accordion">
+      <Card className="card-accordion">
         <CardHeader onClick={() => this.toggleCollapse()}>
           {this.props.destination.destination} {icon}
         </CardHeader>

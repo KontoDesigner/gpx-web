@@ -7,10 +7,12 @@ import Action from '../../action'
 class HeadOf extends Component {
   constructor(props) {
     super(props)
+
     this.state = {
       selectedPersons: []
     }
   }
+
   render() {
     return (
       <Card>
