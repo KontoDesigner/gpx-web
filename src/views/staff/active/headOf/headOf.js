@@ -7,7 +7,6 @@ import Action from '../../action'
 class HeadOf extends Component {
   constructor(props) {
     super(props)
-    this.props.getHeadOf('Fille', 'Filur')
     this.state = {
       selectedPersons: []
     }
