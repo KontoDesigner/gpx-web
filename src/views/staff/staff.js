@@ -24,7 +24,7 @@ class Staff extends Component {
   }
 
   componentWillMount() {
-    this.props.headOfActions.getHeadOf()
+    this.props.headOfActions.getHeadOf('OLLE', 'BOLLE')
 
     this.props.filterActions.getSourceMarkets()
   }

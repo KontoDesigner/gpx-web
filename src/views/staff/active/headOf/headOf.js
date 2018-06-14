@@ -7,7 +7,7 @@ import Action from '../../action'
 class HeadOf extends Component {
   constructor(props) {
     super(props)
-
+    this.props.getHeadOf('Fille', 'Filur')
     this.state = {
       selectedPersons: []
     }
@@ -19,7 +19,7 @@ class HeadOf extends Component {
 
         <CardBody className="no-padding-bottom">
           <Row>
-            <Filter getData={(sourcemarket, criteria) => this.props.getHeadOf(sourcemarket, criteria)} />
+            <Filter getData={this.props.getHeadOf} />
 
             <Action />
           </Row>

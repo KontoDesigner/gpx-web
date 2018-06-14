@@ -10,27 +10,26 @@ import Select from 'react-select'
 class Filter extends Component {
   constructor(props) {
     super(props)
-
     this.getData = debounce(this.getDataDebouncer, 500)
   }
 
-  getDataDebouncer = () => {
-    this.props.getData()
+  getDataDebouncer = (sourcemarket, criteria) => {
+    this.props.getData(sourcemarket, criteria)
   }
 
   updateTextState = event => {
     const value = event.target.value
 
     this.props.filterActions.handleText(value)
-    console.log('text', value, 'sm', this.props.filter.sourceMarket)
-    this.getData()
+
+    this.getData(this.props.filter.sourceMarket, value)
   }
 
   updateSourceMarketState = sourceMarket => {
     const sourceMarketId = sourceMarket != null ? sourceMarket.id : null
-    console.log('text', this.props.filter.text, 'sm', sourceMarket.id)
+
     this.props.filterActions.handleSourceMarket(sourceMarketId)
-    this.getData(sourceMarket.id, this.props.filter.text)
+    this.getData(sourceMarketId, this.props.filter.text)
   }
 
   render() {
