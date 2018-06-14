@@ -3,7 +3,7 @@ import { Collapse, Card, CardBody, CardHeader } from 'reactstrap'
 import PositionRow from './positionRow'
 
 class DestinationRow extends Component {
-  constructor(props) {
+  constructor() {
     super()
 
     this.state = {
@@ -31,7 +31,7 @@ class DestinationRow extends Component {
         <Collapse isOpen={this.state.expanded}>
           <CardBody className="no-padding-bottom">
             {this.props.destination.jobTitles.map((jobTitle, index) => (
-              <PositionRow key={index} index={this.props.index + index} jobTitle={jobTitle} />
+              <PositionRow key={index} index={this.props.index + index} jobTitle={jobTitle} selectedPersons={this.props.selectedPersons} />
             ))}
           </CardBody>
         </Collapse>

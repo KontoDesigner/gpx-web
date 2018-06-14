@@ -21,9 +21,9 @@ class HeadOf extends Component {
           <Row>
             <Filter getData={this.props.getHeadOf} />
 
-            <Action />
+            <Action selectedPersons={this.state.selectedPersons} />
           </Row>
-          {this.props.headOf.map((headOf, index) => <CountryRow key={index} index={index} headOf={headOf} />)}
+          {this.props.headOf.map((headOf, index) => <CountryRow key={index} index={index} headOf={headOf} selectedPersons={this.state.selectedPersons} />)}
         </CardBody>
       </Card>
     )

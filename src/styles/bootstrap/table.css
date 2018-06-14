@@ -70,8 +70,9 @@
 
 .ReactVirtualized__Table__headerRow > .ReactVirtualized__Table__headerColumn
 {
-    padding: 12px 13px 8px 13px;
+    padding: 9px 13px 9px 13px;
     outline:none;
+    height: 41px;
 }
 
 .ReactVirtualized__Table__headerRow
@@ -80,8 +81,12 @@
     text-decoration: underline;
     cursor:pointer;
     overflow-y: scroll!important;
-    border-bottom: 1px solid #c2e6fa;
     padding-right:0px!important;
+}
+
+.ReactVirtualized__Table__headerColumn
+{
+    border-bottom: 1px solid #c2e6fa;
 }
 
 .ReactVirtualized__Table__headerRow::-webkit-scrollbar-track
@@ -128,4 +133,14 @@
 .ReactVirtualized__Table__sortableHeaderIcon
 {
     height:20px;
+}
+
+.ReactVirtualized__Table__headerColumn > input[type="checkbox"], .ReactVirtualized__Table__rowColumn > input[type="checkbox"]
+{
+    vertical-align: middle;
+}
+
+.ReactVirtualized__Table__rowColumn > input[type="checkbox"]
+{
+    margin-top: -2px;
 }

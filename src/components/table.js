@@ -7,7 +7,7 @@ class Table extends Component {
         super(props)
 
         this.state = {
-            sortBy: 'firstName',
+            sortBy: '',
             sortDirection: 'ASC',
             list: props.list
         }

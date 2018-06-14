@@ -3,7 +3,7 @@ import { Collapse, Card, CardBody, CardHeader } from 'reactstrap'
 import PersonTable from './personTable'
 
 class PositionTable extends Component {
-  constructor(props) {
+  constructor() {
     super()
 
     this.state = {
@@ -34,7 +34,7 @@ class PositionTable extends Component {
 
         <Collapse isOpen={this.state.expanded}>
           <CardBody style={style} className="card-body-table">
-            <PersonTable index={this.props.index} persons={this.props.jobTitle.staffs} />
+            <PersonTable index={this.props.index} persons={this.props.jobTitle.staffs} selectedPersons={this.props.selectedPersons} />
           </CardBody>
         </Collapse>
       </Card >

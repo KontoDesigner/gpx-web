@@ -2,18 +2,18 @@ import React, { Component } from 'react'
 import { ContextMenu, MenuItem } from 'react-contextmenu'
 import Table from '../../../../components/table.js';
 
+const columns = [
+  { label: 'Name', dataKey: 'firstName' },
+  { label: 'Nationality', dataKey: 'nationality' },
+  { label: 'Id', dataKey: 'staffID' }
+];
+
 class PersonTable extends Component {
   onContextMenuClick = (e, data) => {
     alert(data.foo)
   }
 
   render() {
-    const columns = [
-      { label: 'Name', dataKey: 'firstName' },
-      { label: 'Nationality', dataKey: 'nationality' },
-      { label: 'Id', dataKey: 'staffID' }
-    ];
-
     return (
       <div>
         <ContextMenu id={this.props.index + "-destinationContextMenu"}>
