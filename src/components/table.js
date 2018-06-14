@@ -54,7 +54,7 @@ class Table extends Component {
   }
 
   _sort = ({ sortBy, sortDirection }) => {
-    const { sortBy: prevSortBy, sortDirection: prevSortDirection } = this.state
+    const { sortDirection: prevSortDirection } = this.state
 
     // If list was sorted DESC by this column
     // Rather than switch to ASC, return to "natural" order
@@ -64,7 +64,7 @@ class Table extends Component {
     }
 
     const list = this.state.list.sort(function(a, b) {
-      if (sortDirection == 'ASC') {
+      if (sortDirection === 'ASC') {
         if (a[sortBy] > b[sortBy]) {
           return 1
         }
