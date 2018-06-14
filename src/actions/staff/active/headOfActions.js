@@ -9,12 +9,13 @@ export function getHeadOfSuccess(headOf) {
   }
 }
 
-export function getHeadOf() {
-  return async function (dispatch) {
+export function getHeadOf(sourcemarket, criteria) {
+  console.log(sourcemarket, criteria)
+  return async function(dispatch) {
     dispatch(beginAjaxCall())
 
     try {
-      const headOf = await RestClient.Get(`staff/headof`)
+      const headOf = await RestClient.Get(`staff/headof/${sourcemarket}/${criteria}`)
 
       dispatch(getHeadOfSuccess(headOf))
     } catch (error) {
