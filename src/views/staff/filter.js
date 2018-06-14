@@ -26,7 +26,7 @@ class Filter extends Component {
   }
 
   updateSourceMarketState = sourceMarket => {
-    const sourceMarketId = sourceMarket != null ? sourceMarket.id : null
+    const sourceMarketId = sourceMarket != null ? sourceMarket.id : undefined
 
     this.props.filterActions.handleSourceMarket(sourceMarketId)
     this.getData(sourceMarketId, this.props.filter.text)

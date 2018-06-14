@@ -9,8 +9,8 @@ export function getHeadOfSuccess(headOf) {
   }
 }
 
-export function getHeadOf(sourcemarket, criteria) {
-  console.log(sourcemarket, criteria)
+export function getHeadOf(sourcemarket = 'ALL', criteria = 'NO') {
+  console.log('EOEO', sourcemarket, criteria)
   return async function(dispatch) {
     dispatch(beginAjaxCall())
 
