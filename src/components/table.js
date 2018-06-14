@@ -80,10 +80,8 @@ class Table extends Component {
                         sort={this._sort}
                         sortBy={sortBy}
                         sortDirection={sortDirection}>
-                        <Column label="" dataKey="" width={66} headerRenderer={() => <input type="checkbox" />} cellRenderer={() => <input type="checkbox" />} />
-                        <Column label="Name" dataKey="firstName" width={width} />
-                        <Column label="Nationality" dataKey="nationality" width={width} />
-                        <Column width={width} label="Id" dataKey="staffID" />
+                        {this.props.checkbox === true ? <Column label="" dataKey="" width={66} headerRenderer={() => <input type="checkbox" />} cellRenderer={() => <input type="checkbox" />} /> : ''}
+                        {this.props.columns.map((column, index) => <Column key={index} label={column.label} dataKey={column.dataKey} width={width} />)}
                     </ReactVirtualizedTable>
                 )}
             </AutoSizer>
