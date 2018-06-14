@@ -70,7 +70,7 @@
 
 .ReactVirtualized__Table__headerRow > .ReactVirtualized__Table__headerColumn
 {
-    padding: 10px 13px;
+    padding: 12px 13px 8px 13px;
     outline:none;
 }
 
@@ -122,5 +122,10 @@
 
 .ReactVirtualized__Table__headerTruncatedText
 {
-    display:block;
+    display:inline-block;
+}
+
+.ReactVirtualized__Table__sortableHeaderIcon
+{
+    height:20px;
 }
