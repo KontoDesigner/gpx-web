@@ -3,7 +3,7 @@ import { ActionTypes as types } from '../../constants/staff/filterConstants'
 var defaultState = {
   text: '',
   sourceMarket: '',
-  sourcemarkets: []
+  sourceMarkets: []
 }
 
 export default function filterReducer(state = defaultState, action) {

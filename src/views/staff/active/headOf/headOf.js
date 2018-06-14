@@ -19,7 +19,7 @@ class HeadOf extends Component {
 
         <CardBody className="no-padding-bottom">
           <Row>
-            <Filter getData={this.props.getHeadOf} />
+            <Filter getData={(sourcemarket, criteria) => this.props.getHeadOf(sourcemarket, criteria)} />
 
             <Action />
           </Row>

@@ -29,7 +29,7 @@ class Staff extends Component {
     this.props.filterActions.getSourceMarkets()
   }
 
-  resetData = () => { }
+  resetData = () => {}
 
   toggle = (tab, getData, resetData) => {
     if (this.state.activeTab !== tab) {
@@ -134,7 +134,7 @@ class Staff extends Component {
         <Col sm="10">
           <TabContent activeTab={this.state.activeTab}>
             <TabPane tabId="headOf">
-              <HeadOf headOf={this.props.headOf} getHeadOf={this.props.headOfActions.getHeadOf} />
+              <HeadOf headOf={this.props.headOf} getHeadOf={(sourcemarket, criteria) => this.props.headOfActions.getHeadOf(sourcemarket, criteria)} />
             </TabPane>
 
             <TabPane tabId="destination">

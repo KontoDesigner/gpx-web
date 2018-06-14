@@ -22,14 +22,15 @@ class Filter extends Component {
     const value = event.target.value
 
     this.props.filterActions.handleText(value)
-
+    console.log('text', value, 'sm', this.props.filter.sourceMarket)
     this.getData()
   }
 
   updateSourceMarketState = sourceMarket => {
     const sourceMarketId = sourceMarket != null ? sourceMarket.id : null
-
+    console.log('text', this.props.filter.text, 'sm', sourceMarket.id)
     this.props.filterActions.handleSourceMarket(sourceMarketId)
+    this.getData(sourceMarket.id, this.props.filter.text)
   }
 
   render() {
@@ -46,7 +47,7 @@ class Filter extends Component {
                 labelKey="name"
                 className="form-control"
                 options={this.props.filter.sourceMarkets}
-                onChange={this.props.updateSourceMarketState}
+                onChange={this.updateSourceMarketState}
                 value={this.props.filter.sourceMarket}
                 placeholder="Source Market"
               />
