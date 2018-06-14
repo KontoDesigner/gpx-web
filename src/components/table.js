@@ -56,6 +56,7 @@ class Table extends Component {
   _sort = ({ sortBy, sortDirection }) => {
     const { sortDirection: prevSortDirection } = this.state
 
+    if (sortBy === '') return
     // If list was sorted DESC by this column
     // Rather than switch to ASC, return to "natural" order
     if (prevSortDirection === sortDirection.DESC) {
@@ -106,6 +107,7 @@ class Table extends Component {
             sort={this._sort}
             sortBy={sortBy}
             sortDirection={sortDirection}>
+            <Column label="" dataKey="" width={1} headerRenderer={() => <input type="checkbox" />} cellRenderer={() => <input type="checkbox" />} />
             <Column label="Name" dataKey="firstName" width={width / 3} />
             <Column label="Nationality" dataKey="nationality" width={width / 3} />
             <Column width={width / 3} label="Id" dataKey="staffID" />
