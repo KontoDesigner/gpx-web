@@ -1,17 +1,19 @@
 import React, { Component } from 'react'
-import { ContextMenu, MenuItem, ContextMenuTrigger } from 'react-contextmenu'
+import { ContextMenu, MenuItem } from 'react-contextmenu'
 import Table from '../../../../components/table.js';
 
 class PersonTable extends Component {
-  constructor(props) {
-    super(props)
-  }
-
   onContextMenuClick = (e, data) => {
     alert(data.foo)
   }
 
   render() {
+    const columns = [
+      { label: 'Name', dataKey: 'firstName' },
+      { label: 'Nationality', dataKey: 'nationality' },
+      { label: 'Id', dataKey: 'staffID' }
+    ];
+
     return (
       <div>
         <ContextMenu id={this.props.index + "-destinationContextMenu"}>
@@ -22,13 +24,15 @@ class PersonTable extends Component {
             ContextMenu Item 2
           </MenuItem>
           <MenuItem data={{ foo: 'bar' }} onClick={this.onContextMenuClick}>
-            ContextMenu Item 3w
+            ContextMenu Item 3
           </MenuItem>
         </ContextMenu>
 
         <Table
           list={this.props.persons}
           contextMenuId={this.props.index + "-destinationContextMenu"}
+          columns={columns}
+          checkbox={true}
         />
       </div>
     )
