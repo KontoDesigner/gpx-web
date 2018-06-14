@@ -10,9 +10,10 @@ export function getHeadOfSuccess(headOf) {
 }
 
 export function getHeadOf(sourcemarket = 'ALL', criteria = 'NO') {
-  console.log('EOEO', sourcemarket, criteria)
-  return async function(dispatch) {
+  return async function (dispatch) {
     dispatch(beginAjaxCall())
+
+    dispatch(getHeadOfSuccess([]))
 
     try {
       const headOf = await RestClient.Get(`staff/headof/${sourcemarket}/${criteria}`)

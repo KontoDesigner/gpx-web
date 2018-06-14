@@ -12,11 +12,16 @@ export function getDestinationSuccess(destination) {
 export function getDestination() {
   return async function (dispatch) {
     dispatch(beginAjaxCall())
+
+    dispatch(getDestinationSuccess([]))
+
     try {
       const destination = await RestClient.Get(`staff/destination`)
+
       dispatch(getDestinationSuccess(destination))
     } catch (error) {
       dispatch(ajaxCallError(error))
+
       throw error
     }
   }

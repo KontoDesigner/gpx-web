@@ -23,7 +23,7 @@ class CountryRow extends Component {
       )
 
     return (
-      <Card className="card-accordion">
+      <Card className="card-accordion card-country">
         <CardHeader key={this.props.headOf.headOf} onClick={() => this.toggleCollapse()}>
           {this.props.headOf.headOf} {icon}
         </CardHeader>

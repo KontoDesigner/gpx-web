@@ -24,6 +24,7 @@ class HeadOf extends Component {
 
             <Action selectedPersons={this.state.selectedPersons} />
           </Row>
+
           {this.props.headOf.map((headOf, index) => <CountryRow key={index} index={index} headOf={headOf} selectedPersons={this.state.selectedPersons} />)}
         </CardBody>
       </Card>
