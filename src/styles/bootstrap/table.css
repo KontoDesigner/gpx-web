@@ -47,6 +47,12 @@
     border-top: 1px solid #c2e6fa;
 }
 
+.ReactVirtualized__Table__row > .ReactVirtualized__Table__rowColumn:not(:last-child),
+.ReactVirtualized__Table__headerRow > .ReactVirtualized__Table__headerColumn:not(:last-child)
+{
+    border-right: 1px solid #c2e6fa;
+}
+
 .ReactVirtualized__Grid__innerScrollContainer > div:first-child .ReactVirtualized__Table__rowColumn
 {
     border-top:0px;

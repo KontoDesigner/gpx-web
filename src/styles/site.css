@@ -92,3 +92,23 @@ b, strong
 {
   padding-left:0px;
 }
+
+.hidden-scroll
+{
+  overflow-y:scroll;
+}
+
+.hidden-scroll::-webkit-scrollbar-track
+{
+	opacity:0;
+}
+
+.hidden-scroll::-webkit-scrollbar
+{
+	opacity:0;
+}
+
+.hidden-scroll::-webkit-scrollbar-thumb
+{
+	opacity:0;
+}

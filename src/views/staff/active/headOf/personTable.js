@@ -1,33 +1,10 @@
 import React, { Component } from 'react'
 import { ContextMenu, MenuItem, ContextMenuTrigger } from 'react-contextmenu'
-import { AutoSizer, Table, Column } from 'react-virtualized';
+import Table from '../../../../components/table.js';
 
 class PersonTable extends Component {
   constructor(props) {
     super(props)
-
-    this.state = {
-      list: this.props.persons,
-      sortBy: 'firstName',
-      sortByDirection: 0
-    }
-  }
-
-  rowRenderer = ({ columns, index, className, style, ...props }) => {
-    const rowClassName = className + (index % 2 === 0 ? ' even' : ' odd') + (1 === 1 ? ' selected' : '');
-
-    return (
-      <div
-        key={props.key}
-        style={style}
-      >
-        <ContextMenuTrigger id={this.props.index + "-destinationContextMenu"}>
-          <div className={rowClassName} role="row" onClick={this.onRowClick}>
-            {columns}
-          </div>
-        </ContextMenuTrigger>
-      </div>
-    )
   }
 
   onRowClick = () => {
@@ -39,26 +16,34 @@ class PersonTable extends Component {
   }
 
   onHeaderClick = data => {
-    let sortByDirection = 0;
+    // let sortByDirection = 0;
 
-    if (this.state.sortBy === data.dataKey && this.state.sortByDirection === 0) {
-      sortByDirection = 1;
-    }
+    // if (this.state.sortBy === data.dataKey && this.state.sortByDirection === 0) {
+    //   sortByDirection = 1;
+    // }
 
-    const list = [].concat(this.state.list)
-      .sort((a, b) => a[data.dataKey] > b[data.dataKey]);
+    // const list = [].concat(this.state.list)
+    //   .sort((a, b) => a[data.dataKey] > b[data.dataKey]);
 
-    this.setState({
-      list: list,
-      sortBy: data.dataKey,
-      sortByDirection: sortByDirection
-    });
+    // let unsorted = Object.assign({}, this.state.list);
+
+    // console.log(unsorted);
+    // console.log('sorting by', data.dataKey)
+    // const sortByKey = key => (a, b) => a[key] > b[key]
+    // const list = this.slice().sort(sortByKey(data.dataKey))
+    // console.log(list)
+
+    // var list = this.state.list.sort((a,b) => a.firstName > b.firstName);
+
+
+    // this.setState({
+    //   list: list,
+    //   sortBy: data.dataKey,
+    //   sortByDirection: sortByDirection
+    // });
   }
 
   render() {
-    const height = 41 + (this.state.list.length * 41);
-    const tableHeight = height > 350 ? 350 : height;
-
     return (
       <div>
         <ContextMenu id={this.props.index + "-destinationContextMenu"}>
@@ -73,36 +58,10 @@ class PersonTable extends Component {
           </MenuItem>
         </ContextMenu>
 
-        <AutoSizer>
-          {({ height, width }) => (
-            <Table
-              width={width}
-              height={tableHeight}
-              headerHeight={41}
-              rowHeight={41}
-              rowCount={this.state.list.length}
-              rowGetter={({ index }) => this.state.list[index]}
-              rowRenderer={this.rowRenderer}
-              onHeaderClick={this.onHeaderClick}
-            >
-              <Column
-                label='Name'
-                dataKey='firstName'
-                width={width / 3}
-              />
-              <Column
-                label='Nationality'
-                dataKey='nationality'
-                width={width / 3}
-              />
-              <Column
-                width={width / 3}
-                label='Id'
-                dataKey='staffID'
-              />
-            </Table>
-          )}
-        </AutoSizer>
+        <Table
+          list={this.props.persons}
+          contextMenuId={this.props.index + "-destinationContextMenu"}
+        />
       </div>
     )
   }
