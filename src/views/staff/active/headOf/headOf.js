@@ -13,6 +13,19 @@ class HeadOf extends Component {
     }
   }
 
+  componentWillReceiveProps(nextProps) {
+    if (this.state.selectedPersons.length !== 0) {
+      //Reset selectedPersons if props change
+      this.setState({
+        selectedPersons: []
+      });
+    }
+  }
+
+  updateSelectedPersonsState = (selectedPersons) => {
+    this.setState({ selectedPersons })
+  }
+
   render() {
     return (
       <Card>
@@ -25,7 +38,7 @@ class HeadOf extends Component {
             <Action selectedPersons={this.state.selectedPersons} />
           </Row>
 
-          {this.props.headOf.map((headOf, index) => <CountryRow key={index} index={index} headOf={headOf} selectedPersons={this.state.selectedPersons} />)}
+          {this.props.headOf.map((headOf, index) => <CountryRow key={index} index={index} headOf={headOf} selectedPersons={this.state.selectedPersons} updateSelectedPersonsState={this.updateSelectedPersonsState} />)}
         </CardBody>
       </Card>
     )

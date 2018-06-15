@@ -10,6 +10,7 @@ import Select from 'react-select'
 class Filter extends Component {
   constructor(props) {
     super(props)
+
     this.getData = debounce(this.getDataDebouncer, 500)
   }
 

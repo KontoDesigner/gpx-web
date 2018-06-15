@@ -28,7 +28,7 @@ class Table extends Component {
         )
     }
 
-    _sort = ({ sortBy, sortDirection }) => {
+    sort = ({ sortBy, sortDirection }) => {
         const { sortDirection: prevSortDirection } = this.state
 
         if (sortBy === '') return
@@ -60,6 +60,41 @@ class Table extends Component {
         this.setState({ sortBy, sortDirection, list })
     }
 
+    selectAll = (event) => {
+        const target = event.target;
+        const value = target.checked;
+
+        let selected = [];
+
+        if (value) {
+            selected = this.state.list.map(l => l.id);
+        }
+
+        this.props.updateSelectedState(selected);
+    }
+
+    selectRow = (event, row) => {
+        const target = event.target;
+        const value = target.checked;
+
+        let selected = this.props.selected;
+
+        const id = row.rowData.id;
+
+        if (value) {
+            selected.push(id)
+        }
+        else {
+            const index = selected.indexOf(id);
+
+            if (index !== -1) {
+                selected.splice(index, 1);
+            }
+        }
+
+        this.props.updateSelectedState(selected);
+    }
+
     render() {
         const height = 41 + this.state.list.length * 41
         const tableHeight = height > 350 ? 350 : height
@@ -77,11 +112,24 @@ class Table extends Component {
                         rowCount={this.state.list.length}
                         rowGetter={({ index }) => this.state.list[index]}
                         rowRenderer={this.rowRenderer}
-                        sort={this._sort}
+                        sort={this.sort}
                         sortBy={sortBy}
                         sortDirection={sortDirection}>
-                        {this.props.checkbox === true ? <Column label="" dataKey="" width={66} headerRenderer={() => <input type="checkbox" />} cellRenderer={() => <input type="checkbox" />} /> : ''}
-                        {this.props.columns.map((column, index) => <Column key={index} label={column.label} dataKey={column.dataKey} width={width} />)}
+                        {
+                            this.props.checkbox === true ?
+                                <Column label="" dataKey="" width={66} headerRenderer={() =>
+                                    <input type="checkbox"
+                                        checked={this.state.list.length > 0 && this.props.selected.length === this.state.list.length}
+                                        onChange={(event) => { this.selectAll(event) }} />
+                                }
+                                    cellRenderer={(row) =>
+                                        <input type="checkbox"
+                                            checked={this.props.selected.includes(row.rowData.id)}
+                                            onChange={(event) => { this.selectRow(event, row) }} />} />
+                                : ''}
+                        {this.props.columns.map((column, index) =>
+                            <Column key={index} label={column.label} dataKey={column.dataKey} width={width} />)
+                        }
                     </ReactVirtualizedTable>
                 )}
             </AutoSizer>

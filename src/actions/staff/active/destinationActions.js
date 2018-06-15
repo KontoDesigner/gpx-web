@@ -13,10 +13,11 @@ export function getDestination() {
   return async function (dispatch) {
     dispatch(beginAjaxCall())
 
-    dispatch(getDestinationSuccess([]))
-
     try {
       const destination = await RestClient.Get(`staff/destination`)
+
+      //For some reason we need to reset value here, (bug when loading in new data with filter), don't touch h3h3
+      dispatch(handleDestination([]))
 
       dispatch(getDestinationSuccess(destination))
     } catch (error) {

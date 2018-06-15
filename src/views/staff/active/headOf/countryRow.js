@@ -31,7 +31,7 @@ class CountryRow extends Component {
         <Collapse isOpen={this.state.expanded}>
           <CardBody className="no-padding-bottom">
             {this.props.headOf.destinations.map((destination, index) => (
-              <DestinationRow key={index} index={this.props.index + index} destination={destination} selectedPersons={this.props.selectedPersons} />
+              <DestinationRow key={index} index={this.props.index + index} destination={destination} selectedPersons={this.props.selectedPersons} updateSelectedPersonsState={this.props.updateSelectedPersonsState} />
             ))}
           </CardBody>
         </Collapse>

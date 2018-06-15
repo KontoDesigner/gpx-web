@@ -34,7 +34,7 @@ class PositionTable extends Component {
 
         <Collapse isOpen={this.state.expanded}>
           <CardBody style={style} className="card-body-table">
-            <PersonTable index={this.props.index} persons={this.props.jobTitle.staffs} selectedPersons={this.props.selectedPersons} />
+            <PersonTable index={this.props.index} persons={this.props.jobTitle.staffs} selectedPersons={this.props.selectedPersons} updateSelectedPersonsState={this.props.updateSelectedPersonsState} />
           </CardBody>
         </Collapse>
       </Card >

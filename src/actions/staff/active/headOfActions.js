@@ -9,14 +9,15 @@ export function getHeadOfSuccess(headOf) {
   }
 }
 
-export function getHeadOf(sourcemarket = 'ALL', criteria = 'NO') {
+export function getHeadOf(sourcemarket = 'ALL', criteria = null) {
   return async function (dispatch) {
     dispatch(beginAjaxCall())
 
-    dispatch(getHeadOfSuccess([]))
-
     try {
-      const headOf = await RestClient.Get(`staff/headof/${sourcemarket}/${criteria}`)
+      const headOf = await RestClient.Get(`staff/headof/${sourcemarket}${criteria !== null ? `/${criteria}` : ''}`)
+
+      //For some reason we need to reset value here, (bug when loading in new data with filter), don't touch h3h3
+      dispatch(handleHeadOf([]))
 
       dispatch(getHeadOfSuccess(headOf))
     } catch (error) {

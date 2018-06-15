@@ -24,10 +24,12 @@ class Staff extends Component {
   }
 
   componentWillMount() {
+    this.props.headOfActions.getHeadOf();
+
     this.props.filterActions.getSourceMarkets()
   }
 
-  resetData = () => {}
+  resetData = () => { }
 
   toggle = (tab, getData, resetData) => {
     if (this.state.activeTab !== tab) {
@@ -37,7 +39,7 @@ class Staff extends Component {
       //Reset filter
       this.props.filterActions.handleFilter()
 
-      //Set staff sub state
+      //Get tab data
       getData()
 
       this.setState({

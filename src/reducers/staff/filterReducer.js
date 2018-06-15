@@ -2,7 +2,7 @@ import { ActionTypes as types } from '../../constants/staff/filterConstants'
 
 var defaultState = {
   text: '',
-  sourceMarket: '',
+  sourceMarket: null,
   sourceMarkets: []
 }
 
