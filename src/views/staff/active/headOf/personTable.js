@@ -34,6 +34,7 @@ const PersonTable = (props) => {
         checkbox={true}
         selected={props.selectedPersons}
         updateSelectedState={props.updateSelectedPersonsState}
+        identifier={'id'}
       />
     </div>
   )

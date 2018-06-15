@@ -63,11 +63,6 @@
     padding: 10px 13px;
 }
 
-.ReactVirtualized__Table__row
-{
-    cursor:pointer;
-}
-
 .ReactVirtualized__Table__headerRow > .ReactVirtualized__Table__headerColumn
 {
     padding: 9px 13px 9px 13px;
@@ -138,6 +133,8 @@
 .ReactVirtualized__Table__headerColumn > input[type="checkbox"], .ReactVirtualized__Table__rowColumn > input[type="checkbox"]
 {
     vertical-align: middle;
+    cursor:pointer;
+    outline:none;
 }
 
 .ReactVirtualized__Table__rowColumn > input[type="checkbox"]

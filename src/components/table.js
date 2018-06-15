@@ -15,7 +15,7 @@ class Table extends Component {
 
     rowRenderer = ({ columns, index, className, style, ...props }) => {
         const rowClassName =
-            (this.state.list.length < 8 ? ' hidden-scroll ' : '') + className + (index % 2 === 0 ? ' even' : ' odd') + (1 === 1 ? ' selected' : '')
+            (this.state.list.length < 8 ? ' hidden-scroll ' : '') + className + (index % 2 === 0 ? ' even' : ' odd') + (this.props.selected.includes(props.rowData[this.props.identifier]) ? ' selected' : '')
 
         return (
             <div key={index} style={style}>
@@ -67,7 +67,7 @@ class Table extends Component {
         let selected = [];
 
         if (value) {
-            selected = this.state.list.map(l => l.id);
+            selected = this.state.list.map(l => l[this.props.identifier]);
         }
 
         this.props.updateSelectedState(selected);
@@ -79,7 +79,7 @@ class Table extends Component {
 
         let selected = this.props.selected;
 
-        const id = row.rowData.id;
+        const id = row.rowData[this.props.identifier];
 
         if (value) {
             selected.push(id)
@@ -124,7 +124,7 @@ class Table extends Component {
                                 }
                                     cellRenderer={(row) =>
                                         <input type="checkbox"
-                                            checked={this.props.selected.includes(row.rowData.id)}
+                                            checked={this.props.selected.includes(row.rowData[this.props.identifier])}
                                             onChange={(event) => { this.selectRow(event, row) }} />} />
                                 : ''}
                         {this.props.columns.map((column, index) =>

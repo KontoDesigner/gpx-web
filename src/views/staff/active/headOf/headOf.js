@@ -35,7 +35,7 @@ class HeadOf extends Component {
           <Row>
             <Filter getData={this.props.getHeadOf} />
 
-            <Action selectedPersons={this.state.selectedPersons} />
+            <Action selected={this.state.selectedPersons} />
           </Row>
 
           {this.props.headOf.map((headOf, index) => <CountryRow key={index} index={index} headOf={headOf} selectedPersons={this.state.selectedPersons} updateSelectedPersonsState={this.updateSelectedPersonsState} />)}

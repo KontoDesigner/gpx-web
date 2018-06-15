@@ -7,12 +7,12 @@ const Action = (props) => {
             <label></label>
 
             <UncontrolledDropdown direction="left">
-                <DropdownToggle color="primary">
+                <DropdownToggle color="primary" disabled={props.selected === undefined || props.selected.length < 1}>
                     Actions
                 </DropdownToggle>
 
                 <DropdownMenu>
-                    <DropdownItem>Another Action</DropdownItem>
+                    {props.selected !== undefined ? <div>({props.selected.length}) Selected</div> : ''}
                     <DropdownItem>Another Action</DropdownItem>
                 </DropdownMenu>
             </UncontrolledDropdown>
