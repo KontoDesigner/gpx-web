@@ -13,9 +13,11 @@ const PersonTable = (props) => {
     alert(data.foo)
   }
 
+  const contextMenuId = props.index + "-headOfContextMenu";
+
   return (
     <div>
-      <ContextMenu id={props.index + "-destinationContextMenu"}>
+      <ContextMenu id={contextMenuId}>
         <MenuItem data={{ foo: 'bar' }} onClick={onContextMenuClick}>
           ContextMenu Item 1
           </MenuItem>
@@ -29,7 +31,7 @@ const PersonTable = (props) => {
 
       <Table
         list={props.persons}
-        contextMenuId={props.index + "-destinationContextMenu"}
+        contextMenuId={contextMenuId}
         columns={columns}
         checkbox={true}
         selected={props.selectedPersons}

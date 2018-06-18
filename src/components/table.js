@@ -4,7 +4,7 @@ import { AutoSizer, Table as ReactVirtualizedTable, Column } from 'react-virtual
 
 class Table extends Component {
     constructor(props) {
-        super(props)
+        super()
 
         this.state = {
             sortBy: '',

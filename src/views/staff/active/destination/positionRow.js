@@ -3,7 +3,7 @@ import { Collapse, Card, CardBody, CardHeader } from 'reactstrap'
 import PersonTable from './personTable'
 
 class PositionRow extends Component {
-  constructor(props) {
+  constructor() {
     super()
 
     this.state = {
@@ -22,15 +22,24 @@ class PositionRow extends Component {
         <i className="fa fa-chevron-down float-right text-danger" />
       )
 
+    const style = {
+      height: `${42 + (this.props.jobTitle.staffs.length * 41)}px`
+    }
+
     return (
       <Card className="card-accordion">
         <CardHeader onClick={() => this.toggleCollapse()}>
-          {this.props.jobTitle.title} {icon}
+          ({this.props.jobTitle.staffs.length}) {this.props.jobTitle.jobTitle} {icon}
         </CardHeader>
 
         <Collapse isOpen={this.state.expanded}>
-          <CardBody>
-            <PersonTable index={this.props.index} persons={this.props.jobTitle.staffs} />
+          <CardBody style={style} className="card-body-table">
+            <PersonTable
+              index={this.props.index}
+              persons={this.props.jobTitle.staffs}
+              selectedPersons={this.props.selectedPersons}
+              updateSelectedPersonsState={this.props.updateSelectedPersonsState}
+            />
           </CardBody>
         </Collapse>
       </Card>

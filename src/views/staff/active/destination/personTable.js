@@ -1,65 +1,45 @@
-import React, { Component } from 'react'
-import { Table } from 'reactstrap'
-import { ContextMenu, MenuItem, ContextMenuTrigger } from 'react-contextmenu'
+import React from 'react'
+import { ContextMenu, MenuItem } from 'react-contextmenu'
+import Table from '../../../../components/table.js';
 
-class PersonTable extends Component {
-  handleClick = (e, data) => {
+const columns = [
+  { label: 'Name', dataKey: 'firstNameLastName' },
+  { label: 'Nationality', dataKey: 'nationality' },
+  { label: 'Id', dataKey: 'staffID' }
+];
+
+const PersonTable = (props) => {
+  const onContextMenuClick = (e, data) => {
     alert(data.foo)
   }
 
-  render() {
-    return (
-      <div>
-        <ContextMenu id={this.props.index + "-destinationContextMenu"}>
-          <MenuItem data={{ foo: 'bar' }} onClick={this.handleClick}>
-            ContextMenu Item 1
-          </MenuItem>
-          <MenuItem data={{ foo: 'bar' }} onClick={this.handleClick}>
-            ContextMenu Item 2
-          </MenuItem>
-          <MenuItem data={{ foo: 'bar' }} onClick={this.handleClick}>
-            ContextMenu Item 3w
-          </MenuItem>
-        </ContextMenu>
+  const contextMenuId = props.index + "-destinationContextMenu";
 
-        <Table responsive bordered className="tableContextMenu">
-          <thead>
-            <tr>
-              <th>Name</th>
-              <th>Nationality</th>
-              <th>Id</th>
-              <th>Head Of</th>
-              <th>Concept Hotel</th>
-            </tr>
-          </thead>
+  return (
+    <div>
+      <ContextMenu id={contextMenuId}>
+        <MenuItem data={{ foo: 'bar' }} onClick={onContextMenuClick}>
+          ContextMenu Item 1
+          </MenuItem>
+        <MenuItem data={{ foo: 'bar' }} onClick={onContextMenuClick}>
+          ContextMenu Item 2
+          </MenuItem>
+        <MenuItem data={{ foo: 'bar' }} onClick={onContextMenuClick}>
+          ContextMenu Item 3
+          </MenuItem>
+      </ContextMenu>
 
-          <tbody>
-            {this.props.persons.map(x => (
-              <tr key={x.staffID}>
-                <td>
-                  <ContextMenuTrigger id={this.props.index + "-destinationContextMenu"}>
-                    {x.lastName}, {x.firstName}
-                  </ContextMenuTrigger>
-                </td>
-                <td>
-                  <ContextMenuTrigger id={this.props.index + "-destinationContextMenu"}>{x.nationality}</ContextMenuTrigger>
-                </td>
-                <td>
-                  <ContextMenuTrigger id={this.props.index + "-destinationContextMenu"}>{x.staffID}</ContextMenuTrigger>
-                </td>
-                <td>
-                  <ContextMenuTrigger id={this.props.index + "-destinationContextMenu"}>{x.headOf}</ContextMenuTrigger>
-                </td>
-                <td>
-                  <ContextMenuTrigger id={this.props.index + "-destinationContextMenu"}>{x.staffID}</ContextMenuTrigger>
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </Table>
-      </div>
-    )
-  }
+      <Table
+        list={props.persons}
+        contextMenuId={contextMenuId}
+        columns={columns}
+        checkbox={true}
+        selected={props.selectedPersons}
+        updateSelectedState={props.updateSelectedPersonsState}
+        identifier={'id'}
+      />
+    </div>
+  )
 }
 
 export default PersonTable
