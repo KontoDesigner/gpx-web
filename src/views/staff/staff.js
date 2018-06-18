@@ -55,7 +55,7 @@ class Staff extends Component {
         <Col sm="2">
           <Row>
             <Col sm="12">
-              <Card>
+              <Card className="card-nav">
                 <CardHeader>Active</CardHeader>
 
                 <CardBody className="no-padding">
@@ -92,7 +92,7 @@ class Staff extends Component {
                 </CardBody>
               </Card>
 
-              <Card>
+              <Card className="card-nav">
                 <CardHeader>Inactive</CardHeader>
 
                 <CardBody className="no-padding">
@@ -112,7 +112,7 @@ class Staff extends Component {
                 </CardBody>
               </Card>
 
-              <Card>
+              <Card className="card-nav">
                 <CardHeader>Other</CardHeader>
 
                 <CardBody className="no-padding">

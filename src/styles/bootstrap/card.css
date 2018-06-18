@@ -15,6 +15,20 @@
     border-radius: 0px;
     font-weight: 500;
     font-size: 14px;
+    border-radius: 0px!important;
+}
+
+.card-nav
+{
+    border:0px;
+    margin-bottom:30px;
+}
+
+.card-nav .card-header
+{
+    background-color: #0A295F;
+    color: #fff;
+    border-bottom:0px;
 }
 
 .card-accordion > .card-header

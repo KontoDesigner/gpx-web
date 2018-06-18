@@ -33,6 +33,21 @@ body {
   overflow-y: scroll; 
 }
 
+.logo-fill {
+  fill: #d40e14;
+}
+
+.logo-container
+{
+  text-align:center;
+}
+
+.logo-container > svg
+{
+  height: 31px;
+  margin-top: 14px;
+}
+
 .text-align-right
 {
   text-align: right;
