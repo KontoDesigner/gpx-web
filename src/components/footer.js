@@ -7,18 +7,18 @@ class Footer extends Component {
     componentDidMount() {
         this.props.footerActions.getVersion()
         this.props.footerActions.getSupportEmail()
+        this.props.footerActions.getWikiUrl()
     }
 
     render() {
         return (
             <footer>
-                {/*<span>{this.props.version}</span>*/}
-                <span>LOCALHOST</span>
+                <span>{this.props.version}</span>
 
                 <span className="float-right">
                     <a href={`mailto:${this.props.supportEmail}?Subject=GPX Support`} target="_top">Support</a>
-                    <span style={{color: '#ddd'}}> | </span>
-                    <a href="https://wiki.tuinordic.com/pages/viewpage.action?pageId=x" rel="noopener noreferrer" target="_blank">Wiki</a>
+                    <span style={{ color: '#ddd' }}> | </span>
+                    <a href={this.props.wikiUrl} rel="noopener noreferrer" target="_blank">Wiki</a>
                 </span>
             </footer>
         )
@@ -28,7 +28,8 @@ class Footer extends Component {
 function mapStateToProps(state, ownProps) {
     return {
         version: state.footer.version,
-        supportEmail: state.footer.supportEmail
+        supportEmail: state.footer.supportEmail,
+        wikiUrl: state.footer.wikiUrl
     };
 }
 
