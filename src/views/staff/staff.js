@@ -52,86 +52,82 @@ class Staff extends Component {
   render() {
     return (
       <Row>
-        <Col sm="2">
-          <Row>
-            <Col sm="12">
-              <Card className="card-nav">
-                <CardHeader>Active</CardHeader>
+        <Col sm="12" md="3" lg="3" xl="2" className="col-menu">
+          <Card>
+            <CardHeader>Active</CardHeader>
 
-                <CardBody className="no-padding">
-                  <ListGroup>
-                    <ListGroupItem
-                      className={classnames({ active: this.state.activeTab === 'headOf' })}
-                      onClick={() => {
-                        this.toggle('headOf', this.props.headOfActions.getHeadOf, this.props.headOfActions.handleHeadOf)
-                      }}>
-                      Head Of
+            <CardBody className="no-padding">
+              <ListGroup>
+                <ListGroupItem
+                  className={classnames({ active: this.state.activeTab === 'headOf' })}
+                  onClick={() => {
+                    this.toggle('headOf', this.props.headOfActions.getHeadOf, this.props.headOfActions.handleHeadOf)
+                  }}>
+                  Head Of
                     </ListGroupItem>
-                    <ListGroupItem
-                      className={classnames({ active: this.state.activeTab === 'destination' })}
-                      onClick={() => {
-                        this.toggle('destination', this.props.destinationActions.getDestination, this.props.destinationActions.handleDestination)
-                      }}>
-                      Destination
+                <ListGroupItem
+                  className={classnames({ active: this.state.activeTab === 'destination' })}
+                  onClick={() => {
+                    this.toggle('destination', this.props.destinationActions.getDestination, this.props.destinationActions.handleDestination)
+                  }}>
+                  Destination
                     </ListGroupItem>
-                    <ListGroupItem
-                      className={classnames({ active: this.state.activeTab === 'name' })}
-                      onClick={() => {
-                        this.toggle('name', this.props.nameActions.getName, this.props.nameActions.handleName)
-                      }}>
-                      Name
+                <ListGroupItem
+                  className={classnames({ active: this.state.activeTab === 'name' })}
+                  onClick={() => {
+                    this.toggle('name', this.props.nameActions.getName, this.props.nameActions.handleName)
+                  }}>
+                  Name
                     </ListGroupItem>
-                    <ListGroupItem
-                      className={classnames({ active: this.state.activeTab === 'jobTitle' })}
-                      onClick={() => {
-                        this.toggle('jobTitle', this.props.jobTitleActions.getJobTitle, this.props.jobTitleActions.handleJobTitle)
-                      }}>
-                      Job Title
+                <ListGroupItem
+                  className={classnames({ active: this.state.activeTab === 'jobTitle' })}
+                  onClick={() => {
+                    this.toggle('jobTitle', this.props.jobTitleActions.getJobTitle, this.props.jobTitleActions.handleJobTitle)
+                  }}>
+                  Job Title
                     </ListGroupItem>
-                  </ListGroup>
-                </CardBody>
-              </Card>
+              </ListGroup>
+            </CardBody>
+          </Card>
 
-              <Card className="card-nav">
-                <CardHeader>Inactive</CardHeader>
+          <Card>
+            <CardHeader>Inactive</CardHeader>
 
-                <CardBody className="no-padding">
-                  <ListGroup>
-                    <ListGroupItem
-                      className={classnames({ active: this.state.activeTab === 'recentlyInactive' })}
-                      onClick={() => {
-                        this.toggle(
-                          'recentlyInactive',
-                          this.props.recentlyInactiveActions.getRecentlyInactive,
-                          this.props.recentlyInactiveActions.handleGetRecentlyInactive
-                        )
-                      }}>
-                      Recently Inactive
+            <CardBody className="no-padding">
+              <ListGroup>
+                <ListGroupItem
+                  className={classnames({ active: this.state.activeTab === 'recentlyInactive' })}
+                  onClick={() => {
+                    this.toggle(
+                      'recentlyInactive',
+                      this.props.recentlyInactiveActions.getRecentlyInactive,
+                      this.props.recentlyInactiveActions.handleGetRecentlyInactive
+                    )
+                  }}>
+                  Recently Inactive
                     </ListGroupItem>
-                  </ListGroup>
-                </CardBody>
-              </Card>
+              </ListGroup>
+            </CardBody>
+          </Card>
 
-              <Card className="card-nav">
-                <CardHeader>Other</CardHeader>
+          <Card>
+            <CardHeader>Other</CardHeader>
 
-                <CardBody className="no-padding">
-                  <ListGroup>
-                    <ListGroupItem
-                      className={classnames({ active: this.state.activeTab === 'newEmployees' })}
-                      onClick={() => {
-                        this.toggle('newEmployees', this.props.newEmployeesActions.getNewEmployees, this.props.newEmployeesActions.handleNewEmployees)
-                      }}>
-                      New Employees
+            <CardBody className="no-padding">
+              <ListGroup>
+                <ListGroupItem
+                  className={classnames({ active: this.state.activeTab === 'newEmployees' })}
+                  onClick={() => {
+                    this.toggle('newEmployees', this.props.newEmployeesActions.getNewEmployees, this.props.newEmployeesActions.handleNewEmployees)
+                  }}>
+                  New Employees
                     </ListGroupItem>
-                  </ListGroup>
-                </CardBody>
-              </Card>
-            </Col>
-          </Row>
+              </ListGroup>
+            </CardBody>
+          </Card>
         </Col>
 
-        <Col sm="10">
+        <Col sm="12" md="9" lg="9" xl="10">
           <TabContent activeTab={this.state.activeTab}>
             <TabPane tabId="headOf">
               <HeadOf headOf={this.props.headOf} getHeadOf={(sourcemarket, criteria) => this.props.headOfActions.getHeadOf(sourcemarket, criteria)} />

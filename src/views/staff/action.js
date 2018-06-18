@@ -3,14 +3,13 @@ import { UncontrolledDropdown, DropdownToggle, DropdownMenu, DropdownItem, Col }
 
 const Action = (props) => {
     return (
-        <Col sm="8" style={{ top: '26px' }}>
-            <UncontrolledDropdown direction="left">
+        <Col sm="12" md="4" lg="6" xl="8" className="col-action">
+            <UncontrolledDropdown direction="left" title={props.selected !== undefined && props.selected.length > 0 ? `(${props.selected.length}) Selected` : ''}>
                 <DropdownToggle color="primary" disabled={props.selected === undefined || props.selected.length < 1}>
                     Actions
                 </DropdownToggle>
 
                 <DropdownMenu>
-                    {props.selected !== undefined ? <div>({props.selected.length}) Selected</div> : ''}
                     <DropdownItem>Another Action</DropdownItem>
                 </DropdownMenu>
             </UncontrolledDropdown>

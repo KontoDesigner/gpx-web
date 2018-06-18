@@ -24,13 +24,6 @@
     margin-bottom:30px;
 }
 
-.card-nav .card-header
-{
-    background-color: #0A295F;
-    color: #fff;
-    border-bottom:0px;
-}
-
 .card-accordion > .card-header
 {
     cursor:pointer;

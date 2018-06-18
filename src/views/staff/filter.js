@@ -35,9 +35,9 @@ class Filter extends Component {
 
   render() {
     return (
-      <Col sm="4">
+      <Col sm="12" md="8" lg="6" xl="4">
         <Row>
-          <Col sm="6">
+          <Col sm="12" md="6" lg="6" xl="6" className="col-filter">
             <div className="form-group form-group-select">
               <label htmlFor="sourceMarket">Source Market</label>
 
@@ -54,7 +54,7 @@ class Filter extends Component {
             </div>
           </Col>
 
-          <Col sm="6">
+          <Col sm="12" md="6" lg="6" xl="6" className="col-filter">
             <TextInput name="text" label="Free Text" placeholder="e.g. Mallorca" value={this.props.filter.text} onChange={this.updateTextState} />
           </Col>
         </Row>

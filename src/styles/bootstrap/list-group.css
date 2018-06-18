@@ -13,12 +13,17 @@
     border-radius:0px;
 }
 
+.list-group-item:last-child
+{
+    border-bottom:0px;
+}
+
 .list-group-item.active
 {
     background-color: #e2f3fe;
     cursor: default;
     border-color: #ddd;
-    color: #3a6d98;
+    color: #9a9a9a;
 }
 
 .list-group-item, .list-group-item:last-child

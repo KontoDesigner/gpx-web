@@ -33,6 +33,41 @@ body {
   overflow-y: scroll; 
 }
 
+.col-action
+{
+  top: 26px;
+}
+
+@media (min-width: 767.99px) {
+  .col-action
+  {
+    padding-left:7.5px;
+  }
+  
+  .col-menu
+  {
+    padding-right:0px!important;
+  }
+
+  .row > .col-filter:not(:first-child)
+  {
+    padding-left:7.5px;
+  }
+
+  .row > .col-filter
+  {
+    padding-right:7.5px;
+  }
+}
+
+@media (max-width: 767.98px) {
+  .col-action
+  {
+    top:0px;
+    padding-bottom:15px;
+  }
+}
+
 .logo-fill {
   fill: #d40e14;
 }
