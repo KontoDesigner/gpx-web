@@ -15,12 +15,15 @@ class Table extends Component {
 
     rowRenderer = ({ columns, index, className, style, ...props }) => {
         const rowClassName =
-            (this.state.list.length < 8 ? ' hidden-scroll ' : '') + className + (index % 2 === 0 ? ' even' : ' odd') + (this.props.selected.includes(props.rowData[this.props.identifier]) ? ' selected' : '')
+            (this.state.list.length < 8 ? ' hidden-scroll ' : '') +
+            className + (index % 2 === 0 ? ' even' : ' odd') +
+            (this.props.selected.includes(props.rowData[this.props.identifier]) ? ' selected' : '') +
+            ' cursor-pointer'
 
         return (
             <div key={index} style={style}>
                 <ContextMenuTrigger id={this.props.contextMenuId}>
-                    <div className={rowClassName} role="row">
+                    <div onClick={() => this.props.edit(props.rowData[this.props.identifier])} className={rowClassName} role="row">
                         {columns}
                     </div>
                 </ContextMenuTrigger>

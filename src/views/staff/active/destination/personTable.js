@@ -15,6 +15,10 @@ const PersonTable = (props) => {
 
   const contextMenuId = props.index + "-destinationContextMenu";
 
+  const edit = (id) => {
+    alert(id);
+  }
+
   return (
     <div>
       <ContextMenu id={contextMenuId}>
@@ -37,6 +41,7 @@ const PersonTable = (props) => {
         selected={props.selectedPersons}
         updateSelectedState={props.updateSelectedPersonsState}
         identifier={'id'}
+        edit={edit}
       />
     </div>
   )

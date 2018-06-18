@@ -39,6 +39,11 @@ body {
 }
 
 @media (min-width: 767.99px) {
+  .logo-container
+  {
+    padding-right:0px;
+  }
+
   .col-action
   {
     padding-left:7.5px;
