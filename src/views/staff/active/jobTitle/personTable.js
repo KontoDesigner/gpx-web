@@ -1,85 +1,52 @@
-import React, { Component } from 'react'
-import { Table } from 'reactstrap'
-import { ContextMenu, MenuItem, ContextMenuTrigger } from "react-contextmenu";
+import React from 'react'
+import { ContextMenu, MenuItem } from 'react-contextmenu'
+import Table from '../../../../components/table.js'
 
-class PersonTable extends Component {
-    handleClick = (e, data) => {
-        alert(data.foo);
-    }
+const columns = [
+  { label: 'Name', dataKey: 'firstNameLastName' },
+  { label: 'Nationality', dataKey: 'nationality' },
+  { label: 'Id', dataKey: 'staffID' }
+]
 
-    constructor(props) {
-        super()
+const selected = []
 
-        this.state = {
-            expanded: false
-        }
-    }
+const PersonTable = props => {
+  const onContextMenuClick = (e, data) => {
+    alert(data.foo)
+  }
 
-    toggleCollapse = () => {
-        this.setState({ expanded: !this.state.expanded })
-    }
+  const contextMenuId = props.index + '-jobTitleContextMenu'
 
-    render() {
-        return (
-            <div>
-                <ContextMenu id="jobTitleContextMenu">
-                    <MenuItem data={{ foo: 'bar' }} onClick={this.handleClick}>
-                        ContextMenu Item 1
-                    </MenuItem>
-                    <MenuItem data={{ foo: 'bar' }} onClick={this.handleClick}>
-                        ContextMenu Item 2
-                    </MenuItem>
-                    <MenuItem data={{ foo: 'bar' }} onClick={this.handleClick}>
-                        ContextMenu Item 3w
-                    </MenuItem>
-                </ContextMenu>
+  const edit = id => {
+    alert(id)
+  }
 
-                <Table responsive bordered className="tableContextMenu">
-                    <thead>
-                        <tr>
-                            <th>
-                                Name
-                         </th>
-                            <th>
-                                Nationality
-                        </th>
-                            <th>
-                                Head Of
-                        </th>
-                            <th>
-                                Concept Hotel
-                        </th>
-                        </tr>
-                    </thead>
+  return (
+    <div>
+      <ContextMenu id={contextMenuId}>
+        <MenuItem data={{ foo: 'bar' }} onClick={onContextMenuClick}>
+          ContextMenu Item 1
+        </MenuItem>
+        <MenuItem data={{ foo: 'bar' }} onClick={onContextMenuClick}>
+          ContextMenu Item 2
+        </MenuItem>
+        <MenuItem data={{ foo: 'bar' }} onClick={onContextMenuClick}>
+          ContextMenu Item 3
+        </MenuItem>
+      </ContextMenu>
 
-                    <tbody>
-                        <tr>
-                            <td>
-                                <ContextMenuTrigger id="jobTitleContextMenu">
-                                    Bojorquez, Carolina
-                                </ContextMenuTrigger>
-                            </td>
-                            <td>
-                                <ContextMenuTrigger id="jobTitleContextMenu">
-                                    Bojorquez, Carolinav>
-                                </ContextMenuTrigger>
-                            </td>
-                            <td>
-                                <ContextMenuTrigger id="jobTitleContextMenu">
-                                    Bojorquez, Carolina
-                                </ContextMenuTrigger>
-                            </td>
-                            <td>
-                                <ContextMenuTrigger id="jobTitleContextMenu">
-                                    Bojorquez, Carolina
-                                </ContextMenuTrigger>
-                            </td>
-                        </tr>
-                    </tbody>
-                </Table>
-            </div>
-        )
-    }
+      <Table
+        list={props.persons}
+        contextMenuId={contextMenuId}
+        columns={columns}
+        selected={selected}
+        updateSelectedPersonsState={props.updateSelectedPersonsState}
+        checkbox={true}
+        identifier={'id'}
+        edit={edit}
+      />
+    </div>
+  )
 }
 
 export default PersonTable

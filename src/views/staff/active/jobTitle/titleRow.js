@@ -1,8 +1,9 @@
 import React, { Component } from 'react'
 import { Collapse, Card, CardBody, CardHeader } from 'reactstrap'
-import PersonTable from './personTable'
 
-class DestinationRow extends Component {
+import DestinationRow from '../jobTitle/destinationRow'
+
+class TitleRow extends Component {
   constructor() {
     super()
 
@@ -22,24 +23,23 @@ class DestinationRow extends Component {
       <i className="fa fa-chevron-down float-right text-danger" />
     )
 
-    const style = {
-      height: `${42 + this.props.destination.staffs.length * 41}px`
-    }
-
     return (
       <Card className="card-accordion">
         <CardHeader onClick={() => this.toggleCollapse()}>
-          {this.props.destination.destination} {icon}
+          {this.props.jobTitle.jobTitle} {icon}
         </CardHeader>
 
         <Collapse isOpen={this.state.expanded}>
-          <CardBody style={style} className="no-padding-bottom">
-            <PersonTable
-              index={this.props.index}
-              persons={this.props.destination.staffs}
-              selectedPersons={this.props.selectedPersons}
-              updateSelectedPersonsState={this.props.updateSelectedPersonsState}
-            />
+          <CardBody>
+            {this.props.jobTitle.destinations.map((destination, index) => (
+              <DestinationRow
+                key={index}
+                index={this.props.index + index}
+                destination={destination}
+                selectedPersons={this.props.selectedPersons}
+                updateSelectedPersonsState={this.props.updateSelectedPersonsState}
+              />
+            ))}
           </CardBody>
         </Collapse>
       </Card>
@@ -47,4 +47,4 @@ class DestinationRow extends Component {
   }
 }
 
-export default DestinationRow
+export default TitleRow

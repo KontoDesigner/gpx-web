@@ -19,11 +19,11 @@ class PositionTable extends Component {
     const icon = this.state.expanded ? (
       <i className="fa fa-chevron-up float-right text-danger" />
     ) : (
-        <i className="fa fa-chevron-down float-right text-danger" />
-      )
+      <i className="fa fa-chevron-down float-right text-danger" />
+    )
 
     const style = {
-      height: `${42 + (this.props.jobTitle.staffs.length * 41)}px`
+      height: `${42 + this.props.jobTitle.staffs.length * 41}px`
     }
 
     return (
@@ -42,7 +42,7 @@ class PositionTable extends Component {
             />
           </CardBody>
         </Collapse>
-      </Card >
+      </Card>
     )
   }
 }
