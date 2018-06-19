@@ -1,10 +1,18 @@
 import React, { Component } from 'react'
-import DestinationRow from './destinationRow'
+import TitleRow from './titleRow'
 import { Card, CardBody, CardHeader, Row } from 'reactstrap'
 import Filter from '../../filter'
 import Action from '../../action'
 
 class JobTitle extends Component {
+  constructor() {
+    super()
+
+    this.state = {
+      selectedPersons: []
+    }
+  }
+
   render() {
     return (
       <Card>
@@ -16,7 +24,9 @@ class JobTitle extends Component {
 
             <Action />
           </Row>
-          {this.props.jobTitle.map((jobTitle, index) => <DestinationRow key={index} index={index} jobTitle={jobTitle} />)}
+          {this.props.jobTitle.map((jobTitle, index) => (
+            <TitleRow key={index} index={index} jobTitle={jobTitle} updateSelectedPersonsState={this.updateSelectedPersonsState} />
+          ))}
         </CardBody>
       </Card>
     )
