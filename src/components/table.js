@@ -9,7 +9,7 @@ class Table extends Component {
     this.state = {
       sortBy: '',
       sortDirection: 'ASC',
-      list: props.list
+      list: JSON.parse(JSON.stringify(props.list))
     }
   }
 

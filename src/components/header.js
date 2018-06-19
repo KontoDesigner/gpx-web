@@ -30,7 +30,7 @@ const Header = (props) => {
 
                     {matchRuleShort(props.route, "/staff*") ? props.staffTabs.map((tab, index) => (
                         <NavItem key={index}>
-                            <NavLink exact tag={RRNavLink} to={`/staff/:${tab.staffId}`}>{tab.firstNameLastName}</NavLink>
+                            <NavLink exact tag={RRNavLink} to={`/staff/${tab.staffId}`}>{tab.firstNameLastName}</NavLink>
                         </NavItem>
                     )) : ''}
                 </Nav>
