@@ -23,7 +23,7 @@ class Table extends Component {
         return (
             <div key={index} style={style}>
                 <ContextMenuTrigger id={this.props.contextMenuId}>
-                    <div onClick={() => this.props.edit(props.rowData[this.props.identifier])} className={rowClassName} role="row">
+                    <div onClick={() => this.props.edit(props.rowData)} className={rowClassName} role="row">
                         {columns}
                     </div>
                 </ContextMenuTrigger>

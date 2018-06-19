@@ -15,10 +15,6 @@ const PersonTable = (props) => {
 
   const contextMenuId = props.index + "-headOfContextMenu";
 
-  const edit = (id) => {
-    alert(id);
-  }
-
   return (
     <div>
       <ContextMenu id={contextMenuId}>
@@ -41,7 +37,7 @@ const PersonTable = (props) => {
         selected={props.selectedPersons}
         updateSelectedState={props.updateSelectedPersonsState}
         identifier={'id'}
-        edit={edit}
+        edit={props.handleTabs}
       />
     </div>
   )

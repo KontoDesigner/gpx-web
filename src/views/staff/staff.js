@@ -13,6 +13,8 @@ import * as headOfActions from '../../actions/staff/active/headOfActions'
 import * as destinationActions from '../../actions/staff/active/destinationActions'
 import * as filterActions from '../../actions/staff/filterActions'
 import * as jobTitleActions from '../../actions/staff/active/jobTitleActions'
+import * as tabActions from '../../actions/staff/tabActions'
+import { withRouter } from 'react-router-dom';
 
 class Staff extends Component {
   constructor(props) {
@@ -24,13 +26,13 @@ class Staff extends Component {
     }
   }
 
-  componentWillMount() {
+  componentDidMount() {
     this.props.headOfActions.getHeadOf()
 
     this.props.filterActions.getSourceMarkets()
   }
 
-  resetData = () => {}
+  resetData = () => { }
 
   toggle = (tab, getData, resetData) => {
     if (this.state.activeTab !== tab) {
@@ -48,6 +50,25 @@ class Staff extends Component {
         resetData: resetData
       })
     }
+  }
+
+  handleTabs = (staff) => {
+    const exists = this.props.tabs.filter(t => {
+      return t.staffId === staff.staffID
+    })[0];
+
+    if (exists === undefined) {
+      let tabs = Object.assign([], this.props.tabs);
+
+      tabs.push({
+        staffId: staff.staffID,
+        firstNameLastName: staff.firstNameLastName
+      });
+
+      this.props.tabActions.handleTabs(tabs);
+    }
+
+    this.props.history.push(`/staff/${staff.staffID}`)
   }
 
   render() {
@@ -131,11 +152,19 @@ class Staff extends Component {
         <Col sm="12" md="9" lg="9" xl="10">
           <TabContent activeTab={this.state.activeTab}>
             <TabPane tabId="headOf">
-              <HeadOf headOf={this.props.headOf} getHeadOf={(sourcemarket, criteria) => this.props.headOfActions.getHeadOf(sourcemarket, criteria)} />
+              <HeadOf
+                headOf={this.props.headOf}
+                getHeadOf={(sourcemarket, criteria) => this.props.headOfActions.getHeadOf(sourcemarket, criteria)}
+                handleTabs={this.handleTabs}
+              />
             </TabPane>
 
             <TabPane tabId="destination">
-              <Destination destination={this.props.destination} getDestination={this.props.destinationActions.getDestination} />
+              <Destination
+                destination={this.props.destination}
+                etDestination={this.props.destinationActions.getDestination}
+                handleTabs={this.handleTabs}
+              />
             </TabPane>
 
             <TabPane tabId="name">
@@ -145,7 +174,11 @@ class Staff extends Component {
             </TabPane>
 
             <TabPane tabId="jobTitle">
-              <JobTitle jobTitle={this.props.jobTitle} getJobTitle={this.props.jobTitleActions.getJobTitle} />
+              <JobTitle
+                jobTitle={this.props.jobTitle}
+                getJobTitle={this.props.jobTitleActions.getJobTitle}
+                handleTabs={this.handleTabs}
+              />
             </TabPane>
 
             <TabPane tabId="recentlyInactive">
@@ -170,7 +203,8 @@ function mapStateToProps(state, ownProps) {
   return {
     headOf: state.staff.active.headOf,
     destination: state.staff.active.destination,
-    jobTitle: state.staff.active.jobTitle
+    jobTitle: state.staff.active.jobTitle,
+    tabs: state.staff.tabs
   }
 }
 
@@ -179,11 +213,12 @@ function mapDispatchToProps(dispatch) {
     headOfActions: bindActionCreators(headOfActions, dispatch),
     destinationActions: bindActionCreators(destinationActions, dispatch),
     filterActions: bindActionCreators(filterActions, dispatch),
-    jobTitleActions: bindActionCreators(jobTitleActions, dispatch)
+    jobTitleActions: bindActionCreators(jobTitleActions, dispatch),
+    tabActions: bindActionCreators(tabActions, dispatch)
   }
 }
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(Staff)
+)(withRouter(Staff))
