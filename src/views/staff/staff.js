@@ -12,6 +12,7 @@ import NewEmployees from './other/newEmployees/newEmployees'
 import * as headOfActions from '../../actions/staff/active/headOfActions'
 import * as destinationActions from '../../actions/staff/active/destinationActions'
 import * as filterActions from '../../actions/staff/filterActions'
+import * as jobTitleActions from '../../actions/staff/active/jobTitleActions'
 
 class Staff extends Component {
   constructor(props) {
@@ -24,12 +25,12 @@ class Staff extends Component {
   }
 
   componentWillMount() {
-    this.props.headOfActions.getHeadOf();
+    this.props.headOfActions.getHeadOf()
 
     this.props.filterActions.getSourceMarkets()
   }
 
-  resetData = () => { }
+  resetData = () => {}
 
   toggle = (tab, getData, resetData) => {
     if (this.state.activeTab !== tab) {
@@ -64,28 +65,28 @@ class Staff extends Component {
                     this.toggle('headOf', this.props.headOfActions.getHeadOf, this.props.headOfActions.handleHeadOf)
                   }}>
                   Head Of
-                    </ListGroupItem>
+                </ListGroupItem>
                 <ListGroupItem
                   className={classnames({ active: this.state.activeTab === 'destination' })}
                   onClick={() => {
                     this.toggle('destination', this.props.destinationActions.getDestination, this.props.destinationActions.handleDestination)
                   }}>
                   Destination
-                    </ListGroupItem>
+                </ListGroupItem>
                 <ListGroupItem
                   className={classnames({ active: this.state.activeTab === 'name' })}
                   onClick={() => {
                     this.toggle('name', this.props.nameActions.getName, this.props.nameActions.handleName)
                   }}>
                   Name
-                    </ListGroupItem>
+                </ListGroupItem>
                 <ListGroupItem
                   className={classnames({ active: this.state.activeTab === 'jobTitle' })}
                   onClick={() => {
                     this.toggle('jobTitle', this.props.jobTitleActions.getJobTitle, this.props.jobTitleActions.handleJobTitle)
                   }}>
                   Job Title
-                    </ListGroupItem>
+                </ListGroupItem>
               </ListGroup>
             </CardBody>
           </Card>
@@ -105,7 +106,7 @@ class Staff extends Component {
                     )
                   }}>
                   Recently Inactive
-                    </ListGroupItem>
+                </ListGroupItem>
               </ListGroup>
             </CardBody>
           </Card>
@@ -121,7 +122,7 @@ class Staff extends Component {
                     this.toggle('newEmployees', this.props.newEmployeesActions.getNewEmployees, this.props.newEmployeesActions.handleNewEmployees)
                   }}>
                   New Employees
-                    </ListGroupItem>
+                </ListGroupItem>
               </ListGroup>
             </CardBody>
           </Card>
@@ -144,9 +145,7 @@ class Staff extends Component {
             </TabPane>
 
             <TabPane tabId="jobTitle">
-              <JobTitle
-              //getJobTitle={this.props.jobTitleActions.getJobTitle}
-              />
+              <JobTitle getJobTitle={this.props.jobTitleActions.getJobTitle} />
             </TabPane>
 
             <TabPane tabId="recentlyInactive">
@@ -170,7 +169,8 @@ class Staff extends Component {
 function mapStateToProps(state, ownProps) {
   return {
     headOf: state.staff.active.headOf,
-    destination: state.staff.active.destination
+    destination: state.staff.active.destination,
+    jobTitle: state.staff.active.jobTitle
   }
 }
 
@@ -178,7 +178,8 @@ function mapDispatchToProps(dispatch) {
   return {
     headOfActions: bindActionCreators(headOfActions, dispatch),
     destinationActions: bindActionCreators(destinationActions, dispatch),
-    filterActions: bindActionCreators(filterActions, dispatch)
+    filterActions: bindActionCreators(filterActions, dispatch),
+    jobTitleActions: bindActionCreators(jobTitleActions, dispatch)
   }
 }
 
