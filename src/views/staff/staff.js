@@ -145,7 +145,7 @@ class Staff extends Component {
             </TabPane>
 
             <TabPane tabId="jobTitle">
-              <JobTitle getJobTitle={this.props.jobTitleActions.getJobTitle} />
+              <JobTitle jobTitle={this.props.jobTitle} getJobTitle={this.props.jobTitleActions.getJobTitle} />
             </TabPane>
 
             <TabPane tabId="recentlyInactive">
