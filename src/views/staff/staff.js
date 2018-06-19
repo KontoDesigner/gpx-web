@@ -60,10 +60,12 @@ class Staff extends Component {
     if (exists === undefined) {
       let tabs = Object.assign([], this.props.tabs);
 
-      tabs.push({
+      let tab = {
         staffId: staff.staffID,
         firstNameLastName: staff.firstNameLastName
-      });
+      };
+
+      tabs.push(tab);
 
       this.props.tabActions.handleTabs(tabs);
     }

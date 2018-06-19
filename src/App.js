@@ -11,34 +11,34 @@ import { withRouter } from 'react-router-dom';
 
 class App extends Component {
     render() {
-        const Content = withRouter(props =>
-            <div className="App">
-                <ReduxToastr
-                    timeOut={5000}
-                    newestOnTop={false}
-                    preventDuplicates={false}
-                    position="bottom-right"
-                    transitionIn="fadeIn"
-                    transitionOut="fadeOut"
-                    progressBar
-                />
-
-                <Loader />
-
-                <Header
-                    staffTabs={this.props.staffTabs}
-                    route={props.location.pathname}
-                />
-
-                <Routes />
-
-                <Footer />
-            </div>
+        const HeaderWithRouter = withRouter(props =>
+            <Header
+                staffTabs={this.props.staffTabs}
+                route={props.location.pathname}
+            />
         );
 
         return (
             <BrowserRouter>
-                <Content />
+                <div className="App">
+                    <ReduxToastr
+                        timeOut={5000}
+                        newestOnTop={false}
+                        preventDuplicates={false}
+                        position="bottom-right"
+                        transitionIn="fadeIn"
+                        transitionOut="fadeOut"
+                        progressBar
+                    />
+
+                    <Loader />
+
+                    <HeaderWithRouter />
+
+                    <Routes />
+
+                    <Footer />
+                </div>
             </BrowserRouter>
         );
     }
