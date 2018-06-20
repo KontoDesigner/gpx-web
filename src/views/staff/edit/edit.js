@@ -3,17 +3,15 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import RestClient from '../../../infrastructure/restClient'
 import { beginAjaxCall, endAjaxCall, ajaxCallError } from '../../../actions/ajaxStatusActions'
-import AssignedRoles from './assignedRoles'
-import ContactInformation from './contactInformation'
-import CurrentSeason from './currentSeason'
-import EmployeeInformation from './employeeInformation'
-import FollowingSeason from './followingSeason'
-import Gap from './gap'
-import NextSeason from './nextSeason'
-import PhotoFile from './photoFile'
-import PlannedMove from './plannedMove'
-import Tabs from './tabs'
-import WorkExperience from './workExperience'
+import { Row, Col } from 'reactstrap'
+import EmployeeInfo from './employeeInfo/employeeInfo'
+import Absence from './absence/absence'
+import Cv from './cv/cv'
+import FullYearReview from './fullYearReview/fullYearReview'
+import Applications from './applications/applications'
+import A1 from './a1/a1'
+import Team from './team/team'
+import History from './history/history'
 
 class Edit extends Component {
     constructor() {
@@ -45,9 +43,17 @@ class Edit extends Component {
     render() {
         if (this.state.staff !== null) {
             return (
-                <div>
-                    {this.state.staff.fullName}
-                </div>
+                <Row>
+                    <Col>
+                        {/* <EmployeeInfo /> */}
+                        {/* <Cv /> */}
+                        {/* <FullYearReview /> */}
+                        {/* <Applications /> */}
+                        {/* <A1 /> */}
+                        {/* <Team /> */}
+                        <History />
+                    </Col>
+                </Row>
             )
         }
         else {
