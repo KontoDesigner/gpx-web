@@ -15,6 +15,7 @@ import * as filterActions from '../../actions/staff/filterActions'
 import * as jobTitleActions from '../../actions/staff/active/jobTitleActions'
 import * as tabActions from '../../actions/staff/tabActions'
 import { withRouter } from 'react-router-dom';
+import $ from 'jquery';
 
 class Staff extends Component {
   constructor(props) {
@@ -52,25 +53,27 @@ class Staff extends Component {
     }
   }
 
-  handleTabs = (staff) => {
-    const exists = this.props.tabs.filter(t => {
-      return t.staffId === staff.staffID
-    })[0];
+  handleTabs = (e, staff) => {
+    if (!$(e.target).is(":checkbox")) {
+      const exists = this.props.tabs.filter(t => {
+        return t.staffId === staff.staffID
+      })[0];
 
-    if (exists === undefined) {
-      let tabs = Object.assign([], this.props.tabs);
+      if (exists === undefined) {
+        let tabs = Object.assign([], this.props.tabs);
 
-      let tab = {
-        staffId: staff.staffID,
-        firstNameLastName: staff.firstNameLastName
-      };
+        let tab = {
+          staffId: staff.staffID,
+          firstNameLastName: staff.firstNameLastName
+        };
 
-      tabs.push(tab);
+        tabs.push(tab);
 
-      this.props.tabActions.handleTabs(tabs);
+        this.props.tabActions.handleTabs(tabs);
+      }
+
+      this.props.history.push(`/staff/${staff.staffID}`)
     }
-
-    this.props.history.push(`/staff/${staff.staffID}`)
   }
 
   render() {
