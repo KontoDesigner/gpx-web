@@ -14,7 +14,18 @@ export default function ajaxStatusReducer(state = defaultState, action) {
         }
 
         return state + 1;
-    } else if (action.type === types.AJAX_CALL_ERROR ||
+    }
+    else if (action.type === types.END_AJAX_CALL ||
+        actionTypeEndsInSuccess(action.type)) {
+        const val = state - 1;
+
+        if (val === 0) {
+            $(".loader").fadeOut(0);
+        }
+
+        return val;
+    }
+    else if (action.type === types.AJAX_CALL_ERROR ||
         actionTypeEndsInSuccess(action.type)) {
         const val = state - 1;
 

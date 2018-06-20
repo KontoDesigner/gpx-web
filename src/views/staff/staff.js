@@ -204,7 +204,7 @@ class Staff extends Component {
   }
 }
 
-function mapStateToProps(state, ownProps) {
+function mapStateToProps(state) {
   return {
     headOf: state.staff.active.headOf,
     destination: state.staff.active.destination,

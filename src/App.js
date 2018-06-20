@@ -21,6 +21,8 @@ class App extends Component {
         return (
             <BrowserRouter>
                 <div className="App">
+                    <Loader />
+
                     <ReduxToastr
                         timeOut={5000}
                         newestOnTop={false}
@@ -30,8 +32,6 @@ class App extends Component {
                         transitionOut="fadeOut"
                         progressBar
                     />
-
-                    <Loader />
 
                     <HeaderWithRouter />
 

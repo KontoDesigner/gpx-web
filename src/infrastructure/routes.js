@@ -12,7 +12,7 @@ const Routes = () => (
         <Switch>
             <Route path="/" exact component={() => <Redirect to="/staff" />} />
             <Route exact path="/staff" component={Staff} />
-            <Route exact path="/staff/:id" component={StaffEdit} />
+            <Route exact path="/staff/:id" render={(props) => <StaffEdit {...props} ignoreThis={true} />} />
             <Route path="/planning" component={Planning} />
             <Route path="/reports" component={Reports} />
             <Route path="/Settings" component={Settings} />
