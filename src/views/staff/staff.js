@@ -54,7 +54,10 @@ class Staff extends Component {
 
   edit = (e, staff) => {
     if (!$(e.target).is(":checkbox")) {
-      this.props.history.push(`/staff/${staff.staffID}`)
+      // this.props.history.push(`/staff/${staff.staffID}`)
+
+      const win = window.open(`/staff/${staff.staffID}`, '_blank');
+      win.focus();
     }
   }
 

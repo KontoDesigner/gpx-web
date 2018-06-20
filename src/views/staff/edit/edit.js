@@ -3,6 +3,17 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import RestClient from '../../../infrastructure/restClient'
 import { beginAjaxCall, endAjaxCall, ajaxCallError } from '../../../actions/ajaxStatusActions'
+import AssignedRoles from './assignedRoles'
+import ContactInformation from './contactInformation'
+import CurrentSeason from './currentSeason'
+import EmployeeInformation from './employeeInformation'
+import FollowingSeason from './followingSeason'
+import Gap from './gap'
+import NextSeason from './nextSeason'
+import PhotoFile from './photoFile'
+import PlannedMove from './plannedMove'
+import Tabs from './tabs'
+import WorkExperience from './workExperience'
 
 class Edit extends Component {
     constructor() {
@@ -13,7 +24,7 @@ class Edit extends Component {
         }
     }
 
-    async componentWillMount() {
+    async componentDidMount() {
         const { match: { params } } = this.props;
 
         this.props.beginAjaxCall();
@@ -44,9 +55,9 @@ class Edit extends Component {
         }
     }
 }
+
 function mapStateToProps(state) {
     return {
-        tabs: state.staff.tabs
     }
 }
 
