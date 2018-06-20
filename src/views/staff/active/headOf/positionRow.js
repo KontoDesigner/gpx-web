@@ -39,7 +39,7 @@ class PositionTable extends Component {
               persons={this.props.jobTitle.staffs}
               selectedPersons={this.props.selectedPersons}
               updateSelectedPersonsState={this.props.updateSelectedPersonsState}
-              handleTabs={this.props.handleTabs}
+              edit={this.props.edit}
             />
           </CardBody>
         </Collapse>

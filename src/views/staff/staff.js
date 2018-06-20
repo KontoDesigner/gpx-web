@@ -13,7 +13,6 @@ import * as headOfActions from '../../actions/staff/active/headOfActions'
 import * as destinationActions from '../../actions/staff/active/destinationActions'
 import * as filterActions from '../../actions/staff/filterActions'
 import * as jobTitleActions from '../../actions/staff/active/jobTitleActions'
-import * as tabActions from '../../actions/staff/tabActions'
 import { withRouter } from 'react-router-dom';
 import $ from 'jquery';
 
@@ -53,25 +52,8 @@ class Staff extends Component {
     }
   }
 
-  handleTabs = (e, staff) => {
+  edit = (e, staff) => {
     if (!$(e.target).is(":checkbox")) {
-      const exists = this.props.tabs.filter(t => {
-        return t.staffId === staff.staffID
-      })[0];
-
-      if (exists === undefined) {
-        let tabs = Object.assign([], this.props.tabs);
-
-        let tab = {
-          staffId: staff.staffID,
-          firstNameLastName: staff.firstNameLastName
-        };
-
-        tabs.push(tab);
-
-        this.props.tabActions.handleTabs(tabs);
-      }
-
       this.props.history.push(`/staff/${staff.staffID}`)
     }
   }
@@ -160,7 +142,7 @@ class Staff extends Component {
               <HeadOf
                 headOf={this.props.headOf}
                 getHeadOf={(sourcemarket, criteria) => this.props.headOfActions.getHeadOf(sourcemarket, criteria)}
-                handleTabs={this.handleTabs}
+                edit={this.edit}
               />
             </TabPane>
 
@@ -168,7 +150,7 @@ class Staff extends Component {
               <Destination
                 destination={this.props.destination}
                 etDestination={this.props.destinationActions.getDestination}
-                handleTabs={this.handleTabs}
+                edit={this.edit}
               />
             </TabPane>
 
@@ -182,7 +164,7 @@ class Staff extends Component {
               <JobTitle
                 jobTitle={this.props.jobTitle}
                 getJobTitle={this.props.jobTitleActions.getJobTitle}
-                handleTabs={this.handleTabs}
+                edit={this.edit}
               />
             </TabPane>
 
@@ -218,8 +200,7 @@ function mapDispatchToProps(dispatch) {
     headOfActions: bindActionCreators(headOfActions, dispatch),
     destinationActions: bindActionCreators(destinationActions, dispatch),
     filterActions: bindActionCreators(filterActions, dispatch),
-    jobTitleActions: bindActionCreators(jobTitleActions, dispatch),
-    tabActions: bindActionCreators(tabActions, dispatch)
+    jobTitleActions: bindActionCreators(jobTitleActions, dispatch)
   }
 }
 

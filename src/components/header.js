@@ -2,11 +2,7 @@ import React from 'react';
 import { Nav, NavItem, NavLink, Row, Col } from 'reactstrap';
 import { NavLink as RRNavLink } from 'react-router-dom';
 
-function matchRuleShort(str, rule) {
-    return new RegExp("^" + rule.split("*").join(".*") + "$").test(str);
-}
-
-const Header = (props) => {
+const Header = () => {
     return (
         <Row style={{ backgroundColor: '#fafbfc', borderBottom: '1px solid #ddd', margin: 0 }}>
             <Col sm="12" md="3" lg="3" xl="2" className="logo-container">
@@ -27,12 +23,6 @@ const Header = (props) => {
                     <NavItem>
                         <NavLink tag={RRNavLink} to="/settings">Settings</NavLink>
                     </NavItem>
-
-                    {matchRuleShort(props.route, "/staff*") ? props.staffTabs.map((tab, index) => (
-                        <NavItem key={index}>
-                            <NavLink exact tag={RRNavLink} to={`/staff/${tab.staffId}`}>{tab.firstNameLastName}</NavLink>
-                        </NavItem>
-                    )) : ''}
                 </Nav>
             </Col>
         </Row>

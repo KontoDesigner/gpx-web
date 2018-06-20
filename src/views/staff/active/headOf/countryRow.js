@@ -37,7 +37,7 @@ class CountryRow extends Component {
                 destination={destination}
                 selectedPersons={this.props.selectedPersons}
                 updateSelectedPersonsState={this.props.updateSelectedPersonsState}
-                handleTabs={this.props.handleTabs}
+                edit={this.props.edit}
               />
             ))}
           </CardBody>

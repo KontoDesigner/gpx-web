@@ -37,7 +37,7 @@ const PersonTable = (props) => {
         selected={props.selectedPersons}
         updateSelectedState={props.updateSelectedPersonsState}
         identifier={'id'}
-        edit={props.handleTabs}
+        edit={props.edit}
       />
     </div>
   )

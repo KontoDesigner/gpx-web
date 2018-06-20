@@ -45,7 +45,7 @@ class HeadOf extends Component {
               headOf={headOf}
               selectedPersons={this.state.selectedPersons}
               updateSelectedPersonsState={this.updateSelectedPersonsState}
-              handleTabs={this.props.handleTabs}
+              edit={this.props.edit}
             />
           )}
         </CardBody>

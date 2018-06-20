@@ -37,7 +37,7 @@ class DestinationRow extends Component {
                 jobTitle={jobTitle}
                 selectedPersons={this.props.selectedPersons}
                 updateSelectedPersonsState={this.props.updateSelectedPersonsState}
-                handleTabs={this.props.handleTabs}
+                edit={this.props.edit}
               />
             ))}
           </CardBody>
