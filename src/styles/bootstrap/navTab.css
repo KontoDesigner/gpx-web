@@ -24,6 +24,11 @@
     margin:0px;
 }
 
+.nav-tab > .nav-item > a:not(.active)
+{
+    cursor:pointer;
+}
+
 .nav-tab > .nav-item:not(:last-child) > a {
     border-left: 1px solid #ddd!important;
     border-top: 1px solid #ddd!important;

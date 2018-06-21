@@ -3,22 +3,22 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import RestClient from '../../../infrastructure/restClient'
 import { beginAjaxCall, endAjaxCall, ajaxCallError } from '../../../actions/ajaxStatusActions'
-import { Row, Col } from 'reactstrap'
+import { TabContent, TabPane, Nav, NavItem, NavLink, Row, Col } from 'reactstrap'
 import EmployeeInfo from './employeeInfo/employeeInfo'
-import Absence from './absence/absence'
-import Cv from './cv/cv'
 import FullYearReview from './fullYearReview/fullYearReview'
 import Applications from './applications/applications'
 import A1 from './a1/a1'
 import Team from './team/team'
 import History from './history/history'
+import classnames from 'classnames'
 
 class Edit extends Component {
     constructor() {
         super()
 
         this.state = {
-            staff: null
+            staff: null,
+            activeTab: 'employeeInfo',
         }
     }
 
@@ -40,20 +40,109 @@ class Edit extends Component {
         }
     }
 
+    toggle = (activeTab) => {
+        if (this.state.activeTab !== activeTab) {
+            this.setState({
+                activeTab
+            })
+        }
+    }
+
     render() {
         if (this.state.staff !== null) {
             return (
-                <Row>
-                    <Col>
-                        {/* <EmployeeInfo /> */}
-                        {/* <Cv /> */}
-                        {/* <FullYearReview /> */}
-                        {/* <Applications /> */}
-                        {/* <A1 /> */}
-                        {/* <Team /> */}
-                        <History />
-                    </Col>
-                </Row>
+                <div>
+                    <Row style={{ borderBottom: '1px solid #ddd' }}>
+                        <Col className="no-padding-left no-padding-right">
+                            <Nav className="nav-tab" style={{ backgroundColor: '#fff', paddingTop: '0px' }}>
+                                <NavItem>
+                                    <NavLink
+                                        className={classnames({ active: this.state.activeTab === 'employeeInfo' })}
+                                        onClick={() => {
+                                            this.toggle('employeeInfo')
+                                        }}>
+                                        Employee Info
+                                </NavLink>
+                                </NavItem>
+                                <NavItem>
+                                    <NavLink
+                                        className={classnames({ active: this.state.activeTab === 'fullYearReview' })}
+                                        onClick={() => {
+                                            this.toggle('fullYearReview')
+                                        }}>
+                                        Full Year Review
+                                </NavLink>
+                                </NavItem>
+                                <NavItem>
+                                    <NavLink
+                                        className={classnames({ active: this.state.activeTab === 'applications' })}
+                                        onClick={() => {
+                                            this.toggle('applications')
+                                        }}>
+                                        Applications
+                                </NavLink>
+                                </NavItem>
+                                <NavItem>
+                                    <NavLink
+                                        className={classnames({ active: this.state.activeTab === 'a1' })}
+                                        onClick={() => {
+                                            this.toggle('a1')
+                                        }}>
+                                        A1
+                                </NavLink>
+                                </NavItem>
+                                <NavItem>
+                                    <NavLink
+                                        className={classnames({ active: this.state.activeTab === 'team' })}
+                                        onClick={() => {
+                                            this.toggle('team')
+                                        }}>
+                                        Team
+                                </NavLink>
+                                </NavItem>
+                                <NavItem>
+                                    <NavLink
+                                        className={classnames({ active: this.state.activeTab === 'history' })}
+                                        onClick={() => {
+                                            this.toggle('history')
+                                        }}>
+                                        History
+                                </NavLink>
+                                </NavItem>
+                            </Nav>
+                        </Col>
+                    </Row>
+
+                    <Row>
+                        <Col>
+                            <TabContent activeTab={this.state.activeTab}>
+                                <TabPane tabId="employeeInfo">
+                                    <EmployeeInfo />
+                                </TabPane>
+
+                                <TabPane tabId="fullYearReview">
+                                    <FullYearReview />
+                                </TabPane>
+
+                                <TabPane tabId="applications">
+                                    <Applications />
+                                </TabPane>
+
+                                <TabPane tabId="a1">
+                                    <A1 />
+                                </TabPane>
+
+                                <TabPane tabId="team">
+                                    <Team />
+                                </TabPane>
+
+                                <TabPane tabId="history">
+                                    <History />
+                                </TabPane>
+                            </TabContent>
+                        </Col>
+                    </Row>
+                </div>
             )
         }
         else {

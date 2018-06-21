@@ -32,8 +32,6 @@ class Staff extends Component {
     this.props.filterActions.getSourceMarkets()
   }
 
-  resetData = () => { }
-
   toggle = (tab, getData, resetData) => {
     if (this.state.activeTab !== tab) {
       //Reset current tab state
