@@ -9,7 +9,8 @@ class Table extends Component {
     this.state = {
       sortBy: '',
       sortDirection: 'ASC',
-      list: JSON.parse(JSON.stringify(props.list))
+      list: JSON.parse(JSON.stringify(props.list)),
+      selected: []
     }
   }
 
@@ -17,7 +18,7 @@ class Table extends Component {
     const rowClassName =
       (this.state.list.length < 8 ? ' hidden-scroll ' : '') +
       className + (index % 2 === 0 ? ' even' : ' odd') +
-      (this.props.selected.includes(props.rowData[this.props.identifier]) ? ' selected' : '') +
+      (this.state.selected.includes(props.rowData[this.props.identifier]) ? ' selected' : '') +
       ' cursor-pointer'
 
     return (
@@ -73,6 +74,8 @@ class Table extends Component {
       selected = this.state.list.map(l => l[this.props.identifier])
     }
 
+    this.setState({ selected })
+
     this.props.updateSelectedState(selected)
   }
 
@@ -80,7 +83,7 @@ class Table extends Component {
     const target = event.target
     const value = target.checked
 
-    let selected = this.props.selected
+    let selected = Object.assign([], this.state.selected);
 
     const id = row.rowData[this.props.identifier]
 
@@ -93,6 +96,8 @@ class Table extends Component {
         selected.splice(index, 1)
       }
     }
+
+    this.setState({ selected })
 
     this.props.updateSelectedState(selected)
   }
@@ -121,11 +126,11 @@ class Table extends Component {
               <Column
                 label=""
                 dataKey=""
-                width={66}
+                width={95}
                 headerRenderer={() => (
                   <input
                     type="checkbox"
-                    checked={this.state.list.length > 0 && this.props.selected.length === this.state.list.length}
+                    checked={this.state.list.length > 0 && this.state.selected.length === this.state.list.length}
                     onChange={event => {
                       this.selectAll(event)
                     }}
@@ -134,7 +139,7 @@ class Table extends Component {
                 cellRenderer={row => (
                   <input
                     type="checkbox"
-                    checked={this.props.selected.includes(row.rowData[this.props.identifier])}
+                    checked={this.state.selected.includes(row.rowData[this.props.identifier])}
                     onChange={event => {
                       this.selectRow(event, row)
                     }}
