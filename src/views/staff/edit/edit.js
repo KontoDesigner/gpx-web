@@ -30,6 +30,8 @@ class Edit extends Component {
         try {
             const staff = await RestClient.Get(`staff/${params.id}`)
 
+            document.title = `${staff.firstNameLastName} - GPX`;
+
             this.setState({ staff });
 
             this.props.endAjaxCall();
@@ -38,6 +40,16 @@ class Edit extends Component {
 
             throw error
         }
+    }
+
+    updateStaffFieldState = (event) => {
+        const field = event.target.name;
+
+        let staff = Object.assign({}, this.state.staff);
+
+        staff[field] = event.target.value;
+
+        return this.setState({ staff });
     }
 
     toggle = (activeTab) => {
@@ -117,7 +129,10 @@ class Edit extends Component {
                         <Col>
                             <TabContent activeTab={this.state.activeTab}>
                                 <TabPane tabId="employeeInfo">
-                                    <EmployeeInfo />
+                                    <EmployeeInfo
+                                        staff={this.state.staff}
+                                        updateStaffFieldState={this.updateStaffFieldState}
+                                    />
                                 </TabPane>
 
                                 <TabPane tabId="fullYearReview">

@@ -2,6 +2,10 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
 class Planning extends Component {
+    componentWillMount() {
+        document.title = 'Planning - GPX'
+    }
+
     render() {
         return (
             <div>

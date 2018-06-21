@@ -2,6 +2,10 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
 class Settings extends Component {
+    componentWillMount() {
+        document.title = 'Settings - GPX'
+    }
+
     render() {
         return (
             <div>

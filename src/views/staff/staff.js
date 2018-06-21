@@ -13,7 +13,6 @@ import * as headOfActions from '../../actions/staff/active/headOfActions'
 import * as destinationActions from '../../actions/staff/active/destinationActions'
 import * as filterActions from '../../actions/staff/filterActions'
 import * as jobTitleActions from '../../actions/staff/active/jobTitleActions'
-import { withRouter } from 'react-router-dom';
 import $ from 'jquery';
 
 class Staff extends Component {
@@ -24,6 +23,10 @@ class Staff extends Component {
       activeTab: 'headOf',
       resetData: this.props.headOfActions.handleHeadOf
     }
+  }
+
+  componentWillMount() {
+    document.title = 'Staff - GPX'
   }
 
   componentDidMount() {
@@ -208,4 +211,4 @@ function mapDispatchToProps(dispatch) {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(withRouter(Staff))
+)(Staff)

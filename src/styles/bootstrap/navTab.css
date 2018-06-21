@@ -27,6 +27,7 @@
 .nav-tab > .nav-item > a:not(.active)
 {
     cursor:pointer;
+    border: 1px solid #ddd;
 }
 
 .nav-tab-edit > .nav-item > a:not(.active)

@@ -65,11 +65,22 @@ body {
   }
 }
 
+.logo-container > svg
+{
+  height: 29px;
+  margin-top: 15px;
+}
+
 @media (max-width: 767.98px) {
   .col-action
   {
     top:0px;
     padding-bottom:15px;
+  }
+
+  .logo-container > svg
+  {
+    margin-top: 20px;
   }
 }
 
@@ -80,12 +91,6 @@ body {
 .logo-container
 {
   text-align:center;
-}
-
-.logo-container > svg
-{
-  height: 29px;
-  margin-top: 14px;
 }
 
 .text-align-right

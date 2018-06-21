@@ -10,12 +10,23 @@ import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom';
 
 class App extends Component {
+    matchRuleShort(str, rule) {
+        return new RegExp("^" + rule.split("*").join(".*") + "$").test(str);
+    }
+
     render() {
-        const HeaderWithRouter = withRouter(props =>
-            <Header
-                staffTabs={this.props.staffTabs}
-                route={props.location.pathname}
-            />
+        const HeaderWithRouter = withRouter(props => {
+            //Hide navbar if staff edit
+            if (!this.matchRuleShort(props.location.pathname, "/staff/*")) {
+                return <Header
+                    staffTabs={this.props.staffTabs}
+                    route={props.location.pathname}
+                />
+            }
+            else {
+                return '';
+            }
+        }
         );
 
         return (

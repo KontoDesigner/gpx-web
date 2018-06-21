@@ -6,7 +6,6 @@ import EmployeeInformation from './employeeInformation'
 import FollowingSeason from './followingSeason'
 import Gap from './gap'
 import NextSeason from './nextSeason'
-import PhotoFile from './photoFile'
 import PlannedMove from './plannedMove'
 import WorkExperience from './workExperience'
 import { Row, Col } from 'reactstrap'
@@ -16,12 +15,18 @@ class EmployeeInfo extends Component {
         return (
             <div>
                 <Row>
-                    <Col>
-                        <ContactInformation />
+                    <Col sm="12" md="12" lg="6">
+                        <ContactInformation
+                            staff={this.props.staff}
+                            updateStaffFieldState={this.props.updateStaffFieldState}
+                        />
                     </Col>
 
-                    <Col>
-                        <EmployeeInformation />
+                    <Col sm="12" md="12" lg="6">
+                        <EmployeeInformation
+                            staff={this.props.staff}
+                            updateStaffFieldState={this.props.updateStaffFieldState}
+                        />
                     </Col>
                 </Row>
 
@@ -32,16 +37,15 @@ class EmployeeInfo extends Component {
                 </Row>
 
                 <Row>
-                    <Col>
+                    <Col sm="12" md="12" lg="4" xl="4">
                         <CurrentSeason />
                     </Col>
 
-                    <Col>
+                    <Col sm="12" md="12" lg="4" xl="4">
                         <Gap />
                     </Col>
 
-
-                    <Col>
+                    <Col sm="12" md="12" lg="4" xl="4">
                         <NextSeason />
 
                         <PlannedMove />
@@ -53,12 +57,6 @@ class EmployeeInfo extends Component {
                 <Row>
                     <Col>
                         <WorkExperience />
-                    </Col>
-                </Row>
-
-                <Row>
-                    <Col>
-                        <PhotoFile />
                     </Col>
                 </Row>
             </div>
