@@ -1,8 +1,15 @@
 import React from 'react';
+import { Card, CardBody, CardHeader } from 'reactstrap'
 
 const PhotoFile = () => {
     return (
-        <div>PhotoFile</div>
+        <Card>
+            <CardHeader>PhotoFile</CardHeader>
+
+            <CardBody>
+                PhotoFile
+            </CardBody>
+        </Card>
     );
 };
 

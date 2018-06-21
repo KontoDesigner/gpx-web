@@ -1,8 +1,15 @@
 import React from 'react';
+import { Card, CardBody, CardHeader } from 'reactstrap'
 
 const ContactInformation = () => {
     return (
-        <div>ContactInformation</div>
+        <Card>
+            <CardHeader>ContactInformation</CardHeader>
+
+            <CardBody>
+                ContactInformation
+            </CardBody>
+        </Card>
     );
 };
 

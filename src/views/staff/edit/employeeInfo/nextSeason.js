@@ -1,8 +1,15 @@
 import React from 'react';
+import { Card, CardBody, CardHeader } from 'reactstrap'
 
 const NextSeason = () => {
     return (
-        <div>NextSeason</div>
+        <Card>
+            <CardHeader>NextSeason</CardHeader>
+
+            <CardBody>
+                NextSeason
+            </CardBody>
+        </Card>
     );
 };
 

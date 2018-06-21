@@ -52,9 +52,9 @@ class Edit extends Component {
         if (this.state.staff !== null) {
             return (
                 <div>
-                    <Row style={{ borderBottom: '1px solid #ddd' }}>
+                    <Row style={{ borderBottom: '1px solid #ddd', marginBottom: '15px' }}>
                         <Col className="no-padding-left no-padding-right">
-                            <Nav className="nav-tab" style={{ backgroundColor: '#fff', paddingTop: '0px' }}>
+                            <Nav className="nav-tab nav-tab-edit" style={{ backgroundColor: '#fff', paddingTop: '0px' }}>
                                 <NavItem>
                                     <NavLink
                                         className={classnames({ active: this.state.activeTab === 'employeeInfo' })}

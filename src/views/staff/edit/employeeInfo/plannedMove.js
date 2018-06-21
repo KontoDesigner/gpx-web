@@ -1,8 +1,15 @@
 import React from 'react';
+import { Card, CardBody, CardHeader } from 'reactstrap'
 
 const PlannedMove = () => {
     return (
-        <div>PlannedMove</div>
+        <Card>
+            <CardHeader>PlannedMove</CardHeader>
+
+            <CardBody>
+                PlannedMove
+            </CardBody>
+        </Card>
     );
 };
 

@@ -1,8 +1,15 @@
 import React from 'react';
+import { Card, CardBody, CardHeader } from 'reactstrap'
 
 const AssignedRoles = () => {
     return (
-        <div>AssignedRoles</div>
+        <Card>
+            <CardHeader>AssignedRoles</CardHeader>
+
+            <CardBody>
+                AssignedRoles
+            </CardBody>
+        </Card>
     );
 };
 

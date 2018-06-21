@@ -1,8 +1,15 @@
 import React from 'react';
+import { Card, CardBody, CardHeader } from 'reactstrap'
 
 const Gap = () => {
     return (
-        <div>Gap</div>
+        <Card>
+            <CardHeader>Gap</CardHeader>
+
+            <CardBody>
+                Gap
+            </CardBody>
+        </Card>
     );
 };
 

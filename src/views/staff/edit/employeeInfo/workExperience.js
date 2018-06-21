@@ -1,8 +1,15 @@
 import React from 'react';
+import { Card, CardBody, CardHeader } from 'reactstrap'
 
 const WorkExperience = () => {
     return (
-        <div>WorkExperience</div>
+        <Card>
+            <CardHeader>WorkExperience</CardHeader>
+
+            <CardBody>
+                WorkExperience
+            </CardBody>
+        </Card>
     );
 };
 
