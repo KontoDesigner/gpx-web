@@ -2,6 +2,18 @@ import React, { Component } from 'react'
 import { ContextMenuTrigger } from 'react-contextmenu'
 import { AutoSizer, Table as ReactVirtualizedTable, Column } from 'react-virtualized'
 
+function arrayUnique(array) {
+  var a = array.concat();
+  for (var i = 0; i < a.length; ++i) {
+    for (var j = i + 1; j < a.length; ++j) {
+      if (a[i] === a[j])
+        a.splice(j--, 1);
+    }
+  }
+
+  return a;
+}
+
 class Table extends Component {
   constructor(props) {
     super()
@@ -9,7 +21,7 @@ class Table extends Component {
     this.state = {
       sortBy: '',
       sortDirection: 'ASC',
-      list: JSON.parse(JSON.stringify(props.list)),
+      list: Object.assign([], props.list),
       selected: []
     }
   }
@@ -71,21 +83,34 @@ class Table extends Component {
     let selected = []
 
     if (value) {
+      //Add all local to minor state
       selected = this.state.list.map(l => l[this.props.identifier])
     }
-    else {
-      for (var val of this.props.list) {
-        const index = selected.indexOf(val);
 
-        if (index !== -1) {
-          selected.splice(index, 1);
-        }
-      }
-    }
-
+    //Update minor state
     this.setState({ selected })
 
-    this.props.updateSelectedState(selected)
+    //Update major state
+    if (value) {
+      //Add all local to major state
+      const all = arrayUnique(selected.concat(this.props.selected));
+
+      this.props.updateSelectedState(all)
+    }
+    else {
+      //Remove all local from major state
+      let all = Object.assign([], this.props.selected)
+
+      for (var val of this.state.selected) {
+        const index = all.indexOf(val);
+
+        if (index !== -1) {
+          all.splice(index, 1);
+        }
+      }
+
+      this.props.updateSelectedState(all)
+    }
   }
 
   selectRow = (event, row) => {
@@ -106,9 +131,26 @@ class Table extends Component {
       }
     }
 
+    //Update minor state
     this.setState({ selected })
 
-    this.props.updateSelectedState(selected)
+    //Update major state
+    if (value) {
+      const all = arrayUnique(selected.concat(this.props.selected));
+
+      this.props.updateSelectedState(all)
+    }
+    else {
+      let all = Object.assign([], this.props.selected)
+
+      const index = all.indexOf(id);
+
+      if (index !== -1) {
+        all.splice(index, 1);
+      }
+
+      this.props.updateSelectedState(all)
+    }
   }
 
   render() {
