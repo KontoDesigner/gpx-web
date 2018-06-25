@@ -141,3 +141,8 @@
 {
     margin-top: -2px;
 }
+
+.ReactVirtualized__Table__row>.ReactVirtualized__Table__rowColumn
+{
+    min-height:42px;
+}
