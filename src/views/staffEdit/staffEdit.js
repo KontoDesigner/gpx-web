@@ -25,6 +25,7 @@ class StaffEdit extends Component {
     }
 
     async componentDidMount() {
+        //We dont load staff into redux here
         const { match: { params } } = this.props;
 
         this.props.beginAjaxCall();
@@ -52,7 +53,6 @@ class StaffEdit extends Component {
         const field = event.target.name;
 
         let staff = Object.assign({}, this.state.staff);
-
         staff[field] = event.target.value;
 
         return this.setState({ staff });
@@ -61,8 +61,10 @@ class StaffEdit extends Component {
     updateStaffSourceMarketState = sourceMarket => {
         const sourceMarketId = sourceMarket != null ? sourceMarket.id : undefined
 
-        this.props.filterActions.handleSourceMarket(sourceMarketId)
-        this.props.getData(sourceMarketId, this.props.filter.text)
+        let staff = Object.assign({}, this.state.staff);
+        staff.sourceMarket = sourceMarketId;
+
+        return this.setState({ staff });
     }
 
     toggle = (activeTab) => {

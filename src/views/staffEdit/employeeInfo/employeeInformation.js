@@ -21,14 +21,13 @@ const EmployeeInformation = (props) => {
                             <label htmlFor="sourceMarket">Source Market</label>
 
                             <Select
-                                name="sourceMarket"
                                 id="sourceMarket"
                                 valueKey="id"
                                 labelKey="name"
                                 className="form-control"
                                 options={props.sourceMarkets}
                                 onChange={props.updateStaffSourceMarketState}
-                                value={props.staff.sourceMarket}
+                                value={props.staff.sourceMarket === '' ? null : props.staff.sourceMarket}
                                 placeholder="Source Market"
                             />
                         </div>
