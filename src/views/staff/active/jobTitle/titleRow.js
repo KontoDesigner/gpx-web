@@ -34,7 +34,7 @@ class TitleRow extends Component {
             {this.props.jobTitle.destinations.map((destination, index) => (
               <DestinationRow
                 key={index}
-                index={this.props.index + index}
+                index={this.props.index.toString() + index.toString()}
                 destination={destination}
                 handleSelectedStaff={this.props.handleSelectedStaff}
                 selectedStaff={this.props.selectedStaff}

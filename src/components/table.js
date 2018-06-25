@@ -21,7 +21,9 @@ class Table extends Component {
     this.state = {
       sortBy: '',
       sortDirection: 'ASC',
+      //We need a local state here for sorting
       list: Object.assign([], props.list),
+      //We need a local state here for keeping track on panel selects 
       selected: []
     }
   }
