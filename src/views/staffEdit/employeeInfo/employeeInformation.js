@@ -40,8 +40,19 @@ const EmployeeInformation = (props) => {
                     </Col>
 
                     <Col sm="12" md="6" lg="6" xl="4">
-                        <div className="form-group">
-                            <TextInput name="positionType" label="Position Type" value={props.staff.positionType} onChange={props.updateStaffFieldState} />
+                        <div className="form-group form-group-select">
+                            <label htmlFor="sourceMarket">Position Type</label>
+
+                            <Select
+                                id="positionType"
+                                valueKey="id"
+                                labelKey="name"
+                                className="form-control"
+                                options={props.positionTypes}
+                                onChange={props.updateStaffPositionTypeState}
+                                value={props.staff.positionType === '' ? null : props.staff.positionType}
+                                placeholder="Position Type"
+                            />
                         </div>
                     </Col>
 

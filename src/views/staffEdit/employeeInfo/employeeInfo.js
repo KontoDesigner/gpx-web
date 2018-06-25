@@ -27,6 +27,8 @@ const EmployeeInfo = (props) => {
                         updateStaffFieldState={props.updateStaffFieldState}
                         updateStaffSourceMarketState={props.updateStaffSourceMarketState}
                         sourceMarkets={props.sourceMarkets}
+                        positionTypes={props.positionTypes}
+                        updateStaffPositionTypeState={props.updateStaffPositionTypeState}
                     />
                 </Col>
             </Row>

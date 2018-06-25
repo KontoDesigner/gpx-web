@@ -20,7 +20,25 @@ class StaffEdit extends Component {
         this.state = {
             staff: null,
             activeTab: 'employeeInfo',
-            staffId: ''
+            staffId: '',
+            positionTypes: [
+                {
+                    id: 'Posted',
+                    name: 'Posted'
+                },
+                {
+                    id: 'Local',
+                    name: 'Local'
+                },
+                {
+                    id: 'Freelance',
+                    name: 'Freelance'
+                },
+                {
+                    id: 'Flexible',
+                    name: 'Flexible'
+                }
+            ]
         }
     }
 
@@ -63,6 +81,15 @@ class StaffEdit extends Component {
 
         let staff = Object.assign({}, this.state.staff);
         staff.sourceMarket = sourceMarketId;
+
+        return this.setState({ staff });
+    }
+
+    updateStaffPositionTypeState = positionType => {
+        const positionTypeId = positionType != null ? positionType.id : undefined
+
+        let staff = Object.assign({}, this.state.staff);
+        staff.positionType = positionTypeId;
 
         return this.setState({ staff });
     }
@@ -173,6 +200,8 @@ class StaffEdit extends Component {
                                         updateStaffFieldState={this.updateStaffFieldState}
                                         updateStaffSourceMarketState={this.updateStaffSourceMarketState}
                                         sourceMarkets={this.props.sourceMarkets}
+                                        positionTypes={this.state.positionTypes}
+                                        updateStaffPositionTypeState={this.updateStaffPositionTypeState}
                                     />
                                 </TabPane>
 
