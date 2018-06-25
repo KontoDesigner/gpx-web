@@ -14,7 +14,7 @@ const NotFound = (props) => {
             </CardBody>
 
             <CardFooter>
-                <LinkContainer to="/home">
+                <LinkContainer to="/staff">
                     <Button color="primary">Back</Button>
                 </LinkContainer>
             </CardFooter>

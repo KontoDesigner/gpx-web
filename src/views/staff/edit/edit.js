@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import RestClient from '../../../infrastructure/restClient'
 import { beginAjaxCall, endAjaxCall, ajaxCallError } from '../../../actions/ajaxStatusActions'
-import { TabContent, TabPane, Nav, NavItem, NavLink, Row, Col } from 'reactstrap'
+import { TabContent, TabPane, Nav, NavItem, NavLink, Row, Col, Card, CardHeader, CardBody, CardFooter, Button } from 'reactstrap'
 import EmployeeInfo from './employeeInfo/employeeInfo'
 import FullYearReview from './fullYearReview/fullYearReview'
 import Applications from './applications/applications'
@@ -11,6 +11,7 @@ import A1 from './a1/a1'
 import Team from './team/team'
 import History from './history/history'
 import classnames from 'classnames'
+import { LinkContainer } from 'react-router-bootstrap';
 
 class Edit extends Component {
     constructor() {
@@ -19,6 +20,7 @@ class Edit extends Component {
         this.state = {
             staff: null,
             activeTab: 'employeeInfo',
+            staffId: ''
         }
     }
 
@@ -28,11 +30,15 @@ class Edit extends Component {
         this.props.beginAjaxCall();
 
         try {
-            const staff = await RestClient.Get(`staff/${params.id}`)
+            const staffId = params.id;
 
-            document.title = `${staff.firstNameLastName} - GPX`;
+            const staff = await RestClient.Get(`staff/${staffId}`)
 
-            this.setState({ staff });
+            if (staff !== undefined) {
+                document.title = `${staff.firstNameLastName} - GPX`;
+            }
+
+            this.setState({ staff, staffId });
 
             this.props.endAjaxCall();
         } catch (error) {
@@ -61,7 +67,31 @@ class Edit extends Component {
     }
 
     render() {
-        if (this.state.staff !== null) {
+        if (this.state.staff === undefined) {
+            return (
+                <Card>
+                    <CardHeader>
+                        Could not find staff
+                    </CardHeader>
+
+                    <CardBody>
+                        <p className="card-text">Staff with id: <b>{this.state.staffId}</b> was not found.</p>
+                    </CardBody>
+
+                    <CardFooter>
+                        <LinkContainer to="/staff">
+                            <Button color="primary">Back</Button>
+                        </LinkContainer>
+                    </CardFooter>
+                </Card>
+            )
+        }
+        if (this.state.staff === null) {
+            return (
+                ''
+            )
+        }
+        else {
             return (
                 <div>
                     <Row style={{ borderBottom: '1px solid #ddd', marginBottom: '15px' }}>
@@ -159,9 +189,6 @@ class Edit extends Component {
                     </Row>
                 </div>
             )
-        }
-        else {
-            return ('')
         }
     }
 }

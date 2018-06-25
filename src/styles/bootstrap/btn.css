@@ -10,6 +10,11 @@
     border-left: 1px solid #d8d8d8;
 }
 
+a.btn.btn-primary
+{
+  color:#fff!important;
+}
+
 .btn {
   display: inline-block;
   font-weight: 400;
