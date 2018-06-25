@@ -11,7 +11,19 @@ const ContactInformation = (props) => {
                 <Row>
                     <Col sm="12" md="6" lg="6" xl="4">
                         <div className="form-group">
-                            <TextInput name="firstNameLastName" label="Full Name" value={props.staff.firstNameLastName} onChange={props.updateStaffFieldState} />
+                            <TextInput name="firstName" label="First Name" value={props.staff.firstName} onChange={props.updateStaffFieldState} />
+                        </div>
+                    </Col>
+
+                    <Col sm="12" md="6" lg="6" xl="4">
+                        <div className="form-group">
+                            <TextInput name="lastName" label="Last Name" value={props.staff.lastName} onChange={props.updateStaffFieldState} />
+                        </div>
+                    </Col>
+
+                    <Col sm="12" md="6" lg="6" xl="4">
+                        <div className="form-group">
+                            <TextInput name="fullName" label="Full Name" value={props.staff.lastName + ' ' + props.staff.lastName} disabled={true} />
                         </div>
                     </Col>
 

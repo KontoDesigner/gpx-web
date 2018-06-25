@@ -6,10 +6,20 @@ import Footer from './components/footer';
 import { BrowserRouter } from 'react-router-dom';
 import ReduxToastr from 'react-redux-toastr';
 import './styles/site.css';
-import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom';
+import * as filterActions from './actions/staff/filterActions'
+import * as footerActions from './actions/footerActions'
+import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
 
 class App extends Component {
+    componentDidMount() {
+        this.props.filterActions.getSourceMarkets()
+        this.props.footerActions.getVersion()
+        this.props.footerActions.getSupportEmail()
+        this.props.footerActions.getWikiUrl()
+    }
+
     matchRuleShort(str, rule) {
         return new RegExp("^" + rule.split("*").join(".*") + "$").test(str);
     }
@@ -48,7 +58,11 @@ class App extends Component {
 
                     <Routes />
 
-                    <Footer />
+                    <Footer
+                        version={this.props.version}
+                        supportEmail={this.props.supportEmail}
+                        wikiUrl={this.props.wikiUrl}
+                    />
                 </div>
             </BrowserRouter>
         );
@@ -57,10 +71,20 @@ class App extends Component {
 
 function mapStateToProps(state) {
     return {
-        staffTabs: state.staff.tabs
+        version: state.footer.version,
+        supportEmail: state.footer.supportEmail,
+        wikiUrl: state.footer.wikiUrl
+    };
+}
+
+function mapDispatchToProps(dispatch) {
+    return {
+        filterActions: bindActionCreators(filterActions, dispatch),
+        footerActions: bindActionCreators(footerActions, dispatch)
     }
 }
 
 export default connect(
-    mapStateToProps
+    mapStateToProps,
+    mapDispatchToProps
 )(App)

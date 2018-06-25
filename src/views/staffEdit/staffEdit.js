@@ -58,6 +58,13 @@ class StaffEdit extends Component {
         return this.setState({ staff });
     }
 
+    updateStaffSourceMarketState = sourceMarket => {
+        const sourceMarketId = sourceMarket != null ? sourceMarket.id : undefined
+
+        this.props.filterActions.handleSourceMarket(sourceMarketId)
+        this.props.getData(sourceMarketId, this.props.filter.text)
+    }
+
     toggle = (activeTab) => {
         if (this.state.activeTab !== activeTab) {
             this.setState({
@@ -67,7 +74,12 @@ class StaffEdit extends Component {
     }
 
     render() {
-        if (this.state.staff === undefined) {
+        if (this.state.staff === null) {
+            return (
+                ''
+            )
+        }
+        else if (this.state.staff === undefined) {
             return (
                 <Card>
                     <CardHeader>
@@ -84,11 +96,6 @@ class StaffEdit extends Component {
                         </LinkContainer>
                     </CardFooter>
                 </Card>
-            )
-        }
-        if (this.state.staff === null) {
-            return (
-                ''
             )
         }
         else {
@@ -162,6 +169,8 @@ class StaffEdit extends Component {
                                     <EmployeeInfo
                                         staff={this.state.staff}
                                         updateStaffFieldState={this.updateStaffFieldState}
+                                        updateStaffSourceMarketState={this.updateStaffSourceMarketState}
+                                        sourceMarkets={this.props.sourceMarkets}
                                     />
                                 </TabPane>
 
@@ -195,6 +204,7 @@ class StaffEdit extends Component {
 
 function mapStateToProps(state) {
     return {
+        sourceMarkets: state.staff.filter.sourceMarkets
     }
 }
 

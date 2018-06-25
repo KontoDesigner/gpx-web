@@ -41,8 +41,6 @@ class Staff extends Component {
     this.props.filterActions.handleFilter()
 
     this.props.headOfActions.getHeadOf()
-
-    this.props.filterActions.getSourceMarkets()
   }
 
   toggle = (tab, getData, resetData) => {

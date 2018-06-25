@@ -1,9 +1,9 @@
 import React from 'react';
 import { Card, CardBody, CardHeader, Row, Col } from 'reactstrap'
 import TextInput from '../../../components/textInput'
+import Select from 'react-select'
 
 const EmployeeInformation = (props) => {
-    console.log(props.staff);
     return (
         <Card>
             <CardHeader>Employee Information</CardHeader>
@@ -17,8 +17,20 @@ const EmployeeInformation = (props) => {
                     </Col>
 
                     <Col sm="12" md="6" lg="6" xl="4">
-                        <div className="form-group">
-                            <TextInput name="sourceMarket" label="Source Market" value={props.staff.sourceMarket} onChange={props.updateStaffFieldState} />
+                        <div className="form-group form-group-select">
+                            <label htmlFor="sourceMarket">Source Market</label>
+
+                            <Select
+                                name="sourceMarket"
+                                id="sourceMarket"
+                                valueKey="id"
+                                labelKey="name"
+                                className="form-control"
+                                options={props.sourceMarkets}
+                                onChange={props.updateStaffSourceMarketState}
+                                value={props.staff.sourceMarket}
+                                placeholder="Source Market"
+                            />
                         </div>
                     </Col>
 
@@ -27,12 +39,6 @@ const EmployeeInformation = (props) => {
                             <TextInput name="empID" label="Employee ID" value={props.staff.empID} onChange={props.updateStaffFieldState} />
                         </div>
                     </Col>
-
-                    {/* <Col sm="12" md="6" lg="6" xl="4">
-                        <div className="form-group">
-                            <TextInput name="empID" label="SAP ID" value={props.staff.empID} onChange={props.updateStaffFieldState} />
-                        </div>
-                    </Col> */}
 
                     <Col sm="12" md="6" lg="6" xl="4">
                         <div className="form-group">
@@ -52,29 +58,11 @@ const EmployeeInformation = (props) => {
                         </div>
                     </Col>
 
-                    {/* <Col sm="12" md="6" lg="6" xl="4">
-                        <div className="form-group">
-                            <TextInput name="dateOfBirth" label="Manager" value={props.staff.dateOfBirth} onChange={props.updateStaffFieldState} />
-                        </div>
-                    </Col> */}
-
                     <Col sm="12" md="6" lg="6" xl="4">
                         <div className="form-group">
                             <TextInput name="dateJoined" label="Date First Joined The Company" value={props.staff.dateJoined} onChange={props.updateStaffFieldState} />
                         </div>
                     </Col>
-
-                    {/* <Col sm="12" md="6" lg="6" xl="4">
-                        <div className="form-group">
-                            <TextInput name="dateJoined" label="Passport" value={props.staff.dateJoined} onChange={props.updateStaffFieldState} />
-                        </div>
-                    </Col> */}
-
-                    {/* <Col sm="12" md="6" lg="6" xl="4">
-                        <div className="form-group">
-                            <TextInput name="dateJoined" label="Passport Expires" value={props.staff.dateJoined} onChange={props.updateStaffFieldState} />
-                        </div>
-                    </Col> */}
 
                     <Col sm="12" md="6" lg="6" xl="4">
                         <div className="form-group">
@@ -87,12 +75,6 @@ const EmployeeInformation = (props) => {
                             <TextInput name="drivingYear" label="Driving Year" value={props.staff.drivingYear} onChange={props.updateStaffFieldState} />
                         </div>
                     </Col>
-
-                    {/* <Col sm="12" md="6" lg="6" xl="4">
-                        <div className="form-group">
-                            <label>Next of Kin</label>
-                        </div>
-                    </Col> */}
                 </Row>
             </CardBody>
         </Card>
