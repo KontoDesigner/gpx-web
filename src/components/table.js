@@ -73,6 +73,15 @@ class Table extends Component {
     if (value) {
       selected = this.state.list.map(l => l[this.props.identifier])
     }
+    else {
+      for (var val of this.props.list) {
+        const index = selected.indexOf(val);
+
+        if (index !== -1) {
+          selected.splice(index, 1);
+        }
+      }
+    }
 
     this.setState({ selected })
 
