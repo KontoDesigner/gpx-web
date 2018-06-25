@@ -5,27 +5,6 @@ import Filter from '../../filter'
 import Action from '../../action'
 
 class HeadOf extends Component {
-  constructor() {
-    super()
-
-    this.state = {
-      selectedPersons: []
-    }
-  }
-
-  componentWillReceiveProps() {
-    if (this.state.selectedPersons.length !== 0) {
-      //Reset selectedPersons if props change
-      this.setState({
-        selectedPersons: []
-      });
-    }
-  }
-
-  updateSelectedPersonsState = (selectedPersons) => {
-    this.setState({ selectedPersons })
-  }
-
   render() {
     return (
       <Card>
@@ -35,7 +14,7 @@ class HeadOf extends Component {
           <Row>
             <Filter getData={this.props.getHeadOf} />
 
-            <Action selected={this.state.selectedPersons} />
+            <Action selected={this.props.selectedStaff} />
           </Row>
 
           {this.props.headOf.map((headOf, index) =>
@@ -43,8 +22,8 @@ class HeadOf extends Component {
               key={index}
               index={index}
               headOf={headOf}
-              selectedPersons={this.state.selectedPersons}
-              updateSelectedPersonsState={this.updateSelectedPersonsState}
+              handleSelectedStaff={this.props.handleSelectedStaff}
+              selectedStaff={this.props.selectedStaff}
               edit={this.props.edit}
             />
           )}

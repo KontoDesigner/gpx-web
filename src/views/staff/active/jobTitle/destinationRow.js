@@ -19,8 +19,8 @@ class DestinationRow extends Component {
     const icon = this.state.expanded ? (
       <i className="fa fa-chevron-up float-right text-danger" />
     ) : (
-      <i className="fa fa-chevron-down float-right text-danger" />
-    )
+        <i className="fa fa-chevron-down float-right text-danger" />
+      )
 
     const style = {
       height: `${42 + this.props.destination.staffs.length * 41}px`
@@ -33,12 +33,13 @@ class DestinationRow extends Component {
         </CardHeader>
 
         <Collapse isOpen={this.state.expanded}>
-          <CardBody style={style} className="no-padding-bottom">
+          <CardBody style={style} className="card-body-table">
             <PersonTable
               index={this.props.index}
               persons={this.props.destination.staffs}
-              selectedPersons={this.props.selectedPersons}
-              updateSelectedPersonsState={this.props.updateSelectedPersonsState}
+              handleSelectedStaff={this.props.handleSelectedStaff}
+              selectedStaff={this.props.selectedStaff}
+              edit={this.props.edit}
             />
           </CardBody>
         </Collapse>

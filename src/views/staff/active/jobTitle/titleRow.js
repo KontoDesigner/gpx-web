@@ -20,8 +20,8 @@ class TitleRow extends Component {
     const icon = this.state.expanded ? (
       <i className="fa fa-chevron-up float-right text-danger" />
     ) : (
-      <i className="fa fa-chevron-down float-right text-danger" />
-    )
+        <i className="fa fa-chevron-down float-right text-danger" />
+      )
 
     return (
       <Card className="card-accordion">
@@ -36,8 +36,9 @@ class TitleRow extends Component {
                 key={index}
                 index={this.props.index + index}
                 destination={destination}
-                selectedPersons={this.props.selectedPersons}
-                updateSelectedPersonsState={this.props.updateSelectedPersonsState}
+                handleSelectedStaff={this.props.handleSelectedStaff}
+                selectedStaff={this.props.selectedStaff}
+                edit={this.props.edit}
               />
             ))}
           </CardBody>

@@ -146,3 +146,9 @@
 {
     min-height:42px;
 }
+
+.table-checkbox .ReactVirtualized__Table__headerRow > .ReactVirtualized__Table__headerColumn:first-child,
+.table-checkbox .ReactVirtualized__Table__row > .ReactVirtualized__Table__rowColumn:first-child
+{
+    flex:none!important;
+}

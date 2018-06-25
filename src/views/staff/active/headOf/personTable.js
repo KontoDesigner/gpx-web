@@ -1,6 +1,6 @@
 import React from 'react'
 import { ContextMenu, MenuItem } from 'react-contextmenu'
-import Table from '../../../../components/table.js';
+import Table from '../../../../components/table.js'
 
 const columns = [
   { label: 'Name', dataKey: 'firstNameLastName' },
@@ -11,7 +11,7 @@ const columns = [
 ];
 
 const PersonTable = (props) => {
-  const onContextMenuClick = (e, data) => {
+  function onContextMenuClick(e, data) {
     alert(data.foo)
   }
 
@@ -36,12 +36,12 @@ const PersonTable = (props) => {
         contextMenuId={contextMenuId}
         columns={columns}
         checkbox={true}
-        selected={props.selectedPersons}
-        updateSelectedState={props.updateSelectedPersonsState}
         identifier={'id'}
         edit={props.edit}
+        updateSelectedState={props.handleSelectedStaff}
+        selected={props.selectedStaff}
       />
-    </div>
+    </div >
   )
 }
 

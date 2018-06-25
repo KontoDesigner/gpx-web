@@ -8,18 +8,12 @@ const columns = [
   { label: 'Id', dataKey: 'staffID' }
 ]
 
-const selected = []
-
 const PersonTable = props => {
   const onContextMenuClick = (e, data) => {
     alert(data.foo)
   }
 
   const contextMenuId = props.index + '-jobTitleContextMenu'
-
-  const edit = id => {
-    alert(id)
-  }
 
   return (
     <div>
@@ -39,11 +33,11 @@ const PersonTable = props => {
         list={props.persons}
         contextMenuId={contextMenuId}
         columns={columns}
-        selected={selected}
-        updateSelectedPersonsState={props.updateSelectedPersonsState}
         checkbox={true}
         identifier={'id'}
-        edit={edit}
+        edit={props.edit}
+        updateSelectedState={props.handleSelectedStaff}
+        selected={props.selectedStaff}
       />
     </div>
   )

@@ -35,8 +35,9 @@ class DestinationRow extends Component {
                 key={index}
                 index={this.props.index + index}
                 jobTitle={jobTitle}
-                selectedPersons={this.props.selectedPersons}
-                updateSelectedPersonsState={this.props.updateSelectedPersonsState}
+                handleSelectedStaff={this.props.handleSelectedStaff}
+                selectedStaff={this.props.selectedStaff}
+                edit={this.props.edit}
               />
             ))}
           </CardBody>

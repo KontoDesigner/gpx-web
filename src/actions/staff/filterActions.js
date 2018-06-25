@@ -16,6 +16,13 @@ export function handleSourceMarket(sourceMarket) {
   }
 }
 
+export function handleSelectedStaff(selectedStaff) {
+  return {
+    type: types.HANDLE_SELECTEDSTAFF,
+    data: { selectedStaff: selectedStaff }
+  }
+}
+
 export function handleFilter(filter) {
   return {
     type: types.HANDLE_FILTER,
@@ -31,7 +38,7 @@ export function getSourceMarketsSuccess(sourceMarkets) {
 }
 
 export function getSourceMarkets() {
-  return async function(dispatch) {
+  return async function (dispatch) {
     dispatch(beginAjaxCall())
 
     try {

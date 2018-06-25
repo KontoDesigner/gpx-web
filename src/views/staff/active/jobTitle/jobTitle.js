@@ -25,7 +25,14 @@ class JobTitle extends Component {
             <Action />
           </Row>
           {this.props.jobTitle.map((jobTitle, index) => (
-            <TitleRow key={index} index={index} jobTitle={jobTitle} updateSelectedPersonsState={this.updateSelectedPersonsState} />
+            <TitleRow
+              key={index}
+              index={index}
+              jobTitle={jobTitle}
+              handleSelectedStaff={this.props.handleSelectedStaff}
+              selectedStaff={this.props.selectedStaff}
+              edit={this.props.edit}
+            />
           ))}
         </CardBody>
       </Card>

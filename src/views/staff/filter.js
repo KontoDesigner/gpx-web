@@ -63,7 +63,7 @@ class Filter extends Component {
   }
 }
 
-function mapStateToProps(state, ownProps) {
+function mapStateToProps(state) {
   return {
     filter: state.staff.filter
   }

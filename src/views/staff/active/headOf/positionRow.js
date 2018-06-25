@@ -19,8 +19,8 @@ class PositionTable extends Component {
     const icon = this.state.expanded ? (
       <i className="fa fa-chevron-up float-right text-danger" />
     ) : (
-      <i className="fa fa-chevron-down float-right text-danger" />
-    )
+        <i className="fa fa-chevron-down float-right text-danger" />
+      )
 
     const style = {
       height: `${42 + this.props.jobTitle.staffs.length * 41}px`
@@ -37,8 +37,8 @@ class PositionTable extends Component {
             <PersonTable
               index={this.props.index}
               persons={this.props.jobTitle.staffs}
-              selectedPersons={this.props.selectedPersons}
-              updateSelectedPersonsState={this.props.updateSelectedPersonsState}
+              handleSelectedStaff={this.props.handleSelectedStaff}
+              selectedStaff={this.props.selectedStaff}
               edit={this.props.edit}
             />
           </CardBody>

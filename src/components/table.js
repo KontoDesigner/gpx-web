@@ -26,6 +26,13 @@ class Table extends Component {
     }
   }
 
+  // shouldComponentUpdate(nextProps, nextState) {
+  //   console.log(nextProps)
+  //   console.log(nextState)
+  //   return true;
+  //   // return !equals(nextProps, this.props); // equals() is your implementation
+  // }
+
   rowRenderer = ({ columns, index, className, style, ...props }) => {
     const rowClassName =
       (this.state.list.length < 8 ? ' hidden-scroll ' : '') +
@@ -172,6 +179,7 @@ class Table extends Component {
             rowRenderer={this.rowRenderer}
             sort={this.sort}
             sortBy={sortBy}
+            className={this.props.checkbox === true ? 'table-checkbox' : ''}
             sortDirection={sortDirection}>
             {this.props.checkbox === true ? (
               <Column

@@ -13,7 +13,7 @@ import * as headOfActions from '../../actions/staff/active/headOfActions'
 import * as destinationActions from '../../actions/staff/active/destinationActions'
 import * as filterActions from '../../actions/staff/filterActions'
 import * as jobTitleActions from '../../actions/staff/active/jobTitleActions'
-import $ from 'jquery';
+import $ from 'jquery'
 
 class Staff extends Component {
   constructor(props) {
@@ -25,11 +25,21 @@ class Staff extends Component {
     }
   }
 
+  edit = (e, staff) => {
+    if (!$(e.target).is(":checkbox")) {
+      const win = window.open(`/staff/${staff.staffID}`, '_blank');
+
+      win.focus();
+    }
+  }
+
   componentWillMount() {
     document.title = 'Staff - GPX'
   }
 
   componentDidMount() {
+    this.props.filterActions.handleFilter()
+
     this.props.headOfActions.getHeadOf()
 
     this.props.filterActions.getSourceMarkets()
@@ -50,15 +60,6 @@ class Staff extends Component {
         activeTab: tab,
         resetData: resetData
       })
-    }
-  }
-
-  edit = (e, staff) => {
-    if (!$(e.target).is(":checkbox")) {
-      // this.props.history.push(`/staff/${staff.staffID}`)
-
-      const win = window.open(`/staff/${staff.staffID}`, '_blank');
-      win.focus();
     }
   }
 
@@ -146,6 +147,8 @@ class Staff extends Component {
               <HeadOf
                 headOf={this.props.headOf}
                 getHeadOf={(sourcemarket, criteria) => this.props.headOfActions.getHeadOf(sourcemarket, criteria)}
+                handleSelectedStaff={this.props.filterActions.handleSelectedStaff}
+                selectedStaff={this.props.selectedStaff}
                 edit={this.edit}
               />
             </TabPane>
@@ -153,7 +156,9 @@ class Staff extends Component {
             <TabPane tabId="destination">
               <Destination
                 destination={this.props.destination}
-                etDestination={this.props.destinationActions.getDestination}
+                getDestination={this.props.destinationActions.getDestination}
+                handleSelectedStaff={this.props.filterActions.handleSelectedStaff}
+                selectedStaff={this.props.selectedStaff}
                 edit={this.edit}
               />
             </TabPane>
@@ -168,6 +173,8 @@ class Staff extends Component {
               <JobTitle
                 jobTitle={this.props.jobTitle}
                 getJobTitle={this.props.jobTitleActions.getJobTitle}
+                handleSelectedStaff={this.props.filterActions.handleSelectedStaff}
+                selectedStaff={this.props.selectedStaff}
                 edit={this.edit}
               />
             </TabPane>
@@ -195,7 +202,7 @@ function mapStateToProps(state) {
     headOf: state.staff.active.headOf,
     destination: state.staff.active.destination,
     jobTitle: state.staff.active.jobTitle,
-    tabs: state.staff.tabs
+    selectedStaff: state.staff.filter.selectedStaff
   }
 }
 

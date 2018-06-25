@@ -29,7 +29,7 @@ class PositionRow extends Component {
     return (
       <Card className="card-accordion">
         <CardHeader onClick={() => this.toggleCollapse()}>
-          ({this.props.jobTitle.staffs.length}) {this.props.jobTitle.jobTitle} {icon}
+          ({this.props.jobTitle.staffs.length}) {this.props.jobTitle.title} {icon}
         </CardHeader>
 
         <Collapse isOpen={this.state.expanded}>
@@ -37,8 +37,9 @@ class PositionRow extends Component {
             <PersonTable
               index={this.props.index}
               persons={this.props.jobTitle.staffs}
-              selectedPersons={this.props.selectedPersons}
-              updateSelectedPersonsState={this.props.updateSelectedPersonsState}
+              handleSelectedStaff={this.props.handleSelectedStaff}
+              selectedStaff={this.props.selectedStaff}
+              edit={this.props.edit}
             />
           </CardBody>
         </Collapse>

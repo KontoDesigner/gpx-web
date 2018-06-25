@@ -35,8 +35,8 @@ class CountryRow extends Component {
                 key={index}
                 index={this.props.index + index}
                 destination={destination}
-                selectedPersons={this.props.selectedPersons}
-                updateSelectedPersonsState={this.props.updateSelectedPersonsState}
+                handleSelectedStaff={this.props.handleSelectedStaff}
+                selectedStaff={this.props.selectedStaff}
                 edit={this.props.edit}
               />
             ))}

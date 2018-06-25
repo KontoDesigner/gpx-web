@@ -5,27 +5,6 @@ import Filter from '../../filter';
 import Action from '../../action';
 
 class Destination extends Component {
-    constructor() {
-        super()
-
-        this.state = {
-            selectedPersons: []
-        }
-    }
-
-    componentWillReceiveProps() {
-        if (this.state.selectedPersons.length !== 0) {
-            //Reset selectedPersons if props change
-            this.setState({
-                selectedPersons: []
-            });
-        }
-    }
-
-    updateSelectedPersonsState = (selectedPersons) => {
-        this.setState({ selectedPersons })
-    }
-
     render() {
         return (
             <Card>
@@ -37,7 +16,7 @@ class Destination extends Component {
                     <Row>
                         <Filter getData={this.props.getDestination} />
 
-                        <Action selected={this.state.selectedPersons} />
+                        <Action selected={this.props.selectedStaff} />
                     </Row>
 
                     {this.props.destination.map((destination, index) =>
@@ -45,8 +24,9 @@ class Destination extends Component {
                             key={index}
                             index={index}
                             destination={destination}
-                            selectedPersons={this.state.selectedPersons}
-                            updateSelectedPersonsState={this.updateSelectedPersonsState}
+                            handleSelectedStaff={this.props.handleSelectedStaff}
+                            selectedStaff={this.props.selectedStaff}
+                            edit={this.props.edit}
                         />
                     )}
                 </CardBody>
