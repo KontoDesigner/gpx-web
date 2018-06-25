@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import RestClient from '../../../infrastructure/restClient'
-import { beginAjaxCall, endAjaxCall, ajaxCallError } from '../../../actions/ajaxStatusActions'
+import RestClient from '../../infrastructure/restClient'
+import { beginAjaxCall, endAjaxCall, ajaxCallError } from '../../actions/ajaxStatusActions'
 import { TabContent, TabPane, Nav, NavItem, NavLink, Row, Col, Card, CardHeader, CardBody, CardFooter, Button } from 'reactstrap'
 import EmployeeInfo from './employeeInfo/employeeInfo'
 import FullYearReview from './fullYearReview/fullYearReview'
@@ -13,7 +13,7 @@ import History from './history/history'
 import classnames from 'classnames'
 import { LinkContainer } from 'react-router-bootstrap';
 
-class Edit extends Component {
+class StaffEdit extends Component {
     constructor() {
         super()
 
@@ -209,4 +209,4 @@ function mapDispatchToProps(dispatch) {
 export default connect(
     mapStateToProps,
     mapDispatchToProps
-)(Edit)
+)(StaffEdit)

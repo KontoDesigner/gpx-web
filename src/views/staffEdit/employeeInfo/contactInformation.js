@@ -1,6 +1,6 @@
 import React from 'react';
 import { Card, CardBody, CardHeader, Row, Col } from 'reactstrap'
-import TextInput from '../../../../components/textInput'
+import TextInput from '../../../components/textInput'
 
 const ContactInformation = (props) => {
     return (

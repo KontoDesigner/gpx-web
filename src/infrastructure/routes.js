@@ -5,7 +5,7 @@ import Planning from '../views/planning/planning';
 import Reports from '../views/reports/reports';
 import Settings from '../views/settings/settings';
 import NotFound from '../views/notFound/notFound';
-import StaffEdit from '../views/staff/edit/edit';
+import StaffEdit from '../views/staffEdit/staffEdit';
 
 const Routes = () => (
     <div className="container">
