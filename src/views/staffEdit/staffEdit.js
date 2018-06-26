@@ -12,6 +12,7 @@ import Team from './team/team'
 import History from './history/history'
 import classnames from 'classnames'
 import { LinkContainer } from 'react-router-bootstrap';
+import Buttons from './buttons';
 
 class StaffEdit extends Component {
     constructor() {
@@ -38,7 +39,8 @@ class StaffEdit extends Component {
                     id: 'Flexible',
                     name: 'Flexible'
                 }
-            ]
+            ],
+            positionAssigns: []
         }
     }
 
@@ -51,13 +53,20 @@ class StaffEdit extends Component {
         try {
             const staffId = params.id;
 
-            const staff = await RestClient.Get(`staff/${staffId}`)
-
-            if (staff !== undefined) {
-                document.title = `${staff.firstNameLastName} - GPX`;
+            let promise = {
+                staff: await RestClient.Get(`staff/${staffId}`),
+                positionAssigns: await RestClient.Get(`positionassign/assignment/${staffId}`)
             }
 
-            this.setState({ staff, staffId });
+            if (promise.staff !== undefined) {
+                document.title = `${promise.staff.firstNameLastName} - GPX`;
+            }
+
+            this.setState({
+                staff: promise.staff,
+                staffId,
+                positionAssigns: promise.positionAssigns
+            });
 
             this.props.endAjaxCall();
         } catch (error) {
@@ -76,11 +85,27 @@ class StaffEdit extends Component {
         return this.setState({ staff });
     }
 
-    updateStaffSourceMarketState = sourceMarket => {
+    updateStaffDatePickerState = (field, date) => {
+        let staff = Object.assign({}, this.state.staff);
+
+        //Picker
+        if (date._d) {
+            staff[field] = date._d;
+        }
+
+        //Manual
+        if (!date._d) {
+            staff[field] = date;
+        }
+
+        return this.setState({ staff });
+    }
+
+    updateStaffSelectState = (field, sourceMarket) => {
         const sourceMarketId = sourceMarket != null ? sourceMarket.id : undefined
 
         let staff = Object.assign({}, this.state.staff);
-        staff.sourceMarket = sourceMarketId;
+        staff[field] = sourceMarketId;
 
         return this.setState({ staff });
     }
@@ -131,7 +156,7 @@ class StaffEdit extends Component {
             return (
                 <div>
                     <Row style={{ borderBottom: '1px solid #ddd', marginBottom: '15px' }}>
-                        <Col className="no-padding-left no-padding-right">
+                        <Col sm="12" md="12" lg="9" xl="6" className="no-padding-left no-padding-right">
                             <Nav className="nav-tab nav-tab-edit" style={{ backgroundColor: '#fff', paddingTop: '0px' }}>
                                 <NavItem>
                                     <NavLink
@@ -189,6 +214,16 @@ class StaffEdit extends Component {
                                 </NavItem>
                             </Nav>
                         </Col>
+
+                        <Col lg="3" xl="6" className="d-none d-lg-block">
+                            <Buttons />
+                        </Col>
+                    </Row>
+
+                    <Row>
+                        <Col className="d-none d-xs-block d-sm-block d-md-block d-lg-none" style={{paddingBottom: '15px'}}>
+                            <Buttons />
+                        </Col>
                     </Row>
 
                     <Row>
@@ -197,11 +232,11 @@ class StaffEdit extends Component {
                                 <TabPane tabId="employeeInfo">
                                     <EmployeeInfo
                                         staff={this.state.staff}
-                                        updateStaffFieldState={this.updateStaffFieldState}
-                                        updateStaffSourceMarketState={this.updateStaffSourceMarketState}
                                         sourceMarkets={this.props.sourceMarkets}
                                         positionTypes={this.state.positionTypes}
-                                        updateStaffPositionTypeState={this.updateStaffPositionTypeState}
+                                        updateStaffFieldState={this.updateStaffFieldState}
+                                        updateStaffSelectState={this.updateStaffSelectState}
+                                        updateStaffDatePickerState={this.updateStaffDatePickerState}
                                     />
                                 </TabPane>
 

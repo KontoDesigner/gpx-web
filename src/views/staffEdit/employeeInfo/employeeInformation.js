@@ -2,6 +2,7 @@ import React from 'react';
 import { Card, CardBody, CardHeader, Row, Col } from 'reactstrap'
 import TextInput from '../../../components/textInput'
 import Select from 'react-select'
+import Datetime from 'react-datetime'
 
 const EmployeeInformation = (props) => {
     return (
@@ -26,7 +27,7 @@ const EmployeeInformation = (props) => {
                                 labelKey="name"
                                 className="form-control"
                                 options={props.sourceMarkets}
-                                onChange={props.updateStaffSourceMarketState}
+                                onChange={(v) => { props.updateStaffSelectState('sourceMarket', v) }}
                                 value={props.staff.sourceMarket === '' ? null : props.staff.sourceMarket}
                                 placeholder="Source Market"
                             />
@@ -41,7 +42,7 @@ const EmployeeInformation = (props) => {
 
                     <Col sm="12" md="6" lg="6" xl="4">
                         <div className="form-group form-group-select">
-                            <label htmlFor="sourceMarket">Position Type</label>
+                            <label htmlFor="positionType">Position Type</label>
 
                             <Select
                                 id="positionType"
@@ -49,7 +50,7 @@ const EmployeeInformation = (props) => {
                                 labelKey="name"
                                 className="form-control"
                                 options={props.positionTypes}
-                                onChange={props.updateStaffPositionTypeState}
+                                onChange={(v) => { props.updateStaffSelectState('positionType', v) }}
                                 value={props.staff.positionType === '' ? null : props.staff.positionType}
                                 placeholder="Position Type"
                             />
@@ -64,13 +65,31 @@ const EmployeeInformation = (props) => {
 
                     <Col sm="12" md="6" lg="6" xl="4">
                         <div className="form-group">
-                            <TextInput name="dateOfBirth" label="Date Of Birth" value={props.staff.dateOfBirth} onChange={props.updateStaffFieldState} />
+                            <label htmlFor="dateOfBirth">Date Of Birth</label>
+
+                            <Datetime
+                                value={props.staff.dateOfBirth}
+                                onChange={(v) => { props.updateStaffDatePickerState('dateOfBirth', v) }}
+                                timeFormat={false}
+                                dateFormat="YYYY-MM-DD"
+                                closeOnSelect
+                                utc={true}
+                                inputProps={{ placeholder: 'YYYY-MM-DD' }} />
                         </div>
                     </Col>
 
                     <Col sm="12" md="6" lg="6" xl="4">
                         <div className="form-group">
-                            <TextInput name="dateJoined" label="Date First Joined The Company" value={props.staff.dateJoined} onChange={props.updateStaffFieldState} />
+                            <label htmlFor="dateOfBirth">Date First Joined The Company</label>
+
+                            <Datetime
+                                value={props.staff.dateJoined}
+                                onChange={(v) => { props.updateStaffDatePickerState('dateJoined', v) }}
+                                timeFormat={false}
+                                dateFormat="YYYY-MM-DD"
+                                closeOnSelect
+                                utc={true}
+                                inputProps={{ placeholder: 'YYYY-MM-DD' }} />
                         </div>
                     </Col>
 

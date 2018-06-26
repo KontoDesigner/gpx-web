@@ -14,7 +14,7 @@
 .Select-option
 {
     font-weight:400;
-    font-size:14px;
+    font-size:13px;
 }
 
 .Select--multi .Select-clear-zone
@@ -34,13 +34,13 @@
 .Select-placeholder, .Select--single > .Select-control .Select-value
 {
     font-weight:400;
-    font-size:14px;
+    font-size:13px;
     color:#bbb;
 }
 
 .Select.has-value.Select--single > .Select-control .Select-value .Select-value-label, .Select.has-value.is-pseudo-focused.Select--single > .Select-control .Select-value .Select-value-label
 {
-    font-size:14px;
+    font-size:13px;
     color:#337ab7;
 }
 

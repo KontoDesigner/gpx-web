@@ -24,11 +24,11 @@ const EmployeeInfo = (props) => {
                 <Col sm="12" md="12" lg="6">
                     <EmployeeInformation
                         staff={props.staff}
-                        updateStaffFieldState={props.updateStaffFieldState}
-                        updateStaffSourceMarketState={props.updateStaffSourceMarketState}
                         sourceMarkets={props.sourceMarkets}
                         positionTypes={props.positionTypes}
-                        updateStaffPositionTypeState={props.updateStaffPositionTypeState}
+                        updateStaffFieldState={props.updateStaffFieldState}
+                        updateStaffSelectState={props.updateStaffSelectState}
+                        updateStaffDatePickerState={props.updateStaffDatePickerState}
                     />
                 </Col>
             </Row>
