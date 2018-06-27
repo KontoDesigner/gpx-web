@@ -40,7 +40,9 @@ class StaffEdit extends Component {
                     name: 'Flexible'
                 }
             ],
-            positionAssigns: []
+            currentSeason: undefined,
+            nextSeason: undefined,
+            FollowingSeason: undefined
         }
     }
 
@@ -62,10 +64,16 @@ class StaffEdit extends Component {
                 document.title = `${promise.staff.firstNameLastName} - GPX`;
             }
 
+            const currentSeason = promise.positionAssigns[0];
+            const nextSeason = promise.positionAssigns[1];
+            const followingSeason = promise.positionAssigns[2];
+
             this.setState({
                 staff: promise.staff,
                 staffId,
-                positionAssigns: promise.positionAssigns
+                currentSeason,
+                nextSeason,
+                followingSeason
             });
 
             this.props.endAjaxCall();
@@ -221,7 +229,7 @@ class StaffEdit extends Component {
                     </Row>
 
                     <Row>
-                        <Col className="d-none d-xs-block d-sm-block d-md-block d-lg-none" style={{paddingBottom: '15px'}}>
+                        <Col className="d-none d-xs-block d-sm-block d-md-block d-lg-none" style={{ paddingBottom: '15px' }}>
                             <Buttons />
                         </Col>
                     </Row>
@@ -233,10 +241,12 @@ class StaffEdit extends Component {
                                     <EmployeeInfo
                                         staff={this.state.staff}
                                         sourceMarkets={this.props.sourceMarkets}
-                                        positionTypes={this.state.positionTypes}
                                         updateStaffFieldState={this.updateStaffFieldState}
                                         updateStaffSelectState={this.updateStaffSelectState}
                                         updateStaffDatePickerState={this.updateStaffDatePickerState}
+                                        currentSeason={this.state.currentSeason}
+                                        nextSeason={this.state.nextSeason}
+                                        followingSeason={this.state.followingSeason}
                                     />
                                 </TabPane>
 

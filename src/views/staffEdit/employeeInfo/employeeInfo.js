@@ -25,7 +25,6 @@ const EmployeeInfo = (props) => {
                     <EmployeeInformation
                         staff={props.staff}
                         sourceMarkets={props.sourceMarkets}
-                        positionTypes={props.positionTypes}
                         updateStaffFieldState={props.updateStaffFieldState}
                         updateStaffSelectState={props.updateStaffSelectState}
                         updateStaffDatePickerState={props.updateStaffDatePickerState}
@@ -41,7 +40,9 @@ const EmployeeInfo = (props) => {
 
             <Row>
                 <Col sm="12" md="12" lg="4" xl="4">
-                    <CurrentSeason />
+                    <CurrentSeason
+                        currentSeason={props.currentSeason}
+                    />
                 </Col>
 
                 <Col sm="12" md="12" lg="4" xl="4">
@@ -49,11 +50,15 @@ const EmployeeInfo = (props) => {
                 </Col>
 
                 <Col sm="12" md="12" lg="4" xl="4">
-                    <NextSeason />
+                    <NextSeason
+                        nextSeason={props.nextSeason}
+                    />
 
                     <PlannedMove />
 
-                    <FollowingSeason />
+                    <FollowingSeason
+                        followingSeason={props.followingSeason}
+                    />
                 </Col>
             </Row>
 
