@@ -1,6 +1,6 @@
 import React from 'react'
 import ContactInformation from './contactInformation'
-import Season from './season'
+import Season from './season/season'
 import EmployeeInformation from './employeeInformation'
 import Gap from './gap'
 import PlannedMove from './plannedMove'
