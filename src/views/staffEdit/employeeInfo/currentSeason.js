@@ -11,7 +11,7 @@ const CurrentSeason = (props) => {
                 <CardBody>
                     <Row>
                         <Col sm="12" md="6" lg="6" xl="4">
-                            <p className="card-text">No current season found.</p>
+                            <b className="card-text text-danger">No current season found.</b>
                         </Col>
                     </Row>
                 </CardBody>
@@ -21,7 +21,7 @@ const CurrentSeason = (props) => {
     else {
         return (
             <Card>
-                <CardHeader>CurrentSeason</CardHeader>
+                <CardHeader>Current Season</CardHeader>
 
                 <CardBody className="no-padding-bottom">
                     <Row>

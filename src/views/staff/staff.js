@@ -1,8 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import { TabContent, TabPane, Card, Row, Col, CardBody, CardHeader, ListGroup, ListGroupItem } from 'reactstrap'
-import classnames from 'classnames'
+import { TabContent, TabPane, Row, Col } from 'reactstrap'
 import Destination from './active/destination/destination'
 import HeadOf from './active/headOf/headOf'
 import JobTitle from './active/jobTitle/jobTitle'
@@ -14,206 +13,149 @@ import * as destinationActions from '../../actions/staff/active/destinationActio
 import * as filterActions from '../../actions/staff/filterActions'
 import * as jobTitleActions from '../../actions/staff/active/jobTitleActions'
 import $ from 'jquery'
+import Tabs from './tabs'
 
 class Staff extends Component {
-  constructor(props) {
-    super(props)
+    constructor(props) {
+        super(props)
 
-    this.state = {
-      activeTab: 'headOf',
-      resetData: this.props.headOfActions.handleHeadOf
+        this.state = {
+            activeTab: 'headOf',
+            resetData: this.props.headOfActions.handleHeadOf
+        }
     }
-  }
 
-  edit = (e, staff) => {
-    if (!$(e.target).is(":checkbox")) {
-      const win = window.open(`/staff/${staff.staffID}`, '_blank');
+    edit = (e, staff) => {
+        if (!$(e.target).is(":checkbox")) {
+            const win = window.open(`/staff/${staff.staffID}`, '_blank');
 
-      win.focus();
+            win.focus();
+        }
     }
-  }
 
-  componentWillMount() {
-    document.title = 'Staff - GPX'
-  }
-
-  componentDidMount() {
-    this.props.filterActions.handleFilter()
-
-    this.props.headOfActions.getHeadOf()
-  }
-
-  toggle = (tab, getData, resetData) => {
-    if (this.state.activeTab !== tab) {
-      //Reset current tab state
-      this.state.resetData([])
-
-      //Reset filter
-      this.props.filterActions.handleFilter()
-
-      //Get tab data
-      getData()
-
-      this.setState({
-        activeTab: tab,
-        resetData: resetData
-      })
+    componentWillMount() {
+        document.title = 'Staff - GPX'
     }
-  }
 
-  render() {
-    return (
-      <Row>
-        <Col sm="12" md="3" lg="3" xl="2" className="col-menu">
-          <Card>
-            <CardHeader>Active</CardHeader>
+    componentDidMount() {
+        this.props.filterActions.handleFilter()
 
-            <CardBody className="no-padding">
-              <ListGroup>
-                <ListGroupItem
-                  className={classnames({ active: this.state.activeTab === 'headOf' })}
-                  onClick={() => {
-                    this.toggle('headOf', this.props.headOfActions.getHeadOf, this.props.headOfActions.handleHeadOf)
-                  }}>
-                  Head Of
-                </ListGroupItem>
-                <ListGroupItem
-                  className={classnames({ active: this.state.activeTab === 'destination' })}
-                  onClick={() => {
-                    this.toggle('destination', this.props.destinationActions.getDestination, this.props.destinationActions.handleDestination)
-                  }}>
-                  Destination
-                </ListGroupItem>
-                <ListGroupItem
-                  className={classnames({ active: this.state.activeTab === 'name' })}
-                  onClick={() => {
-                    this.toggle('name', this.props.nameActions.getName, this.props.nameActions.handleName)
-                  }}>
-                  Name
-                </ListGroupItem>
-                <ListGroupItem
-                  className={classnames({ active: this.state.activeTab === 'jobTitle' })}
-                  onClick={() => {
-                    this.toggle('jobTitle', this.props.jobTitleActions.getJobTitle, this.props.jobTitleActions.handleJobTitle)
-                  }}>
-                  Job Title
-                </ListGroupItem>
-              </ListGroup>
-            </CardBody>
-          </Card>
+        this.props.headOfActions.getHeadOf()
+    }
 
-          <Card>
-            <CardHeader>Inactive</CardHeader>
+    toggle = (tab, getData, resetData) => {
+        if (this.state.activeTab !== tab) {
+            //Reset current tab state
+            this.state.resetData([])
 
-            <CardBody className="no-padding">
-              <ListGroup>
-                <ListGroupItem
-                  className={classnames({ active: this.state.activeTab === 'recentlyInactive' })}
-                  onClick={() => {
-                    this.toggle(
-                      'recentlyInactive',
-                      this.props.recentlyInactiveActions.getRecentlyInactive,
-                      this.props.recentlyInactiveActions.handleGetRecentlyInactive
-                    )
-                  }}>
-                  Recently Inactive
-                </ListGroupItem>
-              </ListGroup>
-            </CardBody>
-          </Card>
+            //Reset filter
+            this.props.filterActions.handleFilter()
 
-          <Card>
-            <CardHeader>Other</CardHeader>
+            //Get tab data
+            getData()
 
-            <CardBody className="no-padding">
-              <ListGroup>
-                <ListGroupItem
-                  className={classnames({ active: this.state.activeTab === 'newEmployees' })}
-                  onClick={() => {
-                    this.toggle('newEmployees', this.props.newEmployeesActions.getNewEmployees, this.props.newEmployeesActions.handleNewEmployees)
-                  }}>
-                  New Employees
-                </ListGroupItem>
-              </ListGroup>
-            </CardBody>
-          </Card>
-        </Col>
+            this.setState({
+                activeTab: tab,
+                resetData: resetData
+            })
+        }
+    }
 
-        <Col sm="12" md="9" lg="9" xl="10">
-          <TabContent activeTab={this.state.activeTab}>
-            <TabPane tabId="headOf">
-              <HeadOf
-                headOf={this.props.headOf}
-                getHeadOf={(sourcemarket, criteria) => this.props.headOfActions.getHeadOf(sourcemarket, criteria)}
-                handleSelectedStaff={this.props.filterActions.handleSelectedStaff}
-                selectedStaff={this.props.selectedStaff}
-                edit={this.edit}
-              />
-            </TabPane>
+    render() {
+        return (
+            <Row>
+                <Tabs
+                    toggle={this.toggle}
+                    activeTab={this.state.activeTab}
+                    getHeadOf={this.props.headOfActions.getHeadOf}
+                    handleHeadOf={this.props.headOfActions.handleHeadOf}
+                    getDestination={this.props.destinationActions.getDestination}
+                    handleDestination={this.props.destinationActions.handleDestination}
+                    // getName={this.props.nameActions.getName}
+                    // handleName={this.props.nameActions.handleName}
+                    getJobTitle={this.props.jobTitleActions.getJobTitle}
+                    handleJobTitle={this.props.jobTitleActions.handleJobTitle}
+                    // getRecentlyInactive={this.props.recentlyInactiveActions.getRecentlyInactive}
+                    // handleGetRecentlyInactive={this.props.recentlyInactiveActions.handleGetRecentlyInactive}
+                    // getNewEmployees={this.props.newEmployeesActions.getNewEmployees}
+                    // handleNewEmployees={this.props.newEmployeesActions.handleNewEmployees}
+                />
 
-            <TabPane tabId="destination">
-              <Destination
-                destination={this.props.destination}
-                getDestination={this.props.destinationActions.getDestination}
-                handleSelectedStaff={this.props.filterActions.handleSelectedStaff}
-                selectedStaff={this.props.selectedStaff}
-                edit={this.edit}
-              />
-            </TabPane>
+                <Col sm="12" md="9" lg="9" xl="10">
+                    <TabContent activeTab={this.state.activeTab}>
+                        <TabPane tabId="headOf">
+                            <HeadOf
+                                headOf={this.props.headOf}
+                                getHeadOf={(sourcemarket, criteria) => this.props.headOfActions.getHeadOf(sourcemarket, criteria)}
+                                handleSelectedStaff={this.props.filterActions.handleSelectedStaff}
+                                selectedStaff={this.props.selectedStaff}
+                                edit={this.edit}
+                            />
+                        </TabPane>
 
-            <TabPane tabId="name">
-              <Name
-              //getName={this.props.nameActions.getName}
-              />
-            </TabPane>
+                        <TabPane tabId="destination">
+                            <Destination
+                                destination={this.props.destination}
+                                getDestination={this.props.destinationActions.getDestination}
+                                handleSelectedStaff={this.props.filterActions.handleSelectedStaff}
+                                selectedStaff={this.props.selectedStaff}
+                                edit={this.edit}
+                            />
+                        </TabPane>
 
-            <TabPane tabId="jobTitle">
-              <JobTitle
-                jobTitle={this.props.jobTitle}
-                getJobTitle={this.props.jobTitleActions.getJobTitle}
-                handleSelectedStaff={this.props.filterActions.handleSelectedStaff}
-                selectedStaff={this.props.selectedStaff}
-                edit={this.edit}
-              />
-            </TabPane>
+                        <TabPane tabId="name">
+                            <Name
+                            //getName={this.props.nameActions.getName}
+                            />
+                        </TabPane>
 
-            <TabPane tabId="recentlyInactive">
-              <RecentlyInactive
-              //getRecentlyInactive={this.props.recentlyInactiveActions.getRecentlyInactive}
-              />
-            </TabPane>
+                        <TabPane tabId="jobTitle">
+                            <JobTitle
+                                jobTitle={this.props.jobTitle}
+                                getJobTitle={this.props.jobTitleActions.getJobTitle}
+                                handleSelectedStaff={this.props.filterActions.handleSelectedStaff}
+                                selectedStaff={this.props.selectedStaff}
+                                edit={this.edit}
+                            />
+                        </TabPane>
 
-            <TabPane tabId="newEmployees">
-              <NewEmployees
-              //getNewEmployees={this.props.newEmployeesActions.getNewEmployees}
-              />
-            </TabPane>
-          </TabContent>
-        </Col>
-      </Row>
-    )
-  }
+                        <TabPane tabId="recentlyInactive">
+                            <RecentlyInactive
+                            //getRecentlyInactive={this.props.recentlyInactiveActions.getRecentlyInactive}
+                            />
+                        </TabPane>
+
+                        <TabPane tabId="newEmployees">
+                            <NewEmployees
+                            //getNewEmployees={this.props.newEmployeesActions.getNewEmployees}
+                            />
+                        </TabPane>
+                    </TabContent>
+                </Col>
+            </Row>
+        )
+    }
 }
 
 function mapStateToProps(state) {
-  return {
-    headOf: state.staff.active.headOf,
-    destination: state.staff.active.destination,
-    jobTitle: state.staff.active.jobTitle,
-    selectedStaff: state.staff.filter.selectedStaff
-  }
+    return {
+        headOf: state.staff.active.headOf,
+        destination: state.staff.active.destination,
+        jobTitle: state.staff.active.jobTitle,
+        selectedStaff: state.staff.filter.selectedStaff
+    }
 }
 
 function mapDispatchToProps(dispatch) {
-  return {
-    headOfActions: bindActionCreators(headOfActions, dispatch),
-    destinationActions: bindActionCreators(destinationActions, dispatch),
-    filterActions: bindActionCreators(filterActions, dispatch),
-    jobTitleActions: bindActionCreators(jobTitleActions, dispatch)
-  }
+    return {
+        headOfActions: bindActionCreators(headOfActions, dispatch),
+        destinationActions: bindActionCreators(destinationActions, dispatch),
+        filterActions: bindActionCreators(filterActions, dispatch),
+        jobTitleActions: bindActionCreators(jobTitleActions, dispatch)
+    }
 }
 
 export default connect(
-  mapStateToProps,
-  mapDispatchToProps
+    mapStateToProps,
+    mapDispatchToProps
 )(Staff)
