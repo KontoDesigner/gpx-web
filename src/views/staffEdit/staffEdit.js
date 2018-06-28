@@ -7,7 +7,6 @@ import { TabContent, TabPane, Row, Col, Card, CardHeader, CardBody, CardFooter, 
 import EmployeeInfo from './employeeInfo/employeeInfo'
 import FullYearReview from './fullYearReview/fullYearReview'
 import Applications from './applications/applications'
-import A1 from './a1/a1'
 import Team from './team/team'
 import History from './history/history'
 import { LinkContainer } from 'react-router-bootstrap';
@@ -137,11 +136,13 @@ class StaffEdit extends Component {
 
     render() {
         if (this.state.staff === null) {
+            //Loading
             return (
                 ''
             )
         }
         else if (this.state.staff === undefined) {
+            //Not found
             return (
                 <Card>
                     <CardHeader>
@@ -161,17 +162,25 @@ class StaffEdit extends Component {
             )
         }
         else {
+            //Found
             return (
                 <div>
                     <Tabs
                         toggle={this.toggle}
                         activeTab={this.state.activeTab}
-                    />
-
-                    <Buttons
                         save={this.save}
                         unsavedEdit={this.unsavedEdit}
                     />
+
+                    <Row>
+                        <Col className="d-none d-xs-block d-sm-block d-md-block d-lg-none" style={{ paddingBottom: '15px' }}>
+                            {/* Duplicate code in tabs.js */}
+                            <Buttons
+                                save={this.save}
+                                unsavedEdit={this.unsavedEdit}
+                            />
+                        </Col>
+                    </Row>
 
                     <Row>
                         <Col>
@@ -195,10 +204,6 @@ class StaffEdit extends Component {
 
                                 <TabPane tabId="applications">
                                     <Applications />
-                                </TabPane>
-
-                                <TabPane tabId="a1">
-                                    <A1 />
                                 </TabPane>
 
                                 <TabPane tabId="team">

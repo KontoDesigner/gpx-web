@@ -1,11 +1,8 @@
 import React from 'react'
-import AssignedRoles from './assignedRoles'
 import ContactInformation from './contactInformation'
-import CurrentSeason from './currentSeason'
+import Season from './season'
 import EmployeeInformation from './employeeInformation'
-import FollowingSeason from './followingSeason'
 import Gap from './gap'
-import NextSeason from './nextSeason'
 import PlannedMove from './plannedMove'
 import WorkExperience from './workExperience'
 import { Row, Col } from 'reactstrap'
@@ -33,15 +30,10 @@ const EmployeeInfo = (props) => {
             </Row>
 
             <Row>
-                <Col>
-                    <AssignedRoles />
-                </Col>
-            </Row>
-
-            <Row>
                 <Col sm="12" md="12" lg="4" xl="4">
-                    <CurrentSeason
-                        currentSeason={props.currentSeason}
+                    <Season
+                        title={"Current Season"}
+                        season={props.currentSeason}
                     />
                 </Col>
 
@@ -50,14 +42,16 @@ const EmployeeInfo = (props) => {
                 </Col>
 
                 <Col sm="12" md="12" lg="4" xl="4">
-                    <NextSeason
-                        nextSeason={props.nextSeason}
+                    <Season
+                        title={"Next Season"}
+                        season={props.nextSeason}
                     />
 
                     <PlannedMove />
 
-                    <FollowingSeason
-                        followingSeason={props.followingSeason}
+                    <Season
+                        title={"Following Season"}
+                        season={props.followingSeason}
                     />
                 </Col>
             </Row>

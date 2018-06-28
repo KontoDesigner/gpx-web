@@ -10,7 +10,7 @@ const NotFound = (props) => {
                 </CardHeader>
 
             <CardBody>
-                <p className="card-text">Page was not found.</p>
+                <b className="card-text text-danger">Page was not found.</b>
             </CardBody>
 
             <CardFooter>

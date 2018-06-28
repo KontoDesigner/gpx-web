@@ -1,6 +1,7 @@
 import React from 'react';
 import { Nav, NavItem, NavLink, Row, Col } from 'reactstrap'
 import classnames from 'classnames'
+import Buttons from './buttons';
 
 const Tabs = (props) => {
     return (
@@ -36,15 +37,6 @@ const Tabs = (props) => {
                     </NavItem>
                     <NavItem>
                         <NavLink
-                            className={classnames({ active: props.activeTab === 'a1' })}
-                            onClick={() => {
-                                props.toggle('a1')
-                            }}>
-                            A1
-                                </NavLink>
-                    </NavItem>
-                    <NavItem>
-                        <NavLink
                             className={classnames({ active: props.activeTab === 'team' })}
                             onClick={() => {
                                 props.toggle('team')
@@ -62,6 +54,14 @@ const Tabs = (props) => {
                                 </NavLink>
                     </NavItem>
                 </Nav>
+            </Col>
+
+            {/* Duplicate code in staffEdit.js */}
+            <Col lg="3" xl="6" className="d-none d-lg-block">
+                <Buttons
+                    save={props.save}
+                    unsavedEdit={props.unsavedEdit}
+                />
             </Col>
         </Row>
     );

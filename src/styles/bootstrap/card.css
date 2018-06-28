@@ -40,3 +40,8 @@
     margin-top: 3px;
     font-size: 13px;
 }
+
+.card-footer
+{
+    padding: 10px 15px;
+}
