@@ -42,6 +42,7 @@ class StaffEdit extends Component {
             currentSeason: undefined,
             nextSeason: undefined,
             FollowingSeason: undefined,
+            availablePositions: [],
             unsavedEdit: false
         }
     }
@@ -57,7 +58,8 @@ class StaffEdit extends Component {
 
             let promise = {
                 staff: await RestClient.Get(`staff/${staffId}`),
-                positionAssigns: await RestClient.Get(`positionassign/assignment/${staffId}`)
+                positionAssigns: await RestClient.Get(`positionassign/assignment/${staffId}`),
+                availablePositions: await RestClient.Get(`positionassign/S18`)
             }
 
             if (promise.staff !== undefined) {
@@ -73,7 +75,8 @@ class StaffEdit extends Component {
                 staffId,
                 currentSeason,
                 nextSeason,
-                followingSeason
+                followingSeason,
+                availablePositions: promise.availablePositions
             });
 
             this.props.endAjaxCall();
@@ -195,6 +198,7 @@ class StaffEdit extends Component {
                                         currentSeason={this.state.currentSeason}
                                         nextSeason={this.state.nextSeason}
                                         followingSeason={this.state.followingSeason}
+                                        availablePositions={this.state.availablePositions}
                                     />
                                 </TabPane>
 

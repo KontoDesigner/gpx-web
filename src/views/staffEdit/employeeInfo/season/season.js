@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { Card, CardBody, CardFooter, CardHeader, Row, Col, Button } from 'reactstrap'
 import TextInput from '../../../../components/textInput'
-import AssignRole from './assignRole'
-import MoveRole from './moveRole'
-import RemoveRole from './removeRole'
+import AssignRole from './assignRole/assignRole'
+import MoveRole from './moveRole/moveRole'
+import RemoveRole from './removeRole/removeRole'
 
 class Season extends Component {
     constructor() {
@@ -99,6 +99,7 @@ class Season extends Component {
                     <AssignRole
                         modal={this.state.assignRoleModal}
                         toggle={this.toggleAssignRoleModal}
+                        availablePositions={this.props.availablePositions}
                     />
 
                     <MoveRole

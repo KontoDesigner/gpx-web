@@ -25,3 +25,12 @@
 {
     outline:none;
 }
+
+.modal-lg
+{
+    max-width:100%;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-bottom: 15px;
+    margin-top: 15px;
+}
