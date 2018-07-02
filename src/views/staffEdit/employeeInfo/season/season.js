@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { Card, CardBody, CardFooter, CardHeader, Row, Col, Button } from 'reactstrap'
 import TextInput from '../../../../components/textInput'
-import AssignRole from './assignRole/assignRole'
-import MoveRole from './moveRole/moveRole'
-import RemoveRole from './removeRole/removeRole'
+import AssignRole from './assignRole'
+import MoveRole from './moveRole'
+import RemoveRole from './removeRole'
 
 class Season extends Component {
     constructor() {
@@ -84,12 +84,12 @@ class Season extends Component {
                             </Row>
                         </CardBody>
 
-                        <CardFooter style={{ paddingBottom: '5px' }}>
+                        <CardFooter style={{ paddingBottom: '0px' }}>
                             <Row>
                                 <Col>
-                                    <Button size="sm" onClick={() => { this.toggleAssignRoleModal() }} color="primary" style={{ marginRight: '5px', marginBottom: '5px' }}>Assign Role</Button>
-                                    <Button size="sm" onClick={() => { this.toggleMoveRoleModal() }} color="primary" style={{ marginRight: '5px', marginBottom: '5px' }}>Move Role</Button>
-                                    <Button size="sm" onClick={() => { this.toggleRemoveRoleModal() }} color="danger" style={{ marginBottom: '5px' }}>Remove Role</Button>
+                                    <Button size="sm" onClick={() => { this.toggleAssignRoleModal() }} color="primary" style={{ marginRight: '10px', marginBottom: '10px' }}>Assign Role</Button>
+                                    <Button size="sm" onClick={() => { this.toggleMoveRoleModal() }} color="primary" style={{ marginRight: '10px', marginBottom: '10px' }}>Move Role</Button>
+                                    <Button size="sm" onClick={() => { this.toggleRemoveRoleModal() }} color="danger" style={{ marginBottom: '10px' }}>Remove Role</Button>
                                 </Col>
                             </Row>
                         </CardFooter>

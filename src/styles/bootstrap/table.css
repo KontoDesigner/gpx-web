@@ -10,17 +10,15 @@
     padding: 10px 13px;
 }
 
-.table th
+.table thead tr th
 {
-    background: #def7d9;
-    color: #3c763d;
-    font-weight: 400;    
-    border-bottom:0px!important;
+    font-weight:500;
+    border-bottom:0px;
 }
 
-.table
+.table th
 {
-    margin-bottom:0px;
+    font-weight: 400;    
 }
 
 .tableContextMenu tr td
