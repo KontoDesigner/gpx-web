@@ -7,7 +7,7 @@ const Buttons = (props) => {
             <Col className="col-btn-menu">
                 <Button onClick={() => { window.close() }} color="danger">Close</Button>
                 <Button onClick={() => { window.print() }} color="primary">Print</Button>
-                <Button color="success" onClick={() => { props.save() }}>Save</Button>
+                <Button disabled={props.unsavedEdit === false} color="success" onClick={() => { props.save() }}>Save</Button>
             </Col>
         </Row>
     );

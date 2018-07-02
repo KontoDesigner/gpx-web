@@ -39,12 +39,21 @@ class StaffEdit extends Component {
                     name: 'Flexible'
                 }
             ],
+            season: 'S18',
             currentSeason: undefined,
             nextSeason: undefined,
             FollowingSeason: undefined,
             availablePositions: [],
             unsavedEdit: false
         }
+    }
+
+    async getPositionAssign() {
+        const availablePositions = await RestClient.Get(`positionassign/${this.state.season}`)
+
+        return this.setState({
+            availablePositions
+        });
     }
 
     async componentDidMount() {
@@ -59,7 +68,7 @@ class StaffEdit extends Component {
             let promise = {
                 staff: await RestClient.Get(`staff/${staffId}`),
                 positionAssigns: await RestClient.Get(`positionassign/assignment/${staffId}`),
-                availablePositions: await RestClient.Get(`positionassign/S18`)
+                availablePositions: await this.getPositionAssign()
             }
 
             if (promise.staff !== undefined) {
@@ -75,8 +84,7 @@ class StaffEdit extends Component {
                 staffId,
                 currentSeason,
                 nextSeason,
-                followingSeason,
-                availablePositions: promise.availablePositions
+                followingSeason
             });
 
             this.props.endAjaxCall();
@@ -87,8 +95,21 @@ class StaffEdit extends Component {
         }
     }
 
-    updateUnsavedEditState = () => {
-        return this.setState({ unsavedEdit: true });
+    assignNewRole = async (role) => {
+        //Assign position
+        const model = {
+            MPLID: role.mplid,
+            StaffID: this.state.staff.staffID,
+            FirstName: this.state.staff.firstName,
+            LastName: this.state.staff.lastName,
+            Season: role.season,
+            FullName: this.state.staff.fullName,
+            StartDate: role.startDate,
+            EndDate: role.endDate
+        }
+
+        //Refresh available positions
+        await this.getPositionAssign()
     }
 
     updateStaffFieldState = (event) => {
@@ -172,7 +193,7 @@ class StaffEdit extends Component {
                         toggle={this.toggle}
                         activeTab={this.state.activeTab}
                         save={this.save}
-                        unsavedEdit={this.unsavedEdit}
+                        unsavedEdit={this.state.unsavedEdit}
                     />
 
                     <Row>
@@ -180,7 +201,7 @@ class StaffEdit extends Component {
                             {/* Duplicate code in tabs.js */}
                             <Buttons
                                 save={this.save}
-                                unsavedEdit={this.unsavedEdit}
+                                unsavedEdit={this.state.unsavedEdit}
                             />
                         </Col>
                     </Row>
@@ -199,6 +220,7 @@ class StaffEdit extends Component {
                                         nextSeason={this.state.nextSeason}
                                         followingSeason={this.state.followingSeason}
                                         availablePositions={this.state.availablePositions}
+                                        assignNewRole={this.assignNewRole}
                                     />
                                 </TabPane>
 

@@ -100,16 +100,20 @@ class Season extends Component {
                         modal={this.state.assignRoleModal}
                         toggle={this.toggleAssignRoleModal}
                         availablePositions={this.props.availablePositions}
+                        assignNewRole={this.props.assignNewRole}
+                        season={this.props.season}
                     />
 
                     <MoveRole
                         modal={this.state.moveRoleModal}
                         toggle={this.toggleMoveRoleModal}
+                        season={this.props.season}
                     />
 
                     <RemoveRole
                         modal={this.state.removeRoleModal}
                         toggle={this.toggleRemoveRoleModal}
+                        season={this.props.season}
                     />
                 </div>
             );
