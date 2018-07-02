@@ -39,25 +39,25 @@ class StaffEdit extends Component {
                     name: 'Flexible'
                 }
             ],
-            season: 'S18',
             currentSeason: undefined,
             nextSeason: undefined,
             FollowingSeason: undefined,
             availablePositions: [],
-            unsavedEdit: false
+            unsavedEdit: false,
+            seasonGeography: []
         }
     }
 
-    async getPositionAssign() {
-        const availablePositions = await RestClient.Get(`positionassign/${this.state.season}`)
+    async getAvailablePositions(season) {
+        return await RestClient.Get(`positionassign/${season}`)
+    }
 
-        return this.setState({
-            availablePositions
-        });
+    async getPositionAssigns(staffId) {
+        return await RestClient.Get(`positionassign/assignment/${staffId}`)
     }
 
     async componentDidMount() {
-        //We dont load staff into redux here
+        //We dont use redux here
         const { match: { params } } = this.props;
 
         this.props.beginAjaxCall();
@@ -65,22 +65,28 @@ class StaffEdit extends Component {
         try {
             const staffId = params.id;
 
-            let promise = {
-                staff: await RestClient.Get(`staff/${staffId}`),
-                positionAssigns: await RestClient.Get(`positionassign/assignment/${staffId}`),
-                availablePositions: await this.getPositionAssign()
+            const seasonGeography = await RestClient.Get(`geography/seasons`);
+
+            //Dont change the order here
+            const result = await Promise.all([
+                RestClient.Get(`staff/${staffId}`),
+                this.getPositionAssigns(staffId),
+                this.getAvailablePositions('S18')
+            ]);
+
+            if (result[0] !== undefined) {
+                document.title = `${result[0].firstNameLastName} - GPX`;
             }
 
-            if (promise.staff !== undefined) {
-                document.title = `${promise.staff.firstNameLastName} - GPX`;
-            }
-
-            const currentSeason = promise.positionAssigns[0];
-            const nextSeason = promise.positionAssigns[1];
-            const followingSeason = promise.positionAssigns[2];
+            //SeasonGeography should be filtered on server, current => next => following
+            const currentSeason = result[1].filter(m => m.Season === seasonGeography[0].season)[0];
+            const nextSeason = result[1].filter(m => m.Season === seasonGeography[0].season)[1];
+            const followingSeason = result[1].filter(m => m.Season === seasonGeography[0].season)[2];
 
             this.setState({
-                staff: promise.staff,
+                staff: result[0],
+                availablePositions: result[2],
+                seasonGeography,
                 staffId,
                 currentSeason,
                 nextSeason,
@@ -95,8 +101,9 @@ class StaffEdit extends Component {
         }
     }
 
-    assignNewRole = async (role) => {
-        //Assign position
+    assignRole = async (role) => {
+        this.props.beginAjaxCall();
+
         const model = {
             MPLID: role.mplid,
             StaffID: this.state.staff.staffID,
@@ -108,8 +115,34 @@ class StaffEdit extends Component {
             EndDate: role.endDate
         }
 
-        //Refresh available positions
-        await this.getPositionAssign()
+        try {
+            //Assign position
+            await RestClient.Post(`positionassign`, model)
+
+            const result = await Promise.all([
+                //Refresh position assigns
+                this.getPositionAssigns(this.state.staffId),
+                //Refresh available positions
+                this.getAvailablePositions(role.season)
+            ]);
+
+            const currentSeason = result[0].filter(m => m.Season === this.state.seasonGeography[0].season)[0];
+            const nextSeason = result[0].filter(m => m.Season === this.state.seasonGeography[0].season)[1];
+            const followingSeason = result[0].filter(m => m.Season === this.state.seasonGeography[0].season)[2];
+
+            this.setState({
+                availablePositions: result[1],
+                currentSeason,
+                nextSeason,
+                followingSeason
+            });
+
+            this.props.endAjaxCall();
+        } catch (error) {
+            this.props.ajaxCallError(error);
+
+            throw error
+        }
     }
 
     updateStaffFieldState = (event) => {
@@ -159,6 +192,11 @@ class StaffEdit extends Component {
     }
 
     render() {
+        const buttons = <Buttons
+            save={this.save}
+            unsavedEdit={this.state.unsavedEdit}
+        />
+
         if (this.state.staff === null) {
             //Loading
             return (
@@ -194,15 +232,12 @@ class StaffEdit extends Component {
                         activeTab={this.state.activeTab}
                         save={this.save}
                         unsavedEdit={this.state.unsavedEdit}
+                        buttons={buttons}
                     />
 
                     <Row>
                         <Col className="d-none d-xs-block d-sm-block d-md-block d-lg-none" style={{ paddingBottom: '15px' }}>
-                            {/* Duplicate code in tabs.js */}
-                            <Buttons
-                                save={this.save}
-                                unsavedEdit={this.state.unsavedEdit}
-                            />
+                            {buttons}
                         </Col>
                     </Row>
 
@@ -220,7 +255,8 @@ class StaffEdit extends Component {
                                         nextSeason={this.state.nextSeason}
                                         followingSeason={this.state.followingSeason}
                                         availablePositions={this.state.availablePositions}
-                                        assignNewRole={this.assignNewRole}
+                                        assignRole={this.assignRole}
+                                        seasonGeography={this.state.seasonGeography}
                                     />
                                 </TabPane>
 

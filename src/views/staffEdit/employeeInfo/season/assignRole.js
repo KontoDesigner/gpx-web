@@ -48,7 +48,7 @@ class AssignRole extends Component {
         this.props.toggle();
     }
 
-    assignNewRole = (mplid) => {
+    assignRole = (mplid) => {
         this.toggle();
 
         const destination = this.props.availablePositions.filter(ap => ap.destination === this.state.selectedDestination)[0];
@@ -56,12 +56,12 @@ class AssignRole extends Component {
 
         const model = {
             mplid: position.mplid,
-            season: 'S18',
-            startDate: this.props.season.PositionStartDate, //LÄGG TILL I ANROP
-            endDate: this.props.season.PositionStartDate //LÄGG TILL I ANROP
+            season: this.props.seasonGeography.season,
+            startDate: this.props.seasonGeography.start,
+            endDate: this.props.seasonGeography.end
         }
 
-        this.props.assignNewRole(model);
+        this.props.assignRole(model);
     }
 
     render() {
@@ -131,7 +131,7 @@ class AssignRole extends Component {
                     </ModalBody>
 
                     <ModalFooter>
-                        <Button disabled={this.state.selectedJobTitle === null} onClick={() => this.assignNewRole(this.state.selectedJobTitle)} color="success">Assign</Button>{' '}
+                        <Button disabled={this.state.selectedJobTitle === null} onClick={() => this.assignRole(this.state.selectedJobTitle)} color="success">Assign</Button>{' '}
                         <Button color="danger" onClick={this.toggle}>Cancel</Button>
                     </ModalFooter>
                 </Modal>

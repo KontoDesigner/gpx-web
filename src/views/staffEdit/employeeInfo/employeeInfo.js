@@ -35,7 +35,8 @@ const EmployeeInfo = (props) => {
                         title={"Current Season"}
                         season={props.currentSeason}
                         availablePositions={props.availablePositions}
-                        assignNewRole={props.assignNewRole}
+                        assignRole={props.assignRole}
+                        seasonGeography={props.seasonGeography[0]}
                     />
                 </Col>
 
