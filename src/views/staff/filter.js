@@ -30,7 +30,7 @@ class Filter extends Component {
     const sourceMarketId = sourceMarket != null ? sourceMarket.id : undefined
 
     this.props.filterActions.handleSourceMarket(sourceMarketId)
-    
+
     this.props.getData(sourceMarketId, this.props.filter.text)
   }
 
@@ -47,7 +47,7 @@ class Filter extends Component {
                 valueKey="id"
                 labelKey="name"
                 className="form-control"
-                options={this.props.filter.sourceMarkets}
+                options={this.props.sourceMarkets}
                 onChange={this.updateSourceMarketState}
                 value={this.props.filter.sourceMarket}
                 placeholder="Source Market"
@@ -66,7 +66,8 @@ class Filter extends Component {
 
 function mapStateToProps(state) {
   return {
-    filter: state.staff.filter
+    filter: state.staff.filter,
+    sourceMarkets: state.geography.sourceMarkets
   }
 }
 

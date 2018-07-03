@@ -7,14 +7,15 @@ import { BrowserRouter } from 'react-router-dom';
 import ReduxToastr from 'react-redux-toastr';
 import './styles/site.css';
 import { withRouter } from 'react-router-dom';
-import * as filterActions from './actions/staff/filterActions'
+import * as geographyActions from './actions/geographyActions'
 import * as footerActions from './actions/footerActions'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 
 class App extends Component {
     componentDidMount() {
-        this.props.filterActions.getSourceMarkets()
+        this.props.geographyActions.getSourceMarkets()
+        this.props.geographyActions.getSeasons()
         this.props.footerActions.getVersion()
         this.props.footerActions.getSupportEmail()
         this.props.footerActions.getWikiUrl()
@@ -79,7 +80,7 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
     return {
-        filterActions: bindActionCreators(filterActions, dispatch),
+        geographyActions: bindActionCreators(geographyActions, dispatch),
         footerActions: bindActionCreators(footerActions, dispatch)
     }
 }

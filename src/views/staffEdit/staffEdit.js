@@ -12,15 +12,19 @@ import History from './history/history'
 import { LinkContainer } from 'react-router-bootstrap';
 import Buttons from './buttons';
 import Tabs from './tabs';
+import * as employeeInfoActions from '../../actions/staffEdit/employeeInfoActions'
 
 class StaffEdit extends Component {
-    constructor() {
+    constructor(props) {
         super()
+
+        const { match: { params } } = props;
+        const staffId = params.id;
 
         this.state = {
             staff: null,
             activeTab: 'employeeInfo',
-            staffId: '',
+            staffId: staffId,
             positionTypes: [
                 {
                     id: 'Posted',
@@ -39,66 +43,14 @@ class StaffEdit extends Component {
                     name: 'Flexible'
                 }
             ],
-            currentSeason: undefined,
-            nextSeason: undefined,
-            FollowingSeason: undefined,
-            availablePositions: [],
-            unsavedEdit: false,
-            seasonGeography: []
+            unsavedEdit: false
         }
-    }
-
-    async getAvailablePositions(season) {
-        return await RestClient.Get(`positionassign/${season}`)
-    }
-
-    async getPositionAssigns(staffId) {
-        return await RestClient.Get(`positionassign/assignment/${staffId}`)
     }
 
     async componentDidMount() {
-        //We dont use redux here
-        const { match: { params } } = this.props;
-
-        this.props.beginAjaxCall();
-
-        try {
-            const staffId = params.id;
-
-            const seasonGeography = await RestClient.Get(`geography/seasons`);
-
-            //Dont change the order here
-            const result = await Promise.all([
-                RestClient.Get(`staff/${staffId}`),
-                this.getPositionAssigns(staffId),
-                this.getAvailablePositions('S18')
-            ]);
-
-            if (result[0] !== undefined) {
-                document.title = `${result[0].firstNameLastName} - GPX`;
-            }
-
-            //SeasonGeography should be filtered on server, current => next => following
-            const currentSeason = result[1].filter(m => m.Season === seasonGeography[0].season)[0];
-            const nextSeason = result[1].filter(m => m.Season === seasonGeography[0].season)[1];
-            const followingSeason = result[1].filter(m => m.Season === seasonGeography[0].season)[2];
-
-            this.setState({
-                staff: result[0],
-                availablePositions: result[2],
-                seasonGeography,
-                staffId,
-                currentSeason,
-                nextSeason,
-                followingSeason
-            });
-
-            this.props.endAjaxCall();
-        } catch (error) {
-            this.props.ajaxCallError(error);
-
-            throw error
-        }
+        this.props.employeeInfoActions.getAvailablePositions('S18')
+        this.props.employeeInfoActions.getPositionAssigns(this.state.staffId)
+        this.props.employeeInfoActions.getStaff(this.state.staffId)
     }
 
     assignRole = async (role) => {
@@ -106,11 +58,11 @@ class StaffEdit extends Component {
 
         const model = {
             MPLID: role.mplid,
-            StaffID: this.state.staff.staffID,
-            FirstName: this.state.staff.firstName,
-            LastName: this.state.staff.lastName,
+            StaffID: this.props.staff.staffId,
+            FirstName: this.props.staff.firstName,
+            LastName: this.props.staff.lastName,
             Season: role.season,
-            FullName: this.state.staff.fullName,
+            FullName: this.props.staff.fullName,
             StartDate: role.startDate,
             EndDate: role.endDate
         }
@@ -119,23 +71,8 @@ class StaffEdit extends Component {
             //Assign position
             await RestClient.Post(`positionassign`, model)
 
-            const result = await Promise.all([
-                //Refresh position assigns
-                this.getPositionAssigns(this.state.staffId),
-                //Refresh available positions
-                this.getAvailablePositions(role.season)
-            ]);
-
-            const currentSeason = result[0].filter(m => m.Season === this.state.seasonGeography[0].season)[0];
-            const nextSeason = result[0].filter(m => m.Season === this.state.seasonGeography[0].season)[1];
-            const followingSeason = result[0].filter(m => m.Season === this.state.seasonGeography[0].season)[2];
-
-            this.setState({
-                availablePositions: result[1],
-                currentSeason,
-                nextSeason,
-                followingSeason
-            });
+            this.props.employeeInfoActions.getAvailablePositions('S18')
+            this.props.employeeInfoActions.getPositionAssigns(this.state.staffId)
 
             this.props.endAjaxCall();
         } catch (error) {
@@ -145,39 +82,39 @@ class StaffEdit extends Component {
         }
     }
 
-    updateStaffFieldState = (event) => {
-        const field = event.target.name;
+    // updateStaffFieldState = (event) => {
+    //     const field = event.target.name;
 
-        let staff = Object.assign({}, this.state.staff);
-        staff[field] = event.target.value;
+    //     let staff = Object.assign({}, this.props.staff);
+    //     staff[field] = event.target.value;
 
-        return this.setState({ staff, unsavedEdit: true });
-    }
+    //     return this.setState({ staff, unsavedEdit: true });
+    // }
 
-    updateStaffDatePickerState = (field, date) => {
-        let staff = Object.assign({}, this.state.staff);
+    // updateStaffDatePickerState = (field, date) => {
+    //     let staff = Object.assign({}, this.props.staff);
 
-        //Picker
-        if (date._d) {
-            staff[field] = date._d;
-        }
+    //     //Picker
+    //     if (date._d) {
+    //         staff[field] = date._d;
+    //     }
 
-        //Manual
-        if (!date._d) {
-            staff[field] = date;
-        }
+    //     //Manual
+    //     if (!date._d) {
+    //         staff[field] = date;
+    //     }
 
-        return this.setState({ staff, unsavedEdit: true });
-    }
+    //     return this.setState({ staff, unsavedEdit: true });
+    // }
 
-    updateStaffSelectState = (field, sourceMarket) => {
-        const sourceMarketId = sourceMarket != null ? sourceMarket.id : undefined
+    // updateStaffSelectState = (field, sourceMarket) => {
+    //     const sourceMarketId = sourceMarket != null ? sourceMarket.id : undefined
 
-        let staff = Object.assign({}, this.state.staff);
-        staff[field] = sourceMarketId;
+    //     let staff = Object.assign({}, this.props.staff);
+    //     staff[field] = sourceMarketId;
 
-        return this.setState({ staff, unsavedEdit: true });
-    }
+    //     return this.setState({ staff, unsavedEdit: true });
+    // }
 
     toggle = (activeTab) => {
         if (this.state.activeTab !== activeTab) {
@@ -197,13 +134,13 @@ class StaffEdit extends Component {
             unsavedEdit={this.state.unsavedEdit}
         />
 
-        if (this.state.staff === null) {
+        if (this.props.staff === null) {
             //Loading
             return (
                 ''
             )
         }
-        else if (this.state.staff === undefined) {
+        else if (this.props.staff === undefined) {
             //Not found
             return (
                 <Card>
@@ -246,17 +183,12 @@ class StaffEdit extends Component {
                             <TabContent activeTab={this.state.activeTab}>
                                 <TabPane tabId="employeeInfo">
                                     <EmployeeInfo
-                                        staff={this.state.staff}
+                                        staff={this.props.staff}
                                         sourceMarkets={this.props.sourceMarkets}
-                                        updateStaffFieldState={this.updateStaffFieldState}
-                                        updateStaffSelectState={this.updateStaffSelectState}
-                                        updateStaffDatePickerState={this.updateStaffDatePickerState}
-                                        currentSeason={this.state.currentSeason}
-                                        nextSeason={this.state.nextSeason}
-                                        followingSeason={this.state.followingSeason}
                                         availablePositions={this.state.availablePositions}
                                         assignRole={this.assignRole}
-                                        seasonGeography={this.state.seasonGeography}
+                                        seasons={this.props.seasons}
+                                        positionAssigns={this.props.positionAssigns}
                                     />
                                 </TabPane>
 
@@ -286,12 +218,17 @@ class StaffEdit extends Component {
 
 function mapStateToProps(state) {
     return {
-        sourceMarkets: state.staff.filter.sourceMarkets
+        sourceMarkets: state.geography.sourceMarkets,
+        availablePositions: state.staffEdit.employeeInfo.availablePositions,
+        positionAssigns: state.staffEdit.employeeInfo.positionAssigns,
+        staff: state.staffEdit.employeeInfo.staff,
+        seasons: state.geography.seasons
     }
 }
 
 function mapDispatchToProps(dispatch) {
     return {
+        employeeInfoActions: bindActionCreators(employeeInfoActions, dispatch),
         beginAjaxCall: bindActionCreators(beginAjaxCall, dispatch),
         endAjaxCall: bindActionCreators(endAjaxCall, dispatch),
         ajaxCallError: bindActionCreators(ajaxCallError, dispatch)
