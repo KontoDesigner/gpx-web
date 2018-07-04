@@ -13,7 +13,7 @@ const EmployeeInformation = (props) => {
                 <Row>
                     <Col sm="12" md="6" lg="6" xl="4">
                         <div className="form-group">
-                            <TextInput name="nationality" label="Nationality" value={props.staff.nationality} onChange={props.updateStaffFieldState} />
+                            <TextInput name="nationality" label="Nationality" value={props.staff.nationality} onChange={props.handleStaffField} />
                         </div>
                     </Col>
 
@@ -27,7 +27,7 @@ const EmployeeInformation = (props) => {
                                 labelKey="name"
                                 className="form-control"
                                 options={props.sourceMarkets}
-                                onChange={(v) => { props.updateStaffSelectState('sourceMarket', v) }}
+                                onChange={(v) => { props.handleStaffSelect('sourceMarket', v, 'id') }}
                                 value={props.staff.sourceMarket === '' ? null : props.staff.sourceMarket}
                                 placeholder="Source Market"
                             />
@@ -36,7 +36,7 @@ const EmployeeInformation = (props) => {
 
                     <Col sm="12" md="6" lg="6" xl="4">
                         <div className="form-group">
-                            <TextInput name="empID" label="Employee ID" value={props.staff.empID} onChange={props.updateStaffFieldState} />
+                            <TextInput name="empID" label="Employee ID" value={props.staff.empID} onChange={props.handleStaffField} />
                         </div>
                     </Col>
 
@@ -50,7 +50,7 @@ const EmployeeInformation = (props) => {
                                 labelKey="name"
                                 className="form-control"
                                 options={props.positionTypes}
-                                onChange={(v) => { props.updateStaffSelectState('positionType', v) }}
+                                onChange={(v) => { props.handleStaffSelect('positionType', v, 'id') }}
                                 value={props.staff.positionType === '' ? null : props.staff.positionType}
                                 placeholder="Position Type"
                             />
@@ -59,7 +59,7 @@ const EmployeeInformation = (props) => {
 
                     <Col sm="12" md="6" lg="6" xl="4">
                         <div className="form-group">
-                            <TextInput name="costCenter" label="Cost Center" value={props.staff.costCenter} onChange={props.updateStaffFieldState} />
+                            <TextInput name="costCenter" label="Cost Center" value={props.staff.costCenter} onChange={props.handleStaffField} />
                         </div>
                     </Col>
 
@@ -69,7 +69,7 @@ const EmployeeInformation = (props) => {
 
                             <Datetime
                                 value={props.staff.dateOfBirth}
-                                onChange={(v) => { props.updateStaffDatePickerState('dateOfBirth', v) }}
+                                onChange={(v) => { props.handleStaffDatePicker('dateOfBirth', v) }}
                                 timeFormat={false}
                                 dateFormat="YYYY-MM-DD"
                                 closeOnSelect
@@ -84,7 +84,7 @@ const EmployeeInformation = (props) => {
 
                             <Datetime
                                 value={props.staff.dateJoined}
-                                onChange={(v) => { props.updateStaffDatePickerState('dateJoined', v) }}
+                                onChange={(v) => { props.handleStaffDatePicker('dateJoined', v) }}
                                 timeFormat={false}
                                 dateFormat="YYYY-MM-DD"
                                 closeOnSelect
@@ -95,13 +95,13 @@ const EmployeeInformation = (props) => {
 
                     <Col sm="12" md="6" lg="6" xl="4">
                         <div className="form-group">
-                            <TextInput name="driver" label="Driver" value={props.staff.driver} onChange={props.updateStaffFieldState} />
+                            <TextInput name="driver" label="Driver" value={props.staff.driver} onChange={props.handleStaffField} />
                         </div>
                     </Col>
 
                     <Col sm="12" md="6" lg="6" xl="4">
                         <div className="form-group">
-                            <TextInput name="drivingYear" label="Driving Year" value={props.staff.drivingYear} onChange={props.updateStaffFieldState} />
+                            <TextInput name="drivingYear" label="Driving Year" value={props.staff.drivingYear} onChange={props.handleStaffField} />
                         </div>
                     </Col>
                 </Row>

@@ -12,6 +12,14 @@ var defaultState = {
 
 export default function employeeInfoReducer(state = defaultState, action) {
     switch (action.type) {
+        case (types.HANDLE_STAFF_FIELD):
+            return {
+                ...state,
+                staff: {
+                    ...state.staff,
+                    [action.data.field]: action.data.val
+                },
+            }
         case types.GET_AVAILABLEPOSITIONS_SUCCESS:
             return {
                 ...state,
@@ -22,9 +30,9 @@ export default function employeeInfoReducer(state = defaultState, action) {
         case types.GET_POSITIONASSIGNS_SUCCESS:
             return {
                 ...state,
-                currentPositionAssign: action.data.positionAssigns[0],
-                nextPositionAssign: action.data.positionAssigns[1],
-                followingPositionAssign: action.data.positionAssigns[2]
+                currentPositionAssign: action.data.positionAssigns.currentPositionAssign,
+                nextPositionAssign: action.data.positionAssigns.nextPositionAssign,
+                followingPositionAssign: action.data.positionAssigns.followingPositionAssign
             }
         case types.GET_STAFF_SUCCESS:
             return {

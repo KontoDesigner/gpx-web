@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import RestClient from '../../infrastructure/restClient'
 import { beginAjaxCall, endAjaxCall, ajaxCallError } from '../../actions/ajaxStatusActions'
 import { TabContent, TabPane, Row, Col, Card, CardHeader, CardBody, CardFooter, Button } from 'reactstrap'
 import EmployeeInfo from './employeeInfo/employeeInfo'
@@ -53,10 +52,10 @@ class StaffEdit extends Component {
         this.props.employeeInfoActions.getStaff(this.state.staffId)
     }
 
-    assignRole = async (role) => {
+    assignRole = (role) => {
         this.props.beginAjaxCall();
 
-        const model = {
+        const positionAssign = {
             MPLID: role.mplid,
             StaffID: this.props.staff.staffId,
             FirstName: this.props.staff.firstName,
@@ -67,55 +66,18 @@ class StaffEdit extends Component {
             EndDate: role.endDate
         }
 
-        try {
-            //Assign position
-            await RestClient.Post(`positionassign`, model)
-
-            this.props.endAjaxCall();
-        } catch (error) {
-            this.props.ajaxCallError(error);
-
-            throw error
-        }
-        finally {
+        this.props.employeeInfoActions.insertPositionAssign(positionAssign).then(function () {
             this.props.employeeInfoActions.getAvailablePositions(this.props.currentSeason.name, this.props.nextSeason.name, this.props.followingSeason.name)
             this.props.employeeInfoActions.getPositionAssigns(this.state.staffId)
-        }
+        })
     }
 
-    // updateStaffFieldState = (event) => {
-    //     const field = event.target.name;
-
-    //     let staff = Object.assign({}, this.props.staff);
-    //     staff[field] = event.target.value;
-
-    //     return this.setState({ staff, unsavedEdit: true });
-    // }
-
-    // updateStaffDatePickerState = (field, date) => {
-    //     let staff = Object.assign({}, this.props.staff);
-
-    //     //Picker
-    //     if (date._d) {
-    //         staff[field] = date._d;
-    //     }
-
-    //     //Manual
-    //     if (!date._d) {
-    //         staff[field] = date;
-    //     }
-
-    //     return this.setState({ staff, unsavedEdit: true });
-    // }
-
-    // updateStaffSelectState = (field, sourceMarket) => {
-    //     const sourceMarketId = sourceMarket != null ? sourceMarket.id : undefined
-
-    //     let staff = Object.assign({}, this.props.staff);
-    //     staff[field] = sourceMarketId;
-
-    //     return this.setState({ staff, unsavedEdit: true });
-    // }
+    removeRole = (id) => {
+        this.props.employeeInfoActions.deletePositionAssign(id).then(function () {
+            this.props.employeeInfoActions.getAvailablePositions(this.props.currentSeason.name, this.props.nextSeason.name, this.props.followingSeason.name)
+            this.props.employeeInfoActions.getPositionAssigns(this.state.staffId)
+        })
+    }
 
     toggle = (activeTab) => {
         if (this.state.activeTab !== activeTab) {
@@ -190,12 +152,14 @@ class StaffEdit extends Component {
                                         nextAvailablePositions={this.props.nextAvailablePositions}
                                         followingAvailablePositions={this.props.followingAvailablePositions}
                                         assignRole={this.assignRole}
+                                        removeRole={this.removeRole}
                                         currentPositionAssign={this.props.currentPositionAssign}
                                         nextPositionAssign={this.props.nextPositionAssign}
                                         followingPositionAssign={this.props.followingPositionAssign}
                                         currentSeason={this.props.currentSeason}
                                         nextSeason={this.props.nextSeason}
                                         followingSeason={this.props.followingSeason}
+                                        positionTypes={this.state.positionTypes}
                                     />
                                 </TabPane>
 

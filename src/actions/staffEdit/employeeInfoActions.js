@@ -2,6 +2,52 @@ import { ActionTypes as types } from '../../constants/staffEdit/employeeInfoCons
 import { beginAjaxCall, ajaxCallError } from '../ajaxStatusActions'
 import RestClient from '../../infrastructure/restClient'
 
+export function handleStaffField(field, val) {
+    return {
+        type: types.HANDLE_STAFF_FIELD,
+        data: { field: field, val: val }
+    }
+}
+
+export function handleFilterFromSuccess(from) {
+    return {
+        type: types.HANDLE_FILTER_FROM,
+        data: { from: from }
+    }
+}
+
+export function deletePositionAssign(id) {
+    return async function (dispatch) {
+        dispatch(beginAjaxCall())
+
+        try {
+            const model = {
+                Id: id
+            }
+
+            await RestClient.Post('positionassign', model)
+        } catch (error) {
+            dispatch(ajaxCallError(error))
+
+            throw error
+        }
+    }
+}
+
+export function insertPositionAssign(positionAssign) {
+    return async function (dispatch) {
+        dispatch(beginAjaxCall())
+
+        try {
+            await RestClient.Post('positionassign', positionAssign)
+        } catch (error) {
+            dispatch(ajaxCallError(error))
+
+            throw error
+        }
+    }
+}
+
 export function getAvailablePositionsSuccess(availablePositions) {
     return {
         type: types.GET_AVAILABLEPOSITIONS_SUCCESS,

@@ -59,7 +59,7 @@ class Season extends Component {
 
                         <CardBody>
                             <Row>
-                                <Col sm="12" md="6" lg="6" xl="4">
+                                <Col>
                                     <b className="card-text text-danger">No {this.props.title.toLowerCase()} found.</b>
                                 </Col>
                             </Row>
@@ -167,6 +167,7 @@ class Season extends Component {
                         toggle={this.toggleRemoveRoleModal}
                         positionAssign={this.props.positionAssign}
                         season={this.props.season}
+                        removeRole={this.props.removeRole}
                     />
                 </div>
             );

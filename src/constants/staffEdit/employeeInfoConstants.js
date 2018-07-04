@@ -8,5 +8,6 @@ export var ActionTypes = keyMirror({
     GET_STAFF_SUCCESS: null,
     GET_STAFF: null,
     GET_SEASONGEOGRAPHY_SUCCESS: null,
-    GET_SEASONGEOGRAPHY: null
+    GET_SEASONGEOGRAPHY: null,
+    HANDLE_STAFF_FIELD: null
 });
