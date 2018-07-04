@@ -42,16 +42,16 @@ class Season extends Component {
                 toggle={this.toggleAssignRoleModal}
                 availablePositions={this.props.availablePositions}
                 assignRole={this.props.assignRole}
+                positionAssign={this.props.positionAssign}
                 season={this.props.season}
-                seasonGeography={this.props.seasonGeography}
             />
         )
 
         const assignBtn = (
-            <Button disabled={this.props.season !== undefined} size="sm" onClick={() => { this.toggleAssignRoleModal() }} color="primary" style={{ marginRight: '10px', marginBottom: '10px' }}>Assign Role</Button>
+            <Button disabled={this.props.positionAssign !== undefined} size="sm" onClick={() => { this.toggleAssignRoleModal() }} color="primary" style={{ marginRight: '10px', marginBottom: '10px' }}>Assign Role</Button>
         )
 
-        if (this.props.season === undefined) {
+        if (this.props.positionAssign === undefined) {
             return (
                 <div>
                     <Card>
@@ -88,25 +88,25 @@ class Season extends Component {
                             <Row>
                                 <Col sm="12" md="6" lg="6" xl="6">
                                     <div className="form-group">
-                                        <TextInput name="regionHeadOf" label="Region/Head Of" disabled={true} value={this.props.season.Region + ' ' + this.props.season.HeadOf} />
+                                        <TextInput name="regionHeadOf" label="Region/Head Of" disabled={true} value={this.props.positionAssign.Region + ' ' + this.props.positionAssign.HeadOf} />
                                     </div>
                                 </Col>
 
                                 <Col sm="12" md="6" lg="6" xl="6">
                                     <div className="form-group">
-                                        <TextInput name="location" label="Location" disabled={true} value={this.props.season.SDD_DM + ' ' + this.props.season.Destination + ' ' + this.props.season.ConceptHotel} />
+                                        <TextInput name="location" label="Location" disabled={true} value={this.props.positionAssign.SDD_DM + ' ' + this.props.positionAssign.Destination + ' ' + this.props.positionAssign.ConceptHotel} />
                                     </div>
                                 </Col>
 
                                 <Col sm="12" md="6" lg="6" xl="6">
                                     <div className="form-group">
-                                        <TextInput name="jobFamily" label="Job Family" disabled={true} value={this.props.season.JobFamily} />
+                                        <TextInput name="jobFamily" label="Job Family" disabled={true} value={this.props.positionAssign.JobFamily} />
                                     </div>
                                 </Col>
 
                                 <Col sm="12" md="6" lg="6" xl="6">
                                     <div className="form-group">
-                                        <TextInput name="jobTitle" label="Job Title" disabled={true} value={this.props.season.JobTitle} />
+                                        <TextInput name="jobTitle" label="Job Title" disabled={true} value={this.props.positionAssign.JobTitle} />
                                     </div>
                                 </Col>
 
@@ -115,7 +115,7 @@ class Season extends Component {
                                         <label htmlFor="dateOfBirth">Start Date</label>
 
                                         <Datetime
-                                            value={this.props.season !== null ? this.props.season.StaffStartDate : ''}
+                                            value={this.props.positionAssign !== null ? this.props.positionAssign.StaffStartDate : ''}
                                             // onChange={(v) => { props.updateStaffDatePickerState('dateOfBirth', v) }}
                                             timeFormat={false}
                                             dateFormat="YYYY-MM-DD"
@@ -130,7 +130,7 @@ class Season extends Component {
                                         <label htmlFor="dateOfBirth">End Date</label>
 
                                         <Datetime
-                                            value={this.props.season !== null ? this.props.season.StaffEndDate : ''}
+                                            value={this.props.positionAssign !== null ? this.props.positionAssign.StaffEndDate : ''}
                                             // onChange={(v) => { props.updateStaffDatePickerState('dateOfBirth', v) }}
                                             timeFormat={false}
                                             dateFormat="YYYY-MM-DD"
@@ -158,15 +158,15 @@ class Season extends Component {
                     <MoveRole
                         modal={this.state.moveRoleModal}
                         toggle={this.toggleMoveRoleModal}
+                        positionAssign={this.props.positionAssign}
                         season={this.props.season}
-                        seasonGeography={this.props.seasonGeography}
                     />
 
                     <RemoveRole
                         modal={this.state.removeRoleModal}
                         toggle={this.toggleRemoveRoleModal}
+                        positionAssign={this.props.positionAssign}
                         season={this.props.season}
-                        seasonGeography={this.props.seasonGeography}
                     />
                 </div>
             );

@@ -56,9 +56,9 @@ class AssignRole extends Component {
 
         const model = {
             mplid: position.mplid,
-            season: this.props.seasonGeography.season,
-            startDate: this.props.seasonGeography.start,
-            endDate: this.props.seasonGeography.end
+            season: this.props.season.name,
+            startDate: this.props.season.start,
+            endDate: this.props.season.end
         }
 
         this.props.assignRole(model);

@@ -9,12 +9,18 @@ export function getAvailablePositionsSuccess(availablePositions) {
     }
 }
 
-export function getAvailablePositions(season) {
+export function getAvailablePositions(currentSeason, nextSeason, followingSeason) {
     return async function (dispatch) {
         dispatch(beginAjaxCall())
 
         try {
-            const availablePositions = await RestClient.Get(`positionassign/${season}`)
+            const data = {
+                CurrentSeason: currentSeason,
+                NextSeason: nextSeason,
+                FollowingSeason: followingSeason
+            }
+
+            const availablePositions = await RestClient.Post('positionassign/getavailablepositions', data)
 
             dispatch(getAvailablePositionsSuccess(availablePositions))
         } catch (error) {

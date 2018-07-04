@@ -29,10 +29,10 @@ const EmployeeInfo = (props) => {
                 <Col sm="12" md="12" lg="4" xl="4">
                     <Season
                         title={"Current Season"}
-                        season={props.positionAssigns[0]}
-                        availablePositions={props.availablePositions}
+                        positionAssign={props.currentPositionAssign}
+                        availablePositions={props.currentAvailablePositions}
                         assignRole={props.assignRole}
-                        seasons={props.seasons}
+                        season={props.currentSeason}
                     />
                 </Col>
 

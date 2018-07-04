@@ -48,7 +48,7 @@ class StaffEdit extends Component {
     }
 
     async componentDidMount() {
-        this.props.employeeInfoActions.getAvailablePositions('S18')
+        this.props.employeeInfoActions.getAvailablePositions(this.props.currentSeason.name, this.props.nextSeason.name, this.props.followingSeason.name)
         this.props.employeeInfoActions.getPositionAssigns(this.state.staffId)
         this.props.employeeInfoActions.getStaff(this.state.staffId)
     }
@@ -71,14 +71,15 @@ class StaffEdit extends Component {
             //Assign position
             await RestClient.Post(`positionassign`, model)
 
-            this.props.employeeInfoActions.getAvailablePositions('S18')
-            this.props.employeeInfoActions.getPositionAssigns(this.state.staffId)
-
             this.props.endAjaxCall();
         } catch (error) {
             this.props.ajaxCallError(error);
 
             throw error
+        }
+        finally {
+            this.props.employeeInfoActions.getAvailablePositions(this.props.currentSeason.name, this.props.nextSeason.name, this.props.followingSeason.name)
+            this.props.employeeInfoActions.getPositionAssigns(this.state.staffId)
         }
     }
 
@@ -185,10 +186,16 @@ class StaffEdit extends Component {
                                     <EmployeeInfo
                                         staff={this.props.staff}
                                         sourceMarkets={this.props.sourceMarkets}
-                                        availablePositions={this.state.availablePositions}
+                                        currentAvailablePositions={this.props.currentAvailablePositions}
+                                        nextAvailablePositions={this.props.nextAvailablePositions}
+                                        followingAvailablePositions={this.props.followingAvailablePositions}
                                         assignRole={this.assignRole}
-                                        seasons={this.props.seasons}
-                                        positionAssigns={this.props.positionAssigns}
+                                        currentPositionAssign={this.props.currentPositionAssign}
+                                        nextPositionAssign={this.props.nextPositionAssign}
+                                        followingPositionAssign={this.props.followingPositionAssign}
+                                        currentSeason={this.props.currentSeason}
+                                        nextSeason={this.props.nextSeason}
+                                        followingSeason={this.props.followingSeason}
                                     />
                                 </TabPane>
 
@@ -219,9 +226,13 @@ class StaffEdit extends Component {
 function mapStateToProps(state) {
     return {
         sourceMarkets: state.geography.sourceMarkets,
-        availablePositions: state.staffEdit.employeeInfo.availablePositions,
-        positionAssigns: state.staffEdit.employeeInfo.positionAssigns,
+        currentAvailablePositions: state.staffEdit.employeeInfo.currentAvailablePositions,
+        nextAvailablePositions: state.staffEdit.employeeInfo.nextAvailablePositions,
+        followingAvailablePositions: state.staffEdit.employeeInfo.followingAvailablePositions,
         staff: state.staffEdit.employeeInfo.staff,
+        currentPositionAssign: state.staffEdit.employeeInfo.currentPositionAssign,
+        nextPositionAssign: state.staffEdit.employeeInfo.nextPositionAssign,
+        followingPositionAssign: state.staffEdit.employeeInfo.followingPositionAssign,
         currentSeason: state.geography.currentSeason,
         nextSeason: state.geography.nextSeason,
         followingSeason: state.geography.followingSeason

@@ -17,9 +17,9 @@ export default function filterReducer(state = defaultState, action) {
         case types.GET_SEASONS_SUCCESS:
             return {
                 ...state,
-                currentSeason: action.data.seasons[0],
-                nextSeason: action.data.seasons[1],
-                followingSeason: action.data.seasons[2]
+                currentSeason: action.data.seasons.currentSeason,
+                nextSeason: action.data.seasons.nextSeason,
+                followingSeason: action.data.seasons.followingSeason
             }
         default:
             return state
