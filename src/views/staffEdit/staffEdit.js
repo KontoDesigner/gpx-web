@@ -222,7 +222,9 @@ function mapStateToProps(state) {
         availablePositions: state.staffEdit.employeeInfo.availablePositions,
         positionAssigns: state.staffEdit.employeeInfo.positionAssigns,
         staff: state.staffEdit.employeeInfo.staff,
-        seasons: state.geography.seasons
+        currentSeason: state.geography.currentSeason,
+        nextSeason: state.geography.nextSeason,
+        followingSeason: state.geography.followingSeason
     }
 }
 

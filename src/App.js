@@ -13,12 +13,26 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 
 class App extends Component {
-    componentDidMount() {
-        this.props.geographyActions.getSourceMarkets()
-        this.props.geographyActions.getSeasons()
-        this.props.footerActions.getVersion()
-        this.props.footerActions.getSupportEmail()
-        this.props.footerActions.getWikiUrl()
+    constructor() {
+        super()
+
+        this.state = {
+            loaded: false
+        }
+    }
+
+    async componentWillMount() {
+        const _this = this;
+
+        return Promise.all([
+            this.props.geographyActions.getSourceMarkets(),
+            this.props.geographyActions.getSeasons(),
+            this.props.footerActions.getVersion(),
+            this.props.footerActions.getSupportEmail(),
+            this.props.footerActions.getWikiUrl()
+        ]).then(function () {
+            _this.setState({ loaded: true })
+        });
     }
 
     matchRuleShort(str, rule) {
@@ -55,15 +69,23 @@ class App extends Component {
                         progressBar
                     />
 
-                    <HeaderWithRouter />
+                    {this.state.loaded === true ?
+                        [
+                            <HeaderWithRouter
+                                key={0}
+                            />,
 
-                    <Routes />
+                            <Routes
+                                key={1}
+                            />,
 
-                    <Footer
-                        version={this.props.version}
-                        supportEmail={this.props.supportEmail}
-                        wikiUrl={this.props.wikiUrl}
-                    />
+                            <Footer
+                                key={2}
+                                version={this.props.version}
+                                supportEmail={this.props.supportEmail}
+                                wikiUrl={this.props.wikiUrl}
+                            />
+                        ] : ''}
                 </div>
             </BrowserRouter>
         );
