@@ -70,7 +70,7 @@ class EmployeeInfo extends Component {
                             positionAssign={this.props.currentPositionAssign}
                             availablePositions={this.props.currentAvailablePositions}
                             assignRole={this.props.assignRole}
-                            removeRole={this.removeRole}
+                            removeRole={this.props.removeRole}
                             season={this.props.currentSeason}
                         />
                     </Col>

@@ -48,10 +48,10 @@ class Season extends Component {
         )
 
         const assignBtn = (
-            <Button disabled={this.props.positionAssign !== undefined} size="sm" onClick={() => { this.toggleAssignRoleModal() }} color="primary" style={{ marginRight: '10px', marginBottom: '10px' }}>Assign Role</Button>
+            <Button disabled={this.props.positionAssign !== undefined && this.props.positionAssign !== null} size="sm" onClick={() => { this.toggleAssignRoleModal() }} color="primary" style={{ marginRight: '10px', marginBottom: '10px' }}>Assign Role</Button>
         )
 
-        if (this.props.positionAssign === undefined) {
+        if (this.props.positionAssign === undefined || this.props.positionAssign === null) {
             return (
                 <div>
                     <Card>

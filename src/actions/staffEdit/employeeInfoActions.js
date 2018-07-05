@@ -1,5 +1,5 @@
 import { ActionTypes as types } from '../../constants/staffEdit/employeeInfoConstants'
-import { beginAjaxCall, ajaxCallError } from '../ajaxStatusActions'
+import { beginAjaxCall, ajaxCallError, endAjaxCall } from '../ajaxStatusActions'
 import RestClient from '../../infrastructure/restClient'
 
 export function handleStaffField(field, val) {
@@ -25,7 +25,9 @@ export function deletePositionAssign(id) {
                 Id: id
             }
 
-            await RestClient.Post('positionassign', model)
+            await RestClient.Post('positionassign/deletepositionassign', model)
+
+            dispatch(endAjaxCall())
         } catch (error) {
             dispatch(ajaxCallError(error))
 
@@ -40,6 +42,8 @@ export function insertPositionAssign(positionAssign) {
 
         try {
             await RestClient.Post('positionassign', positionAssign)
+
+            dispatch(endAjaxCall())
         } catch (error) {
             dispatch(ajaxCallError(error))
 

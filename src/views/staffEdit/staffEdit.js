@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import { beginAjaxCall, endAjaxCall, ajaxCallError } from '../../actions/ajaxStatusActions'
 import { TabContent, TabPane, Row, Col, Card, CardHeader, CardBody, CardFooter, Button } from 'reactstrap'
 import EmployeeInfo from './employeeInfo/employeeInfo'
 import FullYearReview from './fullYearReview/fullYearReview'
@@ -53,11 +52,9 @@ class StaffEdit extends Component {
     }
 
     assignRole = (role) => {
-        this.props.beginAjaxCall();
-
         const positionAssign = {
             MPLID: role.mplid,
-            StaffID: this.props.staff.staffId,
+            StaffID: this.props.staff.staffID,
             FirstName: this.props.staff.firstName,
             LastName: this.props.staff.lastName,
             Season: role.season,
@@ -66,16 +63,20 @@ class StaffEdit extends Component {
             EndDate: role.endDate
         }
 
+        const _this = this;
+
         this.props.employeeInfoActions.insertPositionAssign(positionAssign).then(function () {
-            this.props.employeeInfoActions.getAvailablePositions(this.props.currentSeason.name, this.props.nextSeason.name, this.props.followingSeason.name)
-            this.props.employeeInfoActions.getPositionAssigns(this.state.staffId)
+            _this.props.employeeInfoActions.getAvailablePositions(_this.props.currentSeason.name, _this.props.nextSeason.name, _this.props.followingSeason.name)
+            _this.props.employeeInfoActions.getPositionAssigns(_this.state.staffId)
         })
     }
 
-    removeRole = (id) => {
-        this.props.employeeInfoActions.deletePositionAssign(id).then(function () {
-            this.props.employeeInfoActions.getAvailablePositions(this.props.currentSeason.name, this.props.nextSeason.name, this.props.followingSeason.name)
-            this.props.employeeInfoActions.getPositionAssigns(this.state.staffId)
+    removeRole = (positionAssignId) => {
+        const _this = this;
+
+        this.props.employeeInfoActions.deletePositionAssign(positionAssignId).then(function () {
+            _this.props.employeeInfoActions.getAvailablePositions(_this.props.currentSeason.name, _this.props.nextSeason.name, _this.props.followingSeason.name)
+            _this.props.employeeInfoActions.getPositionAssigns(_this.state.staffId)
         })
     }
 
@@ -205,10 +206,7 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
     return {
-        employeeInfoActions: bindActionCreators(employeeInfoActions, dispatch),
-        beginAjaxCall: bindActionCreators(beginAjaxCall, dispatch),
-        endAjaxCall: bindActionCreators(endAjaxCall, dispatch),
-        ajaxCallError: bindActionCreators(ajaxCallError, dispatch)
+        employeeInfoActions: bindActionCreators(employeeInfoActions, dispatch)
     }
 }
 

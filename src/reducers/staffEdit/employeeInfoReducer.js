@@ -4,9 +4,9 @@ var defaultState = {
     currentAvailablePositions: [],
     nextAvailablePositions: [],
     followingAvailablePositions: [],
-    currentPositionAssign: undefined,
-    nextPositionAssign: undefined,
-    followingPositionAssign: undefined,
+    currentPositionAssign: null,
+    nextPositionAssign: null,
+    followingPositionAssign: null,
     staff: null
 }
 
