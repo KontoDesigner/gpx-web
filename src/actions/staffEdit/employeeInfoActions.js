@@ -2,6 +2,27 @@ import { ActionTypes as types } from '../../constants/staffEdit/employeeInfoCons
 import { beginAjaxCall, ajaxCallError, endAjaxCall } from '../ajaxStatusActions'
 import RestClient from '../../infrastructure/restClient'
 
+export function handleCurrentPositionAssignField(field, val) {
+    return {
+        type: types.HANDLE_CURRENTPOSITIONASSIGN_FIELD,
+        data: { field: field, val: val }
+    }
+}
+
+export function handleNextPositionAssignField(field, val) {
+    return {
+        type: types.HANDLE_NEXTPOSITIONASSIGN_FIELD,
+        data: { field: field, val: val }
+    }
+}
+
+export function handleFollowingPositionAssignField(field, val) {
+    return {
+        type: types.HANDLE_FOLLOWINGPOSITIONASSIGN_FIELD,
+        data: { field: field, val: val }
+    }
+}
+
 export function handleStaffField(field, val) {
     return {
         type: types.HANDLE_STAFF_FIELD,

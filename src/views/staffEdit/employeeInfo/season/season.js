@@ -112,11 +112,11 @@ class Season extends Component {
 
                                 <Col sm="12" md="6" lg="6" xl="6">
                                     <div className="form-group">
-                                        <label htmlFor="dateOfBirth">Start Date</label>
+                                        <label htmlFor="StaffStartDate">Start Date</label>
 
                                         <Datetime
                                             value={this.props.positionAssign !== null ? this.props.positionAssign.StaffStartDate : ''}
-                                            // onChange={(v) => { props.updateStaffDatePickerState('dateOfBirth', v) }}
+                                            onChange={(v) => { this.props.handlePositionAssignDatePicker('StaffStartDate', v, this.props.title) }}
                                             timeFormat={false}
                                             dateFormat="YYYY-MM-DD"
                                             closeOnSelect
@@ -127,11 +127,11 @@ class Season extends Component {
 
                                 <Col sm="12" md="6" lg="6" xl="6">
                                     <div className="form-group">
-                                        <label htmlFor="dateOfBirth">End Date</label>
+                                        <label htmlFor="StaffEndDate">End Date</label>
 
                                         <Datetime
                                             value={this.props.positionAssign !== null ? this.props.positionAssign.StaffEndDate : ''}
-                                            // onChange={(v) => { props.updateStaffDatePickerState('dateOfBirth', v) }}
+                                            onChange={(v) => { this.props.handlePositionAssignDatePicker('StaffEndDate', v, this.props.title) }}
                                             timeFormat={false}
                                             dateFormat="YYYY-MM-DD"
                                             closeOnSelect
@@ -160,6 +160,7 @@ class Season extends Component {
                         toggle={this.toggleMoveRoleModal}
                         positionAssign={this.props.positionAssign}
                         season={this.props.season}
+                        moveRole={this.props.moveRole}
                     />
 
                     <RemoveRole

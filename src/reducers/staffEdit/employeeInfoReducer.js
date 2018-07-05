@@ -20,6 +20,30 @@ export default function employeeInfoReducer(state = defaultState, action) {
                     [action.data.field]: action.data.val
                 },
             }
+        case (types.HANDLE_CURRENTPOSITIONASSIGN_FIELD):
+            return {
+                ...state,
+                currentPositionAssign: {
+                    ...state.currentPositionAssign,
+                    [action.data.field]: action.data.val
+                },
+            }
+        case (types.HANDLE_NEXTPOSITIONASSIGN_FIELD):
+            return {
+                ...state,
+                nextPositionAssign: {
+                    ...state.nextPositionAssign,
+                    [action.data.field]: action.data.val
+                },
+            }
+        case (types.HANDLE_FOLLOWINGPOSITIONASSIGN_FIELD):
+            return {
+                ...state,
+                followingPositionAssign: {
+                    ...state.followingPositionAssign,
+                    [action.data.field]: action.data.val
+                },
+            }
         case types.GET_AVAILABLEPOSITIONS_SUCCESS:
             return {
                 ...state,

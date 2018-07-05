@@ -40,6 +40,34 @@ class EmployeeInfo extends Component {
         this.props.employeeInfoActions.handleStaffField(field, id)
     }
 
+    handlePositionAssignDatePicker = (field, date, season) => {
+        let val = '';
+
+        //Picker
+        if (date._d) {
+            val = date._d;
+        }
+
+        //Manual
+        if (!date._d) {
+            val = date;
+        }
+
+        switch (season) {
+            case 'Current Season':
+                this.props.employeeInfoActions.handleCurrentPositionAssignField(field, val)
+                break;
+            case 'Next Season':
+                this.props.employeeInfoActions.handleNextPositionAssignField(field, val)
+                break;
+            case 'Following Season':
+                this.props.employeeInfoActions.handleFollowingPositionAssignField(field, val)
+                break;
+            default:
+                break;
+        }
+    }
+
     render() {
         return (
             <div>
@@ -71,7 +99,9 @@ class EmployeeInfo extends Component {
                             availablePositions={this.props.currentAvailablePositions}
                             assignRole={this.props.assignRole}
                             removeRole={this.props.removeRole}
+                            moveRole={this.props.moveRole}
                             season={this.props.currentSeason}
+                            handlePositionAssignDatePicker={this.handlePositionAssignDatePicker}
                         />
                     </Col>
 
@@ -82,14 +112,25 @@ class EmployeeInfo extends Component {
                     <Col sm="12" md="12" lg="4" xl="4">
                         <Season
                             title={"Next Season"}
+                            positionAssign={this.props.nextPositionAssign}
+                            availablePositions={this.props.nextAvailablePositions}
+                            assignRole={this.props.assignRole}
+                            removeRole={this.props.removeRole}
+                            moveRole={this.props.moveRole}
                             season={this.props.nextSeason}
+                            handlePositionAssignDatePicker={this.handlePositionAssignDatePicker}
                         />
 
                         <PlannedMove />
 
                         <Season
                             title={"Following Season"}
+                            positionAssign={this.props.followingPositionAssign}
+                            availablePositions={this.props.followingAvailablePositions}
+                            assignRole={this.props.assignRole}
+                            removeRole={this.props.removeRole}
                             season={this.props.followingSeason}
+                            handlePositionAssignDatePicker={this.handlePositionAssignDatePicker}
                         />
                     </Col>
                 </Row>
