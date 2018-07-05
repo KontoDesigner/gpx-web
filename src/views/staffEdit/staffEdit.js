@@ -107,7 +107,7 @@ class StaffEdit extends Component {
     }
 
     save = () => {
-        alert('saved')
+        alert('not implemented')
     }
 
     render() {
