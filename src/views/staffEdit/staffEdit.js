@@ -45,7 +45,7 @@ class StaffEdit extends Component {
         }
     }
 
-    async componentDidMount() {
+    async componentWillMount() {
         this.props.employeeInfoActions.getAvailablePositions(this.props.currentSeason.name, this.props.nextSeason.name, this.props.followingSeason.name)
         this.props.employeeInfoActions.getPositionAssigns(this.state.staffId)
         this.props.employeeInfoActions.getStaff(this.state.staffId)
@@ -75,6 +75,15 @@ class StaffEdit extends Component {
         const _this = this;
 
         this.props.employeeInfoActions.deletePositionAssign(positionAssignId).then(function () {
+            _this.props.employeeInfoActions.getAvailablePositions(_this.props.currentSeason.name, _this.props.nextSeason.name, _this.props.followingSeason.name)
+            _this.props.employeeInfoActions.getPositionAssigns(_this.state.staffId)
+        })
+    }
+
+    moveRole = (positionAssignId, srcSeason, destSeason) => {
+        const _this = this;
+
+        this.props.employeeInfoActions.movePositionAssign(positionAssignId, srcSeason, destSeason).then(function () {
             _this.props.employeeInfoActions.getAvailablePositions(_this.props.currentSeason.name, _this.props.nextSeason.name, _this.props.followingSeason.name)
             _this.props.employeeInfoActions.getPositionAssigns(_this.state.staffId)
         })
