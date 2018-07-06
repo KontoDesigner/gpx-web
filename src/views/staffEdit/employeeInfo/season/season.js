@@ -103,61 +103,49 @@ class Season extends Component {
                         <CardHeader>{this.props.title}</CardHeader>
 
                         <CardBody className="no-padding-bottom">
-                            <Row>
-                                <Col sm="12" md="6" lg="6" xl="6">
-                                    <div className="form-group">
-                                        <TextInput name="regionHeadOf" label="Region/Head Of" disabled={true} value={this.props.positionAssign.Region + ' ' + this.props.positionAssign.HeadOf} />
-                                    </div>
+                            <div className="form-row">
+                                <Col sm="12" md="6" lg="6" xl="6" className="form-group">
+                                    <TextInput name="regionHeadOf" label="Region/Head Of" disabled={true} value={this.props.positionAssign.Region + ' ' + this.props.positionAssign.HeadOf} />
                                 </Col>
 
-                                <Col sm="12" md="6" lg="6" xl="6">
-                                    <div className="form-group">
-                                        <TextInput name="location" label="Location" disabled={true} value={this.props.positionAssign.SDD_DM + ' ' + this.props.positionAssign.Destination + ' ' + this.props.positionAssign.ConceptHotel} />
-                                    </div>
+                                <Col sm="12" md="6" lg="6" xl="6" className="form-group">
+                                    <TextInput name="location" label="Location" disabled={true} value={this.props.positionAssign.SDD_DM + ' ' + this.props.positionAssign.Destination + ' ' + this.props.positionAssign.ConceptHotel} />
                                 </Col>
 
-                                <Col sm="12" md="6" lg="6" xl="6">
-                                    <div className="form-group">
-                                        <TextInput name="jobFamily" label="Job Family" disabled={true} value={this.props.positionAssign.JobFamily} />
-                                    </div>
+                                <Col sm="12" md="6" lg="6" xl="6" className="form-group">
+                                    <TextInput name="jobFamily" label="Job Family" disabled={true} value={this.props.positionAssign.JobFamily} />
                                 </Col>
 
-                                <Col sm="12" md="6" lg="6" xl="6">
-                                    <div className="form-group">
-                                        <TextInput name="jobTitle" label="Job Title" disabled={true} value={this.props.positionAssign.JobTitle} />
-                                    </div>
+                                <Col sm="12" md="6" lg="6" xl="6" className="form-group">
+                                    <TextInput name="jobTitle" label="Job Title" disabled={true} value={this.props.positionAssign.JobTitle} />
                                 </Col>
 
-                                <Col sm="12" md="6" lg="6" xl="6">
-                                    <div className="form-group">
-                                        <label htmlFor="StaffStartDate">Start Date</label>
+                                <Col sm="12" md="6" lg="6" xl="6" className="form-group">
+                                    <label htmlFor="StaffStartDate">Start Date</label>
 
-                                        <Datetime
-                                            value={this.props.positionAssign !== null ? this.props.positionAssign.StaffStartDate : ''}
-                                            onChange={(v) => { this.handlePositionAssignDatePicker('StaffStartDate', v, this.props.title) }}
-                                            timeFormat={false}
-                                            dateFormat="YYYY-MM-DD"
-                                            closeOnSelect
-                                            utc={true}
-                                            inputProps={{ placeholder: 'YYYY-MM-DD' }} />
-                                    </div>
+                                    <Datetime
+                                        value={this.props.positionAssign !== null ? this.props.positionAssign.StaffStartDate : ''}
+                                        onChange={(v) => { this.handlePositionAssignDatePicker('StaffStartDate', v, this.props.title) }}
+                                        timeFormat={false}
+                                        dateFormat="YYYY-MM-DD"
+                                        closeOnSelect
+                                        utc={true}
+                                        inputProps={{ placeholder: 'YYYY-MM-DD' }} />
                                 </Col>
 
-                                <Col sm="12" md="6" lg="6" xl="6">
-                                    <div className="form-group">
-                                        <label htmlFor="StaffEndDate">End Date</label>
+                                <Col sm="12" md="6" lg="6" xl="6" className="form-group">
+                                    <label htmlFor="StaffEndDate">End Date</label>
 
-                                        <Datetime
-                                            value={this.props.positionAssign !== null ? this.props.positionAssign.StaffEndDate : ''}
-                                            onChange={(v) => { this.handlePositionAssignDatePicker('StaffEndDate', v, this.props.title) }}
-                                            timeFormat={false}
-                                            dateFormat="YYYY-MM-DD"
-                                            closeOnSelect
-                                            utc={true}
-                                            inputProps={{ placeholder: 'YYYY-MM-DD' }} />
-                                    </div>
+                                    <Datetime
+                                        value={this.props.positionAssign !== null ? this.props.positionAssign.StaffEndDate : ''}
+                                        onChange={(v) => { this.handlePositionAssignDatePicker('StaffEndDate', v, this.props.title) }}
+                                        timeFormat={false}
+                                        dateFormat="YYYY-MM-DD"
+                                        closeOnSelect
+                                        utc={true}
+                                        inputProps={{ placeholder: 'YYYY-MM-DD' }} />
                                 </Col>
-                            </Row>
+                            </div>
                         </CardBody>
 
                         <CardFooter style={{ paddingBottom: '0px' }}>

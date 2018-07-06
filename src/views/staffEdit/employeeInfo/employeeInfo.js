@@ -87,7 +87,7 @@ class EmployeeInfo extends Component {
     render() {
         return (
             <div>
-                <Row>
+                <Row className="row-panel-2">
                     <Col sm="12" md="12" lg="6">
                         <ContactInformation
                             staff={this.props.staff}
@@ -107,8 +107,8 @@ class EmployeeInfo extends Component {
                     </Col>
                 </Row>
 
-                <Row>
-                    <Col sm="12" md="12" lg="4" xl="4">
+                <Row className="row-panel-3">
+                    <Col sm="12" md="12" lg="4">
                         <Season
                             title={"Current Season"}
                             positionAssign={this.props.currentPositionAssign}
@@ -122,11 +122,11 @@ class EmployeeInfo extends Component {
                         />
                     </Col>
 
-                    <Col sm="12" md="12" lg="4" xl="4">
+                    <Col sm="12" md="12" lg="4">
                         <Gap />
                     </Col>
 
-                    <Col sm="12" md="12" lg="4" xl="4">
+                    <Col sm="12" md="12" lg="4">
                         <Season
                             title={"Next Season"}
                             positionAssign={this.props.nextPositionAssign}

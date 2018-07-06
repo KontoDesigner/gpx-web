@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import CountryRow from './countryRow'
-import { Card, CardBody, CardHeader, Row } from 'reactstrap'
+import { Card, CardBody, CardHeader } from 'reactstrap'
 import Filter from '../../filter'
 import Action from '../../action'
 
@@ -11,11 +11,11 @@ class HeadOf extends Component {
         <CardHeader>Head Of</CardHeader>
 
         <CardBody className="no-padding-bottom">
-          <Row>
+          <div className="form-row">
             <Filter getData={this.props.getHeadOf} />
 
             <Action selected={this.props.selectedStaff} />
-          </Row>
+          </div>
 
           {this.props.headOf.map((headOf, index) =>
             <CountryRow

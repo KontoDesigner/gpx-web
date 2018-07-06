@@ -1,48 +1,16 @@
-.col-action
+.btn-action
 {
-  top: 24px;
-}
-
-.col-btn-menu > .btn:not(:last-child)
-{
-  margin-right:5px;
-}
-
-@media (min-width: 992px) { 
-  .col-btn-menu
-  {
-    text-align:right;
-    margin-top:-4px;
-  }
+    margin-top:0px;
 }
 
 @media (min-width: 767.99px) {
-    .col-action
-    {
-      padding-left:7.5px;
-    }
-    
     .col-menu
     {
       padding-right:0px!important;
     }
-  
-    .row > .col-filter:not(:first-child)
-    {
-      padding-left:7.5px;
-    }
-  
-    .row > .col-filter
-    {
-      padding-right:7.5px;
-    }
-  }
 
-  @media (max-width: 767.98px) {
-    .col-action
+    .btn-action
     {
-      top:0px;
-      padding-bottom:15px;
+        margin-top:25px!important;
     }
-  }
-  
+}

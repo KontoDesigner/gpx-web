@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Row, Col } from 'reactstrap'
+import { Col } from 'reactstrap'
 import TextInput from '../../components/textInput'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
@@ -35,31 +35,26 @@ class Filter extends Component {
   }
 
   render() {
-    return (
-      <Col sm="12" md="8" lg="6" xl="4">
-        <Row>
-          <Col sm="12" md="6" lg="6" xl="6" className="col-filter">
-            <div className="form-group form-group-select">
-              <label htmlFor="sourceMarket">Source Market</label>
+    return ([
+      <Col key={0} sm="12" md="4" lg="3" xl="3" className="form-group form-group-select">
+        <label htmlFor="sourceMarket">Source Market</label>
 
-              <Select
-                id="sourceMarket"
-                valueKey="id"
-                labelKey="name"
-                className="form-control"
-                options={this.props.sourceMarkets}
-                onChange={this.updateSourceMarketState}
-                value={this.props.filter.sourceMarket}
-                placeholder="Source Market"
-              />
-            </div>
-          </Col>
+        <Select
+          id="sourceMarket"
+          valueKey="id"
+          labelKey="name"
+          className="form-control"
+          options={this.props.sourceMarkets}
+          onChange={this.updateSourceMarketState}
+          value={this.props.filter.sourceMarket}
+          placeholder="Source Market"
+        />
+      </Col>,
 
-          <Col sm="12" md="6" lg="6" xl="6" className="col-filter">
-            <TextInput name="text" label="Free Text" placeholder="e.g. Mallorca" value={this.props.filter.text} onChange={this.updateTextState} />
-          </Col>
-        </Row>
+      <Col key={1} sm="12" md="4" lg="3" xl="3" className="form-group">
+        <TextInput name="text" label="Free Text" placeholder="e.g. Mallorca" value={this.props.filter.text} onChange={this.updateTextState} />
       </Col>
+    ]
     )
   }
 }

@@ -125,7 +125,7 @@ class StaffEdit extends Component {
                     />
 
                     <Row>
-                        <Col className="d-none d-xs-block d-sm-block d-md-block d-lg-none" style={{ paddingBottom: '15px' }}>
+                        <Col className="d-xs-block d-sm-block d-md-block d-lg-none" style={{ paddingBottom: '15px' }}>
                             {buttons}
                         </Col>
                     </Row>
