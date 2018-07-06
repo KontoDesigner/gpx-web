@@ -11,6 +11,7 @@ import { LinkContainer } from 'react-router-bootstrap';
 import Buttons from './buttons';
 import Tabs from './tabs';
 import * as employeeInfoActions from '../../actions/staffEdit/employeeInfoActions'
+import '../../styles/staffEdit.css';
 
 class StaffEdit extends Component {
     constructor(props) {
@@ -20,7 +21,6 @@ class StaffEdit extends Component {
         const staffId = params.id;
 
         this.state = {
-            staff: null,
             activeTab: 'employeeInfo',
             staffId: staffId,
             positionTypes: [

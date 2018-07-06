@@ -34,48 +34,10 @@ body {
   overflow-y: scroll; 
 }
 
-.col-action
-{
-  top: 24px;
-}
-
-.col-btn-menu > .btn:not(:last-child)
-{
-  margin-right:5px;
-}
-
-@media (min-width: 992px) { 
-  .col-btn-menu
-  {
-    text-align:right;
-    margin-top:-4px;
-  }
-}
-
 @media (min-width: 767.99px) {
   .logo-container
   {
     padding-right:0px;
-  }
-
-  .col-action
-  {
-    padding-left:7.5px;
-  }
-  
-  .col-menu
-  {
-    padding-right:0px!important;
-  }
-
-  .row > .col-filter:not(:first-child)
-  {
-    padding-left:7.5px;
-  }
-
-  .row > .col-filter
-  {
-    padding-right:7.5px;
   }
 }
 
@@ -86,12 +48,6 @@ body {
 }
 
 @media (max-width: 767.98px) {
-  .col-action
-  {
-    top:0px;
-    padding-bottom:15px;
-  }
-
   .logo-container > svg
   {
     margin-top: 20px;
@@ -124,11 +80,6 @@ body {
 
 a{
   color: #3a6d98!important;
-}
-
-body.modal-open
-{
-  overflow-y: hidden; 
 }
 
 .App > .container
@@ -172,17 +123,32 @@ b, strong
   overflow-y:scroll;
 }
 
-.hidden-scroll::-webkit-scrollbar-track
+.ReactVirtualized__Table__row::-webkit-scrollbar-track
 {
-	opacity:0;
+  border-top:1px solid #c2e6fa;
 }
 
-.hidden-scroll::-webkit-scrollbar
+.ReactVirtualized__Table__row::-webkit-scrollbar
 {
-	opacity:0;
+  border-top:1px solid #c2e6fa;
 }
 
-.hidden-scroll::-webkit-scrollbar-thumb
+.ReactVirtualized__Table__row::-webkit-scrollbar-thumb
 {
-	opacity:0;
+  border-top:1px solid #c2e6fa;
+}
+
+.ReactVirtualized__Grid__innerScrollContainer > div:first-child .ReactVirtualized__Table__row::-webkit-scrollbar-track
+{
+  border-top:0px;
+}
+
+.ReactVirtualized__Grid__innerScrollContainer > div:first-child .ReactVirtualized__Table__row::-webkit-scrollbar
+{
+  border-top:0px;
+}
+
+.ReactVirtualized__Grid__innerScrollContainer > div:first-child .ReactVirtualized__Table__row::-webkit-scrollbar-thumb
+{
+  border-top:0px;
 }

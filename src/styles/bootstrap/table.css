@@ -149,3 +149,18 @@
 {
     flex:none!important;
 }
+
+.ReactVirtualized__Table__headerRow::-webkit-scrollbar-track
+{
+  border-bottom:1px solid #c2e6fa;
+}
+
+.ReactVirtualized__Table__headerRow::-webkit-scrollbar
+{
+  border-bottom:1px solid #c2e6fa;
+}
+
+.ReactVirtualized__Table__headerRow::-webkit-scrollbar-thumb
+{
+  border-bottom:1px solid #c2e6fa;
+}

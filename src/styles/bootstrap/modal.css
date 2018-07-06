@@ -42,3 +42,8 @@
     margin-top: -15PX;
     margin-right: -15px;
 }
+
+body.modal-open
+{
+  overflow-y: hidden; 
+}

@@ -14,6 +14,7 @@ import * as filterActions from '../../actions/staff/filterActions'
 import * as jobTitleActions from '../../actions/staff/active/jobTitleActions'
 import $ from 'jquery'
 import Tabs from './tabs'
+import '../../styles/staff.css';
 
 class Staff extends Component {
     constructor(props) {
@@ -75,10 +76,10 @@ class Staff extends Component {
                     // handleName={this.props.nameActions.handleName}
                     getJobTitle={this.props.jobTitleActions.getJobTitle}
                     handleJobTitle={this.props.jobTitleActions.handleJobTitle}
-                    // getRecentlyInactive={this.props.recentlyInactiveActions.getRecentlyInactive}
-                    // handleGetRecentlyInactive={this.props.recentlyInactiveActions.handleGetRecentlyInactive}
-                    // getNewEmployees={this.props.newEmployeesActions.getNewEmployees}
-                    // handleNewEmployees={this.props.newEmployeesActions.handleNewEmployees}
+                // getRecentlyInactive={this.props.recentlyInactiveActions.getRecentlyInactive}
+                // handleGetRecentlyInactive={this.props.recentlyInactiveActions.handleGetRecentlyInactive}
+                // getNewEmployees={this.props.newEmployeesActions.getNewEmployees}
+                // handleNewEmployees={this.props.newEmployeesActions.handleNewEmployees}
                 />
 
                 <Col sm="12" md="9" lg="9" xl="10">
