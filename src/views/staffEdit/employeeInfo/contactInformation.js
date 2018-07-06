@@ -18,7 +18,7 @@ const ContactInformation = (props) => {
                     </Col>
 
                     <Col sm="12" md="6" lg="6" xl="4" className="form-group">
-                        <TextInput name="fullName" label="Full Name" value={props.staff.lastName + ' ' + props.staff.lastName} disabled={true} />
+                        <TextInput name="fullName" label="Full Name" value={props.staff.firstName + ' ' + props.staff.lastName} disabled={true} />
                     </Col>
 
                     <Col sm="12" md="6" lg="6" xl="4" className="form-group">
