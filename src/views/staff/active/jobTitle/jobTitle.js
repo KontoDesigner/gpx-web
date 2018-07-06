@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import TitleRow from './titleRow'
-import { Card, CardBody, CardHeader, Row } from 'reactstrap'
+import { Card, CardBody, CardHeader } from 'reactstrap'
 import Filter from '../../filter'
 import Action from '../../action'
 
@@ -19,11 +19,11 @@ class JobTitle extends Component {
         <CardHeader>Job Title</CardHeader>
 
         <CardBody className="no-padding-bottom">
-          <Row>
+          <div className="form-row">
             <Filter />
 
             <Action />
-          </Row>
+          </div>
           {this.props.jobTitle.map((jobTitle, index) => (
             <TitleRow
               key={index}

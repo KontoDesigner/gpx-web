@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Card, CardBody, CardHeader, Row } from 'reactstrap'
+import { Card, CardBody, CardHeader } from 'reactstrap'
 import DestinationRow from './destinationRow'
 import Filter from '../../filter';
 import Action from '../../action';
@@ -13,11 +13,11 @@ class Destination extends Component {
                 </CardHeader>
 
                 <CardBody className="no-padding-bottom">
-                    <Row>
+                    <div className="form-row">
                         <Filter getData={this.props.getDestination} />
 
                         <Action selected={this.props.selectedStaff} />
-                    </Row>
+                    </div>
 
                     {this.props.destination.map((destination, index) =>
                         <DestinationRow
