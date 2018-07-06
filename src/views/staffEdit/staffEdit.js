@@ -60,48 +60,18 @@ class StaffEdit extends Component {
         })
     }
 
-    assignRole = (role) => {
-        const positionAssign = {
-            MPLID: role.mplid,
-            StaffID: this.props.staff.staffID,
-            FirstName: this.props.staff.firstName,
-            LastName: this.props.staff.lastName,
-            Season: role.season,
-            FullName: this.props.staff.fullName,
-            StartDate: role.startDate,
-            EndDate: role.endDate
-        }
-
-        const _this = this;
-
-        this.props.employeeInfoActions.insertPositionAssign(positionAssign).then(function () {
-            _this.props.employeeInfoActions.getAvailablePositions(_this.props.currentSeason.name, _this.props.nextSeason.name, _this.props.followingSeason.name)
-            _this.props.employeeInfoActions.getPositionAssigns(_this.state.staffId)
-        })
-    }
-
-    removeRole = (positionAssignId) => {
-        const _this = this;
-
-        this.props.employeeInfoActions.deletePositionAssign(positionAssignId).then(function () {
-            _this.props.employeeInfoActions.getAvailablePositions(_this.props.currentSeason.name, _this.props.nextSeason.name, _this.props.followingSeason.name)
-            _this.props.employeeInfoActions.getPositionAssigns(_this.state.staffId)
-        })
-    }
-
-    moveRole = (oldPositionAssignId, newMPLID) => {
-        const _this = this;
-
-        this.props.employeeInfoActions.movePositionAssign(oldPositionAssignId, newMPLID).then(function () {
-            _this.props.employeeInfoActions.getAvailablePositions(_this.props.currentSeason.name, _this.props.nextSeason.name, _this.props.followingSeason.name)
-            _this.props.employeeInfoActions.getPositionAssigns(_this.state.staffId)
-        })
-    }
-
     toggle = (activeTab) => {
         if (this.state.activeTab !== activeTab) {
             this.setState({
                 activeTab
+            })
+        }
+    }
+
+    handleUnsavedEdit = () => {
+        if (this.state.unsavedEdit === false) {
+            this.setState({
+                unsavedEdit: true
             })
         }
     }
@@ -170,9 +140,6 @@ class StaffEdit extends Component {
                                         currentAvailablePositions={this.props.currentAvailablePositions}
                                         nextAvailablePositions={this.props.nextAvailablePositions}
                                         followingAvailablePositions={this.props.followingAvailablePositions}
-                                        assignRole={this.assignRole}
-                                        removeRole={this.removeRole}
-                                        moveRole={this.moveRole}
                                         currentPositionAssign={this.props.currentPositionAssign}
                                         nextPositionAssign={this.props.nextPositionAssign}
                                         followingPositionAssign={this.props.followingPositionAssign}
@@ -180,6 +147,7 @@ class StaffEdit extends Component {
                                         nextSeason={this.props.nextSeason}
                                         followingSeason={this.props.followingSeason}
                                         positionTypes={this.state.positionTypes}
+                                        handleUnsavedEdit={this.handleUnsavedEdit}
                                     />
                                 </TabPane>
 

@@ -7,7 +7,8 @@
 
 .modal-header
 {
-    padding: 14px 15px 12px 15px
+    padding: 14px 15px 12px 15px;
+    border-radius:0px;
 }
 
 .modal-footer

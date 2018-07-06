@@ -35,6 +35,24 @@ class Season extends Component {
         });
     }
 
+    handlePositionAssignDatePicker = (field, date, season) => {
+        let val = '';
+
+        //Picker
+        if (date._d) {
+            val = date._d;
+        }
+
+        //Manual
+        if (!date._d) {
+            val = date;
+        }
+
+        this.props.handlePositionAssignField(field, val)
+
+        this.props.handleUnsavedEdit()
+    }
+
     render() {
         const assignModal = (
             <AssignRole
@@ -116,7 +134,7 @@ class Season extends Component {
 
                                         <Datetime
                                             value={this.props.positionAssign !== null ? this.props.positionAssign.StaffStartDate : ''}
-                                            onChange={(v) => { this.props.handlePositionAssignDatePicker('StaffStartDate', v, this.props.title) }}
+                                            onChange={(v) => { this.handlePositionAssignDatePicker('StaffStartDate', v, this.props.title) }}
                                             timeFormat={false}
                                             dateFormat="YYYY-MM-DD"
                                             closeOnSelect
@@ -131,7 +149,7 @@ class Season extends Component {
 
                                         <Datetime
                                             value={this.props.positionAssign !== null ? this.props.positionAssign.StaffEndDate : ''}
-                                            onChange={(v) => { this.props.handlePositionAssignDatePicker('StaffEndDate', v, this.props.title) }}
+                                            onChange={(v) => { this.handlePositionAssignDatePicker('StaffEndDate', v, this.props.title) }}
                                             timeFormat={false}
                                             dateFormat="YYYY-MM-DD"
                                             closeOnSelect

@@ -16,6 +16,8 @@ class EmployeeInfo extends Component {
         const val = event.target.value;
 
         this.props.employeeInfoActions.handleStaffField(field, val)
+
+        this.props.handleUnsavedEdit()
     }
 
     handleStaffDatePicker = (field, date) => {
@@ -32,40 +34,54 @@ class EmployeeInfo extends Component {
         }
 
         this.props.employeeInfoActions.handleStaffField(field, val)
+
+        this.props.handleUnsavedEdit()
     }
 
     handleStaffSelect = (field, val, selector) => {
         const id = val != null ? val[selector] : undefined
 
         this.props.employeeInfoActions.handleStaffField(field, id)
+
+        this.props.handleUnsavedEdit()
     }
 
-    handlePositionAssignDatePicker = (field, date, season) => {
-        let val = '';
-
-        //Picker
-        if (date._d) {
-            val = date._d;
+    assignRole = (role) => {
+        const positionAssign = {
+            MPLID: role.mplid,
+            StaffID: this.props.staff.staffID,
+            FirstName: this.props.staff.firstName,
+            LastName: this.props.staff.lastName,
+            Season: role.season,
+            FullName: this.props.staff.fullName,
+            StartDate: role.startDate,
+            EndDate: role.endDate
         }
 
-        //Manual
-        if (!date._d) {
-            val = date;
-        }
+        const _this = this;
 
-        switch (season) {
-            case 'Current Season':
-                this.props.employeeInfoActions.handleCurrentPositionAssignField(field, val)
-                break;
-            case 'Next Season':
-                this.props.employeeInfoActions.handleNextPositionAssignField(field, val)
-                break;
-            case 'Following Season':
-                this.props.employeeInfoActions.handleFollowingPositionAssignField(field, val)
-                break;
-            default:
-                break;
-        }
+        this.props.employeeInfoActions.insertPositionAssign(positionAssign).then(function () {
+            _this.props.employeeInfoActions.getAvailablePositions(_this.props.currentSeason.name, _this.props.nextSeason.name, _this.props.followingSeason.name)
+            _this.props.employeeInfoActions.getPositionAssigns(_this.props.staff.staffID)
+        })
+    }
+
+    removeRole = (positionAssignId) => {
+        const _this = this;
+
+        this.props.employeeInfoActions.deletePositionAssign(positionAssignId).then(function () {
+            _this.props.employeeInfoActions.getAvailablePositions(_this.props.currentSeason.name, _this.props.nextSeason.name, _this.props.followingSeason.name)
+            _this.props.employeeInfoActions.getPositionAssigns(_this.props.staff.staffID)
+        })
+    }
+
+    moveRole = (oldPositionAssignId, newMPLID) => {
+        const _this = this;
+
+        this.props.employeeInfoActions.movePositionAssign(oldPositionAssignId, newMPLID).then(function () {
+            _this.props.employeeInfoActions.getAvailablePositions(_this.props.currentSeason.name, _this.props.nextSeason.name, _this.props.followingSeason.name)
+            _this.props.employeeInfoActions.getPositionAssigns(_this.props.staff.staffID)
+        })
     }
 
     render() {
@@ -97,11 +113,12 @@ class EmployeeInfo extends Component {
                             title={"Current Season"}
                             positionAssign={this.props.currentPositionAssign}
                             availablePositions={this.props.currentAvailablePositions}
-                            assignRole={this.props.assignRole}
-                            removeRole={this.props.removeRole}
-                            moveRole={this.props.moveRole}
+                            assignRole={this.assignRole}
+                            removeRole={this.removeRole}
+                            moveRole={this.moveRole}
                             season={this.props.currentSeason}
-                            handlePositionAssignDatePicker={this.handlePositionAssignDatePicker}
+                            handleUnsavedEdit={this.props.handleUnsavedEdit}
+                            handlePositionAssignField={(field, val) => this.props.employeeInfoActions.handleCurrentPositionAssignField(field, val)}
                         />
                     </Col>
 
@@ -114,11 +131,12 @@ class EmployeeInfo extends Component {
                             title={"Next Season"}
                             positionAssign={this.props.nextPositionAssign}
                             availablePositions={this.props.nextAvailablePositions}
-                            assignRole={this.props.assignRole}
-                            removeRole={this.props.removeRole}
-                            moveRole={this.props.moveRole}
+                            assignRole={this.assignRole}
+                            removeRole={this.removeRole}
+                            moveRole={this.moveRole}
                             season={this.props.nextSeason}
-                            handlePositionAssignDatePicker={this.handlePositionAssignDatePicker}
+                            handleUnsavedEdit={this.props.handleUnsavedEdit}
+                            handlePositionAssignField={(field, val) => this.props.employeeInfoActions.handleNextPositionAssignField(field, val)}
                         />
 
                         <PlannedMove />
@@ -127,10 +145,12 @@ class EmployeeInfo extends Component {
                             title={"Following Season"}
                             positionAssign={this.props.followingPositionAssign}
                             availablePositions={this.props.followingAvailablePositions}
-                            assignRole={this.props.assignRole}
-                            removeRole={this.props.removeRole}
+                            assignRole={this.assignRole}
+                            removeRole={this.removeRole}
+                            moveRole={this.moveRole}
                             season={this.props.followingSeason}
-                            handlePositionAssignDatePicker={this.handlePositionAssignDatePicker}
+                            handleUnsavedEdit={this.props.handleUnsavedEdit}
+                            handlePositionAssignField={(field, val) => this.props.employeeInfoActions.handleFollowingPositionAssignField(field, val)}
                         />
                     </Col>
                 </Row>
