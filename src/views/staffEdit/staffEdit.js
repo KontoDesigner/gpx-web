@@ -89,10 +89,10 @@ class StaffEdit extends Component {
         })
     }
 
-    moveRole = (positionAssignId, srcSeason, destSeason) => {
+    moveRole = (oldPositionAssignId, newMPLID) => {
         const _this = this;
 
-        this.props.employeeInfoActions.movePositionAssign(positionAssignId, srcSeason, destSeason).then(function () {
+        this.props.employeeInfoActions.movePositionAssign(oldPositionAssignId, newMPLID).then(function () {
             _this.props.employeeInfoActions.getAvailablePositions(_this.props.currentSeason.name, _this.props.nextSeason.name, _this.props.followingSeason.name)
             _this.props.employeeInfoActions.getPositionAssigns(_this.state.staffId)
         })

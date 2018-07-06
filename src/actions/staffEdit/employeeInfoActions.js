@@ -57,6 +57,27 @@ export function deletePositionAssign(id) {
     }
 }
 
+export function movePositionAssign(oldPositionAssignId, newMPLID) {
+    return async function (dispatch) {
+        dispatch(beginAjaxCall())
+
+        const model = {
+            oldPositionAssignId: oldPositionAssignId,
+            newMPLID: newMPLID
+        }
+
+        try {
+            await RestClient.Post('positionassign/movepositionassign', model)
+
+            dispatch(endAjaxCall())
+        } catch (error) {
+            dispatch(ajaxCallError(error))
+
+            throw error
+        }
+    }
+}
+
 export function insertPositionAssign(positionAssign) {
     return async function (dispatch) {
         dispatch(beginAjaxCall())
