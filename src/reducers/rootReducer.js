@@ -5,6 +5,7 @@ import { reducer as toastrReducer } from 'react-redux-toastr'
 import staff from './staff/staffRootReducer'
 import staffEdit from './staffEdit/staffEditRootReducer'
 import geography from './geographyReducer'
+import planning from './planning/planningRootReducer'
 
 export default combineReducers({
     ajaxCallsInProgress,
@@ -12,5 +13,6 @@ export default combineReducers({
     toastr: toastrReducer,
     staff,
     staffEdit,
-    geography
+    geography,
+    planning
 })
