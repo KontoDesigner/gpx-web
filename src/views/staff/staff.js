@@ -39,7 +39,7 @@ class Staff extends Component {
     }
 
     componentDidMount() {
-        this.props.filterActions.handleFilter()
+        this.props.filterActions.handleFilter()   //when page loads
 
         this.props.headOfActions.getHeadOf()
     }

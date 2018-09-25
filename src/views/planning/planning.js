@@ -2,55 +2,54 @@ import React, { Component } from 'react'
 import { TabContent, TabPane, Row, Col } from 'reactstrap'
 import { connect } from 'react-redux'
 import Tabs from './tabs'
-
+import AllRole from './planning/allRole/allRole' 
 import { bindActionCreators } from 'redux'
 import * as allRolesActions from '../../actions/planning/planning/allRolesActions'
 import * as placedRolesActions from '../../actions/planning/planning/placedRolesActions'
 import * as vacantRolesActions from '../../actions/planning/planning/vacantRolesActions'
 import * as replyYesNoRolesActions from '../../actions/planning/planning/replyYesNoRolesActions'
-import * as headOfActions from '../../actions/staff/active/headOfActions'
-import * as destinationActions from '../../actions/staff/active/destinationActions'
-import * as filterActions from '../../actions/staff/filterActions'
-import * as jobTitleActions from '../../actions/staff/active/jobTitleActions';
+//import $ from 'jquery'
 
-class Planning extends Component {
+import '../../styles/staff.css';
+
+class Planning extends Component { 
     componentWillMount() {
         document.title = 'Planning - GPX'
-
-
-    }
- constructor(props) {
+    } 
+ constructor(props) { 
         super(props)
 
         this.state = {
-            activeTab: 'allRoles',
-            //resetData: this.props.headOfActions.handleHeadOf
+            activeTab: 'allRole',
+            resetData: this.props.allRolesActions.handleAllRoles
         }
     }
 
+    componentDidMount() {
+        this.props.allRolesActions.getAllRoles()
+    }
+
     toggle = (tab, getData, resetData) => {
-        // if (this.state.activeTab !== tab) {
-        //     //Reset current tab state
-        //     this.state.resetData([])
+        if (this.state.activeTab !== tab) {
+             //Reset current tab state
+            this.state.resetData([])
 
-        //     //Reset filter
-        //     this.props.filterActions.handleFilter()
+            //Reset filter
+            this.props.filterActions.handleFilter()
 
-        //     //Get tab data
-        //     getData()
+            //Get tab data
+             getData()
 
-        //     this.setState({
-        //         activeTab: tab,
-        //         resetData: resetData
-        //     })
-        // }
+             this.setState({
+                 activeTab: tab,
+                 resetData: resetData
+             })
+         }
     }
 
     render() {
         return (
             <Row>
-                
-             
                 <Tabs
                     toggle={this.toggle}
                     activeTab={this.state.activeTab}
@@ -64,7 +63,19 @@ class Planning extends Component {
                     handleReplyYesNoRoles={this.props.replyYesNoRolesActions.ReplyYesNoRoles}
                  
                 />
-               
+               <Col sm="12" md="9" lg="9" xl="10">
+                    <TabContent activeTab={this.state.activeTab}>
+                        <TabPane tabId="allRole">
+                            <AllRole
+                               allRoles={this.props.allRoles}
+                               getAllRoles={(sourcemarket, criteria) => this.props.allRolesActions.getAllRoles(sourcemarket, criteria)}
+                                //handleSelectedRoles={this.props.filterActions.handleSelectedRoles}
+                                //selectedRole={this.props.selectedRole}
+                                //edit={this.edit}
+                            />
+                        </TabPane>
+                        </TabContent>
+                </Col>
             </Row>
             
         )
@@ -72,9 +83,7 @@ class Planning extends Component {
 }
 
 function mapStateToProps(state) {
-    
     return {
-        
         allRoles: state.planning.planning.allRoles,
         placedRoles: state.planning.planning.placedRoles,
         vacantRoles: state.planning.planning.vacantRoles,

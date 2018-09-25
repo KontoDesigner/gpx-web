@@ -14,13 +14,13 @@ export function getAllRoles(sourcemarket = 'ALL', criteria = null) {
     dispatch(beginAjaxCall())
 
     try {
-      const allRoles = await RestClient.Get(`staff/headof/${sourcemarket}${criteria !== null ? `/${criteria}` : ''}`)
+      const allRoles = await RestClient.Get(`positionassign/GetAllPositionsAssignData`)
 
       //For some reason we need to reset value here, (bug when loading in new data with filter), don't touch h3h3
       dispatch(handleAllRoles([]))
 
       dispatch(getAllRolesSuccess(allRoles))
-    } catch (error) {
+    } catch (error) { 
       dispatch(ajaxCallError(error))
 
       throw error
