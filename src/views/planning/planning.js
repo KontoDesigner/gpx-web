@@ -8,7 +8,7 @@ import * as allRolesActions from '../../actions/planning/planning/allRolesAction
 import * as placedRolesActions from '../../actions/planning/planning/placedRolesActions'
 import * as vacantRolesActions from '../../actions/planning/planning/vacantRolesActions'
 import * as replyYesNoRolesActions from '../../actions/planning/planning/replyYesNoRolesActions'
-//import $ from 'jquery'
+import $ from 'jquery'
 
 import '../../styles/staff.css';
 
@@ -22,6 +22,13 @@ class Planning extends Component {
         this.state = {
             activeTab: 'allRole',
             resetData: this.props.allRolesActions.handleAllRoles
+        }
+    }
+    edit = (e, position) => {
+        if (!$(e.target).is(":checkbox")) {
+            const win = window.open(`/planning/${position.staffID}`, '_blank');
+
+            win.focus();
         }
     }
 
@@ -69,9 +76,9 @@ class Planning extends Component {
                             <AllRole
                                allRoles={this.props.allRoles}
                                getAllRoles={(sourcemarket, criteria) => this.props.allRolesActions.getAllRoles(sourcemarket, criteria)}
-                                //handleSelectedRoles={this.props.filterActions.handleSelectedRoles}
-                                //selectedRole={this.props.selectedRole}
-                                //edit={this.edit}
+                                //handleSelectedTitle={this.props.filterActions.handleSelectedTitle}
+                                //selectedTitle={this.props.selectedTitle}
+                                edit={this.edit}
                             />
                         </TabPane>
                         </TabContent>

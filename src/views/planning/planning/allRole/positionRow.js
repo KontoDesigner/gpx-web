@@ -23,26 +23,26 @@ class PositionTable extends Component {
       )
 
     const style = {
-      height: `${42 + this.props.jobTitle.staffs.length * 41}px`
+      height: `${42 + this.props.position.positions.length * 41}px`
     }
 
     return (
       <Card className="card-accordion">
-        <CardHeader onClick={() => this.toggleCollapse()}>
-          ({this.props.jobTitle.staffs.length}) {this.props.jobTitle.jobTitle} {icon}
+        {/* <CardHeader onClick={() => this.toggleCollapse()}>
+          ({this.props.position.positions.length}) {this.props.position.jobTitle} {icon}
         </CardHeader>
 
-        <Collapse isOpen={this.state.expanded}>
+        { <Collapse isOpen={this.state.expanded}>
           <CardBody style={style} className="card-body-table">
             <PersonTable
               index={this.props.index}
-              persons={this.props.jobTitle.staffs}
-              handleSelectedStaff={this.props.handleSelectedStaff}
-              selectedStaff={this.props.selectedStaff}
+              persons={this.props.position.positions}
+              handleSelectedTitle={this.props.handleSelectedTitle}
+              selectedTitle={this.props.selectedTitle}
               edit={this.props.edit}
             />
           </CardBody>
-        </Collapse>
+        </Collapse>} */}
       </Card>
     )
   }

@@ -22,9 +22,9 @@ class AllRole extends Component {
               key={index}
               index={index}
               allRole={allRole} 
-              handleSelectedRole={this.props.handleSelectedRole}
-              selectedRole={this.props.selectedRole}
-              // edit={this.props.edit}
+              //handleSelectedTitle={this.props.handleSelectedTitle}
+              //selectedTitle={this.props.selectedTitle}
+              edit={this.props.edit}
             />
           )}
         </CardBody>

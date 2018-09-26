@@ -1,0 +1,47 @@
+import React from 'react'
+import { ContextMenu, MenuItem } from 'react-contextmenu'
+import Table from '../../../../components/table.js';
+
+const columns = [
+  { label: 'Concept Hotel', dataKey: 'concepthotel' },
+  { label: 'Position Type', dataKey: 'positionType' },
+  { label: 'Source Market', dataKey: 'sourceMarket' },
+  { label: 'Placed', dataKey: 'firstNameLastName' }
+];
+
+const JobTitleTable = (props) => {
+  function onContextMenuClick(e, data) {
+    alert(data.foo)
+  }
+
+  const contextMenuId = props.index + "-destinationContextMenu";
+
+  return (
+    <div>
+      <ContextMenu id={contextMenuId}>
+        <MenuItem data={{ foo: 'bar' }} onClick={onContextMenuClick}>
+          ContextMenu Item 1
+          </MenuItem>
+        <MenuItem data={{ foo: 'bar' }} onClick={onContextMenuClick}>
+          ContextMenu Item 2
+          </MenuItem>
+        <MenuItem data={{ foo: 'bar' }} onClick={onContextMenuClick}>
+          ContextMenu Item 3
+          </MenuItem>
+      </ContextMenu>
+
+      <Table
+        list={props.positions}
+        contextMenuId={contextMenuId}
+        columns={columns}
+        checkbox={true}
+        identifier={'staffID'}
+        edit={props.edit}
+        updateSelectedState={props.handleSelectedTitle}
+        selected={props.selectedTitle}
+      />
+    </div>
+  )
+}
+
+export default JobTitleTable

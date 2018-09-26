@@ -6,6 +6,7 @@ import Reports from '../views/reports/reports';
 import Settings from '../views/settings/settings';
 import NotFound from '../views/notFound/notFound';
 import StaffEdit from '../views/staffEdit/staffEdit';
+import PlanningEdit from '../views/planningEdit/planningEdit';
 
 const Routes = () => (
     <div className="container">
@@ -13,7 +14,8 @@ const Routes = () => (
             <Route path="/" exact component={() => <Redirect to="/staff" />} />
             <Route exact path="/staff" component={Staff} />
             <Route exact path="/staff/:id" render={(props) => <StaffEdit {...props} ignoreThis={true} />} />
-            <Route path="/planning" component={Planning} />
+            <Route exact path="/planning" component={Planning} />
+            <Route exact path="/planning/:id" render={(props) => <PlanningEdit {...props} ignoreThis={true} />} />
             <Route path="/reports" component={Reports} />
             <Route path="/Settings" component={Settings} />
             <Route component={NotFound} />

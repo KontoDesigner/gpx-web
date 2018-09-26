@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { Collapse, Card, CardBody, CardHeader } from 'reactstrap'
 import DestinationRow from './destinationRow'
 
-class CountryRow extends Component {
+class HeadOfRow extends Component {
   constructor() {
     super()
 
@@ -35,8 +35,8 @@ class CountryRow extends Component {
                 key={index}
                 index={this.props.index.toString() + index.toString()}
                 destination={destination}
-                handleSelectedStaff={this.props.handleSelectedStaff}
-                selectedStaff={this.props.selectedStaff}
+                //handleSelectedTitle={this.props.handleSelectedTitle}
+                //selectedTitle={this.props.selectedTitle}
                 edit={this.props.edit}
               />
             ))}
@@ -47,4 +47,4 @@ class CountryRow extends Component {
   }
 }
 
-export default CountryRow
+export default HeadOfRow
