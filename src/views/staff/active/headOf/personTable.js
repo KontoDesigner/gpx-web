@@ -4,9 +4,9 @@ import Table from '../../../../components/table.js'
 
 const columns = [
   { label: 'Name', dataKey: 'firstNameLastName' },
-  { label: 'Nationality', dataKey: 'nationality' },
-  { label: 'Id', dataKey: 'staffID' },
-  { label: 'Head Of', dataKey: 'headof' },
+  { label: 'SourceMarket', dataKey: 'sourceMarket' },
+  { label: 'Email', dataKey: 'email' },
+  //{ label: 'Head Of', dataKey: 'headof' },
   { label: 'Concept Hotel', dataKey: 'concepthotel' }
 ];
 

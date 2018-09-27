@@ -4,7 +4,7 @@ import Table from '../../../../components/table.js';
 
 const columns = [
   { label: 'Name', dataKey: 'firstNameLastName' },
-  { label: 'Nationality', dataKey: 'nationality' },
+  { label: 'SourceMarket', dataKey: 'sourceMarket' },
   { label: 'Id', dataKey: 'staffID' }
 ];
 

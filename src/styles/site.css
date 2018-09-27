@@ -27,7 +27,7 @@ body {
   padding: 0;
   font-family: 'Roboto', sans-serif;
   background-color:#fff;
-  font-size:13px;
+  font-size:12px;
   font-weight:400;
   color:#333;
   margin: 0 0 45px;
@@ -151,4 +151,12 @@ b, strong
 .ReactVirtualized__Grid__innerScrollContainer > div:first-child .ReactVirtualized__Table__row::-webkit-scrollbar-thumb
 {
   border-top:0px;
+}
+
+.card-header
+{
+    padding: 10px 10px;
+   
+    font-size: 12px;
+ 
 }
