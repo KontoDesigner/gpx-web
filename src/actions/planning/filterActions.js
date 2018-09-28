@@ -14,16 +14,16 @@ export function handleSourceMarket(sourceMarket) {
   }
 }
 
-export function handleSelectedRole(selectedRole) {
+export function handleSelectedTitle(selectedTitle) {
   return {
-    type: types.HANDLE_SELECTEDROLE,
-    data: { selectedStaff: selectedRole }
+    type: types.HANDLE_SELECTEDTITLE,
+    data: { selectedTitle: selectedTitle }
   }
 }
 
 export function handleFilter(filter) {
   return {
     type: types.HANDLE_FILTER,
-    data: { filter: filter }
+    data: { filter: filter } 
   }
-}
+}  

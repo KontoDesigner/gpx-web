@@ -15,7 +15,8 @@ const columns = [
   { label: 'HighSeason', dataKey: 'highseason' },
   { label: 'StartDate', dataKey: 'startDate' },
   { label: 'DepDate', dataKey: 'endDate' },
-  { label: 'Placed', dataKey: 'firstNameLastName' }
+  { label: 'Placed', dataKey: 'firstNameLastName' },
+  { label: 'Id', dataKey: 'staffID' }
 ];
 
 const JobTitleTable = (props) => {
@@ -23,7 +24,7 @@ const JobTitleTable = (props) => {
     alert(data.foo)
   }
 
-  const contextMenuId = props.index + "-destinationContextMenu";
+  const contextMenuId = props.index + "-allRoleContextMenu";
 
   return (
     <div>
@@ -40,6 +41,7 @@ const JobTitleTable = (props) => {
       </ContextMenu>
 
       <Table
+       
         list={props.positions}
         contextMenuId={contextMenuId}
         columns={columns}

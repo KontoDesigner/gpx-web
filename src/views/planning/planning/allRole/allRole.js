@@ -22,8 +22,8 @@ class AllRole extends Component {
               key={index}
               index={index}
               allRole={allRole} 
-              //handleSelectedTitle={this.props.handleSelectedTitle}
-              //selectedTitle={this.props.selectedTitle}
+              handleSelectedTitle={this.props.handleSelectedTitle}
+              selectedTitle={this.props.selectedTitle}
               edit={this.props.edit}
             />
           )}

@@ -35,8 +35,8 @@ class SeasonRow extends Component {
                 key={index}
                 index={this.props.index.toString() + index.toString()}
                 headOf={headOf}
-               // handleSelectedTitle={this.props.handleSelectedTitle}
-               // selectedTitle={this.props.selectedTitle}
+                handleSelectedTitle={this.props.handleSelectedTitle}
+               selectedTitle={this.props.selectedTitle}
                edit={this.props.edit}
               />
             ))}

@@ -86,6 +86,7 @@ class Table extends Component {
   }
 
   selectAll = event => {
+   
     const target = event.target
     const value = target.checked
 
@@ -102,9 +103,11 @@ class Table extends Component {
     //Update major state
     if (value) {
       //Add all local to major state
+      
       const all = arrayUnique(selected.concat(this.props.selected));
-
+    
       this.props.updateSelectedState(all)
+  
     }
     else {
       //Remove all local from major state
@@ -193,6 +196,9 @@ class Table extends Component {
                     type="checkbox"
                     checked={this.state.list.length > 0 && this.state.selected.length === this.state.list.length}
                     onChange={event => {
+                  
+                      
+                     
                       this.selectAll(event)
                     }}
                   />

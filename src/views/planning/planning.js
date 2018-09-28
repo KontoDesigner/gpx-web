@@ -9,6 +9,7 @@ import * as placedRolesActions from '../../actions/planning/planning/placedRoles
 import * as vacantRolesActions from '../../actions/planning/planning/vacantRolesActions'
 import * as replyYesNoRolesActions from '../../actions/planning/planning/replyYesNoRolesActions'
 import $ from 'jquery'
+import * as filterActions from '../../actions/planning/filterActions'
 
 import '../../styles/staff.css';
 
@@ -76,8 +77,8 @@ class Planning extends Component {
                             <AllRole
                                allRoles={this.props.allRoles}
                                getAllRoles={(sourcemarket, criteria) => this.props.allRolesActions.getAllRoles(sourcemarket, criteria)}
-                                //handleSelectedTitle={this.props.filterActions.handleSelectedTitle}
-                                //selectedTitle={this.props.selectedTitle}
+                                handleSelectedTitle={this.props.filterActions.handleSelectedTitle}
+                                selectedTitle={this.props.selectedTitle}
                                 edit={this.edit}
                             />
                         </TabPane>
@@ -94,7 +95,8 @@ function mapStateToProps(state) {
         allRoles: state.planning.planning.allRoles,
         placedRoles: state.planning.planning.placedRoles,
         vacantRoles: state.planning.planning.vacantRoles,
-        replyYesNoRoles: state.planning.planning.replyYesNoRoles
+        replyYesNoRoles: state.planning.planning.replyYesNoRoles,
+        selectedTitle: state.planning.filter.selectedTitle
     }
 }
 
@@ -103,11 +105,12 @@ function mapDispatchToProps(dispatch) {
         allRolesActions: bindActionCreators( allRolesActions, dispatch),
         placedRolesActions: bindActionCreators(placedRolesActions, dispatch),
         vacantRolesActions: bindActionCreators( vacantRolesActions, dispatch),
+        filterActions: bindActionCreators(filterActions, dispatch),
         replyYesNoRolesActions: bindActionCreators(replyYesNoRolesActions, dispatch)
     }
 }
 
 export default connect(
     mapStateToProps,
-    mapDispatchToProps
+    mapDispatchToProps 
 )(Planning)
