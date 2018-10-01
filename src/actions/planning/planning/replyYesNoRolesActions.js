@@ -2,35 +2,35 @@ import { ActionTypes as types } from '../../../constants/planning/planning/reply
 import { beginAjaxCall, ajaxCallError } from '../../ajaxStatusActions'
 import RestClient from '../../../infrastructure/restClient'
 
-export function getAllRolesSuccess(allRoles) {
+export function getreplyYesNoRolesSuccess(replyYesNoRoles) {
   return {
-    type: types.GET_ALLROLES_SUCCESS,
-    data: { allRoles: allRoles }
+    type: types.GET_REPLYYESNOROLES_SUCCESS,
+    data: { replyYesNoRoles: replyYesNoRoles }
   }
 }
 
-export function getAllRoles(sourcemarket = 'ALL', criteria = null) {
+export function getReplyYesNoRoles(sourcemarket = 'ALL', criteria = null) {
   return async function (dispatch) {
     dispatch(beginAjaxCall())
 
     try {
-      const allRoles = await RestClient.Get(`staff/headof/${sourcemarket}${criteria !== null ? `/${criteria}` : ''}`)
+      const replyYesNoRoles = await RestClient.Get(`positionassign/GetAllPositionsAssignData`)
 
       //For some reason we need to reset value here, (bug when loading in new data with filter), don't touch h3h3
-      dispatch(handleAllRoles([]))
+      dispatch(handleReplyYesNoRoles([]))
 
-      dispatch(getAllRolesSuccess(allRoles))
-    } catch (error) {
-      dispatch(ajaxCallError(error)) 
+      dispatch(getreplyYesNoRolesSuccess(replyYesNoRoles))
+    } catch (error) { 
+      dispatch(ajaxCallError(error))
 
       throw error
     }
   }
 }
 
-export function handleAllRoles(allRoles) {
+export function handleReplyYesNoRoles(replyYesNoRoles) {
   return {
-    type: types.HANDLE_ALLROLES,
-    data: { allRoles: allRoles }
+    type: types.HANDLE_REPLYYESNOROLES,
+    data: { replyYesNoRoles: replyYesNoRoles }
   }
 }

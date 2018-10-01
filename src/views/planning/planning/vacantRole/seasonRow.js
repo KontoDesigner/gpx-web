@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Collapse, Card, CardBody, CardHeader } from 'reactstrap'
-import CountryRow from './countryRow'
+import HeadOfRow from './headOfRow'
 
 class SeasonRow extends Component {
   constructor() {
@@ -25,23 +25,23 @@ class SeasonRow extends Component {
     return (
       <Card className="card-accordion card-country">
         <CardHeader onClick={() => this.toggleCollapse()}>
-          {this.props.headOf.headOf} {icon}
+          {this.props.vacantRole.season} {icon}
         </CardHeader>
 
         <Collapse isOpen={this.state.expanded}>
           <CardBody className="no-padding-bottom">
-            {this.props.headOf.destinations.map((destination, index) => (
-              <CountryRow
+            {this.props.vacantRole.headOfs.map((headOf, index) => (
+              <HeadOfRow
                 key={index}
                 index={this.props.index.toString() + index.toString()}
-                destination={destination}
-                handleSelectedStaff={this.props.handleSelectedStaff}
-                selectedStaff={this.props.selectedStaff}
-                edit={this.props.edit}
+                headOf={headOf}
+                handleSelectedTitle={this.props.handleSelectedTitle}
+               selectedTitle={this.props.selectedTitle}
+               edit={this.props.edit}
               />
             ))}
           </CardBody>
-        </Collapse>
+        </Collapse> 
       </Card>
     )
   }

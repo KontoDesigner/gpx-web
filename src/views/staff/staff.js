@@ -12,6 +12,7 @@ import * as headOfActions from '../../actions/staff/active/headOfActions'
 import * as destinationActions from '../../actions/staff/active/destinationActions'
 import * as filterActions from '../../actions/staff/filterActions'
 import * as jobTitleActions from '../../actions/staff/active/jobTitleActions'
+import * as nameActions from '../../actions/staff/active/nameActions'
 import $ from 'jquery'
 import Tabs from './tabs'
 import '../../styles/staff.css';
@@ -72,8 +73,8 @@ class Staff extends Component {
                     handleHeadOf={this.props.headOfActions.handleHeadOf}
                     getDestination={this.props.destinationActions.getDestination}
                     handleDestination={this.props.destinationActions.handleDestination}
-                    // getName={this.props.nameActions.getName}
-                    // handleName={this.props.nameActions.handleName}
+                    getName={this.props.nameActions.getName}
+                   handleName={this.props.nameActions.handleName}
                     getJobTitle={this.props.jobTitleActions.getJobTitle}
                     handleJobTitle={this.props.jobTitleActions.handleJobTitle}
                 // getRecentlyInactive={this.props.recentlyInactiveActions.getRecentlyInactive}
@@ -106,7 +107,11 @@ class Staff extends Component {
 
                         <TabPane tabId="name">
                             <Name
-                            //getName={this.props.nameActions.getName}
+                                name={this.props.name}
+                           getName={this.props.nameActions.getName}
+                            handleSelectedStaff={this.props.filterActions.handleSelectedStaff}
+                                selectedStaff={this.props.selectedStaff}
+                                edit={this.edit}
                             />
                         </TabPane>
 
@@ -141,6 +146,7 @@ class Staff extends Component {
 function mapStateToProps(state) {
     return {
         headOf: state.staff.active.headOf,
+        name: state.staff.active.name,
         destination: state.staff.active.destination,
         jobTitle: state.staff.active.jobTitle,
         selectedStaff: state.staff.filter.selectedStaff
@@ -152,7 +158,8 @@ function mapDispatchToProps(dispatch) {
         headOfActions: bindActionCreators(headOfActions, dispatch),
         destinationActions: bindActionCreators(destinationActions, dispatch),
         filterActions: bindActionCreators(filterActions, dispatch),
-        jobTitleActions: bindActionCreators(jobTitleActions, dispatch)
+        jobTitleActions: bindActionCreators(jobTitleActions, dispatch),
+        nameActions: bindActionCreators(nameActions, dispatch)
     }
 }
 

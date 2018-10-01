@@ -1,7 +1,7 @@
 import keyMirror from 'keymirror'
 
 export var ActionTypes = keyMirror({
-  GET_ALLROLES_SUCCESS: null,
-  GET_ALLROLES: null,
-  HANDLE_ALLROLES: null
+  GET_PLACEDROLES_SUCCESS: null,
+  GET_PLACEDROLES: null,
+  HANDLE_PLACEDROLES: null
 })

@@ -2,7 +2,7 @@ import { ActionTypes as types } from '../../../constants/staff/active/jobTitleCo
 
 var defaultState = []
 
-export default function headOfReducer(state = defaultState, action) {
+export default function jobTitleReducer(state = defaultState, action) {
   switch (action.type) {
     case types.GET_JOBTITLE_SUCCESS:
       return action.data.jobTitle

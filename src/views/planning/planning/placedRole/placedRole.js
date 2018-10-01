@@ -12,18 +12,18 @@ class PlacedRole extends Component {
 
         <CardBody className="no-padding-bottom">
           <div className="form-row">
-            <Filter getData={this.props.getPlacedRole} />
+          <Filter getData={this.props.getPlacedRole} />
 
             <Action selected={this.props.selectedRole} />
           </div>
 
-          {this.props.placedRole.map((placedRole, index) =>
+          {this.props.placedRoles.map((placedRole, index) =>
             <SeasonRow
               key={index}
               index={index}
-              allRole={allRole} 
-              handleSelectedRole={this.props.handleSelectedRole}
-              selectedRole={this.props.selectedRole}
+              placedRole={placedRole} 
+              handleSelectedTitle={this.props.handleSelectedTitle}
+              selectedTitle={this.props.selectedTitle}
               edit={this.props.edit}
             />
           )}

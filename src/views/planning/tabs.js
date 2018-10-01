@@ -2,6 +2,7 @@ import React from 'react';
 import { Card, Col, CardBody, CardHeader, ListGroup, ListGroupItem } from 'reactstrap'
 import classnames from 'classnames'
 
+
 const Tabs = (props) => {
     return (
         <Col sm="12" md="3" lg="3" xl="2" className="col-menu">
@@ -11,11 +12,14 @@ const Tabs = (props) => {
                 <CardBody className="no-padding">
                     <ListGroup>
                         <ListGroupItem
-                            className={classnames({ active: props.activeTab === 'allRoles' })}
+                            className={classnames({ active: props.activeTab === 'allRole' })}
                             onClick={() => {
-                                props.toggle('allRoles',
-                                    props.getAllRoles,
+                                
+                                props.toggle('allRole',
+                               
+                                  props.getAllRoles,
                                     props.handleAllRoles)
+                                  
                             }}>
                             All Roles
                 </ListGroupItem>
@@ -25,6 +29,7 @@ const Tabs = (props) => {
                                 props.toggle('placedRoles',
                                     props.getPlacedRoles,
                                     props.handlePlacedRoles)
+                                    debugger;
                             }}>
                             Placed Roles
                 </ListGroupItem>
@@ -38,9 +43,9 @@ const Tabs = (props) => {
                             Vacant Roles
                 </ListGroupItem>
                         <ListGroupItem
-                            className={classnames({ active: props.activeTab === 'replyYesNo' })}
+                            className={classnames({ active: props.activeTab === 'replyYesNoRoles' })}
                             onClick={() => {
-                                props.toggle('replyYesNo',
+                                props.toggle('replyYesNoRoles',
                                     props.getReplyYesNoRoles,
                                     props.handleReplyYesNoRoles)
                             }}>

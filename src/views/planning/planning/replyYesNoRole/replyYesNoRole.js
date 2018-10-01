@@ -17,11 +17,11 @@ class YesNoRole extends Component {
             <Action selected={this.props.selectedRole} />
           </div>
 
-          {this.props.placedRole.map((placedRole, index) =>
+          {this.props.replyYesNoRoles.map((replyYesNoRole, index) =>
             <SeasonRow
               key={index}
               index={index}
-              allRole={allRole} 
+              replyYesNoRole={replyYesNoRole} 
               handleSelectedRole={this.props.handleSelectedRole}
               selectedRole={this.props.selectedRole}
               edit={this.props.edit}

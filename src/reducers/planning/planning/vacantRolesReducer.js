@@ -2,12 +2,12 @@ import { ActionTypes as types } from '../../../constants/planning/planning/vacan
 
 var defaultState = [];
 
-export default function allRolesReducer(state = defaultState, action) {
+export default function vacantRolesReducer(state = defaultState, action) {
     switch (action.type) {
-        case types.GET_ALLROLES_SUCCESS:
-            return action.data.allRoles;
-        case types.HANDLE_ALLROLES:
-            return action.data.allRoles;
+        case types.GET_VACANTROLES_SUCCESS:
+            return action.data.vacantRoles;
+        case types.HANDLE_VACANTROLES:
+            return action.data.vacantRoles;
         default:
             return state;
     }

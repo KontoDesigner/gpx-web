@@ -3,6 +3,9 @@ import { TabContent, TabPane, Row, Col } from 'reactstrap'
 import { connect } from 'react-redux'
 import Tabs from './tabs'
 import AllRole from './planning/allRole/allRole' 
+import PlacedRole from './planning/placedRole/placedRole' 
+import VacantRole from './planning/vacantRole/vacantRole' 
+import ReplyYesNoRole from './planning/replyYesNoRole/replyYesNoRole' 
 import { bindActionCreators } from 'redux'
 import * as allRolesActions from '../../actions/planning/planning/allRolesActions'
 import * as placedRolesActions from '../../actions/planning/planning/placedRolesActions'
@@ -10,8 +13,9 @@ import * as vacantRolesActions from '../../actions/planning/planning/vacantRoles
 import * as replyYesNoRolesActions from '../../actions/planning/planning/replyYesNoRolesActions'
 import $ from 'jquery'
 import * as filterActions from '../../actions/planning/filterActions'
-
 import '../../styles/staff.css';
+
+
 
 class Planning extends Component { 
     componentWillMount() {
@@ -34,6 +38,7 @@ class Planning extends Component {
     }
 
     componentDidMount() {
+        this.props.filterActions.handleFilter()   //when page loads
         this.props.allRolesActions.getAllRoles()
     }
 
@@ -56,19 +61,23 @@ class Planning extends Component {
     }
 
     render() {
+     
         return (
+           
             <Row>
                 <Tabs
+                
                     toggle={this.toggle}
                     activeTab={this.state.activeTab}
                     getAllRoles={this.props.allRolesActions.getAllRoles}
                     handleAllRoles={this.props.allRolesActions.handleAllRoles}
+                   
                     getPlacedRoles={this.props.placedRolesActions.getPlacedRoles}
                     handlePlacedRoles={this.props.placedRolesActions.handlePlacedRoles}
                     getVacantRoles={this.props.vacantRolesActions.getVacantRoles}
                     handleVacantRoles={this.props.vacantRolesActions.handleVacantRoles}
                     getReplyYesNoRoles={this.props.replyYesNoRolesActions.getReplyYesNoRoles}
-                    handleReplyYesNoRoles={this.props.replyYesNoRolesActions.ReplyYesNoRoles}
+                    handleReplyYesNoRoles={this.props.replyYesNoRolesActions.handleReplyYesNoRoles}
                  
                 />
                <Col sm="12" md="9" lg="9" xl="10">
@@ -80,6 +89,36 @@ class Planning extends Component {
                                 handleSelectedTitle={this.props.filterActions.handleSelectedTitle}
                                 selectedTitle={this.props.selectedTitle}
                                 edit={this.edit}
+                            />
+                        </TabPane>
+
+                           <TabPane tabId="placedRoles">
+                            <PlacedRole
+                          placedRoles={this.props.placedRoles}
+                          getPlacedRoles={(sourcemarket, criteria) => this.props.placedRolesActions.getPlacedRoles(sourcemarket, criteria)}
+                           handleSelectedTitle={this.props.filterActions.handleSelectedTitle}
+                           selectedTitle={this.props.selectedTitle}
+                           edit={this.edit}
+                            />
+                        </TabPane>
+
+                            <TabPane tabId="vacantRoles">
+                            <VacantRole
+                          vacantRoles={this.props.vacantRoles}
+                          getVacantRoles={(sourcemarket, criteria) => this.props.vacantRolesActions.getVacantRoles(sourcemarket, criteria)}
+                           handleSelectedTitle={this.props.filterActions.handleSelectedTitle}
+                           selectedTitle={this.props.selectedTitle}
+                           edit={this.edit}
+                            />
+                        </TabPane>
+
+                            <TabPane tabId="replyYesNoRoles">
+                            <ReplyYesNoRole
+                          replyYesNoRoles={this.props.replyYesNoRoles}
+                          getReplyYesNoRoles={(sourcemarket, criteria) => this.props.replyYesNoRolesActions.getReplyYesNoRoles(sourcemarket, criteria)}
+                           handleSelectedTitle={this.props.filterActions.handleSelectedTitle}
+                           selectedTitle={this.props.selectedTitle}
+                           edit={this.edit}
                             />
                         </TabPane>
                         </TabContent>

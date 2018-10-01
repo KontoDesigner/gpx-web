@@ -2,25 +2,25 @@ import { ActionTypes as types } from '../../../constants/planning/planning/vacan
 import { beginAjaxCall, ajaxCallError } from '../../ajaxStatusActions'
 import RestClient from '../../../infrastructure/restClient'
 
-export function getAllRolesSuccess(allRoles) {
+export function getVacantRolesSuccess(vacantRoles) {
   return {
-    type: types.GET_ALLROLES_SUCCESS,
-    data: { allRoles: allRoles }
+    type: types.GET_VACANTROLES_SUCCESS,
+    data: { vacantRoles: vacantRoles }
   }
 }
 
-export function getAllRoles(sourcemarket = 'ALL', criteria = null) {
+export function getVacantRoles(sourcemarket = 'ALL', criteria = null) {
   return async function (dispatch) {
     dispatch(beginAjaxCall())
 
     try {
-      const allRoles = await RestClient.Get(`staff/headof/${sourcemarket}${criteria !== null ? `/${criteria}` : ''}`)
+      const vacantRoles = await RestClient.Get(`positionassign/GetAllPositionsAssignData`)
 
       //For some reason we need to reset value here, (bug when loading in new data with filter), don't touch h3h3
-      dispatch(handleAllRoles([]))
+      dispatch(handleVacantRoles([]))
 
-      dispatch(getAllRolesSuccess(allRoles))
-    } catch (error) {
+      dispatch(getVacantRolesSuccess(vacantRoles))
+    } catch (error) { 
       dispatch(ajaxCallError(error))
 
       throw error
@@ -28,9 +28,9 @@ export function getAllRoles(sourcemarket = 'ALL', criteria = null) {
   }
 }
 
-export function handleAllRoles(allRoles) {
+export function handleVacantRoles(vacantRoles) {
   return {
-    type: types.HANDLE_ALLROLES,
-    data: { allRoles: allRoles }
+    type: types.HANDLE_VACANTROLES,
+    data: { vacantRoles: vacantRoles }
   }
 }

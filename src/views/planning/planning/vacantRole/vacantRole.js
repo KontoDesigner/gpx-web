@@ -12,18 +12,18 @@ class VacantRole extends Component {
 
         <CardBody className="no-padding-bottom">
           <div className="form-row">
-            <Filter getData={this.props.getAllRole} />
+          <Filter getData={this.props.getVacantRole} />
 
             <Action selected={this.props.selectedRole} />
           </div>
 
-          {this.props.allRole.map((allRole, index) =>
+          {this.props.vacantRoles.map((vacantRole, index) =>
             <SeasonRow
               key={index}
               index={index}
-              allRole={allRole} 
-              handleSelectedRole={this.props.handleSelectedRole}
-              selectedRole={this.props.selectedRole}
+              vacantRole={vacantRole} 
+              handleSelectedTitle={this.props.handleSelectedTitle}
+              selectedTitle={this.props.selectedTitle}
               edit={this.props.edit}
             />
           )}
