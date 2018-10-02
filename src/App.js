@@ -1,12 +1,12 @@
-import React, { Component } from 'react';
-import Routes from './infrastructure/routes';
-import Loader from './components/loader';
-import Header from './components/header';
-import Footer from './components/footer';
-import { BrowserRouter } from 'react-router-dom';
-import ReduxToastr from 'react-redux-toastr';
-import './styles/site.css';
-import { withRouter } from 'react-router-dom';
+import React, { Component } from 'react'
+import Routes from './infrastructure/routes'
+import Loader from './components/loader'
+import Header from './components/header'
+import Footer from './components/footer'
+import { BrowserRouter } from 'react-router-dom'
+import ReduxToastr from 'react-redux-toastr'
+import './styles/site.css'
+import { withRouter } from 'react-router-dom'
 import * as geographyActions from './actions/geographyActions'
 import * as footerActions from './actions/footerActions'
 import { connect } from 'react-redux'
@@ -22,7 +22,7 @@ class App extends Component {
     }
 
     async componentWillMount() {
-        const _this = this;
+        const _this = this
 
         return Promise.all([
             this.props.geographyActions.getSourceMarkets(),
@@ -30,29 +30,24 @@ class App extends Component {
             this.props.footerActions.getVersion(),
             this.props.footerActions.getSupportEmail(),
             this.props.footerActions.getWikiUrl()
-        ]).then(function () {
+        ]).then(function() {
             _this.setState({ loaded: true })
-        });
+        })
     }
 
     matchRuleShort(str, rule) {
-        return new RegExp("^" + rule.split("*").join(".*") + "$").test(str);
+        return new RegExp('^' + rule.split('*').join('.*') + '$').test(str)
     }
 
     render() {
         const HeaderWithRouter = withRouter(props => {
             //Hide navbar if staff edit
-            if (!this.matchRuleShort(props.location.pathname, "/staff/*")) {
-                return <Header
-                    staffTabs={this.props.staffTabs}
-                    route={props.location.pathname}
-                />
+            if (!this.matchRuleShort(props.location.pathname, '/staff/*')) {
+                return <Header staffTabs={this.props.staffTabs} route={props.location.pathname} />
+            } else {
+                return ''
             }
-            else {
-                return '';
-            }
-        }
-        );
+        })
 
         return (
             <BrowserRouter>
@@ -68,27 +63,18 @@ class App extends Component {
                         transitionOut="fadeOut"
                         progressBar
                     />
+                    {this.state.loaded === true
+                        ? [
+                              <HeaderWithRouter key={0} />,
 
-                    {this.state.loaded === true ?
-                        [
-                            <HeaderWithRouter
-                                key={0}
-                            />,
+                              <Routes key={1} />,
 
-                            <Routes
-                                key={1}
-                            />,
-
-                            <Footer
-                                key={2}
-                                version={this.props.version}
-                                supportEmail={this.props.supportEmail}
-                                wikiUrl={this.props.wikiUrl}
-                            />
-                        ] : ''}
+                              <Footer key={2} version={this.props.version} supportEmail={this.props.supportEmail} wikiUrl={this.props.wikiUrl} />
+                          ]
+                        : ''}
                 </div>
             </BrowserRouter>
-        );
+        )
     }
 }
 
@@ -97,7 +83,7 @@ function mapStateToProps(state) {
         version: state.footer.version,
         supportEmail: state.footer.supportEmail,
         wikiUrl: state.footer.wikiUrl
-    };
+    }
 }
 
 function mapDispatchToProps(dispatch) {

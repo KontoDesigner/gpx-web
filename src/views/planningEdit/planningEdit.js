@@ -1,26 +1,24 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { bindActionCreators } from 'redux'
-import { TabContent, TabPane, Row, Col, Card, CardHeader, CardBody, CardFooter, Button } from 'reactstrap'
-import { LinkContainer } from 'react-router-bootstrap';
+import { Card, CardHeader, CardBody, CardFooter, Button } from 'reactstrap'
+import { LinkContainer } from 'react-router-bootstrap'
 class PlanningEdit extends Component {
     constructor(props) {
         super()
 
-        const { match: { params } } = props;
-        const id = params.id;
+        const {
+            match: { params }
+        } = props
+        const id = params.id
 
         this.state = {
-           
             id: id,
-          position:null
-            
+            position: null
         }
     }
 
     async componentWillMount() {
-        const _this = this;
-
+        // const _this = this
         // this.props.employeeInfoActions.getAvailablePositions(this.props.currentSeason.name, this.props.nextSeason.name, this.props.followingSeason.name)
         // this.props.employeeInfoActions.getPositionAssigns(this.state.staffId)
         // this.props.employeeInfoActions.getStaff(this.state.staffId).then(function () {
@@ -33,33 +31,24 @@ class PlanningEdit extends Component {
         // })
     }
 
-
-
-
-
     save = () => {
         alert('not implemented')
     }
 
     render() {
-       
-
         if (this.props.position === null) {
             //Loading
-            return (
-                ''
-            )
-        }
-        else if (this.props.position === undefined) {
+            return ''
+        } else if (this.props.position === undefined) {
             //Not found
             return (
                 <Card>
-                    <CardHeader>
-                        Could not find position
-                    </CardHeader>
+                    <CardHeader>Could not find position</CardHeader>
 
                     <CardBody>
-                        <p className="card-text">Staff with id: <b>{this.state.staffId}</b> was not found.</p>
+                        <p className="card-text">
+                            Staff with id: <b>{this.state.staffId}</b> was not found.
+                        </p>
                     </CardBody>
 
                     <CardFooter>
@@ -69,28 +58,19 @@ class PlanningEdit extends Component {
                     </CardFooter>
                 </Card>
             )
-        }
-        else {
+        } else {
             //Found
-            return (
-                <div>
-                  sdf
-                </div>
-            )
+            return <div>sdf</div>
         }
     }
 }
 
 function mapStateToProps(state) {
-    return {
-       
-    }
+    return {}
 }
 
 function mapDispatchToProps(dispatch) {
-    return {
-      
-    }
+    return {}
 }
 
 export default connect(

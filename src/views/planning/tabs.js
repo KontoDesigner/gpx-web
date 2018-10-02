@@ -1,9 +1,8 @@
-import React from 'react';
+import React from 'react'
 import { Card, Col, CardBody, CardHeader, ListGroup, ListGroupItem } from 'reactstrap'
 import classnames from 'classnames'
 
-
-const Tabs = (props) => {
+const Tabs = props => {
     return (
         <Col sm="12" md="3" lg="3" xl="2" className="col-menu">
             <Card>
@@ -14,52 +13,36 @@ const Tabs = (props) => {
                         <ListGroupItem
                             className={classnames({ active: props.activeTab === 'allRole' })}
                             onClick={() => {
-                                
-                                props.toggle('allRole',
-                               
-                                  props.getAllRoles,
-                                    props.handleAllRoles)
-                                  
+                                props.toggle('allRole', props.getAllRoles, props.handleAllRoles)
                             }}>
                             All Roles
-                </ListGroupItem>
+                        </ListGroupItem>
                         <ListGroupItem
                             className={classnames({ active: props.activeTab === 'placedRoles' })}
                             onClick={() => {
-                                props.toggle('placedRoles',
-                                    props.getPlacedRoles,
-                                    props.handlePlacedRoles)
-                                    debugger;
+                                props.toggle('placedRoles', props.getPlacedRoles, props.handlePlacedRoles)
                             }}>
                             Placed Roles
-                </ListGroupItem>
+                        </ListGroupItem>
                         <ListGroupItem
                             className={classnames({ active: props.activeTab === 'vacantRoles' })}
                             onClick={() => {
-                                props.toggle('vacantRoles',
-                                    props.getVacantRoles,
-                                    props.handleVacantRoles)
+                                props.toggle('vacantRoles', props.getVacantRoles, props.handleVacantRoles)
                             }}>
                             Vacant Roles
-                </ListGroupItem>
+                        </ListGroupItem>
                         <ListGroupItem
                             className={classnames({ active: props.activeTab === 'replyYesNoRoles' })}
                             onClick={() => {
-                                props.toggle('replyYesNoRoles',
-                                    props.getReplyYesNoRoles,
-                                    props.handleReplyYesNoRoles)
+                                props.toggle('replyYesNoRoles', props.getReplyYesNoRoles, props.handleReplyYesNoRoles)
                             }}>
                             Reply (Yes/No)
-                </ListGroupItem>
+                        </ListGroupItem>
                     </ListGroup>
                 </CardBody>
             </Card>
-
-         
-
-          
         </Col>
-    );
-};
+    )
+}
 
-export default Tabs;
+export default Tabs
