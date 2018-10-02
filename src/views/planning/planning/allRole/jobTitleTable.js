@@ -6,9 +6,9 @@ const columns = [
   { label: 'MPLID', dataKey: 'mplID' },
   { label: 'MPLIDVersion', dataKey: 'mplIDVersion' },
 
-  { label: 'Concept Hotel', dataKey: 'concepthotel' },
+  { label: 'JobTitle', dataKey: 'jobTitle' },
   { label: 'Profile', dataKey: 'profile' },
-  { label: 'MPLDL Required', dataKey: 'plDlRequir.' },
+
   { label: 'Source Market', dataKey: 'sourceMarket' },
   { label: 'Position Type', dataKey: 'positionType' },
   { label: 'Languages', dataKey: 'languages' },

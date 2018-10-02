@@ -1,8 +1,22 @@
 import React from 'react'
 import { ContextMenu, MenuItem } from 'react-contextmenu'
 import Table from '../../../../components/table.js'
-
-const columns = [{ label: 'MPLID', dataKey: 'mplid' }]
+const columns = [
+    { label: 'MPLID', dataKey: 'mplid' },
+    { label: 'MPLIDVersion', dataKey: 'mplidVersion' },
+  
+    { label: 'Title', dataKey: 'jobTitle' },
+    { label: 'Profile', dataKey: 'profile' },
+    { label: 'Destination', dataKey: 'destination' },
+    { label: 'Source Market', dataKey: 'mplSourceMarket' },
+    { label: 'Position Type', dataKey: 'mplPositionType' },
+    { label: 'Languages', dataKey: 'languages' },
+    { label: 'JobFamily', dataKey: 'jobFamily' },
+    { label: 'StartDate', dataKey: 'startDate' },
+    { label: 'DepDate', dataKey: 'endDate' },
+    { label: 'Accept', dataKey: 'firstNameLastName' }
+    //{ label: 'Id', dataKey: 'staffID' }
+  ];
 
 const JobTitleTable = props => {
     function onContextMenuClick(e, data) {
