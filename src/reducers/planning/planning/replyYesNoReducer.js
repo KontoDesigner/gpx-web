@@ -2,12 +2,12 @@ import { ActionTypes as types } from '../../../constants/planning/planning/reply
 
 var defaultState = [];
 
-export default function allRolesReducer(state = defaultState, action) {
+export default function replyYesNoRolesReducer(state = defaultState, action) {
     switch (action.type) {
-        case types.GET_ALLROLES_SUCCESS:
-            return action.data.allRoles;
-        case types.HANDLE_ALLROLES:
-            return action.data.allRoles;
+        case types.GET_REPLYYESNOROLES_SUCCESS:
+            return action.data.replyYesNoRoles;
+        case types.HANDLE_YESNOROLES:
+            return action.data.replyYesNoRoles;
         default:
         
             return state;

@@ -1,36 +1,39 @@
 import React, { Component } from 'react'
-import SeasonRow from './seasonRow'
+
 import { Card, CardBody, CardHeader } from 'reactstrap'
-import Filter from '../../filter'
-import Action from '../../action'
+import JobTitleTable from './jobTitleTable'
 
 class YesNoRole extends Component {
+ 
+
+
+  toggleCollapse = () => {
+    this.setState({ expanded: !this.state.expanded })
+  }
+
   render() {
+    
     return (
-      <Card>
-        <CardHeader>Yes/No</CardHeader>
+      <Card >
+        <CardHeader > {this.props.replyYesNoRoles.length}
+         Reply Yes/No
+        </CardHeader>
 
-        <CardBody className="no-padding-bottom">
-          <div className="form-row">
-            <Filter getData={this.props.getPlacedRole} />
-
-            <Action selected={this.props.selectedRole} />
-          </div>
-
-          {this.props.replyYesNoRoles.map((replyYesNoRole, index) =>
-            <SeasonRow
-              key={index}
-              index={index}
-              replyYesNoRole={replyYesNoRole} 
-              handleSelectedRole={this.props.handleSelectedRole}
-              selectedRole={this.props.selectedRole}
+       
+        <CardBody>
+            <JobTitleTable
+              index={this.props.index}
+              replyYesNoRoles={this.props.replyYesNoRoles}
+              handleSelectedTitle={this.props.handleSelectedTitle}
+             selectedTitle={this.props.selectedTitle}
               edit={this.props.edit}
-            />
-          )}
-        </CardBody>
+            /> 
+          </CardBody>
+     
       </Card>
     )
   }
+
 }
 
 export default YesNoRole

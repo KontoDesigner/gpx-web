@@ -1,7 +1,7 @@
 import { ActionTypes as types } from '../../../constants/planning/planning/replyYesNoRolesConstants'
 import { beginAjaxCall, ajaxCallError } from '../../ajaxStatusActions'
 import RestClient from '../../../infrastructure/restClient'
-
+debugger;
 export function getreplyYesNoRolesSuccess(replyYesNoRoles) {
   return {
     type: types.GET_REPLYYESNOROLES_SUCCESS,
@@ -14,8 +14,10 @@ export function getReplyYesNoRoles(sourcemarket = 'ALL', criteria = null) {
     dispatch(beginAjaxCall())
 
     try {
-      const replyYesNoRoles = await RestClient.Get(`positionassign/GetAllPositionsAssignData`)
-
+     
+      const replyYesNoRoles = await RestClient.Get(`position`)
+      //const replyYesNoRoles = await RestClient.Get(`positionassign/GetAllPositionsAssignData`)
+debugger;
       //For some reason we need to reset value here, (bug when loading in new data with filter), don't touch h3h3
       dispatch(handleReplyYesNoRoles([]))
 

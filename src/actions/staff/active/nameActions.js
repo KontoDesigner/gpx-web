@@ -14,8 +14,9 @@ export function getName(sourcemarket = 'ALL', criteria = null) {
     dispatch(beginAjaxCall())
 
     try {
+      
       const name = await RestClient.Get(`staff/name/${sourcemarket}${criteria !== null ? `/${criteria}` : ''}`)
-
+      
       //For some reason we need to reset value here, (bug when loading in new data with filter), don't touch h3h3
       dispatch(handleName([]))
 
