@@ -5,9 +5,10 @@ import Table from '../../../../components/table.js';
 const columns = [
   { label: 'Name', dataKey: 'firstNameLastName' },
   { label: 'SourceMarket', dataKey: 'sourceMarket' },
-  { label: 'Id', dataKey: 'staffID' }
+  { label: 'PositionType', dataKey: 'Email' },
+  { label: 'Driver', dataKey: 'dlRequired' },
+ // { label: 'Concept Hotel', dataKey: 'concepthotel' }
 ];
-
 const PersonTable = (props) => {
   function onContextMenuClick(e, data) {
     alert(data.foo)

@@ -4,8 +4,10 @@ import Table from '../../../../components/table.js'
 
 const columns = [
   { label: 'Name', dataKey: 'firstNameLastName' },
-  { label: 'Nationality', dataKey: 'nationality' },
-  { label: 'Id', dataKey: 'staffID' }
+  { label: 'SourceMarket', dataKey: 'sourceMarket' },
+  { label: 'PositionType', dataKey: 'positionType' },
+   { label: 'Concept Hotel', dataKey: 'concepthotel' },
+  { label: 'Childcare', dataKey: 'Education' }
 ]
 
 const PersonTable = props => {

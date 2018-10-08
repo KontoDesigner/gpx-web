@@ -5,9 +5,9 @@ import Table from '../../../../components/table.js'
 const columns = [
   { label: 'Name', dataKey: 'firstNameLastName' },
   { label: 'SourceMarket', dataKey: 'sourceMarket' },
-  { label: 'Email', dataKey: 'email' },
-  //{ label: 'Head Of', dataKey: 'headof' },
-  { label: 'Concept Hotel', dataKey: 'concepthotel' }
+  { label: 'PositionType', dataKey: 'positionType' },
+  { label: 'Driver', dataKey: 'dlRequired' },
+ // { label: 'Concept Hotel', dataKey: 'concepthotel' }
 ];
 
 const PersonTable = (props) => {
