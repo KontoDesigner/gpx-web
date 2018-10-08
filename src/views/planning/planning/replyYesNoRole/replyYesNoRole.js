@@ -9,8 +9,11 @@ class YesNoRole extends Component {
     }
 
     render() {
+        const maxTableHeight = 550
+
         const style = {
-            height: `${42 + this.props.replyYesNoRoles.length * 41}px`
+            height: `${42 + this.props.replyYesNoRoles.length * 41}px`,
+            maxHeight: `${maxTableHeight}px`
         }
 
         return (
@@ -25,6 +28,7 @@ class YesNoRole extends Component {
                             handleSelectedTitle={this.props.handleSelectedTitle}
                             selectedTitle={this.props.selectedTitle}
                             edit={this.props.edit}
+                            maxTableHeight={maxTableHeight}
                         />
                     </CardBody>
                 )}

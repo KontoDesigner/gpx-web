@@ -4,7 +4,7 @@ import Table from '../../../../components/table.js'
 const columns = [
     { label: 'MPLID', dataKey: 'mplid' },
     { label: 'MPLIDVersion', dataKey: 'mplidVersion' },
-  
+
     { label: 'Title', dataKey: 'jobTitle' },
     { label: 'Profile', dataKey: 'profile' },
     { label: 'Destination', dataKey: 'destination' },
@@ -16,7 +16,7 @@ const columns = [
     { label: 'DepDate', dataKey: 'endDate' },
     { label: 'Accept', dataKey: 'firstNameLastName' }
     //{ label: 'Id', dataKey: 'staffID' }
-  ];
+]
 
 const JobTitleTable = props => {
     function onContextMenuClick(e, data) {
@@ -47,6 +47,7 @@ const JobTitleTable = props => {
                 edit={props.edit}
                 updateSelectedState={props.handleSelectedTitle}
                 selected={props.selectedTitle}
+                maxTableHeight={props.maxTableHeight}
             />
         </div>
     )
