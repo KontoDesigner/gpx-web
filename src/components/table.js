@@ -163,7 +163,9 @@ class Table extends Component {
 
     render() {
         const height = 41 + this.state.list.length * 41
-        const tableHeight = height > 350 ? 350 : height
+        const defaultMaxTableHeight = this.props.maxTableHeight ? this.props.maxTableHeight : 350
+
+        const tableHeight = height > defaultMaxTableHeight ? defaultMaxTableHeight : height
 
         const { sortBy, sortDirection } = this.state
 
