@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
-
 import { Card, CardBody, CardHeader } from 'reactstrap'
 import JobTitleTable from './jobTitleTable'
+import Filter from '../../filter'
+import Action from '../../action'
 
 class YesNoRole extends Component {
     toggleCollapse = () => {
@@ -19,7 +20,12 @@ class YesNoRole extends Component {
         return (
             <Card className="card-accordion card-country">
                 <CardHeader>Reply Yes/No</CardHeader>
+ 
+                <div className="form-row">
+           <Filter getData={this.props.getreplyYesNoRole} /> 
 
+            <Action selected={this.props.selectedRole} />
+          </div>
                 {this.props.replyYesNoRoles.length > 0 && (
                     <CardBody style={style} className="card-body-table">
                         <JobTitleTable

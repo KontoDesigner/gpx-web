@@ -23,13 +23,13 @@ class PositionRow extends Component {
       )
 
     const style = {
-      height: `${42 + (this.props.jobTitle.staffs.length * 41)}px`
+      height: `${42 + this.props.jobTitle.staffs.length * 41}px`
     }
 
     return (
       <Card className="card-accordion">
         <CardHeader onClick={() => this.toggleCollapse()}>
-          ({this.props.jobTitle.staffs.length}) {this.props.jobTitle.title} {icon}
+        ({this.props.jobTitle.staffs.length}) {this.props.jobTitle.jobTitle} {icon}
         </CardHeader>
 
         <Collapse isOpen={this.state.expanded}>

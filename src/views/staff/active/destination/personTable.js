@@ -5,8 +5,8 @@ import Table from '../../../../components/table.js';
 const columns = [
   { label: 'Name', dataKey: 'firstNameLastName' },
   { label: 'SourceMarket', dataKey: 'sourceMarket' },
-  { label: 'PositionType', dataKey: 'Email' },
-  { label: 'Driver', dataKey: 'dlRequired' },
+  { label: 'PositionType', dataKey: 'positionType' },
+  { label: 'Driver', dataKey: 'driver' },
  // { label: 'Concept Hotel', dataKey: 'concepthotel' }
 ];
 const PersonTable = (props) => {

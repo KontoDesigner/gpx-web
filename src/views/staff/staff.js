@@ -88,7 +88,7 @@ class Staff extends Component {
                         <TabPane tabId="headOf">
                             <HeadOf
                                 headOf={this.props.headOf}
-                                getHeadOf={(sourcemarket, criteria) => this.props.headOfActions.getHeadOf(sourcemarket, criteria)}
+                                getHeadOf={this.props.headOfActions.getHeadOf}
                                 handleSelectedStaff={this.props.filterActions.handleSelectedStaff}
                                 selectedStaff={this.props.selectedStaff}
                                 edit={this.edit}
@@ -108,7 +108,7 @@ class Staff extends Component {
                         <TabPane tabId="name">
                             <Name
                                 name={this.props.name}
-                           getName={this.props.nameActions.getName}
+                              getName={this.props.nameActions.getName}
                             handleSelectedStaff={this.props.filterActions.handleSelectedStaff}
                                 selectedStaff={this.props.selectedStaff}
                                 edit={this.edit}

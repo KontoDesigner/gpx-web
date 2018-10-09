@@ -13,8 +13,9 @@ class HeadOf extends Component {
         <CardBody className="no-padding-bottom">
           <div className="form-row">
             <Filter getData={this.props.getHeadOf} />
-
+          
             <Action selected={this.props.selectedStaff} />
+          
           </div>
 
           {this.props.headOf.map((headOf, index) =>

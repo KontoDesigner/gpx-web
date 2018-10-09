@@ -6,7 +6,7 @@ const columns = [
   { label: 'Name', dataKey: 'firstNameLastName' },
   { label: 'SourceMarket', dataKey: 'sourceMarket' },
   { label: 'PositionType', dataKey: 'positionType' },
-  { label: 'Driver', dataKey: 'dlRequired' },
+  { label: 'Driver', dataKey: 'driver' },
  // { label: 'Concept Hotel', dataKey: 'concepthotel' }
 ];
 

@@ -2,6 +2,7 @@ import { ActionTypes as types } from '../constants/geographyConstants'
 
 var defaultState = {
     sourceMarkets: [],
+    jobTitles: [],
     currentSeason: [],
     nextSeason: [],
     followingSeason: []
@@ -13,6 +14,12 @@ export default function filterReducer(state = defaultState, action) {
             return {
                 ...state,
                 sourceMarkets: action.data.sourceMarkets
+            }
+
+            case types.GET_JOBTITLES_SUCCESS:
+            return {
+                ...state,
+                jobTitles: action.data.jobTitles
             }
         case types.GET_SEASONS_SUCCESS:
             return {

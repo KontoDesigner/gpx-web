@@ -26,6 +26,7 @@ class App extends Component {
 
         return Promise.all([
             this.props.geographyActions.getSourceMarkets(),
+            this.props.geographyActions.getJobTitles(),
             this.props.geographyActions.getSeasons(),
             this.props.footerActions.getVersion(),
             this.props.footerActions.getSupportEmail(),

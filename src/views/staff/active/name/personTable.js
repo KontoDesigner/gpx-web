@@ -1,113 +1,48 @@
-import React, { Component } from 'react'
-import { Table } from 'reactstrap'
-import { ContextMenu, MenuItem, ContextMenuTrigger } from "react-contextmenu";
+import React from 'react'
+import { ContextMenu, MenuItem } from 'react-contextmenu'
+import Table from '../../../../components/table.js'
 
-class PersonTable extends Component {
-    handleClick = (e, data) => {
-        alert(data.foo);
-    }
+const columns = [
+  { label: 'Name', dataKey: 'firstNameLastName' },
+  { label: 'SourceMarket', dataKey: 'sourceMarket' },
+  { label: 'PositionType', dataKey: 'positionType' },
+  { label: 'Driver', dataKey: 'driver' },
+ // { label: 'Concept Hotel', dataKey: 'concepthotel' }
+];
 
-    render() {
-        return (
-            <div>
-                <ContextMenu id="nameContextMenu">
-                    <MenuItem data={{ foo: 'bar' }} onClick={this.handleClick}>
-                        ContextMenu Item 1
-                    </MenuItem>
-                    <MenuItem data={{ foo: 'bar' }} onClick={this.handleClick}>
-                        ContextMenu Item 2
-                    </MenuItem>
-                    <MenuItem data={{ foo: 'bar' }} onClick={this.handleClick}>
-                        ContextMenu Item 3w
-                    </MenuItem>
-                </ContextMenu>
+const PersonTable = (props) => {
+  function onContextMenuClick(e, data) {
+    alert(data.foo)
+  }
 
-                <Table responsive bordered className="tableContextMenu">
-                    <thead>
-                        <tr>
-                            <th>
-                                Name
-                        </th>
-                            <th>
-                                ?
-                        </th>
-                            <th>
-                                Id
-                        </th>
-                            <th>
-                                Season
-                        </th>
-                            <th>
-                                Dest
-                        </th>
-                            <th>
-                                Concept Hotel
-                        </th>
-                            <th>
-                                Job Title
-                        </th>
-                            <th>
-                                E-Mail 1
-                        </th>
-                            <th>
-                                E-Mail 2
-                        </th>
-                        </tr>
-                    </thead>
+  const contextMenuId = props.index + "-nameContextMenu";
 
-                    <tbody>
-                        <tr>
-                            <td>
-                                <ContextMenuTrigger id="nameContextMenu">
-                                    Bojorquez, Carolina
-                                </ContextMenuTrigger>
-                            </td>
-                            <td>
-                                <ContextMenuTrigger id="nameContextMenu">
-                                    Bojorquez, Carolina
-                                </ContextMenuTrigger>
-                            </td>
-                            <td>
-                                <ContextMenuTrigger id="nameContextMenu">
-                                    Bojorquez, Carolina
-                                </ContextMenuTrigger>
-                            </td>
-                            <td>
-                                <ContextMenuTrigger id="nameContextMenu">
-                                    Bojorquez, Carolina
-                                </ContextMenuTrigger>
-                            </td>
-                            <td>
-                                <ContextMenuTrigger id="nameContextMenu">
-                                    Bojorquez, Carolina
-                                </ContextMenuTrigger>
-                            </td>
-                            <td>
-                                <ContextMenuTrigger id="nameContextMenu">
-                                    Bojorquez, Carolina
-                                </ContextMenuTrigger>
-                            </td>
-                            <td>
-                                <ContextMenuTrigger id="nameContextMenu">
-                                    Bojorquez, Carolina
-                                </ContextMenuTrigger>
-                            </td>
-                            <td>
-                                <ContextMenuTrigger id="nameContextMenu">
-                                    Bojorquez, Carolina
-                                </ContextMenuTrigger>
-                            </td>
-                            <td>
-                                <ContextMenuTrigger id="nameContextMenu">
-                                    Bojorquez, Carolina
-                                </ContextMenuTrigger>
-                            </td>
-                        </tr>
-                    </tbody>
-                </Table>
-            </div>
-        )
-    }
+  return (
+    <div>
+      <ContextMenu id={contextMenuId}>
+        <MenuItem data={{ foo: 'bar' }} onClick={onContextMenuClick}>
+          ContextMenu Item 1
+          </MenuItem>
+        <MenuItem data={{ foo: 'bar' }} onClick={onContextMenuClick}>
+          ContextMenu Item 2
+          </MenuItem>
+        <MenuItem data={{ foo: 'bar' }} onClick={onContextMenuClick}>
+          ContextMenu Item 3
+          </MenuItem>
+      </ContextMenu>
+
+      <Table
+        list={props.name}
+        contextMenuId={contextMenuId}
+        columns={columns}
+        checkbox={true}
+        identifier={'id'}
+        edit={props.edit}
+        updateSelectedState={props.handleSelectedStaff}
+        selected={props.selectedStaff}
+      />
+    </div >
+  )
 }
 
-export default PersonTable;
+export default PersonTable

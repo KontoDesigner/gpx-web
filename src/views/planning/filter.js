@@ -30,7 +30,7 @@ class Filter extends Component {
     const sourceMarketId = sourceMarket != null ? sourceMarket.id : undefined
 
     this.props.filterActions.handleSourceMarket(sourceMarketId)
-
+    
     this.props.getData(sourceMarketId, this.props.filter.text)
   }
 
