@@ -95,7 +95,7 @@ function mapStateToProps(state) {
   return {
     filter: state.staff.filter,
     sourceMarkets: state.geography.sourceMarkets,
-    jobTitles: state.geography.jobTitles
+    jobTitles: state.setting.jobTitles
   }
 }
 

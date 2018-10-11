@@ -8,6 +8,7 @@ import ReduxToastr from 'react-redux-toastr'
 import './styles/site.css'
 import { withRouter } from 'react-router-dom'
 import * as geographyActions from './actions/geographyActions'
+import * as settingActions from './actions/settingActions'
 import * as footerActions from './actions/footerActions'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
@@ -26,7 +27,7 @@ class App extends Component {
 
         return Promise.all([
             this.props.geographyActions.getSourceMarkets(),
-            this.props.geographyActions.getJobTitles(),
+            this.props.settingActions.getJobTitles(),
             this.props.geographyActions.getSeasons(),
             this.props.footerActions.getVersion(),
             this.props.footerActions.getSupportEmail(),
@@ -90,6 +91,7 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
     return {
         geographyActions: bindActionCreators(geographyActions, dispatch),
+        settingActions: bindActionCreators(settingActions, dispatch),
         footerActions: bindActionCreators(footerActions, dispatch)
     }
 }

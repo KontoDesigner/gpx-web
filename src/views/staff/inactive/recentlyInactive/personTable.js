@@ -1,117 +1,48 @@
-import React, { Component } from 'react'
-import { Table } from 'reactstrap'
-import { ContextMenu, MenuItem, ContextMenuTrigger } from "react-contextmenu";
+import React from 'react'
+import { ContextMenu, MenuItem } from 'react-contextmenu'
+import Table from '../../../../components/table.js'
 
-class PersonTable extends Component {
-    handleClick = (e, data) => {
-        alert(data.foo);
-    }
+const columns = [
+  { label: 'Name', dataKey: 'firstNameLastName' },
+  { label: 'SourceMarket', dataKey: 'sourceMarket' },
+  { label: 'PositionType', dataKey: 'positionType' },
+  { label: 'Driver', dataKey: 'driver' },
+ // { label: 'Concept Hotel', dataKey: 'concepthotel' }
+];
 
-    constructor(props) {
-        super()
+const PersonTable = (props) => {
+  function onContextMenuClick(e, data) {
+    alert(data.foo)
+  }
 
-        this.state = {
-            expanded: false
-        }
-    }
+  const contextMenuId = props.index + "-nameContextMenu";
 
-    toggleCollapse = () => {
-        this.setState({ expanded: !this.state.expanded })
-    }
+  return (
+    <div>
+      <ContextMenu id={contextMenuId}>
+        <MenuItem data={{ foo: 'bar' }} onClick={onContextMenuClick}>
+          ContextMenu Item 1
+          </MenuItem>
+        <MenuItem data={{ foo: 'bar' }} onClick={onContextMenuClick}>
+          ContextMenu Item 2
+          </MenuItem>
+        <MenuItem data={{ foo: 'bar' }} onClick={onContextMenuClick}>
+          ContextMenu Item 3
+          </MenuItem>
+      </ContextMenu>
 
-    render() {
-        return (
-            <div>
-                <ContextMenu id="recentlyInactiveContextMenu">
-                    <MenuItem data={{ foo: 'bar' }} onClick={this.handleClick}>
-                        ContextMenu Item 1
-                    </MenuItem>
-                    <MenuItem data={{ foo: 'bar' }} onClick={this.handleClick}>
-                        ContextMenu Item 2
-                    </MenuItem>
-                    <MenuItem data={{ foo: 'bar' }} onClick={this.handleClick}>
-                        ContextMenu Item 3w
-                    </MenuItem>
-                </ContextMenu>
-
-                <Table responsive bordered className="tableContextMenu">
-                    <thead>
-                        <tr>
-                            <th>
-                                Name
-                         </th>
-                            <th>
-                                Employee Id
-                        </th>
-                            <th>
-                                Absent Between/Last Working Date
-                        </th>
-                            <th>
-                                Reason/Comments
-                        </th>
-                            <th>
-                                Dest
-                        </th>
-                            <th>
-                                Source Market
-                        </th>
-                            <th>
-                                Position Type
-                        </th>
-                            <th>
-                                Job Title
-                        </th>
-                        </tr>
-                    </thead>
-
-                    <tbody>
-                        <tr>
-                            <td>
-                                <ContextMenuTrigger id="recentlyInactiveContextMenu">
-                                    Bojorquez, Carolina
-                                </ContextMenuTrigger>
-                            </td>
-                            <td>
-                                <ContextMenuTrigger id="recentlyInactiveContextMenu">
-                                    Bojorquez, Carolina
-                                </ContextMenuTrigger>
-                            </td>
-                            <td>
-                                <ContextMenuTrigger id="recentlyInactiveContextMenu">
-                                    Bojorquez, Carolina
-                                </ContextMenuTrigger>
-                            </td>
-                            <td>
-                                <ContextMenuTrigger id="recentlyInactiveContextMenu">
-                                    Bojorquez, Carolina
-                                </ContextMenuTrigger>
-                            </td>
-                            <td>
-                                <ContextMenuTrigger id="recentlyInactiveContextMenu">
-                                    Bojorquez, Carolina
-                                </ContextMenuTrigger>
-                            </td>
-                            <td>
-                                <ContextMenuTrigger id="recentlyInactiveContextMenu">
-                                    Bojorquez, Carolina
-                                </ContextMenuTrigger>
-                            </td>
-                            <td>
-                                <ContextMenuTrigger id="recentlyInactiveContextMenu">
-                                    Bojorquez, Carolina
-                                </ContextMenuTrigger>
-                            </td>
-                            <td>
-                                <ContextMenuTrigger id="recentlyInactiveContextMenu">
-                                    Bojorquez, Carolina
-                                </ContextMenuTrigger>
-                            </td>
-                        </tr>
-                    </tbody>
-                </Table>
-            </div>
-        )
-    }
+      <Table
+        list={props.name}
+        contextMenuId={contextMenuId}
+        columns={columns}
+        checkbox={true}
+        identifier={'id'}
+        edit={props.edit}
+        updateSelectedState={props.handleSelectedStaff}
+        selected={props.selectedStaff}
+      />
+    </div >
+  )
 }
 
 export default PersonTable

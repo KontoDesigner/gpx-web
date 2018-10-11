@@ -14,7 +14,7 @@ const PersonTable = (props) => {
     alert(data.foo)
   }
 
-  const contextMenuId = props.index + "-destinationContextMenu";
+  const contextMenuId = props.index + "-recentlyInactiveContextMenu";
 
   return (
     <div>

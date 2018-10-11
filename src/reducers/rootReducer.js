@@ -5,6 +5,7 @@ import { reducer as toastrReducer } from 'react-redux-toastr'
 import staff from './staff/staffRootReducer'
 import staffEdit from './staffEdit/staffEditRootReducer'
 import geography from './geographyReducer'
+import setting from './settingReducer'
 import planning from './planning/planningRootReducer'
 
 export default combineReducers({
@@ -14,5 +15,6 @@ export default combineReducers({
     staff,
     staffEdit,
     geography,
-    planning
+    planning,
+    setting
 })

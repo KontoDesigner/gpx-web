@@ -52,7 +52,7 @@ class PlanningEdit extends Component {
                     </CardBody>
 
                     <CardFooter>
-                        <LinkContainer to="/staff">
+                        <LinkContainer to="/planning">
                             <Button color="primary">Back</Button>
                         </LinkContainer>
                     </CardFooter>

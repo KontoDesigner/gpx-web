@@ -9,4 +9,4 @@ export default combineReducers({
   destination,
   name,
   jobTitle
-})
+}) 

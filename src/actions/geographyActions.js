@@ -32,12 +32,7 @@ export function getSourceMarketsSuccess(sourceMarkets) {
     }
 }
 
-export function getJobTitlesSuccess(jobTitles) {
-    return {
-        type: types.GET_JOBTITLES_SUCCESS,
-        data: { jobTitles: jobTitles }
-    }
-}
+ 
 
 export function getSourceMarkets() {
     return async function (dispatch) {
@@ -57,20 +52,3 @@ export function getSourceMarkets() {
     
 }
 
-export function getJobTitles() {
-    return async function (dispatch) {
-        dispatch(beginAjaxCall())
-
-        try {
-            const jobTitles = await RestClient.Get(`geography/jobtitle`)
-
-            dispatch(getJobTitlesSuccess(jobTitles))
-        } catch (error) {
-            dispatch(ajaxCallError(error))
-
-            throw error
-        }
-    }
-
-    
-}

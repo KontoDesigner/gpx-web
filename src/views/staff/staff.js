@@ -12,6 +12,7 @@ import * as headOfActions from '../../actions/staff/active/headOfActions'
 import * as destinationActions from '../../actions/staff/active/destinationActions'
 import * as filterActions from '../../actions/staff/filterActions'
 import * as jobTitleActions from '../../actions/staff/active/jobTitleActions'
+import * as recentlyInactiveActions from '../../actions/staff/inactive/recentlyInactiveActions'
 import * as nameActions from '../../actions/staff/active/nameActions'
 import $ from 'jquery'
 import Tabs from './tabs'
@@ -77,8 +78,8 @@ class Staff extends Component {
                    handleName={this.props.nameActions.handleName}
                     getJobTitle={this.props.jobTitleActions.getJobTitle}
                     handleJobTitle={this.props.jobTitleActions.handleJobTitle}
-                // getRecentlyInactive={this.props.recentlyInactiveActions.getRecentlyInactive}
-                // handleGetRecentlyInactive={this.props.recentlyInactiveActions.handleGetRecentlyInactive}
+                 getRecentlyInactive={this.props.recentlyInactiveActions.getRecentlyInactive}
+                 handleRecentlyInactive={this.props.recentlyInactiveActions.handleRecentlyInactive}
                 // getNewEmployees={this.props.newEmployeesActions.getNewEmployees}
                 // handleNewEmployees={this.props.newEmployeesActions.handleNewEmployees}
                 />
@@ -127,7 +128,11 @@ class Staff extends Component {
 
                         <TabPane tabId="recentlyInactive">
                             <RecentlyInactive
-                            //getRecentlyInactive={this.props.recentlyInactiveActions.getRecentlyInactive}
+                             recentlyInactive={this.props.recentlyInactive}
+                             getRecentlyInactive={this.props.recentlyInactiveActions.getRecentlyInactive}
+                             handleSelectedStaff={this.props.filterActions.handleSelectedStaff}
+                             selectedStaff={this.props.selectedStaff}
+                             edit={this.edit}
                             />
                         </TabPane>
 
@@ -149,7 +154,8 @@ function mapStateToProps(state) {
         name: state.staff.active.name,
         destination: state.staff.active.destination,
         jobTitle: state.staff.active.jobTitle,
-        selectedStaff: state.staff.filter.selectedStaff
+        selectedStaff: state.staff.filter.selectedStaff,
+       recentlyInactive: state.staff.inactive.recentlyInactive
     }
 }
 
@@ -159,6 +165,7 @@ function mapDispatchToProps(dispatch) {
         destinationActions: bindActionCreators(destinationActions, dispatch),
         filterActions: bindActionCreators(filterActions, dispatch),
         jobTitleActions: bindActionCreators(jobTitleActions, dispatch),
+       recentlyInactiveActions: bindActionCreators(recentlyInactiveActions, dispatch),
         nameActions: bindActionCreators(nameActions, dispatch)
     }
 }
