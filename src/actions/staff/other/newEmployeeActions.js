@@ -15,7 +15,7 @@ export function getNewEmployee(sourcemarket = 'ALL', jobtitle='ALL', criteria = 
 
     try {
       
-      const newEmployee = await RestClient.Get(`staff/name/${sourcemarket}/${jobtitle}${criteria !== null ? `/${criteria}` : ''}`)
+      const newEmployee = await RestClient.Get(`staff/newemployee/${sourcemarket}/${jobtitle}${criteria !== null ? `/${criteria}` : ''}`)
       
       //For some reason we need to reset value here, (bug when loading in new data with filter), don't touch h3h3
       dispatch(handleNewEmployee([]))

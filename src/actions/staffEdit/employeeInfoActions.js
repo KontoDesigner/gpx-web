@@ -158,6 +158,7 @@ export function getStaff(staffId) {
         dispatch(beginAjaxCall())
 
         try {
+          
             const staff = await RestClient.Get(`staff/${staffId}`)
 
             dispatch(getStaffSuccess(staff))

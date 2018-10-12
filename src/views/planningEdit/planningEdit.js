@@ -47,7 +47,7 @@ class PlanningEdit extends Component {
 
                     <CardBody>
                         <p className="card-text">
-                            Staff with id: <b>{this.state.staffId}</b> was not found.
+                            Staff with id: <b>{this.state.mplid}</b> was not found.
                         </p>
                     </CardBody>
 
