@@ -14,8 +14,8 @@ export function getRecentlyInactive(sourcemarket = 'ALL', jobtitle='ALL', criter
     dispatch(beginAjaxCall())
 
     try {
-      const recentlyInactive = await RestClient.Get(`staff/destination/${sourcemarket}/${jobtitle}${criteria !== null ? `/${criteria}` : ''}`)
-
+      const recentlyInactive = await RestClient.Get(`staff/inactive/${sourcemarket}/${jobtitle}${criteria !== null ? `/${criteria}` : ''}`)
+      
       //For some reason we need to reset value here, (bug when loading in new data with filter), don't touch h3h3
       dispatch(handleRecentlyInactive([]))
 

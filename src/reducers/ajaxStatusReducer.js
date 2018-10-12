@@ -31,7 +31,7 @@ export default function ajaxStatusReducer(state = defaultState, action) {
 
         if (val === 0) {
             $(".loader").fadeOut(0);
-        }
+        } 
 
         return val;
     }

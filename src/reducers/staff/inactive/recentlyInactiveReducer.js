@@ -12,3 +12,4 @@ export default function recentlyInactiveReducer(state = defaultState, action) {
             return state;
     }
 } 
+ 

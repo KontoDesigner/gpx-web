@@ -7,13 +7,15 @@ import HeadOf from './active/headOf/headOf'
 import JobTitle from './active/jobTitle/jobTitle'
 import Name from './active/name/name'
 import RecentlyInactive from './inactive/recentlyInactive/recentlyInactive'
-import NewEmployees from './other/newEmployees/newEmployees'
+import NewEmployee from './other/newEmployee/newEmployee'
 import * as headOfActions from '../../actions/staff/active/headOfActions'
 import * as destinationActions from '../../actions/staff/active/destinationActions'
 import * as filterActions from '../../actions/staff/filterActions'
 import * as jobTitleActions from '../../actions/staff/active/jobTitleActions'
 import * as recentlyInactiveActions from '../../actions/staff/inactive/recentlyInactiveActions'
 import * as nameActions from '../../actions/staff/active/nameActions'
+import * as newEmployeeActions from '../../actions/staff/other/newEmployeeActions'
+
 import $ from 'jquery'
 import Tabs from './tabs'
 import '../../styles/staff.css';
@@ -42,7 +44,7 @@ class Staff extends Component {
 
     componentDidMount() {
         this.props.filterActions.handleFilter()   //when page loads
-
+ 
         this.props.headOfActions.getHeadOf()
     }
 
@@ -75,13 +77,13 @@ class Staff extends Component {
                     getDestination={this.props.destinationActions.getDestination}
                     handleDestination={this.props.destinationActions.handleDestination}
                     getName={this.props.nameActions.getName}
-                   handleName={this.props.nameActions.handleName}
+                   handleName={this.props.nameActions.handleName} 
                     getJobTitle={this.props.jobTitleActions.getJobTitle}
                     handleJobTitle={this.props.jobTitleActions.handleJobTitle}
                  getRecentlyInactive={this.props.recentlyInactiveActions.getRecentlyInactive}
                  handleRecentlyInactive={this.props.recentlyInactiveActions.handleRecentlyInactive}
-                // getNewEmployees={this.props.newEmployeesActions.getNewEmployees}
-                // handleNewEmployees={this.props.newEmployeesActions.handleNewEmployees}
+                getNewEmployee={this.props.newEmployeeActions.getNewEmployee}
+                 handleNewEmployee={this.props.newEmployeeActions.handleNewEmployee}
                 />
 
                 <Col sm="12" md="9" lg="9" xl="10">
@@ -136,9 +138,18 @@ class Staff extends Component {
                             />
                         </TabPane>
 
-                        <TabPane tabId="newEmployees">
-                            <NewEmployees
-                            //getNewEmployees={this.props.newEmployeesActions.getNewEmployees}
+                        <TabPane tabId="newEmployee">
+                       
+                            <NewEmployee
+                            newEmployee={this.props.newEmployee}
+                            
+
+
+                            getNewEmployee={this.props.getNewEmployee}
+                          
+                            handleSelectedStaff={this.props.filterActions.handleSelectedStaff}
+                            selectedStaff={this.props.selectedStaff}
+                            edit={this.edit}
                             />
                         </TabPane>
                     </TabContent>
@@ -155,7 +166,8 @@ function mapStateToProps(state) {
         destination: state.staff.active.destination,
         jobTitle: state.staff.active.jobTitle,
         selectedStaff: state.staff.filter.selectedStaff,
-       recentlyInactive: state.staff.inactive.recentlyInactive
+       recentlyInactive: state.staff.inactive.recentlyInactive,
+       newEmployee: state.staff.other.newEmployee
     }
 }
 
@@ -166,7 +178,8 @@ function mapDispatchToProps(dispatch) {
         filterActions: bindActionCreators(filterActions, dispatch),
         jobTitleActions: bindActionCreators(jobTitleActions, dispatch),
        recentlyInactiveActions: bindActionCreators(recentlyInactiveActions, dispatch),
-        nameActions: bindActionCreators(nameActions, dispatch)
+        nameActions: bindActionCreators(nameActions, dispatch),
+        newEmployeeActions: bindActionCreators(newEmployeeActions, dispatch)
     }
 }
 

@@ -15,7 +15,7 @@ const PersonTable = (props) => {
     alert(data.foo)
   }
 
-  const contextMenuId = props.index + "-nameContextMenu";
+  const contextMenuId = props.index + "-newEmployeeContextMenu";
 
   return (
     <div>
@@ -32,7 +32,7 @@ const PersonTable = (props) => {
       </ContextMenu>
 
       <Table
-        list={props.staffs}
+        list={props.newEmployee}
         contextMenuId={contextMenuId}
         columns={columns}
         checkbox={true}

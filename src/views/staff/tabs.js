@@ -22,7 +22,9 @@ const Tabs = (props) => {
                         <ListGroupItem
                             className={classnames({ active: props.activeTab === 'destination' })}
                             onClick={() => {
+                                debugger;
                                 props.toggle('destination',
+                                
                                     props.getDestination,
                                     props.handleDestination)
                             }}>
@@ -61,7 +63,7 @@ const Tabs = (props) => {
                                 props.toggle(
                                     'recentlyInactive',
                                     props.getRecentlyInactive,
-                                    props.handleGetRecentlyInactive
+                                    props.handleRecentlyInactive
                                 )
                             }}>
                             Recently Inactive
@@ -76,11 +78,11 @@ const Tabs = (props) => {
                 <CardBody className="no-padding">
                     <ListGroup>
                         <ListGroupItem
-                            className={classnames({ active: props.activeTab === 'newEmployees' })}
+                            className={classnames({ active: props.activeTab === 'newEmployee' })}
                             onClick={() => {
-                                props.toggle('newEmployees',
-                                    props.getNewEmployees,
-                                    props.handleNewEmployees)
+                                props.toggle('newEmployee',
+                                    props.getNewEmployee,
+                                    props.handleNewEmployee)
                             }}>
                             New Employees
                 </ListGroupItem>
