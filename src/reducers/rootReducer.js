@@ -7,6 +7,7 @@ import staffEdit from './staffEdit/staffEditRootReducer'
 import geography from './geographyReducer'
 import setting from './settingReducer'
 import planning from './planning/planningRootReducer'
+import planningEdit from './planningEdit/planningEditRootReducer'
 
 export default combineReducers({
     ajaxCallsInProgress,
@@ -16,5 +17,6 @@ export default combineReducers({
     staffEdit,
     geography,
     planning,
+    planningEdit,
     setting
 })

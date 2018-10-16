@@ -1,7 +1,13 @@
 import React, { Component } from 'react'
+import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
-import { Card, CardHeader, CardBody, CardFooter, Button } from 'reactstrap'
+import { Row, Col, Card, CardHeader, CardBody, CardFooter, Button } from 'reactstrap'
 import { LinkContainer } from 'react-router-bootstrap'
+import * as planningInfoActions from '../../actions/planningEdit/planningInfoActions'
+import PlanningInfo from './planningInfo/planningInfo'
+//import Buttons from './buttons';
+
+
 class PlanningEdit extends Component {
     constructor(props) {
         super()
@@ -9,26 +15,36 @@ class PlanningEdit extends Component {
         const {
             match: { params }
         } = props
-        const id = params.id
+        const mplid = params.mplid 
+       
+        
 
         this.state = {
-            id: id,
+            mplid: mplid,
+           // mplID: mplID,
             position: null
+       
         }
     }
 
-    async componentWillMount() {
-        // const _this = this
+   componentWillMount=async()=>  {
+         const _this = this
+        
+        
         // this.props.employeeInfoActions.getAvailablePositions(this.props.currentSeason.name, this.props.nextSeason.name, this.props.followingSeason.name)
         // this.props.employeeInfoActions.getPositionAssigns(this.state.staffId)
-        // this.props.employeeInfoActions.getStaff(this.state.staffId).then(function () {
-        //     if (_this.props.staff != null) {
-        //         document.title = `${_this.props.staff.firstNameLastName} - GPX`
-        //     }
-        //     else {
-        //         document.title = 'Staff not found - GPX'
-        //     }
-        // })
+
+         this.props.planningInfoActions.getPosition(this.state.mplid).then(function () {
+          
+            if (_this.props.position != null) { 
+               
+                document.title = `${_this.props.position.LastName} - GPX`
+           }
+            else {
+                
+               document.title = 'Position not found - GPX'
+           }
+         })
     }
 
     save = () => {
@@ -36,18 +52,23 @@ class PlanningEdit extends Component {
     }
 
     render() {
+    //     const buttons = <Buttons
+    //     save={this.save}
+    //     unsavedEdit={this.state.unsavedEdit}
+    // />
         if (this.props.position === null) {
             //Loading
             return ''
         } else if (this.props.position === undefined) {
             //Not found
             return (
+
                 <Card>
-                    <CardHeader>Could not find position</CardHeader>
+                    <CardHeader>Could not find position {this.state.mplid}</CardHeader>
 
                     <CardBody>
                         <p className="card-text">
-                            Staff with id: <b>{this.state.mplid}</b> was not found.
+                           Position with id: <b>{this.state.mplid}</b> was  not found. 
                         </p>
                     </CardBody>
 
@@ -60,19 +81,49 @@ class PlanningEdit extends Component {
             )
         } else {
             //Found
-            return <div>sdf</div>
+            return (
+            
+                <div>
+                   
+
+                    <Row>
+                        
+                    </Row>
+
+                    <Row>
+                        <Col>
+                           
+                               
+                                    <PlanningInfo
+                                
+                                        position={this.props.position}
+
+                                    />
+                                
+
+                            
+                           
+                        </Col>
+                    </Row>
+                </div>
+            )
         }
     }
 }
 
 function mapStateToProps(state) {
-    return {}
+    return {
+
+        position: state.planningEdit.planningInfo.position,
+    }
 }
 
 function mapDispatchToProps(dispatch) {
-    return {}
+    return {
+        //positionInfoActions: bindActionCreators(positionInfoActions, dispatch),
+        planningInfoActions: bindActionCreators(planningInfoActions, dispatch)
+    }
 }
-
 export default connect(
     mapStateToProps,
     mapDispatchToProps

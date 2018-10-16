@@ -15,7 +15,7 @@ const Routes = () => (
             <Route exact path="/staff" component={Staff} />
             <Route exact path="/staff/:id" render={(props) => <StaffEdit {...props} ignoreThis={true} />} />
             <Route exact path="/planning" component={Planning} />
-            <Route exact path="/planning/:id" render={(props) => <PlanningEdit {...props} ignoreThis={true} />} />
+            <Route exact path="/planning/:mplid" render={(props) => <PlanningEdit {...props} ignoreThis={true} />} />
             <Route path="/reports" component={Reports} />
             <Route path="/Settings" component={Settings} />
             <Route component={NotFound} />

@@ -47,10 +47,11 @@ class StaffEdit extends Component {
 
     async componentWillMount() {
         const _this = this;
-
+    
         this.props.employeeInfoActions.getAvailablePositions(this.props.currentSeason.name, this.props.nextSeason.name, this.props.followingSeason.name)
         this.props.employeeInfoActions.getPositionAssigns(this.state.staffId)
         this.props.employeeInfoActions.getStaff(this.state.staffId).then(function () {
+            
             if (_this.props.staff != null) {
                 document.title = `${_this.props.staff.firstNameLastName} - GPX`
             }

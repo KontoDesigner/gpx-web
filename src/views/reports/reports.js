@@ -10,6 +10,7 @@ class Reports extends Component {
         return (
             <div>
                 Reports
+                eqweqwewqeqwewqeqwe
             </div>
         )
     }

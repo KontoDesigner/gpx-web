@@ -15,6 +15,7 @@ import $ from 'jquery'
 import * as filterActions from '../../actions/planning/filterActions'
 import '../../styles/staff.css'
 
+
 class Planning extends Component {
     componentWillMount() {
         document.title = 'Planning - GPX'
@@ -30,10 +31,26 @@ class Planning extends Component {
     }
 
     edit = (e, position) => {
-        if (!$(e.target).is(':checkbox')) {
-            const win = window.open(`/planning/${position.staffID}`, '_blank')
 
-            win.focus()
+        if (!$(e.target).is(':checkbox')) {
+           // alert(position.staffID);
+            if(position.staffID!=null){
+
+                const win = window.open(`/staff/${position.staffID}`, '_blank')
+                win.focus()
+            } 
+            else
+
+            {
+
+                const win2 = window.open(`/planning/${position.mplID}`, '_blank')
+                win2.focus()
+
+            }
+
+
+      
+            
         }
     }
 
@@ -142,7 +159,7 @@ function mapDispatchToProps(dispatch) {
         vacantRolesActions: bindActionCreators(vacantRolesActions, dispatch),
         filterActions: bindActionCreators(filterActions, dispatch),
         replyYesNoRolesActions: bindActionCreators(replyYesNoRolesActions, dispatch)
-    }
+    } 
 }
 
 export default connect(
