@@ -10,6 +10,8 @@ class YesNoRole extends Component {
     }
 
     render() {
+
+        
         const maxTableHeight = 550
 
         const style = {

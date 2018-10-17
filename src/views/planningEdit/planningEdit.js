@@ -9,6 +9,7 @@ import PlanningInfo from './planningInfo/planningInfo'
 
 
 class PlanningEdit extends Component {
+
     constructor(props) {
         super()
 
@@ -38,7 +39,7 @@ class PlanningEdit extends Component {
           
             if (_this.props.position != null) { 
                
-                document.title = `${_this.props.position.LastName} - GPX`
+                document.title = `${_this.props.position.jobTitle} - ${_this.props.position.destination} `
            }
             else {
                 

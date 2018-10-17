@@ -53,7 +53,7 @@ class StaffEdit extends Component {
         this.props.employeeInfoActions.getStaff(this.state.staffId).then(function () {
             
             if (_this.props.staff != null) {
-                document.title = `${_this.props.staff.firstNameLastName} - GPX`
+                document.title = `${_this.props.staff.firstNameLastName}`
             }
             else {
                 document.title = 'Staff not found - GPX'
