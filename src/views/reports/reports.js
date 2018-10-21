@@ -1,42 +1,88 @@
+
 import React, { Component } from 'react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import { TabContent, TabPane, Row, Col } from 'reactstrap'
 import Tabs from './tabs'
 import PlanningReport from './reports/planning/report'
-import * as planningInfoActions from '../../actions/planningEdit/planningInfoActions'
+import * as reportActions from '../../actions/report/reportActions'
 
 class Reports extends Component {
 
 
     constructor(props) {
         super(props)
+       
+        this.state = {
+            sourceMarketId: ''
+        }
 
         this.state = {
             activeTab: 'planningReport',
-          //  resetData: this.props.planningReportActions.handlePlaningReport
+
+        //  resetData: this.props.ReportActions.handleReport
         }
+        
+        position: null
+      
+
     }
     componentWillMount=async()=>  {
         document.title = 'Reports'
         const _this = this
        
        
-       
-        this.props.planningInfoActions.getPosition('38236').then(function () {
+  
+        this.props.reportActions.getReport().then(function () {
         
-           if (_this.props.position != null) { 
-            
-               document.title = `${_this.props.position.destination} `
+           if (_this.props.report != null) { 
+      
+               document.title = `${_this.props.report.mplid} `
           }
            else {
-       
-              document.title = 'Position not found - GPX'
+     
+              document.title = 'Report not found - GPX'
           }
+          
+          _this.setState({loaded: true})
+
         })
+
    }
 
+   
 
+
+//    handleFormSubmit(e) {
+//     e.preventDefault();
+//     let userData = this.state.newUser;
+
+//     fetch('http://example.com',{
+//         method: "POST",
+//         body: JSON.stringify(userData),
+//         headers: {
+//           'Accept': 'application/json',
+//           'Content-Type': 'application/json'
+//         },
+//       }).then(response => {
+//         response.json().then(data =>{
+//           console.log("Successful" + data);
+//         })
+//     })
+//   }   
+
+  handleDestinationSelect = (val) => {
+
+
+     val = val != null || val != undefined ? val : ''  
+
+    this.props.reportActions.handleDestinationField(val)
+
+    //this.props.handleUnsavedEdit()
+} 
+create = () => {
+    this.props.reportActions.createReport()
+}
 
     toggle = (tab, getData, resetData) => {
         if (this.state.activeTab !== tab) {
@@ -75,7 +121,10 @@ class Reports extends Component {
                     <TabContent activeTab={this.state.activeTab}>
                         <TabPane tabId="planningReport">
                             <PlanningReport
-                                destination={this.props.planningReport}
+                                position={this.props.position }
+                                selectedDestination={this.props.selectedDestination}
+                              handleDestinationSelect={this.handleDestinationSelect}
+                              create={this.create}
                           
                                 // getAllRoles={(sourcemarket, criteria) => this.props.allRolesActions.getAllRoles(sourcemarket, criteria)}
                                 // handleSelectedTitle={this.props.filterActions.handleSelectedTitle}
@@ -86,22 +135,26 @@ class Reports extends Component {
                         
                     </TabContent>
                 </Col>
+
             </Row>
         )
     }
 }
 
-function mapStateToProps(state, ownProps) {
+function mapStateToProps(state) {
+
     return {
 
-        destination: state.planningEdit.planningInfo.position,
+        position: state.report.report.report,
+        selectedDestination:state.report.report.selectedDestination,
+        create:state.report.report.create
     }
 }
 
 function mapDispatchToProps(dispatch) {
     return {
         //positionInfoActions: bindActionCreators(positionInfoActions, dispatch),
-        planningInfoActions: bindActionCreators(planningInfoActions, dispatch)
+        reportActions: bindActionCreators(reportActions, dispatch)
     }
 }
 

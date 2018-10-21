@@ -113,6 +113,7 @@ class PlanningEdit extends Component {
 }
 
 function mapStateToProps(state) {
+    
     return {
 
         position: state.planningEdit.planningInfo.position,

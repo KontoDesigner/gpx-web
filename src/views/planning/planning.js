@@ -128,7 +128,7 @@ class Planning extends Component {
                             <ReplyYesNoRole
                                 replyYesNoRoles={this.props.replyYesNoRoles}
                                 getReplyYesNoRoles={(sourcemarket, criteria) =>
-                                    this.props.replyYesNoRolesActions.getReplyYesNoRoles(sourcemarket, criteria)
+                                this.props.replyYesNoRolesActions.getReplyYesNoRoles(sourcemarket, criteria)
                                 }
                                 handleSelectedTitle={this.props.filterActions.handleSelectedTitle}
                                 selectedTitle={this.props.selectedTitle}

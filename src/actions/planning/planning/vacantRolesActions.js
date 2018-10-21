@@ -14,7 +14,9 @@ export function getVacantRoles(sourcemarket = 'ALL', criteria = null) {
     dispatch(beginAjaxCall())
 
     try {
-      const vacantRoles = await RestClient.Get(`positionassign/GetAllPositionsAssignData`)
+   
+      
+      const vacantRoles = await RestClient.Get(`positionassign/GetAllAssignedPositions`)
 
       //For some reason we need to reset value here, (bug when loading in new data with filter), don't touch h3h3
       dispatch(handleVacantRoles([]))

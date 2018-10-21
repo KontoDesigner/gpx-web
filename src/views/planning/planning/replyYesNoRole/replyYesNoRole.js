@@ -30,7 +30,7 @@ class YesNoRole extends Component {
           </div>
                 {this.props.replyYesNoRoles.length > 0 && (
                     <CardBody style={style} className="card-body-table">
-                        <JobTitleTable
+                        <JobTitleTable  // this tag means sending data to JobTitleTable Component, pretty weird right.
                             index={this.props.index}
                             replyYesNoRoles={this.props.replyYesNoRoles}
                             handleSelectedTitle={this.props.handleSelectedTitle}

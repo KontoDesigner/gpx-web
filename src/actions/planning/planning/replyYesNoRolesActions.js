@@ -15,6 +15,7 @@ export function getReplyYesNoRoles(sourcemarket = 'ALL', criteria = null) {
 
         try {
             const replyYesNoRoles = await RestClient.Get(`position`)
+            
             //const replyYesNoRoles = await RestClient.Get(`positionassign/GetAllPositionsAssignData`)
 
             //For some reason we need to reset value here, (bug when loading in new data with filter), don't touch h3h3
