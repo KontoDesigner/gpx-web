@@ -16,7 +16,7 @@ export function getVacantRoles(sourcemarket = 'ALL', criteria = null) {
     try {
    
       
-      const vacantRoles = await RestClient.Get(`positionassign/GetAllAssignedPositions`)
+      const vacantRoles = await RestClient.Get(`positionassign/GetAllUnAssignedPositions`)
 
       //For some reason we need to reset value here, (bug when loading in new data with filter), don't touch h3h3
       dispatch(handleVacantRoles([]))

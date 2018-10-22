@@ -1,5 +1,5 @@
 import { ActionTypes as types } from '../../constants/report/reportConstants'
-import { beginAjaxCall, ajaxCallError } from '../ajaxStatusActions'
+import { beginAjaxCall, ajaxCallError, endAjaxCall } from '../ajaxStatusActions'
 import RestClient from '../../infrastructure/restClient'
 
 
@@ -21,14 +21,14 @@ export function createReport() {
         dispatch(beginAjaxCall())
 
         try {
-            const createReport = await RestClient.Get(`report/GetReports`)
+             await RestClient.Download(`report/GetReports`,null,'PlanningReport.xlsx')
             
             //const replyYesNoRoles = await RestClient.Get(`positionassign/GetAllPositionsAssignData`)
 
             //For some reason we need to reset value here, (bug when loading in new data with filter), don't touch h3h3
-            dispatch(handleCreateReport([]))
+           // dispatch(handleCreateReport([]))
 
-            dispatch(createReportSuccess(createReport))
+           dispatch(endAjaxCall())
         } catch (error) {
             dispatch(ajaxCallError(error))
 

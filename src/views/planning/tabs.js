@@ -41,8 +41,8 @@ const Tabs = props => {
                         <ListGroupItem
                             className={classnames({ active: props.activeTab === 'replyYesNoRoles' })}
                             onClick={() => {
-                                // const win = window.open(`https://tableau-web-uat.tuinordic.net/home`, '_blank')
-                                // win.focus()
+                                 const win = window.open(`https://tableau-web-uat.tuinordic.net/home`, '_blank')
+                                 win.focus()
                             }}>
                             Tableaux
                         </ListGroupItem>
