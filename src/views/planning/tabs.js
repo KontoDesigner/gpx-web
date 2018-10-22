@@ -10,6 +10,14 @@ const Tabs = props => {
 
                 <CardBody className="no-padding">
                     <ListGroup>
+                    <ListGroupItem
+                            className={classnames({ active: props.activeTab === 'replyYesNoRoles' })}
+                            onClick={() => {
+                                 const win = window.open(`https://tableau-web-uat.tuinordic.net/home`, '_blank')
+                                 win.focus()
+                            }}>
+                            Tableaux
+                        </ListGroupItem>
                         <ListGroupItem
                             className={classnames({ active: props.activeTab === 'allRole' })}
                             onClick={() => {
@@ -38,14 +46,7 @@ const Tabs = props => {
                             }}>
                             Reply (Yes/No)
                         </ListGroupItem>
-                        <ListGroupItem
-                            className={classnames({ active: props.activeTab === 'replyYesNoRoles' })}
-                            onClick={() => {
-                                 const win = window.open(`https://tableau-web-uat.tuinordic.net/home`, '_blank')
-                                 win.focus()
-                            }}>
-                            Tableaux
-                        </ListGroupItem>
+                        
                     </ListGroup>
                 </CardBody>
             </Card>
