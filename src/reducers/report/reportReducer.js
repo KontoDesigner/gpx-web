@@ -7,6 +7,7 @@ var defaultState = {
     // currentPositionAssign: null,
     // nextPositionAssign: null,
    selectedDestination: null,
+   selectedYear: null,
     report: [],
     createreport: null
 } 
@@ -18,6 +19,12 @@ export default function reportReducer(state = defaultState, action) {
             ...state,
             selectedDestination:action.data.val
 
+        }
+
+        case (types.HANDLE_YEAR_FIELD):
+        return {
+            ...state,
+            selectedYear:action.data.val
         }
         case types.GET_REPORT_SUCCESS:
             return {
@@ -35,7 +42,11 @@ export default function reportReducer(state = defaultState, action) {
                 handleCreateReport:action.data.handleCreateReport
     
             }
-
+            case types.HANDLE_SELECTEDYEAR:
+            return    {
+  ...state,
+  selectedYear: action.data.selectedYear
+            }
             case types.HANDLE_SELECTEDDESTINATION:
             return    {
   ...state,

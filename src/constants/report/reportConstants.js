@@ -9,4 +9,6 @@ export var ActionTypes = keyMirror({
   HANDLE_REPORT: null,
   HANDLE_SELECTEDDESTINATION: null,
   HANDLE_DESTINATION_FIELD: null,
+  HANDLE_SELECTEDYEAR: null,
+  HANDLE_YEAR_FIELD: null,
 })

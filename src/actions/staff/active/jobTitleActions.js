@@ -9,12 +9,12 @@ export function getJobTitleSuccess(jobTitle) {
   }
 }
 
-export function getJobTitle(sourcemarket = 'ALL', jobtitle='ALL', criteria = null) {
+export function getJobTitle(sourcemarket = 'ALL', jobfamily='ALL', criteria = null) {
   return async function(dispatch) {
     dispatch(beginAjaxCall())
 
     try {
-      const jobTitle = await RestClient.Get(`staff/jobtitle/${sourcemarket}/${jobtitle}${criteria !== null ? `/${criteria}` : ''}`)
+      const jobTitle = await RestClient.Get(`staff/jobtitle/${sourcemarket}/${jobfamily}${criteria !== null ? `/${criteria}` : ''}`)
 
       //For some reason we need to reset value here, (bug when loading in new data with filter), don't touch h3h3
       dispatch(handleJobTitle([]))

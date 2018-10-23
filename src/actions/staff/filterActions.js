@@ -15,7 +15,7 @@ export function handleSourceMarket(sourceMarket) {
 }
 
 export function handleSelectedJobFamily(selectedJobFamily) {
-  alert('');
+ 
   return {
     
     type: types.HANDLE_SELECTEDJOBFAMILY,

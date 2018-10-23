@@ -19,6 +19,20 @@ const Report = (props) => {
                 <div className="form-row">
 
                        <Col key={0} sm="12" md="4" lg="3" xl="3" className="form-group form-group-select">
+                       <label htmlFor="year">Year</label>
+
+<Select
+    id="years"
+    valueKey="id"
+    labelKey="name"
+    className="form-control"
+    options={props.years}
+    onChange = { props.handleYearSelect }
+     value={props.selectedYear}
+    placeholder="Select Year"
+/>
+<p></p>           
+                       
                        <label htmlFor="destination">Destination</label>
 
         <Select 

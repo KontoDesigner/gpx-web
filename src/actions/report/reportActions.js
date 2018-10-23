@@ -2,10 +2,16 @@ import { ActionTypes as types } from '../../constants/report/reportConstants'
 import { beginAjaxCall, ajaxCallError, endAjaxCall } from '../ajaxStatusActions'
 import RestClient from '../../infrastructure/restClient'
 
-
+export function handleYearField(val) {
+  
+    return {
+       type: types.HANDLE_YEAR_FIELD,
+        data: { val: val }
+    }
+}
 
 export function handleDestinationField(val) {
-
+ 
     return {
         
        type: types.HANDLE_DESTINATION_FIELD,

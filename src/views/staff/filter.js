@@ -40,7 +40,7 @@ class Filter extends Component {
 
   updateJobFamilyState = jobFamily => {
     const jobFamilyId = jobFamily != null ? jobFamily.id : undefined
-alert('');
+
     this.props.filterActions.handleSelectedJobFamily(jobFamilyId)
 
     this.props.getData(this.props.filter.sourceMarket,jobFamilyId, this.props.filter.text)

@@ -16,27 +16,50 @@ class Reports extends Component {
         super(props)
        
         this.state = {
-            sourceMarketId: ''
-        }
-
-        this.state = {
             activeTab: 'planningReport',
          
-         resetData: this.props.reportActions.handleReport
+            resetData: this.props.reportActions.handleReport,
+            sourceMarketId: '',
+            years: [
+                {
+                    id: '2018',
+                    name: '2018'
+                },
+                {
+                    id: '2019',
+                    name: '2019'
+                },
+                {
+                    id: '2020',
+                    name: '2020'
+                },
+                {
+                    id: '2021',
+                    name: '2021'
+                }
+            ],
+            unsavedEdit: false,
+            position: null
         }
+
+        // this.state = {
+        //     activeTab: 'planningReport',
+         
+        //  resetData: this.props.reportActions.handleReport
+        // }
         
-        position: null
+       
       
 
     }
     componentDidMount=async()=>  {
         document.title = 'Reports'
         const _this = this
-       
+  
        
   
         this.props.reportActions.getReport().then(function () {
-     
+           
         
            if (_this.props.report != null) {  
       
@@ -74,6 +97,15 @@ class Reports extends Component {
 //     })
 //   }   
 
+handleYearSelect = (val) => {
+
+    val = val != null || val != undefined ? val : ''  
+
+   this.props.reportActions.handleYearField(val)
+
+} 
+
+
   handleDestinationSelect = (val) => {
 
 
@@ -88,7 +120,7 @@ create = () => {
 }
 
     toggle = (tab, getData, resetData) => {
-        debugger;
+      
         if (this.state.activeTab !== tab) {
             //Reset current tab state
             this.state.resetData([])
@@ -107,6 +139,7 @@ create = () => {
     }
 
     render() {
+        debugger;
         return (
             <Row>
                 <Tabs
@@ -114,7 +147,8 @@ create = () => {
                     activeTab={this.state.activeTab}
                     getReport={this.props.reportActions.getReport}
                     handleReport={this.props.reportActions.handleReport}
-                    
+                    years={this.state.years}
+                  
                 />
                 <Col sm="12" md="9" lg="9" xl="10">
                     <TabContent activeTab={this.state.activeTab}>
@@ -123,8 +157,11 @@ create = () => {
                                 position={this.props.position }
                                 selectedDestination={this.props.selectedDestination}
                               handleDestinationSelect={this.handleDestinationSelect}
+                              years={this.state.years}
+                              selectedYear={this.props.selectedYear}
+                              handleYearSelect={this.handleYearSelect}
                               create={this.create}
-
+                            
                             />
                         </TabPane>
                         <TabPane tabId="resignReport">
@@ -132,15 +169,21 @@ create = () => {
                                 position={this.props.position }
                                 selectedDestination={this.props.selectedDestination}
                               handleDestinationSelect={this.handleDestinationSelect}
+                              years={this.state.years}
+                              selectedYear={this.props.selectedYear}
+                              handleYearSelect={this.handleYearSelect}
                               create={this.create}
 
-                            /> 
+                            />
                         </TabPane>
                         <TabPane tabId="placementReport">
                             <PlacementReport
                                 position={this.props.position }
                                 selectedDestination={this.props.selectedDestination}
                               handleDestinationSelect={this.handleDestinationSelect}
+                              years={this.state.years}
+                              selectedYear={this.props.selectedYear}
+                              handleYearSelect={this.handleYearSelect}
                               create={this.create}
 
                             />
@@ -159,6 +202,7 @@ function mapStateToProps(state) {
 
         position: state.report.report.report,
         selectedDestination:state.report.report.selectedDestination,
+        selectedYear:state.report.report.selectedYear,
         create:state.report.report.create
     }
 }
