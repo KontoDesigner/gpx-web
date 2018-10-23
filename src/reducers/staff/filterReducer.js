@@ -3,7 +3,7 @@ import { ActionTypes as types } from '../../constants/staff/filterConstants'
 var defaultState = {
   text: '',
   sourceMarket: null,
-  selectedJobTitle: null,
+  selectedJobFamily: null,
   selectedStaff: []
 }
 
@@ -14,11 +14,11 @@ export default function filterReducer(state = defaultState, action) {
         ...state,
         selectedStaff: action.data.selectedStaff
       }
-      case types.HANDLE_SELECTEDJOBTITLE:
+      case types.HANDLE_SELECTEDJOBFAMILY:
       
       return {
         ...state,
-        selectedJobTitle: action.data.selectedJobTitle
+        selectedJobFamily: action.data.selectedJobFamily
       }
     case types.HANDLE_FILTER:
       return defaultState

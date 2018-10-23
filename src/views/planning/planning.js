@@ -60,6 +60,7 @@ class Planning extends Component {
     }
 
     toggle = (tab, getData, resetData) => {
+   
         if (this.state.activeTab !== tab) {
             //Reset current tab state
             this.state.resetData([])

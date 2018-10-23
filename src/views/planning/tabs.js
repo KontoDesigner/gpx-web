@@ -11,7 +11,7 @@ const Tabs = props => {
                 <CardBody className="no-padding">
                     <ListGroup>
                     <ListGroupItem
-                            className={classnames({ active: props.activeTab === 'replyYesNoRoles' })}
+                            className={classnames({ active: props.activeTab === 'tableaux' })}
                             onClick={() => {
                                  const win = window.open(`https://tableau-web-uat.tuinordic.net/home`, '_blank')
                                  win.focus()
@@ -28,6 +28,7 @@ const Tabs = props => {
                         <ListGroupItem
                             className={classnames({ active: props.activeTab === 'placedRoles' })}
                             onClick={() => {
+                                debugger;
                                 props.toggle('placedRoles', props.getPlacedRoles, props.handlePlacedRoles)
                             }}>
                             Placed Roles

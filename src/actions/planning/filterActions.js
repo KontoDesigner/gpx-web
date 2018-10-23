@@ -14,10 +14,10 @@ export function handleSourceMarket(sourceMarket) {
   }
 }
 
-export function handleSelectedTitle(selectedTitle) {
+export function handleSelectedJobFamily(selectedJobFamily) {
   return {
-    type: types.HANDLE_SELECTEDTITLE,
-    data: { selectedTitle: selectedTitle }
+    type: types.HANDLE_SELECTEDJOBFAMILY,
+    data: { selectedJobFamily: selectedJobFamily }
   }
 }
 

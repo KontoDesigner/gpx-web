@@ -1,25 +1,25 @@
-import { ActionTypes as types } from '../constants/geographyConstants';
+import { ActionTypes as types } from '../constants/settingConstants';
 import { beginAjaxCall, ajaxCallError } from './ajaxStatusActions'
 import RestClient from '../infrastructure/restClient'
 
 
-export function getJobTitlesSuccess(jobTitles) {
+export function getJobFamiliesSuccess(jobFamilies) {
     return {
-        type: types.GET_JOBTITLES_SUCCESS,
-        data: { jobTitles: jobTitles }
+        type: types.GET_JOBFAMILIES_SUCCESS,
+        data: { jobFamilies: jobFamilies }
     }
 }
 
 
 
-export function getJobTitles() {
+export function getJobFamilies() {
     return async function (dispatch) {
         dispatch(beginAjaxCall())
 
         try {
-            const jobTitles = await RestClient.Get(`setting/jobtitle`)
+            const jobFamilies = await RestClient.Get(`setting/jobfamily`)
 
-            dispatch(getJobTitlesSuccess(jobTitles))
+            dispatch(getJobFamiliesSuccess(jobFamilies))
         } catch (error) {
             dispatch(ajaxCallError(error))
 

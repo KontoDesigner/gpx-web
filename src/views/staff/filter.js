@@ -15,8 +15,8 @@ class Filter extends Component {
 
   }
 
-  getDataDebouncer = (sourcemarket,jobtitle, criteria) => {
-    this.props.getData(sourcemarket, jobtitle,criteria)
+  getDataDebouncer = (sourcemarket,jobfamily, criteria) => {
+    this.props.getData(sourcemarket, jobfamily,criteria)
   }
 
 
@@ -26,7 +26,7 @@ class Filter extends Component {
 
     this.props.filterActions.handleText(value)
 
-    this.getData(this.props.filter.sourceMarket,this.props.filter.selectedJobTitle,  value)
+    this.getData(this.props.filter.sourceMarket,this.props.filter.selectedJobFamily,  value)
   }
 
 
@@ -35,15 +35,15 @@ class Filter extends Component {
 
     this.props.filterActions.handleSourceMarket(sourceMarketId)
 
-    this.props.getData(sourceMarketId, this.props.filter.selectedJobTitle, this.props.filter.text)
+    this.props.getData(sourceMarketId, this.props.filter.selectedJobFamily, this.props.filter.text)
   }
 
-  updateJobTitleState = jobTitle => {
-    const jobTitleId = jobTitle != null ? jobTitle.id : undefined
+  updateJobFamilyState = jobFamily => {
+    const jobFamilyId = jobFamily != null ? jobFamily.id : undefined
+alert('');
+    this.props.filterActions.handleSelectedJobFamily(jobFamilyId)
 
-    this.props.filterActions.handleSelectedJobTitle(jobTitleId)
-
-    this.props.getData(this.props.filter.sourceMarket,jobTitleId, this.props.filter.text)
+    this.props.getData(this.props.filter.sourceMarket,jobFamilyId, this.props.filter.text)
   }
 
   render() {
@@ -64,17 +64,17 @@ class Filter extends Component {
       </Col>,
 
       <Col key={1} sm="12" md="4" lg="3" xl="3" className="form-group form-group-select">
-        <label htmlFor="jobTitle">JobTitle</label>
+        <label htmlFor="jobFamily">JobFamily</label>
 
         <Select
-          id="jobTitle"
+          id="jobFamily"
           valueKey="id"
           labelKey="name"
           className="form-control"
-          options={this.props.jobTitles}
-          onChange={this.updateJobTitleState}
-          value={this.props.filter.selectedJobTitle}
-          placeholder="JobTitle"
+          options={this.props.jobFamilies}
+          onChange={this.updateJobFamilyState}
+          value={this.props.filter.selectedJobFamily}
+          placeholder="JobFamily"
         />
       </Col>,
 
@@ -95,7 +95,7 @@ function mapStateToProps(state) {
   return {
     filter: state.staff.filter,
     sourceMarkets: state.geography.sourceMarkets,
-    jobTitles: state.setting.jobTitles
+    jobFamilies: state.setting.jobFamilies
   }
 }
 

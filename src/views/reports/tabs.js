@@ -13,23 +13,23 @@ const Tabs = props => {
                         <ListGroupItem
                             className={classnames({ active: props.activeTab === 'planningReport' })}
                             onClick={() => {
-                                props.toggle('planningReport', props.getPlanning, props.handleAllRoles)
+                                props.toggle('planningReport', props.getReport, props.handleReport)
                             }}>
                             Planning Report
                         </ListGroupItem> 
                         <ListGroupItem
-                            className={classnames({ active: props.activeTab === 'placedRoles' })}
+                            className={classnames({ active: props.activeTab === 'resignReport' })}
                             onClick={() => {
-                                props.toggle('placedRoles', this.props.history.push(`/planning`))
+                                props.toggle('resignReport', props.getReport, props.handleReport)
                             }}>
                             Resign Report
                         </ListGroupItem>
                         <ListGroupItem
-                            className={classnames({ active: props.activeTab === 'vacantRoles' })}
+                            className={classnames({ active: props.activeTab === 'placementReport' })}
                             onClick={() => {
-                                props.toggle('vacantRoles', props.getVacantRoles, props.handleVacantRoles)
+                                props.toggle('placementReport', props.getReport, props.handleReport)
                             }}>
-                            Placement Report
+                            Placement Request Report
                         </ListGroupItem>
                         
                     </ListGroup>
