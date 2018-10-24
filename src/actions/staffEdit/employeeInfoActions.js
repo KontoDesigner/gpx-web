@@ -3,21 +3,11 @@ import { beginAjaxCall, ajaxCallError, endAjaxCall } from '../ajaxStatusActions'
 import RestClient from '../../infrastructure/restClient'
 import { toastr } from 'react-redux-toastr'
 
-export function sendToCtx(staff) {
+export function sendToCtx(model) {
     return async function(dispatch) {
         dispatch(beginAjaxCall())
 
         try {
-            const model = {
-                Id: staff.staffID,
-                Name: staff.firstName + ' ' + staff.lastName,
-                DateOfBirth: staff.dateOfBirth,
-                SourceMarket: staff.sourceMarket,
-                Phone: staff.phone
-            }
-
-            console.log('asdf', model)
-
             const res = await RestClient.Post('ctx/send', model)
 
             dispatch(endAjaxCall())

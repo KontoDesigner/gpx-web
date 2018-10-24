@@ -81,8 +81,18 @@ class StaffEdit extends Component {
         }
     }
 
-    send = () => {
-        this.props.employeeInfoActions.sendToCtx(this.props.staff)
+    send = destination => {
+        const model = {
+            Id: this.props.staff.staffID,
+            Name: this.props.staff.firstName + ' ' + this.props.staff.lastName,
+            DateOfBirth: this.props.staff.dateOfBirth,
+            SourceMarket: this.props.staff.sourceMarket,
+            Phone: this.props.staff.phone,
+            Gender: this.props.staff.title,
+            Destination: destination
+        }
+
+        this.props.employeeInfoActions.sendToCtx(model)
     }
 
     save = () => {
@@ -90,7 +100,7 @@ class StaffEdit extends Component {
     }
 
     render() {
-        const buttons = <Buttons save={this.save} unsavedEdit={this.state.unsavedEdit} send={this.send} />
+        const buttons = <Buttons save={this.save} unsavedEdit={this.state.unsavedEdit} />
 
         if (this.props.staff === null) {
             //Loading
@@ -150,6 +160,7 @@ class StaffEdit extends Component {
                                         followingSeason={this.props.followingSeason}
                                         positionTypes={this.state.positionTypes}
                                         handleUnsavedEdit={this.handleUnsavedEdit}
+                                        send={this.send}
                                     />
                                 </TabPane>
 

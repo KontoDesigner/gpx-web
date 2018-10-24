@@ -27,13 +27,6 @@ const Buttons = props => {
                     }}>
                     Save
                 </Button>
-                <Button
-                    color="warning"
-                    onClick={() => {
-                        props.send()
-                    }}>
-                    Send
-                </Button>
             </Col>
         </Row>
     )
