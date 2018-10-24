@@ -1,6 +1,39 @@
 import { ActionTypes as types } from '../../constants/staffEdit/employeeInfoConstants'
 import { beginAjaxCall, ajaxCallError, endAjaxCall } from '../ajaxStatusActions'
 import RestClient from '../../infrastructure/restClient'
+import { toastr } from 'react-redux-toastr'
+
+export function sendToCtx(staff) {
+    return async function(dispatch) {
+        dispatch(beginAjaxCall())
+
+        try {
+            const model = {
+                Id: staff.staffID,
+                Name: staff.firstName + ' ' + staff.lastName,
+                DateOfBirth: staff.dateOfBirth,
+                SourceMarket: staff.sourceMarket,
+                Phone: staff.phone
+            }
+
+            console.log('asdf', model)
+
+            const res = await RestClient.Post('ctx/send', model)
+
+            dispatch(endAjaxCall())
+
+            if (res && res.ok) {
+                toastr.success('Success', `Request sent to CTX`)
+            } else {
+                toastr.error('Error', `Could not send request to CTX: ${res ? res.message : 'Error'}`)
+            }
+        } catch (error) {
+            dispatch(ajaxCallError(error))
+
+            throw error
+        }
+    }
+}
 
 export function handleCurrentPositionAssignField(field, val) {
     return {
@@ -38,7 +71,7 @@ export function handleFilterFromSuccess(from) {
 }
 
 export function deletePositionAssign(id) {
-    return async function (dispatch) {
+    return async function(dispatch) {
         dispatch(beginAjaxCall())
 
         try {
@@ -58,7 +91,7 @@ export function deletePositionAssign(id) {
 }
 
 export function movePositionAssign(oldPositionAssignId, newMPLID) {
-    return async function (dispatch) {
+    return async function(dispatch) {
         dispatch(beginAjaxCall())
 
         const model = {
@@ -79,7 +112,7 @@ export function movePositionAssign(oldPositionAssignId, newMPLID) {
 }
 
 export function insertPositionAssign(positionAssign) {
-    return async function (dispatch) {
+    return async function(dispatch) {
         dispatch(beginAjaxCall())
 
         try {
@@ -102,7 +135,7 @@ export function getAvailablePositionsSuccess(availablePositions) {
 }
 
 export function getAvailablePositions(currentSeason, nextSeason, followingSeason) {
-    return async function (dispatch) {
+    return async function(dispatch) {
         dispatch(beginAjaxCall())
 
         try {
@@ -131,7 +164,7 @@ export function getPositionAssignsSuccess(positionAssigns) {
 }
 
 export function getPositionAssigns(staffId) {
-    return async function (dispatch) {
+    return async function(dispatch) {
         dispatch(beginAjaxCall())
 
         try {
@@ -154,11 +187,10 @@ export function getStaffSuccess(staff) {
 }
 
 export function getStaff(staffId) {
-    return async function (dispatch) {
+    return async function(dispatch) {
         dispatch(beginAjaxCall())
 
         try {
-          
             const staff = await RestClient.Get(`staff/${staffId}`)
 
             dispatch(getStaffSuccess(staff))
