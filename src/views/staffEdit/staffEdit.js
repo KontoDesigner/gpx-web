@@ -81,7 +81,7 @@ class StaffEdit extends Component {
         }
     }
 
-    send = destination => {
+    send = (destination, positionStart) => {
         const model = {
             Id: this.props.staff.staffID,
             Name: this.props.staff.firstName + ' ' + this.props.staff.lastName,
@@ -89,7 +89,8 @@ class StaffEdit extends Component {
             SourceMarket: this.props.staff.sourceMarket,
             Phone: this.props.staff.phone,
             Gender: this.props.staff.title,
-            Destination: destination
+            Destination: destination,
+            PositionStart: positionStart
         }
 
         this.props.employeeInfoActions.sendToCtx(model)
