@@ -1,7 +1,7 @@
-import { ActionTypes as types } from '../constants/settingConstants'
+import { ActionTypes as types } from '../../constants/setting/settingConstants';
 
 var defaultState = {
-
+    setting: [],
     jobFamilies: [],
     
 }
@@ -14,6 +14,12 @@ export default function filterReducer(state = defaultState, action) {
             return {
                 ...state,
                 jobFamilies: action.data.jobFamilies
+            }
+
+            case types.GET_SETTING_SUCCESS:
+            return {
+                ...state,
+                setting: action.data.setting
             }
      
         default:
