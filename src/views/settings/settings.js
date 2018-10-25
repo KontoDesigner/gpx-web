@@ -17,9 +17,21 @@ class Settings extends Component {
           
           //  resetData: this.props.settingActions.handleSetting,
             sourceMarketId: '',
+            options: [
+                {
+                    id: 'No',
+                    name: 'No'
+                },
+
+                {
+                    id: 'Yes',
+                    name: 'Yes'
+                },
+         
+            ],
          
             unsavedEdit: false,
-            position: null
+            setting: null
         }
 
 
@@ -82,12 +94,12 @@ save = () => {
    // this.props.settingActions.save()
 }
 
-  handleDestinationSelect = (val) => {
+  handleApplyOpenSelect = (val) => {
 
 
      val = val != null || val != undefined ? val : ''  
 
-    this.props.reportActions.handleDestinationField(val)
+    this.props.settingActions.handleApplyOpen(val)
 
     //this.props.handleUnsavedEdit()
 } 
@@ -121,7 +133,7 @@ save = () => {
                     activeTab={this.state.activeTab}
                     getSetting={this.props.settingActions.getSetting}
                      handleSetting={this.props.settingActions.handleSetting}
-                    // years={this.state.years}
+                    //options={this.state.options}
                   
                 />
                 <Col sm="12" md="9" lg="9" xl="10">
@@ -130,9 +142,9 @@ save = () => {
                             <Setting
                             
                             setting={this.props.setting }
-                            //     selectedDestination={this.props.selectedDestination}
-                            //   handleDestinationSelect={this.handleDestinationSelect}
-                            //   years={this.state.years}
+                            selectedApplyOpen={this.props.selectedApplyOpen}
+                            handleApplyOpenSelect={this.handleApplyOpenSelect}
+                            options={this.state.options}
                             //   selectedYear={this.props.selectedYear}
                             //   handleYearSelect={this.handleYearSelect}
                                save={this.save}
@@ -165,9 +177,9 @@ function mapStateToProps(state) {
     return {
         setting: state.setting.setting.setting,
  
-        // selectedDestination:state.report.report.selectedDestination,
-        // selectedYear:state.report.report.selectedYear,
-        // create:state.report.report.create
+         selectedApplyOpen:state.setting.setting.selectedApplyOpen,
+       //  selectedYear:state.report.report.selectedYear,
+         //create:state.report.report.create
     }
 }
 

@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux';
-import setting from './settingReducer';
 
+import notification from './notificationReducer';
 
 export default combineReducers({
-    setting
+    notification
 })

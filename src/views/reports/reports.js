@@ -18,7 +18,7 @@ class Reports extends Component {
         this.state = {
             activeTab: 'planningReport',
          
-            resetData: this.props.reportActions.handleReport,
+          //  resetData: this.props.reportActions.handleReport,
             sourceMarketId: '',
             years: [
                 {
@@ -53,9 +53,10 @@ class Reports extends Component {
 
     }
     componentDidMount=async()=>  {
+        
         document.title = 'Reports'
         const _this = this
-  
+        debugger;
        
   
         this.props.reportActions.getReport().then(function () {
@@ -63,7 +64,7 @@ class Reports extends Component {
         
            if (_this.props.report != null) {  
       
-               document.title = `${_this.props.report.mplid} `
+               document.title = 'Planning Report'
           }
            else {
      
@@ -155,7 +156,7 @@ create = () => {
                         <TabPane tabId="planningReport">
                             <PlanningReport
                                 position={this.props.position }
-                                selectedDestination={this.props.selectedDestination}
+                              selectedDestination={this.props.selectedDestination}
                               handleDestinationSelect={this.handleDestinationSelect}
                               years={this.state.years}
                               selectedYear={this.props.selectedYear}

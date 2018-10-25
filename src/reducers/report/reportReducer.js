@@ -6,7 +6,7 @@ var defaultState = {
     // followingAvailablePositions: [],
     // currentPositionAssign: null,
     // nextPositionAssign: null,
-   selectedDestination: null,
+   selectedDestination: null,  
    selectedYear: null,
     report: [],
     createreport: null

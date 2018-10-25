@@ -1,45 +1,33 @@
-import { ActionTypes as types } from '../../constants/setting/settingConstants'
+import { ActionTypes as types } from '../../constants/notification/notificationConstants'
 import { beginAjaxCall, ajaxCallError } from '../ajaxStatusActions'
 import RestClient from '../../infrastructure/restClient'
 
 
-export function handleApplyOpen(val) {
-  
+
+  export function handleNotification(notification) {
     return {
-   
-       type: types.HANDLE_APPLYOPEN,
-        data: { val: val }
-
-
-      
-    }
-}
-
-
-export function handleSetting(setting) {
-    return {
-      type: types.HANDLE_SETTING,
-      data: { setting: setting }
+      type: types.HANDLE_NOTIFICATION,
+      data: { notification: notification }
     }
   }
 
 
-
-export function getSettingSuccess(setting) {
+export function getNotificationSuccess(notification) {
     return {
-        type: types.GET_SETTING_SUCCESS,
-        data: { setting: setting }
+        type: types.GET_NOTIFICATION_SUCCESS,
+        data: { notification: notification }
     }
 }
 
-export function getSetting() {
+
+export function getNotification() {
     return async function (dispatch) {
         dispatch(beginAjaxCall())
 
         try {
-            const setting = await RestClient.Get(`setting/setting`)
+            const notification = await RestClient.Get(`notification/notification`)
             debugger;
-            dispatch(getSettingSuccess(setting))
+            dispatch(getNotificationSuccess(notification))
         } catch (error) {
             dispatch(ajaxCallError(error))
 
@@ -49,8 +37,6 @@ export function getSetting() {
 
     
 }
-
-
 
 
 export function getJobFamiliesSuccess(jobFamilies) {
