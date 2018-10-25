@@ -7,18 +7,20 @@ import FullYearReview from './fullYearReview/fullYearReview'
 import Applications from './applications/applications'
 import Team from './team/team'
 import History from './history/history'
-import { LinkContainer } from 'react-router-bootstrap';
-import Buttons from './buttons';
-import Tabs from './tabs';
+import { LinkContainer } from 'react-router-bootstrap'
+import Buttons from './buttons'
+import Tabs from './tabs'
 import * as employeeInfoActions from '../../actions/staffEdit/employeeInfoActions'
-import '../../styles/staffEdit.css';
+import '../../styles/staffEdit.css'
 
 class StaffEdit extends Component {
     constructor(props) {
         super()
 
-        const { match: { params } } = props;
-        const staffId = params.id;
+        const {
+            match: { params }
+        } = props
+        const staffId = params.id
 
         this.state = {
             activeTab: 'employeeInfo',
@@ -46,22 +48,24 @@ class StaffEdit extends Component {
     }
 
     async componentWillMount() {
-        const _this = this;
-    
-        this.props.employeeInfoActions.getAvailablePositions(this.props.currentSeason.name, this.props.nextSeason.name, this.props.followingSeason.name)
+        const _this = this
+
+        this.props.employeeInfoActions.getAvailablePositions(
+            this.props.currentSeason.name,
+            this.props.nextSeason.name,
+            this.props.followingSeason.name
+        )
         this.props.employeeInfoActions.getPositionAssigns(this.state.staffId)
-        this.props.employeeInfoActions.getStaff(this.state.staffId).then(function () {
-            
+        this.props.employeeInfoActions.getStaff(this.state.staffId).then(function() {
             if (_this.props.staff != null) {
                 document.title = `${_this.props.staff.firstNameLastName}`
-            }
-            else {
+            } else {
                 document.title = 'Staff not found - GPX'
             }
         })
     }
 
-    toggle = (activeTab) => {
+    toggle = activeTab => {
         if (this.state.activeTab !== activeTab) {
             this.setState({
                 activeTab
@@ -77,32 +81,41 @@ class StaffEdit extends Component {
         }
     }
 
+    send = (destination, positionStart) => {
+        const model = {
+            Id: this.props.staff.staffID,
+            Name: this.props.staff.firstName + ' ' + this.props.staff.lastName,
+            DateOfBirth: this.props.staff.dateOfBirth,
+            SourceMarket: this.props.staff.sourceMarket,
+            Phone: this.props.staff.phone,
+            Gender: this.props.staff.title,
+            Destination: destination,
+            PositionStart: positionStart
+        }
+
+        this.props.employeeInfoActions.sendToCtx(model)
+    }
+
     save = () => {
         alert('not implemented')
     }
 
     render() {
-        const buttons = <Buttons
-            save={this.save}
-            unsavedEdit={this.state.unsavedEdit}
-        />
+        const buttons = <Buttons save={this.save} unsavedEdit={this.state.unsavedEdit} />
 
         if (this.props.staff === null) {
             //Loading
-            return (
-                ''
-            )
-        }
-        else if (this.props.staff === undefined) {
+            return ''
+        } else if (this.props.staff === undefined) {
             //Not found
             return (
                 <Card>
-                    <CardHeader>
-                        Could not find staff
-                    </CardHeader>
+                    <CardHeader>Could not find staff</CardHeader>
 
                     <CardBody>
-                        <p className="card-text">Staff with id: <b>{this.state.staffId}</b> was not found.</p>
+                        <p className="card-text">
+                            Staff with id: <b>{this.state.staffId}</b> was not found.
+                        </p>
                     </CardBody>
 
                     <CardFooter>
@@ -112,8 +125,7 @@ class StaffEdit extends Component {
                     </CardFooter>
                 </Card>
             )
-        }
-        else {
+        } else {
             //Found
             return (
                 <div>
@@ -149,6 +161,7 @@ class StaffEdit extends Component {
                                         followingSeason={this.props.followingSeason}
                                         positionTypes={this.state.positionTypes}
                                         handleUnsavedEdit={this.handleUnsavedEdit}
+                                        send={this.send}
                                     />
                                 </TabPane>
 

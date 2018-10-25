@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 import { Card, CardBody, CardFooter, CardHeader, Row, Col, Button } from 'reactstrap'
 import TextInput from '../../../../components/textInput'
 import AssignRole from './assignRole'
@@ -8,44 +8,44 @@ import Datetime from 'react-datetime'
 
 class Season extends Component {
     constructor() {
-        super();
+        super()
 
         this.state = {
             assignRoleModal: false,
             moveRoleModal: false,
             removeRoleModal: false
-        };
+        }
     }
 
     toggleAssignRoleModal = () => {
         this.setState({
             assignRoleModal: !this.state.assignRoleModal
-        });
+        })
     }
 
     toggleMoveRoleModal = () => {
         this.setState({
             moveRoleModal: !this.state.moveRoleModal
-        });
+        })
     }
 
     toggleRemoveRoleModal = () => {
         this.setState({
             removeRoleModal: !this.state.removeRoleModal
-        });
+        })
     }
 
     handlePositionAssignDatePicker = (field, date, season) => {
-        let val = '';
+        let val = ''
 
         //Picker
         if (date._d) {
-            val = date._d;
+            val = date._d
         }
 
         //Manual
         if (!date._d) {
-            val = date;
+            val = date
         }
 
         this.props.handlePositionAssignField(field, val)
@@ -66,7 +66,16 @@ class Season extends Component {
         )
 
         const assignBtn = (
-            <Button disabled={this.props.positionAssign !== undefined && this.props.positionAssign !== null} size="sm" onClick={() => { this.toggleAssignRoleModal() }} color="primary" style={{ marginRight: '10px', marginBottom: '10px' }}>Assign Role</Button>
+            <Button
+                disabled={this.props.positionAssign !== undefined && this.props.positionAssign !== null}
+                size="sm"
+                onClick={() => {
+                    this.toggleAssignRoleModal()
+                }}
+                color="primary"
+                style={{ marginRight: '10px', marginBottom: '10px' }}>
+                Assign Role
+            </Button>
         )
 
         if (this.props.positionAssign === undefined || this.props.positionAssign === null) {
@@ -85,18 +94,15 @@ class Season extends Component {
 
                         <CardFooter style={{ paddingBottom: '0px' }}>
                             <Row>
-                                <Col>
-                                    {assignBtn}
-                                </Col>
+                                <Col>{assignBtn}</Col>
                             </Row>
                         </CardFooter>
                     </Card>
 
                     {assignModal}
                 </div>
-            );
-        }
-        else {
+            )
+        } else {
             return (
                 <div>
                     <Card>
@@ -105,11 +111,27 @@ class Season extends Component {
                         <CardBody className="no-padding-bottom">
                             <div className="form-row">
                                 <Col sm="12" md="6" lg="6" xl="6" className="form-group">
-                                    <TextInput name="regionHeadOf" label="Region/Head Of" disabled={true} value={this.props.positionAssign.Region + ' ' + this.props.positionAssign.HeadOf} />
+                                    <TextInput
+                                        name="regionHeadOf"
+                                        label="Region/Head Of"
+                                        disabled={true}
+                                        value={this.props.positionAssign.Region + ' ' + this.props.positionAssign.HeadOf}
+                                    />
                                 </Col>
 
                                 <Col sm="12" md="6" lg="6" xl="6" className="form-group">
-                                    <TextInput name="location" label="Location" disabled={true} value={this.props.positionAssign.SDD_DM + ' ' + this.props.positionAssign.Destination + ' ' + this.props.positionAssign.ConceptHotel} />
+                                    <TextInput
+                                        name="location"
+                                        label="Location"
+                                        disabled={true}
+                                        value={
+                                            this.props.positionAssign.SDD_DM +
+                                            ' ' +
+                                            this.props.positionAssign.Destination +
+                                            ' ' +
+                                            this.props.positionAssign.ConceptHotel
+                                        }
+                                    />
                                 </Col>
 
                                 <Col sm="12" md="6" lg="6" xl="6" className="form-group">
@@ -125,12 +147,15 @@ class Season extends Component {
 
                                     <Datetime
                                         value={this.props.positionAssign !== null ? this.props.positionAssign.StaffStartDate : ''}
-                                        onChange={(v) => { this.handlePositionAssignDatePicker('StaffStartDate', v, this.props.title) }}
+                                        onChange={v => {
+                                            this.handlePositionAssignDatePicker('StaffStartDate', v, this.props.title)
+                                        }}
                                         timeFormat={false}
                                         dateFormat="YYYY-MM-DD"
                                         closeOnSelect
                                         utc={true}
-                                        inputProps={{ placeholder: 'YYYY-MM-DD' }} />
+                                        inputProps={{ placeholder: 'YYYY-MM-DD' }}
+                                    />
                                 </Col>
 
                                 <Col sm="12" md="6" lg="6" xl="6" className="form-group">
@@ -138,12 +163,15 @@ class Season extends Component {
 
                                     <Datetime
                                         value={this.props.positionAssign !== null ? this.props.positionAssign.StaffEndDate : ''}
-                                        onChange={(v) => { this.handlePositionAssignDatePicker('StaffEndDate', v, this.props.title) }}
+                                        onChange={v => {
+                                            this.handlePositionAssignDatePicker('StaffEndDate', v, this.props.title)
+                                        }}
                                         timeFormat={false}
                                         dateFormat="YYYY-MM-DD"
                                         closeOnSelect
                                         utc={true}
-                                        inputProps={{ placeholder: 'YYYY-MM-DD' }} />
+                                        inputProps={{ placeholder: 'YYYY-MM-DD' }}
+                                    />
                                 </Col>
                             </div>
                         </CardBody>
@@ -152,8 +180,35 @@ class Season extends Component {
                             <Row>
                                 <Col>
                                     {assignBtn}
-                                    <Button size="sm" onClick={() => { this.toggleMoveRoleModal() }} color="primary" style={{ marginRight: '10px', marginBottom: '10px' }}>Move Role</Button>
-                                    <Button size="sm" onClick={() => { this.toggleRemoveRoleModal() }} color="danger" style={{ marginBottom: '10px' }}>Remove Role</Button>
+                                    <Button
+                                        size="sm"
+                                        onClick={() => {
+                                            this.toggleMoveRoleModal()
+                                        }}
+                                        color="primary"
+                                        style={{ marginRight: '10px', marginBottom: '10px' }}>
+                                        Move Role
+                                    </Button>
+                                    <Button
+                                        size="sm"
+                                        onClick={() => {
+                                            this.toggleRemoveRoleModal()
+                                        }}
+                                        color="danger"
+                                        style={{ marginRight: '10px', marginBottom: '10px' }}>
+                                        Remove Role
+                                    </Button>
+                                    {this.props.send !== null && (
+                                        <Button
+                                            size="sm"
+                                            onClick={() => {
+                                                this.props.send(this.props.positionAssign.Destination, this.props.positionAssign.PositionStartDate)
+                                            }}
+                                            color="warning"
+                                            style={{ marginBottom: '10px' }}>
+                                            Send to CTX
+                                        </Button>
+                                    )}
                                 </Col>
                             </Row>
                         </CardFooter>
@@ -179,9 +234,9 @@ class Season extends Component {
                         removeRole={this.props.removeRole}
                     />
                 </div>
-            );
+            )
         }
     }
-};
+}
 
 export default Season
