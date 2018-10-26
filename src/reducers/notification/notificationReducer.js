@@ -1,24 +1,20 @@
 import { ActionTypes as types } from '../../constants/notification/notificationConstants';
 
 var defaultState = {
-    setting: [],
-    jobFamilies: [],
+    notification: []
+    
+    
     
 }
 
 export default function notificationReducer(state = defaultState, action) {
     switch (action.type) {
       
-
-            case types.GET_NOTIFICATION_SUCCESS:
-            return {
-                ...state,
-                notification: action.data.notification
-            }
-
-        
-     
-        default:
-            return state
+        case types.GET_NOTIFICATION_SUCCESS:
+        return action.data.notification;
+    case types.HANDLE_NOTIFICATION:
+        return action.data.notification;
+    default:
+        return state;
     }
 }

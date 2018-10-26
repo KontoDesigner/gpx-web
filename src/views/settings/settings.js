@@ -3,8 +3,10 @@ import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import { TabContent, TabPane, Row, Col } from 'reactstrap'
 import Tabs from './tabs'
+import * as notificationActions from '../../actions/notification/notificationActions'
 import * as settingActions from '../../actions/setting/settingActions'
-import Notification from  './template/cfgNotification'
+
+import Notification from  '../notification/template/cfgNotification'
 import Setting from './setting/cfgSetting'
 class Settings extends Component {
 
@@ -81,6 +83,7 @@ class Settings extends Component {
 //     })
 //   }   
 
+//on Demand Call start functions*************************
 handleYearSelect = (val) => {
 
     val = val != null || val != undefined ? val : ''  
@@ -103,10 +106,11 @@ save = () => {
 
     //this.props.handleUnsavedEdit()
 } 
+//on Demand Call functions end*************************
 
-
+//toogle logic  this is also sent to underlying component Tabs  below  , Tabs is imported above
     toggle = (tab, getData, resetData) => {
-      
+        debugger;
         if (this.state.activeTab !== tab) {
             //Reset current tab state
             this.state.resetData([])
@@ -125,7 +129,7 @@ save = () => {
     }
 
     render() {
-        debugger;
+      
         return (
             <Row>
                 <Tabs
@@ -133,7 +137,9 @@ save = () => {
                     activeTab={this.state.activeTab}
                     getSetting={this.props.settingActions.getSetting}
                      handleSetting={this.props.settingActions.handleSetting}
-                    //options={this.state.options}
+                    getNotification={this.props.notificationActions.getNotification}
+                    handleNotification={this.props.notificationActions.handleNotification}
+                    options={this.state.options}
                   
                 />
                 <Col sm="12" md="9" lg="9" xl="10">
@@ -151,9 +157,9 @@ save = () => {
                             
                             />
                         </TabPane>
-                        {/* <TabPane tabId="notifications">
+                        <TabPane tabId="Notifications">
                             <Notification
-                            //     position={this.props.position }
+                             notification={this.props.notification }
                             //     selectedDestination={this.props.selectedDestination}
                             //   handleDestinationSelect={this.handleDestinationSelect}
                             //   years={this.state.years}
@@ -162,7 +168,7 @@ save = () => {
                             save={this.save}
 
                             />
-                        </TabPane> */}
+                        </TabPane>
                    
                     </TabContent>
                 </Col>
@@ -176,7 +182,7 @@ function mapStateToProps(state) {
 
     return {
         setting: state.setting.setting.setting,
- 
+       //notification: state.setting.setting.setting,
          selectedApplyOpen:state.setting.setting.selectedApplyOpen,
        //  selectedYear:state.report.report.selectedYear,
          //create:state.report.report.create
@@ -186,7 +192,8 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
     return {
         //positionInfoActions: bindActionCreators(positionInfoActions, dispatch),
-        settingActions: bindActionCreators(settingActions, dispatch)
+        settingActions: bindActionCreators(settingActions, dispatch),
+        notificationActions: bindActionCreators(notificationActions, dispatch)
     }
 }
 

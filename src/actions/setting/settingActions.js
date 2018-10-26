@@ -2,16 +2,36 @@ import { ActionTypes as types } from '../../constants/setting/settingConstants'
 import { beginAjaxCall, ajaxCallError } from '../ajaxStatusActions'
 import RestClient from '../../infrastructure/restClient'
 
+export function getJobFamilySuccess(jobFamily) {
+    return {
+      type: types.GET_JOBFAMILY_SUCCESS,
+      data: { jobFamily: jobFamily }
+    }
+  }
+  
+  export function getJobFamily() {
+    return async function (dispatch) {
+      dispatch(beginAjaxCall())
+  
+      try {
+        const jobFamily = await RestClient.Get(`setting/jobfamily`)
+  
+       
+        dispatch(getJobFamilySuccess(jobFamily))
+      } catch (error) {
+        dispatch(ajaxCallError(error))
+  
+        throw error
+      }
+    }
+  }
 
 export function handleApplyOpen(val) {
   
     return {
    
        type: types.HANDLE_APPLYOPEN,
-        data: { val: val }
-
-
-      
+        data: { val: val }  
     }
 }
 
@@ -38,7 +58,7 @@ export function getSetting() {
 
         try {
             const setting = await RestClient.Get(`setting/setting`)
-            debugger;
+
             dispatch(getSettingSuccess(setting))
         } catch (error) {
             dispatch(ajaxCallError(error))
@@ -68,7 +88,7 @@ export function getJobFamilies() {
 
         try {
             const jobFamilies = await RestClient.Get(`setting/jobfamily`)
-debugger;
+
             dispatch(getJobFamiliesSuccess(jobFamilies))
         } catch (error) {
             dispatch(ajaxCallError(error))

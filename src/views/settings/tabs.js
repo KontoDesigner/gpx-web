@@ -21,7 +21,7 @@ const Tabs = props => {
                         <ListGroupItem
                             className={classnames({ active: props.activeTab === 'notification' })}
                             onClick={() => {
-                               // props.toggle('resignReport', props.getReport, props.handleReport)
+                                props.toggle('notifications', props.getNotification, props.handleNotification)
                             }}>
                           Notifications
                         </ListGroupItem>

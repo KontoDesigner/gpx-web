@@ -18,7 +18,7 @@ class Reports extends Component {
         this.state = {
             activeTab: 'planningReport',
          
-          //  resetData: this.props.reportActions.handleReport,
+            resetData: this.props.reportActions.handleReport,
             sourceMarketId: '',
             years: [
                 {
@@ -121,7 +121,7 @@ create = () => {
 }
 
     toggle = (tab, getData, resetData) => {
-      
+     
         if (this.state.activeTab !== tab) {
             //Reset current tab state
             this.state.resetData([])

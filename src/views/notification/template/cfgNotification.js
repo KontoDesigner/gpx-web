@@ -17,7 +17,7 @@ const Notification = (props) => {
             <CardBody className="no-padding-bottom">
                 <div className="form-row"> 
                 <Col sm="12" md="6" lg="6" xl="4" className="form-group">
-                        <TextInput name="mplid" label="MPLID"  value={props.setting.generalid}  />
+                        {/* <TextInput name="mplid" label="MPLID"  value={props.setting.settingid}  /> */}
                     </Col>
  
 </div>

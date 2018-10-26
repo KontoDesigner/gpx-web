@@ -15,8 +15,8 @@ class Filter extends Component {
 
   }
 
-  getDataDebouncer = (sourcemarket,jobfamily, criteria) => {
-    this.props.getData(sourcemarket, jobfamily,criteria)
+  getDataDebouncer = (sourcemarket, jobfamily, criteria) => {
+    this.props.getData(sourcemarket, jobfamily, criteria)
   }
 
 
@@ -26,7 +26,7 @@ class Filter extends Component {
 
     this.props.filterActions.handleText(value)
 
-    this.getData(this.props.filter.sourceMarket,this.props.filter.selectedJobFamily,  value)
+    this.getData(this.props.filter.sourceMarket, this.props.filter.selectedJobFamily, value)
   }
 
 
@@ -43,7 +43,7 @@ class Filter extends Component {
 
     this.props.filterActions.handleSelectedJobFamily(jobFamilyId)
 
-    this.props.getData(this.props.filter.sourceMarket,jobFamilyId, this.props.filter.text)
+    this.props.getData(this.props.filter.sourceMarket, jobFamilyId, this.props.filter.text)
   }
 
   render() {
@@ -95,7 +95,7 @@ function mapStateToProps(state) {
   return {
     filter: state.staff.filter,
     sourceMarkets: state.geography.sourceMarkets,
-    jobFamilies: state.setting.jobFamilies
+    jobFamilies: state.setting.setting.jobFamilies
   }
 }
 

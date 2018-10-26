@@ -37,8 +37,8 @@ const Setting = (props) => {
 
 <Select 
   id="applyOpen"
-  valueKey="applyOpen"
-  labelKey="applyOpen"
+  valueKey="id"
+  labelKey="name"
   className="form-control"
   options={props.options}
  onChange = { props.handleApplyOpenSelect}

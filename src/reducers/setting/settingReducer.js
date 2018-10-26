@@ -1,7 +1,7 @@
 import { ActionTypes as types } from '../../constants/setting/settingConstants';
 
 var defaultState = {
-    setting: [],
+    setting:{},
     selectedApplyOpen: null,
     jobFamilies: [],
     

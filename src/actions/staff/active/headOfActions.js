@@ -14,7 +14,7 @@ export function getHeadOf(sourcemarket = 'ALL', jobfamily='ALL', criteria = null
     dispatch(beginAjaxCall())
 
     try {
-      const headOf = await RestClient.Get(`staff/headof/${sourcemarket}/${jobfamily}${criteria !== null ? `/${criteria}` : ''}`)
+      const headOf = await RestClient.Get(`staff/headof/${sourcemarket}/${jobfamily}/${criteria !== null ? `${criteria}` : ''}`)
 
       //For some reason we need to reset value here, (bug when loading in new data with filter), don't touch h3h3
       dispatch(handleHeadOf([]))
