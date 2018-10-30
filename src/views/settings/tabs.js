@@ -17,6 +17,8 @@ const Tabs = props => {
                                 props.toggle('settings', props.getSetting, props.handleSetting)
                             }}>
                             Settings
+                         
+
                         </ListGroupItem> 
                         <ListGroupItem
                             className={classnames({ active: props.activeTab === 'notification' })}

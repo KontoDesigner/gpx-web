@@ -11,14 +11,15 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 
 class EmployeeInfo extends Component {
-    handleStaffField = event => {
+    
+   handleStaffField = event => {
         const field = event.target.name
         const val = event.target.value
 
         this.props.employeeInfoActions.handleStaffField(field, val)
 
         this.props.handleUnsavedEdit()
-    }
+    } 
 
     handleStaffDatePicker = (field, date) => {
         let val = ''
@@ -119,7 +120,7 @@ class EmployeeInfo extends Component {
                 <Row className="row-panel-3">
                     <Col sm="12" md="12" lg="4">
                         <Season
-                            title={'Current Season'}
+                            title={'Placement 1'}
                             positionAssign={this.props.currentPositionAssign}
                             availablePositions={this.props.currentAvailablePositions}
                             assignRole={this.assignRole}
@@ -131,11 +132,11 @@ class EmployeeInfo extends Component {
                             send={this.props.send}
                         />
                     </Col>
-
-                    <Col sm="12" md="12" lg="4">
+                    </Row>
+                    {/* <Col sm="12" md="12" lg="4">
                         <Gap />
-                    </Col>
-
+                    </Col> */}
+    <Row className="row-panel-3">
                     <Col sm="12" md="12" lg="4">
                         <Season
                             title={'Next Season'}

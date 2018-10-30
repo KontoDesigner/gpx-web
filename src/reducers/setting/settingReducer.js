@@ -15,6 +15,15 @@ export default function settingReducer(state = defaultState, action) {
             selectedApplyOpen:action.data.val
 
         }
+
+        case (types.HANDLE_SETTING_FIELD):
+        return {
+            ...state,
+            setting: {
+                ...state.setting,
+                [action.data.field]: action.data.val
+            },
+        }
             case types.GET_JOBFAMILIES_SUCCESS:
             return {
                 ...state,

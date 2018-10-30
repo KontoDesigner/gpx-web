@@ -5,9 +5,12 @@ import { TabContent, TabPane, Row, Col } from 'reactstrap'
 import Tabs from './tabs'
 import * as notificationActions from '../../actions/notification/notificationActions'
 import * as settingActions from '../../actions/setting/settingActions'
-
+import { toastr } from 'react-redux-toastr'
+import RestClient from '../../infrastructure/restClient'
 import Notification from  '../notification/template/cfgNotification'
 import Setting from './setting/cfgSetting'
+
+
 class Settings extends Component {
 
 
@@ -19,6 +22,7 @@ class Settings extends Component {
           
           //  resetData: this.props.settingActions.handleSetting,
             sourceMarketId: '',
+           
             options: [
                 {
                     id: 'No',
@@ -31,7 +35,27 @@ class Settings extends Component {
                 },
          
             ],
+
+            seasons: [
+                {
+                    id: 'W1819',
+                    name: 'W1819'
+                },
+
+                {
+                    id: 'S19',
+                    name: 'S19'
+                },
+
+                {
+                    id: 'W1920',
+                    name: 'W1920'
+                },
          
+            ],
+         
+           
+            
             unsavedEdit: false,
             setting: null
         }
@@ -84,6 +108,16 @@ class Settings extends Component {
 //   }   
 
 //on Demand Call start functions*************************
+handleUnsavedEdit = () => {
+    if (this.state.unsavedEdit === false) {
+        this.setState({
+            unsavedEdit: true
+        })
+    }
+}
+
+
+
 handleYearSelect = (val) => {
 
     val = val != null || val != undefined ? val : ''  
@@ -93,16 +127,104 @@ handleYearSelect = (val) => {
 } 
 
 
-save = () => {
-   // this.props.settingActions.save()
+save = async() => {
+  // this.props.settingActions.save()
+debugger;
+  const model = {
+   // id: this.props.setting.Id,
+    settingid: this.props.setting.settingId,
+    departureDateUpdate: this.state.departureDateSelect,
+    arrivalDateUpdate: this.state.arrivalDateSelect,
+    staffApprove: this.state.staffApprove,
+    curSeason: this.state.curSeason,
+    nextSeason: this.state.nextSeason,
+    nextnextSeason: this.state.nextnextSeason,
+    applyOpen: this.state.applyOpen,
+    managerComments: this.state.mgrComment
 }
 
-  handleApplyOpenSelect = (val) => {
+
+try {
+    const res =  await RestClient.Post('setting/updateSetting', model)
+debugger;
+   // dispatch(endAjaxCall())
+
+    if (res) {
+        toastr.success('Success', `Setting Document is updated`)
+    } else {
+        toastr.error('Error', `Could not update Setting document: ${res ? res.message : 'Error'}`)
+    }
+} catch (error) {
+   // dispatch(ajaxCallError(error))
+
+    throw error
+}
 
 
-     val = val != null || val != undefined ? val : ''  
 
-    this.props.settingActions.handleApplyOpen(val)
+
+   // await RestClient.Post('positionassign/deletepositionassign')
+
+}
+
+  handleApplyOpenSelect = (val) => { 
+     
+    this.setState({applyOpen:val.name})
+
+} 
+
+handleManagerCommentSelect = (val) => { 
+     
+    this.setState({mgrComment:val.name})
+
+} 
+
+
+
+handleStaffApproveSelect = (val) => { 
+     
+    this.setState({staffApprove:val.name})
+
+}
+
+handleArrivalDateSelect = (val) => { 
+     
+    this.setState({arrivalDateSelect:val.name})
+
+}
+
+handleCurSeasonSelect = (val) => { 
+   
+    this.setState({curSeason:val.name})
+
+}
+
+handleNextSeasonSelect = (val) => { 
+     
+    this.setState({nextSeason:val.name})
+
+}
+
+handleNextNextSeasonSelect = (val) => { 
+     
+    this.setState({nextnextSeason:val.name})
+
+}
+
+
+
+
+handleDepartureDateSelect = (val) => { 
+     
+    this.setState({departureDateSelect:val.name})
+
+}
+
+handleCurSeasonOld = event => {
+    const field = event.target.name
+    const val = event.target.value
+
+    this.props.settingActions.handleSettingField(field, val)
 
     //this.props.handleUnsavedEdit()
 } 
@@ -132,29 +254,52 @@ save = () => {
       
         return (
             <Row>
+          
                 <Tabs
                     toggle={this.toggle}
                     activeTab={this.state.activeTab}
                     getSetting={this.props.settingActions.getSetting}
+                
                      handleSetting={this.props.settingActions.handleSetting}
                     getNotification={this.props.notificationActions.getNotification}
                     handleNotification={this.props.notificationActions.handleNotification}
                     options={this.state.options}
+                
                   
                 />
+
+                
                 <Col sm="12" md="9" lg="9" xl="10">
                     <TabContent activeTab={this.state.activeTab}>
                         <TabPane tabId="settings">
                             <Setting
-                            
+                             atrin=  {<b>jwjwjw</b>}
                             setting={this.props.setting }
-                            selectedApplyOpen={this.props.selectedApplyOpen}
+                            applyOpen={this.state.applyOpen}
                             handleApplyOpenSelect={this.handleApplyOpenSelect}
+                            handleManagerCommentSelect={this.handleManagerCommentSelect}
+                            mgrComment={this.state.mgrComment}
+                            handleStaffApproveSelect={this.handleStaffApproveSelect}
+                            staffApprove={this.state.staffApprove}
+                            handleArrivalDateSelect={this.handleArrivalDateSelect}
+                            arrivalDateSelect={this.state.arrivalDateSelect}
+                            handleDepartureDateSelect={this.handleDepartureDateSelect}
+                            departureDateSelect={this.state.departureDateSelect}
+                            handleCurSeasonSelect={this.handleCurSeasonSelect}
+                            curSeason={this.state.curSeason}
+                            handleNextSeasonSelect={this.handleNextSeasonSelect}
+                            nextSeason={this.state.nextSeason}
+                            handleNextNextSeasonSelect={this.handleNextNextSeasonSelect}
+                            nextnextSeason={this.state.nextnextSeason}
+                            // handleNextNextSeason={this.handleNextNextSeason}
+                           
+
                             options={this.state.options}
+                            seasons={this.state.seasons}
                             //   selectedYear={this.props.selectedYear}
                             //   handleYearSelect={this.handleYearSelect}
                                save={this.save}
-                            
+                               unsavedEdit={this.state.unsavedEdit}
                             />
                         </TabPane>
                         <TabPane tabId="Notifications">

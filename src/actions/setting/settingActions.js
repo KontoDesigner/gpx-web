@@ -2,6 +2,14 @@ import { ActionTypes as types } from '../../constants/setting/settingConstants'
 import { beginAjaxCall, ajaxCallError } from '../ajaxStatusActions'
 import RestClient from '../../infrastructure/restClient'
 
+export function handleSettingField(field, val) {
+    return {
+        type: types.HANDLE_SETTING_FIELD,
+        data: { field: field, val: val }
+    }
+}
+
+
 export function getJobFamilySuccess(jobFamily) {
     return {
       type: types.GET_JOBFAMILY_SUCCESS,
@@ -57,6 +65,7 @@ export function getSetting() {
         dispatch(beginAjaxCall())
 
         try {
+            debugger;
             const setting = await RestClient.Get(`setting/setting`)
 
             dispatch(getSettingSuccess(setting))
