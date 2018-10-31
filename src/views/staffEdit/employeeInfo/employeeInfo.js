@@ -100,7 +100,7 @@ class EmployeeInfo extends Component {
     render() {
         return (
             <div>
-                <Row className="row-panel-2">
+                <Row className="row-panel-4">
                     <Col sm="12" md="12" lg="6">
                         <ContactInformation staff={this.props.staff} handleStaffField={this.handleStaffField} />
                     </Col>
@@ -117,8 +117,8 @@ class EmployeeInfo extends Component {
                     </Col>
                 </Row>
 
-                <Row className="row-panel-3">
-                    <Col sm="12" md="12" lg="4">
+                 <Row className="row-panel-4"> 
+                    <Col sm="6" md="6" lg="6">
                         <Season
                             title={'Placement 1'}
                             positionAssign={this.props.currentPositionAssign}
@@ -132,14 +132,14 @@ class EmployeeInfo extends Component {
                             send={this.props.send}
                         />
                     </Col>
-                    </Row>
+                    {/* </Row> */}
                     {/* <Col sm="12" md="12" lg="4">
                         <Gap />
                     </Col> */}
-    <Row className="row-panel-3">
-                    <Col sm="12" md="12" lg="4">
+    {/* <Row className="row-panel-2"> */}
+                    <Col sm="6" md="6" lg="6">
                         <Season
-                            title={'Next Season'}
+                            title={'Placement 2'}
                             positionAssign={this.props.nextPositionAssign}
                             availablePositions={this.props.nextAvailablePositions}
                             assignRole={this.assignRole}
@@ -150,9 +150,13 @@ class EmployeeInfo extends Component {
                             handlePositionAssignField={(field, val) => this.props.employeeInfoActions.handleNextPositionAssignField(field, val)}
                             send={this.props.send}
                         />
-
+                        </Col>
+                          </Row>
+                            <Row className="row-panel-2"> 
+                    <Col sm="6" md="6" lg="6"> 
                         <PlannedMove />
-
+                        </Col>
+                        <Col sm="6" md="6" lg="6"> 
                         <Season
                             title={'Following Season'}
                             positionAssign={this.props.followingPositionAssign}
