@@ -86,7 +86,7 @@ const Setting = (props) => {
   className="form-control"
   options={props.options}
  onChange = { props.handleApplyOpenSelect}
- value={props.applyOpen}
+  value={props.applyOpen}
  placeholder=""
 />
                        

@@ -16,13 +16,14 @@ class Settings extends Component {
 
     constructor(props) {
         super(props)
-       
+   
         this.state = {
             activeTab: 'settings',
-          
-          //  resetData: this.props.settingActions.handleSetting,
+            
+            //  resetData: this.props.settingActions.handleSetting,
+       
             sourceMarketId: '',
-           
+         
             options: [
                 {
                     id: 'No',
@@ -62,16 +63,18 @@ class Settings extends Component {
 
 
     }
+ 
     componentDidMount=async()=>  {
         document.title = 'Settings'
         const _this = this
-  
+        
        
   
         this.props.settingActions.getSetting().then(function () {
            
-        
-           if (_this.props.setting != null) {  
+      
+           
+            if (_this.props.setting != null) {  
       
                document.title = `${_this.props.setting.settingid} `
           }
@@ -81,7 +84,7 @@ class Settings extends Component {
           }
           
           _this.setState({loaded: true})
-
+        
         })
 
    }
@@ -200,7 +203,7 @@ handleCurSeasonSelect = (val) => {
 }
 
 handleNextSeasonSelect = (val) => { 
-     
+     alert(val.name);
     this.setState({nextSeason:val.name})
 
 }
@@ -251,7 +254,8 @@ handleCurSeasonOld = event => {
     }
 
     render() {
-      
+       // const applyOpenGet = {id: this.props.setting.yesNoThanksOpen, labelKey: this.props.setting.yesNoThanksOpen}
+          
         return (
             <Row>
           
@@ -292,8 +296,8 @@ handleCurSeasonOld = event => {
                             handleNextNextSeasonSelect={this.handleNextNextSeasonSelect}
                             nextnextSeason={this.state.nextnextSeason}
                             // handleNextNextSeason={this.handleNextNextSeason}
-                           
-
+                            //applyOpenGet={applyOpenGet}
+ 
                             options={this.state.options}
                             seasons={this.state.seasons}
                             //   selectedYear={this.props.selectedYear}

@@ -140,7 +140,7 @@ create = () => {
     }
 
     render() {
-        debugger;
+ 
         return (
             <Row>
                 <Tabs
