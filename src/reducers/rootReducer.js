@@ -6,6 +6,7 @@ import staff from './staff/staffRootReducer'
 import staffEdit from './staffEdit/staffEditRootReducer'
 import geography from './geographyReducer'
 import setting from './setting/settingRootReducer'
+import notification from './notification/notificationRootReducer'
 import planning from './planning/planningRootReducer'
 import planningEdit from './planningEdit/planningEditRootReducer'
 import report from './report/reportRootReducer'
@@ -20,5 +21,6 @@ export default combineReducers({
     planning,
     planningEdit,
     setting,
+    notification,
     report
 })

@@ -38,30 +38,3 @@ export function getNotification() {
     
 }
 
-
-export function getJobFamiliesSuccess(jobFamilies) {
-    return {
-        type: types.GET_JOBFAMILIES_SUCCESS,
-        data: { jobFamilies: jobFamilies }
-    }
-}
-
-
-
-export function getJobFamilies() {
-    return async function (dispatch) {
-        dispatch(beginAjaxCall())
-
-        try {
-            const jobFamilies = await RestClient.Get(`setting/jobfamily`)
-debugger;
-            dispatch(getJobFamiliesSuccess(jobFamilies))
-        } catch (error) {
-            dispatch(ajaxCallError(error))
-
-            throw error
-        }
-    }
-
-    
-}

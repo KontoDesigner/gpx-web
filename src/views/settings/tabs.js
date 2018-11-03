@@ -11,10 +11,11 @@ const Tabs = props => {
                 <CardBody className="no-padding">
                     <ListGroup>
                         <ListGroupItem
-                            className={classnames({ active: props.activeTab === 'setting' })}
+                            className={classnames({ active: props.activeTab === 'settings' })}
                             onClick={() => {
-                            
+                      
                                 props.toggle('settings', props.getSetting, props.handleSetting)
+                                
                             }}>
                             Settings
                          
@@ -23,7 +24,9 @@ const Tabs = props => {
                         <ListGroupItem
                             className={classnames({ active: props.activeTab === 'notification' })}
                             onClick={() => {
-                                props.toggle('notifications', props.getNotification, props.handleNotification)
+                               
+                                props.toggle('notification', props.getNotification, props.handleNotification)
+                             
                             }}>
                           Notifications
                         </ListGroupItem>

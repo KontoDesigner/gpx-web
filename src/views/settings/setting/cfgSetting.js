@@ -8,11 +8,34 @@ import Select from 'react-select'
 import Datetime from 'react-datetime'
 import Buttons from '../buttons';
 
-
+ 
 const Setting = (props) => {
+//from the database
+const curSeason={id:props.setting.curSeason,name:props.setting.curSeason}
+const nextSeason={id:props.setting.nextSeason,name:props.setting.nextSeason}
+const nextNextSeason={id:props.setting.nextNextSeason,name:props.setting.nextNextSeason}
+const applyOpen={id:props.setting.applyOpen,name:props.setting.applyOpen}
+const managerComments={id:props.setting.managerComments,name:props.setting.managerComments}
+const staffApprove={id:props.setting.staffApprove,name:props.setting.staffApprove}
+const arrivalDateUpdate={id:props.setting.arrivalDateUpdate,name:props.setting.arrivalDateUpdate}
+const departureDateUpdate={id:props.setting.departureDateUpdate,name:props.setting.departureDateUpdate}
+let model = {
+    
+  // to the database
+   settingid: props.setting.settingId,
+   departureDateUpdate: props.setting.departureDateUpdate,
+   arrivalDateUpdate: props.setting.arrivalDateUpdate,
+   staffApprove: props.setting.staffApprove,
+   curSeason: props.setting.curSeason,
+   nextSeason: props.setting.nextSeason,
+   nextNextSeason:props.setting.nextNextSeason,
+   applyOpen: props.setting.applyOpen,
+   managerComments: props.setting.managerComments
+}
+
     // const buttons = <Buttons save={props.save} unsavedEdit={props.unsavedEdit} />
     return (
-  
+ 
  
         <Card>
             <CardHeader>General Setting  </CardHeader>
@@ -31,7 +54,8 @@ const Setting = (props) => {
   className="form-control"
   options={props.seasons}
  onChange = {props.handleCurSeasonSelect}
- value={props.curSeason}
+ 
+  value={curSeason}
  placeholder=""
 />
 </Col>
@@ -46,22 +70,22 @@ const Setting = (props) => {
   className="form-control"
   options={props.seasons}
  onChange = {props.handleNextSeasonSelect}
- value={props.nextSeason}
+ value={nextSeason}
  placeholder=""
 />
 </Col>
 
 <Col sm="12" md="6" lg="6" xl="4" className="form-group">
-<label htmlFor="nextnextSeason">Following Season</label>
+<label htmlFor="nextNextSeason">Following Season</label>
 
 <Select 
-  id="nextnextSeason"
+  id="nextNextSeason"
   valueKey="id"
   labelKey="name"
   className="form-control"
   options={props.seasons}
  onChange = { props.handleNextNextSeasonSelect}
- value={props.nextnextSeason} 
+ value={nextNextSeason} 
  placeholder=""
 />
 </Col>
@@ -86,22 +110,22 @@ const Setting = (props) => {
   className="form-control"
   options={props.options}
  onChange = { props.handleApplyOpenSelect}
-  value={props.applyOpen}
+  value={applyOpen}
  placeholder=""
 />
                        
 </Col>
 <Col sm="12" md="6" lg="6" xl="4" className="form-group">
- <label htmlFor="mgrComment">Manager Comments (in applications for work) </label>
+ <label htmlFor="managerComments">Manager Comments (in applications for work) </label>
 
 <Select 
-  id="mgrComment"
+  id="managerComments"
   valueKey="id"
   labelKey="name"
   className="form-control"
   options={props.options}
  onChange = { props.handleManagerCommentSelect}
- value={props.mgrComment}
+ value={managerComments}
  placeholder=""
 />
                        
@@ -117,37 +141,37 @@ const Setting = (props) => {
   className="form-control"
   options={props.options}
  onChange = { props.handleStaffApproveSelect}
- value={props.staffApprove}
+ value={staffApprove}
  placeholder=""
 />
                        
 </Col>
 <Col sm="12" md="6" lg="6" xl="4" className="form-group">
-<label htmlFor="arrivalDateSelect">Arrival Dates &  Gap Description can be updated  </label>
+<label htmlFor="arrivalDateUpdate">Arrival Dates &  Gap Description can be updated  </label>
 
 <Select 
-  id="arrivalDateSelect"
+  id="arrivalDateUpdate"
   valueKey="id"
   labelKey="name"
   className="form-control"
   options={props.options}
  onChange = { props.handleArrivalDateSelect}
- value={props.arrivalDateSelect}
+ value={arrivalDateUpdate}
  placeholder=""
 />
                        
 </Col>
 <Col sm="12" md="6" lg="6" xl="4" className="form-group">
- <label htmlFor="departureDateSelect">Departure Dates &  Gap Description can be updated</label>
+ <label htmlFor="departureDateUpdate">Departure Dates &  Gap Description can be updated</label>
 
 <Select 
-  id="departureDateSelect"
+  id="departureDateUpdate"
   valueKey="id"
   labelKey="name"
   className="form-control"
   options={props.options}
  onChange = { props.handleDepartureDateSelect}
- value={props.departureDateSelect}
+ value={departureDateUpdate}
  placeholder=""
 />
 
@@ -158,8 +182,9 @@ const Setting = (props) => {
 
 <div className="col-btn-menu" >
 <Button onClick={() => { window.close() }} color="danger">Close</Button>
+
                 {/* <Button onClick={() => { window.print() }} color="primary">Print</Button> */}
-                <Button color="success" onClick={() => { props.save() }}>Save</Button>
+                <Button color="success" onClick={() => { props.save(model) }}>Save</Button>
                 </div>
             <p></p>
            

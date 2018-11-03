@@ -7,9 +7,9 @@ import * as notificationActions from '../../actions/notification/notificationAct
 import * as settingActions from '../../actions/setting/settingActions'
 import { toastr } from 'react-redux-toastr'
 import RestClient from '../../infrastructure/restClient'
-import Notification from  '../notification/template/cfgNotification'
+import Notification from  './notification/cfgNotification'
 import Setting from './setting/cfgSetting'
-
+import $ from 'jquery'
 
 class Settings extends Component {
 
@@ -19,8 +19,9 @@ class Settings extends Component {
    
         this.state = {
             activeTab: 'settings',
+            resetData: this.props.settingActions.handleSetting,
             
-            //  resetData: this.props.settingActions.handleSetting,
+           
        
             sourceMarketId: '',
          
@@ -64,18 +65,17 @@ class Settings extends Component {
 
     }
  
-    componentDidMount=async()=>  {
+    componentWillMount=async()=>  {
         document.title = 'Settings'
         const _this = this
-        
-       
   
-        this.props.settingActions.getSetting().then(function () {
-           
-      
-           
+       // this.props.notificationActions.getNotification()
+        _this.props.settingActions.getSetting().then(function () {
+            
+         
+           debugger;
             if (_this.props.setting != null) {  
-      
+               
                document.title = `${_this.props.setting.settingid} `
           }
            else {
@@ -83,33 +83,13 @@ class Settings extends Component {
               document.title = 'General Settings not found - GPX'
           }
           
-          _this.setState({loaded: true})
+          _this.setState({loaded: true, setting:_this.props.setting})
         
         })
 
    }
 
-   
-
-
-//    handleFormSubmit(e) {
-//     e.preventDefault();
-//     let userData = this.state.newUser;
-
-//     fetch('http://example.com',{
-//         method: "POST",
-//         body: JSON.stringify(userData),
-//         headers: {
-//           'Accept': 'application/json',
-//           'Content-Type': 'application/json'
-//         },
-//       }).then(response => {
-//         response.json().then(data =>{
-//           console.log("Successful" + data);
-//         })
-//     })
-//   }   
-
+  
 //on Demand Call start functions*************************
 handleUnsavedEdit = () => {
     if (this.state.unsavedEdit === false) {
@@ -119,34 +99,21 @@ handleUnsavedEdit = () => {
     }
 }
 
+edit = (e, notification) => {
+    if (!$(e.target).is(":checkbox")) {
+        const win = window.open(`/notification/${notification.templateName}`, '_blank');
 
-
-handleYearSelect = (val) => {
-
-    val = val != null || val != undefined ? val : ''  
-
-   this.props.settingActions.handleYearField(val)
-
-} 
-
-
-save = async() => {
-  // this.props.settingActions.save()
-debugger;
-  const model = {
-   // id: this.props.setting.Id,
-    settingid: this.props.setting.settingId,
-    departureDateUpdate: this.state.departureDateSelect,
-    arrivalDateUpdate: this.state.arrivalDateSelect,
-    staffApprove: this.state.staffApprove,
-    curSeason: this.state.curSeason,
-    nextSeason: this.state.nextSeason,
-    nextnextSeason: this.state.nextnextSeason,
-    applyOpen: this.state.applyOpen,
-    managerComments: this.state.mgrComment
+        win.focus();
+    }
 }
 
+save = async(model) => {
+  // this.props.settingActions.save()
 
+
+
+
+debugger;
 try {
     const res =  await RestClient.Post('setting/updateSetting', model)
 debugger;
@@ -170,15 +137,27 @@ debugger;
 
 }
 
+handleYearSelect = (val) => {
+
+    val = val != null || val != undefined ? val : ''  
+
+   this.props.settingActions.handleYearField(val)
+
+} 
+
   handleApplyOpenSelect = (val) => { 
      
-    this.setState({applyOpen:val.name})
-
+    let setting = Object.assign({}, this.state.setting);    //creating copy of object
+    setting.applyOpen = val.name;                        //updating value
+    this.setState({setting});
+debugger;
 } 
 
 handleManagerCommentSelect = (val) => { 
      
-    this.setState({mgrComment:val.name})
+    let setting = Object.assign({}, this.state.setting);    //creating copy of object
+    setting.managerComments = val.name;                        //updating value
+    this.setState({setting});
 
 } 
 
@@ -186,31 +165,42 @@ handleManagerCommentSelect = (val) => {
 
 handleStaffApproveSelect = (val) => { 
      
-    this.setState({staffApprove:val.name})
+      let setting = Object.assign({}, this.state.setting);    //creating copy of object
+    setting.staffApprove = val.name;                        //updating value
+    this.setState({setting});
 
 }
 
 handleArrivalDateSelect = (val) => { 
      
-    this.setState({arrivalDateSelect:val.name})
+    let setting = Object.assign({}, this.state.setting);    //creating copy of object
+    setting.arrivalDateUpdate = val.name;                        //updating value
+    this.setState({setting});
 
 }
 
 handleCurSeasonSelect = (val) => { 
+    debugger;
+    let setting = Object.assign({}, this.state.setting);    //creating copy of object
+    setting.curSeason = val.name;                        //updating value
+    this.setState({setting});
    
-    this.setState({curSeason:val.name})
 
 }
 
 handleNextSeasonSelect = (val) => { 
-     alert(val.name);
-    this.setState({nextSeason:val.name})
+   
+    let setting = Object.assign({}, this.state.setting);    //creating copy of object
+    setting.nextSeason = val.name;                        //updating value
+    this.setState({setting});
 
 }
 
 handleNextNextSeasonSelect = (val) => { 
-     
-    this.setState({nextnextSeason:val.name})
+     debugger;
+    let setting = Object.assign({}, this.state.setting);    //creating copy of object
+    setting.nextNextSeason = val.name;                        //updating value
+    this.setState({setting});
 
 }
 
@@ -219,7 +209,9 @@ handleNextNextSeasonSelect = (val) => {
 
 handleDepartureDateSelect = (val) => { 
      
-    this.setState({departureDateSelect:val.name})
+    let setting = Object.assign({}, this.state.setting);    //creating copy of object
+    setting.departureDateUpdate = val.name;                        //updating value
+    this.setState({setting});
 
 }
 
@@ -254,7 +246,7 @@ handleCurSeasonOld = event => {
     }
 
     render() {
-       // const applyOpenGet = {id: this.props.setting.yesNoThanksOpen, labelKey: this.props.setting.yesNoThanksOpen}
+       
           
         return (
             <Row>
@@ -268,54 +260,55 @@ handleCurSeasonOld = event => {
                     getNotification={this.props.notificationActions.getNotification}
                     handleNotification={this.props.notificationActions.handleNotification}
                     options={this.state.options}
-                
+                    notification={this.props.notification }
                   
                 />
 
                 
                 <Col sm="12" md="9" lg="9" xl="10">
                     <TabContent activeTab={this.state.activeTab}>
+                    {this.state.setting && //if clause  what for load ready
                         <TabPane tabId="settings">
+                        
                             <Setting
-                             atrin=  {<b>jwjwjw</b>}
-                            setting={this.props.setting }
-                            applyOpen={this.state.applyOpen}
+                       
+                            setting={this.state.setting }
+                           
                             handleApplyOpenSelect={this.handleApplyOpenSelect}
+
                             handleManagerCommentSelect={this.handleManagerCommentSelect}
-                            mgrComment={this.state.mgrComment}
+                            
                             handleStaffApproveSelect={this.handleStaffApproveSelect}
-                            staffApprove={this.state.staffApprove}
+                            
                             handleArrivalDateSelect={this.handleArrivalDateSelect}
-                            arrivalDateSelect={this.state.arrivalDateSelect}
+                           
                             handleDepartureDateSelect={this.handleDepartureDateSelect}
-                            departureDateSelect={this.state.departureDateSelect}
+                            
                             handleCurSeasonSelect={this.handleCurSeasonSelect}
-                            curSeason={this.state.curSeason}
+                           
                             handleNextSeasonSelect={this.handleNextSeasonSelect}
-                            nextSeason={this.state.nextSeason}
+                            
                             handleNextNextSeasonSelect={this.handleNextNextSeasonSelect}
-                            nextnextSeason={this.state.nextnextSeason}
-                            // handleNextNextSeason={this.handleNextNextSeason}
-                            //applyOpenGet={applyOpenGet}
+                           
+                            getSetting={this.props.settingActions.getSetting}
  
                             options={this.state.options}
                             seasons={this.state.seasons}
-                            //   selectedYear={this.props.selectedYear}
-                            //   handleYearSelect={this.handleYearSelect}
+                         
                                save={this.save}
                                unsavedEdit={this.state.unsavedEdit}
                             />
                         </TabPane>
-                        <TabPane tabId="Notifications">
+                        }
+                        <TabPane tabId="notification">
                             <Notification
-                             notification={this.props.notification }
-                            //     selectedDestination={this.props.selectedDestination}
-                            //   handleDestinationSelect={this.handleDestinationSelect}
-                            //   years={this.state.years}
-                            //   selectedYear={this.props.selectedYear}
-                            //   handleYearSelect={this.handleYearSelect}
+                              notification={this.props.notification }
+                              
+                             getNotification={this.props.notificationActions.getNotification}
+                       
                             save={this.save}
-
+                            edit={this.edit}
+                            
                             />
                         </TabPane>
                    
@@ -331,7 +324,8 @@ function mapStateToProps(state) {
 
     return {
         setting: state.setting.setting.setting,
-       //notification: state.setting.setting.setting,
+    notification: state.notification.notification,
+    selectedNotification: state.notification.notification.selectedNotification,
          selectedApplyOpen:state.setting.setting.selectedApplyOpen,
        //  selectedYear:state.report.report.selectedYear,
          //create:state.report.report.create

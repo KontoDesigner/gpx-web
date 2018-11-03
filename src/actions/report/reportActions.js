@@ -27,7 +27,11 @@ export function createReport() {
         dispatch(beginAjaxCall())
 
         try {
-             await RestClient.Download(`report/GetReports`,null,'PlanningReport.xlsx')
+
+        
+
+             await RestClient.Download(`resign/GetResignReports?datetime=2018-10-02`,null,'ResignReport.xlsx')
+            // await RestClient.Download(`report/GetReports`,null,'PlanningReport.xlsx')
             
             //const replyYesNoRoles = await RestClient.Get(`positionassign/GetAllPositionsAssignData`)
 

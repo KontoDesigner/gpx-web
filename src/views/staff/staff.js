@@ -49,6 +49,7 @@ class Staff extends Component {
     }
 
     toggle = (tab, getData, resetData) => {
+        debugger;
         if (this.state.activeTab !== tab) {
             //Reset current tab state
             this.state.resetData([])
