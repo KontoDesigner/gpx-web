@@ -14,7 +14,7 @@ export function getReplyYesNoRoles(sourcemarket = 'ALL', criteria = null) {
         dispatch(beginAjaxCall())
 
         try {
-            const replyYesNoRoles = await RestClient.Get(`position`)
+            const replyYesNoRoles = await RestClient.Get(`reply/GetReplyYesNo`)
             
             //const replyYesNoRoles = await RestClient.Get(`positionassign/GetAllPositionsAssignData`)
 

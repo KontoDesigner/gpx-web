@@ -21,25 +21,32 @@ class StatusTable extends Component {
     ) : (
         <i className="fa fa-chevron-down float-right text-danger" />
       )
-
-    const style = {
-      height: `${42 + this.props.recentlyInactive.staffs.length * 41}px`
-    }
+      const maxTableHeight = 550
+      const style = {
+        height: `${42 + this.props.replyYesNoRoles.accepted.length * 41}px`
+      }
 
     return (
       <Card className="card-accordion">
         <CardHeader onClick={() => this.toggleCollapse()}>
-          ({this.props.recentlyInactive.staffs.length}) {this.props.recentlyInactive.status} {icon}
+        
+          ({this.props.replyYesNoRoles.accepted.length}) {this.props.replyYesNoRoles.accept} {icon}
         </CardHeader>
 
         <Collapse isOpen={this.state.expanded}>
           <CardBody style={style} className="card-body-table">
-            <PersonTable
-              index={this.props.recentlyInactive.recentlyInactive}
-              staffs={this.props.recentlyInactive.staffs}
-              handleSelectedStaff={this.props.handleSelectedStaff}
-              selectedStaff={this.props.selectedStaff}
-              edit={this.props.edit}
+            <JobTitleTable
+                  index={this.props.index}
+                  replyYesNoRoles={this.props.replyYesNoRoles.accepted}
+                  handleSelectedTitle={this.props.handleSelectedTitle}
+                  selectedTitle={this.props.selectedTitle}
+                  edit={this.props.edit}
+                  
+                  maxTableHeight={maxTableHeight}
+
+      
+
+            
             />
           </CardBody>
         </Collapse>

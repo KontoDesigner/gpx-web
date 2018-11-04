@@ -39,15 +39,15 @@ const JobTitleTable = props => {
                 </MenuItem>
             </ContextMenu>
             <Table
-                list={props.replyYesNoRoles}
-                contextMenuId={contextMenuId}
-                columns={columns}
-                checkbox={true}
-                identifier={'mplid'}
-                edit={props.edit}
-                updateSelectedState={props.handleSelectedTitle}
-                selected={props.selectedTitle}
-                maxTableHeight={props.maxTableHeight}
+                    list={props.replyYesNoRoles}
+                    contextMenuId={contextMenuId}
+                    columns={columns}
+                    checkbox={true}
+                    identifier={'mplid'}
+                    edit={props.edit}
+                    updateSelectedState={props.handleSelectedTitle}
+                    selected={props.selectedTitle}
+                   // maxTableHeight={props.maxTableHeight}
             />
         </div>
     )

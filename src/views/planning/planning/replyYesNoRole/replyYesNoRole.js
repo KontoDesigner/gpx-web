@@ -1,48 +1,39 @@
 import React, { Component } from 'react'
+import StatusRow from './statusRow'
 import { Card, CardBody, CardHeader } from 'reactstrap'
-import JobTitleTable from './jobTitleTable'
 import Filter from '../../filter'
 import Action from '../../action'
 
 class YesNoRole extends Component {
-    toggleCollapse = () => {
-        this.setState({ expanded: !this.state.expanded })
-    }
+  render() {
+    return (
+      <Card>
+         <CardHeader>Reply Yes/No</CardHeader>
 
-    render() {
-
-        
-        const maxTableHeight = 550
-
-        const style = {
-            height: `${42 + this.props.replyYesNoRoles.length * 41}px`,
-            maxHeight: `${maxTableHeight}px`
-        }
-
-        return (
-            <Card className="card-accordion card-country">
-                <CardHeader>Reply Yes/No</CardHeader>
- 
-                <div className="form-row">
-           <Filter getData={this.props.getreplyYesNoRole} /> 
-
+        <CardBody className="no-padding-bottom">
+          <div className="form-row">
+            <Filter getData={this.props.getreplyYesNoRole} />
+          
             <Action selected={this.props.selectedRole} />
+          
           </div>
-                {this.props.replyYesNoRoles.length > 0 && (
-                    <CardBody style={style} className="card-body-table">
-                        <JobTitleTable  // this tag means sending data to JobTitleTable Component, pretty weird right.
-                            index={this.props.index}
-                            replyYesNoRoles={this.props.replyYesNoRoles}
-                            handleSelectedTitle={this.props.handleSelectedTitle}
-                            selectedTitle={this.props.selectedTitle}
-                            edit={this.props.edit}
-                            maxTableHeight={maxTableHeight}
-                        />
-                    </CardBody>
-                )}
-            </Card>
-        )
-    }
+
+          {this.props.replyYesNoRoles.map((replyYesNoRoles, index) =>
+        
+            <StatusRow
+            key={index}
+            index={index}
+            replyYesNoRoles={replyYesNoRoles}
+            handleSelectedTitle={this.props.handleSelectedTitle}
+            selectedTitle={this.props.selectedTitle}
+            edit={this.props.edit}
+            />
+          )}
+        </CardBody>
+      </Card>
+    )
+  }
 }
 
 export default YesNoRole
+

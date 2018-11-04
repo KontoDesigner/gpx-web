@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import { Row, Col, Card, CardHeader, CardBody, CardFooter, Button } from 'reactstrap'
 import { LinkContainer } from 'react-router-bootstrap'
 import * as notificationInfoActions from '../../actions/notification/notificationInfoActions'
-import NotificationInfo from './planningInfo/planningInfo'
+import NotificationInfo from './notificationInfo/noticationInfo'
 //import Buttons from './buttons';
 
 
