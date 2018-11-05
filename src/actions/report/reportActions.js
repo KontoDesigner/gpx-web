@@ -3,7 +3,7 @@ import { beginAjaxCall, ajaxCallError, endAjaxCall } from '../ajaxStatusActions'
 import RestClient from '../../infrastructure/restClient'
 
 export function handleYearField(val) {
-  
+
     return {
        type: types.HANDLE_YEAR_FIELD,
         data: { val: val }
@@ -11,7 +11,7 @@ export function handleYearField(val) {
 }
 
 export function handleDestinationField(val) {
- 
+ debugger;
     return {
         
        type: types.HANDLE_DESTINATION_FIELD,
@@ -22,6 +22,50 @@ export function handleDestinationField(val) {
     }
 }
 
+export function handleResignDates(val) {
+  alert(val);
+    return {
+        
+        type: types.HANDLE_RESIGNDATES,
+        data: {val: val}
+        
+    }
+
+}
+
+
+
+export function getResignDatesSuccess(resigndates) {
+    return {
+        type: types.GET_RESIGNDATES_SUCCESS,
+        data: { resigndates: resigndates }
+    }
+}
+
+
+
+export function getResignDates() {
+    return async function (dispatch) {
+        dispatch(beginAjaxCall())
+     
+        try { 
+            
+            const resigndates = await RestClient.Get(`resign/GetAllResignDates`)
+       debugger;
+       //dispatch(handleResignDates)
+            dispatch(getResignDatesSuccess(resigndates))
+        } catch (error) {
+            dispatch(ajaxCallError(error))
+
+            throw error
+        }
+    }
+
+    
+}
+
+
+
 export function createReport() {
     return async function(dispatch) {
         dispatch(beginAjaxCall())
@@ -30,8 +74,8 @@ export function createReport() {
 
         
 
-             await RestClient.Download(`resign/GetResignReports?datetime=2018-10-02`,null,'ResignReport.xlsx')
-            // await RestClient.Download(`report/GetReports`,null,'PlanningReport.xlsx')
+             //await RestClient.Download(`resign/GetResignReports?datetime=2018-10-02`,null,'ResignReport.xlsx')
+             await RestClient.Download(`report/GetReports`,null,'PlanningReport.xlsx')
             
             //const replyYesNoRoles = await RestClient.Get(`positionassign/GetAllPositionsAssignData`)
 

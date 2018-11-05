@@ -6,10 +6,12 @@ var defaultState = {
     // followingAvailablePositions: [],
     // currentPositionAssign: null,
     // nextPositionAssign: null,
-   selectedDestination: null,  
+   selectedDestination: null, 
+//    resigndates:null, 
    selectedYear: null,
     report: [],
-    createreport: null
+    createreport: null,
+    selectedResignDates: null, 
 } 
 
 export default function reportReducer(state = defaultState, action) {
@@ -18,6 +20,13 @@ export default function reportReducer(state = defaultState, action) {
         return {
             ...state,
             selectedDestination:action.data.val
+
+        }
+
+        case (types.HANDLE_RESIGNDATES):
+        return {
+            ...state,
+            selectedResignDates:action.data.val
 
         }
 
@@ -30,6 +39,18 @@ export default function reportReducer(state = defaultState, action) {
             return {
                 ...state,
                 report: action.data.report
+            }
+
+            // case types.HANDLE_RESIGNDATES_SUCCESS:
+            // return {
+            //     ...state,
+            //     resigndates: action.data.resigndates
+            // }
+            
+            case types.GET_RESIGNDATES_SUCCESS:
+            return {
+                ...state,
+                resigndates: action.data.resigndates
             }
             case types.CREATEREPORT_SUCCESS:
             return {
@@ -47,11 +68,11 @@ export default function reportReducer(state = defaultState, action) {
   ...state,
   selectedYear: action.data.selectedYear
             }
-            case types.HANDLE_SELECTEDDESTINATION:
-            return    {
-  ...state,
-  selectedDestination: action.data.selectedDestination
-            }
+//             case types.HANDLE_SELECTEDDESTINATION:
+//             return    {
+//   ...state,
+//   selectedDestination: action.data.selectedDestination
+//             }
         default:
             return state;
     }

@@ -20,7 +20,7 @@ const Tabs = props => {
                         <ListGroupItem
                             className={classnames({ active: props.activeTab === 'resignReport' })}
                             onClick={() => {
-                                props.toggle('resignReport', props.getReport, props.handleReport)
+                                props.toggle('resignReport', props.getReport, props.handleReport,props.getResignDates)
                             }}>
                             Resign Report
                         </ListGroupItem>

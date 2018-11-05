@@ -18,9 +18,9 @@ const Report = (props) => {
 
         <Col key={0} sm="12" md="4" lg="3" xl="3" className="form-group form-group-select">
 
-    <label htmlFor="year">Year</label>
+    {/* <label htmlFor="year">Year</label> */}
 
-<Select
+{/* <Select
     id="years"
     valueKey="id"
     labelKey="name"
@@ -30,7 +30,7 @@ const Report = (props) => {
      value={props.selectedYear}
     placeholder="Select Year"
 />
-<p></p>
+<p></p> */}
  <label htmlFor="destination">Destination</label>
 
         <Select 

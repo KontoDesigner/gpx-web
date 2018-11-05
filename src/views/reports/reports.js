@@ -8,7 +8,7 @@ import PlanningReport from './reports/planning/report'
 import ResignReport from './reports/resign/report'
 import PlacementReport from './reports/placement/report'
 import * as reportActions from '../../actions/report/reportActions'
-
+import RestClient from '../../infrastructure/restClient'
 class Reports extends Component {
 
 
@@ -47,9 +47,7 @@ class Reports extends Component {
          
         //  resetData: this.props.reportActions.handleReport
         // }
-        
-       
-      
+
 
     }
     componentDidMount=async()=>  {
@@ -58,10 +56,12 @@ class Reports extends Component {
         const _this = this
         debugger;
        
+     this.props.reportActions.getResignDates();
+      
   
         this.props.reportActions.getReport().then(function () {
            
-        
+        debugger;
            if (_this.props.report != null) {  
       
                document.title = 'Planning Report'
@@ -98,17 +98,29 @@ class Reports extends Component {
 //     })
 //   }   
 
-handleYearSelect = (val) => {
 
-    val = val != null || val != undefined ? val : ''  
 
-   this.props.reportActions.handleYearField(val)
+
+handleMonthSelect = (val) => {
+   // alert (val.name);
+    debugger;
+
+//     let resigndate = Object.assign({}, this.state.resigndate);    //creating copy of object
+//     resigndate.month = val.appDate;                        //updating value
+//     this.setState({resigndate});
+
+   val = val != null || val != undefined ? val : ''  
+
+  // this.props.reportActions.handleYearField(val)
+  
+  
+  this.props.reportActions.handleResignDates(val) 
 
 } 
 
 
   handleDestinationSelect = (val) => {
-
+debugger;
 
      val = val != null || val != undefined ? val : ''  
 
@@ -147,6 +159,7 @@ create = () => {
                     toggle={this.toggle}
                     activeTab={this.state.activeTab}
                     getReport={this.props.reportActions.getReport}
+                    getResignDates={this.props.reportActions.getResignDates}
                     handleReport={this.props.reportActions.handleReport}
                     years={this.state.years}
                   
@@ -159,20 +172,24 @@ create = () => {
                               selectedDestination={this.props.selectedDestination}
                               handleDestinationSelect={this.handleDestinationSelect}
                               years={this.state.years}
-                              selectedYear={this.props.selectedYear}
-                              handleYearSelect={this.handleYearSelect}
+                             // selectedYear={this.props.selectedYear}
+                              handleMonthSelect={this.handleMonthSelect}
                               create={this.create}
                             
-                            />
+                            /> 
                         </TabPane>
                         <TabPane tabId="resignReport">
                             <ResignReport
-                                position={this.props.position }
-                                selectedDestination={this.props.selectedDestination}
+                            position={this.props.position }
+                                resigndate={this.props.resigndate }
+                              selectedDestination={this.props.selectedDestination}
+
+                                selectedResignDates={this.props.selectedResignDates}
                               handleDestinationSelect={this.handleDestinationSelect}
                               years={this.state.years}
-                              selectedYear={this.props.selectedYear}
-                              handleYearSelect={this.handleYearSelect}
+                             // selectedYear={this.props.selectedYear}
+                              handleMonthSelect={this.handleMonthSelect}
+                             // getResignDates={this.props.reportActions.getResignDates}
                               create={this.create}
 
                             />
@@ -201,9 +218,11 @@ function mapStateToProps(state) {
 
     return {
 
+        resigndate: state.report.report.resigndates,
         position: state.report.report.report,
         selectedDestination:state.report.report.selectedDestination,
-        selectedYear:state.report.report.selectedYear,
+        selectedResignDates:state.report.report.selectedResignDates,
+        //selectedYear:state.report.report.selectedYear,
         create:state.report.report.create
     }
 }

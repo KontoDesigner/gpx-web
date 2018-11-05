@@ -101,7 +101,7 @@ handleUnsavedEdit = () => {
 
 edit = (e, notification) => {
     if (!$(e.target).is(":checkbox")) {
-        const win = window.open(`/notification/${notification.templateName}`, '_blank');
+        const win = window.open(`/notification/${notification.templateName}`, '_this');
 
         win.focus();
     }
