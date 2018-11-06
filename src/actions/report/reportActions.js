@@ -23,7 +23,7 @@ export function handleDestinationField(val) {
 }
 
 export function handleResignDates(val) {
-  alert(val);
+
     return {
         
         type: types.HANDLE_RESIGNDATES,

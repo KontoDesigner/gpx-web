@@ -1,10 +1,11 @@
-import { ActionTypes as types } from '../../constants/planningEdit/planningInfoConstants'
+import { ActionTypes as types } from '../../constants/notificationEdit/notificationInfoConstants'
 import { beginAjaxCall, ajaxCallError, endAjaxCall } from '../ajaxStatusActions'
 import RestClient from '../../infrastructure/restClient'
 
 
 
 export function handleStaffField(field, val) {
+
     return {
         type: types.HANDLE_STAFF_FIELD,
         data: { field: field, val: val }
@@ -20,50 +21,51 @@ export function handleFilterFromSuccess(from) {
 
 
 
-export function getStaffSuccess(staff) {
-    return {
-        type: types.GET_STAFF_SUCCESS,
-        data: { staff: staff }
-    }
-}
+// export function getStaffSuccess(staff) {
+//     return {
+//         type: types.GET_STAFF_SUCCESS,
+//         data: { staff: staff }
+//     }
+// }
 
-export function getStaff(staffId) {
-    return async function (dispatch) {
-        dispatch(beginAjaxCall())
+// export function getStaff(staffId) {
+//     return async function (dispatch) {
+//         dispatch(beginAjaxCall())
 
-        try {
+//         try {
           
-        //   const staff = await RestClient.Get(`position/${mplID}`)
+//         //   const staff = await RestClient.Get(`position/${mplID}`)
      
-            const staff = await RestClient.Get(`staff/${staffId}`)
+//             const staff = await RestClient.Get(`staff/${staffId}`)
 
-            dispatch(getStaffSuccess(staff))
-        } catch (error) {
-            dispatch(ajaxCallError(error))
+//             dispatch(getStaffSuccess(staff))
+//         } catch (error) {
+//             dispatch(ajaxCallError(error))
 
-            throw error
-        }
-    }
-}
+//             throw error
+//         }
+//     }
+// }
 
-export function getPositionSuccess(position) {
+export function getNotificationSuccess(notification) {
     return {
-        type: types.GET_POSITION_SUCCESS,
-        data: { position: position }
+        type: types.GET_NOTIFICATION_SUCCESS,
+        data: { notification: notification }
     }
 }
 
-export function getPosition(mplId) {
+export function getNotification(templatename) {
+    console.log('Templatename', templatename);
     return async function (dispatch) {
         dispatch(beginAjaxCall())
         try {
- 
+
          //  const staff = await RestClient.Get(`staff/${staffId}`)
-        
-           const position = await RestClient.Get(`position/${mplId}`)
+    
+           const notification = await RestClient.Get(`mail/${templatename}`)
        
           
-            dispatch(getPositionSuccess(position))
+            dispatch(getNotificationSuccess(notification))
         } catch (error) {
             dispatch(ajaxCallError(error))
 

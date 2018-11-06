@@ -7,9 +7,10 @@ import Settings from '../views/settings/settings';
 import NotFound from '../views/notFound/notFound';
 import StaffEdit from '../views/staffEdit/staffEdit';
 import PlanningEdit from '../views/planningEdit/planningEdit';
-//import NotificationEdit from '../views/settings/notification/notificationEdit';
+import NotificationEdit from '../views/settings/notification/notificationEdit';
+
 const Routes = () => (
-    <div className="container">
+    <div className="container"> 
         <Switch>
             <Route path="/" exact component={() => <Redirect to="/staff" />} />
             <Route exact path="/staff" component={Staff} />
@@ -19,7 +20,8 @@ const Routes = () => (
        
             <Route path="/reports" component={Reports} />
             <Route path="/settings" component={Settings} />
-            {/* <Route exact path="/settings/:templateName" render={(props) => <NotificationEdit {...props} ignoreThis={true} />} /> */}
+            <Route exact path="/notification/:templatename" render={(props) => <NotificationEdit {...props} ignoreThis={true} />} />
+            
             <Route component={NotFound} />
         </Switch>
     </div>

@@ -3,10 +3,12 @@ import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import { Row, Col, Card, CardHeader, CardBody, CardFooter, Button } from 'reactstrap'
 import { LinkContainer } from 'react-router-bootstrap'
-import * as notificationInfoActions from '../../actions/notification/notificationInfoActions'
-import NotificationInfo from './notificationInfo/noticationInfo'
+import * as notificationInfoActions from '../../../actions/notification/notificationInfoActions'
+import NotificationInfo from './notificationInfo'
 //import Buttons from './buttons';
-
+import $ from 'jquery'
+import { toastr } from 'react-redux-toastr'
+import RestClient from '../../../infrastructure/restClient'
 
 class NotificationEdit extends Component {
 
@@ -16,30 +18,31 @@ class NotificationEdit extends Component {
         const {
             match: { params }
         } = props
-        const mplid = params.mplid 
-       
+        const templatename = params.templatename 
+
         
 
         this.state = {
-            mplid: mplid,
+           
+            templatename: templatename,
            // mplID: mplID,
-            position: null
+            notification: null
        
         }
     }
 
    componentWillMount=async()=>  {
          const _this = this
-         debugger;
-        
+ 
+       
         // this.props.employeeInfoActions.getAvailablePositions(this.props.currentSeason.name, this.props.nextSeason.name, this.props.followingSeason.name)
         // this.props.employeeInfoActions.getPositionAssigns(this.state.staffId)
 
-         this.props.notificationInfoActions.getNotification(this.state.templateName).then(function () {
-          
-            if (_this.props.position != null) { 
+         this.props.notificationInfoActions.getNotification(this.state.templatename).then(function () {
+     
+            if (_this.props.notification != null) { 
                
-                document.title = `${_this.props.notification.templateName}  `
+                document.title = `${_this.props.notification.templatename}  `
            }
             else {
                 
@@ -48,9 +51,37 @@ class NotificationEdit extends Component {
          })
     }
 
-    save = () => {
-        alert('not implemented')
-    }
+    save = async(model) => {
+        // this.props.settingActions.save()
+      
+      debugger;
+      try {
+          const res =  await RestClient.Post('mail/updateTemplate', model)
+      debugger;
+     
+      
+          if (res) {
+              toastr.success('Success', `Notification Document is updated`)
+          } else {
+              toastr.error('Error', `Could not update Notification document: ${res ? res.message : 'Error'}`)
+          }
+      } catch (error) {
+     
+      
+          throw error
+      }
+      
+      }
+    handleInputField = event => {
+
+        const field = event.target.name
+        const val = event.target.value
+
+     
+        this.props.notificationInfoActions.handleStaffField(field, val)
+
+       // this.props.handleUnsavedEdit()
+    } 
 
     render() {
     //     const buttons = <Buttons
@@ -65,11 +96,11 @@ class NotificationEdit extends Component {
             return (
 
                 <Card>
-                    <CardHeader>Could not find notification {this.state.templateName}</CardHeader>
+                    <CardHeader>Could not find notification {this.state.templatename}</CardHeader>
 
                     <CardBody>
                         <p className="card-text">
-                           Position with id: <b>{this.state.templateName}</b> was  not found. 
+                           notification with id: <b>{this.state.templatename}</b> was  not found. 
                         </p>
                     </CardBody>
 
@@ -98,7 +129,9 @@ class NotificationEdit extends Component {
                                     <NotificationInfo 
                                 
                                         notification={this.props.notification}
-
+                                        handleInputField={this.handleInputField}
+                                        
+                                        save={this.save}
                                     />
                                 
 
@@ -116,7 +149,8 @@ function mapStateToProps(state) {
     
     return {
 
-        position: state.notificationEdit.notificationInfo.notification,
+       notification: state.notification.notification 
+        // notification: state.planningEdit.planningInfo.position,
     }
 }
 

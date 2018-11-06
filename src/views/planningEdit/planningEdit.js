@@ -30,7 +30,7 @@ class PlanningEdit extends Component {
 
    componentWillMount=async()=>  {
          const _this = this
-        
+       
         
         // this.props.employeeInfoActions.getAvailablePositions(this.props.currentSeason.name, this.props.nextSeason.name, this.props.followingSeason.name)
         // this.props.employeeInfoActions.getPositionAssigns(this.state.staffId)
