@@ -73,7 +73,7 @@ const Tabs = (props) => {
             </Card>
 
             <Card>
-                <CardHeader>Other</CardHeader>
+                <CardHeader>Draft</CardHeader>
 
                 <CardBody className="no-padding">
                     <ListGroup>
@@ -86,8 +86,31 @@ const Tabs = (props) => {
                             }}>
                             New Employees
                 </ListGroupItem>
+        
                     </ListGroup>
+                    
                 </CardBody>
+                
+            </Card>
+            <Card>
+                <CardHeader>Other</CardHeader>
+
+                <CardBody className="no-padding">
+                    <ListGroup>
+                        <ListGroupItem
+                            className={classnames({ active: props.activeTab === 'newEmployee' })}
+                            onClick={() => {
+                                //props.toggle('newEmployee',
+                                  //  props.getNewEmployee,
+                                    //props.handleNewEmployee)
+                            }}>
+                            File Imports
+                </ListGroupItem>
+        
+                    </ListGroup>
+                    
+                </CardBody>
+                
             </Card>
         </Col>
     );

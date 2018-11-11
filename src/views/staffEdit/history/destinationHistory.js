@@ -1,13 +1,17 @@
 import React, { Component } from 'react'
+import { Card, CardBody, CardHeader } from 'reactstrap'
 
-class DestinationHistory extends Component {
-    render() {
-        return (
-            <div>
-                DestinationHistory
-            </div>
-        )
-    }
-}
+
+const DestinationHistory = () => {
+    return (
+        <Card>
+            <CardHeader>DestinationHistory</CardHeader>
+
+            <CardBody>
+            DestinationHistory
+            </CardBody>
+        </Card>
+    );
+};
 
 export default DestinationHistory

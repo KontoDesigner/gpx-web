@@ -4,6 +4,7 @@ var defaultState = {
     setting:{},
     selectedApplyOpen: null,
     jobFamilies: [],
+    jobTitle: []
     
 }
 
@@ -31,6 +32,12 @@ export default function settingReducer(state = defaultState, action) {
             return {
                 ...state,
                 jobFamilies: action.data.jobFamilies
+            }
+
+            case types.GET_ALLJOBTITLE_SUCCESS:
+            return {
+                ...state,
+                jobTitle: action.data.jobTitle
             }
 
             case types.GET_SETTING_SUCCESS:

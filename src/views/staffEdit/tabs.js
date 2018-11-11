@@ -16,15 +16,28 @@ const Tabs = (props) => {
                             Employee Info
                                 </NavLink>
                     </NavItem>
-                    <NavItem>
+
+                      <NavItem>
                         <NavLink
-                            className={classnames({ active: props.activeTab === 'fullYearReview' })}
+                            className={classnames({ active: props.activeTab === 'abscense' })}
                             onClick={() => {
-                                props.toggle('fullYearReview')
+                                props.toggle('abscense')
                             }}>
-                            Full Year Review
+                           Abscense / Resign
                                 </NavLink>
                     </NavItem>
+
+
+                    <NavItem>
+                        <NavLink
+                            className={classnames({ active: props.activeTab === 'cv' })}
+                            onClick={() => {
+                                props.toggle('cv')
+                            }}>
+                           CV
+                                </NavLink>
+                    </NavItem>
+                 
                     <NavItem>
                         <NavLink
                             className={classnames({ active: props.activeTab === 'applications' })}

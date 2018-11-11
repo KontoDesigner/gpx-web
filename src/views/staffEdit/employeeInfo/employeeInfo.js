@@ -21,6 +21,14 @@ class EmployeeInfo extends Component {
         this.props.handleUnsavedEdit()
     } 
 
+    handleUnsavedEdit = () => {
+        if (this.state.unsavedEdit === false) {
+            this.setState({
+                unsavedEdit: true
+            })
+        }
+    }
+
     handleStaffDatePicker = (field, date) => {
         let val = ''
 
@@ -61,7 +69,7 @@ class EmployeeInfo extends Component {
 
         const _this = this
 
-        this.props.employeeInfoActions.insertPositionAssign(positionAssign).then(function() {
+        _this.props.employeeInfoActions.insertPositionAssign(positionAssign).then(function() {
             _this.props.employeeInfoActions.getAvailablePositions(
                 _this.props.currentSeason.name,
                 _this.props.nextSeason.name,
@@ -152,7 +160,7 @@ class EmployeeInfo extends Component {
                         />
                         </Col>
                           </Row>
-                            <Row className="row-panel-2"> 
+                            {/* <Row className="row-panel-2"> 
                     <Col sm="6" md="6" lg="6"> 
                         <PlannedMove />
                         </Col>
@@ -170,7 +178,7 @@ class EmployeeInfo extends Component {
                             send={null}
                         />
                     </Col>
-                </Row>
+                </Row> */}
 
                 <Row>
                     <Col>

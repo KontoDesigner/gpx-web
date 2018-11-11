@@ -25,10 +25,10 @@ export function handleDestinationField(val) {
 export function handleResignDates(val) {
 
     return {
-        
+      
         type: types.HANDLE_RESIGNDATES,
         data: {val: val}
-        
+      
     }
 
 }

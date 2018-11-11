@@ -51,6 +51,7 @@ class NotificationEdit extends Component {
          })
     }
 
+
     save = async(model) => {
         // this.props.settingActions.save()
       
@@ -72,16 +73,20 @@ class NotificationEdit extends Component {
       }
       
       }
+
+
     handleInputField = event => {
 
         const field = event.target.name
         const val = event.target.value
 
-     
-        this.props.notificationInfoActions.handleStaffField(field, val)
 
-       // this.props.handleUnsavedEdit()
-    } 
+        this.props.notificationInfoActions.handleInputField(field, val)
+ 
+     
+        
+      
+    }  
 
     render() {
     //     const buttons = <Buttons
@@ -130,7 +135,7 @@ class NotificationEdit extends Component {
                                 
                                         notification={this.props.notification}
                                         handleInputField={this.handleInputField}
-                                        
+                                        //handleUnsavedEdit={this.handleUnsavedEdit}
                                         save={this.save}
                                     />
                                 

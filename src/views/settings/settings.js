@@ -11,6 +11,7 @@ import Notification from  './notification/cfgNotification'
 import Setting from './setting/cfgSetting'
 import $ from 'jquery'
 
+
 class Settings extends Component {
 
 
@@ -73,7 +74,7 @@ class Settings extends Component {
         _this.props.settingActions.getSetting().then(function () {
             
          
-           debugger;
+      
             if (_this.props.setting != null) {  
                
                document.title = `${_this.props.setting.settingid} `
@@ -111,13 +112,10 @@ save = async(model) => {
   // this.props.settingActions.save()
 
 
-
-
-debugger;
 try {
     const res =  await RestClient.Post('setting/updateSetting', model)
-debugger;
-   // dispatch(endAjaxCall())
+
+ 
 
     if (res) {
         toastr.success('Success', `Setting Document is updated`)
@@ -129,11 +127,6 @@ debugger;
 
     throw error
 }
-
-
-
-
-   // await RestClient.Post('positionassign/deletepositionassign')
 
 }
 
@@ -150,7 +143,7 @@ handleYearSelect = (val) => {
     let setting = Object.assign({}, this.state.setting);    //creating copy of object
     setting.applyOpen = val.name;                        //updating value
     this.setState({setting});
-debugger;
+
 } 
 
 handleManagerCommentSelect = (val) => { 
@@ -180,7 +173,7 @@ handleArrivalDateSelect = (val) => {
 }
 
 handleCurSeasonSelect = (val) => { 
-    debugger;
+  
     let setting = Object.assign({}, this.state.setting);    //creating copy of object
     setting.curSeason = val.name;                        //updating value
     this.setState({setting});
@@ -197,7 +190,7 @@ handleNextSeasonSelect = (val) => {
 }
 
 handleNextNextSeasonSelect = (val) => { 
-     debugger;
+     
     let setting = Object.assign({}, this.state.setting);    //creating copy of object
     setting.nextNextSeason = val.name;                        //updating value
     this.setState({setting});
@@ -227,7 +220,7 @@ handleCurSeasonOld = event => {
 
 //toogle logic  this is also sent to underlying component Tabs  below  , Tabs is imported above
     toggle = (tab, getData, resetData) => {
-        debugger;
+       
         if (this.state.activeTab !== tab) {
             //Reset current tab state
             this.state.resetData([])
@@ -247,7 +240,7 @@ handleCurSeasonOld = event => {
 
     render() {
        
-          
+        
         return (
             <Row>
           
@@ -265,6 +258,7 @@ handleCurSeasonOld = event => {
                 />
 
                 
+             
                 <Col sm="12" md="9" lg="9" xl="10">
                     <TabContent activeTab={this.state.activeTab}>
                     {this.state.setting && //if clause  what for load ready

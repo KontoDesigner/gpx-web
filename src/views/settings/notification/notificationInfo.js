@@ -1,6 +1,6 @@
-
 import React from 'react';
-import { Card, CardBody, CardHeader, Col,Button } from 'reactstrap'
+import { Card, CardBody, CardHeader, Col,Button, } from 'reactstrap'
+import { Row, Form, FormGroup, Label, Input} from 'reactstrap'
 import TextInput from '../../../components/textInput'
 
 const NotificationEdit = (props) => {
@@ -47,9 +47,12 @@ const NotificationEdit = (props) => {
                     </Col>
 
               <Col sm="12" md="6" lg="6" xl="4" className="form-group">
-                        <textarea rows="8" cols="100" name="content" label="Content"  value={props.notification.content}  />
+             
+              <Label for='content'>Content</Label>
+                <Input required type='textarea' maxLength='1000' name='content' id='content' rows={6}  aria-multiline='true'/>
+                  
                     </Col>
-                         
+                   
                 </div>
 
                 <div className="col-btn-menu" >

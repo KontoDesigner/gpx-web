@@ -10,6 +10,7 @@ import { withRouter } from 'react-router-dom'
 import * as geographyActions from './actions/geographyActions'
 import * as settingActions from './actions/setting/settingActions'
 import * as footerActions from './actions/footerActions'
+
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 
@@ -28,6 +29,7 @@ class App extends Component {
         return Promise.all([
             this.props.geographyActions.getSourceMarkets(),
             this.props.settingActions.getJobFamilies(),
+            this.props.settingActions.getAllJobTitle(),
             this.props.geographyActions.getSeasons(),
             this.props.footerActions.getVersion(),
             this.props.footerActions.getSupportEmail(),
@@ -92,7 +94,8 @@ function mapDispatchToProps(dispatch) {
     return {
         geographyActions: bindActionCreators(geographyActions, dispatch),
         settingActions: bindActionCreators(settingActions, dispatch),
-        footerActions: bindActionCreators(footerActions, dispatch)
+        footerActions: bindActionCreators(footerActions, dispatch),
+    
     }
 }
 

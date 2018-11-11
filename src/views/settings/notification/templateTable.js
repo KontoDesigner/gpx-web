@@ -3,11 +3,13 @@ import { ContextMenu, MenuItem } from 'react-contextmenu'
 import Table from '../../../components/table.js'
 const columns = [
    
-    { label: 'Template Name', dataKey: 'templateName' },
-    { label: 'Description', dataKey: 'description' },
- //   { label: 'Template Type', dataKey: 'templateType' },
+
     { label: 'Subject', dataKey: 'subject' },
-    { label: 'Mail Text', dataKey: 'content' }
+    { label: 'Mail Text', dataKey: 'content' },
+    { label: 'Template Name', dataKey: 'templateName' },
+    { label: 'Description', dataKey: 'description' }
+ //   { label: 'Template Type', dataKey: 'templateType' },
+
   
     //{ label: 'Id', dataKey: 'staffID' }
 ]

@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Row, Col } from 'reactstrap'
-import CurrentTeamIn from './currentTeamIn'
+import TeamInformation from './teamInformation'
 
 class Team extends Component {
     render() {
@@ -8,7 +8,7 @@ class Team extends Component {
             <div>
                 <Row>
                     <Col>
-                        <CurrentTeamIn />
+                        <TeamInformation />
                     </Col>
                 </Row>
             </div>

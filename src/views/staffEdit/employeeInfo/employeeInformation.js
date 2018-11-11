@@ -31,7 +31,11 @@ const EmployeeInformation = (props) => {
                     </Col>
 
                     <Col sm="12" md="6" lg="6" xl="4" className="form-group">
-                        <TextInput name="empID" label="Employee ID" value={props.staff.empID} onChange={props.handleStaffField} />
+                        <TextInput name="empID" label="SAP ID" disabled value={props.staff.sapID} onChange={props.handleStaffField} />
+                    </Col>
+
+                       <Col sm="12" md="6" lg="6" xl="4" className="form-group">
+                        <TextInput name="mopedID" disabled label="Moped ID" value={props.staff.mopedID} onChange={props.handleStaffField} />
                     </Col>
 
                     <Col sm="12" md="6" lg="6" xl="4" className="form-group form-group-select">
@@ -46,6 +50,7 @@ const EmployeeInformation = (props) => {
                             onChange={(v) => { props.handleStaffSelect('positionType', v, 'id') }}
                             value={props.staff.positionType === '' ? null : props.staff.positionType}
                             placeholder="Position Type"
+                           
                         />
                     </Col>
 

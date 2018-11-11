@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import { Row, Col } from 'reactstrap'
 import DestinationHistory from './destinationHistory'
-import ConfirmedDates from './confirmedDates'
-import Revisions from './revisions'
+//import ConfirmedDates from './confirmedDates'
+//import Revisions from './revisions'
 
 class History extends Component {
     render() {
@@ -14,7 +14,7 @@ class History extends Component {
                     </Col>
                 </Row>
 
-                <Row>
+                {/* <Row>
                     <Col>
                         <ConfirmedDates />
                     </Col>
@@ -24,7 +24,7 @@ class History extends Component {
                     <Col>
                         <Revisions />
                     </Col>
-                </Row>
+                </Row> */}
             </div>
         )
     }

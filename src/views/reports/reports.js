@@ -20,7 +20,7 @@ class Reports extends Component {
          
             resetData: this.props.reportActions.handleReport,
             sourceMarketId: '',
-            years: [
+            years: [    //not in use  delete
                 {
                     id: '2018',
                     name: '2018'
@@ -54,14 +54,14 @@ class Reports extends Component {
         
         document.title = 'Reports'
         const _this = this
-        debugger;
+    
        
      this.props.reportActions.getResignDates();
       
   
         this.props.reportActions.getReport().then(function () {
            
-        debugger;
+    
            if (_this.props.report != null) {  
       
                document.title = 'Planning Report'

@@ -10,8 +10,8 @@ import Datetime from 'react-datetime'
 
 const Report = (props) => {
  
-
-    // const availdest={id:props.position,name:props.position}
+ 
+    //const resigndates={id:moment(props.resigndate).format('YYYY-MM-DD'),name:moment(props.resigndate).format('YYYY-MM-DD')}
   
    
     debugger;

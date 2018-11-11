@@ -3,17 +3,17 @@ import { ActionTypes as types } from '../../constants/notificationEdit/notificat
 var defaultState = {
     notification: null,
     
-    
-    
+     
+     
 }
 
 export default function notificationInfoReducer(state = defaultState, action) {
-
+ alert('sjsjsj');
     switch (action.type) {
         
-        case (types.HANDLE_STAFF_FIELD):
+        case (types.HANDLE_INPUT_FIELD):
         return {
-            ...state,
+            ...state, 
             notification: {
                 ...state.notification,
                 [action.data.field]: action.data.val

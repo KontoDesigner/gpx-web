@@ -1,15 +1,17 @@
 import React, { Component } from 'react'
 import { Card, CardBody, CardHeader } from 'reactstrap'
-const SubmittedApplicationForms = () => {
+
+
+const TeamInformation = () => {
     return (
         <Card>
-            <CardHeader>SubmittedApplicationForms</CardHeader>
+            <CardHeader>TeamInformation</CardHeader>
 
             <CardBody>
-            SubmittedApplicationForms
+            TeamInformation
             </CardBody>
         </Card>
     );
 };
 
-export default SubmittedApplicationForms
+export default TeamInformation

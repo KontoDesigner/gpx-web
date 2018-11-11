@@ -10,22 +10,46 @@ export function handleSettingField(field, val) {
 }
 
 
-export function getJobFamilySuccess(jobFamily) {
+// export function getJobFamilySuccess(jobFamily) {
+//     return {
+//       type: types.GET_JOBFAMILY_SUCCESS,
+//       data: { jobFamily: jobFamily }
+//     }
+//   }
+
+  export function getAllJobTitleSuccess(jobTitle) {
     return {
-      type: types.GET_JOBFAMILY_SUCCESS,
-      data: { jobFamily: jobFamily }
+      type: types.GET_ALLJOBTITLE_SUCCESS,
+      data: { jobTitle: jobTitle }
     }
   }
   
-  export function getJobFamily() {
+//   export function getJobFamily() {
+//     return async function (dispatch) {
+//       dispatch(beginAjaxCall())
+  
+//       try {
+//         const jobFamily = await RestClient.Get(`setting/jobfamily`)
+  
+       
+//         dispatch(getJobFamilySuccess(jobFamily))
+//       } catch (error) {
+//         dispatch(ajaxCallError(error))
+  
+//         throw error
+//       }
+//     }
+//   }
+
+  export function getAllJobTitle() {
     return async function (dispatch) {
       dispatch(beginAjaxCall())
   
       try {
-        const jobFamily = await RestClient.Get(`setting/jobfamily`)
+        const jobTitle = await RestClient.Get(`setting/jobtitle`)
   
        
-        dispatch(getJobFamilySuccess(jobFamily))
+        dispatch(getAllJobTitleSuccess(jobTitle))
       } catch (error) {
         dispatch(ajaxCallError(error))
   
@@ -65,7 +89,7 @@ export function getSetting() {
         dispatch(beginAjaxCall())
 
         try {
-           
+           debugger;
             const setting = await RestClient.Get(`setting/setting`)
 
             dispatch(getSettingSuccess(setting))
