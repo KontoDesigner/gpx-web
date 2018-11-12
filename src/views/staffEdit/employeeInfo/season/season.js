@@ -202,7 +202,11 @@ class Season extends Component {
                                         <Button
                                             size="sm"
                                             onClick={() => {
-                                                this.props.send(this.props.positionAssign.Destination, this.props.positionAssign.PositionStartDate)
+                                                this.props.send(
+                                                    this.props.positionAssign.Destination,
+                                                    this.props.positionAssign.PositionStartDate,
+                                                    this.props.positionAssign.JobTitle
+                                                )
                                             }}
                                             color="warning"
                                             style={{ marginBottom: '10px' }}>
