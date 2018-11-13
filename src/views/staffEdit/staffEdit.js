@@ -197,7 +197,8 @@ class StaffEdit extends Component {
     send = (destination, positionStart, jobTitle) => {
         const model = {
             Id: this.props.staff.staffID,
-            Name: this.props.staff.firstName + ' ' + this.props.staff.lastName,
+            FirstName: this.props.staff.firstName,
+            LastName: this.props.staff.lastName,
             DateOfBirth: this.props.staff.dateOfBirth,
             SourceMarket: this.props.staff.sourceMarket,
             Phone: this.props.staff.phone,
