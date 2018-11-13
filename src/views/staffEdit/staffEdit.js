@@ -194,7 +194,7 @@ class StaffEdit extends Component {
     }
     //************************************************************************** */
 
-    send = (destination, positionStart, jobTitle) => {
+    send = positionAssign => {
         const model = {
             Id: this.props.staff.staffID,
             FirstName: this.props.staff.firstName,
@@ -203,9 +203,10 @@ class StaffEdit extends Component {
             SourceMarket: this.props.staff.sourceMarket,
             Phone: this.props.staff.phone,
             Gender: this.props.staff.title,
-            Destination: destination,
-            PositionStart: positionStart,
-            JobTitle: jobTitle
+            Destination: positionAssign.Destination,
+            PositionStart: positionAssign.PositionStartDate,
+            JobTitle: positionAssign.JobTitle,
+            IataCode: positionAssign.IataCode
         }
 
         this.props.employeeInfoActions.sendToCtx(model)
