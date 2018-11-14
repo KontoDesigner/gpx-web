@@ -90,7 +90,7 @@ const AbscenseInformation = (props) => {
                     <Col sm="12" md="6" lg="12" xl="12" className="form-group">
                         {/* <TextInput name="title" label="Title" value={props.staff.title} onChange={props.handleStaffField} /> */}
                         <Label for='comment'>Comments</Label>
-                <Input required type='textarea' maxLength='1000' name='comment' id='comment' rows={6}  aria-multiline='true'/>
+                <Input required type='textarea' maxLength='1000' name='comment' id='comment' rows={6} onChange={props.handleStaffField} aria-multiline='true'/>
                     </Col>
                     
             

@@ -15,7 +15,7 @@ const Education = (props) => {
     
                 <Col sm="12" md="6" lg="6" xl="6" className="form-group">
              
-             <TextInput name="education" label="Education"  value={props.staff.resignmentReasons}/>
+             <TextInput name="education" label="Education"  value={props.staff.education} onChange={props.handleStaffField}/>
          </Col>
 
          <Col sm="12" md="6" lg="6" xl="6" className="form-group form-group-select">

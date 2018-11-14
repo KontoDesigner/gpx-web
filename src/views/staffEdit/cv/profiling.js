@@ -15,7 +15,7 @@ const Profiling = (props) => {
             <div className="form-row">
          
       <Col sm="12" md="12" lg="12" xl="12" className="form-group form-group-select">
-                        <label htmlFor="childCare">If applicable to your job role. Indicate what type of guest you are suitable to work with</label>
+                        <label htmlFor="suitable">If applicable to your job role. Indicate what type of guest you are suitable to work with</label>
 
                         <Select 
                             id="suitable"
@@ -24,8 +24,8 @@ const Profiling = (props) => {
                             labelKey="name"
                             className="form-control"
                             options={props.suitable}
-                            onChange={(v) => { props.handleStaffSelect('reasonForResignment', v, 'id') }}
-                            value={props.staff.resignmentReasons === '' ? null : props.staff.resignmentReasons}
+                            onChange={(v) => { props.handleStaffSelect('suitable', v, 'id') }}
+                            value={props.staff.suitable === '' ? null : props.staff.suitable}
                             placeholder="Select"
                            
                             
@@ -42,16 +42,15 @@ const Profiling = (props) => {
                             labelKey="name"
                             className="form-control"
                             options={props.international}
-                            onChange={(v) => { props.handleStaffSelect('reasonForResignment', v, 'id') }}
-                            value={props.staff.resignmentReasons === '' ? null : props.staff.resignmentReasons}
+                            onChange={(v) => { props.handleStaffSelect('international', v, 'id') }}
+                            value={props.staff.international === '' ? null : props.staff.international}
                             placeholder="Select"
-                           
                             
                         />
                     </Col>
 
   <Col sm="12" md="12" lg="12" xl="12" className="form-group form-group-select">
-                        <label htmlFor="childCare">I am interested and happy to work in following national concepts</label>
+                        <label htmlFor="national">I am interested and happy to work in following national concepts</label>
 
                         <Select 
                             id="national"
@@ -60,8 +59,8 @@ const Profiling = (props) => {
                             labelKey="name"
                             className="form-control"
                             options={props.national}
-                            onChange={(v) => { props.handleStaffSelect('reasonForResignment', v, 'id') }}
-                            value={props.staff.resignmentReasons === '' ? null : props.staff.resignmentReasons}
+                            onChange={(v) => { props.handleStaffSelect('national', v, 'id') }}
+                            value={props.staff.national === '' ? null : props.staff.national}
                             placeholder="Select"
                            
                             

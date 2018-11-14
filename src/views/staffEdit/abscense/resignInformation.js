@@ -129,9 +129,9 @@ placeholder="Select"
                     
                     <Col sm="12" md="6" lg="6" xl="4" className="form-group">
              
-                        <TextInput name="signature" label="Signature"  value={props.staff.resignmentReasons}/>
+                        <TextInput name="signature" label="Signature"  value={props.staff.signature} onChange={props.handleStaffField}/>
                     </Col>
-                </div>
+                </div> 
             </CardBody>
             <CardFooter style={{ paddingBottom: '4px' , paddingTop: '4px'  }}>
                             <Row>

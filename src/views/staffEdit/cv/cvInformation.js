@@ -15,24 +15,23 @@ const CvInformation = (props) => {
     
                 <Col sm="12" md="12" lg="12" xl="12" className="form-group">
              
-             <TextInput name="language" label="Language(s) (not in list below)"  value={props.staff.resignmentReasons}/>
+             <TextInput name="language" label="Language(s) (not in list below)"  value={props.staff.language} onChange={props.handleStaffField}/>
          </Col>
 
          <Col sm="12" md="6" lg="6" xl="6" className="form-group form-group-select">
                         <label htmlFor="arabic">Arabic</label>
 
                         <Select 
-                            id="arabic"
-                            
-                            valueKey="id"
-                            labelKey="name"
-                            className="form-control"
-                            options={props.languages}
-                            onChange={(v) => { props.handleStaffSelect('reasonForResignment', v, 'id') }}
-                            value={props.staff.resignmentReasons === '' ? null : props.staff.resignmentReasons}
-                            placeholder="Select"
-                           
-                            
+
+id="arabic"
+valueKey="id"
+labelKey="name"
+className="form-control"
+options={props.languages}
+onChange={(v) => { props.handleStaffSelect('arabic', v, 'id') }}
+value={props.staff.arabic === '' ? null : props.staff.arabic}
+placeholder="Select"
+                    
                         />
                     </Col>
 
@@ -46,8 +45,8 @@ const CvInformation = (props) => {
                             labelKey="name"
                             className="form-control"
                             options={props.languages}
-                            onChange={(v) => { props.handleStaffSelect('reasonForResignment', v, 'id') }}
-                            value={props.staff.resignmentReasons === '' ? null : props.staff.resignmentReasons}
+                            onChange={(v) => { props.handleStaffSelect('danish', v, 'id') }}
+                            value={props.staff.danish === '' ? null : props.staff.danish}
                             placeholder="Select"
                            
                             
@@ -55,7 +54,7 @@ const CvInformation = (props) => {
                     </Col>
 
                            <Col sm="12" md="6" lg="6" xl="6" className="form-group form-group-select">
-                        <label htmlFor="arabic">Dutch</label>
+                        <label htmlFor="dutch">Dutch</label>
 
                         <Select 
                             id="dutch"
@@ -64,8 +63,8 @@ const CvInformation = (props) => {
                             labelKey="name"
                             className="form-control"
                             options={props.languages}
-                            onChange={(v) => { props.handleStaffSelect('reasonForResignment', v, 'id') }}
-                            value={props.staff.resignmentReasons === '' ? null : props.staff.resignmentReasons}
+                            onChange={(v) => { props.handleStaffSelect('dutch', v, 'id') }}
+                            value={props.staff.dutch === '' ? null : props.staff.dutch}
                             placeholder="Select"
                            
                             
@@ -82,8 +81,8 @@ const CvInformation = (props) => {
                             labelKey="name"
                             className="form-control"
                             options={props.languages}
-                            onChange={(v) => { props.handleStaffSelect('reasonForResignment', v, 'id') }}
-                            value={props.staff.resignmentReasons === '' ? null : props.staff.resignmentReasons}
+                            onChange={(v) => { props.handleStaffSelect('english', v, 'id') }}
+                            value={props.staff.english === '' ? null : props.staff.english}
                             placeholder="Select"
                            
                             
@@ -95,13 +94,12 @@ const CvInformation = (props) => {
 
                         <Select 
                             id="finnish"
-                            
                             valueKey="id"
                             labelKey="name"
                             className="form-control"
                             options={props.languages}
-                            onChange={(v) => { props.handleStaffSelect('reasonForResignment', v, 'id') }}
-                            value={props.staff.resignmentReasons === '' ? null : props.staff.resignmentReasons}
+                            onChange={(v) => { props.handleStaffSelect('finnish', v, 'id') }}
+                            value={props.staff.finnish=== '' ? null : props.staff.finnish}
                             placeholder="Select"
                            
                             
@@ -118,8 +116,8 @@ const CvInformation = (props) => {
                             labelKey="name"
                             className="form-control"
                             options={props.languages}
-                            onChange={(v) => { props.handleStaffSelect('reasonForResignment', v, 'id') }}
-                            value={props.staff.resignmentReasons === '' ? null : props.staff.resignmentReasons}
+                            onChange={(v) => { props.handleStaffSelect('french', v, 'id') }}
+                            value={props.staff.french === '' ? null : props.staff.french}
                             placeholder="Select"
                            
                             
@@ -136,8 +134,8 @@ const CvInformation = (props) => {
                             labelKey="name"
                             className="form-control"
                             options={props.languages}
-                            onChange={(v) => { props.handleStaffSelect('reasonForResignment', v, 'id') }}
-                            value={props.staff.resignmentReasons === '' ? null : props.staff.resignmentReasons}
+                            onChange={(v) => { props.handleStaffSelect('german', v, 'id') }}
+                            value={props.staff.german === '' ? null : props.staff.german}
                             placeholder="Select"
                            
                             
@@ -154,10 +152,9 @@ const CvInformation = (props) => {
                             labelKey="name"
                             className="form-control"
                             options={props.languages}
-                            onChange={(v) => { props.handleStaffSelect('reasonForResignment', v, 'id') }}
-                            value={props.staff.resignmentReasons === '' ? null : props.staff.resignmentReasons}
+                            onChange={(v) => { props.handleStaffSelect('greek', v, 'id') }}
+                            value={props.staff.greek === '' ? null : props.staff.greek}
                             placeholder="Select"
-                           
                             
                         />
                     </Col>
@@ -172,8 +169,8 @@ const CvInformation = (props) => {
                             labelKey="name"
                             className="form-control"
                             options={props.languages}
-                            onChange={(v) => { props.handleStaffSelect('reasonForResignment', v, 'id') }}
-                            value={props.staff.resignmentReasons === '' ? null : props.staff.resignmentReasons}
+                            onChange={(v) => { props.handleStaffSelect('norwegian', v, 'id') }}
+                            value={props.staff.norwegian === '' ? null : props.staff.norwegian}
                             placeholder="Select"
                            
                             
@@ -190,8 +187,8 @@ const CvInformation = (props) => {
                             labelKey="name"
                             className="form-control"
                             options={props.languages}
-                            onChange={(v) => { props.handleStaffSelect('reasonForResignment', v, 'id') }}
-                            value={props.staff.resignmentReasons === '' ? null : props.staff.resignmentReasons}
+                            onChange={(v) => { props.handleStaffSelect('italian', v, 'id') }}
+                            value={props.staff.italian === '' ? null : props.staff.italian}
                             placeholder="Select"
                            
                             
@@ -208,10 +205,9 @@ const CvInformation = (props) => {
                             labelKey="name"
                             className="form-control"
                             options={props.languages}
-                            onChange={(v) => { props.handleStaffSelect('reasonForResignment', v, 'id') }}
-                            value={props.staff.resignmentReasons === '' ? null : props.staff.resignmentReasons}
+                            onChange={(v) => { props.handleStaffSelect('polish', v, 'id') }}
+                            value={props.staff.polish === '' ? null : props.staff.polish}
                             placeholder="Select"
-                           
                             
                         />
                     </Col>
@@ -226,10 +222,9 @@ const CvInformation = (props) => {
                             labelKey="name"
                             className="form-control"
                             options={props.languages}
-                            onChange={(v) => { props.handleStaffSelect('reasonForResignment', v, 'id') }}
-                            value={props.staff.resignmentReasons === '' ? null : props.staff.resignmentReasons}
+                            onChange={(v) => { props.handleStaffSelect('portuguese', v, 'id') }}
+                            value={props.staff.portuguese=== '' ? null : props.staff.portuguese}
                             placeholder="Select"
-                           
                             
                         />
                     </Col>
@@ -245,8 +240,8 @@ const CvInformation = (props) => {
                             labelKey="name"
                             className="form-control"
                             options={props.languages}
-                            onChange={(v) => { props.handleStaffSelect('reasonForResignment', v, 'id') }}
-                            value={props.staff.resignmentReasons === '' ? null : props.staff.resignmentReasons}
+                            onChange={(v) => { props.handleStaffSelect('russia', v, 'id') }}
+                            value={props.staff.russia === '' ? null : props.staff.russia}
                             placeholder="Select"
                            
                             
@@ -263,8 +258,8 @@ const CvInformation = (props) => {
                             labelKey="name"
                             className="form-control"
                             options={props.languages}
-                            onChange={(v) => { props.handleStaffSelect('reasonForResignment', v, 'id') }}
-                            value={props.staff.resignmentReasons === '' ? null : props.staff.resignmentReasons}
+                            onChange={(v) => { props.handleStaffSelect('spanish', v, 'id') }}
+                            value={props.staff.spanish === '' ? null : props.staff.spanish}
                             placeholder="Select"
                            
                             
@@ -281,8 +276,8 @@ const CvInformation = (props) => {
                             labelKey="name"
                             className="form-control"
                             options={props.languages}
-                            onChange={(v) => { props.handleStaffSelect('reasonForResignment', v, 'id') }}
-                            value={props.staff.resignmentReasons === '' ? null : props.staff.resignmentReasons}
+                            onChange={(v) => { props.handleStaffSelect('turkish', v, 'id') }}
+                            value={props.staff.turkish === '' ? null : props.staff.turkish}
                             placeholder="Select"
                            
                             
@@ -299,10 +294,9 @@ const CvInformation = (props) => {
                             labelKey="name"
                             className="form-control"
                             options={props.languages}
-                            onChange={(v) => { props.handleStaffSelect('reasonForResignment', v, 'id') }}
-                            value={props.staff.resignmentReasons === '' ? null : props.staff.resignmentReasons}
+                            onChange={(v) => { props.handleStaffSelect('swedish', v, 'id') }}
+                            value={props.staff.swedish === '' ? null : props.staff.swedish}
                             placeholder="Select"
-                           
                             
                         />
                     </Col>

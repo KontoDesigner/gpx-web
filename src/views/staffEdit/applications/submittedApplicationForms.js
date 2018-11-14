@@ -10,7 +10,7 @@ const SubmittedApplicationForms = (props) => {
 
             <CardBody>
 
-                <table class="table">
+                <table className="table">
   <thead>
     <tr>
 

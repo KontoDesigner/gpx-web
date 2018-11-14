@@ -318,7 +318,7 @@ class StaffEdit extends Component {
                                 </TabPane>
 
                                 <TabPane tabId="team">
-                                    <Team />
+                                    <Team /> 
                                 </TabPane>
 
                                 <TabPane tabId="history">

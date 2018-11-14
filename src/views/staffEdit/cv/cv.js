@@ -150,6 +150,15 @@ class Cv extends Component {
     }
 
 
+    handleStaffField = event => {
+        const field = event.target.name
+        const val = event.target.value
+
+        this.props.cvActions.handleStaffField(field, val)
+
+        this.props.handleUnsavedEdit()
+    } 
+
 
     render() {
         return (
@@ -162,6 +171,7 @@ class Cv extends Component {
                         
                         //handleStaffDatePicker={this.handleStaffDatePicker}
                        handleStaffSelect={this.handleStaffSelect} 
+                       handleStaffField={this.handleStaffField} 
                        // resignType={this.props.resignType}
                         
                         />

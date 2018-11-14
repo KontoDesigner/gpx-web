@@ -46,6 +46,15 @@ class Abscense extends Component {
         this.props.handleUnsavedEdit()
     }
 
+    handleStaffField = event => {
+        const field = event.target.name
+        const val = event.target.value
+
+        this.props.abscenseActions.handleStaffField(field, val)
+
+        this.props.handleUnsavedEdit()
+    } 
+
     handleSelectTypes = ( field,val) => {
                        
         this.setState({field:val.id});
@@ -72,12 +81,13 @@ class Abscense extends Component {
                             staff={this.props.staff}
                             handleStaffDatePicker={this.handleStaffDatePicker}
                             handleStaffSelect={this.handleStaffSelect} 
+                            handleStaffField={this.handleStaffField}
                             allJobTitles={this.props.allJobTitles}
                             handleChangeMultiple={this.props.handleChangeMultiple} 
                             resignmentReasons={this.props.resignmentReasons}
                           
 
-
+ 
 
 
                             // title={"Skills"}
