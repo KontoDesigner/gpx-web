@@ -30,7 +30,15 @@ const Tabs = props => {
                             }}>
                           Notifications
                         </ListGroupItem>
-                     
+                        {/* <ListGroupItem
+                            className={classnames({ active: props.activeTab === 'profiling' })}
+                            onClick={() => {
+                               
+                                props.toggle('profiling', props.getNotification, props.handleNotification)
+                             
+                            }}>
+                         Profilings
+                        </ListGroupItem> */}
                         
                     </ListGroup>
                 </CardBody>

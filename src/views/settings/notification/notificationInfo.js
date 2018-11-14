@@ -46,10 +46,10 @@ const NotificationEdit = (props) => {
                         <TextInput name="description" label="Description"  value={props.notification.description}  />
                     </Col>
 
-              <Col sm="12" md="6" lg="6" xl="4" className="form-group">
+              <Col sm="12" md="12" lg="12" xl="12" className="form-group">
              
               <Label for='content'>Content</Label>
-                <Input required type='textarea' maxLength='1000' name='content' id='content' rows={6}  aria-multiline='true'/>
+                <Input required type='textarea' maxLength='1000' name='content' id='content' rows={6} value={props.notification.content}   aria-multiline='true'/>
                   
                     </Col>
                    

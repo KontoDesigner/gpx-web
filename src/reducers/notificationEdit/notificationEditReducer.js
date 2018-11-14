@@ -1,4 +1,4 @@
-import { ActionTypes as types } from '../../constants/notificationEdit/notificationInfoConstants';
+import { ActionTypes as types } from '../../constants/notificationEdit/notificationEditConstants';
 
 var defaultState = {
     notification: null,
@@ -8,10 +8,11 @@ var defaultState = {
 }
 
 export default function notificationInfoReducer(state = defaultState, action) {
- alert('sjsjsj');
+
     switch (action.type) {
         
         case (types.HANDLE_INPUT_FIELD):
+ 
         return {
             ...state, 
             notification: {

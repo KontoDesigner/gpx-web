@@ -98,18 +98,14 @@ const Tabs = (props) => {
                 <CardBody className="no-padding">
                     <ListGroup>
                         <ListGroupItem
-                            className={classnames({ active: props.activeTab === 'filemports' })}
+                            className={classnames({ active: props.activeTab === 'newEmployee' })}
                             onClick={() => {
                                // const win = window.open(`/imports/`, '_this');
                                 props.history.push(`imports`)
-                                // props.getNewEmployee,
-                                // props.handleNewEmployee
-                                //props.toggle('imports') 
+                               // props.toggle('imports') 
                                   //  props.getNewEmployee,
                                     //props.handleNewEmployee)
                             }}>
-
-                    
                             File Imports
                 </ListGroupItem>
         

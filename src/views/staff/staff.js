@@ -5,6 +5,7 @@ import { TabContent, TabPane, Row, Col } from 'reactstrap'
 import Destination from './active/destination/destination'
 import HeadOf from './active/headOf/headOf'
 import JobTitle from './active/jobTitle/jobTitle'
+import Import from '../imports/import'
 import Name from './active/name/name'
 import RecentlyInactive from './inactive/recentlyInactive/recentlyInactive'
 import NewEmployee from './other/newEmployee/newEmployee'
@@ -72,6 +73,7 @@ class Staff extends Component {
             <Row>
                 <Tabs
                     toggle={this.toggle}
+                    history={this.props.history}
                     activeTab={this.state.activeTab}
                     getHeadOf={this.props.headOfActions.getHeadOf}
                     handleHeadOf={this.props.headOfActions.handleHeadOf}
@@ -153,6 +155,13 @@ class Staff extends Component {
                             edit={this.edit}
                             />
                         </TabPane>
+
+                             <TabPane tabId="fileImport">
+                       
+                        <Import
+                      
+                       /> 
+                   </TabPane>
                     </TabContent>
                 </Col>
             </Row>

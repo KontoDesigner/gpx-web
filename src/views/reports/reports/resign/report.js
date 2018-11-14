@@ -1,6 +1,7 @@
 
 
 import React, { Component } from 'react'
+import Moment from 'react-moment';
 import { Card, CardBody, CardHeader, Col,Button } from 'reactstrap'
 import TextInput from '../../../../components/textInput'
 import Select from 'react-select'
@@ -11,11 +12,11 @@ import Datetime from 'react-datetime'
 const Report = (props) => {
  
  
-    //const resigndates={id:moment(props.resigndate).format('YYYY-MM-DD'),name:moment(props.resigndate).format('YYYY-MM-DD')}
+  //  const resigndates={id:props.resigndate,name:props.resigndate}
+    //const formatResign=<Moment format="YYY-MM-DD">{resigndates}</Moment>
+    //alert(moment().format(props.resigndate,'YYYY-MM-DD'));
   
-   
-    debugger;
- 
+    debugger; 
     return (
  
         <Card>
@@ -29,6 +30,7 @@ const Report = (props) => {
     <label htmlFor="destination">Destination</label>
 
         <Select 
+    
           id="destinations"
           valueKey="destination"
           labelKey="destination"
@@ -37,6 +39,7 @@ const Report = (props) => {
           onChange = { props.handleDestinationSelect }
           value={props.selectedDestination}
           placeholder="All Destinations"
+  
         />
         <p></p>
 
@@ -44,11 +47,14 @@ const Report = (props) => {
 
 
 <Select
+
     id="month"
     valueKey="appDate"
     labelKey="appDate"
     className="form-control"
     options={props.resigndate}
+
+
    onChange = { props.handleMonthSelect }
    value={props.selectedResignDates}
     placeholder="Select Month"

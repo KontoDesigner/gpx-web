@@ -52,7 +52,24 @@ class StaffEdit extends Component {
             ],
 
             resignType: [
+                { positionTypes: [
                 {
+                    id: 'Posted',
+                    name: 'Posted'
+                },
+                {
+                    id: 'Local',
+                    name: 'Local'
+                },
+                {
+                    id: 'Freelance',
+                    name: 'Freelance'
+                },
+                {
+                    id: 'Flexible',
+                    name: 'Flexible'
+                }
+            ],
                     id: 'Studies',
                     name: 'Studies'
                 },
@@ -223,7 +240,7 @@ class StaffEdit extends Component {
     }
 
     save = () => {
-        alert('not implemented')
+        alert(this.props.staffEdit)
     }
 
     render() {

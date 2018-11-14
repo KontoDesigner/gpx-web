@@ -14,9 +14,7 @@ class Abscense extends Component {
     
     };
 
-       
-      //  this.handleChangeMultiple = this.handleChangeMultiple.bind(this);
-        //this.handleSubmit = this.handleSubmit.bind(this);
+   
       }
 
     handleStaffDatePicker = (field, date) => {

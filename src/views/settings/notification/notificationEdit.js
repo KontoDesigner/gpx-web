@@ -3,7 +3,7 @@ import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import { Row, Col, Card, CardHeader, CardBody, CardFooter, Button } from 'reactstrap'
 import { LinkContainer } from 'react-router-bootstrap'
-import * as notificationInfoActions from '../../../actions/notification/notificationInfoActions'
+import * as notificationEditActions from '../../../actions/notificationEdit/notificationEditActions'
 import NotificationInfo from './notificationInfo'
 //import Buttons from './buttons';
 import $ from 'jquery'
@@ -38,7 +38,7 @@ class NotificationEdit extends Component {
         // this.props.employeeInfoActions.getAvailablePositions(this.props.currentSeason.name, this.props.nextSeason.name, this.props.followingSeason.name)
         // this.props.employeeInfoActions.getPositionAssigns(this.state.staffId)
 
-         this.props.notificationInfoActions.getNotification(this.state.templatename).then(function () {
+         this.props.notificationEditActions.getNotification(this.state.templatename).then(function () {
      
             if (_this.props.notification != null) { 
                
@@ -81,10 +81,10 @@ class NotificationEdit extends Component {
         const val = event.target.value
 
 
-        this.props.notificationInfoActions.handleInputField(field, val)
+        this.props.notificationEditActions.handleInputField(field, val)
  
-     
-        
+
+             
       
     }  
 
@@ -154,7 +154,7 @@ function mapStateToProps(state) {
     
     return {
 
-       notification: state.notification.notification 
+       notification: state.notificationEdit.notification 
         // notification: state.planningEdit.planningInfo.position,
     }
 }
@@ -162,7 +162,7 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
     return {
         //positionInfoActions: bindActionCreators(positionInfoActions, dispatch),
-        notificationInfoActions: bindActionCreators(notificationInfoActions, dispatch)
+        notificationEditActions: bindActionCreators(notificationEditActions, dispatch)
     }
 }
 export default connect(

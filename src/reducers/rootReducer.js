@@ -9,6 +9,7 @@ import setting from './setting/settingRootReducer'
 import notification from './notification/notificationRootReducer'
 import planning from './planning/planningRootReducer'
 import planningEdit from './planningEdit/planningEditRootReducer'
+import notificationEdit from './notificationEdit/notificationEditReducer'
 import report from './report/reportRootReducer'
 
 export default combineReducers({
@@ -22,5 +23,6 @@ export default combineReducers({
     planningEdit,
     setting,
     notification,
+    notificationEdit,
     report
 })
