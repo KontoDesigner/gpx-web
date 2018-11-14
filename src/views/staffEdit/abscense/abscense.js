@@ -3,13 +3,15 @@ import { Row, Col } from 'reactstrap'
 import AbscenseInformation from './abscenseInformation'
 import ResignInformation from './resignInformation'
 import * as employeeInfoActions from '../../../actions/staffEdit/employeeInfoActions'
+import * as abscenseActions from '../../../actions/staffEdit/abscenseActions'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 
 class Abscense extends Component {
     constructor(props) {
         super(props);
-        this.state = {value: ''
+        this.state = {value: '',
+     
     
     
     };
@@ -35,13 +37,18 @@ class Abscense extends Component {
         this.props.handleUnsavedEdit()
     }
 
+
     handleStaffSelect = (field, val, selector) => {
-      
         const id = val != null ? val[selector] : undefined
 
-        this.props.employeeInfoActions.handleStaffField(field, id)
+        this.props.abscenseActions.handleStaffField(field, id)
 
         this.props.handleUnsavedEdit()
+    }
+
+    handleSelectTypes = ( field,val) => {
+                       
+        this.setState({field:val.id});
     }
 
 
@@ -54,6 +61,7 @@ class Abscense extends Component {
                         staff={this.props.staff} 
                         handleStaffDatePicker={this.handleStaffDatePicker}
                         handleStaffSelect={this.handleStaffSelect} 
+                        handleSelectTypes={this.handleSelectTypes} 
                         resignType={this.props.resignType}
                         
                         />
@@ -91,7 +99,9 @@ class Abscense extends Component {
 
 function mapDispatchToProps(dispatch) {
     return {
-        employeeInfoActions: bindActionCreators(employeeInfoActions, dispatch)
+        employeeInfoActions: bindActionCreators(employeeInfoActions, dispatch),
+        abscenseActions: bindActionCreators(abscenseActions, dispatch)
+        
     }
 }
 

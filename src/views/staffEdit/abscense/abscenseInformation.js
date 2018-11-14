@@ -73,15 +73,16 @@ const AbscenseInformation = (props) => {
                         <label htmlFor="absentReason">Reason</label>
 
                         <Select 
-                            id="absentReason"
-                            valueKey="id"
-                            labelKey="name"
-                            className="form-control"
-                            options={props.resignType}
-                            onChange={(v) => { props.handleStaffSelect('absentReason', v, 'id') }}
-                            value={props.staff.resignType === '' ? null : props.staff.resignType}
-                            placeholder="Absent Reason"
-                           
+    id="absentReason"
+    valueKey="id"
+    labelKey="name"
+    className="form-control"
+    options={props.resignType}
+    onChange={(v) => { props.handleStaffSelect('absentReason', v, 'id') }}
+    value={props.staff.absentReason === '' ? null : props.staff.absentReason}
+    placeholder="Select"
+
+
                             
                         />
                     </Col>

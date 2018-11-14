@@ -3,7 +3,9 @@ import { Row, Col } from 'reactstrap'
 import Education from './education'
 import Profiling from './profiling'
 import CvInformation from './cvInformation'
-
+import * as cvActions from '../../../actions/staffEdit/cvActions'
+import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
 
 class Cv extends Component {
     constructor(props) {
@@ -140,13 +142,13 @@ class Cv extends Component {
       }
 
       handleStaffSelect = (field, val, selector) => {
-      
         const id = val != null ? val[selector] : undefined
 
-        //this.props.employeeInfoActions.handleStaffField(field, id)
+        this.props.cvActions.handleStaffField(field, id)
 
-        //this.props.handleUnsavedEdit()
+        this.props.handleUnsavedEdit()
     }
+
 
 
     render() {
@@ -181,14 +183,14 @@ class Cv extends Component {
                         <Profiling
                             staff={this.props.staff}
                            // handleStaffDatePicker={this.handleStaffDatePicker}
-                            //handleStaffSelect={this.handleStaffSelect} 
+                            handleStaffSelect={this.handleStaffSelect} 
                             //allJobTitles={this.props.allJobTitles}
                             //handleChangeMultiple={this.props.handleChangeMultiple} 
                            // resignmentReasons={this.props.resignmentReasons}
                            suitable={this.state.suitable}
                            national={this.state.national}
                            international={this.state.international}
-                           handleStaffSelect={this.handleStaffSelect} 
+                     
 
 
 
@@ -210,4 +212,15 @@ class Cv extends Component {
     }
 }
 
-export default Cv
+function mapDispatchToProps(dispatch) {
+    return {
+        
+        cvActions: bindActionCreators(cvActions, dispatch)
+        
+    }
+}
+
+export default connect(
+    null,
+    mapDispatchToProps
+)(Cv)

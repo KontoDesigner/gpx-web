@@ -22,7 +22,7 @@ export function sendToCtx(model) {
 
             throw error
         }
-    }
+    } 
 }
 
 export function handleCurrentPositionAssignField(field, val) {

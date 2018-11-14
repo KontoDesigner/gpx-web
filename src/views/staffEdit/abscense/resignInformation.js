@@ -61,23 +61,7 @@ const resignInformation = (props) => {
                <Col sm="12" md="6" lg="6" xl="4" className="form-group form-group-select">
                         <label htmlFor="absentReason">Manager Reason</label>
 
-    {/* <div className="checkbox">
-        {props.options.map(option => {
-          return (
-            <label key={option} className="checkbox-inline">
-              <input
-                id={'ManagerReasons'}
-                name={'managerReasons'}
-                onChange={props.handleChange}
-                value={option}
-                checked={props.selectedOptions.indexOf(option) > -1}
-                type="checkbox"
-              />
-              {option}
-            </label>
-          );
-        })}
-      </div> */}
+
 
      <select multiple={true} value={props.staff.resignType} className="form-control" onChange={props.handleChangeMultiple}>
             <option value="" selected="selected" ></option>
@@ -94,15 +78,25 @@ const resignInformation = (props) => {
                         <label htmlFor="reasonForResignment">Reason for Resignment</label>
 
                         <Select 
-                            id="reasonForResignment"
+
+id="reasonForResignment"
+valueKey="id"
+labelKey="name"
+className="form-control"
+options={props.resignmentReasons}
+onChange={(v) => { props.handleStaffSelect('reasonForResignment', v, 'id') }}
+value={props.staff.reasonForResignment === '' ? null : props.staff.reasonForResignment}
+placeholder="Select"
+
+                            // id="reasonForResignment"
                             
-                            valueKey="id"
-                            labelKey="name"
-                            className="form-control"
-                            options={props.resignmentReasons}
-                            onChange={(v) => { props.handleStaffSelect('reasonForResignment', v, 'id') }}
-                            value={props.staff.resignmentReasons === '' ? null : props.staff.resignmentReasons}
-                            placeholder="ReasonForResignment"
+                            // valueKey="id"
+                            // labelKey="name"
+                            // className="form-control"
+                            // options={props.resignmentReasons}
+                            // onChange={(v) => { props.handleStaffSelect('reasonForResignment', v, 'id') }}
+                            // value={props.staff.resignmentReasons === '' ? null : props.staff.resignmentReasons}
+                            // placeholder="ReasonForResignment"
                            
                             
                         />
@@ -119,7 +113,7 @@ const resignInformation = (props) => {
                             className="form-control"
                             options={props.allJobTitles}
                             onChange={(v) => { props.handleStaffSelect('jobTitleWhenResigned', v, 'id') }}
-                            value={props.staff.resignmentReasons === '' ? null : props.staff.resignmentReasons}
+                            value={props.staff.jobTitleWhenResigned === '' ? null : props.staff.jobTitleWhenResigned}
                             placeholder="JobTitleWhenResigned"
                            
                             

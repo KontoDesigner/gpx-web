@@ -14,7 +14,9 @@ import { LinkContainer } from 'react-router-bootstrap'
 import Buttons from './buttons'
 import Tabs from './tabs'
 import * as employeeInfoActions from '../../actions/staffEdit/employeeInfoActions'
-
+//import * as abscenseActions from '../../actions/staffEdit/abscenseActions'
+import * as destinationHistoryActions from '../../actions/staffEdit/destinationHistoryActions'
+import * as applicationHistoryActions from '../../actions/staffEdit/applicationHistoryActions'
 import '../../styles/staffEdit.css'
 
 class StaffEdit extends Component {
@@ -142,7 +144,7 @@ class StaffEdit extends Component {
         }
 
         this.handleChangeMultiple = this.handleChangeMultiple.bind(this)
-        this.handleCheckBox = this.handleCheckBox.bind(this)
+       // this.handleCheckBox = this.handleCheckBox.bind(this)
     }
 
     async componentWillMount() {
@@ -154,6 +156,8 @@ class StaffEdit extends Component {
             this.props.followingSeason.name
         )
         this.props.employeeInfoActions.getPositionAssigns(this.state.staffId)
+        this.props.applicationHistoryActions.getResignHistory(this.state.staffId) 
+        this.props.destinationHistoryActions.getDestinationHistory(this.state.staffId)
 
         this.props.employeeInfoActions.getStaff(this.state.staffId).then(function() {
             //debugger;
@@ -183,20 +187,6 @@ class StaffEdit extends Component {
     }
 
     //*  *************************************************************************'
-    handleCheckBox(e) {
-        const newSelection = e.target.value
-        let newSelectionArray
-
-        if (this.state.newUser.skills.indexOf(newSelection) > -1) {
-            newSelectionArray = this.state.newUser.skills.filter(s => s !== newSelection)
-        } else {
-            newSelectionArray = [...this.state.newUser.skills, newSelection]
-        }
-
-        this.setState(prevState => ({
-            newUser: { ...prevState.newUser, skills: newSelectionArray }
-        }))
-    }
 
     handleChangeMultiple(e) {
         var options = e.target.options
@@ -299,7 +289,9 @@ class StaffEdit extends Component {
                                 </TabPane>
 
                                 <TabPane tabId="cv">
-                                    <Cv staff={this.props.staff} />
+                                    <Cv staff={this.props.staff} 
+                                    handleUnsavedEdit={this.handleUnsavedEdit}
+                                    />
                                 </TabPane>
 
                                 <TabPane tabId="abscense">
@@ -319,7 +311,10 @@ class StaffEdit extends Component {
                                 </TabPane>
 
                                 <TabPane tabId="applications">
-                                    <Applications />
+                                    <Applications 
+                                    applicationHistory={this.props.applicationHistory}
+                                    
+                                    />
                                 </TabPane>
 
                                 <TabPane tabId="team">
@@ -327,7 +322,11 @@ class StaffEdit extends Component {
                                 </TabPane>
 
                                 <TabPane tabId="history">
-                                    <History />
+                                {this.props.destinationHistory && 
+                                    <History
+                                    destinationHistory={this.props.destinationHistory}
+                                     />
+                                }
                                 </TabPane>
                             </TabContent>
                         </Col>
@@ -351,13 +350,18 @@ function mapStateToProps(state) {
         followingPositionAssign: state.staffEdit.employeeInfo.followingPositionAssign,
         currentSeason: state.geography.currentSeason,
         nextSeason: state.geography.nextSeason,
-        followingSeason: state.geography.followingSeason
+        followingSeason: state.geography.followingSeason,
+        destinationHistory: state.staffEdit.destinationHistory,
+        applicationHistory: state.staffEdit.applicationHistory
     }
 }
 
 function mapDispatchToProps(dispatch) {
     return {
-        employeeInfoActions: bindActionCreators(employeeInfoActions, dispatch)
+        employeeInfoActions: bindActionCreators(employeeInfoActions, dispatch),
+      //  abscenseActions: bindActionCreators(abscenseActions, dispatch),
+        destinationHistoryActions: bindActionCreators(destinationHistoryActions, dispatch),
+        applicationHistoryActions: bindActionCreators(applicationHistoryActions, dispatch)
     }
 }
 

@@ -10,7 +10,7 @@ class History extends Component {
             <div>
                 <Row>
                     <Col>
-                        <DestinationHistory />
+                        <DestinationHistory destinationHistory={this.props.destinationHistory} />
                     </Col>
                 </Row>
 

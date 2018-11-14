@@ -8,7 +8,9 @@ class Applications extends Component {
             <div>
                 <Row>
                     <Col>
-                        <SubmittedApplicationForms />
+                    <SubmittedApplicationForms
+                    applicationHistory={this.props.applicationHistory} 
+                    />
                     </Col>
                 </Row>
             </div>

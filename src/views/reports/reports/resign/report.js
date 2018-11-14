@@ -1,7 +1,7 @@
 
 
 import React, { Component } from 'react'
-import Moment from 'react-moment';
+import moment from 'moment';
 import { Card, CardBody, CardHeader, Col,Button } from 'reactstrap'
 import TextInput from '../../../../components/textInput'
 import Select from 'react-select'
@@ -39,7 +39,7 @@ const Report = (props) => {
           onChange = { props.handleDestinationSelect }
           value={props.selectedDestination}
           placeholder="All Destinations"
-  
+        
         />
         <p></p>
 
@@ -52,8 +52,8 @@ const Report = (props) => {
     valueKey="appDate"
     labelKey="appDate"
     className="form-control"
+    //options={moment(props.resigndate).format('YYYY-MM-DD')}
     options={props.resigndate}
-
 
    onChange = { props.handleMonthSelect }
    value={props.selectedResignDates}

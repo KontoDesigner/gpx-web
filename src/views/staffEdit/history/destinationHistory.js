@@ -1,17 +1,28 @@
 import React, { Component } from 'react'
-import { Card, CardBody, CardHeader } from 'reactstrap'
+import { ListGroup, ListGroupItem, Card, CardBody, CardHeader } from 'reactstrap'
 
 
-const DestinationHistory = () => {
+
+const DestinationHistory = (props) => {
     return (
         <Card>
-            <CardHeader>DestinationHistory</CardHeader>
+            <CardHeader>DestinationHistory {props.destinationHistory.length}</CardHeader>
 
             <CardBody>
-            DestinationHistory
+                <ListGroup>
+                    {props.destinationHistory.map(h => (
+                        <ListGroupItem>{h.destination} {h.jobTitle}</ListGroupItem>
+                    ))
+                    }
+
+                </ListGroup>
+
+                
             </CardBody>
         </Card>
     );
 };
+
+
 
 export default DestinationHistory

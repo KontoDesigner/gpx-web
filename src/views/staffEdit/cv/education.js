@@ -22,15 +22,26 @@ const Education = (props) => {
                         <label htmlFor="childCare">Childcare Level</label>
 
                         <Select 
-                            id="childCare"
+                           id="childCare"
+                           valueKey="id"
+                           labelKey="name"
+                           className="form-control"
+                           options={props.childCareLevels}
+                           onChange={(v) => { props.handleStaffSelect('childCare', v, 'id') }}
+                           value={props.staff.childCare === '' ? null : props.staff.childCare}
+                           placeholder="Select"
+
+
+                        //    id="childCare"
                             
-                            valueKey="id"
-                            labelKey="name"
-                            className="form-control"
-                            options={props.childCareLevels}
-                            onChange={(v) => { props.handleStaffSelect('reasonForResignment', v, 'id') }}
-                            value={props.staff.resignmentReasons === '' ? null : props.staff.resignmentReasons}
-                            placeholder="childCare"
+                        //    valueKey="id"
+                        //    labelKey="name"
+                        //    className="form-control"
+                        //    options={props.childCareLevels}
+                        //    onChange={(v) => { props.handleStaffSelect('reasonForResignment', v, 'id') }}
+                        //    value={props.staff.resignmentReasons === '' ? null : props.staff.resignmentReasons}
+                        //    placeholder="childCare"
+
                            
                             
                         />

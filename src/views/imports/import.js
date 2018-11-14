@@ -32,16 +32,14 @@ const Import = (props) => {
           value={props.importType}
          placeholder="Select"
         />
+
+
  <input
-                    
-             
-                    onChange={e => props.handleFile(e.target.files[0])}
-                    type="file"
-                    name="file"
-                    id="file"
-                />
-
-
+onChange={e => props.handleFile(e.target.files[0])}
+ type="file"
+name="file"
+id="file"
+/>
         <p></p>
            <Button   color="success"  onClick={() => { props.create() }}>Start Import</Button>
   

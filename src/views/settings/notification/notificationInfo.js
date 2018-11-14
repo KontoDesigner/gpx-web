@@ -25,10 +25,10 @@ const NotificationEdit = (props) => {
                 <div className="form-row">
 
                           <Col sm="12" md="6" lg="6" xl="4" className="form-group">
-                        <TextInput name="subject" label="Subject"  value={props.notification.subject}  />
+                        <TextInput name="subject" label="Subject"  value={props.notification.subject} onChange={props.handleInputField}  />
                     </Col> 
                 <Col sm="12" md="6" lg="6" xl="4" className="form-group">
-                        <TextInput name="templateName" label="Template name"  value={props.notification.templateName}  />
+                        <TextInput name="templateName" label="Template name"  value={props.notification.templateName}onChange={props.handleInputField}  />
                     </Col>
                           <Col sm="12" md="6" lg="6" xl="4" className="form-group">
                         <TextInput name="templateType" label="Template type"  value={props.notification.templateType} onChange={props.handleInputField} />
@@ -37,13 +37,13 @@ const NotificationEdit = (props) => {
               
 
                           <Col sm="12" md="6" lg="6" xl="4" className="form-group">
-                        <TextInput name="language" label="Language"  value={props.notification.language}  />
+                        <TextInput name="language" label="Language"  value={props.notification.language} onChange={props.handleInputField} />
                     </Col>
 
                  
 
                              <Col sm="12" md="6" lg="6" xl="4" className="form-group">
-                        <TextInput name="description" label="Description"  value={props.notification.description}  />
+                        <TextInput name="description" label="Description"  value={props.notification.description} onChange={props.handleInputField} />
                     </Col>
 
               <Col sm="12" md="12" lg="12" xl="12" className="form-group">
