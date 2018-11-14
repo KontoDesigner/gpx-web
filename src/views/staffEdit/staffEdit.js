@@ -16,7 +16,7 @@ import Tabs from './tabs'
 import * as employeeInfoActions from '../../actions/staffEdit/employeeInfoActions'
 
 import '../../styles/staffEdit.css'
- 
+
 class StaffEdit extends Component {
     constructor(props) {
         super()
@@ -29,9 +29,9 @@ class StaffEdit extends Component {
         this.state = {
             activeTab: 'employeeInfo',
             staffId: staffId,
-            newUser:{
-            skills:[],
-        },
+            newUser: {
+                skills: []
+            },
             positionTypes: [
                 {
                     id: 'Posted',
@@ -80,8 +80,7 @@ class StaffEdit extends Component {
                 {
                     id: ' Other (Please Specify)',
                     name: ' Other (Please Specify)'
-                },
-               
+                }
             ],
 
             managerReason: [
@@ -96,10 +95,8 @@ class StaffEdit extends Component {
                 {
                     id: ' Other (Please Specify)',
                     name: ' Other (Please Specify)'
-                },
-               
+                }
             ],
-
 
             resignmentReasons: [
                 {
@@ -137,22 +134,19 @@ class StaffEdit extends Component {
                 {
                     id: 'Found a new job',
                     name: 'Found a new job'
-                },
-               
+                }
             ],
-            skillOptions: ["Programming", "Development", "Design", "Testing"],
-        
-            
+            skillOptions: ['Programming', 'Development', 'Design', 'Testing'],
+
             unsavedEdit: false
         }
 
-        this.handleChangeMultiple = this.handleChangeMultiple.bind(this);
-        this.handleCheckBox = this.handleCheckBox.bind(this);
+        this.handleChangeMultiple = this.handleChangeMultiple.bind(this)
+        this.handleCheckBox = this.handleCheckBox.bind(this)
     }
 
     async componentWillMount() {
         const _this = this
-      
 
         this.props.employeeInfoActions.getAvailablePositions(
             this.props.currentSeason.name,
@@ -160,9 +154,8 @@ class StaffEdit extends Component {
             this.props.followingSeason.name
         )
         this.props.employeeInfoActions.getPositionAssigns(this.state.staffId)
-        
+
         this.props.employeeInfoActions.getStaff(this.state.staffId).then(function() {
-            
             //debugger;
 
             if (_this.props.staff != null) {
@@ -189,53 +182,50 @@ class StaffEdit extends Component {
         }
     }
 
-
-
-//*  *************************************************************************'
+    //*  *************************************************************************'
     handleCheckBox(e) {
-        const newSelection = e.target.value;
-        let newSelectionArray;
-    
+        const newSelection = e.target.value
+        let newSelectionArray
+
         if (this.state.newUser.skills.indexOf(newSelection) > -1) {
-          newSelectionArray = this.state.newUser.skills.filter(
-            s => s !== newSelection
-          );
+            newSelectionArray = this.state.newUser.skills.filter(s => s !== newSelection)
         } else {
-          newSelectionArray = [...this.state.newUser.skills, newSelection];
+            newSelectionArray = [...this.state.newUser.skills, newSelection]
         }
-    
+
         this.setState(prevState => ({
-          newUser: { ...prevState.newUser, skills: newSelectionArray }
-        }));
-      }
+            newUser: { ...prevState.newUser, skills: newSelectionArray }
+        }))
+    }
 
-    handleChangeMultiple (e) {
+    handleChangeMultiple(e) {
+        var options = e.target.options
+        var value = []
+        for (var i = 0, l = options.length; i < l; i++) {
+            if (options[i].selected) {
+                value.push(options[i].value)
+            }
+        }
 
-        var options = e.target.options;
-        var value = [];
-                for (var i = 0, l = options.length; i < l; i++) {
-                  if (options[i].selected) {
-                     
-                    value.push(options[i].value);
-                  }
-                }
+        this.setState({ value: value })
+    }
+    //************************************************************************** */
 
-         this.setState({value: value});
-      }
-      //************************************************************************** */
-
-    send = (destination, positionStart) => {
+    send = positionAssign => {
         const model = {
             Id: this.props.staff.staffID,
-            Name: this.props.staff.firstName + ' ' + this.props.staff.lastName,
+            FirstName: this.props.staff.firstName,
+            LastName: this.props.staff.lastName,
             DateOfBirth: this.props.staff.dateOfBirth,
             SourceMarket: this.props.staff.sourceMarket,
             Phone: this.props.staff.phone,
             Gender: this.props.staff.title,
-            Destination: destination,
-            PositionStart: positionStart
+            Destination: positionAssign.Destination,
+            PositionStart: positionAssign.PositionStartDate,
+            JobTitle: positionAssign.JobTitle,
+            IataCode: positionAssign.IataCode
         }
- 
+
         this.props.employeeInfoActions.sendToCtx(model)
     }
 
@@ -251,7 +241,7 @@ class StaffEdit extends Component {
             return ''
         } else if (this.props.staff === undefined) {
             //Not found
-            return ( 
+            return (
                 <Card>
                     <CardHeader>Could not find staff</CardHeader>
 
@@ -309,33 +299,28 @@ class StaffEdit extends Component {
                                 </TabPane>
 
                                 <TabPane tabId="cv">
-                                    <Cv
-                                    staff={this.props.staff}
-                                    />
-                                    
+                                    <Cv staff={this.props.staff} />
                                 </TabPane>
 
-                                   <TabPane tabId="abscense">
+                                <TabPane tabId="abscense">
                                     <Abscense
-                                    staff={this.props.staff}
-                                    handleUnsavedEdit={this.handleUnsavedEdit}
-                                    resignType={this.state.resignType}
-                                    resignmentReasons={this.state.resignmentReasons}
-                                    handleChangeMultiple={this.handleChangeMultiple}
-                                    allJobTitles={this.props. allJobTitles}
-                                    // title={"Skills"}
-                                    // name={"skills"}
-                                    // options={this.state.skillOptions}
-                                    // selectedOptions={this.state.newUser.skills}
-                                    // handleChange={this.handleCheckBox}
+                                        staff={this.props.staff}
+                                        handleUnsavedEdit={this.handleUnsavedEdit}
+                                        resignType={this.state.resignType}
+                                        resignmentReasons={this.state.resignmentReasons}
+                                        handleChangeMultiple={this.handleChangeMultiple}
+                                        allJobTitles={this.props.allJobTitles}
+                                        // title={"Skills"}
+                                        // name={"skills"}
+                                        // options={this.state.skillOptions}
+                                        // selectedOptions={this.state.newUser.skills}
+                                        // handleChange={this.handleCheckBox}
                                     />
                                 </TabPane>
 
                                 <TabPane tabId="applications">
                                     <Applications />
                                 </TabPane>
-
-                              
 
                                 <TabPane tabId="team">
                                     <Team />
@@ -372,8 +357,7 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
     return {
-        employeeInfoActions: bindActionCreators(employeeInfoActions, dispatch),
- 
+        employeeInfoActions: bindActionCreators(employeeInfoActions, dispatch)
     }
 }
 
