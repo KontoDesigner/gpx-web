@@ -23,6 +23,8 @@ class RestClient {
         }
     }
 
+    
+
     static async Post(url, data) {
         let baseUrl = `${restClientConfig.baseUrl}/api/`
 
@@ -78,6 +80,45 @@ class RestClient {
         } catch (err) {
             toastr.error('Error', `An unexpected error has occured: ${err}.`);
 
+            console.warn(err)
+        }
+    }
+
+   static async  Upload(url, file, data = [], useBaseUrl = true) {
+        try {
+            //File
+            var formData = new FormData()
+            formData.append('file', file)
+    
+            //Data
+            for (var item of data) {
+                formData.append(item.key, item.value)
+            }
+    
+            let baseUrl = `${restClientConfig.baseUrl}/api/`
+
+            var axiosInstance = axios.create({
+                baseURL: baseUrl
+            })
+    
+            console.log(`[UPLOAD] ${baseUrl + url}`, formData)
+    
+            const options = {
+                method: 'POST',
+                data: formData,
+                config: {
+                  headers: {
+                    'Content-Type': 'multipart/form-data'
+                  }
+                }
+              };
+    
+            //const response = await axios.post(baseUrl + url, formData)
+            let response = await adalApiFetch(axiosInstance, baseUrl + url, options)
+            return response.data
+        } catch (err) {
+            toastr.error('', `An unexpected error has occured: ${err}.`)
+    
             console.warn(err)
         }
     }

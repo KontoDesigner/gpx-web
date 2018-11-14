@@ -2,30 +2,27 @@ import React, { Component } from 'react'
 import { Row, Col } from 'reactstrap'
 import Import from './import'
 import Tabs from './tabs'
+import RestClient from '../../infrastructure/restClient'
+import { toastr } from 'react-redux-toastr'
 class Imports extends Component {
 
     constructor(props) {
         super(props)
-       
+       // this.downloadBtn = React.createRef()
         this.state = {
+            importType:'',
+            fileName:null,
             activeTab: 'fileImport',
-            years: [    //not in use  delete
+            importTypes: [    //not in use  delete
                 {
-                    id: '2018',
-                    name: '2018'
+                    id: 'Staff',
+                    name: 'Staff'
                 },
                 {
-                    id: '2019',
-                    name: '2019'
+                    id: 'Position',
+                    name: 'Position'
                 },
-                {
-                    id: '2020',
-                    name: '2020'
-                },
-                {
-                    id: '2021',
-                    name: '2021'
-                }
+          
             ],
            
         }
@@ -34,28 +31,61 @@ class Imports extends Component {
 
 
     }
-  
+
+    handleImportType = ( val) => {
+                       
+        this.setState({importType:val.id});
+    }
+
+    handleFile=(fileName) => {
+   this.setState({fileName})
+
+    }
+
     toggle = (tab, getData, resetData) => {
-     
+  
         if (this.state.activeTab !== tab) {
             //Reset current tab state
-            this.state.resetData([])
+            //this.state.resetData([])
 
             //Reset filter
-           // this.props.filterActions.handleFilter()
+            //this.props.filterActions.handleFilter()
 
             //Get tab data
-            getData()
+            //getData()
 
             this.setState({
                 activeTab: tab,
-                resetData: resetData
+                //resetData: resetData
             })
         }
     }
+  
+    create = async(model) => {
+        // this.props.settingActions.save()
+      
+      
+      try {
+          const res =  await RestClient.Upload('import/UploadFile/'+ this.state.importType,this.state.fileName)
+      
+       this.setState({fileName:'', importType:''})
+      
+           if (res) {
+              toastr.success('Success', `Import routine finsihed`)
+       } else {
+              toastr.error('Error', `Could not Import: ${res ? res.message : 'Error'}`)
+          }
+      } catch (error) {
+         // dispatch(ajaxCallError(error))
+      
+          throw error
+      }
+      
+      }
     render() {
         return (
             <div>
+                
                 <Row>
                   
                     <Tabs
@@ -66,7 +96,12 @@ class Imports extends Component {
                             <Col sm="12" md="9" lg="9" xl="10">
                         <Import 
                         fileimportTypes={this.state.fileimportTypes}
-                        years={this.state.years}
+                        importTypes={this.state.importTypes}
+                        handleFile={this.handleFile}
+                        handleImportType={this.handleImportType}
+                        importType={this.state.importType}
+                        create={this.create}
+                        //downloadBtn={this.downloadBtn}
                         />
                     </Col>
                 </Row>

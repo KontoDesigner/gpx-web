@@ -104,7 +104,7 @@ const Tabs = (props) => {
                                 props.history.push(`imports`)
                                 // props.getNewEmployee,
                                 // props.handleNewEmployee
-                                //props.toggle('imports') 
+                                //this.toggle('imports') 
                                   //  props.getNewEmployee,
                                     //props.handleNewEmployee)
                             }}>
