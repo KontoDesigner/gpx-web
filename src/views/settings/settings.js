@@ -10,7 +10,7 @@ import RestClient from '../../infrastructure/restClient'
 import Notification from  './notification/cfgNotification'
 import Setting from './setting/cfgSetting'
 import $ from 'jquery'
-
+//import Buttons from './buttons'
 
 class Settings extends Component {
 
@@ -239,7 +239,7 @@ handleCurSeasonOld = event => {
     }
 
     render() {
-       
+
         
         return (
             <Row>
@@ -257,7 +257,7 @@ handleCurSeasonOld = event => {
                   
                 />
 
-                
+                  
              
                 <Col sm="12" md="9" lg="9" xl="10">
                     <TabContent activeTab={this.state.activeTab}>

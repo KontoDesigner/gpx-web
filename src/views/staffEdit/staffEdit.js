@@ -85,7 +85,7 @@ class StaffEdit extends Component {
                 }
             ],
 
-            managerReason: [
+            managerReasons: [
                 {
                     id: 'Dismissed',
                     name: 'Dismissed'
@@ -196,7 +196,7 @@ class StaffEdit extends Component {
                 value.push(options[i].value)
             }
         }
-
+        console.log(value)
         this.setState({ value: value })
     }
     //************************************************************************** */
@@ -299,9 +299,11 @@ class StaffEdit extends Component {
                                         staff={this.props.staff}
                                         handleUnsavedEdit={this.handleUnsavedEdit}
                                         resignType={this.state.resignType}
+                                        managerReasons={this.state.managerReasons}
                                         resignmentReasons={this.state.resignmentReasons}
                                         handleChangeMultiple={this.handleChangeMultiple}
                                         allJobTitles={this.props.allJobTitles}
+                                        applicationHistory={this.props.applicationHistory}
                                         // title={"Skills"}
                                         // name={"skills"}
                                         // options={this.state.skillOptions}
