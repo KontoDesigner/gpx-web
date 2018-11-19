@@ -126,7 +126,7 @@ class EmployeeInfo extends Component {
                 </Row>
 
                  <Row className="row-panel-4"> 
-                    <Col sm="6" md="6" lg="6">
+                    <Col sm="12" md="12" lg="12">
                         <Season
                             title={'Placement 1'}
                             positionAssign={this.props.currentPositionAssign}
@@ -144,8 +144,8 @@ class EmployeeInfo extends Component {
                     {/* <Col sm="12" md="12" lg="4">
                         <Gap />
                     </Col> */}
-    {/* <Row className="row-panel-2"> */}
-                    <Col sm="6" md="6" lg="6">
+
+                    <Col sm="12" md="12" lg="12">
                         <Season
                             title={'Placement 2'}
                             positionAssign={this.props.nextPositionAssign}
@@ -159,9 +159,23 @@ class EmployeeInfo extends Component {
                             send={this.props.send}
                         />
                         </Col>
-                          </Row>
-                            {/* <Row className="row-panel-2"> 
-                    <Col sm="6" md="6" lg="6"> 
+
+                         <Col sm="12" md="12" lg="12">
+                        <Season
+                            title={'Placement 3'}
+                            positionAssign={this.props.nextPositionAssign}
+                            availablePositions={this.props.nextAvailablePositions}
+                            assignRole={this.assignRole}
+                            removeRole={this.removeRole}
+                            moveRole={this.moveRole}
+                            season={this.props.nextSeason}
+                            handleUnsavedEdit={this.props.handleUnsavedEdit}
+                            handlePositionAssignField={(field, val) => this.props.employeeInfoActions.handleNextPositionAssignField(field, val)}
+                            send={this.props.send}
+                        />
+                        </Col>
+                  
+                    {/* <Col sm="6" md="6" lg="6"> 
                         <PlannedMove />
                         </Col>
                         <Col sm="6" md="6" lg="6"> 
@@ -171,14 +185,15 @@ class EmployeeInfo extends Component {
                             availablePositions={this.props.followingAvailablePositions}
                             assignRole={this.assignRole}
                             removeRole={this.removeRole}
-                            moveRole={this.moveRole}
+                            moveRole={this.moveRole} 
                             season={this.props.followingSeason}
                             handleUnsavedEdit={this.props.handleUnsavedEdit}
                             handlePositionAssignField={(field, val) => this.props.employeeInfoActions.handleFollowingPositionAssignField(field, val)}
                             send={null}
                         />
-                    </Col>
-                </Row> */}
+                    </Col> */}
+                    
+                </Row> 
 
                 <Row>
                     <Col>
