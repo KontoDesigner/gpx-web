@@ -28,7 +28,7 @@ const JobTitleTable = (props) => {
 
   return (
     <div>
-      <ContextMenu id={contextMenuId}>
+      {/* <ContextMenu id={contextMenuId}>
         <MenuItem data={{ foo: 'bar' }} onClick={onContextMenuClick}>
           ContextMenu Item 1
           </MenuItem>
@@ -38,7 +38,7 @@ const JobTitleTable = (props) => {
         <MenuItem data={{ foo: 'bar' }} onClick={onContextMenuClick}>
           ContextMenu Item 3
           </MenuItem>
-      </ContextMenu>
+      </ContextMenu> */}
 
       <Table
        
@@ -46,10 +46,13 @@ const JobTitleTable = (props) => {
         contextMenuId={contextMenuId}
         columns={columns}
         checkbox={true}
-        identifier={'staffID'}
+        identifier={'mplID'}
         edit={props.edit}
         updateSelectedState={props.handleSelectedTitle}
         selected={props.selectedTitle}
+
+
+   
       />
     </div>
   )

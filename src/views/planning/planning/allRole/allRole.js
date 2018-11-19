@@ -14,7 +14,7 @@ class AllRole extends Component {
           <div className="form-row">
           <Filter getData={this.props.getAllRole} />
 
-            <Action selected={this.props.selectedRole} />
+            <Action selected={this.props.selectedTitle} />
           </div>
 
           {this.props.allRoles.map((allRole, index) =>

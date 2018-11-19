@@ -14,7 +14,7 @@ class PlacedRole extends Component {
           <div className="form-row">
           <Filter getData={this.props.getPlacedRole} />
 
-            <Action selected={this.props.selectedRole} />
+            <Action selected={this.props.selectedTitle} />
           </div>
 
           {this.props.placedRoles.map((placedRole, index) =>

@@ -19,7 +19,7 @@ const PersonTable = (props) => {
 
   return (
     <div>
-      <ContextMenu id={contextMenuId}>
+      {/* <ContextMenu id={contextMenuId}>
         <MenuItem data={{ foo: 'bar' }} onClick={onContextMenuClick}>
           ContextMenu Item 1
           </MenuItem>
@@ -29,7 +29,7 @@ const PersonTable = (props) => {
         <MenuItem data={{ foo: 'bar' }} onClick={onContextMenuClick}>
           ContextMenu Item 3
           </MenuItem>
-      </ContextMenu>
+      </ContextMenu> */}
 
       <Table
         list={props.persons}

@@ -14,7 +14,7 @@ class YesNoRole extends Component {
           <div className="form-row">
             <Filter getData={this.props.getreplyYesNoRole} />
           
-            <Action selected={this.props.selectedRole} />
+            <Action selected={this.props.selectedTitle} />
           
           </div>
 

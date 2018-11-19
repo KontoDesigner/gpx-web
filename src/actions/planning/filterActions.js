@@ -11,13 +11,20 @@ export function handleSourceMarket(sourceMarket) {
   return {
     type: types.HANDLE_SOURCEMARKET,
     data: { sourceMarket: sourceMarket }
-  }
+  } 
 }
 
 export function handleSelectedJobFamily(selectedJobFamily) {
   return {
     type: types.HANDLE_SELECTEDJOBFAMILY,
     data: { selectedJobFamily: selectedJobFamily }
+  }
+}
+
+export function handleSelectedTitle(selectedTitle) {
+  return {
+    type: types.HANDLE_SELECTEDTITLE,
+    data: { selectedTitle: selectedTitle }
   }
 }
 

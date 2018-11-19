@@ -11,7 +11,7 @@ export default function filterReducer(state = defaultState, action) {
     case types.HANDLE_SELECTEDTITLE:
       return {
         ...state,
-        selectedStaff: action.data.selectedTitle
+        selectedTitle: action.data.selectedTitle
       }
     case types.HANDLE_FILTER:
       return defaultState
