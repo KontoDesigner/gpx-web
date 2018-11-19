@@ -15,11 +15,13 @@ const NotificationEdit = props => {
   }
 
   return (
+
     <Card>
       <CardHeader>Mail Templates </CardHeader>
 
       <CardBody className="no-padding-bottom">
         <div className="form-row">
+
           <Col sm="12" md="6" lg="6" xl="4" className="form-group">
             <TextInput
               name="subject"

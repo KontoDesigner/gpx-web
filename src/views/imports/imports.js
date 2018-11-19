@@ -73,9 +73,9 @@ class Imports extends Component {
        this.setState({fileName:'', importType:''})
       
            if (res) {
-              toastr.success('Success', `Import routine finsihed`)
+              toastr.success('Success', `GPX - Import routine finished`)
        } else {
-              toastr.error('Error', `Could not Import: ${res ? res.message : 'Error'}`)
+              toastr.error('Error', `GPX - Could not Import: ${res ? res.message : 'Error'}`)
           }
       } catch (error) {
          // dispatch(ajaxCallError(error))

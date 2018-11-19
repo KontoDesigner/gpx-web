@@ -33,7 +33,7 @@ const Import = (props) => {
          placeholder="Select"
         />
 
-
+<p></p>
  <input
 onChange={e => props.handleFile(e.target.files[0])}
  type="file"

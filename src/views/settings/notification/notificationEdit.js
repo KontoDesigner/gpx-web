@@ -5,7 +5,7 @@ import { Row, Col, Card, CardHeader, CardBody, CardFooter, Button } from 'reacts
 import { LinkContainer } from 'react-router-bootstrap'
 import * as notificationEditActions from '../../../actions/notificationEdit/notificationEditActions'
 import NotificationInfo from './notificationInfo'
-//import Buttons from './buttons';
+//import Buttons from '../buttons';
 import $ from 'jquery'
 import { toastr } from 'react-redux-toastr'
 import RestClient from '../../../infrastructure/restClient'
@@ -19,7 +19,7 @@ class NotificationEdit extends Component {
             match: { params }
         } = props
         const templatename = params.templatename 
-
+       
         
 
         this.state = {
@@ -89,10 +89,7 @@ class NotificationEdit extends Component {
     }  
 
     render() {
-    //     const buttons = <Buttons
-    //     save={this.save}
-    //     unsavedEdit={this.state.unsavedEdit}
-    // />
+     
         if (this.props.notification === null) {
             //Loading
             return ''
@@ -119,12 +116,12 @@ class NotificationEdit extends Component {
         } else {
             //Found
             return (
-            
+             
                 <div>
-                   
+              
 
                     <Row>
-                        
+                  
                     </Row>
 
                     <Row>

@@ -6,7 +6,7 @@ import { LinkContainer } from 'react-router-bootstrap'
 import * as planningInfoActions from '../../actions/planningEdit/planningInfoActions'
 import PlanningInfo from './planningInfo/planningInfo'
 //import Buttons from './buttons';
-
+import Tabs from './tabs'
 
 class PlanningEdit extends Component {
 
@@ -85,7 +85,7 @@ class PlanningEdit extends Component {
             return (
             
                 <div>
-                   
+                
 
                     <Row>
                         
