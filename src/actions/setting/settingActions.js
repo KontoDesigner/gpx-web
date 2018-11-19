@@ -9,6 +9,13 @@ export function handleSettingField(field, val) {
     }
 }
 
+export function handleSelectedSetting(selectedSetting) {
+    return {
+      type: types.HANDLE_SELECTEDSETTING,
+      data: { selectedSetting: selectedSetting }
+    }
+  }
+  
 
 // export function getJobFamilySuccess(jobFamily) {
 //     return {

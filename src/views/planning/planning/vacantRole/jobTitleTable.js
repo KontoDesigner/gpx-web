@@ -4,19 +4,19 @@ import Table from '../../../../components/table.js';
 
 const columns = [
   { label: 'MPLID', dataKey: 'mplID' },
-  { label: 'MPLIDVersion', dataKey: 'mplIDVersion' },
+  //{ label: 'MPLIDVersion', dataKey: 'mplIDVersion' },
 
-  { label: 'Concept Hotel', dataKey: 'concepthotel' },
+  { label: 'JobTitle', dataKey: 'jobTitle' },
   { label: 'Profile', dataKey: 'profile' },
-  { label: 'MPLDL Required', dataKey: 'plDlRequir.' },
+
   { label: 'Source Market', dataKey: 'sourceMarket' },
   { label: 'Position Type', dataKey: 'positionType' },
-  { label: 'Languages', dataKey: 'languages' },
+  //{ label: 'Languages', dataKey: 'languages' },
   { label: 'HighSeason', dataKey: 'highseason' },
   { label: 'StartDate', dataKey: 'startDate' },
   { label: 'DepDate', dataKey: 'endDate' },
-  { label: 'Placed', dataKey: 'firstNameLastName' },
-  { label: 'Id', dataKey: 'staffID' }
+  //{ label: 'Placed', dataKey: 'firstNameLastName' },
+ // { label: 'Id', dataKey: 'staffID' }
 ];
 
 const JobTitleTable = (props) => {

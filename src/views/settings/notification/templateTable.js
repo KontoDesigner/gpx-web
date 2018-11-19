@@ -23,7 +23,7 @@ const TemplateTable = props => {
 
     return (
         <div>
-            <ContextMenu id={contextMenuId}>
+            {/* <ContextMenu id={contextMenuId}>
                 <MenuItem data={{ foo: 'bar' }} onClick={onContextMenuClick}>
                     ContextMenu Item 1
                 </MenuItem>
@@ -33,7 +33,7 @@ const TemplateTable = props => {
                 <MenuItem data={{ foo: 'bar' }} onClick={onContextMenuClick}>
                     ContextMenu Item 3
                 </MenuItem>
-            </ContextMenu>
+            </ContextMenu> */}
             <Table
                 list={props.notification}
                 contextMenuId={contextMenuId}
@@ -41,8 +41,9 @@ const TemplateTable = props => {
                 checkbox={true}
                 identifier={'templateName'}
                 edit={props.edit}
-               // updateSelectedState={props.handleSelectedTitle}
+               updateSelectedState={props.handleSelectedNotification} 
                 selected={props.selectedNotification}
+                //selected={props.selectedSetting}
                 maxTableHeight={props.maxTableHeight}
             />
         </div>

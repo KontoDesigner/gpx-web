@@ -2,7 +2,9 @@ import React from 'react';
 import { UncontrolledDropdown, DropdownToggle, DropdownMenu, DropdownItem, Col } from 'reactstrap'
 
 const Action = (props) => {
-    debugger;
+
+
+    
     return (
         <Col sm="12" md="4" lg="3" xl="3" className="form-group">
             <UncontrolledDropdown title={props.selected !== undefined && props.selected.length > 0 ? `${props.selected.length} selected` : ''}>
@@ -11,7 +13,11 @@ const Action = (props) => {
                 </DropdownToggle>
 
                 <DropdownMenu>
-                    <DropdownItem title=" ">Another Action</DropdownItem>
+
+
+                    <DropdownItem title=" ">Mark As Absent</DropdownItem>
+                    <DropdownItem title=" ">Mark As Resign</DropdownItem>
+                    <DropdownItem title=" ">Send Mail ( Using Template)</DropdownItem>
                 </DropdownMenu>
             </UncontrolledDropdown>
         </Col>

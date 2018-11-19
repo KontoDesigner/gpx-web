@@ -51,6 +51,32 @@ const Tabs = props => {
                     </ListGroup>
                 </CardBody>
             </Card>
+            <Card>
+                <CardHeader>Other</CardHeader>
+
+                <CardBody className="no-padding">
+                    <ListGroup>
+                        <ListGroupItem
+                            className={classnames({ active: props.activeTab === 'filemports' })}
+                            onClick={() => {
+                               // const win = window.open(`/imports/`, '_this');
+                                props.history.push(`imports`)
+                                // props.getNewEmployee,
+                                // props.handleNewEmployee
+                                //this.toggle('imports') 
+                                  //  props.getNewEmployee,
+                                    //props.handleNewEmployee)
+                            }}>
+
+                    
+                            Add New Position(s)
+                </ListGroupItem>
+        
+                    </ListGroup>
+                    
+                </CardBody>
+                
+            </Card>
         </Col>
     )
 }

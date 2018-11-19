@@ -42,6 +42,8 @@ class Notification extends Component {
                             handleNotification={this.props.handleSelectedNotification}
                              selectedNotification={this.props.selectedNotification}
                            edit={this.props.edit}
+                           selectedSetting={this.props.selectedSetting}
+                           handleSelectedSetting={this.props.handleSelectedSetting}
                             maxTableHeight={maxTableHeight}
                         />
                     </CardBody>

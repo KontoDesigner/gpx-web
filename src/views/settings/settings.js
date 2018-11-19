@@ -293,13 +293,13 @@ handleCurSeasonOld = event => {
                                unsavedEdit={this.state.unsavedEdit}
                             />
                         </TabPane>
-                        }
+                        } 
                         <TabPane tabId="notification">
                             <Notification
                               notification={this.props.notification }
-                              
+                              selectedSetting={this.props.selectedSetting}
                              getNotification={this.props.notificationActions.getNotification}
-                       
+                             handleSelectedSetting={this.props.handleSelectedSetting}
                             save={this.save}
                             edit={this.edit}
                             

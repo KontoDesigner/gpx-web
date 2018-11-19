@@ -10,7 +10,12 @@ const Action = (props) => {
                 </DropdownToggle>
 
                 <DropdownMenu>
-                    <DropdownItem title=" ">Another Action</DropdownItem>
+                    <DropdownItem title=" ">Assign Employee to Position</DropdownItem>
+                    <DropdownItem title=" ">Update New Position</DropdownItem>
+                    <DropdownItem title=" ">Make Position Vacant</DropdownItem>
+                    <DropdownItem title=" ">Mark Position Accept</DropdownItem>
+                    <DropdownItem title=" ">Reset Position Accept</DropdownItem>
+                    <DropdownItem title=" ">Mark As Green Light</DropdownItem>
                 </DropdownMenu>
             </UncontrolledDropdown>
         </Col>

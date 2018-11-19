@@ -33,6 +33,9 @@ export default function settingReducer(state = defaultState, action) {
                 ...state,
                 jobFamilies: action.data.jobFamilies
             }
+            
+            case types.HANDLE_SELECTEDSETTING:
+            return action.data.selectedSetting;
 
             case types.GET_ALLJOBTITLE_SUCCESS:
             return {

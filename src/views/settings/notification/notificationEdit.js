@@ -5,6 +5,7 @@ import { Row, Col, Card, CardHeader, CardBody, CardFooter, Button } from 'reacts
 import { LinkContainer } from 'react-router-bootstrap'
 import * as notificationEditActions from '../../../actions/notificationEdit/notificationEditActions'
 import NotificationInfo from './notificationInfo'
+
 //import Buttons from '../buttons';
 import $ from 'jquery'
 import { toastr } from 'react-redux-toastr'
@@ -33,7 +34,7 @@ class NotificationEdit extends Component {
 
    componentWillMount=async()=>  {
          const _this = this
- 
+         this.props.filterActions.handleFilter()   //when page loads
        
         // this.props.employeeInfoActions.getAvailablePositions(this.props.currentSeason.name, this.props.nextSeason.name, this.props.followingSeason.name)
         // this.props.employeeInfoActions.getPositionAssigns(this.state.staffId)
