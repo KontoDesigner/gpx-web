@@ -134,7 +134,7 @@ export function getAvailablePositions(currentSeason, nextSeason, followingSeason
                 NextSeason: nextSeason,
                 FollowingSeason: followingSeason
             }
-
+debugger;
             const availablePositions = await RestClient.Post('positionassign/getavailablepositions', data)
 
             dispatch(getAvailablePositionsSuccess(availablePositions))

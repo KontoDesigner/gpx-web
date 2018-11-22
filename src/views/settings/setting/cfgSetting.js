@@ -45,7 +45,7 @@ let model = {
          
 
 <Col sm="12" md="6" lg="6" xl="4" className="form-group">
-<label htmlFor="curSeason">Current Season</label>
+<label htmlFor="curSeason">Current Season (obsolete)</label>
 
 <Select 
   id="curSeason"
@@ -61,7 +61,7 @@ let model = {
 </Col>
 
 <Col sm="12" md="6" lg="6" xl="4" className="form-group">
-<label htmlFor="nextSeason">Next Season</label>
+<label htmlFor="nextSeason">Next Season (obsolete)</label>
 
 <Select 
   id="nextSeason"
@@ -76,7 +76,7 @@ let model = {
 </Col>
 
 <Col sm="12" md="6" lg="6" xl="4" className="form-group">
-<label htmlFor="nextNextSeason">Following Season</label>
+<label htmlFor="nextNextSeason">Following Season (obsolete)</label>
 
 <Select 
   id="nextNextSeason"
