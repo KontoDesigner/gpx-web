@@ -54,24 +54,25 @@ class StaffEdit extends Component {
             ],
 
             resignType: [
-                { positionTypes: [
                 {
-                    id: 'Posted',
-                    name: 'Posted'
-                },
-                {
-                    id: 'Local',
-                    name: 'Local'
-                },
-                {
-                    id: 'Freelance',
-                    name: 'Freelance'
-                },
-                {
-                    id: 'Flexible',
-                    name: 'Flexible'
-                }
-            ],
+                    positionTypes: [
+                        {
+                            id: 'Posted',
+                            name: 'Posted'
+                        },
+                        {
+                            id: 'Local',
+                            name: 'Local'
+                        },
+                        {
+                            id: 'Freelance',
+                            name: 'Freelance'
+                        },
+                        {
+                            id: 'Flexible',
+                            name: 'Flexible'
+                        }
+                    ],
                     id: 'Studies',
                     name: 'Studies'
                 },
@@ -144,7 +145,7 @@ class StaffEdit extends Component {
         }
 
         this.handleChangeMultiple = this.handleChangeMultiple.bind(this)
-       // this.handleCheckBox = this.handleCheckBox.bind(this)
+        // this.handleCheckBox = this.handleCheckBox.bind(this)
     }
 
     async componentWillMount() {
@@ -156,7 +157,7 @@ class StaffEdit extends Component {
             this.props.followingSeason.name
         )
         this.props.employeeInfoActions.getPositionAssigns(this.state.staffId)
-        this.props.applicationHistoryActions.getResignHistory(this.state.staffId) 
+        this.props.applicationHistoryActions.getResignHistory(this.state.staffId)
         this.props.destinationHistoryActions.getDestinationHistory(this.state.staffId)
 
         this.props.employeeInfoActions.getStaff(this.state.staffId).then(function() {
@@ -213,7 +214,8 @@ class StaffEdit extends Component {
             Destination: positionAssign.Destination,
             PositionStart: positionAssign.PositionStartDate,
             JobTitle: positionAssign.JobTitle,
-            IataCode: positionAssign.IataCode
+            IataCode: positionAssign.IataCode,
+            Country: positionAssign.Country
         }
 
         this.props.employeeInfoActions.sendToCtx(model)
@@ -290,9 +292,7 @@ class StaffEdit extends Component {
                                 </TabPane>
 
                                 <TabPane tabId="cv">
-                                    <Cv staff={this.props.staff} 
-                                    handleUnsavedEdit={this.handleUnsavedEdit}
-                                    />
+                                    <Cv staff={this.props.staff} handleUnsavedEdit={this.handleUnsavedEdit} />
                                 </TabPane>
 
                                 <TabPane tabId="abscense">
@@ -314,22 +314,15 @@ class StaffEdit extends Component {
                                 </TabPane>
 
                                 <TabPane tabId="applications">
-                                    <Applications 
-                                    applicationHistory={this.props.applicationHistory}
-                                    
-                                    />
+                                    <Applications applicationHistory={this.props.applicationHistory} />
                                 </TabPane>
 
                                 <TabPane tabId="team">
-                                    <Team /> 
+                                    <Team />
                                 </TabPane>
 
                                 <TabPane tabId="history">
-                                {this.props.destinationHistory && 
-                                    <History
-                                    destinationHistory={this.props.destinationHistory}
-                                     />
-                                }
+                                    {this.props.destinationHistory && <History destinationHistory={this.props.destinationHistory} />}
                                 </TabPane>
                             </TabContent>
                         </Col>
@@ -362,7 +355,7 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
     return {
         employeeInfoActions: bindActionCreators(employeeInfoActions, dispatch),
-      //  abscenseActions: bindActionCreators(abscenseActions, dispatch),
+        //  abscenseActions: bindActionCreators(abscenseActions, dispatch),
         destinationHistoryActions: bindActionCreators(destinationHistoryActions, dispatch),
         applicationHistoryActions: bindActionCreators(applicationHistoryActions, dispatch)
     }
