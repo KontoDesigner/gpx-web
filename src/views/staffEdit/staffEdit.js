@@ -207,6 +207,7 @@ class StaffEdit extends Component {
             Id: this.props.staff.staffID,
             FirstName: this.props.staff.firstName,
             LastName: this.props.staff.lastName,
+            LastName2: this.props.staff.lastName2,
             DateOfBirth: this.props.staff.dateOfBirth,
             SourceMarket: this.props.staff.sourceMarket,
             Phone: this.props.staff.phone,
