@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter, Row, Col, Table } from 'reactstrap'
 import Select from 'react-select'
-
+import Datetime from 'react-datetime'
 class AssignRole extends Component {
     constructor() {
         super();
@@ -9,7 +9,9 @@ class AssignRole extends Component {
         this.state = {
             jobTitles: [],
             selectedDestination: null,
-            selectedJobTitle: null
+            selectedJobTitle: null,
+            selectedStartDate: null,
+            selectedEndDate: null
         };
     }
 
@@ -21,29 +23,38 @@ class AssignRole extends Component {
         let jobTitles = [];
 
         if (dest !== undefined) {
-           debugger;
+          
             jobTitles = dest.jobTitles;
+            debugger;
         }
 
         this.setState({
             selectedDestination,
             selectedJobTitle: null,
+            selectedStartDate: null,
+            selectedEndDate: null,
             jobTitles
         })
     }
 
     jobTitleOnChange = jobTitle => {
-        const selectedJobTitle = jobTitle != null ? jobTitle.mplid : null
-
+        const selectedJobTitle = jobTitle != null ? jobTitle.mplid : null;
+        const selectedStartDate = jobTitle != null ? jobTitle.startDate: null;
+        const selectedEndDate = jobTitle != null ? jobTitle.endDate: null
         this.setState({
-            selectedJobTitle
+            selectedJobTitle,
+            selectedStartDate,
+            selectedEndDate
         })
     }
 
     toggle = () => {
         this.setState({
             selectedDestination: null,
-            selectedJobTitle: null
+            selectedJobTitle: null,
+            selectedStartDate: null,
+            selectedEndDate: null
+
         })
 
         this.props.toggle();
@@ -51,10 +62,10 @@ class AssignRole extends Component {
 
     assignRole = (mplid) => {
         this.toggle();
-alert('hello world');
+
         const destination = this.props.availablePositions.filter(ap => ap.destination === this.state.selectedDestination)[0];
         const position = destination.jobTitles.filter(ap => ap.mplid === mplid)[0];
-
+ 
         const model = {
             mplid: position.mplid,
             season: this.props.season.name,
@@ -68,8 +79,8 @@ alert('hello world');
     render() {
         return (
             <div>
-                <Modal isOpen={this.props.modal} toggle={this.toggle}>
-                    <ModalHeader toggle={this.toggle}>Assign Role</ModalHeader>
+                <Modal isOpen={this.props.modal} toggle={this.toggle} >
+                    <ModalHeader toggle={this.toggle}>Assign Position</ModalHeader>
 
                     <ModalBody className="no-padding-bottom">
                         <Row>
@@ -108,21 +119,55 @@ alert('hello world');
                                 </div>
                             </Col>
                         </Row>
-
+                      
                         {this.state.selectedJobTitle !== null ?
                             <Row>
                                 <Col>
                                     <Table striped bordered responsive>
                                         <thead>
                                             <tr>
-                                                <th>MPLID</th>
-                                                <th>Version</th>
+                                                <th>Assign StartDate</th> <th> Assign EndDate</th>
+                                                <th></th>
                                             </tr>
-                                        </thead>
-                                        <tbody>
+                                            </thead>
+                                            <tbody>
                                             <tr>
-                                                <th>1</th>
-                                                <td>Mark</td>
+
+                                            <td>
+                                            <Datetime  className={'custom-datepicker'}
+                           // value={this.props.staff.dateOfBirth}
+                            //onChange={(v) => { this.props.handleStaffDatePicker('dateOfBirth', v) }}
+                            timeFormat={false}
+                            dateFormat="YYYY-MM-DD"
+                            closeOnSelect
+                            utc={true}
+                            inputProps={{ placeholder: 'YYYY-MM-DD' }} />
+
+                                             </td> 
+                                             <td>
+                                             <Datetime  className={'custom-datepicker'}
+                           // value={this.props.staff.dateOfBirth}
+                            //onChange={(v) => { this.props.handleStaffDatePicker('dateOfBirth', v) }}
+                            timeFormat={false}
+                            dateFormat="YYYY-MM-DD"
+                            closeOnSelect
+                            utc={true}
+                            inputProps={{ placeholder: 'YYYY-MM-DD' }} />  
+                                              </td>
+                                            <td></td>
+                                        
+                                            </tr>
+                                            </tbody>
+                                            <thead>
+                                            <tr>
+                                                <th>Position StartDate</th> <th> Position EndDate</th>
+                                                <th>Mpl ID</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            <tr>
+                                            <td>{this.state.selectedStartDate } </td> <td>{this.state.selectedEndDate}   </td>
+                                            <td>{this.state.selectedJobTitle}</td>
                                             </tr>
                                         </tbody>
                                     </Table>

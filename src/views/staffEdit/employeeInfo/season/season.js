@@ -74,7 +74,7 @@ class Season extends Component {
                 }}
                 color="primary"
                 style={{ marginRight: '10px', marginBottom: '10px' }}>
-                Assign Role
+                Assign Position
             </Button>
         )
 
@@ -187,7 +187,7 @@ class Season extends Component {
                                         }}
                                         color="primary"
                                         style={{ marginRight: '10px', marginBottom: '10px' }}>
-                                        Move Role
+                                        Move Position
                                     </Button>
                                     <Button
                                         size="sm"
@@ -196,7 +196,7 @@ class Season extends Component {
                                         }}
                                         color="danger"
                                         style={{ marginRight: '10px', marginBottom: '10px' }}>
-                                        Remove Role
+                                        Remove Position
                                     </Button>
                                     {this.props.send !== null && (
                                         <Button
