@@ -223,7 +223,8 @@ class StaffEdit extends Component {
     }
 
     save = () => {
-        alert(this.props.staffEdit)
+  // debugger;
+       // alert(this.props.staff.suitable)
     }
 
     render() {

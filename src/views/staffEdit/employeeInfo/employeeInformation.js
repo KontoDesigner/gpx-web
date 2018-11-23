@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card, CardBody, CardHeader, Col } from 'reactstrap'
+import { Card, CardBody, CardHeader, Col,Label,Input } from 'reactstrap'
 import TextInput from '../../../components/textInput'
 import Select from 'react-select'
 import Datetime from 'react-datetime'
@@ -36,6 +36,10 @@ const EmployeeInformation = (props) => {
 
                        <Col sm="12" md="6" lg="6" xl="4" className="form-group">
                         <TextInput name="mopedID" disabled label="Moped ID" value={props.staff.mopedID} onChange={props.handleStaffField} />
+                    </Col>
+
+                       <Col sm="12" md="6" lg="6" xl="4" className="form-group">
+                        <TextInput name="centralID" disabled label="Central ID" value={props.staff.centralID} onChange={props.handleStaffField} />
                     </Col>
 
                     <Col sm="12" md="6" lg="6" xl="4" className="form-group form-group-select">
@@ -91,6 +95,19 @@ const EmployeeInformation = (props) => {
                     <Col sm="12" md="6" lg="6" xl="4" className="form-group">
                         <TextInput name="drivingYear" label="Driving Year" value={props.staff.drivingYear} onChange={props.handleStaffField} />
                     </Col>
+                    <Col sm="12" md="12" lg="12" xl="12" className="form-group">
+            <Label for="content">Remarks</Label>
+            <Input
+              required
+              type="textarea"
+              maxLength="1000"
+              name="content"
+              id="content"
+              rows={3}
+              value={props.staff.drivingYear}
+              aria-multiline="true"
+            />
+          </Col>
                 </div>
             </CardBody>
         </Card>

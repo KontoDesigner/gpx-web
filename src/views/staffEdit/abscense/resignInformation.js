@@ -23,7 +23,7 @@ const resignInformation = props => {
       color="default"
       // style={{ marginRight: '2px', marginBottom: '2px' }}
     >
-      Execute
+      Resign
     </Button>
   )
 

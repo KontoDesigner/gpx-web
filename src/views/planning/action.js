@@ -15,7 +15,9 @@ const Action = (props) => {
                     <DropdownItem title=" ">Make Position Vacant</DropdownItem>
                     <DropdownItem title=" ">Mark Position Accept</DropdownItem>
                     <DropdownItem title=" ">Reset Position Accept</DropdownItem>
-                    <DropdownItem title=" ">Mark As Green Light</DropdownItem>
+                    <DropdownItem title=" ">Mark Position Decline</DropdownItem>
+                    <DropdownItem title=" ">Mark as Acting</DropdownItem>
+                
                 </DropdownMenu>
             </UncontrolledDropdown>
         </Col>

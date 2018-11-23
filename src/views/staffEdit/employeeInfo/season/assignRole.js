@@ -21,6 +21,7 @@ class AssignRole extends Component {
         let jobTitles = [];
 
         if (dest !== undefined) {
+           debugger;
             jobTitles = dest.jobTitles;
         }
 
@@ -50,7 +51,7 @@ class AssignRole extends Component {
 
     assignRole = (mplid) => {
         this.toggle();
-
+alert('hello world');
         const destination = this.props.availablePositions.filter(ap => ap.destination === this.state.selectedDestination)[0];
         const position = destination.jobTitles.filter(ap => ap.mplid === mplid)[0];
 

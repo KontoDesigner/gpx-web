@@ -20,7 +20,8 @@ const Buttons = props => {
                     Print
                 </Button>
                 <Button
-                    disabled={props.unsavedEdit === false}
+                   // disabled={props.unsavedEdit === false}
+                   // disabled={props.unsavedEdit === false}
                     color="success"
                     onClick={() => {
                         props.save()

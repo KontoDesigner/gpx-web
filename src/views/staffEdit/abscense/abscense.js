@@ -161,7 +161,7 @@ class Abscense extends Component {
               handleStaffDatePicker={this.handleStaffDatePicker}
               handleStaffSelect={this.handleStaffSelect}
               //handleSelectTypes={this.handleSelectTypes}
-              // resignType={this.props.resignType}
+               resignType={this.props.resignType}
             />
           </Col>
 
