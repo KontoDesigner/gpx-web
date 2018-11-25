@@ -5,6 +5,9 @@ import Filter from '../../filter'
 import Action from '../../action'
 
 class HeadOf extends Component {
+
+
+
   render() {
     return (
       <Card>
@@ -14,7 +17,12 @@ class HeadOf extends Component {
           <div className="form-row">
             <Filter getData={this.props.getHeadOf} />
           
-            <Action selected={this.props.selectedStaff} />
+            <Action 
+            selected={this.props.selectedStaff} 
+            toogleAbsentStaffModal={this.props.toogleAbsentStaffModal}
+            toogleResignStaffModal={this.props.toogleResignStaffModal}
+            //AbsentStaffModal={this.props.AbsentStaffModal}
+            />
           
           </div>
 

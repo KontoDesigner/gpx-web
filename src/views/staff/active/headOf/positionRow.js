@@ -44,6 +44,7 @@ class PositionTable extends Component {
           </CardBody>
         </Collapse>
       </Card>
+      
     )
   }
 }

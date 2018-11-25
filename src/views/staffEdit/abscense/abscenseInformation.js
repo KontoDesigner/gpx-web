@@ -108,14 +108,14 @@ const AbscenseInformation = props => {
               maxLength="1000"
               name="comment"
               id="comment"
-              rows={7}
+              rows={6}
               onChange={props.handleStaffField}
               aria-multiline="true"
             />
           </Col>
         </div>
       </CardBody>
-      <CardFooter style={{ paddingBottom: '18px', paddingTop: '18px' }}>
+      <CardFooter style={{ paddingBottom: '19px', paddingTop: '19px' }}>
         <Row />
       </CardFooter>
     </Card>

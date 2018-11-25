@@ -16,11 +16,12 @@ const resignInformation = props => {
     <Button
       // disabled={this.props.abscense === undefined && this.props.abscense === null}
       size="sm"
+      className="pull-right"
       onClick={() => {
         debugger;
         props.handleSaveResign()
       }} 
-      color="default"
+      color="warning"
       // style={{ marginRight: '2px', marginBottom: '2px' }}
     >
       Resign
@@ -43,7 +44,8 @@ const resignInformation = props => {
 
   return (
     <Card>
-      <CardHeader>Resignation </CardHeader>
+         <CardHeader> Resignation  </CardHeader>
+      {/* <CardHeader>Resignation   -  {enableResignBtn} </CardHeader> */}
       <CardBody className="no-padding-bottom">
         <div className="form-row">
           <Col sm="12" md="6" lg="6" xl="4" className="form-group">

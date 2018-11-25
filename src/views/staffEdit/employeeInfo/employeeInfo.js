@@ -56,7 +56,7 @@ class EmployeeInfo extends Component {
     }
 
     assignRole = role => {
-        alert('assignme');
+     
         const positionAssign = {
             MPLID: role.mplid,
             StaffID: this.props.staff.staffID,

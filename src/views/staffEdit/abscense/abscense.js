@@ -76,12 +76,6 @@ class Abscense extends Component {
   }
 
 
-
-
-
-
- 
-
   handleResignDatePicker = (field, date) => {
     let val = ''
     //debugger

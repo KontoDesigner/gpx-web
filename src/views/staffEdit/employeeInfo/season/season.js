@@ -180,15 +180,7 @@ class Season extends Component {
                             <Row>
                                 <Col>
                                     {assignBtn}
-                                    <Button
-                                        size="sm"
-                                        onClick={() => {
-                                            this.toggleMoveRoleModal()
-                                        }}
-                                        color="primary"
-                                        style={{ marginRight: '10px', marginBottom: '10px' }}>
-                                        Move Position
-                                    </Button>
+                              
                                     <Button
                                         size="sm"
                                         onClick={() => {
@@ -213,6 +205,8 @@ class Season extends Component {
                             </Row>
                         </CardFooter>
                     </Card>
+
+                    
 
                     {assignModal}
 

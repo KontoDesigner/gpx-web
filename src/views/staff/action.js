@@ -3,9 +3,12 @@ import { UncontrolledDropdown, DropdownToggle, DropdownMenu, DropdownItem, Col }
 
 const Action = (props) => {
 
-
+   
     
     return (
+
+
+
         <Col sm="12" md="4" lg="3" xl="3" className="form-group">
             <UncontrolledDropdown title={props.selected !== undefined && props.selected.length > 0 ? `${props.selected.length} selected` : ''}>
                 <DropdownToggle color="primary" className="btn-action" disabled={props.selected === undefined || props.selected.length < 1}>
@@ -13,15 +16,23 @@ const Action = (props) => {
                 </DropdownToggle>
 
                 <DropdownMenu>
+    
+                <DropdownItem title="dsds" onClick={() => {props.toogleAbsentStaffModal("1")}}>
+                Mark As Absent  </DropdownItem>
+                
+                {/* <AccountSettingModal /> */}
 
-
-                    <DropdownItem title=" ">Mark As Absent</DropdownItem>
-                    <DropdownItem title=" ">Mark As Resign</DropdownItem>
-                    <DropdownItem title=" ">Send Mail ( Using Template)</DropdownItem>
+                   <DropdownItem title="dsds" onClick={() => {props.toogleResignStaffModal("2")}}>
+                Mark As Resign </DropdownItem>
+                
+                <DropdownItem title="dsds" onClick={() => {props.toogleOpenGenModal("3")}}>
+                Send Mail (Using Template) </DropdownItem>
                 </DropdownMenu>
             </UncontrolledDropdown>
         </Col>
     );
 };
+
+
 
 export default Action;

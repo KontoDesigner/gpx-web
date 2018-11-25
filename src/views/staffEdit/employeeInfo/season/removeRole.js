@@ -11,10 +11,10 @@ const RemoveRole = (props) => {
     return (
         <div>
             <Modal isOpen={props.modal} toggle={props.toggle}>
-                <ModalHeader toggle={props.toggle}>Remove Role</ModalHeader>
+                <ModalHeader toggle={props.toggle}>Remove Position</ModalHeader>
                 <ModalBody>
                     <Alert color="danger">
-                        Are you sure you want to remove role?
+                        Are you sure you want to remove position? 
                     </Alert>
                 </ModalBody>
                 <ModalFooter>
