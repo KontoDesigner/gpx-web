@@ -14,7 +14,7 @@ class Abscense extends Component {
   constructor(props) {
     super(props)
 
-    //*************** */add an local state for the resign part since that is not part of the staff object*********************
+    //*************** */add a local state for the resign part since that is not part of the staff object*********************
     debugger;
     let resignHistory = props.applicationHistory.filter(
       x => x.applicationType.trim() === 'Resigned'

@@ -20,15 +20,19 @@ class AbsentStaff extends Component {
         super();
 
         this.state = {
-          
+             dateModified: null,
             selectedResignType: null,
-       
+            selectedAbsentStart:null,
+            selectedAbsentEnd:null
         };
     }
 
     toggle = () => {
         this.setState({
-            selectedResignType: null
+            selectedResignType: null,
+            selectedAbsentStart:null,
+            selectedAbsentEnd:null,
+            dateModified: null
 
         })
 
@@ -36,30 +40,65 @@ class AbsentStaff extends Component {
     }
 
 
+
+
     resignTypeOnChange = resignType => {
         const selectedResignType = resignType ;
+
+        //   var currentdate = new Date(); 
+        //   var newdatemodified  = currentdate.getFullYear() + "-"
+        // + (currentdate.getMonth()+1)  + "-" 
+        //  + currentdate.getDate() ; 
       
         this.setState({
-            selectedResignType
+            selectedResignType,
+            //dateModified:newdatemodified
        
         })
     }
 
-    createAbscense = () => {
-        debugger;
+    absentStartChange = absentStart => {
+      const selectedAbsentStart = absentStart ;
+   debugger;
+      this.setState({
+        selectedAbsentStart
+     
+      })
+    
+  }
+
+  absentEndChange = absentEnd => {
+    const selectedAbsentEnd = absentEnd ;
+ 
+    this.setState({
+      selectedAbsentEnd
+   
+    })
+  
+}
+
+
+    createAbscense = (val) => {
+       
         this.toggle();
 
        // const destination = this.props.availablePositions.filter(ap => ap.destination === this.state.selectedDestination)[0];
        // const position = destination.jobTitles.filter(ap => ap.mplid === mplid)[0];
- 
-        const model = {
+       
+       var currentdate = new Date(); 
+       var newdatemodified  = currentdate.getFullYear() + "-"
+     + (currentdate.getMonth()+1)  + "-" 
+      + currentdate.getDate() ; 
+
+        let model = {
             // staffID: position.mplid,
-            // season: this.props.season.name,
-            // startDate: this.props.season.start,
-            // endDate: this.props.season.end
+            dateModified: newdatemodified ,
+             absentReason: this.state.selectedResignType,
+            startDate: this.state.selectedAbsentStart,
+             endDate: this.state.selectedAbsentEnd
         }
 
-        this.props.createAbscense(model);
+       this.props.createAbscense(model);
     }
     
 
@@ -84,9 +123,11 @@ class AbsentStaff extends Component {
                   <tr>
                     <td>
                       <Datetime
+                      id="absentStart"
                         className={'custom-datepicker'}
-                        // value={this.props.staff.dateOfBirth}
-                        //onChange={(v) => { this.props.handleStaffDatePicker('dateOfBirth', v) }}
+                        //value={this.props.staff.dateOfBirth}
+                        onChange={this.absentStartChange}
+                        value={this.state.selectedAbsentStart}
                         timeFormat={false}
                         dateFormat="YYYY-MM-DD"
                         closeOnSelect
@@ -95,10 +136,11 @@ class AbsentStaff extends Component {
                       />
                     </td>
                     <td>
+                
                       <Datetime
                         className={'custom-datepicker'}
-                        // value={this.props.staff.dateOfBirth}
-                        //onChange={(v) => { this.props.handleStaffDatePicker('dateOfBirth', v) }}
+                        onChange={this.absentEndChange}
+                        value={this.state.selectedAbsentEnd}
                         timeFormat={false}
                         dateFormat="YYYY-MM-DD"
                         closeOnSelect

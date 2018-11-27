@@ -1,21 +1,67 @@
-import React from 'react'
+import React, { Component } from 'react'
 import { Button,Modal,ModalHeader, ModalBody, ModalFooter,Alert,Row,Col,Table,Label,Input} from 'reactstrap'
 import Datetime from 'react-datetime'
 import Select from 'react-select'
 
+class ResignStaff extends Component {
 
-const ResignStaff = props => {
- 
-  function resignStaff(staffID) {
-    props.resignStaff(staffID)
+//const ResignStaff = props => {
+  constructor() {
+    super();
 
-    props.toggle()
+    this.state = {
+      selectedResignAppDate:null
+    };
+}
+
+createResign = (val) => {
+       
+  //this.toggle();
+
+ // const destination = this.props.availablePositions.filter(ap => ap.destination === this.state.selectedDestination)[0];
+ // const position = destination.jobTitles.filter(ap => ap.mplid === mplid)[0];
+
+  let model = {
+      // staffID: position.mplid,
+      staffs: this.props.selectedStaffs ,
+       startDate: this.state.selectedResignAppDate,
+      // startDate: this.state.selectedAbsentStart,
+      //  endDate: this.state.selectedAbsentEnd
   }
+debugger;
+ this.props.createResign(model);
+}
 
+
+resignAppDateChange = appDate => {
+  const selectedResignAppDate = appDate ;
+debugger;
+  this.setState({
+    selectedResignAppDate
+ 
+  })
+
+}
+
+toggle = () => {
+  this.setState({
+    selectedResignAppDate:null,
+
+  })
+
+  this.props.toggle();
+}
+
+  // function resignStaff(staffID) {
+  //   props.resignStaff(staffID)
+
+  //   props.toggle()
+  // }
+  render() {
   return (
     <div>
-      <Modal isOpen={props.modal} toggle={props.toggle}>
-        <ModalHeader toggle={props.toggle}>
+      <Modal isOpen={this.props.modal} toggle={this.toggle}>
+        <ModalHeader toggle={this.toggle}>
           The selected staff is resigned / will resign{' '}
         </ModalHeader>
         <ModalBody>
@@ -32,8 +78,8 @@ const ResignStaff = props => {
                     <td colSpan="2">
                       <Datetime
                         className={'custom-datepicker'}
-                        // value={this.props.staff.dateOfBirth}
-                        //onChange={(v) => { this.props.handleStaffDatePicker('dateOfBirth', v) }}
+                        onChange={this.resignAppDateChange}
+                        value={this.state.selectedResignAppDate}
                         timeFormat={false}
                         dateFormat="YYYY-MM-DD"
                         closeOnSelect
@@ -43,6 +89,22 @@ const ResignStaff = props => {
                     </td>
                     
                   </tr>
+                  <tr>
+                  <td colSpan="2">
+                      {' '}
+                      <Label for="reason">Comments</Label>
+                      <Input
+                        required
+                        type="textarea"
+                        maxLength="1000"
+                        name="reason"
+                        id="reason"
+                        onBlur={this.props.handleChange}
+                        rows={6}
+                        aria-multiline="true"
+                      />
+                    </td>
+                    </tr>
                 </tbody>
               </Table>
             </Col>
@@ -51,11 +113,11 @@ const ResignStaff = props => {
         <ModalFooter>
           <Button
             color="success"
-            onClick={() => resignStaff(props.staff.StaffID)}
+            onClick={() => this.createResign()}
           >
             Ok
           </Button>{' '}
-          <Button color="danger" onClick={props.toggle}>
+          <Button color="danger" onClick={this.toggle}>
             Cancel
           </Button>
         </ModalFooter>
@@ -63,5 +125,7 @@ const ResignStaff = props => {
     </div>
   )
 }
+}
+
 
 export default ResignStaff

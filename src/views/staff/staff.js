@@ -30,7 +30,7 @@ class Staff extends Component {
 
         this.state = {
             selectedReason: null,
-            values:null,
+            value:null,
             activeTab: 'headOf',
             resetData: this.props.headOfActions.handleHeadOf,
             absentStaffModal: false,
@@ -82,10 +82,18 @@ class Staff extends Component {
     }
 
     createAbscense = model => {
-     
-        const abscensemodel = {
-            // MPLID: role.mplid,
-            // StaffID: this.props.staff.staffID,
+      
+       let abscensemodel = {
+  
+            ApplicationType:"Abscense",
+            Status:"Abscense",
+             //AbsentReason: model.absentReason, 
+             AbsentStart: model.startDate,
+             AbsentEnd: model.endDate,
+             AbsentReason2: this.state.value,
+            StaffID:this.props.selectedStaff,
+            DateModified:model.dateModified
+              //StaffID:"1fgdhdgdhd"
             // FirstName: this.props.staff.firstName,
             // LastName: this.props.staff.lastName,
             // Season: role.season,
@@ -94,15 +102,39 @@ class Staff extends Component {
             // EndDate: role.endDate
             
         }
-
-        this.props.staffActions.getPositionAssigns(model)
+        debugger;
+        this.props.staffActions.createAbsense(abscensemodel)
     }
 
+
+    createResign = model => {
+        var currentdate = new Date(); 
+        var DateModified  = currentdate.getFullYear() + "-"
+                        + (currentdate.getMonth()+1)  + "-" 
+                        + currentdate.getDate() ; 
+
+    
+           const resignmodel = {
+               Comments: this.state.value,
+               StartDate: model.startDate,
+               Staff:this.props.selectedStaff,
+               DateModified:DateModified
+               // StaffID: this.props.staff.staffID,
+               // FirstName: this.props.staff.firstName,
+               // LastName: this.props.staff.lastName,
+               // Season: role.season,
+               // FullName: this.props.staff.fullName,
+               // StartDate: role.startDate,
+               // EndDate: role.endDate
+               
+           }
+           debugger;
+           this.props.staffActions.getPositionAssigns(resignmodel)
+       }
+
     toogleAbsentStaffModal = (val) => {
- 
         this.setState({
             absentStaffModal: !this.state.absentStaffModal
-        
         })
     
 
@@ -195,6 +227,7 @@ class Staff extends Component {
                 resignType={this.state.resignType}
                 handleChange={this.handleChange}
                 handleSelect= {this.handleSelect}
+                createAbscense= {this.createAbscense}
                 value={this.state.value}
                 // availablePositions={this.props.availablePositions}
                 // assignRole={this.props.assignRole}
@@ -210,6 +243,7 @@ class Staff extends Component {
                 handleChange={this.handleChange}
                 handleSelect= {this.handleSelect}
                 value={this.state.value}
+                createResign= {this.createResign}
                 // availablePositions={this.props.availablePositions}
                 // assignRole={this.props.assignRole}
                 // positionAssign={this.props.positionAssign}
@@ -275,9 +309,7 @@ class Staff extends Component {
                        
                             <NewEmployee
                             newEmployee={this.props.newEmployee}
-                            
-
-
+    
                             getNewEmployee={this.props.getNewEmployee}
                           
                             handleSelectedStaff={this.props.filterActions.handleSelectedStaff}

@@ -8,11 +8,12 @@ export function createAbsense(model) {
         dispatch(beginAjaxCall())
 
         try {
-            const res = await RestClient.Post('abscense/abscenseuser', model)
+            debugger;
+            const res = await RestClient.Post('abscense/abscenseuserselect', model)
 
             dispatch(endAjaxCall())
 
-            if (res && res.ok) {
+            if (res) {
                 toastr.success('Success', `Selected staff was abscensed`)
             } else {
                 toastr.error('Error', `Selected staff was not abscensed: ${res ? res.message : 'Error'}`)
