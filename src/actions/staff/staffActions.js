@@ -3,6 +3,29 @@ import { beginAjaxCall, ajaxCallError, endAjaxCall } from '../ajaxStatusActions'
 import RestClient from '../../infrastructure/restClient'
 import { toastr } from 'react-redux-toastr'
 
+export function createResign(model) {
+    return async function(dispatch) {
+        dispatch(beginAjaxCall())
+
+        try {
+            debugger;
+            const res = await RestClient.Post('resign/resignuserselect', model)
+
+            dispatch(endAjaxCall())
+
+            if (res) {
+                toastr.success('Success', `Selected staff was resigned`)
+            } else {
+                toastr.error('Error', `Selected staff was not resigned: ${res ? res.message : 'Error'}`)
+            }
+        } catch (error) {
+            dispatch(ajaxCallError(error))
+
+            throw error
+        }
+    } 
+}
+
 export function createAbsense(model) {
     return async function(dispatch) {
         dispatch(beginAjaxCall())

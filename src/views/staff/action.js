@@ -25,7 +25,7 @@ const Action = (props) => {
                    <DropdownItem title="dsds" onClick={() => {props.toogleResignStaffModal("2")}}>
                 Mark As Resign </DropdownItem>
                 
-                <DropdownItem title="dsds" onClick={() => {props.toogleOpenGenModal("3")}}>
+                <DropdownItem title="dsds" onClick={() => {props.toogleResignStaffModal("3")}}>
                 Send Mail (Using Template) </DropdownItem>
                 </DropdownMenu>
             </UncontrolledDropdown>

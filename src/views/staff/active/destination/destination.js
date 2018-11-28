@@ -15,8 +15,12 @@ class Destination extends Component {
                 <CardBody className="no-padding-bottom">
                     <div className="form-row">
                         <Filter getData={this.props.getDestination} />
-
-                        <Action selected={this.props.selectedStaff} />
+                        <Action 
+            selected={this.props.selectedStaff} 
+            toogleAbsentStaffModal={this.props.toogleAbsentStaffModal}
+            toogleResignStaffModal={this.props.toogleResignStaffModal}
+            //AbsentStaffModal={this.props.AbsentStaffModal}
+            />
                     </div>
 
                     {this.props.destination.map((destination, index) =>

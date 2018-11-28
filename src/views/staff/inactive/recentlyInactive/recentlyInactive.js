@@ -14,7 +14,12 @@ class RecentlyInactive extends Component {
           <div className="form-row">
             <Filter getData={this.props.getRecentlyInactive} />
           
-            <Action selected={this.props.selectedStaff} />
+            <Action 
+            selected={this.props.selectedStaff} 
+            toogleAbsentStaffModal={this.props.toogleAbsentStaffModal}
+            toogleResignStaffModal={this.props.toogleResignStaffModal}
+            //AbsentStaffModal={this.props.AbsentStaffModal}
+            />
           
           </div>
 

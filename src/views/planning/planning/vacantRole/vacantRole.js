@@ -14,7 +14,16 @@ class VacantRole extends Component {
           <div className="form-row">
           <Filter getData={this.props.getVacantRole} />
        
-            <Action selected={this.props.selectedTitle} />
+          <Action 
+            selected={this.props.selectedTitle} 
+            toogleMakePositionVacantModal={this.props.toogleMakePositionVacantModal}
+                                toogleUnmarkPositionActingModal ={this.props.toogleUnmarkPositionActingModal}
+                                toogleResetPositionAcceptModal  ={this.props.toogleResetPositionAcceptModal}
+                                toogleMarkPositionDeclineModal ={this.props.toogleMarkPositionDeclineModal}
+                                toogleMarkPositionActingModal ={this.props.toogleMarkPositionActingModal}
+                                toogleMarkPositionAcceptModal = {this.props.toogleMarkPositionAcceptModal}
+                             
+            />
           </div>
 
           {this.props.vacantRoles.map((vacantRole, index) =>

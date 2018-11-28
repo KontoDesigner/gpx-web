@@ -14,7 +14,16 @@ class PlacedRole extends Component {
           <div className="form-row">
           <Filter getData={this.props.getPlacedRole} />
 
-            <Action selected={this.props.selectedTitle} />
+                  <Action 
+            selected={this.props.selectedTitle} 
+            toogleMakePositionVacantModal={this.props.toogleMakePositionVacantModal}
+                                toogleUnmarkPositionActingModal ={this.props.toogleUnmarkPositionActingModal}
+                                toogleResetPositionAcceptModal  ={this.props.toogleResetPositionAcceptModal}
+                                toogleMarkPositionDeclineModal ={this.props.toogleMarkPositionDeclineModal}
+                                toogleMarkPositionActingModal ={this.props.toogleMarkPositionActingModal}
+                                toogleMarkPositionAcceptModal = {this.props.toogleMarkPositionAcceptModal}
+                             
+            />
           </div>
 
           {this.props.placedRoles.map((placedRole, index) =>

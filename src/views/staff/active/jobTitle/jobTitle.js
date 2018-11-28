@@ -22,7 +22,12 @@ class JobTitle extends Component {
           <div className="form-row">
             <Filter />
 
-            <Action />
+            <Action 
+            selected={this.props.selectedStaff} 
+            toogleAbsentStaffModal={this.props.toogleAbsentStaffModal}
+            toogleResignStaffModal={this.props.toogleResignStaffModal}
+            //AbsentStaffModal={this.props.AbsentStaffModal}
+            />
           </div>
           {this.props.jobTitle.map((jobTitle, index) => (
             <TitleRow

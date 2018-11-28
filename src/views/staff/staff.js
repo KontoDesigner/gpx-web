@@ -108,17 +108,14 @@ class Staff extends Component {
 
 
     createResign = model => {
-        var currentdate = new Date(); 
-        var DateModified  = currentdate.getFullYear() + "-"
-                        + (currentdate.getMonth()+1)  + "-" 
-                        + currentdate.getDate() ; 
 
-    
            const resignmodel = {
+            ApplicationType:"Resigned",
+            Status:"Resigned",
                Comments: this.state.value,
-               StartDate: model.startDate,
-               Staff:this.props.selectedStaff,
-               DateModified:DateModified
+              FromDate: model.fromDate,
+               StaffID:this.props.selectedStaff,
+               DateModified:model.dateModified
                // StaffID: this.props.staff.staffID,
                // FirstName: this.props.staff.firstName,
                // LastName: this.props.staff.lastName,
@@ -129,7 +126,7 @@ class Staff extends Component {
                
            }
            debugger;
-           this.props.staffActions.getPositionAssigns(resignmodel)
+           this.props.staffActions.createResign(resignmodel)
        }
 
     toogleAbsentStaffModal = (val) => {
@@ -272,6 +269,8 @@ class Staff extends Component {
                                 handleSelectedStaff={this.props.filterActions.handleSelectedStaff}
                                 selectedStaff={this.props.selectedStaff}
                                 edit={this.edit}
+                                toogleAbsentStaffModal={this.toogleAbsentStaffModal}
+                                toogleResignStaffModal={this.toogleResignStaffModal}
                             />
                         </TabPane>
 
@@ -282,6 +281,8 @@ class Staff extends Component {
                             handleSelectedStaff={this.props.filterActions.handleSelectedStaff}
                                 selectedStaff={this.props.selectedStaff}
                                 edit={this.edit}
+                                toogleAbsentStaffModal={this.toogleAbsentStaffModal}
+                                toogleResignStaffModal={this.toogleResignStaffModal}
                             />
                         </TabPane>
 
@@ -292,6 +293,8 @@ class Staff extends Component {
                                 handleSelectedStaff={this.props.filterActions.handleSelectedStaff}
                                 selectedStaff={this.props.selectedStaff}
                                 edit={this.edit}
+                                toogleAbsentStaffModal={this.toogleAbsentStaffModal}
+                                toogleResignStaffModal={this.toogleResignStaffModal}
                             />
                         </TabPane>
 
@@ -302,6 +305,8 @@ class Staff extends Component {
                              handleSelectedStaff={this.props.filterActions.handleSelectedStaff}
                              selectedStaff={this.props.selectedStaff}
                              edit={this.edit}
+                             toogleAbsentStaffModal={this.toogleAbsentStaffModal}
+                             toogleResignStaffModal={this.toogleResignStaffModal}
                             />
                         </TabPane>
 
@@ -314,6 +319,8 @@ class Staff extends Component {
                           
                             handleSelectedStaff={this.props.filterActions.handleSelectedStaff}
                             selectedStaff={this.props.selectedStaff}
+                            toogleAbsentStaffModal={this.toogleAbsentStaffModal}
+                            toogleResignStaffModal={this.toogleResignStaffModal}
                             edit={this.edit}
                             />
                         </TabPane>

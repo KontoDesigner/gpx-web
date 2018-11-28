@@ -12,12 +12,27 @@ const Action = (props) => {
                 <DropdownMenu>
                     <DropdownItem title=" ">Assign Employee to Position</DropdownItem>
                     <DropdownItem title=" ">Update New Position</DropdownItem>
-                    <DropdownItem title=" ">Make Position Vacant</DropdownItem>
-                    <DropdownItem title=" ">Mark Position Accept</DropdownItem>
-                    <DropdownItem title=" ">Reset Position Accept</DropdownItem>
-                    <DropdownItem title=" ">Mark Position Decline</DropdownItem>
-                    <DropdownItem title=" ">Mark as Acting</DropdownItem>
-                
+                    
+                    <DropdownItem title="dsds" onClick={() => {props.toogleMakePositionVacantModal("1")}}>
+                Make Position Vacant  </DropdownItem>
+
+                <DropdownItem title="dsds" onClick={() => {props.toogleMarkPositionAcceptModal("1")}}>
+                Mark Position Accept </DropdownItem>
+
+                <DropdownItem title="dsds" onClick={() => {props.toogleResetPositionAcceptModal("1")}}>
+                Reset Position Accept  </DropdownItem>
+
+                <DropdownItem title="hemma" onClick={() => {props.toogleMarkPositionDeclineModal("1")}}>
+                Mark Position Decline  </DropdownItem>
+
+                <DropdownItem title="dsds" onClick={() => {props.toogleMarkPositionActingModal ("1")}}>
+                Mark As Acting </DropdownItem>
+
+                <DropdownItem title="dsds" onClick={() => {props.toogleUnmarkPositionActingModal("1")}}>
+                UnMark As Acting  </DropdownItem>
+
+
+ 
                 </DropdownMenu>
             </UncontrolledDropdown>
         </Col>

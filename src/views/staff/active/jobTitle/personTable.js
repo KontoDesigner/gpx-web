@@ -36,7 +36,7 @@ const PersonTable = props => {
         contextMenuId={contextMenuId}
         columns={columns}
         checkbox={true}
-        identifier={'id'}
+        identifier={'staffID'}
         edit={props.edit}
         updateSelectedState={props.handleSelectedStaff}
         selected={props.selectedStaff}

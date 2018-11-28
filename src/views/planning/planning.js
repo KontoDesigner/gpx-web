@@ -2,6 +2,12 @@ import React, { Component } from 'react'
 import { TabContent, TabPane, Row, Col } from 'reactstrap'
 import { connect } from 'react-redux'
 import Tabs from './tabs'
+import MakePositionVacant from './makePositionVacant'
+import MarkPositionAccept from './markPositionAccept'
+import MarkPositionActing from './markPositionActing'
+import MarkPositionDecline from './markPositionDecline'
+import ResetPositionAccept from './resetPositionAccept'
+import UnmarkPositionActing from './unmarkPositionActing'
 import AllRole from './planning/allRole/allRole'
 import PlacedRole from './planning/placedRole/placedRole'
 import VacantRole from './planning/vacantRole/vacantRole'
@@ -26,9 +32,71 @@ class Planning extends Component {
 
         this.state = {
             activeTab: 'allRole',
-            resetData: this.props.allRolesActions.handleAllRoles
+            resetData: this.props.allRolesActions.handleAllRoles,
+            markPositionAcceptModal : false,
+            makePositionVacantModal: false,
+            markPositionActingModal: false,
+            markPositionDeclineModal: false,
+            resetPositionAcceptModal: false,
+            unmarkPositionActingModal: false
         }
+        this.handleChange = this.handleChange.bind(this);
     }
+
+    handleChange(event) {
+
+        this.setState({value: event.target.value});
+      }
+
+      toogleMakePositionVacantModal = (val) => {
+ 
+        this.setState({
+            makePositionVacantModal: !this.state.makePositionVacantModal
+        
+        })
+    }
+
+    toogleMarkPositionAcceptModal = (val) => {
+ 
+        this.setState({
+            markPositionAcceptModal: !this.state.markPositionAcceptModal
+        
+        })
+    }
+
+    toogleMarkPositionActingModal = (val) => {
+ 
+        this.setState({
+            markPositionActingModal: !this.state.markPositionActingModal
+        
+        })
+    }
+
+    toogleMarkPositionDeclineModal = (val) => {
+    
+        this.setState({
+            markPositionDeclineModal : !this.state.markPositionDeclineModal 
+        
+        })
+       
+    }
+
+    toogleResetPositionAcceptModal = (val) => {
+ 
+        this.setState({
+            resetPositionAcceptModal: !this.state.resetPositionAcceptModal
+        
+        })
+    }
+
+    toogleUnmarkPositionActingModal = (val) => {
+ 
+        this.setState({
+            unmarkPositionActingModal: !this.state.unmarkPositionActingModal
+        
+        })
+    }
+
 
     edit = (e, position) => {
 
@@ -93,6 +161,43 @@ class Planning extends Component {
                     getReplyYesNoRoles={this.props.replyYesNoRolesActions.getReplyYesNoRoles}
                     handleReplyYesNoRoles={this.props.replyYesNoRolesActions.handleReplyYesNoRoles}
                 />
+
+              <MakePositionVacant
+                modal={this.state.makePositionVacantModal}
+                toggle={this.toogleMakePositionVacantModal}
+                createResign= {this.createResign}
+            />
+
+            <MarkPositionAccept
+                modal={this.state.markPositionAcceptModal}
+                toggle={this.toogleMarkPositionAcceptModal}
+                createResign= {this.createResign}
+            />
+
+            <MarkPositionActing
+                modal={this.state.markPositionActingModal}
+                toggle={this.toogleMarkPositionActingModal}
+                createResign= {this.createResign}
+            />
+
+            <MarkPositionDecline
+                modal={this.state.markPositionDeclineModal}
+                toggle={this.toogleMarkPositionDeclineModal}
+                createResign= {this.createResign}
+            />
+
+            <ResetPositionAccept
+                modal={this.state.resetPositionAcceptModal}
+                toggle={this.toogleResetPositionAcceptModal}
+                createResign= {this.createResign}
+            />
+
+            <UnmarkPositionActing
+                modal={this.state.unmarkPositionActingModal}
+                toggle={this.toogleUnmarkPositionActingModal}
+                createResign= {this.createResign}
+            />
+
                 <Col sm="12" md="9" lg="9" xl="10">
                     <TabContent activeTab={this.state.activeTab}>
                         <TabPane tabId="allRole">
@@ -102,6 +207,14 @@ class Planning extends Component {
                                 handleSelectedTitle={this.props.filterActions.handleSelectedTitle}
                                 selectedTitle={this.props.selectedTitle}
                                 edit={this.edit}
+                                toogleMakePositionVacantModal={this.toogleMakePositionVacantModal}
+                                toogleUnmarkPositionActingModal ={this.toogleUnmarkPositionActingModal}
+                                toogleResetPositionAcceptModal  ={this.toogleResetPositionAcceptModal}
+                                toogleMarkPositionDeclineModal ={this.toogleMarkPositionDeclineModal}
+                                toogleMarkPositionActingModal ={this.toogleMarkPositionActingModal}
+                                toogleMarkPositionAcceptModal = {this.toogleMarkPositionAcceptModal}
+                             
+
                             />
                         </TabPane>
 
@@ -112,6 +225,12 @@ class Planning extends Component {
                                 handleSelectedTitle={this.props.filterActions.handleSelectedTitle}
                                 selectedTitle={this.props.selectedTitle}
                                 edit={this.edit}
+                                toogleMakePositionVacantModal={this.toogleMakePositionVacantModal}
+                                toogleUnmarkPositionActingModal ={this.toogleUnmarkPositionActingModal}
+                                toogleResetPositionAcceptModal  ={this.toogleResetPositionAcceptModal}
+                                toogleMarkPositionDeclineModal ={this.toogleMarkPositionDeclineModal}
+                                toogleMarkPositionActingModal ={this.toogleMarkPositionActingModal}
+                                toogleMarkPositionAcceptModal = {this.toogleMarkPositionAcceptModal}
                             />
                         </TabPane>
 
@@ -122,6 +241,12 @@ class Planning extends Component {
                                 handleSelectedTitle={this.props.filterActions.handleSelectedTitle}
                                 selectedTitle={this.props.selectedTitle}
                                 edit={this.edit}
+                                toogleMakePositionVacantModal={this.toogleMakePositionVacantModal}
+                                toogleUnmarkPositionActingModal ={this.toogleUnmarkPositionActingModal}
+                                toogleResetPositionAcceptModal  ={this.toogleResetPositionAcceptModal}
+                                toogleMarkPositionDeclineModal ={this.toogleMarkPositionDeclineModal}
+                                toogleMarkPositionActingModal ={this.toogleMarkPositionActingModal}
+                                toogleMarkPositionAcceptModal = {this.toogleMarkPositionAcceptModal}
                             />
                         </TabPane>
 
@@ -134,6 +259,12 @@ class Planning extends Component {
                                 handleSelectedTitle={this.props.filterActions.handleSelectedTitle}
                                 selectedTitle={this.props.selectedTitle}
                                 edit={this.edit}
+                                toogleMakePositionVacantModal={this.toogleMakePositionVacantModal}
+                                toogleUnmarkPositionActingModal ={this.toogleUnmarkPositionActingModal}
+                                toogleResetPositionAcceptModal  ={this.toogleResetPositionAcceptModal}
+                                toogleMarkPositionDeclineModal ={this.toogleMarkPositionDeclineModal}
+                                toogleMarkPositionActingModal ={this.toogleMarkPositionActingModal}
+                                toogleMarkPositionAcceptModal = {this.toogleMarkPositionAcceptModal}
                             />
                         </TabPane>
                     </TabContent>

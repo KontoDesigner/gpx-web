@@ -83,8 +83,8 @@ toggle = () => {
                     <td colSpan="2">
                       <Datetime
                         className={'custom-datepicker'}
-                        onChange={this.resignAppDateChange}
-                        value={this.state.selectedResignAppDate}
+                        //onChange={this.resignAppDateChange}
+                        //value={this.state.selectedResignAppDate}
                         timeFormat={false}
                         dateFormat="YYYY-MM-DD"
                         closeOnSelect

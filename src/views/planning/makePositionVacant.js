@@ -3,7 +3,7 @@ import { Button,Modal,ModalHeader, ModalBody, ModalFooter,Alert,Row,Col,Table,La
 import Datetime from 'react-datetime'
 import Select from 'react-select'
 
-class ResignStaff extends Component {
+class MakePositionVacant extends Component {
 
 //const ResignStaff = props => {
   constructor() {
@@ -67,54 +67,13 @@ toggle = () => {
     <div>
       <Modal isOpen={this.props.modal} toggle={this.toggle}>
         <ModalHeader toggle={this.toggle}>
-          The selected staff is resigned / will resign{' '}
+          Make Position Vacant{' '}
         </ModalHeader>
         <ModalBody>
-          <Row>
-            <Col>
-              <Table striped bordered responsive>
-                <thead>
-                  <tr>
-                    <th colSpan="2">Last Working Date</th> {' '}
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td colSpan="2">
-                      <Datetime
-                        className={'custom-datepicker'}
-                        onChange={this.resignAppDateChange}
-                        value={this.state.selectedResignAppDate}
-                        timeFormat={false}
-                        dateFormat="YYYY-MM-DD"
-                        closeOnSelect
-                        utc={true}
-                        inputProps={{ placeholder: 'YYYY-MM-DD' }}
-                      />
-                    </td>
-                    
-                  </tr>
-                  <tr>
-                  <td colSpan="2">
-                      {' '}
-                      <Label for="resignComm">Comments</Label>
-                      <Input
-                        required
-                        type="textarea"
-                        maxLength="1000"
-                        name="resignComm"
-                        id="resignComm"
-                        onBlur={this.props.handleChange}
-                        rows={6}
-                        aria-multiline="true"
-                      />
-                    </td>
-                    </tr>
-                </tbody>
-              </Table>
-            </Col>
-          </Row>
-        </ModalBody>
+                    <Alert color="danger">
+                        Are you sure you want to make position vacant? 
+                    </Alert>
+                </ModalBody>
         <ModalFooter>
           <Button
             color="success"
@@ -133,4 +92,4 @@ toggle = () => {
 }
 
 
-export default ResignStaff
+export default MakePositionVacant
