@@ -15,7 +15,8 @@ import {
 import Datetime from 'react-datetime'
 import Select from 'react-select'
 
-class AbsentStaff extends Component {
+
+class AssignPosition extends Component {
     constructor() {
         super();
 
@@ -76,7 +77,11 @@ class AbsentStaff extends Component {
     })
   
 }
-
+componentDidMount() {
+  //this.props.filterActions.handleFilter() //when page loads
+  //this.props.allRolesActions.getAllRoles()
+  
+}
 
     createAbscense = (val) => {
        
@@ -108,15 +113,47 @@ class AbsentStaff extends Component {
     <div>
       <Modal isOpen={this.props.modal} toggle={this.toggle}>
         <ModalHeader toggle={this.toggle}>
-          Leave of abscense has been approved for selected staff{' '}
+         Assign Staff To Position{' '}
         </ModalHeader>
         <ModalBody>
           <Row>
             <Col>
               <Table striped bordered responsive>
+              
                 <thead>
                   <tr>
-                    <th>Absent StartDate</th> <th> Absent EndDate</th>{' '}
+                    <th colSpan="2">Select Staff</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td colSpan="2">
+                  
+                    <Select
+                                       id="candidates"
+                                       valueKey="firstNameLastNameStatus"
+                                       labelKey="firstNameLastNameStatus" 
+                                        className="form-control"
+                                        options={this.props.candidate}
+                                        onChange={this.resignTypeOnChange}
+                                        value={this.state.selectedResignType}
+                                        placeholder="Select"
+                                    />
+
+                    {/* <select value={this.props.value} onChange={this.props.handleChange}  className="form-control"  >
+                    <option value="" disabled selected>Select your option</option>
+            <option value="Studies">Studies</option>
+            <option value="Parental Leave">Parental Leave</option>
+            <option value="Other Please Specify">Other Please Specify</option>
+           
+          </select> */}
+                    </td>
+                  </tr>
+               
+                  </tbody>
+                  <thead>
+                  <tr>
+                    <th>Assign StartDate</th> <th>Assign EndDate</th>{' '}
                   </tr>
                 </thead>
                 <tbody>
@@ -150,52 +187,6 @@ class AbsentStaff extends Component {
                     </td>
                   </tr>
                 </tbody>
-                <thead>
-                  <tr>
-                    <th colSpan="2">Absent reason</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td colSpan="2">
-
-                        <Select
-                                       id="absentReason"
-                                       valueKey="id"
-                                       labelKey="name"
-                                        className="form-control"
-                                        options={this.props.resignType}
-                                        onChange={this.resignTypeOnChange}
-                                        value={this.state.selectedResignType}
-                                        placeholder="Select"
-                                    />
-
-                    {/* <select value={this.props.value} onChange={this.props.handleChange}  className="form-control"  >
-                    <option value="" disabled selected>Select your option</option>
-            <option value="Studies">Studies</option>
-            <option value="Parental Leave">Parental Leave</option>
-            <option value="Other Please Specify">Other Please Specify</option>
-           
-          </select> */}
-                    </td>
-                  </tr>
-                  <tr>
-                    <td colSpan="2">
-                      {' '}
-                      <Label for="reason">Comments</Label>
-                      <Input
-                        required
-                        type="textarea"
-                        maxLength="1000"
-                        name="reason"
-                        id="reason"
-                        onBlur={this.props.handleChange}
-                        rows={6}
-                        aria-multiline="true"
-                      />
-                    </td>
-                  </tr>
-                </tbody>
               </Table>
             </Col>
           </Row>
@@ -218,4 +209,4 @@ class AbsentStaff extends Component {
     }
 }
 
-export default AbsentStaff
+export default AssignPosition

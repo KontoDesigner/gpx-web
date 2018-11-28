@@ -10,7 +10,8 @@ const Action = (props) => {
                 </DropdownToggle>
 
                 <DropdownMenu>
-                    <DropdownItem title=" ">Assign Employee to Position</DropdownItem>
+                <DropdownItem title="dsds" onClick={() => {props.toogleAssignPositionModal("1")}}>
+                Assign Staff To Position  </DropdownItem>
                     <DropdownItem title=" ">Update New Position</DropdownItem>
                     
                     <DropdownItem title="dsds" onClick={() => {props.toogleMakePositionVacantModal("1")}}>

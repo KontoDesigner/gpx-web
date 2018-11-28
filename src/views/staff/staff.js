@@ -9,6 +9,7 @@ import Import from '../imports/import'
 import Name from './active/name/name'
 import AbsentStaff from './absentStaff'
 import ResignStaff from './resignStaff'
+import SendMail from './sendMailUsingTemplate'
 import RecentlyInactive from './inactive/recentlyInactive/recentlyInactive'
 import NewEmployee from './other/newEmployee/newEmployee'
 import * as headOfActions from '../../actions/staff/active/headOfActions'
@@ -19,6 +20,7 @@ import * as jobTitleActions from '../../actions/staff/active/jobTitleActions'
 import * as recentlyInactiveActions from '../../actions/staff/inactive/recentlyInactiveActions'
 import * as nameActions from '../../actions/staff/active/nameActions'
 import * as newEmployeeActions from '../../actions/staff/other/newEmployeeActions'
+import * as notificationActions from '../../actions/notification/notificationActions'
 
 import $ from 'jquery'
 import Tabs from './tabs'
@@ -35,7 +37,8 @@ class Staff extends Component {
             resetData: this.props.headOfActions.handleHeadOf,
             absentStaffModal: false,
             resignStaffModal: false,
-            templateStaffModal: false,
+            sendMailModal: false,
+            
             resignType: [
                 {
                     id: 'Studies',
@@ -81,28 +84,37 @@ class Staff extends Component {
         }
     }
 
+    createMail = model => {
+      
+        let mailmodel = {
+   
+           TemplateName:model.selectedNotification,
+             StaffID:this.props.selectedStaff,
+             DateModified:model.dateModified
+      
+             
+         }
+        
+         this.props.staffActions.createMail(mailmodel)
+     }
+
     createAbscense = model => {
       
        let abscensemodel = {
   
             ApplicationType:"Abscense",
             Status:"Abscense",
-             //AbsentReason: model.absentReason, 
+       
              AbsentStart: model.startDate,
+             AbsentReason: model.absentReason,
              AbsentEnd: model.endDate,
              AbsentReason2: this.state.value,
             StaffID:this.props.selectedStaff,
             DateModified:model.dateModified
-              //StaffID:"1fgdhdgdhd"
-            // FirstName: this.props.staff.firstName,
-            // LastName: this.props.staff.lastName,
-            // Season: role.season,
-            // FullName: this.props.staff.fullName,
-            // StartDate: role.startDate,
-            // EndDate: role.endDate
+     
             
         }
-        debugger;
+        
         this.props.staffActions.createAbsense(abscensemodel)
     }
 
@@ -129,16 +141,16 @@ class Staff extends Component {
            this.props.staffActions.createResign(resignmodel)
        }
 
+       toogleSendMailModal = (val) => {
+        this.setState({
+            sendMailModal: !this.state.sendMailModal
+        })
+    }
+
     toogleAbsentStaffModal = (val) => {
         this.setState({
             absentStaffModal: !this.state.absentStaffModal
         })
-    
-
-
-
-
-
 
 
     //     switch (val) {
@@ -168,7 +180,7 @@ class Staff extends Component {
 
     componentDidMount() {
         this.props.filterActions.handleFilter()   //when page loads
- 
+        this.props.notificationActions.getNotification()
         this.props.headOfActions.getHeadOf()
     }
 
@@ -226,10 +238,19 @@ class Staff extends Component {
                 handleSelect= {this.handleSelect}
                 createAbscense= {this.createAbscense}
                 value={this.state.value}
-                // availablePositions={this.props.availablePositions}
-                // assignRole={this.props.assignRole}
-                // positionAssign={this.props.positionAssign}
-                // season={this.props.season}
+              
+            />
+
+            <SendMail
+                modal={this.state.sendMailModal}
+                toggle={this.toogleSendMailModal}
+                //resignType={this.state.resignType}
+                handleChange={this.handleChange}
+               // handleSelect= {this.handleSelect}
+                createMail= {this.createMail}
+                value={this.state.value}
+                notification={this.props.notification }
+              
             />
 
             
@@ -258,6 +279,7 @@ class Staff extends Component {
                                 edit={this.edit}
                                 toogleAbsentStaffModal={this.toogleAbsentStaffModal}
                                 toogleResignStaffModal={this.toogleResignStaffModal}
+                                toogleSendMailModal={this.toogleSendMailModal}
                                 //AbsentStaffModal={this.state.AbsentStaffModal}
                             />
                         </TabPane>
@@ -271,6 +293,7 @@ class Staff extends Component {
                                 edit={this.edit}
                                 toogleAbsentStaffModal={this.toogleAbsentStaffModal}
                                 toogleResignStaffModal={this.toogleResignStaffModal}
+                                toogleSendMailModal={this.toogleSendMailModal}
                             />
                         </TabPane>
 
@@ -283,6 +306,7 @@ class Staff extends Component {
                                 edit={this.edit}
                                 toogleAbsentStaffModal={this.toogleAbsentStaffModal}
                                 toogleResignStaffModal={this.toogleResignStaffModal}
+                                toogleSendMailModal={this.toogleSendMailModal}
                             />
                         </TabPane>
 
@@ -295,6 +319,7 @@ class Staff extends Component {
                                 edit={this.edit}
                                 toogleAbsentStaffModal={this.toogleAbsentStaffModal}
                                 toogleResignStaffModal={this.toogleResignStaffModal}
+                                toogleSendMailModal={this.toogleSendMailModal}
                             />
                         </TabPane>
 
@@ -307,6 +332,7 @@ class Staff extends Component {
                              edit={this.edit}
                              toogleAbsentStaffModal={this.toogleAbsentStaffModal}
                              toogleResignStaffModal={this.toogleResignStaffModal}
+                             toogleSendMailModal={this.toogleSendMailModal}
                             />
                         </TabPane>
 
@@ -322,6 +348,7 @@ class Staff extends Component {
                             toogleAbsentStaffModal={this.toogleAbsentStaffModal}
                             toogleResignStaffModal={this.toogleResignStaffModal}
                             edit={this.edit}
+                            toogleSendMailModal={this.toogleSendMailModal}
                             />
                         </TabPane>
 
@@ -350,7 +377,8 @@ function mapStateToProps(state) {
         selectedStaff: state.staff.filter.selectedStaff,
        recentlyInactive: state.staff.inactive.recentlyInactive,
        newEmployee: state.staff.other.newEmployee,
-       selectedReason:state.staff.modal
+       selectedReason:state.staff.modal,
+       notification: state.notification.notification
     }
 }
 
@@ -358,6 +386,8 @@ function mapDispatchToProps(dispatch) {
     return {
         staffActions: bindActionCreators(staffActions, dispatch),
         headOfActions: bindActionCreators(headOfActions, dispatch),
+        notificationActions: bindActionCreators(notificationActions, dispatch),
+         
         destinationActions: bindActionCreators(destinationActions, dispatch),
         filterActions: bindActionCreators(filterActions, dispatch),
         jobTitleActions: bindActionCreators(jobTitleActions, dispatch),

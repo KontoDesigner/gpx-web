@@ -30,6 +30,8 @@ class NotificationEdit extends Component {
             notification: null
        
         }
+
+       // this.handleChange = this.handleChange.bind(this);
     }
 
    componentWillMount=async()=>  {
@@ -74,6 +76,12 @@ class NotificationEdit extends Component {
       }
       
       }
+
+    //   handleChange(event) {
+
+    //     this.setState({value: event.target.value});
+    //   }
+
 
 
     handleInputField = event => {
@@ -133,6 +141,7 @@ class NotificationEdit extends Component {
                                 
                                         notification={this.props.notification}
                                         handleInputField={this.handleInputField}
+                                        //handleChange={this.handleChange}
                                         //handleUnsavedEdit={this.handleUnsavedEdit}
                                         save={this.save}
                                     />

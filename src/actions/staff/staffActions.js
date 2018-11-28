@@ -3,6 +3,31 @@ import { beginAjaxCall, ajaxCallError, endAjaxCall } from '../ajaxStatusActions'
 import RestClient from '../../infrastructure/restClient'
 import { toastr } from 'react-redux-toastr'
 
+
+export function createMail(model) {
+    return async function(dispatch) {
+        dispatch(beginAjaxCall())
+
+        try {
+            debugger;
+            const res = await RestClient.Post('mail/sendMailAsync', model)
+
+            dispatch(endAjaxCall())
+
+            if (res) {
+                toastr.success('Success', `Selected staff was emailed`)
+            } else {
+                toastr.error('Error', `Selected staff was not emailed: ${res ? res.message : 'Error'}`)
+            }
+        } catch (error) {
+            dispatch(ajaxCallError(error))
+
+            throw error
+        }
+    } 
+}
+
+
 export function createResign(model) {
     return async function(dispatch) {
         dispatch(beginAjaxCall())

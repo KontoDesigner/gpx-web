@@ -26,6 +26,7 @@ class JobTitle extends Component {
             selected={this.props.selectedStaff} 
             toogleAbsentStaffModal={this.props.toogleAbsentStaffModal}
             toogleResignStaffModal={this.props.toogleResignStaffModal}
+            toogleSendMailModal={this.props.toogleSendMailModal}
             //AbsentStaffModal={this.props.AbsentStaffModal}
             />
           </div>

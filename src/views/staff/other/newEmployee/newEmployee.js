@@ -22,7 +22,12 @@ class NewEmployee extends Component {
                 <div className="form-row"> 
            <Filter getData={this.props.getNewEmployee} /> 
 
-            <Action selected={this.props.selectedStaff} /> 
+            <Action 
+            selected={this.props.selectedStaff} 
+            toogleAbsentStaffModal={this.props.toogleAbsentStaffModal}
+            toogleResignStaffModal={this.props.toogleResignStaffModal}
+            toogleSendMailModal={this.props.toogleSendMailModal}
+            /> 
           </div>
                 {this.props.newEmployee.length > 0 && (
                     <CardBody style={style} className="card-body-table">

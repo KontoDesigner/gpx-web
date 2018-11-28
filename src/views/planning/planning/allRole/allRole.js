@@ -22,7 +22,8 @@ class AllRole extends Component {
                                 toogleMarkPositionDeclineModal ={this.props.toogleMarkPositionDeclineModal}
                                 toogleMarkPositionActingModal ={this.props.toogleMarkPositionActingModal}
                                 toogleMarkPositionAcceptModal = {this.props.toogleMarkPositionAcceptModal}
-                             
+                                toogleAssignPositionModal = {this.props.toogleAssignPositionModal}
+                               
             />
           </div>
 

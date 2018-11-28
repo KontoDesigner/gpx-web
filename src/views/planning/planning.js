@@ -3,6 +3,7 @@ import { TabContent, TabPane, Row, Col } from 'reactstrap'
 import { connect } from 'react-redux'
 import Tabs from './tabs'
 import MakePositionVacant from './makePositionVacant'
+import AssignPosition from './assignPosition'
 import MarkPositionAccept from './markPositionAccept'
 import MarkPositionActing from './markPositionActing'
 import MarkPositionDecline from './markPositionDecline'
@@ -14,6 +15,7 @@ import VacantRole from './planning/vacantRole/vacantRole'
 import ReplyYesNoRole from './planning/replyYesNoRole/replyYesNoRole'
 import { bindActionCreators } from 'redux'
 import * as allRolesActions from '../../actions/planning/planning/allRolesActions'
+import * as planningActions from '../../actions/planning/planningActions'
 import * as placedRolesActions from '../../actions/planning/planning/placedRolesActions'
 import * as vacantRolesActions from '../../actions/planning/planning/vacantRolesActions'
 import * as replyYesNoRolesActions from '../../actions/planning/planning/replyYesNoRolesActions'
@@ -38,7 +40,8 @@ class Planning extends Component {
             markPositionActingModal: false,
             markPositionDeclineModal: false,
             resetPositionAcceptModal: false,
-            unmarkPositionActingModal: false
+            unmarkPositionActingModal: false,
+            assignPositionModal: false
         }
         this.handleChange = this.handleChange.bind(this);
     }
@@ -52,6 +55,14 @@ class Planning extends Component {
  
         this.setState({
             makePositionVacantModal: !this.state.makePositionVacantModal
+        
+        })
+    }
+
+    toogleAssignPositionModal = (val) => {
+ 
+        this.setState({
+            assignPositionModal: !this.state.assignPositionModal
         
         })
     }
@@ -125,6 +136,7 @@ class Planning extends Component {
     componentDidMount() {
         this.props.filterActions.handleFilter() //when page loads
         this.props.allRolesActions.getAllRoles()
+        this.props.planningActions.getStaffCandidate()
     }
 
     toggle = (tab, getData, resetData) => {
@@ -161,6 +173,13 @@ class Planning extends Component {
                     getReplyYesNoRoles={this.props.replyYesNoRolesActions.getReplyYesNoRoles}
                     handleReplyYesNoRoles={this.props.replyYesNoRolesActions.handleReplyYesNoRoles}
                 />
+
+     <AssignPosition
+                modal={this.state.assignPositionModal}
+                toggle={this.toogleAssignPositionModal}
+                createResign= {this.createResign}
+                candidate={this.props.candidate }
+            />
 
               <MakePositionVacant
                 modal={this.state.makePositionVacantModal}
@@ -213,8 +232,8 @@ class Planning extends Component {
                                 toogleMarkPositionDeclineModal ={this.toogleMarkPositionDeclineModal}
                                 toogleMarkPositionActingModal ={this.toogleMarkPositionActingModal}
                                 toogleMarkPositionAcceptModal = {this.toogleMarkPositionAcceptModal}
-                             
-
+                                toogleAssignPositionModal = {this.toogleAssignPositionModal}
+                                
                             />
                         </TabPane>
 
@@ -280,12 +299,14 @@ function mapStateToProps(state) {
         placedRoles: state.planning.planning.placedRoles,
         vacantRoles: state.planning.planning.vacantRoles,
         replyYesNoRoles: state.planning.planning.replyYesNoRoles,
-        selectedTitle: state.planning.filter.selectedTitle
+        selectedTitle: state.planning.filter.selectedTitle,
+        candidate: state.planning.candidate
     }
 }
 
 function mapDispatchToProps(dispatch) {
     return {
+        planningActions: bindActionCreators(planningActions, dispatch),
         allRolesActions: bindActionCreators(allRolesActions, dispatch),
         placedRolesActions: bindActionCreators(placedRolesActions, dispatch),
         vacantRolesActions: bindActionCreators(vacantRolesActions, dispatch),

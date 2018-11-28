@@ -70,11 +70,13 @@ const NotificationEdit = props => {
             <Input
               required
               type="textarea"
-              maxLength="1000"
+              //maxLength="1000"
               name="content"
               id="content"
-              rows={6}
+              rows={16}
               value={props.notification.content}
+            
+              onChange={props.handleInputField}
               aria-multiline="true"
             />
           </Col>
