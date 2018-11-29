@@ -26,16 +26,7 @@ export function deletePositionAssign(model) {
 
              }
             
-       
-
-           const res= await RestClient.Post('positionassign/deletepositionassignselect', model.StaffID)
-
-           if (res) {
-            toastr.success('Success', `Selected staff was assigned to position`)
-        } else {
-            toastr.error('Error', `Selected staff was not assigned to position: ${res ? res.message : 'Error'}`)
-        }
-
+             await RestClient.Post('positionassign/deletepositionassignselect', model.StaffID)
          
             dispatch(endAjaxCall())
         } catch (error) {
@@ -52,7 +43,14 @@ export function insertStaffAssign(positionAssign) {
 
         try {
             debugger;
-            await RestClient.Post('positionassign', positionAssign)
+           const res= RestClient.Post('positionassign', positionAssign)
+
+            
+           if (res) {
+            toastr.success('Success', `Selected staff was assigned to position`)
+        } else {
+            toastr.error('Error', `Selected staff was not assigned to position: ${res ? res.message : 'Error'}`)
+        }
 
             dispatch(endAjaxCall())
         } catch (error) {
