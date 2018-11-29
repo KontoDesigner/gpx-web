@@ -22,17 +22,17 @@ class AssignPosition extends Component {
 
         this.state = {
              dateModified: null,
-            selectedResignType: null,
-            selectedAbsentStart:null,
-            selectedAbsentEnd:null
+             selectedCandidate: null,
+            selectedAssignStart:null,
+            selectedAssignEnd:null
         };
     }
 
     toggle = () => {
         this.setState({
-            selectedResignType: null,
-            selectedAbsentStart:null,
-            selectedAbsentEnd:null,
+          selectedCandidate: null,
+          selectedAssignStart:null,
+          selectedAssignEnd:null,
             dateModified: null
 
         })
@@ -43,8 +43,8 @@ class AssignPosition extends Component {
 
 
 
-    resignTypeOnChange = resignType => {
-        const selectedResignType = resignType ;
+    candidateOnChange = candidate => {
+        const selectedCandidate = candidate ;
 
         //   var currentdate = new Date(); 
         //   var newdatemodified  = currentdate.getFullYear() + "-"
@@ -52,27 +52,27 @@ class AssignPosition extends Component {
         //  + currentdate.getDate() ; 
       
         this.setState({
-            selectedResignType,
+          selectedCandidate
             //dateModified:newdatemodified
        
         })
     }
 
-    absentStartChange = absentStart => {
-      const selectedAbsentStart = absentStart ;
-   debugger;
+    assignStartChange = assignStart => {
+      const selectedAssignStart = assignStart ;
+ 
       this.setState({
-        selectedAbsentStart
+        selectedAssignStart
      
       })
-    
+      debugger;
   }
 
-  absentEndChange = absentEnd => {
-    const selectedAbsentEnd = absentEnd ;
+  assignEndChange = assignEnd => {
+    const selectedAssignEnd = assignEnd ;
  
     this.setState({
-      selectedAbsentEnd
+      selectedAssignEnd
    
     })
   
@@ -83,7 +83,7 @@ componentDidMount() {
   
 }
 
-    createAbscense = (val) => {
+    createAssign = (val) => {
        
         this.toggle();
 
@@ -98,12 +98,13 @@ componentDidMount() {
         let model = {
             // staffID: position.mplid,
             dateModified: newdatemodified ,
-             absentReason: this.state.selectedResignType.id,
-            startDate: this.state.selectedAbsentStart,
-             endDate: this.state.selectedAbsentEnd
+             candidate: this.state.selectedCandidate.staffID,
+            startDate: this.state.selectedAssignStart,
+             endDate: this.state.selectedAssignEnd,
+             selectedTitle:this.props.selectedTitle[0]
         }
-
-       this.props.createAbscense(model);
+debugger;
+       this.props.createAssign(model);
     }
     
 
@@ -113,7 +114,7 @@ componentDidMount() {
     <div>
       <Modal isOpen={this.props.modal} toggle={this.toggle}>
         <ModalHeader toggle={this.toggle}>
-         Assign Staff To Position{' '}
+         Assign Staff To Position - {this.props.selectedTitle}
         </ModalHeader>
         <ModalBody>
           <Row>
@@ -135,8 +136,8 @@ componentDidMount() {
                                        labelKey="firstNameLastNameStatus" 
                                         className="form-control"
                                         options={this.props.candidate}
-                                        onChange={this.resignTypeOnChange}
-                                        value={this.state.selectedResignType}
+                                        onChange={this.candidateOnChange}
+                                        value={this.state.selectedCandidate}
                                         placeholder="Select"
                                     />
 
@@ -163,8 +164,8 @@ componentDidMount() {
                       id="absentStart"
                         className={'custom-datepicker'}
                         //value={this.props.staff.dateOfBirth}
-                        onChange={this.absentStartChange}
-                        value={this.state.selectedAbsentStart}
+                        onChange={this.assignStartChange}
+                        value={this.state.selectedAssignStart}
                         timeFormat={false}
                         dateFormat="YYYY-MM-DD"
                         closeOnSelect
@@ -176,8 +177,8 @@ componentDidMount() {
                 
                       <Datetime
                         className={'custom-datepicker'}
-                        onChange={this.absentEndChange}
-                        value={this.state.selectedAbsentEnd}
+                        onChange={this.assignEndChange}
+                        value={this.state.selectedAssignEnd}
                         timeFormat={false}
                         dateFormat="YYYY-MM-DD"
                         closeOnSelect
@@ -194,7 +195,7 @@ componentDidMount() {
         <ModalFooter>
           <Button
             color="success"
-            onClick={() => this.createAbscense()}
+            onClick={() => this.createAssign()}
           >
             Ok
           </Button>{' '}

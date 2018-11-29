@@ -108,6 +108,33 @@ class Planning extends Component {
         })
     }
 
+    createAssign = model => {
+      
+        let assignmodel = {
+   
+          // TemplateName:model.selectedNotification,
+            // StaffID:this.props.selectedStaff,
+             DateModified:model.dateModified,
+
+             StaffID: model.candidate,
+             MPLID : model.selectedTitle,
+       
+             StartDate: model.startDate,
+             EndDate: model.endDate
+             
+         }
+debugger;
+         const _this = this
+      
+                  this.props.planningActions.deletePositionAssign(assignmodel).then(function() {
+                     _this.props.planningActions.insertStaffAssign(assignmodel)
+         
+              })
+
+
+         //this.props.planningActions.insertStaffAssign(assignmodel)
+     }
+
 
     edit = (e, position) => {
 
@@ -177,8 +204,9 @@ class Planning extends Component {
      <AssignPosition
                 modal={this.state.assignPositionModal}
                 toggle={this.toogleAssignPositionModal}
-                createResign= {this.createResign}
+                createAssign= {this.createAssign}
                 candidate={this.props.candidate }
+                selectedTitle={this.props.selectedTitle} 
             />
 
               <MakePositionVacant
@@ -250,6 +278,7 @@ class Planning extends Component {
                                 toogleMarkPositionDeclineModal ={this.toogleMarkPositionDeclineModal}
                                 toogleMarkPositionActingModal ={this.toogleMarkPositionActingModal}
                                 toogleMarkPositionAcceptModal = {this.toogleMarkPositionAcceptModal}
+                                toogleAssignPositionModal = {this.toogleAssignPositionModal}
                             />
                         </TabPane>
 
@@ -266,6 +295,7 @@ class Planning extends Component {
                                 toogleMarkPositionDeclineModal ={this.toogleMarkPositionDeclineModal}
                                 toogleMarkPositionActingModal ={this.toogleMarkPositionActingModal}
                                 toogleMarkPositionAcceptModal = {this.toogleMarkPositionAcceptModal}
+                                toogleAssignPositionModal = {this.toogleAssignPositionModal}
                             />
                         </TabPane>
 
@@ -284,6 +314,7 @@ class Planning extends Component {
                                 toogleMarkPositionDeclineModal ={this.toogleMarkPositionDeclineModal}
                                 toogleMarkPositionActingModal ={this.toogleMarkPositionActingModal}
                                 toogleMarkPositionAcceptModal = {this.toogleMarkPositionAcceptModal}
+                                toogleAssignPositionModal = {this.toogleAssignPositionModal}
                             />
                         </TabPane>
                     </TabContent>

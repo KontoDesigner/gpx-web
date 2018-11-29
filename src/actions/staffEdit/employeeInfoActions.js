@@ -68,7 +68,7 @@ export function deletePositionAssign(id) {
             const model = {
                 Id: id
             }
-
+debugger;
             await RestClient.Post('positionassign/deletepositionassign', model)
 
             dispatch(endAjaxCall())

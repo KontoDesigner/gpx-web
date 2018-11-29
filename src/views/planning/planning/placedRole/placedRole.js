@@ -17,11 +17,12 @@ class PlacedRole extends Component {
                   <Action 
             selected={this.props.selectedTitle} 
             toogleMakePositionVacantModal={this.props.toogleMakePositionVacantModal}
-                                toogleUnmarkPositionActingModal ={this.props.toogleUnmarkPositionActingModal}
-                                toogleResetPositionAcceptModal  ={this.props.toogleResetPositionAcceptModal}
-                                toogleMarkPositionDeclineModal ={this.props.toogleMarkPositionDeclineModal}
-                                toogleMarkPositionActingModal ={this.props.toogleMarkPositionActingModal}
-                                toogleMarkPositionAcceptModal = {this.props.toogleMarkPositionAcceptModal}
+            toogleUnmarkPositionActingModal ={this.props.toogleUnmarkPositionActingModal}
+            toogleResetPositionAcceptModal  ={this.props.toogleResetPositionAcceptModal}
+            toogleMarkPositionDeclineModal ={this.props.toogleMarkPositionDeclineModal}
+            toogleMarkPositionActingModal ={this.props.toogleMarkPositionActingModal}
+            toogleMarkPositionAcceptModal = {this.props.toogleMarkPositionAcceptModal}
+            toogleAssignPositionModal = {this.props.toogleAssignPositionModal}
                              
             />
           </div>
