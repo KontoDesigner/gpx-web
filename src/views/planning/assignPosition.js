@@ -43,16 +43,16 @@ class AssignPosition extends Component {
 
           placementPeriods: [
               {
-                  id: '1',
-                  name: '1'
+                  id: 'Placement 1',
+                  name: 'Placement 1'
               },
               {
-                  id: '2',
-                  name: '2'
+                  id: 'Placement 2',
+                  name: 'Placement 2'
               },
               {
-                  id: '3',
-                  name: '3'
+                  id: 'Placement 3',
+                  name: 'Placement 3'
               }
              
           ],
@@ -200,7 +200,7 @@ debugger;
                   </tbody>
                   <thead>
                   <tr>
-                    <th colSpan="2">Act on Placement </th>
+                    <th colSpan="2">Act on </th>
                   </tr>
                 </thead>
                 <tbody>
