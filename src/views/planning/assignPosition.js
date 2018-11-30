@@ -24,7 +24,42 @@ class AssignPosition extends Component {
              dateModified: null,
              selectedCandidate: null,
             selectedAssignStart:null,
-            selectedAssignEnd:null
+            selectedAssignEnd:null,
+            selectedPlacementPeriod: null,
+            managerReasons: [
+              {
+                  id: 'Dismissed',
+                  name: 'Dismissed'
+              },
+              {
+                  id: 'Resigned',
+                  name: 'Resigned'
+              },
+              {
+                  id: ' Other (Please Specify)',
+                  name: ' Other (Please Specify)'
+              }
+          ],
+
+          placementPeriods: [
+              {
+                  id: '1',
+                  name: '1'
+              },
+              {
+                  id: '2',
+                  name: '2'
+              },
+              {
+                  id: '3',
+                  name: '3'
+              }
+             
+          ],
+
+
+            
+            
         };
     }
 
@@ -33,6 +68,7 @@ class AssignPosition extends Component {
           selectedCandidate: null,
           selectedAssignStart:null,
           selectedAssignEnd:null,
+          selectedPlacementPeriod:null,
             dateModified: null
 
         })
@@ -77,6 +113,17 @@ class AssignPosition extends Component {
     })
   
 }
+
+placementPeriodChange = placementPeriods => {
+  const selectedPlacementPeriod = placementPeriods ;
+
+  this.setState({
+    selectedPlacementPeriod
+ 
+  })
+  debugger;
+}
+
 componentDidMount() {
   //this.props.filterActions.handleFilter() //when page loads
   //this.props.allRolesActions.getAllRoles()
@@ -150,7 +197,28 @@ debugger;
           </select> */}
                     </td>
                   </tr>
-               
+                  </tbody>
+                  <thead>
+                  <tr>
+                    <th colSpan="2">Act on Placement </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td colSpan="2">
+                  
+                    <Select
+                                       id="placementPeriod"
+                                       valueKey="id"
+                                       labelKey="name" 
+                                        className="form-control"
+                                        options={this.state.placementPeriods}
+                                        onChange={this.placementPeriodChange}
+                                        value={this.state.selectedPlacementPeriod}
+                                        placeholder="Select"
+                                    />
+                                    </td>
+                                    </tr>
                   </tbody>
                   <thead>
                   <tr>
