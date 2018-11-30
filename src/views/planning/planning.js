@@ -108,6 +108,106 @@ class Planning extends Component {
         })
     }
 
+
+    createVacant = model => {
+      
+        let vacantModel = {
+
+             Id : model.mplid,
+             DateModified:model.dateModified
+         }
+debugger;
+ 
+      this.props.planningActions.createVacant(vacantModel)
+         
+              }
+
+              createActing = model => {
+                debugger;
+                          let actingModel = {
+                  
+                               Id : model.mplid,
+                               DateModified:model.dateModified,
+                               Extra:'Y'
+                           }
+                  debugger;
+                   
+                        this.props.planningActions.createActing(actingModel)
+                           
+                                }
+
+              createUnActing = model => {
+      debugger;
+                let actingModel = {
+        
+                     Id : model.mplid,
+                     DateModified:model.dateModified,
+                     Extra:''
+                 }
+        debugger;
+         
+              this.props.planningActions.createActing(actingModel)
+                 
+                      }
+
+                      createAccept = model => {
+                        debugger;
+                                  let acceptModel = {
+                          
+                                       Id : model.mplid,
+                                       DateModified:model.dateModified,
+                                       Accept:'Accepted',
+                                       AcceptDate:model.dateModified,
+                                       AcceptBy:'',
+                                   }
+                          debugger;
+                           
+
+  // _this.props.planningActions.sendToCtx(positionAssign)
+                          
+                                this.props.planningActions.createAccept(acceptModel)
+                                   
+                                        }
+
+
+                                        createResetAccept = model => {
+                                            debugger;
+                                                      let resetAcceptModel = {
+                                              
+                                                           Id : model.mplid,
+                                                           DateModified:model.dateModified,
+                                                           Accept:'',
+                                                           AcceptDate:model.dateModified,
+                                                           AcceptBy:'',
+                                                       }
+                                              debugger;
+                                               
+                    
+                      // _this.props.planningActions.sendToCtx(positionAssign)
+                                              
+                                                    this.props.planningActions.createResetAccept(resetAcceptModel)
+                                                       
+                                                            }
+
+                                        createDecline = model => {
+                                            debugger;
+                                                      let declineModel = {
+                                              
+                                                           Id : model.mplid,
+                                                           DateModified:model.dateModified,
+                                                           Accept:'Declined',
+                                                           AcceptDate:model.dateModified,
+                                                           AcceptBy:'',
+                                                       }
+                                              debugger;
+                                               
+                    
+                      // _this.props.planningActions.sendToCtx(positionAssign)
+                                              
+                                                    this.props.planningActions.createDecline(declineModel)
+                                                       
+                                                            }
+
     createAssign = model => {
       
         let assignmodel = {
@@ -212,37 +312,47 @@ debugger;
               <MakePositionVacant
                 modal={this.state.makePositionVacantModal}
                 toggle={this.toogleMakePositionVacantModal}
-                createResign= {this.createResign}
+                createVacant= {this.createVacant}
+                selectedTitle={this.props.selectedTitle} 
+
             />
 
             <MarkPositionAccept
                 modal={this.state.markPositionAcceptModal}
                 toggle={this.toogleMarkPositionAcceptModal}
-                createResign= {this.createResign}
+                createAccept= {this.createAccept}
+                selectedTitle={this.props.selectedTitle} 
             />
 
             <MarkPositionActing
                 modal={this.state.markPositionActingModal}
                 toggle={this.toogleMarkPositionActingModal}
-                createResign= {this.createResign}
+                createActing= {this.createActing}
+                selectedTitle={this.props.selectedTitle} 
+
+
+
             />
 
             <MarkPositionDecline
                 modal={this.state.markPositionDeclineModal}
                 toggle={this.toogleMarkPositionDeclineModal}
-                createResign= {this.createResign}
+                createDecline= {this.createDecline}
+                selectedTitle={this.props.selectedTitle} 
             />
 
             <ResetPositionAccept
                 modal={this.state.resetPositionAcceptModal}
                 toggle={this.toogleResetPositionAcceptModal}
-                createResign= {this.createResign}
+                createResetAccept= {this.createResetAccept}
+                selectedTitle={this.props.selectedTitle} 
             />
 
             <UnmarkPositionActing
                 modal={this.state.unmarkPositionActingModal}
                 toggle={this.toogleUnmarkPositionActingModal}
-                createResign= {this.createResign}
+                createUnActing= {this.createUnActing}
+                selectedTitle={this.props.selectedTitle} 
             />
 
                 <Col sm="12" md="9" lg="9" xl="10">

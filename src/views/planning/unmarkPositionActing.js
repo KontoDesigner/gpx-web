@@ -9,12 +9,12 @@ class UnMarkPositionActing extends Component {
   constructor() {
     super();
 
-    this.state = {
-      selectedResignAppDate:null
-    };
+    // this.state = {
+    //   selectedResignAppDate:null
+    // };
 }
 
-createResign = (val) => {
+createUnActing = (val) => {
        
   this.toggle();
 
@@ -23,62 +23,43 @@ createResign = (val) => {
 + (currentdate.getMonth()+1)  + "-" 
  + currentdate.getDate() ; 
 
- // const destination = this.props.availablePositions.filter(ap => ap.destination === this.state.selectedDestination)[0];
- // const position = destination.jobTitles.filter(ap => ap.mplid === mplid)[0];
-
   let model = {
-      // staffID: position.mplid,
-      dateModified: newdatemodified ,
-       fromDate: this.state.selectedResignAppDate,
-      // startDate: this.state.selectedAbsentStart,
-      //  endDate: this.state.selectedAbsentEnd
+    dateModified: newdatemodified ,
+    mplid:this.props.selectedTitle[0]
   }
 debugger;
- this.props.createResign(model);
+ this.props.createUnActing(model);
 }
 
 
-resignAppDateChange = appDate => {
-  const selectedResignAppDate = appDate ;
-debugger;
-  this.setState({
-    selectedResignAppDate
- 
-  })
 
-}
 
 toggle = () => {
-  this.setState({
-    selectedResignAppDate:null,
+  // this.setState({
+  //   selectedResignAppDate:null,
 
-  })
+  // })
 
-  this.props.toggle();
+   this.props.toggle();
 }
 
-  // function resignStaff(staffID) {
-  //   props.resignStaff(staffID)
-
-  //   props.toggle()
-  // }
   render() {
   return (
     <div>
       <Modal isOpen={this.props.modal} toggle={this.toggle}>
         <ModalHeader toggle={this.toggle}>
-          Unmark Position as Acting{' '}
+          Mark Position as Acting - {this.props.selectedTitle}
         </ModalHeader>
         <ModalBody>
                     <Alert color="primary">
-            
-                        Are you sure you want to unmark position as acting? 
+                       
+                    Are you sure you want to unmark position as acting? 
                     </Alert>
                 </ModalBody>
         <ModalFooter>
           <Button
             color="success"
-            onClick={() => this.createResign()}
+            onClick={() => this.createUnActing()}
           >
             Ok
           </Button>{' '}
@@ -94,3 +75,4 @@ toggle = () => {
 
 
 export default UnMarkPositionActing
+

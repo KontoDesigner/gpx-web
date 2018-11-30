@@ -9,13 +9,13 @@ class MarkPositionDecline extends Component {
   constructor() {
     super();
 
-    this.state = { 
-      selectedResignAppDate:null
-    };
+    // this.state = {
+    //   selectedResignAppDate:null
+    // };
 }
 
-createResign = (val) => {
-        
+createDecline= (val) => {
+       
   this.toggle();
 
   var currentdate = new Date(); 
@@ -23,61 +23,44 @@ createResign = (val) => {
 + (currentdate.getMonth()+1)  + "-" 
  + currentdate.getDate() ; 
 
- // const destination = this.props.availablePositions.filter(ap => ap.destination === this.state.selectedDestination)[0];
- // const position = destination.jobTitles.filter(ap => ap.mplid === mplid)[0];
-
   let model = {
-      // staffID: position.mplid,
+
       dateModified: newdatemodified ,
-       fromDate: this.state.selectedResignAppDate,
-      // startDate: this.state.selectedAbsentStart,
-      //  endDate: this.state.selectedAbsentEnd
+      mplid:this.props.selectedTitle[0]
+
   }
-debugger;
- this.props.createResign(model);
+
+ this.props.createDecline(model);
 }
 
-
-resignAppDateChange = appDate => {
-  const selectedResignAppDate = appDate ;
-debugger;
-  this.setState({
-    selectedResignAppDate
- 
-  })
-
-}
 
 toggle = () => {
-  this.setState({
-    selectedResignAppDate:null,
+  //this.setState({
+    //selectedResignAppDate:null,
 
-  })
+  //})
 
   this.props.toggle();
 }
 
-  // function resignStaff(staffID) {
-  //   props.resignStaff(staffID)
 
-  //   props.toggle()
-  // }
   render() {
   return (
     <div>
       <Modal isOpen={this.props.modal} toggle={this.toggle}>
         <ModalHeader toggle={this.toggle}>
-          Mark Position Declined{' '}
+          Mark Position Decline - {this.props.selectedTitle}
         </ModalHeader>
         <ModalBody>
                     <Alert color="danger">
-                        Are you sure you want to mark position as declined? 
+                    Are you sure you want to mark the assigned position as declined?
+                 
                     </Alert>
                 </ModalBody>
         <ModalFooter>
           <Button
             color="success"
-            onClick={() => this.createResign()}
+            onClick={() => this.createDecline()}
           >
             Ok
           </Button>{' '}
@@ -90,6 +73,5 @@ toggle = () => {
   )
 }
 }
-
 
 export default MarkPositionDecline

@@ -17,6 +17,153 @@ export function getStaffCandidateSuccess(candidate) {
   }
 }
 
+export function createAccept(model) {
+    return async function(dispatch) {
+        dispatch(beginAjaxCall())
+debugger;
+        try {
+             const modelobsolete = {
+                  Id: model.id
+        }
+debugger;
+           const res= await RestClient.Post('positionassign/markaccept', model)
+        
+       
+            if (res) {
+                toastr.success('Success', `Selected position(s) is now marked/unmarked as acting`)
+            } else {
+                toastr.error('Error', `Selected position(s) is not marked/unmarked as acting: ${res ? res.message : 'Error'}`)
+            }
+
+
+
+            dispatch(endAjaxCall())
+        } catch (error) {
+            dispatch(ajaxCallError(error))
+
+            throw error
+        }
+    }
+}
+
+export function createResetAccept(model) {
+    return async function(dispatch) {
+        dispatch(beginAjaxCall())
+debugger;
+        try {
+             const modelobsolete = {
+                  Id: model.id
+        }
+debugger;
+           const res= await RestClient.Post('positionassign/markaccept', model)
+        
+       
+            if (res) {
+                toastr.success('Success', `Selected position assign (s) is now resetted`)
+            } else {
+                toastr.error('Error', `Selected position assign(s) is not resetted: ${res ? res.message : 'Error'}`)
+            }
+
+
+
+            dispatch(endAjaxCall())
+        } catch (error) {
+            dispatch(ajaxCallError(error))
+
+            throw error
+        }
+    }
+}
+
+
+export function createDecline(model) {
+    return async function(dispatch) {
+        dispatch(beginAjaxCall())
+debugger;
+        try {
+             const modelobsolete = {
+                  Id: model.id
+        }
+debugger;
+           const res= await RestClient.Post('positionassign/markaccept', model)
+        
+       
+            if (res) {
+                toastr.success('Success', `Selected assigns is now marked as declined`)
+            } else {
+                toastr.error('Error', `Selected assigns is not marked as declined: ${res ? res.message : 'Error'}`)
+            }
+
+
+
+            dispatch(endAjaxCall())
+        } catch (error) {
+            dispatch(ajaxCallError(error))
+
+            throw error
+        }
+    }
+}
+
+export function createActing(model) {
+    return async function(dispatch) {
+        dispatch(beginAjaxCall())
+debugger;
+        try {
+             const modelobsolete = {
+                  Id: model.id
+        }
+debugger;
+           const res= await RestClient.Post('position/markacting', model)
+        
+       
+            if (res) {
+                toastr.success('Success', `Selected position(s) is now marked/unmarked as acting`)
+            } else {
+                toastr.error('Error', `Selected position(s) is not marked/unmarked as acting: ${res ? res.message : 'Error'}`)
+            }
+
+
+
+            dispatch(endAjaxCall())
+        } catch (error) {
+            dispatch(ajaxCallError(error))
+
+            throw error
+        }
+    }
+}
+
+
+export function createVacant(model) {
+    return async function(dispatch) {
+        dispatch(beginAjaxCall())
+debugger;
+        try {
+             const modelobsolete = {
+                  Id: model.id
+        }
+debugger;
+           const res= await RestClient.Post('positionassign/makevacant', model)
+        
+       
+            if (res) {
+                toastr.success('Success', `Selected position(s) is now vacant`)
+            } else {
+                toastr.error('Error', `Selected position(s) is not vacant: ${res ? res.message : 'Error'}`)
+            }
+
+
+
+            dispatch(endAjaxCall())
+        } catch (error) {
+            dispatch(ajaxCallError(error))
+
+            throw error
+        }
+    }
+}
+
 export function deletePositionAssign(model) {
     return async function(dispatch) {
         dispatch(beginAjaxCall())
