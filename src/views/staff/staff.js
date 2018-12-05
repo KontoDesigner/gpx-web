@@ -35,6 +35,8 @@ class Staff extends Component {
 
         this.state = {
             selectedReason: null,
+            fileName:null,
+            importType:'',
             value:null,
             activeTab: 'headOf',
             resetData: this.props.headOfActions.handleHeadOf,
@@ -135,6 +137,11 @@ class Staff extends Component {
         this.props.staffActions.createAbsense(abscensemodel)
     }
 
+    handleFile=(fileName) => {
+        debugger;
+   this.setState({fileName})
+
+    }
 
     createResign = model => {
 
@@ -235,6 +242,7 @@ create = async(model) => {
 
 
 try {
+    debugger;
   const res =  await RestClient.Upload('import/UploadFile/'+ this.state.importType,this.state.fileName)
 
 this.setState({fileName:'', importType:''})
@@ -409,8 +417,8 @@ this.setState({fileName:'', importType:''})
                        
                         <FileImport
                          importTypes={this.state.importTypes}
-                         fileimportTypes={this.state.fileimportTypes}
-                         importTypes={this.state.importTypes}
+                         //fileimportTypes={this.state.fileimportTypes}
+                       
                          handleFile={this.handleFile}
                          handleImportType={this.handleImportType}
                          importType={this.state.importType}

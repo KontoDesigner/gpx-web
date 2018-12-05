@@ -1,5 +1,4 @@
 
-
 import React, { Component } from 'react'
 import Moment from 'react-moment';
 import { Row, Col,  Label, Input,Button ,Card,CardHeader,CardBody} from 'reactstrap'
@@ -34,10 +33,10 @@ const Import = (props) => {
         />
 
 <p></p>
- <input
+<input
 onChange={e => props.handleFile(e.target.files[0])}
  type="file"
-name="file"
+name="file" 
 id="file"
 />
         <p></p>
