@@ -28,7 +28,7 @@ const Import = (props) => {
           labelKey="id"
           className="form-control"
           options={props.importTypes}
-       onChange = { props.handleImportType }
+       onChange = {props.handleImportType }
           value={props.importType}
          placeholder="Select"
         />

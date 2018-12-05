@@ -63,6 +63,11 @@ class Imports extends Component {
         }
     }
   
+    handleImportType = ( val) => {
+                debugger;       
+        this.setState({importType:val.id});
+    }
+
     create = async(model) => {
         // this.props.settingActions.save()
       

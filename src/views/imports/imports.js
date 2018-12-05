@@ -35,7 +35,7 @@ class Imports extends Component {
     }
 
     handleImportType = ( val) => {
-                       
+               debugger;        
         this.setState({importType:val.id});
     }
 

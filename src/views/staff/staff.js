@@ -25,6 +25,8 @@ import * as notificationActions from '../../actions/notification/notificationAct
 import * as fileImportActions from '../../actions/staff/other/fileImportActions'
 import $ from 'jquery'
 import Tabs from './tabs'
+import RestClient from '../../infrastructure/restClient'
+import { toastr } from 'react-redux-toastr'
 import '../../styles/staff.css';
 
 class Staff extends Component {
@@ -39,6 +41,18 @@ class Staff extends Component {
             absentStaffModal: false,
             resignStaffModal: false,
             sendMailModal: false,
+            importTypes: [    //not in use  delete
+                {
+                    id: 'Staff',
+                    name: 'Staff' 
+                },
+                {
+                    id: 'Position',
+                    name: 'Position'
+                },
+          
+            ],
+
             
             resignType: [
                 {
@@ -206,6 +220,40 @@ class Staff extends Component {
         }
     }
 
+    handleImportType = ( val) => {
+        debugger;       
+this.setState({importType:val.id});
+}
+
+handleFile=(fileName) => {
+    this.setState({fileName})
+ 
+     }
+
+create = async(model) => {
+// this.props.settingActions.save()
+
+
+try {
+  const res =  await RestClient.Upload('import/UploadFile/'+ this.state.importType,this.state.fileName)
+
+this.setState({fileName:'', importType:''})
+
+   if (res) {
+      toastr.success('Success', `GPX - Import routine finished`)
+} else {
+      toastr.error('Error', `GPX - Could not Import: ${res ? res.message : 'Error'}`)
+  }
+} catch (error) {
+ // dispatch(ajaxCallError(error))
+
+  throw error
+}
+
+}
+
+
+
  
 
     render() {
@@ -360,7 +408,13 @@ class Staff extends Component {
                              <TabPane tabId="fileImport">
                        
                         <FileImport
-                      
+                         importTypes={this.state.importTypes}
+                         fileimportTypes={this.state.fileimportTypes}
+                         importTypes={this.state.importTypes}
+                         handleFile={this.handleFile}
+                         handleImportType={this.handleImportType}
+                         importType={this.state.importType}
+                         create={this.create}
                        /> 
                    </TabPane>
                     </TabContent>
