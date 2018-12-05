@@ -159,11 +159,11 @@ class StaffEdit extends Component {
         )
         this.props.employeeInfoActions.getPositionAssigns(this.state.staffId)
 
-      this.props.applicationHistoryActions.getResignHistory(this.state.staffId)
- 
+        this.props.applicationHistoryActions.getResignHistory(this.state.staffId)
+
         this.props.abscenseHistoryActions.getAbscenseHistory(this.state.staffId)
         this.props.destinationHistoryActions.getDestinationHistory(this.state.staffId)
-   
+
         this.props.employeeInfoActions.getStaff(this.state.staffId).then(function() {
             //debugger;
 
@@ -219,18 +219,16 @@ class StaffEdit extends Component {
             Destination: positionAssign.Destination,
             PositionStart: positionAssign.PositionStartDate,
             JobTitle: positionAssign.JobTitle,
-            IataCode: positionAssign.IataCode,
-            Country: positionAssign.Country
+            IataCode: positionAssign.IataCode
         }
 
         this.props.employeeInfoActions.sendToCtx(model)
     }
 
     save = () => {
-        debugger;
- 
+        debugger
+
         this.props.employeeInfoActions.save(this.props.staff)
- 
     }
 
     render() {
@@ -312,7 +310,7 @@ class StaffEdit extends Component {
                                         handleChangeMultiple={this.handleChangeMultiple}
                                         allJobTitles={this.props.allJobTitles}
                                         //applicationHistory={this.props.applicationHistory}
-                                       //resignHistory={this.props.resignHistory}
+                                        //resignHistory={this.props.resignHistory}
                                         //abscenseHistory={this.props.abscenseHistory}
                                         // title={"Skills"}
                                         // name={"skills"}
@@ -323,14 +321,11 @@ class StaffEdit extends Component {
                                 </TabPane>
 
                                 <TabPane tabId="applications">
-                                    <Applications 
-
-                                    applicationHistory={this.props.applicationHistory} 
-                                    //resignHistory={this.props.resignHistory} 
-                                    abscenseHistory={this.props.abscenseHistory}  
-                                    
+                                    <Applications
+                                        applicationHistory={this.props.applicationHistory}
+                                        //resignHistory={this.props.resignHistory}
+                                        abscenseHistory={this.props.abscenseHistory}
                                     />
-                            
                                 </TabPane>
 
                                 <TabPane tabId="team">
@@ -366,7 +361,7 @@ function mapStateToProps(state) {
         followingSeason: state.geography.followingSeason,
         destinationHistory: state.staffEdit.destinationHistory,
         applicationHistory: state.staffEdit.applicationHistory
-        
+
         //resignHistory: state.staffEdit.resignHistory
     }
 }
@@ -374,7 +369,7 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
     return {
         employeeInfoActions: bindActionCreators(employeeInfoActions, dispatch),
-       // abscenseActions: bindActionCreators(abscenseActions, dispatch),
+        // abscenseActions: bindActionCreators(abscenseActions, dispatch),
         destinationHistoryActions: bindActionCreators(destinationHistoryActions, dispatch),
         applicationHistoryActions: bindActionCreators(applicationHistoryActions, dispatch),
         abscenseHistoryActions: bindActionCreators(abscenseHistoryActions, dispatch)
