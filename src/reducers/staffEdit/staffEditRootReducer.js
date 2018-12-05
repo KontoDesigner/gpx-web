@@ -6,8 +6,7 @@ import applicationHistory from './applicationHistoryReducer'
 import abscenseHistory from './abscenseHistoryReducer'
 import cv from './cvReducer'
 export default combineReducers({
-    employeeInfo, 
-    abscense, 
+    employeeInfo,    abscense, 
     destinationHistory,
     applicationHistory,
     cv,
