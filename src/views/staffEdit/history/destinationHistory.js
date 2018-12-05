@@ -9,17 +9,28 @@ const DestinationHistory = (props) => {
             <CardHeader>DestinationHistory {props.destinationHistory.length}</CardHeader>
 
             <CardBody>
-                <ListGroup>
-                    {props.destinationHistory.map(h => (
-                        <ListGroupItem>{h.destination} {h.jobTitle}</ListGroupItem>
-                    ))
-                    }
+            <table className="table">
+          <thead>
+            <tr>
+              <th scope="col">Destination</th>
+              <th scope="col">JobTitle</th>
+             
+            </tr>
+          </thead>
+          <tbody>
+          {props.destinationHistory.map(dh => (
+                <tr>
+                  <td>{dh.destination}</td>
+             
+                  <td>{dh.jobTitle}</td>
+                </tr>
+              ))}
+          </tbody>
+           </table>
+        </CardBody>
+    </Card>
 
-                </ListGroup>
-
-                
-            </CardBody>
-        </Card>
+       
     );
 };
 

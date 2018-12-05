@@ -12,5 +12,3 @@ export function handleStaffField(field, val) {
     }
 }
 
-
-

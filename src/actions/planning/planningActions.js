@@ -105,6 +105,39 @@ debugger;
     }
 }
 
+
+
+
+export function createVacant(model) {
+    return async function(dispatch) {
+        dispatch(beginAjaxCall())
+debugger;
+        try {
+             const modelobsolete = {
+                  Id: model.id
+        }
+debugger;
+           const res= await RestClient.Post('positionassign/makevacant', model)
+        
+       
+            if (res) {
+                toastr.success('Success', `Selected position(s) is now vacant`)
+            } else {
+                toastr.error('Error', `Selected position(s) is not vacant: ${res ? res.message : 'Error'}`)
+            }
+
+
+
+            dispatch(endAjaxCall())
+        } catch (error) {
+            dispatch(ajaxCallError(error))
+
+            throw error
+        }
+    }
+}
+
+
 export function createActing(model) {
     return async function(dispatch) {
         dispatch(beginAjaxCall())
@@ -135,7 +168,7 @@ debugger;
 }
 
 
-export function createVacant(model) {
+export function createUpdate(model) {
     return async function(dispatch) {
         dispatch(beginAjaxCall())
 debugger;
@@ -144,13 +177,13 @@ debugger;
                   Id: model.id
         }
 debugger;
-           const res= await RestClient.Post('positionassign/makevacant', model)
+           const res= await RestClient.Post('position/updateposition', model)
         
        
             if (res) {
-                toastr.success('Success', `Selected position(s) is now vacant`)
+                toastr.success('Success', `Selected position(s) is now updated`)
             } else {
-                toastr.error('Error', `Selected position(s) is not vacant: ${res ? res.message : 'Error'}`)
+                toastr.error('Error', `Selected position(s) is not updated: ${res ? res.message : 'Error'}`)
             }
 
 

@@ -9,9 +9,7 @@ import {
 import moment from "moment";
 
 const SubmittedApplicationForms = props => {
- // alert(props.abscenseHistory.length);
   return (
-    
     <Card>
       {/* <CardHeader>SubmittedApplicationForms {props.applicationHistory.length}</CardHeader> */}
       <CardHeader>
@@ -25,32 +23,24 @@ const SubmittedApplicationForms = props => {
           <thead>
             <tr>
               <th scope="col">ApplicationType</th>
-               <th scope="col">Modified</th>
-              {/* <th scope="col">Reason For Resignment</th>
-              <th scope="col">Job title when Resigned</th>  */}
-               {/* <th scope="col">Comments</th>  */}
+              <th scope="col">From</th>
+              <th scope="col">Reason For Resignment</th>
+              <th scope="col">Job title when Resigned</th>
+              <th scope="col">Comments</th>
               <th scope="col">Status</th>
             </tr>
           </thead>
           <tbody>
-            {props.abscenseHistory.map(h => (
+            {props.applicationHistory
+              .filter(x => x.applicationType.trim() === "Resigned")
+              .map(h => (
                 <tr>
                   <td>{h.applicationType}</td>
-                   <td>{moment(h.dateModified).format("YYYY-MM-DD")}</td>
-                  {/* <td>{h.reasonForResignment}</td>
-                  <td>{h.reason.slice(0, 100)}</td> 
-                   <td>{h.jobTitleWhenResigned}</td>  */}
+                  <td>{moment(h.fromdate).format("YYYY-MM-DD")}</td>
+                  <td>{h.reasonForResignment}</td>
+                  <td>{h.reason.slice(0, 100)}</td>
+                  <td>{h.jobTitleWhenResigned}</td>
                   <td>{h.status}</td>
-                </tr>
-              ))}
-                 {props.applicationHistory.map(ap => (
-                <tr>
-                  <td>{ap.applicationType}</td>
-                   <td>{moment(ap.dateModified).format("YYYY-MM-DD")}</td>
-                  {/* <td>{h.reasonForResignment}</td>
-                  <td>{h.reason.slice(0, 100)}</td> 
-                   <td>{h.jobTitleWhenResigned}</td>  */}
-                  <td>{ap.status}</td>
                 </tr>
               ))}
           </tbody>

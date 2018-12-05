@@ -38,7 +38,7 @@ incrementCounter = ( ) => {
                     applicationHistory={this.props.applicationHistory} 
                     incrementCounter={this.incrementCounter} 
                     lengthOfHistory={this.lengthOfHistory} 
-                  
+                    abscenseHistory={this.props.abscenseHistory} 
                     />
                     </Col>
                 </Row>

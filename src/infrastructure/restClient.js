@@ -23,8 +23,6 @@ class RestClient {
         }
     }
 
-    
-
     static async Post(url, data) {
         let baseUrl = `${restClientConfig.baseUrl}/api/`
 
@@ -36,12 +34,41 @@ class RestClient {
 
             let settings = {
                 headers: {
-                    Accept: 'ApPlication/json',
+                    Accept: 'Application/json',
                     'Content-Type': 'application/json; charset=utf-8',
                     Authorization: ''
                 },
                 data: JSON.stringify(data),
                 method: 'POST'
+            }
+
+            let response = await adalApiFetch(axiosInstance, baseUrl + url, settings)
+
+            return response.data
+        } catch (err) {
+            toastr.error('Error', `An unexpected error has occured: ${err}.`);
+
+            console.warn(err)
+        }
+    }
+
+    static async Put(url, data) {
+        let baseUrl = `${restClientConfig.baseUrl}/api/`
+
+        var axiosInstance = axios.create({
+            baseURL: baseUrl
+        })
+        try {
+            console.log(`RestClient [PUT] ${baseUrl + url}`, data)
+
+            let settings = {
+                headers: {
+                    Accept: 'Application/json',
+                    'Content-Type': 'application/json; charset=utf-8',
+                    Authorization: ''
+                },
+                data: JSON.stringify(data),
+                method: 'PUT'
             }
 
             let response = await adalApiFetch(axiosInstance, baseUrl + url, settings)

@@ -76,7 +76,7 @@ class SendMailUsingTemplate extends Component {
              selectedNotification: this.state.selectedNotification,
            
         }
-
+debugger;
        this.props.createMail(model);
     }
     
@@ -112,6 +112,7 @@ class SendMailUsingTemplate extends Component {
                                         onChange={this.notificationChange}
                                        value={this.state.selectedNotification}
                                         placeholder="Select"
+                                        className="form-group form-group-select"
                                     />
 
                     {/* <select value={this.props.value} onChange={this.props.handleChange}  className="form-control"  >

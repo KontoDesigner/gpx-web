@@ -3,6 +3,29 @@ import { beginAjaxCall, ajaxCallError, endAjaxCall } from '../ajaxStatusActions'
 import RestClient from '../../infrastructure/restClient'
 import { toastr } from 'react-redux-toastr'
 
+export function save(model) {
+    return async function(dispatch) {
+        dispatch(beginAjaxCall())
+debugger;
+        try {
+            const res = await RestClient.Post(`staff/updatestaff`, model)
+
+            dispatch(endAjaxCall())
+
+            if (res) {
+                toastr.success('Success', `Staff was saved`)
+            } else {
+                toastr.error('Error', `Could not save staff: ${res ? res.message : 'Error'}`)
+            }
+        } catch (error) {
+            dispatch(ajaxCallError(error))
+
+            throw error
+        }
+    } 
+}
+
+
 export function sendToCtx(model) {
     return async function(dispatch) {
         dispatch(beginAjaxCall())

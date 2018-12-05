@@ -24,7 +24,7 @@ const resignInformation = props => {
       color="warning"
       // style={{ marginRight: '2px', marginBottom: '2px' }}
     >
-      Resign
+Enable
     </Button>
   )
 
@@ -147,13 +147,13 @@ const resignInformation = props => {
 
           <Col sm="12" md="6" lg="12" xl="4" className="form-group">
             {/* {<TextInput name="title" label="Title" value={props.staff.title} onChange={props.handleStaffField} /> } */}
-            <Label for="reason">Comments</Label>
+            <Label for="resignComm">Comments</Label>
             <Input
               required
               type="textarea"
               maxLength="1000"
-              name="reason"
-              id="reason"
+              name="resignComm"
+              id="resignComm"
               onChange={props.handleStaffField}
               rows={6}
               aria-multiline="true"

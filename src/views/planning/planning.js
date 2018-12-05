@@ -10,11 +10,15 @@ import MarkPositionDecline from './markPositionDecline'
 import ResetPositionAccept from './resetPositionAccept'
 import UnmarkPositionActing from './unmarkPositionActing'
 import AllRole from './planning/allRole/allRole'
+import NewPosition from './planning/newPosition/newPosition'
 import PlacedRole from './planning/placedRole/placedRole'
 import VacantRole from './planning/vacantRole/vacantRole'
+import UpdatePosition from './updatePosition'
 import ReplyYesNoRole from './planning/replyYesNoRole/replyYesNoRole'
+
 import { bindActionCreators } from 'redux'
 import * as allRolesActions from '../../actions/planning/planning/allRolesActions'
+import * as newPositionActions from '../../actions/planning/planning/newPositionActions'
 import * as planningActions from '../../actions/planning/planningActions'
 import * as placedRolesActions from '../../actions/planning/planning/placedRolesActions'
 import * as vacantRolesActions from '../../actions/planning/planning/vacantRolesActions'
@@ -41,7 +45,8 @@ class Planning extends Component {
             markPositionDeclineModal: false,
             resetPositionAcceptModal: false,
             unmarkPositionActingModal: false,
-            assignPositionModal: false
+            assignPositionModal: false,
+            updatePositionModal:false
         }
         this.handleChange = this.handleChange.bind(this);
     }
@@ -63,6 +68,14 @@ class Planning extends Component {
  
         this.setState({
             assignPositionModal: !this.state.assignPositionModal
+        
+        })
+    }
+
+    toogleUpdatePositionModal = (val) => {
+ 
+        this.setState({
+            updatePositionModal: !this.state.updatePositionModal
         
         })
     }
@@ -234,7 +247,32 @@ debugger;
 
          //this.props.planningActions.insertStaffAssign(assignmodel)
      }
+     createUpdate = model => {
+      
+        let updatemodel = {
+   
+          // TemplateName:model.selectedNotification,
+            // StaffID:this.props.selectedStaff,
+             DateModified:model.dateModified,
 
+             StaffID: model.candidate,
+             MPLID : model.selectedTitle,
+       
+             StartDate: model.startDate,
+             EndDate: model.endDate
+             
+         }
+debugger;
+         const _this = this
+      
+   
+                     this.props.planningActions.createUpdate(updatemodel)
+         
+              
+
+
+         //this.props.planningActions.insertStaffAssign(assignmodel)
+     }
 
     edit = (e, position) => {
 
@@ -299,6 +337,10 @@ debugger;
                     handleVacantRoles={this.props.vacantRolesActions.handleVacantRoles}
                     getReplyYesNoRoles={this.props.replyYesNoRolesActions.getReplyYesNoRoles}
                     handleReplyYesNoRoles={this.props.replyYesNoRolesActions.handleReplyYesNoRoles}
+                  
+                    getNewPosition={this.props.newPositionActions.getNewPosition}
+                    handleNewPosition={this.props.newPositionActions.handleNewPosition}
+
                 />
 
      <AssignPosition
@@ -307,6 +349,15 @@ debugger;
                 createAssign= {this.createAssign}
                 candidate={this.props.candidate }
                 selectedTitle={this.props.selectedTitle} 
+            />
+
+              <UpdatePosition
+                modal={this.state.updatePositionModal}
+                toggle={this.toogleUpdatePositionModal}
+                createUpdate= {this.createUpdate}
+                selectedTitle={this.props.selectedTitle} 
+                // candidate={this.props.candidate }
+                // selectedTitle={this.props.selectedTitle} 
             />
 
               <MakePositionVacant
@@ -371,7 +422,7 @@ debugger;
                                 toogleMarkPositionActingModal ={this.toogleMarkPositionActingModal}
                                 toogleMarkPositionAcceptModal = {this.toogleMarkPositionAcceptModal}
                                 toogleAssignPositionModal = {this.toogleAssignPositionModal}
-                                
+                                toogleUpdatePositionModal = {this.toogleUpdatePositionModal}
                             />
                         </TabPane>
 
@@ -389,6 +440,7 @@ debugger;
                                 toogleMarkPositionActingModal ={this.toogleMarkPositionActingModal}
                                 toogleMarkPositionAcceptModal = {this.toogleMarkPositionAcceptModal}
                                 toogleAssignPositionModal = {this.toogleAssignPositionModal}
+                                toogleUpdatePositionModal = {this.toogleUpdatePositionModal}
                             />
                         </TabPane>
 
@@ -406,6 +458,7 @@ debugger;
                                 toogleMarkPositionActingModal ={this.toogleMarkPositionActingModal}
                                 toogleMarkPositionAcceptModal = {this.toogleMarkPositionAcceptModal}
                                 toogleAssignPositionModal = {this.toogleAssignPositionModal}
+                                toogleUpdatePositionModal = {this.toogleUpdatePositionModal}
                             />
                         </TabPane>
 
@@ -425,6 +478,13 @@ debugger;
                                 toogleMarkPositionActingModal ={this.toogleMarkPositionActingModal}
                                 toogleMarkPositionAcceptModal = {this.toogleMarkPositionAcceptModal}
                                 toogleAssignPositionModal = {this.toogleAssignPositionModal}
+                                toogleUpdatePositionModal = {this.toogleUpdatePositionModal}
+                            />
+                        </TabPane>
+                        <TabPane tabId="newPosition">
+                            <NewPosition
+                             
+                            
                             />
                         </TabPane>
                     </TabContent>
@@ -436,6 +496,7 @@ debugger;
 
 function mapStateToProps(state) {
     return {
+        newPosition: state.planning.planning.newPosition,
         allRoles: state.planning.planning.allRoles,
         placedRoles: state.planning.planning.placedRoles,
         vacantRoles: state.planning.planning.vacantRoles,
@@ -451,6 +512,7 @@ function mapDispatchToProps(dispatch) {
         allRolesActions: bindActionCreators(allRolesActions, dispatch),
         placedRolesActions: bindActionCreators(placedRolesActions, dispatch),
         vacantRolesActions: bindActionCreators(vacantRolesActions, dispatch),
+        newPositionActions: bindActionCreators(newPositionActions, dispatch),
         filterActions: bindActionCreators(filterActions, dispatch),
         replyYesNoRolesActions: bindActionCreators(replyYesNoRolesActions, dispatch)
     } 

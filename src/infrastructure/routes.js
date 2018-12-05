@@ -22,8 +22,8 @@ const Routes = () => (
             <Route path="/reports" component={Reports} />
             <Route path="/settings" component={Settings} />
             <Route exact path="/notification/:templatename" render={(props) => <NotificationEdit {...props} ignoreThis={true} />} />
-             <Route path="/new" component={Positions} /> 
-             <Route path="/imports" component={Imports} /> 
+             {/* <Route path="/new" component={Positions} />  */}
+             {/* <Route path="/imports" component={Imports} />   */}
             <Route component={NotFound} />
         </Switch>
     </div>

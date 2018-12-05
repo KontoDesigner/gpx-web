@@ -17,6 +17,7 @@ import * as employeeInfoActions from '../../actions/staffEdit/employeeInfoAction
 //import * as abscenseActions from '../../actions/staffEdit/abscenseActions'
 import * as destinationHistoryActions from '../../actions/staffEdit/destinationHistoryActions'
 import * as applicationHistoryActions from '../../actions/staffEdit/applicationHistoryActions'
+import * as abscenseHistoryActions from '../../actions/staffEdit/abscenseHistoryActions'
 import '../../styles/staffEdit.css'
 
 class StaffEdit extends Component {
@@ -157,9 +158,12 @@ class StaffEdit extends Component {
             this.props.followingSeason.name
         )
         this.props.employeeInfoActions.getPositionAssigns(this.state.staffId)
-        this.props.applicationHistoryActions.getResignHistory(this.state.staffId)
-        this.props.destinationHistoryActions.getDestinationHistory(this.state.staffId)
 
+      this.props.applicationHistoryActions.getResignHistory(this.state.staffId)
+ 
+        this.props.abscenseHistoryActions.getAbscenseHistory(this.state.staffId)
+        this.props.destinationHistoryActions.getDestinationHistory(this.state.staffId)
+   
         this.props.employeeInfoActions.getStaff(this.state.staffId).then(function() {
             //debugger;
 
@@ -223,8 +227,10 @@ class StaffEdit extends Component {
     }
 
     save = () => {
-  // debugger;
-       // alert(this.props.staff.suitable)
+        debugger;
+ 
+        this.props.employeeInfoActions.save(this.props.staff)
+ 
     }
 
     render() {
@@ -305,7 +311,9 @@ class StaffEdit extends Component {
                                         resignmentReasons={this.state.resignmentReasons}
                                         handleChangeMultiple={this.handleChangeMultiple}
                                         allJobTitles={this.props.allJobTitles}
-                                        applicationHistory={this.props.applicationHistory}
+                                        //applicationHistory={this.props.applicationHistory}
+                                       //resignHistory={this.props.resignHistory}
+                                        //abscenseHistory={this.props.abscenseHistory}
                                         // title={"Skills"}
                                         // name={"skills"}
                                         // options={this.state.skillOptions}
@@ -315,7 +323,14 @@ class StaffEdit extends Component {
                                 </TabPane>
 
                                 <TabPane tabId="applications">
-                                    <Applications applicationHistory={this.props.applicationHistory} />
+                                    <Applications 
+
+                                    applicationHistory={this.props.applicationHistory} 
+                                    //resignHistory={this.props.resignHistory} 
+                                    abscenseHistory={this.props.abscenseHistory}  
+                                    
+                                    />
+                            
                                 </TabPane>
 
                                 <TabPane tabId="team">
@@ -346,19 +361,23 @@ function mapStateToProps(state) {
         nextPositionAssign: state.staffEdit.employeeInfo.nextPositionAssign,
         followingPositionAssign: state.staffEdit.employeeInfo.followingPositionAssign,
         currentSeason: state.geography.currentSeason,
+        abscenseHistory: state.staffEdit.abscenseHistory,
         nextSeason: state.geography.nextSeason,
         followingSeason: state.geography.followingSeason,
         destinationHistory: state.staffEdit.destinationHistory,
         applicationHistory: state.staffEdit.applicationHistory
+        
+        //resignHistory: state.staffEdit.resignHistory
     }
 }
 
 function mapDispatchToProps(dispatch) {
     return {
         employeeInfoActions: bindActionCreators(employeeInfoActions, dispatch),
-        //  abscenseActions: bindActionCreators(abscenseActions, dispatch),
+       // abscenseActions: bindActionCreators(abscenseActions, dispatch),
         destinationHistoryActions: bindActionCreators(destinationHistoryActions, dispatch),
-        applicationHistoryActions: bindActionCreators(applicationHistoryActions, dispatch)
+        applicationHistoryActions: bindActionCreators(applicationHistoryActions, dispatch),
+        abscenseHistoryActions: bindActionCreators(abscenseHistoryActions, dispatch)
     }
 }
 

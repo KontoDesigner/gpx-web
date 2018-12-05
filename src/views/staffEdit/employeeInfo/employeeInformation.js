@@ -12,7 +12,7 @@ const EmployeeInformation = (props) => {
             <CardBody className="no-padding-bottom">
                 <div className="form-row">
                     <Col sm="12" md="6" lg="6" xl="4" className="form-group">
-                        <TextInput name="nationality" label="Nationality" value={props.staff.nationality} onChange={props.handleStaffField} />
+                        <TextInput name="nat" label="Nationality" value={props.staff.nat} onChange={props.handleStaffField} />
                     </Col>
 
                     <Col sm="12" md="6" lg="6" xl="4" className="form-group form-group-select">
@@ -31,15 +31,15 @@ const EmployeeInformation = (props) => {
                     </Col>
 
                     <Col sm="12" md="6" lg="6" xl="4" className="form-group">
-                        <TextInput name="empID" label="SAP ID" disabled value={props.staff.sapID} onChange={props.handleStaffField} />
+                        <TextInput name="sapID" label="SAP ID"  value={props.staff.sapID} onChange={props.handleStaffField} />
                     </Col>
 
                        <Col sm="12" md="6" lg="6" xl="4" className="form-group">
-                        <TextInput name="mopedID" disabled label="Moped ID" value={props.staff.mopedID} onChange={props.handleStaffField} />
+                        <TextInput name="mopedID"  label="Moped ID" value={props.staff.mopedID} onChange={props.handleStaffField} />
                     </Col>
 
                        <Col sm="12" md="6" lg="6" xl="4" className="form-group">
-                        <TextInput name="centralID" disabled label="Central ID" value={props.staff.centralID} onChange={props.handleStaffField} />
+                        <TextInput name="centralID" label="Central ID" value={props.staff.centralID} onChange={props.handleStaffField} />
                     </Col>
 
                     <Col sm="12" md="6" lg="6" xl="4" className="form-group form-group-select">
@@ -96,15 +96,16 @@ const EmployeeInformation = (props) => {
                         <TextInput name="drivingYear" label="Driving Year" value={props.staff.drivingYear} onChange={props.handleStaffField} />
                     </Col>
                     <Col sm="12" md="12" lg="12" xl="12" className="form-group">
-            <Label for="content">Remarks</Label>
+            <Label for="empcontent">Remarks</Label>
             <Input
               required
               type="textarea"
               maxLength="1000"
-              name="content"
-              id="content"
+              name="empcontent"
+              id="empcontent"
               rows={3}
-              value={props.staff.drivingYear}
+              value={props.staff.empcontent}
+              onChange={props.handleStaffField}
               aria-multiline="true"
             />
           </Col>

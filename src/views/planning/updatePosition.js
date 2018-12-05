@@ -16,7 +16,7 @@ import Datetime from 'react-datetime'
 import Select from 'react-select'
 
 
-class AssignPosition extends Component {
+class UpdatePosition extends Component {
     constructor() {
         super();
 
@@ -130,7 +130,7 @@ componentDidMount() {
   
 }
 
-    createAssign = (val) => {
+    createUpdate = (val) => {
        
         this.toggle();
 
@@ -145,13 +145,13 @@ componentDidMount() {
         let model = {
             // staffID: position.mplid,
             dateModified: newdatemodified ,
-             candidate: this.state.selectedCandidate.staffID,
+            //  candidate: this.state.selectedCandidate.staffID,
             startDate: this.state.selectedAssignStart,
              endDate: this.state.selectedAssignEnd,
              selectedTitle:this.props.selectedTitle[0]
         }
 debugger;
-       this.props.createAssign(model);
+       this.props.createUpdate(model);
     }
     
 
@@ -161,70 +161,15 @@ debugger;
     <div>
       <Modal isOpen={this.props.modal} toggle={this.toggle}>
         <ModalHeader toggle={this.toggle}>
-         Assign Staff To Position - {this.props.selectedTitle}
+         Update Position - {this.props.selectedTitle}
         </ModalHeader>
         <ModalBody>
           <Row>
             <Col>
               <Table striped bordered responsive>
-              
-                <thead>
-                  <tr>
-                    <th colSpan="2">Select Staff</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td colSpan="2">
-                  
-                    <Select 
-                                       id="candidates"
-                                       valueKey="firstNameLastNameStatus"
-                                       labelKey="firstNameLastNameStatus" 
-                                        className="form-control"
-                                        options={this.props.candidate}
-                                        onChange={this.candidateOnChange}
-                                        value={this.state.selectedCandidate}
-                                        placeholder="Select"
-                                        className="form-group form-group-select"
-                                    />
-
-                    {/* <select value={this.props.value} onChange={this.props.handleChange}  className="form-control"  >
-                    <option value="" disabled selected>Select your option</option>
-            <option value="Studies">Studies</option>
-            <option value="Parental Leave">Parental Leave</option>
-            <option value="Other Please Specify">Other Please Specify</option>
-           
-          </select> */}
-                    </td>
-                  </tr>
-                  </tbody>
                   <thead>
                   <tr>
-                    <th colSpan="2">Act on </th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td colSpan="2">
-                  
-                    <Select
-                                       id="placementPeriod"
-                                       valueKey="id"
-                                       labelKey="name" 
-                                        className="form-control"
-                                        options={this.state.placementPeriods}
-                                        onChange={this.placementPeriodChange}
-                                        value={this.state.selectedPlacementPeriod}
-                                        placeholder="Select"
-                                        className="form-group form-group-select"
-                                    />
-                                    </td>
-                                    </tr>
-                  </tbody>
-                  <thead>
-                  <tr>
-                    <th>Assign StartDate</th> <th>Assign EndDate</th>{' '}
+                    <th>StartDate</th> <th>EndDate</th>{' '}
                   </tr>
                 </thead>
                 <tbody>
@@ -258,6 +203,130 @@ debugger;
                     </td>
                   </tr>
                 </tbody>
+                <thead>
+                  <tr>
+                    <th>JobTitle</th><th>Shared Role</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>
+                  
+                    <Select 
+                                       id="candidates"
+                                       valueKey="firstNameLastNameStatus"
+                                       labelKey="firstNameLastNameStatus" 
+                                        className="form-control"
+                                        options={this.props.candidate}
+                                        onChange={this.candidateOnChange}
+                                        value={this.state.selectedCandidate}
+                                        placeholder="Select"
+                                        className="form-group form-group-select"
+                                    />
+
+      
+                    </td>
+                 
+                 
+                    <td>
+                  
+                    <Select
+                                       id="placementPeriod"
+                                       valueKey="id"
+                                       labelKey="name" 
+                                        className="form-control"
+                                        options={this.state.placementPeriods}
+                                        onChange={this.placementPeriodChange}
+                                        value={this.state.selectedPlacementPeriod}
+                                        placeholder="Select"
+                                        className="form-group form-group-select"
+                                    />
+                                    </td>
+                                    </tr>
+                                    </tbody>
+                <thead>
+                  <tr>
+                    <th>MPL SM Origin</th><th>MPL Position Type</th>
+                  </tr>
+                </thead>
+                <tbody>
+                                    <tr>
+                    <td>
+                  
+                    <Select 
+                                       id="candidates"
+                                       valueKey="firstNameLastNameStatus"
+                                       labelKey="firstNameLastNameStatus" 
+                                        className="form-control"
+                                        options={this.props.candidate}
+                                        onChange={this.candidateOnChange}
+                                        value={this.state.selectedCandidate}
+                                        placeholder="Select"
+                                        className="form-group form-group-select"
+                                    />
+
+      
+                    </td>
+                 
+                 
+                    <td>
+                  
+                    <Select
+                                       id="placementPeriod"
+                                       valueKey="id"
+                                       labelKey="name" 
+                                        className="form-control"
+                                        options={this.state.placementPeriods}
+                                        onChange={this.placementPeriodChange}
+                                        value={this.state.selectedPlacementPeriod}
+                                        placeholder="Select"
+                                        className="form-group form-group-select"
+                                    />
+                                    </td>
+                                    </tr>
+                                    </tbody>
+                <thead>
+                  <tr>
+                  <th>Staff SM Origin</th><th>Staff Position Type</th>
+                    
+                  </tr>
+                </thead>
+                <tbody>
+                                    <tr>
+                    <td>
+                  
+                    <Select 
+                                       id="candidates"
+                                       valueKey="firstNameLastNameStatus"
+                                       labelKey="firstNameLastNameStatus" 
+                                        className="form-control"
+                                        options={this.props.candidate}
+                                        onChange={this.candidateOnChange}
+                                        value={this.state.selectedCandidate}
+                                        placeholder="Select"
+                                        className="form-group form-group-select"
+                                    />
+
+      
+                    </td>
+                 
+                 
+                    <td>
+                  
+                    <Select
+                                       id="placementPeriod"
+                                       valueKey="id"
+                                       labelKey="name" 
+                                        className="form-control"
+                                        options={this.state.placementPeriods}
+                                        onChange={this.placementPeriodChange}
+                                        value={this.state.selectedPlacementPeriod}
+                                        placeholder="Select"
+                                        className="form-group form-group-select"
+                                    />
+                                    </td>
+                                    </tr>
+                  </tbody>
               </Table>
             </Col>
           </Row>
@@ -265,7 +334,7 @@ debugger;
         <ModalFooter>
           <Button
             color="success"
-            onClick={() => this.createAssign()}
+            onClick={() => this.createUpdate()}
           >
             Ok
           </Button>{' '}
@@ -280,4 +349,4 @@ debugger;
     }
 }
 
-export default AssignPosition
+export default UpdatePosition

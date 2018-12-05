@@ -23,9 +23,10 @@ class YesNoRole extends Component {
             toogleMarkPositionActingModal ={this.props.toogleMarkPositionActingModal}
             toogleMarkPositionAcceptModal = {this.props.toogleMarkPositionAcceptModal}
             toogleAssignPositionModal = {this.props.toogleAssignPositionModal}
+            toogleUpdatePositionModal = {this.props.toogleUpdatePositionModal}
             />
           
-          </div>
+          </div> 
 
           {this.props.replyYesNoRoles.map((replyYesNoRoles, index) =>
         

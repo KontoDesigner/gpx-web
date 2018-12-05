@@ -5,13 +5,14 @@ import { TabContent, TabPane, Row, Col } from 'reactstrap'
 import Destination from './active/destination/destination'
 import HeadOf from './active/headOf/headOf'
 import JobTitle from './active/jobTitle/jobTitle'
-import Import from '../imports/import'
+//import Import from '../imports/import'
 import Name from './active/name/name'
 import AbsentStaff from './absentStaff'
 import ResignStaff from './resignStaff'
 import SendMail from './sendMailUsingTemplate'
 import RecentlyInactive from './inactive/recentlyInactive/recentlyInactive'
 import NewEmployee from './other/newEmployee/newEmployee'
+import FileImport from './other/imports/import'
 import * as headOfActions from '../../actions/staff/active/headOfActions'
 import * as staffActions from '../../actions/staff/staffActions'
 import * as destinationActions from '../../actions/staff/active/destinationActions'
@@ -21,7 +22,7 @@ import * as recentlyInactiveActions from '../../actions/staff/inactive/recentlyI
 import * as nameActions from '../../actions/staff/active/nameActions'
 import * as newEmployeeActions from '../../actions/staff/other/newEmployeeActions'
 import * as notificationActions from '../../actions/notification/notificationActions'
-
+import * as fileImportActions from '../../actions/staff/other/fileImportActions'
 import $ from 'jquery'
 import Tabs from './tabs'
 import '../../styles/staff.css';
@@ -230,6 +231,8 @@ class Staff extends Component {
                  handleRecentlyInactive={this.props.recentlyInactiveActions.handleRecentlyInactive}
                 getNewEmployee={this.props.newEmployeeActions.getNewEmployee}
                  handleNewEmployee={this.props.newEmployeeActions.handleNewEmployee}
+                 getFileImport={this.props.fileImportActions.getFileImport}
+                 handleFileImport={this.props.fileImportActions.handleFileImport}
                 />
 
 <AbsentStaff
@@ -356,7 +359,7 @@ class Staff extends Component {
 
                              <TabPane tabId="fileImport">
                        
-                        <Import
+                        <FileImport
                       
                        /> 
                    </TabPane>
@@ -380,7 +383,8 @@ function mapStateToProps(state) {
        recentlyInactive: state.staff.inactive.recentlyInactive,
        newEmployee: state.staff.other.newEmployee,
        selectedReason:state.staff.modal,
-       notification: state.notification.notification
+       notification: state.notification.notification,
+       fileImport: state.staff.other.imports
     }
 }
 
@@ -395,7 +399,8 @@ function mapDispatchToProps(dispatch) {
         jobTitleActions: bindActionCreators(jobTitleActions, dispatch),
        recentlyInactiveActions: bindActionCreators(recentlyInactiveActions, dispatch),
         nameActions: bindActionCreators(nameActions, dispatch),
-        newEmployeeActions: bindActionCreators(newEmployeeActions, dispatch)
+        newEmployeeActions: bindActionCreators(newEmployeeActions, dispatch),
+        fileImportActions: bindActionCreators(fileImportActions, dispatch)
     }
 }
 

@@ -168,6 +168,7 @@ class AbsentStaff extends Component {
                                         onChange={this.resignTypeOnChange}
                                         value={this.state.selectedResignType}
                                         placeholder="Select"
+                                        className="form-group form-group-select"
                                     />
 
                     {/* <select value={this.props.value} onChange={this.props.handleChange}  className="form-control"  >

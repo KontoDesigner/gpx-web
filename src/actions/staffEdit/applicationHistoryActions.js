@@ -1,4 +1,5 @@
 import { ActionTypes as types } from '../../constants/staffEdit/applicationHistoryConstants'
+
 import { beginAjaxCall, ajaxCallError, endAjaxCall } from '../ajaxStatusActions'
 import RestClient from '../../infrastructure/restClient'
 import { toastr } from 'react-redux-toastr'
@@ -16,7 +17,7 @@ export function getResignHistory(staffId) {
 
         try {
 
-            const resignHistory = await RestClient.Get(`staff/getStaffApplicationHistory/${staffId}`)
+            const resignHistory = await RestClient.Get(`staff/getStaffResignHistory/${staffId}`)
 
             dispatch(getResignHistorySuccess(resignHistory))
         } catch (error) {
@@ -26,3 +27,27 @@ export function getResignHistory(staffId) {
         }
     }
 }
+
+// export function getAbscenseHistorySuccess(abscenseHistory) {
+//     return {
+//       type: types.GET_ABSCENSEHISTORY_SUCCESS,
+//       data: { abscenseHistory: abscenseHistory }
+//     }
+//   }
+
+// export function getAbscenseHistory(staffId) {
+//     return async function(dispatch) {
+//         dispatch(beginAjaxCall())
+
+//         try {
+            
+//             const abscenseHistory = await RestClient.Get(`staff/getStaffAbscenseHistory/${staffId}`)
+//             debugger;
+//             dispatch(getAbscenseHistorySuccess(abscenseHistory))
+//         } catch (error) {
+//             dispatch(ajaxCallError(error))
+
+//             throw error
+//         }
+//     }
+// }

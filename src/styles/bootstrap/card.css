@@ -1,20 +1,28 @@
 .card
 {
-    border-radius:0px;
-    margin-bottom: 15px;
+
+    border-radius: 0px;
+    margin-bottom: 10px;
+    x-radius:0px;
+    xmargin-bottom: 15px;
 }
 
 .card-body
 {
-    padding:15px;
+    padding: 5px;
+    xpadding:15px;
 }
 
 .card-header
 {
-    padding: 10px 15px;
+
+    xpadding: 10px 10px;
+    padding: 3px 9px;
+    font-size: 12px;
+    xpadding: 10px 15px;
     border-radius: 0px;
     font-weight: 500;
-    font-size: 13px;
+    xfont-size: 13px;
     border-radius: 0px!important;
 }
 

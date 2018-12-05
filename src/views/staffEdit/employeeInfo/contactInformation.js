@@ -34,7 +34,7 @@ const ContactInformation = (props) => {
                     </Col>
 
                     <Col sm="12" md="6" lg="6" xl="4" className="form-group">
-                        <TextInput name="phone" label="Phone" value={props.staff.phone} onChange={props.handleStaffField} />
+                        <TextInput name="phonehome" label="Phone" value={props.staff.phonehome} onChange={props.handleStaffField} />
                     </Col>
 
                     <Col sm="12" md="6" lg="6" xl="4" className="form-group">

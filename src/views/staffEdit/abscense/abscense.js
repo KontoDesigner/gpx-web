@@ -15,25 +15,74 @@ class Abscense extends Component {
     super(props)
 
     //*************** */add a local state for the resign part since that is not part of the staff object*********************
-    debugger;
-    let resignHistory = props.applicationHistory.filter(
-      x => x.applicationType.trim() === 'Resigned'
-    )[0]
-
-    this.state = {
-      value: '',
-
-      resignHistory: Object.assign(
-        {},
-        resignHistory ? resignHistory : {}
-      )
-    }
+     //let abscenseHistory = this.props.abscenseHistory;
+  let resignHistory = this.props.resignHistory;
+  debugger;
+ this.state = {
+    value: '',
+  resignHistory: Object.assign(
+   {},
+       resignHistory ? resignHistory : {}
+   ),
+   //abscenseHistory: Object.assign(
+    //{},
+    //abscenseHistory ? abscenseHistory : {}
+  //  )
+ }
   }
   //**************************************************************************************************
+  handleSaveAbscense = async() => {
+ 
+    // this.props.settingActions.save()
+    var currentdate = new Date(); 
+    var newdatemodified   = currentdate.getFullYear() + "-"
+                    + (currentdate.getMonth()+1)  + "-" 
+                    + currentdate.getDate() ;
+            
+                    
+
+    let model = {
+      // to the database
+      ApplicationType: "LeaveOfAbscense",
+     AbsentStart : this.props.abscenseHistory.absentStart,   // this is wrong
+      AbsentEnd: this.state.abscenseHistory.absentEnd,
+      AbsentReason: this.state.abscenseHistory.absentReason,
+      // Signature: this.state.resignHistory.signature, 
+      // JobTitleWhenResigned: this.state.resignHistory.jobTitleWhenResigned,
+      // ReasonForResignment: this.state.resignHistory.reasonForResignment,
+      // ResignComm: this.state.resignHistory.resignComm,
+      DateModified: newdatemodified,
+      //EmpID: this.state.resignHistory.empID,
+      StaffID: this.state.abscenseHistory.staffID
+
+    
+    }
+
+
+  debugger;
+  try {
+      const res =  await RestClient.Post('abscense/abscenseUser',model)
+  debugger;
+ 
+  
+      if (res) {
+          toastr.success('Success', `Abscense Document is updated`)
+      } else {
+          toastr.error('Error', `Could not update Abscense document: ${res ? res.message : 'Error'}`)
+      }
+  } catch (error) {
+ 
+  
+      throw error
+  }
+  
+  }
+  
+  
   handleSaveResign = async() => {
     // this.props.settingActions.save()
     var currentdate = new Date(); 
-    var datetime = currentdate.getFullYear() + "-"
+    var newdatemodified   = currentdate.getFullYear() + "-"
                     + (currentdate.getMonth()+1)  + "-" 
                     + currentdate.getDate() ; 
                   
@@ -47,9 +96,9 @@ class Abscense extends Component {
       Signature: this.state.resignHistory.signature, 
       JobTitleWhenResigned: this.state.resignHistory.jobTitleWhenResigned,
       ReasonForResignment: this.state.resignHistory.reasonForResignment,
-      Reason: this.state.resignHistory.reason,
-      DateModified: datetime,
-      EmpID: this.state.resignHistory.empID,
+      ResignComm: this.state.resignHistory.resignComm,
+      DateModified: newdatemodified,
+      //EmpID: this.state.resignHistory.empID,
       StaffID: this.state.resignHistory.staffID
 
     
@@ -154,6 +203,8 @@ class Abscense extends Component {
               staff={this.props.staff}
               handleStaffDatePicker={this.handleStaffDatePicker}
               handleStaffSelect={this.handleStaffSelect}
+              handleSaveAbscense = {this.handleSaveAbscense}
+              //abscenseHistory={this.props.abscenseHistory}
               //handleSelectTypes={this.handleSelectTypes}
                resignType={this.props.resignType}
             />

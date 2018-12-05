@@ -10,13 +10,15 @@ const AbscenseInformation = props => {
     <Button
       // disabled={this.props.abscense === undefined && this.props.abscense === null}
       size="sm"
+      className="pull-right"
       onClick={() => {
-        // this.props.handleAbscense('1',props.staffID)
+        debugger;
+         props.handleSaveAbscense()
       }}
-      color="default"
+      color="warning"
       // style={{ marginRight: '2px', marginBottom: '2px' }}
     >
-      Execute
+     Enable
     </Button>
   )
 
@@ -101,13 +103,13 @@ const AbscenseInformation = props => {
 
           <Col sm="12" md="6" lg="12" xl="12" className="form-group">
             {/* <TextInput name="title" label="Title" value={props.staff.title} onChange={props.handleStaffField} /> */}
-            <Label for="comment">Comments</Label>
+            <Label for="absentReason2">Comments</Label>
             <Input
               required
               type="textarea"
               maxLength="1000"
-              name="comment"
-              id="comment"
+              name="absentReason2"
+              id="absentReason2"
               rows={6}
               onChange={props.handleStaffField}
               aria-multiline="true"
@@ -115,8 +117,14 @@ const AbscenseInformation = props => {
           </Col>
         </div>
       </CardBody>
-      <CardFooter style={{ paddingBottom: '19px', paddingTop: '19px' }}>
-        <Row />
+      <CardFooter style={{ paddingBottom: '4px', paddingTop: '4px' }}>
+        <Row >
+        <Col>
+            {' '}
+            {enableAbscenseBtn}
+            {/* {disableResignBtn } */}
+          </Col>
+          </Row>
       </CardFooter>
     </Card>
   )
