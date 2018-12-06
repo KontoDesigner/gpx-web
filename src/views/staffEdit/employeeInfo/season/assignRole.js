@@ -11,7 +11,9 @@ class AssignRole extends Component {
             selectedDestination: null,
             selectedJobTitle: null,
             selectedStartDate: null,
-            selectedEndDate: null
+            selectedEndDate: null,
+            positionStartDate: null,
+            positionEndDate: null
         };
     }
 
@@ -31,8 +33,10 @@ class AssignRole extends Component {
         this.setState({
             selectedDestination,
             selectedJobTitle: null,
-            selectedStartDate: null,
-            selectedEndDate: null,
+            // selectedStartDate: null,
+            // selectedEndDate: null,
+            positionStartDate: null,
+            positionEndDate: null,
             jobTitles
         })
     }
@@ -40,12 +44,12 @@ class AssignRole extends Component {
     jobTitleOnChange = jobTitle => {
         debugger;
         const selectedJobTitle = jobTitle != null ? jobTitle.mplid : null;
-        const selectedStartDate = jobTitle != null ? jobTitle.startDate: null;
-        const selectedEndDate = jobTitle != null ? jobTitle.endDate: null
+        const positionStartDate = jobTitle != null ? jobTitle.startDate: null;
+        const positionEndDate = jobTitle != null ? jobTitle.endDate: null
         this.setState({
             selectedJobTitle,
-            selectedStartDate,
-            selectedEndDate
+            positionStartDate ,
+            positionEndDate
         })
     }
 
@@ -54,25 +58,65 @@ class AssignRole extends Component {
             selectedDestination: null,
             selectedJobTitle: null,
             selectedStartDate: null,
-            selectedEndDate: null
+            selectedEndDate: null,
+            positionStartDate: null,
+            positionEndDate: null
 
         })
 
         this.props.toggle();
     }
 
+
+
+    assignStartChange = assignStart => {
+        debugger;
+        const selectedStartDate = assignStart ;
+     debugger;
+        this.setState({
+            selectedStartDate
+       
+        })
+      
+    }
+  
+    assignEndChange = assignEnd => {
+      const selectedEndDate = assignEnd ;
+   
+      this.setState({
+        selectedEndDate
+     
+      })
+    
+  }
+
+
+
     assignRole = (mplid) => {
         this.toggle();
 
         const destination = this.props.availablePositions.filter(ap => ap.destination === this.state.selectedDestination)[0];
+        
         const position = destination.jobTitles.filter(ap => ap.mplid === mplid)[0];
- 
+       
+
         const model = {
             mplid: position.mplid,
             season: this.props.season.name,
-            startDate: this.props.season.start,
-            endDate: this.props.season.end
+            // startDate: this.props.season.start,
+            // endDate: this.props.season.end,
+            startDate: this.state.selectedStartDate,
+            endDate: this.state.selectedEndDate
         }
+debugger;
+        var assignCompareStart = new Date(this.state.selectedStartDate);
+        var assignCompareEnd  = new Date(this.state.positionStartDate);
+        var same = assignCompareStart.getTime() === assignCompareEnd .getTime();
+        //var notSame = d1.getTime() !== d2.getTime();
+
+        alert(same);
+        return false;
+
 
         this.props.assignRole(model);
     }
@@ -81,7 +125,7 @@ class AssignRole extends Component {
         return (
             <div>
                 <Modal isOpen={this.props.modal} toggle={this.toggle} >
-                    <ModalHeader toggle={this.toggle}>Assign Position</ModalHeader>
+                    <ModalHeader toggle={this.toggle}>Assign Position {this.state.selectedJobTitle}</ModalHeader>
 
                     <ModalBody className="no-padding-bottom">
                         <Row>
@@ -128,7 +172,7 @@ class AssignRole extends Component {
                                         <thead>
                                             <tr>
                                                 <th>Assign StartDate</th> <th> Assign EndDate</th>
-                                                <th></th>
+                                      
                                             </tr>
                                             </thead>
                                             <tbody>
@@ -136,8 +180,9 @@ class AssignRole extends Component {
 
                                             <td>
                                             <Datetime  className={'custom-datepicker'}
-                           // value={this.props.staff.dateOfBirth}
-                            //onChange={(v) => { this.props.handleStaffDatePicker('dateOfBirth', v) }}
+                                        id="assignStart"
+                           onChange={this.assignStartChange}
+                           value={this.state.selectedStartDate}
                             timeFormat={false}
                             dateFormat="YYYY-MM-DD"
                             closeOnSelect
@@ -147,28 +192,29 @@ class AssignRole extends Component {
                                              </td> 
                                              <td>
                                              <Datetime  className={'custom-datepicker'}
-                           // value={this.props.staff.dateOfBirth}
-                            //onChange={(v) => { this.props.handleStaffDatePicker('dateOfBirth', v) }}
+                                           
+                                              onChange={this.assignEndChange}
+                                              value={this.state.selectedEndDate}
                             timeFormat={false}
                             dateFormat="YYYY-MM-DD"
                             closeOnSelect
                             utc={true}
                             inputProps={{ placeholder: 'YYYY-MM-DD' }} />  
                                               </td>
-                                            <td></td>
+                                     
                                         
                                             </tr>
                                             </tbody>
                                             <thead>
                                             <tr>
                                                 <th>Position StartDate</th> <th> Position EndDate</th>
-                                                <th>Mpl ID</th>
+                                     
                                             </tr>
                                             </thead>
                                             <tbody>
                                             <tr>
-                                            <td>{this.state.selectedStartDate } </td> <td>{this.state.selectedEndDate}   </td>
-                                            <td>{this.state.selectedJobTitle}</td>
+                                            <td>{this.state.positionStartDate } </td> <td>{this.state.positionEndDate}   </td>
+                                    
                                             </tr>
                                         </tbody>
                                     </Table>

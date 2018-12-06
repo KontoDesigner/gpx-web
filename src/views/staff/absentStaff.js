@@ -138,6 +138,7 @@ class AbsentStaff extends Component {
                     <td>
                 
                       <Datetime
+                          id="absentEnd"
                         className={'custom-datepicker'}
                         onChange={this.absentEndChange}
                         value={this.state.selectedAbsentEnd}

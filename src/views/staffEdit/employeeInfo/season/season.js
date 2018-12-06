@@ -198,7 +198,7 @@ class Season extends Component {
                                             }}
                                             color="warning"
                                             style={{ marginBottom: '10px' }}>
-                                            Send to CTX
+                                            Send to Fly2Work
                                         </Button>
                                     )}
                                 </Col>
