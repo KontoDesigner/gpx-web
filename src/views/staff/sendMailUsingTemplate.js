@@ -22,14 +22,15 @@ class SendMailUsingTemplate extends Component {
         this.state = {
              dateModified: null,
              selectedNotification: null,
+             selectedContent: null
           
         };
     }
 
     toggle = () => {
         this.setState({
-          selectedNotification: null
-    
+          selectedNotification: null,
+          selectedContent: null
 
         })
 
@@ -41,21 +42,22 @@ class SendMailUsingTemplate extends Component {
 
     notificationChange = notification => {
         const selectedNotification = notification.templateName ;
+        const selectedContent= notification  != null ? notification.content.replace(/\r?\n/g, '<br />'): null
 
+
+     
         //   var currentdate = new Date(); 
         //   var newdatemodified  = currentdate.getFullYear() + "-"
         // + (currentdate.getMonth()+1)  + "-" 
         //  + currentdate.getDate() ; 
       
         this.setState({
-          selectedNotification
+          selectedNotification,
+          selectedContent
             //dateModified:newdatemodified
        
         })
     }
-
- 
-
 
 
     createMail = (val) => {
@@ -125,10 +127,46 @@ debugger;
                     </td>
               
                   </tr>
+
+
+
+
+                  
                 </tbody>
               </Table>
+
+
+
             </Col>
           </Row>
+  {this.state.selectedNotification !== null ?
+                            <Row>
+                                <Col>
+                                <Input
+                        required
+                        type="textarea"
+                        maxLength="1000"
+                        name="resignComm"
+                        id="resignComm"
+                        onChange={this.props.handleChange}
+                        rows={20}
+                        aria-multiline="true"
+                        value={this.state.selectedContent}
+                      />
+                                {/* {this.state.selectedContent} */}
+                                    {/* <Table striped bordered responsive>
+                                        <thead>
+                                            <tr>
+                                                <th>{this.state.selectedEndDate} </th>
+                                                <th></th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                              </tbody>
+                                              </Table> */}
+</Col>
+</Row>
+            : ''}
         </ModalBody>
         <ModalFooter>
           <Button

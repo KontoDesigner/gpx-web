@@ -26,7 +26,7 @@ const ContactInformation = (props) => {
                     </Col>
 
                     <Col sm="12" md="6" lg="6" xl="4" className="form-group">
-                        <TextInput name="email" label="E-Mail (Private)" value={props.staff.email} onChange={props.handleStaffField} />
+                        <TextInput name="email" label="E-Mail" value={props.staff.email} onChange={props.handleStaffField} />
                     </Col>
 
                     <Col sm="12" md="6" lg="6" xl="4" className="form-group">

@@ -38,6 +38,7 @@ class AssignRole extends Component {
     }
 
     jobTitleOnChange = jobTitle => {
+        debugger;
         const selectedJobTitle = jobTitle != null ? jobTitle.mplid : null;
         const selectedStartDate = jobTitle != null ? jobTitle.startDate: null;
         const selectedEndDate = jobTitle != null ? jobTitle.endDate: null

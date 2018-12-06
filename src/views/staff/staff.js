@@ -228,7 +228,7 @@ class Staff extends Component {
     }
 
     handleImportType = ( val) => {
-        debugger;       
+debugger;       
 this.setState({importType:val.id});
 }
 
@@ -242,11 +242,11 @@ create = async(model) => {
 
 
 try {
-    debugger;
+
   const res =  await RestClient.Upload('import/UploadFile/'+ this.state.importType,this.state.fileName)
 
 this.setState({fileName:'', importType:''})
-
+debugger;
    if (res) {
       toastr.success('Success', `GPX - Import routine finished`)
 } else {
