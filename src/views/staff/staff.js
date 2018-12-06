@@ -245,7 +245,7 @@ try {
 
   const res =  await RestClient.Upload('import/UploadFile/'+ this.state.importType,this.state.fileName)
 
-this.setState({fileName:'', importType:''})
+this.setState({fileName:null, importType:''})
 debugger;
    if (res) {
       toastr.success('Success', `GPX - Import routine finished`)
