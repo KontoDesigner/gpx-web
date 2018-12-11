@@ -10,7 +10,7 @@ const Tabs = (props) => {
 
                 <CardBody className="no-padding">
                     <ListGroup>
-                        <ListGroupItem
+                        {/* <ListGroupItem
                             className={classnames({ active: props.activeTab === 'headOf' })}
                             onClick={() => {
                                 props.toggle('headOf',
@@ -18,7 +18,7 @@ const Tabs = (props) => {
                                     props.handleHeadOf)
                             }}>
                             Head Of
-                </ListGroupItem>
+                </ListGroupItem> */}
                         <ListGroupItem
                             className={classnames({ active: props.activeTab === 'destination' })}
                             onClick={() => {

@@ -13,7 +13,8 @@ class AssignRole extends Component {
             selectedStartDate: null,
             selectedEndDate: null,
             positionStartDate: null,
-            positionEndDate: null
+            positionEndDate: null,
+           //errorMessage:''
         };
     }
 
@@ -60,7 +61,8 @@ class AssignRole extends Component {
             selectedStartDate: null,
             selectedEndDate: null,
             positionStartDate: null,
-            positionEndDate: null
+            positionEndDate: null,
+            //errorMessage:''
 
         })
 
@@ -91,9 +93,9 @@ class AssignRole extends Component {
   }
 
 
-
+ 
     assignRole = (mplid) => {
-        this.toggle();
+   
 
         const destination = this.props.availablePositions.filter(ap => ap.destination === this.state.selectedDestination)[0];
         
@@ -108,24 +110,32 @@ class AssignRole extends Component {
             startDate: this.state.selectedStartDate,
             endDate: this.state.selectedEndDate
         }
-debugger;
+        debugger;
         var assignCompareStart = new Date(this.state.selectedStartDate);
-        var assignCompareEnd  = new Date(this.state.positionStartDate);
-        var same = assignCompareStart.getTime() === assignCompareEnd .getTime();
-        //var notSame = d1.getTime() !== d2.getTime();
+        var assignCompareEnd  = new Date(this.state.selectedEndDate);
+        var positionCompareStart = new Date(this.state.positionStartDate);
+        var positionCompareEnd  = new Date(this.state.positionEndDate);
 
-        alert(same);
-        return false;
+        var checkok= (assignCompareStart.getTime() >= positionCompareStart.getTime() && assignCompareEnd.getTime() <= positionCompareEnd.getTime());
+         debugger;
 
+         if(checkok){
+         this.toggle();
+         this.props.assignRole(model);
+         } else
+          {
+           
+           alert('Assign dates does not match the position dates, please try again') ;
 
-        this.props.assignRole(model);
-    }
+   
+        }
+     }
 
     render() {
         return (
             <div>
                 <Modal isOpen={this.props.modal} toggle={this.toggle} >
-                    <ModalHeader toggle={this.toggle}>Assign Position {this.state.selectedJobTitle}</ModalHeader>
+                    <ModalHeader toggle={this.toggle}>Assign Position  {this.state.selectedJobTitle}</ModalHeader>
 
                     <ModalBody className="no-padding-bottom">
                         <Row>
@@ -221,6 +231,16 @@ debugger;
                                 </Col>
                             </Row>
                             : ''}
+
+    
+    {/* {this.state.errormessage !== '' ?  
+                
+                
+       'djdjdjdjdjdjjd'
+                
+                : 
+                ''} */}
+
                     </ModalBody>
 
                     <ModalFooter>

@@ -38,8 +38,8 @@ class Staff extends Component {
             fileName:null,
             importType:'',
             value:null,
-            activeTab: 'headOf',
-            resetData: this.props.headOfActions.handleHeadOf,
+            activeTab: 'destination',
+            resetData: this.props.destinationActions.handleDestination,
             absentStaffModal: false,
             resignStaffModal: false,
             sendMailModal: false,
@@ -205,7 +205,7 @@ class Staff extends Component {
     componentDidMount() {
         this.props.filterActions.handleFilter()   //when page loads
         this.props.notificationActions.getNotification()
-        this.props.headOfActions.getHeadOf()
+        this.props.destinationActions.getDestination()
     }
 
     toggle = (tab, getData, resetData) => {

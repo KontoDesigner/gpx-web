@@ -126,16 +126,27 @@ b, strong
 .ReactVirtualized__Table__row::-webkit-scrollbar-track
 {
   border-top:1px solid #c2e6fa;
+ 
 }
 
 .ReactVirtualized__Table__row::-webkit-scrollbar
 {
   border-top:1px solid #c2e6fa;
+ 
+}
+
+
+.ReactVirtualized__Table__row ::-webkit-scrollbar
+{
+  border-top:1px solid #c2e6fa;
+  height:25px;
+ 
 }
 
 .ReactVirtualized__Table__row::-webkit-scrollbar-thumb
 {
   border-top:1px solid #c2e6fa;
+ 
 }
 
 .ReactVirtualized__Grid__innerScrollContainer > div:first-child .ReactVirtualized__Table__row::-webkit-scrollbar-track

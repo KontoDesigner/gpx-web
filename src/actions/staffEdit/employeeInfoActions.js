@@ -181,8 +181,9 @@ export function getPositionAssigns(staffId) {
         dispatch(beginAjaxCall())
 
         try {
+          
             const positionAssigns = await RestClient.Get(`positionassign/assignment/${staffId}`)
-
+            debugger;
             dispatch(getPositionAssignsSuccess(positionAssigns))
         } catch (error) {
             dispatch(ajaxCallError(error))

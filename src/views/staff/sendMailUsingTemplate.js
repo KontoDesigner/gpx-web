@@ -5,14 +5,14 @@ import {
   ModalHeader,
   ModalBody,
   ModalFooter,
-  Alert,
+ // Alert,
   Row,
   Col,
   Table,
-  Label,
+  //Label,
   Input
 } from 'reactstrap'
-import Datetime from 'react-datetime'
+//import Datetime from 'react-datetime'
 import Select from 'react-select'
 
 class SendMailUsingTemplate extends Component {

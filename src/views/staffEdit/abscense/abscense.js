@@ -6,7 +6,7 @@ import * as employeeInfoActions from '../../../actions/staffEdit/employeeInfoAct
 import * as abscenseActions from '../../../actions/staffEdit/abscenseActions'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import restClientConfig from '../../../infrastructure/restClientConfig'
+//import restClientConfig from '../../../infrastructure/restClientConfig'
 import { toastr } from 'react-redux-toastr'
 import RestClient from '../../../infrastructure/restClient'
 
