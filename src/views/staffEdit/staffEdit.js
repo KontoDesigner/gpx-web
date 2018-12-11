@@ -219,7 +219,8 @@ class StaffEdit extends Component {
             Destination: positionAssign.Destination,
             PositionStart: positionAssign.PositionStartDate,
             JobTitle: positionAssign.JobTitle,
-            IataCode: positionAssign.IataCode
+            IataCode: positionAssign.IataCode,
+            PositionAssignId: positionAssign.PositionAssignId
         }
 
         this.props.employeeInfoActions.sendToCtx(model)
