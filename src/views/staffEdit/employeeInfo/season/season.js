@@ -5,7 +5,7 @@ import AssignRole from './assignRole'
 import MoveRole from './moveRole'
 import RemoveRole from './removeRole'
 import Datetime from 'react-datetime'
-
+import moment from "moment";
 class Season extends Component {
     constructor() {
         super()
@@ -146,7 +146,7 @@ class Season extends Component {
                                     <label htmlFor="StaffStartDate">Start Date</label>
 
                                     <Datetime
-                                        value={this.props.positionAssign !== null ? this.props.positionAssign.StaffStartDate : ''}
+                                        value={this.props.positionAssign !== null ? moment(this.props.positionAssign.StaffEndDate).format("YYYY-MM-DD") : ''}
                                         onChange={v => {
                                             this.handlePositionAssignDatePicker('StaffStartDate', v, this.props.title)
                                         }}
@@ -160,9 +160,9 @@ class Season extends Component {
 
                                 <Col sm="12" md="6" lg="6" xl="6" className="form-group">
                                     <label htmlFor="StaffEndDate">End Date</label>
-
+                                
                                     <Datetime
-                                        value={this.props.positionAssign !== null ? this.props.positionAssign.StaffEndDate : ''}
+                                        value={this.props.positionAssign !== null ? moment(this.props.positionAssign.StaffEndDate).format("YYYY-MM-DD") : ''}
                                         onChange={v => {
                                             this.handlePositionAssignDatePicker('StaffEndDate', v, this.props.title)
                                         }}
