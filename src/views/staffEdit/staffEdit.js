@@ -19,7 +19,7 @@ import * as destinationHistoryActions from '../../actions/staffEdit/destinationH
 import * as applicationHistoryActions from '../../actions/staffEdit/applicationHistoryActions'
 import * as abscenseHistoryActions from '../../actions/staffEdit/abscenseHistoryActions'
 import '../../styles/staffEdit.css'
-
+import RestClient from '../../infrastructure/restClient'
 class StaffEdit extends Component {
     constructor(props) {
         super()
@@ -31,6 +31,7 @@ class StaffEdit extends Component {
 
         this.state = {
             activeTab: 'employeeInfo',
+            nowAvailablePositions:[],
             staffId: staffId,
             newUser: {
                 skills: []
@@ -152,11 +153,31 @@ class StaffEdit extends Component {
     async componentWillMount() {
         const _this = this
 
-        this.props.employeeInfoActions.getAvailablePositions(
-            this.props.currentSeason.name,
-            this.props.nextSeason.name,
-            this.props.followingSeason.name
-        )
+        // this.props.employeeInfoActions.getAvailablePositions(
+        //     this.props.currentSeason.name,
+        //     this.props.nextSeason.name,
+        //     this.props.followingSeason.name
+        // )
+        try {
+            const nowAvailablePositions =  await RestClient.Get('positionassign/getallcand')
+        
+        this.setState({
+            nowAvailablePositions
+           
+          })
+          debugger;
+            // if (nowAvailablePositions) {
+            //     //toastr.success('Success', `Abscense Document is updated`)
+            // } else {
+            //    // toastr.error('Error', `Could not update Abscense document: ${res ? res.message : 'Error'}`)
+            // }
+        } catch (error) {
+       
+        
+            throw error
+        }
+
+
         this.props.employeeInfoActions.getPositionAssigns(this.state.staffId)
 
         this.props.applicationHistoryActions.getResignHistory(this.state.staffId)
@@ -282,9 +303,9 @@ class StaffEdit extends Component {
                                     <EmployeeInfo
                                         staff={this.props.staff}
                                         sourceMarkets={this.props.sourceMarkets}
-                                        currentAvailablePositions={this.props.currentAvailablePositions}
-                                        nextAvailablePositions={this.props.nextAvailablePositions}
-                                        followingAvailablePositions={this.props.followingAvailablePositions}
+                                        //currentAvailablePositions={this.props.currentAvailablePositions}
+                                       // nextAvailablePositions={this.props.nextAvailablePositions}
+                                       // followingAvailablePositions={this.props.followingAvailablePositions}
                                         currentPositionAssign={this.props.currentPositionAssign}
                                         nextPositionAssign={this.props.nextPositionAssign}
                                         followingPositionAssign={this.props.followingPositionAssign}
@@ -294,6 +315,7 @@ class StaffEdit extends Component {
                                         positionTypes={this.state.positionTypes}
                                         handleUnsavedEdit={this.handleUnsavedEdit}
                                         send={this.send}
+                                        nowAvailablePositions={this.state.nowAvailablePositions}
                                     />
                                 </TabPane>
 
@@ -348,9 +370,9 @@ class StaffEdit extends Component {
 function mapStateToProps(state) {
     return {
         sourceMarkets: state.geography.sourceMarkets,
-        currentAvailablePositions: state.staffEdit.employeeInfo.currentAvailablePositions,
-        nextAvailablePositions: state.staffEdit.employeeInfo.nextAvailablePositions,
-        followingAvailablePositions: state.staffEdit.employeeInfo.followingAvailablePositions,
+       //currentAvailablePositions: state.staffEdit.employeeInfo.currentAvailablePositions,
+       // nextAvailablePositions: state.staffEdit.employeeInfo.nextAvailablePositions,
+        //followingAvailablePositions: state.staffEdit.employeeInfo.followingAvailablePositions,
         staff: state.staffEdit.employeeInfo.staff,
         allJobTitles: state.setting.setting.jobTitle,
         currentPositionAssign: state.staffEdit.employeeInfo.currentPositionAssign,
@@ -361,8 +383,8 @@ function mapStateToProps(state) {
         nextSeason: state.geography.nextSeason,
         followingSeason: state.geography.followingSeason,
         destinationHistory: state.staffEdit.destinationHistory,
-        applicationHistory: state.staffEdit.applicationHistory
-
+        applicationHistory: state.staffEdit.applicationHistory,
+ 
         //resignHistory: state.staffEdit.resignHistory
     }
 }

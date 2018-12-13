@@ -101,10 +101,15 @@ class AssignRole extends Component {
         
         const position = destination.jobTitles.filter(ap => ap.mplid === mplid)[0];
        
+        var currentdate = new Date(); 
+        var newdatemodified  = currentdate.getFullYear() + "-"
+      + (currentdate.getMonth()+1)  + "-" 
+       + currentdate.getDate() ; 
 
         const model = {
             mplid: position.mplid,
             season: this.props.season.name,
+            dateModified: newdatemodified ,
             // startDate: this.props.season.start,
             // endDate: this.props.season.end,
             startDate: this.state.selectedStartDate,
@@ -121,6 +126,7 @@ class AssignRole extends Component {
 
          if(checkok){
          this.toggle();
+         debugger;
          this.props.assignRole(model);
          } else
           {

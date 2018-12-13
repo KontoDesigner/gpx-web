@@ -241,7 +241,7 @@ placeholder="Select"
                             className="form-control"
                             options={props.languages}
                             onChange={(v) => { props.handleStaffSelect('russia', v, 'id') }}
-                            value={props.staff.russia === '' ? null : props.staff.russia}
+                            value={props.staff.russian === '' ? null : props.staff.russian}
                             placeholder="Select"
                            
                             

@@ -12,6 +12,11 @@ import { bindActionCreators } from 'redux'
 
 class EmployeeInfo extends Component {
     
+    async componentWillMount() {
+debugger;
+    }
+
+
    handleStaffField = event => {
         const field = event.target.name
         const val = event.target.value
@@ -65,18 +70,20 @@ class EmployeeInfo extends Component {
             Season: role.season,
             FullName: this.props.staff.fullName,
             StartDate: role.startDate,
-            EndDate: role.endDate
+            EndDate: role.endDate,
+            DateModified:role.dateModified
         }
 
         const _this = this
-
-        _this.props.employeeInfoActions.insertPositionAssign(positionAssign).then(function() {
-            _this.props.employeeInfoActions.getAvailablePositions(
-                _this.props.currentSeason.name,
-                _this.props.nextSeason.name,
-                _this.props.followingSeason.name
-            )
-            _this.props.employeeInfoActions.getPositionAssigns(_this.props.staff.staffID)
+debugger;
+        _this.props.employeeInfoActions.insertPositionAssign(positionAssign).then(function() 
+        {
+            // _this.props.employeeInfoActions.getAvailablePositions(
+            //     _this.props.currentSeason.name,
+            //     _this.props.nextSeason.name,
+            //     _this.props.followingSeason.name
+            // )
+             _this.props.employeeInfoActions.getPositionAssigns(_this.props.staff.staffID)
         })
     }
 
@@ -131,7 +138,7 @@ class EmployeeInfo extends Component {
                         <Season
                             title={'Placement 1'}
                             positionAssign={this.props.currentPositionAssign}
-                            availablePositions={this.props.currentAvailablePositions}
+                            nowAvailablePositions={this.props.nowAvailablePositions}
                             assignRole={this.assignRole}
                             removeRole={this.removeRole}
                             moveRole={this.moveRole}
@@ -150,7 +157,7 @@ class EmployeeInfo extends Component {
                         <Season
                             title={'Placement 2'}
                             positionAssign={this.props.nextPositionAssign}
-                            availablePositions={this.props.nextAvailablePositions}
+                            availablePositions={this.props.currentAvailablePositions}
                             assignRole={this.assignRole}
                             removeRole={this.removeRole}
                             moveRole={this.moveRole}
@@ -165,7 +172,7 @@ class EmployeeInfo extends Component {
                         <Season
                             title={'Placement 3'}
                             positionAssign={this.props.nextPositionAssign}
-                            availablePositions={this.props.nextAvailablePositions}
+                            availablePositions={this.props.currentAvailablePositions}
                             assignRole={this.assignRole}
                             removeRole={this.removeRole}
                             moveRole={this.moveRole}

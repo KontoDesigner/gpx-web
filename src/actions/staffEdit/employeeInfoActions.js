@@ -127,7 +127,7 @@ export function movePositionAssign(oldPositionAssignId, newMPLID) {
 export function insertPositionAssign(positionAssign) {
     return async function(dispatch) {
         dispatch(beginAjaxCall())
-
+debugger;
         try {
             await RestClient.Post('positionassign', positionAssign)
 
