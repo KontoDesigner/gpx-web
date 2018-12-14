@@ -122,12 +122,22 @@ class AssignRole extends Component {
         var positionCompareEnd  = new Date(this.state.positionEndDate);
 
         var checkok= (assignCompareStart.getTime() >= positionCompareStart.getTime() && assignCompareEnd.getTime() <= positionCompareEnd.getTime());
+        var checkok2= (assignCompareStart.getTime() < assignCompareEnd.getTime());
          debugger;
 
          if(checkok){
+             if(checkok2){
+
+           
          this.toggle();
          debugger;
          this.props.assignRole(model);
+        }
+        else
+        {
+   
+            alert('Assign startdate must be before Assign End Date') ;
+        }
          } else
           {
            

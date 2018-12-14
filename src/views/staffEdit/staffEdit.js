@@ -10,7 +10,7 @@ import Team from './team/team'
 import Applications from './applications/applications'
 
 import History from './history/history'
-import { LinkContainer } from 'react-router-bootstrap'
+import { LinkContainer } from 'react-router-bootstrap' 
 import Buttons from './buttons'
 import Tabs from './tabs'
 import * as employeeInfoActions from '../../actions/staffEdit/employeeInfoActions'
@@ -153,40 +153,44 @@ class StaffEdit extends Component {
     async componentWillMount() {
         const _this = this
 
-        // this.props.employeeInfoActions.getAvailablePositions(
-        //     this.props.currentSeason.name,
-        //     this.props.nextSeason.name,
-        //     this.props.followingSeason.name
-        // )
-        try {
-            const nowAvailablePositions =  await RestClient.Get('positionassign/getallcand')
+
+
+        // try {
+        //     debugger;
+        //     const nowAvailablePositions =  await RestClient.Get('positionassign/getallcand')
         
-        this.setState({
-            nowAvailablePositions
+        // this.setState({
+        //     nowAvailablePositions
            
-          })
-          debugger;
-            // if (nowAvailablePositions) {
-            //     //toastr.success('Success', `Abscense Document is updated`)
-            // } else {
-            //    // toastr.error('Error', `Could not update Abscense document: ${res ? res.message : 'Error'}`)
-            // }
-        } catch (error) {
+        //   })
+        //   debugger;
+        //     // if (nowAvailablePositions) {
+        //     //     //toastr.success('Success', `Abscense Document is updated`)
+        //     // } else {
+        //     //    // toastr.error('Error', `Could not update Abscense document: ${res ? res.message : 'Error'}`)
+        //     // }
+        // } catch (error) {
        
         
-            throw error
-        }
+        //     throw error
+        // }
 
+ 
+debugger;
+
+         this.getAvailablePositionNew()
 
         this.props.employeeInfoActions.getPositionAssigns(this.state.staffId)
-
         this.props.applicationHistoryActions.getResignHistory(this.state.staffId)
-
         this.props.abscenseHistoryActions.getAbscenseHistory(this.state.staffId)
         this.props.destinationHistoryActions.getDestinationHistory(this.state.staffId)
-
         this.props.employeeInfoActions.getStaff(this.state.staffId).then(function() {
-            //debugger;
+      
+
+
+
+
+
 
             if (_this.props.staff != null) {
                 document.title = `${_this.props.staff.firstNameLastName}`
@@ -211,6 +215,20 @@ class StaffEdit extends Component {
             })
         }
     }
+
+    getAvailablePositionNew = async() => {
+    
+        const nowAvailablePositions =  await RestClient.Get('positionassign/getallcand')
+        
+        this.setState({
+            nowAvailablePositions
+           
+          })
+
+
+    }   
+
+
 
     //*  *************************************************************************'
 
@@ -316,6 +334,7 @@ class StaffEdit extends Component {
                                         handleUnsavedEdit={this.handleUnsavedEdit}
                                         send={this.send}
                                         nowAvailablePositions={this.state.nowAvailablePositions}
+                                        getAvailablePositionNew={this.getAvailablePositionNew}
                                     />
                                 </TabPane>
 

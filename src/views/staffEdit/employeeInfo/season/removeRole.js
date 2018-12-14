@@ -2,6 +2,7 @@ import React from 'react';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter, Alert } from 'reactstrap';
 
 const RemoveRole = (props) => {
+debugger;
     function removeRole(positionAssignId) {
         props.removeRole(positionAssignId);
 
@@ -18,7 +19,7 @@ const RemoveRole = (props) => {
                     </Alert>
                 </ModalBody>
                 <ModalFooter>
-                    <Button color="success" onClick={() => removeRole(props.positionAssign.PositionAssignId)}>Remove</Button>{' '}
+                    <Button color="success" onClick={() => removeRole(props.positionAssign.MPLID)}>Remove</Button>{' '}
                     <Button color="danger" onClick={props.toggle}>Cancel</Button>
                 </ModalFooter>
             </Modal>

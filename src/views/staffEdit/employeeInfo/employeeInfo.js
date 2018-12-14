@@ -78,6 +78,7 @@ debugger;
 debugger;
         _this.props.employeeInfoActions.insertPositionAssign(positionAssign).then(function() 
         {
+            _this.props.getAvailablePositionNew
             // _this.props.employeeInfoActions.getAvailablePositions(
             //     _this.props.currentSeason.name,
             //     _this.props.nextSeason.name,
@@ -89,13 +90,17 @@ debugger;
 
     removeRole = positionAssignId => {
         const _this = this
-
+debugger;
         this.props.employeeInfoActions.deletePositionAssign(positionAssignId).then(function() {
-            _this.props.employeeInfoActions.getAvailablePositions(
-                _this.props.currentSeason.name,
-                _this.props.nextSeason.name,
-                _this.props.followingSeason.name
-            )
+
+        _this.props.getAvailablePositionNew
+   
+
+            // _this.props.employeeInfoActions.getAvailablePositions(
+            //     _this.props.currentSeason.name,
+            //     _this.props.nextSeason.name,
+            //     _this.props.followingSeason.name
+            // )
             _this.props.employeeInfoActions.getPositionAssigns(_this.props.staff.staffID)
         })
     }
@@ -157,7 +162,7 @@ debugger;
                         <Season
                             title={'Placement 2'}
                             positionAssign={this.props.nextPositionAssign}
-                            availablePositions={this.props.currentAvailablePositions}
+                            nowAvailablePositions={this.props.nowAvailablePositions}
                             assignRole={this.assignRole}
                             removeRole={this.removeRole}
                             moveRole={this.moveRole}
@@ -172,7 +177,7 @@ debugger;
                         <Season
                             title={'Placement 3'}
                             positionAssign={this.props.followingPositionAssign}
-                            availablePositions={this.props.currentAvailablePositions}
+                            nowAvailablePositions={this.props.nowAvailablePositions}
                             assignRole={this.assignRole}
                             removeRole={this.removeRole}
                             moveRole={this.moveRole}
