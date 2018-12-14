@@ -171,7 +171,7 @@ debugger;
                          <Col sm="12" md="12" lg="12">
                         <Season
                             title={'Placement 3'}
-                            positionAssign={this.props.nextPositionAssign}
+                            positionAssign={this.props.followingPositionAssign}
                             availablePositions={this.props.currentAvailablePositions}
                             assignRole={this.assignRole}
                             removeRole={this.removeRole}

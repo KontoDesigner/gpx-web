@@ -146,7 +146,7 @@ class Season extends Component {
                                     <label htmlFor="StaffStartDate">Start Date</label>
 
                                     <Datetime
-                                        value={this.props.positionAssign !== null ? moment(this.props.positionAssign.StaffEndDate).format("YYYY-MM-DD") : ''}
+                                        value={this.props.positionAssign !== null ? moment(this.props.positionAssign.StaffStartDate).format("YYYY-MM-DD") : ''}
                                         onChange={v => {
                                             this.handlePositionAssignDatePicker('StaffStartDate', v, this.props.title)
                                         }}

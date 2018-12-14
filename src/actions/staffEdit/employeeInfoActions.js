@@ -31,6 +31,7 @@ export function sendToCtx(model) {
         dispatch(beginAjaxCall())
 
         try {
+            debugger;
             const res = await RestClient.Post('ctx/send', model)
 
             dispatch(endAjaxCall())
