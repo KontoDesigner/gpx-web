@@ -81,7 +81,7 @@ class AssignPosition extends Component {
 
     candidateOnChange = candidate => {
         const selectedCandidate = candidate ;
-
+debugger;
         //   var currentdate = new Date(); 
         //   var newdatemodified  = currentdate.getFullYear() + "-"
         // + (currentdate.getMonth()+1)  + "-" 

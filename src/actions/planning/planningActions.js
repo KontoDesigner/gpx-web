@@ -220,22 +220,21 @@ export function deletePositionAssign(model) {
 export function insertStaffAssign(positionAssign) {
     return async function(dispatch) {
         dispatch(beginAjaxCall())
-
+debugger;
         try {
-            debugger;
-           const res= RestClient.Post('positionassign', positionAssign)
-
-            
-           if (res) {
-            toastr.success('Success', `Selected staff was assigned to position`)
-        } else {
-            toastr.error('Error', `Selected staff was not assigned to position: ${res ? res.message : 'Error'}`)
-        }
-
+ 
+            const res = await RestClient.Post('positionassign', positionAssign)
+        
             dispatch(endAjaxCall())
+            debugger;
+            if (res && res.ok) {
+                toastr.success('Success', ` ${res ? res.message : 'Success'}`)
+            } else {
+                toastr.error('Position is occupied', ` ${res ? res.message : 'Position is occupied'}`)
+            }
         } catch (error) {
             dispatch(ajaxCallError(error))
-
+        
             throw error
         }
     }

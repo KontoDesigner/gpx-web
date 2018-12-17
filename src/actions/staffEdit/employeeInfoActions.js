@@ -129,15 +129,22 @@ export function insertPositionAssign(positionAssign) {
     return async function(dispatch) {
         dispatch(beginAjaxCall())
 debugger;
-        try {
-            await RestClient.Post('positionassign', positionAssign)
+try {
+ 
+    const res = await RestClient.Post('positionassign', positionAssign)
 
-            dispatch(endAjaxCall())
-        } catch (error) {
-            dispatch(ajaxCallError(error))
+    dispatch(endAjaxCall())
+    debugger;
+    if (res && res.ok) {
+        toastr.success('Success', ` ${res ? res.message : 'Success'}`)
+    } else {
+        toastr.error('Position is occupied', ` ${res ? res.message : 'Position is occupied'}`)
+    }
+} catch (error) {
+    dispatch(ajaxCallError(error))
 
-            throw error
-        }
+    throw error
+}
     }
 }
 
