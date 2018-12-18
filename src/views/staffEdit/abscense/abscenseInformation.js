@@ -4,7 +4,7 @@ import TextInput from '../../../components/textInput'
 import Select from 'react-select'
 import Datetime from 'react-datetime'
 import { Row, Col, Label, Input, Button } from 'reactstrap'
-
+import moment from "moment";
 const AbscenseInformation = props => {
   const enableAbscenseBtn = (
     <Button
@@ -46,7 +46,7 @@ const AbscenseInformation = props => {
             <label htmlFor="absentStart">From</label>
 
             <Datetime
-              value={props.staff.absentStart}
+              value={moment(props.abscenseHistory.absentStart).format("YYYY-MM-DD")}
               onChange={v => {
                 props.handleStaffDatePicker('absentStart', v)
               }}
@@ -60,9 +60,9 @@ const AbscenseInformation = props => {
 
           <Col sm="12" md="6" lg="6" xl="4" className="form-group">
             <label htmlFor="absentEnd">To</label>
-
+            
             <Datetime
-              value={props.staff.absentEnd}
+              value={moment(props.abscenseHistory.absentEnd).format("YYYY-MM-DD")}
               onChange={v => {
                 props.handleStaffDatePicker('absentEnd', v)
               }}
@@ -93,9 +93,9 @@ const AbscenseInformation = props => {
                 props.handleStaffSelect('absentReason', v, 'id')
               }}
               value={
-                props.staff.absentReason === ''
+                props.abscenseHistory.absentReason === ''
                   ? null
-                  : props.staff.absentReason
+                  : props.abscenseHistory.absentReason
               }
               placeholder="Select"
             />
@@ -111,7 +111,8 @@ const AbscenseInformation = props => {
               name="absentReason2"
               id="absentReason2"
               rows={6}
-              onChange={props.handleStaffField}
+              value={props.abscenseHistory.absentReason2}
+              onChange={props.handleStaffFieldAbscense}
               aria-multiline="true"
             />
           </Col>

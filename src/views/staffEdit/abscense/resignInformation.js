@@ -4,14 +4,10 @@ import TextInput from '../../../components/textInput'
 import Select from 'react-select'
 import Datetime from 'react-datetime'
 import { Row, Col, Label, Input, Button } from 'reactstrap'
-
+import moment from "moment";
 const resignInformation = props => {
 
-
-  
   const enableResignBtn = (
-    
-
 
     <Button
       // disabled={this.props.abscense === undefined && this.props.abscense === null}
@@ -52,7 +48,7 @@ Enable
             <label htmlFor="appDate">Last Working Date</label>
 
             <Datetime
-              value={props.resignHistory.appDate}
+              value={moment(props.resignHistory.appDate).format("YYYY-MM-DD")}
               onChange={v => {
                 props.handleResignDatePicker('appDate', v)
               }}
@@ -154,6 +150,7 @@ Enable
               maxLength="1000"
               name="resignComm"
               id="resignComm"
+             value={props.resignHistory.resignComm}
               onChange={props.handleStaffField}
               rows={6}
               aria-multiline="true"
@@ -162,9 +159,9 @@ Enable
 
           <Col sm="12" md="6" lg="6" xl="4" className="form-group">
             <TextInput
-              name="signature"
+              name="signature" 
               label="Signature"
-              value={props.staff.signature}
+              value={props.resignHistory.signature}
               onChange={props.handleStaffField}
             />
           </Col>

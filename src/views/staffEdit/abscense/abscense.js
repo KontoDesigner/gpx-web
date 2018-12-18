@@ -15,147 +15,134 @@ class Abscense extends Component {
     super(props)
 
     //*************** */add a local state for the resign part since that is not part of the staff object*********************
-     //let abscenseHistory = this.props.abscenseHistory;
-  let resignHistory = this.props.resignHistory;
-  debugger;
- this.state = {
-    value: '',
-  resignHistory: Object.assign(
-   {},
-       resignHistory ? resignHistory : {}
-   ),
-   //abscenseHistory: Object.assign(
-    //{},
-    //abscenseHistory ? abscenseHistory : {}
-  //  )
- }
-  }
+    let abscenseLocal = this.props.abscenseHistory[0]?this.props.abscenseHistory[0]:{};
+    let resignHistoryLocal = this.props.resignHistory?this.props.resignHistory[0]:{};
+    debugger;
+    this.state = {
+      value: '',
+      resignHistoryLocal: Object.assign({}, resignHistoryLocal ? resignHistoryLocal : {}),
+      abscenseLocal: Object.assign({}, abscenseLocal ? abscenseLocal : {})
+    }
+  } 
+
   //**************************************************************************************************
-  handleSaveAbscense = async() => {
- 
+  handleSaveAbscense = async () => {
     // this.props.settingActions.save()
-    var currentdate = new Date(); 
-    var newdatemodified   = currentdate.getFullYear() + "-"
-                    + (currentdate.getMonth()+1)  + "-" 
-                    + currentdate.getDate() ;
-            
-                    
+    var currentdate = new Date()
+    var newdatemodified =
+      currentdate.getFullYear() +
+      '-' +
+      (currentdate.getMonth() + 1) +
+      '-' +
+      currentdate.getDate()
+    debugger
 
     let model = {
       // to the database
-      ApplicationType: "LeaveOfAbscense",
-     AbsentStart : this.props.abscenseHistory.absentStart,   // this is wrong
-      AbsentEnd: this.state.abscenseHistory.absentEnd,
-      AbsentReason: this.state.abscenseHistory.absentReason,
-      // Signature: this.state.resignHistory.signature, 
-      // JobTitleWhenResigned: this.state.resignHistory.jobTitleWhenResigned,
-      // ReasonForResignment: this.state.resignHistory.reasonForResignment,
-      // ResignComm: this.state.resignHistory.resignComm,
+      ApplicationType: 'LeaveOfAbscense',
+      AbsentStart : this.state.abscenseLocal.absentStart,   // this is wrong
+      AbsentEnd: this.state.abscenseLocal.absentEnd,
+      AbsentReason: this.state.abscenseLocal.absentReason,
+      AbsentReason2: this.state.abscenseLocal.absentReason2,
       DateModified: newdatemodified,
-      //EmpID: this.state.resignHistory.empID,
-      StaffID: this.state.abscenseHistory.staffID
 
-    
+      StaffID: this.props.staff.staffID
     }
 
+    debugger
 
-  debugger;
-  try {
-      const res =  await RestClient.Post('abscense/abscenseUser',model)
-  debugger;
- 
-  
+    try {
+      const res = await RestClient.Post('abscense/abscenseUser', model)
+      debugger
+
       if (res) {
-          toastr.success('Success', `Abscense Document is updated`)
+        toastr.success('Success', `Abscense Document is updated`)
       } else {
-          toastr.error('Error', `Could not update Abscense document: ${res ? res.message : 'Error'}`)
+        toastr.error(
+          'Error',
+          `Could not update Abscense document: ${res ? res.message : 'Error'}`
+        )
       }
-  } catch (error) {
- 
-  
+    } catch (error) {
       throw error
+    }
   }
-  
-  }
-  
-  
-  handleSaveResign = async() => {
+
+  handleSaveResign = async () => {
     // this.props.settingActions.save()
-    var currentdate = new Date(); 
-    var newdatemodified   = currentdate.getFullYear() + "-"
-                    + (currentdate.getMonth()+1)  + "-" 
-                    + currentdate.getDate() ; 
-                  
+    var currentdate = new Date()
+    var newdatemodified =
+      currentdate.getFullYear() +
+      '-' +
+      (currentdate.getMonth() + 1) +
+      '-' +
+      currentdate.getDate()
 
     let model = {
       // to the database
-      ApplicationType: this.state.resignHistory.applicationType,
-      FromDate : this.state.resignHistory.appDate,   // this is wrong
-      AppDate: this.state.resignHistory.appDate,
-      ManagerReason: this.state.resignHistory.managerReason,
-      Signature: this.state.resignHistory.signature, 
-      JobTitleWhenResigned: this.state.resignHistory.jobTitleWhenResigned,
-      ReasonForResignment: this.state.resignHistory.reasonForResignment,
-      ResignComm: this.state.resignHistory.resignComm,
+      ApplicationType: this.state.resignHistoryLocal.applicationType,
+      FromDate: this.state.resignHistoryLocal.appDate, // this is wrong
+      AppDate: this.state.resignHistoryLocal.appDate,
+      ManagerReason: this.state.resignHistoryLocal.managerReason,
+      Signature: this.state.resignHistoryLocal.signature,
+      JobTitleWhenResigned: this.state.resignHistoryLocal.jobTitleWhenResigned,
+      ReasonForResignment: this.state.resignHistoryLocal.reasonForResignment,
+      ResignComm: this.state.resignHistoryLocal.resignComm,
       DateModified: newdatemodified,
-      //EmpID: this.state.resignHistory.empID,
-      StaffID: this.state.resignHistory.staffID
+      // //EmpID: this.state.resignHistory.empID,
+      StaffID: this.props.staff.staffID
+    } 
 
-    
-    }
+    debugger
+    try {
+      const res = await RestClient.Post('resign/resignUser', model)
+      debugger
 
-
-  debugger;
-  try {
-      const res =  await RestClient.Post('resign/resignUser',model)
-  debugger;
- 
-  
       if (res) {
-          toastr.success('Success', `Resign Document is updated`)
+        toastr.success('Success', `Resign Document is updated`)
       } else {
-          toastr.error('Error', `Could not update Resign document: ${res ? res.message : 'Error'}`)
+        toastr.error(
+          'Error',
+          `Could not update Resign document: ${res ? res.message : 'Error'}`
+        )
       }
-  } catch (error) {
- 
-  
+    } catch (error) {
       throw error
+    }
   }
-  
-  }
-
 
   handleResignDatePicker = (field, date) => {
     let val = ''
     //debugger
 
-    let resignHistory = Object.assign({}, this.state.resignHistory)
+    let resignHistoryLocal = Object.assign({}, this.state.resignHistoryLocal)
 
     //Picker
     if (date._d) {
-        resignHistory[field] = date._d
+      resignHistoryLocal[field] = date._d
       console
     }
 
     //Manual
     else if (!date._d) {
-        resignHistory[field] = date
+      resignHistoryLocal[field] = date
     }
 
-    this.setState({ resignHistory })
+    this.setState({ resignHistoryLocal })
   }
 
   handleSelectTypes = (field, val, id) => {
     //let val = ''
     // debugger
 
-    let resignHistory= Object.assign({}, this.state.resignHistory)
-    resignHistory[field] = val[id]
+    let resignHistoryLocal = Object.assign({}, this.state.resignHistoryLocal)
+    resignHistoryLocal[field] = val[id]
     //  this.setState({applicationHistory})
-    this.setState({ resignHistory })
+    this.setState({ resignHistoryLocal })
   }
 
   handleStaffDatePicker = (field, date) => {
+    debugger;
     let val = ''
 
     //Picker
@@ -167,32 +154,56 @@ class Abscense extends Component {
     if (!date._d) {
       val = date
     }
+    let abscenseLocal = Object.assign({}, this.state.abscenseLocal)
+    abscenseLocal[field] = val
+    this.setState({abscenseLocal})
+    // this.props.employeeInfoActions.handleStaffField(field, val)
 
-    this.props.employeeInfoActions.handleStaffField(field, val)
-
-    this.props.handleUnsavedEdit()
+    // this.props.handleUnsavedEdit()
   }
 
   handleStaffSelect = (field, val, selector) => {
     const id = val != null ? val[selector] : undefined
 
-    this.props.abscenseActions.handleStaffField(field, id)
+    let abscenseLocal = Object.assign({}, this.state.abscenseLocal)
+    abscenseLocal[field] = id
+    this.setState({abscenseLocal})
 
-    this.props.handleUnsavedEdit()
+    
   }
 
   handleStaffField = event => {
+    debugger
     const field = event.target.name
     const val = event.target.value
 
-    this.props.abscenseActions.handleStaffField(field, val)
+    let resignHistoryLocal = Object.assign({}, this.state.resignHistoryLocal)
+    resignHistoryLocal[field] = val
 
-    this.props.handleUnsavedEdit() 
+    this.setState({ resignHistoryLocal })
+    //this.props.abscenseActions.handleStaffField(field, val)
+
+    //this.props.handleUnsavedEdit()
   }
 
-//  handleSelectTypes = (field, val) => {
+  
+  handleStaffFieldAbscense = event => {
+    debugger
+    const field = event.target.name
+    const val = event.target.value
+
+    let abscenseLocal = Object.assign({}, this.state.abscenseLocal)
+    abscenseLocal[field] = val
+    //  this.setState({applicationHistory})
+    this.setState({ abscenseLocal})
+    //this.props.abscenseActions.handleStaffField(field, val)
+
+    //this.props.handleUnsavedEdit()
+  }
+
+  //  handleSelectTypes = (field, val) => {
   //  this.setState({ field: val.id })
- // }
+  // }
 
   render() {
     return (
@@ -203,10 +214,11 @@ class Abscense extends Component {
               staff={this.props.staff}
               handleStaffDatePicker={this.handleStaffDatePicker}
               handleStaffSelect={this.handleStaffSelect}
-              handleSaveAbscense = {this.handleSaveAbscense}
-              //abscenseHistory={this.props.abscenseHistory}
+              handleSaveAbscense={this.handleSaveAbscense}
+              abscenseHistory={this.state.abscenseLocal}
+              handleStaffFieldAbscense={this.handleStaffFieldAbscense}
               //handleSelectTypes={this.handleSelectTypes}
-               resignType={this.props.resignType}
+              resignType={this.props.resignType}
             />
           </Col>
 
@@ -217,13 +229,13 @@ class Abscense extends Component {
               handleResignDatePicker={this.handleResignDatePicker}
               handleStaffSelect={this.handleStaffSelect}
               handleStaffField={this.handleStaffField}
-              handleSaveResign = {this.handleSaveResign}
+              handleSaveResign={this.handleSaveResign}
               allJobTitles={this.props.allJobTitles}
               handleChangeMultiple={this.props.handleChangeMultiple}
               resignmentReasons={this.props.resignmentReasons}
-              resignHistory={this.state.resignHistory}
+              resignHistory={this.state.resignHistoryLocal}
               handleSelectTypes={this.handleSelectTypes}
-              managerReasons= {this.props.managerReasons} 
+              managerReasons={this.props.managerReasons}
 
               // title={"Skills"}
               // name={"skills"}

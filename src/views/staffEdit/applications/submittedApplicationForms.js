@@ -25,32 +25,29 @@ const SubmittedApplicationForms = props => {
           <thead>
             <tr>
               <th scope="col">ApplicationType</th>
+              <th scope="col">StartDate</th> 
                <th scope="col">Modified</th>
-              {/* <th scope="col">Reason For Resignment</th>
-              <th scope="col">Job title when Resigned</th>  */}
-               {/* <th scope="col">Comments</th>  */}
               <th scope="col">Status</th>
             </tr>
           </thead>
           <tbody>
             {props.abscenseHistory.map(h => (
                 <tr>
-                  <td>{h.applicationType}</td>
+                  <td>{h.applicationType?h.applicationType:"LeaveOfAbscense"}</td>
+                  <td>{h.absentStart?moment(h.absentStart).format("YYYY-MM-DD"):"Abscense Start Date missing"}</td>
                    <td>{moment(h.dateModified).format("YYYY-MM-DD")}</td>
-                  {/* <td>{h.reasonForResignment}</td>
-                  <td>{h.reason.slice(0, 100)}</td> 
-                   <td>{h.jobTitleWhenResigned}</td>  */}
-                  <td>{h.status}</td>
+
+              <td>{h.status?h.status:"Received"}</td>
                 </tr>
               ))}
                  {props.applicationHistory.map(ap => (
                 <tr>
-                  <td>{ap.applicationType}</td>
+                  <td>{ap.applicationType?ap.applicationType:"Resigned"}</td>
+                  <td>{ap.appDate?moment(ap.appDate).format("YYYY-MM-DD"):"Resign Start Date missing"}</td>
                    <td>{moment(ap.dateModified).format("YYYY-MM-DD")}</td>
-                  {/* <td>{h.reasonForResignment}</td>
-                  <td>{h.reason.slice(0, 100)}</td> 
-                   <td>{h.jobTitleWhenResigned}</td>  */}
-                  <td>{ap.status}</td>
+                 
+        
+                  <td>{ap.status?ap.status:"Received"}</td>
                 </tr>
               ))}
           </tbody>
