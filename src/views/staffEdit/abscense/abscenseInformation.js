@@ -46,10 +46,11 @@ const AbscenseInformation = props => {
             <label htmlFor="absentStart">From</label>
 
             <Datetime
-              value={moment(props.abscenseHistory.absentStart).format("YYYY-MM-DD")}
-              onChange={v => {
-                props.handleStaffDatePicker('absentStart', v)
-              }}
+                 value={
+                  props.abscenseHistory.absentStart && props.abscenseHistory.absentStart !== ''
+                    ? moment(props.abscenseHistory.absentStart).format("YYYY-MM-DD")
+                    : null
+                }
               timeFormat={false}
               dateFormat="YYYY-MM-DD"
               closeOnSelect
@@ -62,10 +63,11 @@ const AbscenseInformation = props => {
             <label htmlFor="absentEnd">To</label>
             
             <Datetime
-              value={moment(props.abscenseHistory.absentEnd).format("YYYY-MM-DD")}
-              onChange={v => {
-                props.handleStaffDatePicker('absentEnd', v)
-              }}
+                  value={
+                    props.abscenseHistory.absentEnd && props.abscenseHistory.absentEnd !== ''
+                      ? moment(props.abscenseHistory.absentEnd).format("YYYY-MM-DD")
+                      : null
+                  }
               timeFormat={false}
               dateFormat="YYYY-MM-DD"
               closeOnSelect

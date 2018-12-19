@@ -42,17 +42,22 @@ class AssignPosition extends Component {
           ],
 
           placementPeriods: [
+
+            {
+              id: 'Assign New',
+              name: 'Assign New'
+          },
               {
-                  id: 'Placement 1',
-                  name: 'Placement 1'
+                  id: '2018-09-05 - 2019-01-01',
+                  name: '2018-09-05 - 2019-01-01'
               },
               {
-                  id: 'Placement 2',
-                  name: 'Placement 2'
+                  id: '2019-01-02- 2019-04-01',
+                  name: '2019-01-02- 2019-04-01'
               },
               {
-                  id: 'Placement 3',
-                  name: 'Placement 3'
+                  id: '2019-09-01 - 2019-04-30',
+                  name: '2019-09-01 - 2019-04-30'
               }
              
           ],

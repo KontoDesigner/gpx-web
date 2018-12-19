@@ -72,10 +72,16 @@ export function createReport() {
 
         try {
 
-        
+            var currentdate = new Date()
+            var newdatemodified =
+              currentdate.getFullYear() +
+              '-' +
+              (currentdate.getMonth() + 1) +
+              '-' +
+              currentdate.getDate()
 
              //await RestClient.Download(`resign/GetResignReports?datetime=2018-10-02`,null,'ResignReport.xlsx')
-             await RestClient.Download(`report/GetReports`,null,'PlanningReport.xlsx')
+             await RestClient.Download(`report/GetReports`,null,'PlanningReport_'+newdatemodified+'.xlsx')
             
             //const replyYesNoRoles = await RestClient.Get(`positionassign/GetAllPositionsAssignData`)
 

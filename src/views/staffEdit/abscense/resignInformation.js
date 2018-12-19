@@ -48,7 +48,13 @@ Enable
             <label htmlFor="appDate">Last Working Date</label>
 
             <Datetime
-              value={moment(props.resignHistory.appDate).format("YYYY-MM-DD")}
+                   value={
+                    props.resignHistory.appDate && props.resignHistory.appDate !== ''
+                      ? moment(props.resignHistory.appDate).format("YYYY-MM-DD")
+                      : null
+                  }
+
+
               onChange={v => {
                 props.handleResignDatePicker('appDate', v)
               }}
