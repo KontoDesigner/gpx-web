@@ -96,6 +96,7 @@ class RestClient {
                     'Content-Type': 'application/json; charset=utf-8',
                     Authorization: ''
                 },
+              
                 data: JSON.stringify(data),
                 method: 'POST',
                 responseType: 'blob'

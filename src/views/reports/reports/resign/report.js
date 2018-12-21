@@ -16,12 +16,10 @@ const Report = (props) => {
         appDate: moment(c.appDate).format("YYYY-MM-DD")
 
     })):[]
-    //const resigndates={id:props.resigndate,name:props.resigndate}
-    //const formatResign=<Moment format="YYY-MM-DD">{props.resigndate}</Moment>
-       // const formatdate = moment(props.resigndate).format('YYYY-MM-DD')
-    //alert(moment().format(props.resigndate,'YYYY-MM-DD'));
-  
-    debugger; 
+
+
+   // const distinctyears=[... new Set(options)];
+  debugger;
     return (
  
         <Card>
@@ -30,7 +28,7 @@ const Report = (props) => {
             <CardBody className="no-padding-bottom">
                 <div className="form-row">
 
-                       <Col key={0} sm="12" md="4" lg="3" xl="3" className="form-group form-group-select">
+        <Col key={0} sm="12" md="4" lg="3" xl="3" className="form-group form-group-select">
                 
     <label htmlFor="destination">Destination</label>
 
@@ -58,6 +56,7 @@ const Report = (props) => {
     labelKey="appDate"
     className="form-control"
    // options={moment(props.resigndate).format('YYYY-MM-DD')}
+   
     options={options}
 
    onChange = { props.handleMonthSelect }
@@ -67,7 +66,7 @@ const Report = (props) => {
 
 <p></p> 
 
-           <Button   color="success"  onClick={() => { props.create() }}>Create Report</Button>
+           <Button   color="success"  onClick={() => { props.createResign(props.selectedResignDates,props.selectedDestination) }}>Create Report</Button>
            {/* <input type="file" /> */}
       </Col>
 </div>

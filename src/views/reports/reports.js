@@ -56,7 +56,7 @@ class Reports extends Component {
         const _this = this
     
        
-     this.props.reportActions.getResignDates();
+     this.props.reportActions.getResignDatesLookup();
       
   
         this.props.reportActions.getReport().then(function () {
@@ -100,16 +100,11 @@ class Reports extends Component {
 
 
 handleMonthSelect = (val) => {
-   // alert (val.name);
-    debugger;
 
-//     let resigndate = Object.assign({}, this.state.resigndate);    //creating copy of object
-//     resigndate.month = val.appDate;                        //updating value
-//     this.setState({resigndate});
 
    val = val != null || val != undefined ? val : ''  
 
-  // this.props.reportActions.handleYearField(val)
+
   
   
   this.props.reportActions.handleResignDates(val) 
@@ -118,9 +113,11 @@ handleMonthSelect = (val) => {
 
 
   handleDestinationSelect = (val) => {
-debugger;
 
-     val = val != null || val != undefined ? val : ''  
+
+     val = val != null || val != undefined ? val : '' 
+     
+     
 
     this.props.reportActions.handleDestinationField(val)
 
@@ -128,6 +125,19 @@ debugger;
 } 
 create = () => {
     this.props.reportActions.createReport()
+}
+
+createResign = (requestDate,destination) => {
+    debugger;
+
+    const model= {
+      resignDate:requestDate.appDate,
+     destination:destination?[destination.destination]:[]
+
+      //destination: [destination.destination]
+
+    }
+    this.props.reportActions.createResignReport(model)
 }
 
     toggle = (tab, getData, resetData) => {
@@ -188,7 +198,7 @@ create = () => {
                              // selectedYear={this.props.selectedYear}
                               handleMonthSelect={this.handleMonthSelect}
                              // getResignDates={this.props.reportActions.getResignDates}
-                              create={this.create}
+                              createResign={this.createResign}
 
                             />
                         </TabPane>

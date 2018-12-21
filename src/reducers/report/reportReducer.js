@@ -41,7 +41,11 @@ export default function reportReducer(state = defaultState, action) {
                 report: action.data.report
             }
 
- 
+            case types.GET_RESIGNDATESLOOKUP_SUCCESS:
+            return {
+                ...state,
+                resigndates: action.data.resigndates
+            }
             
             case types.GET_RESIGNDATES_SUCCESS:
             return {

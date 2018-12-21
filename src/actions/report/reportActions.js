@@ -33,7 +33,34 @@ export function handleResignDates(val) {
 
 }
 
+export function getResignDatesLookupSuccess(resigndates) {
+    return {
+        type: types.GET_RESIGNDATESLOOKUP_SUCCESS,
+        data: { resigndates: resigndates }
+    }
+}
 
+
+
+export function getResignDatesLookup() {
+    return async function (dispatch) {
+        dispatch(beginAjaxCall())
+     
+        try { 
+            
+            const resigndates = await RestClient.Get(`resign/GetAllResignDatesLookup`)
+       debugger;
+       //dispatch(handleResignDates)
+            dispatch(getResignDatesLookupSuccess(resigndates))
+        } catch (error) {
+            dispatch(ajaxCallError(error))
+
+            throw error
+        }
+    }
+
+    
+}
 
 export function getResignDatesSuccess(resigndates) {
     return {
@@ -63,7 +90,41 @@ export function getResignDates() {
 
     
 }
+export function createResignReport(model) {
+    return async function(dispatch) {
+      //  dispatch(beginAjaxCall())
+debugger;
+        try {
 
+            var currentdate = new Date()
+            var newdatemodified =
+              currentdate.getFullYear() +
+              '-' +
+              (currentdate.getMonth() + 1) +
+              '-' +
+              currentdate.getDate()
+
+            //   const req = {
+            //       resignDate: appDate.appDate,
+            //       destination: ['ACE']
+            //   }
+  debugger;
+             //await RestClient.Download(`resign/GetResignReports?datetime=2018-10-02`,null,'ResignReport.xlsx')
+              await RestClient.Download(`report/GetResignReports`,model, 'ResignReport_'+newdatemodified+'.xlsx')
+          
+            //const replyYesNoRoles = await RestClient.Get(`positionassign/GetAllPositionsAssignData`)
+
+            //For some reason we need to reset value here, (bug when loading in new data with filter), don't touch h3h3
+           // dispatch(handleCreateReport([]))
+
+           dispatch(endAjaxCall())
+        } catch (error) {
+            dispatch(ajaxCallError(error))
+
+            throw error
+        }
+    }
+}
 
 
 export function createReport() {

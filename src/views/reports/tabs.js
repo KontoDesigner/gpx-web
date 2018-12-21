@@ -25,12 +25,20 @@ const Tabs = props => {
                             Resign Report
                         </ListGroupItem>
                         <ListGroupItem
+                            className={classnames({ active: props.activeTab === 'onboardReport' })}
+                            onClick={() => {
+                                props.toggle('onboardReport', props.getReport, props.handleReport)
+                            }}>
+                            Onboard Report
+                        </ListGroupItem>  <ListGroupItem
                             className={classnames({ active: props.activeTab === 'placementReport' })}
                             onClick={() => {
                                 props.toggle('placementReport', props.getReport, props.handleReport)
                             }}>
-                            Placement Request Report
+                           Vacant Report
                         </ListGroupItem>
+
+
                         
                     </ListGroup>
                 </CardBody>
