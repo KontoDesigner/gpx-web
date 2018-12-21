@@ -6,6 +6,8 @@ import { TabContent, TabPane, Row, Col } from 'reactstrap'
 import Tabs from './tabs'
 import PlanningReport from './reports/planning/report'
 import ResignReport from './reports/resign/report'
+import VacantReport from './reports/vacant/report'
+import OnBoardReport from './reports/onboard/report'
 import PlacementReport from './reports/placement/report'
 import * as reportActions from '../../actions/report/reportActions'
 import RestClient from '../../infrastructure/restClient'
@@ -202,8 +204,8 @@ createResign = (requestDate,destination) => {
 
                             />
                         </TabPane>
-                        <TabPane tabId="placementReport">
-                            <PlacementReport
+                        <TabPane tabId="vacantReport">
+                            <VacantReport
                                 position={this.props.position }
                                 selectedDestination={this.props.selectedDestination}
                               handleDestinationSelect={this.handleDestinationSelect}
@@ -214,6 +216,19 @@ createResign = (requestDate,destination) => {
 
                             />
                         </TabPane>
+                        <TabPane tabId="onboardReport">
+                            <OnBoardReport
+                                position={this.props.position }
+                                selectedDestination={this.props.selectedDestination}
+                              handleDestinationSelect={this.handleDestinationSelect}
+                              years={this.state.years}
+                              selectedYear={this.props.selectedYear}
+                              handleYearSelect={this.handleYearSelect}
+                              create={this.create}
+
+                            />
+                        </TabPane>
+                       
                     </TabContent>
                 </Col>
 
