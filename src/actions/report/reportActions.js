@@ -126,6 +126,85 @@ debugger;
     }
 }
 
+export function createOnboardReport(model) {
+    return async function(dispatch) {
+      //  dispatch(beginAjaxCall())
+debugger;
+        try {
+
+            var currentdate = new Date()
+            var newdatemodified =
+              currentdate.getFullYear() +
+              '-' +
+              (currentdate.getMonth() + 1) +
+              '-' +
+              currentdate.getDate()
+
+            //   const req = {
+            //       resignDate: appDate.appDate,
+            //       destination: ['ACE']
+            //   }
+  debugger;
+             //await RestClient.Download(`resign/GetResignReports?datetime=2018-10-02`,null,'ResignReport.xlsx')
+              await RestClient.Download(`report/GetOnboardReports`,model, 'OnboardReport_'+newdatemodified+'.xlsx')
+          
+            //const replyYesNoRoles = await RestClient.Get(`positionassign/GetAllPositionsAssignData`)
+
+            //For some reason we need to reset value here, (bug when loading in new data with filter), don't touch h3h3
+           // dispatch(handleCreateReport([]))
+
+           dispatch(endAjaxCall())
+        } catch (error) {
+            dispatch(ajaxCallError(error))
+
+            throw error
+        }
+    }
+}
+
+
+export function createVacantReport(model) {
+    return async function(dispatch) {
+      //  dispatch(beginAjaxCall())
+debugger;
+        try {
+
+            var currentdate = new Date()
+            var newdatemodified =
+              currentdate.getFullYear() +
+              '-' +
+              (currentdate.getMonth() + 1) +
+              '-' +
+              currentdate.getDate()
+
+            //   const req = {
+            //       resignDate: appDate.appDate,
+            //       destination: ['ACE']
+            //   }
+  debugger;
+             //await RestClient.Download(`resign/GetResignReports?datetime=2018-10-02`,null,'ResignReport.xlsx')
+              await RestClient.Download(`report/GetVacantReports`,model, 'VacantReport_'+newdatemodified+'.xlsx')
+          
+            //const replyYesNoRoles = await RestClient.Get(`positionassign/GetAllPositionsAssignData`)
+
+            //For some reason we need to reset value here, (bug when loading in new data with filter), don't touch h3h3
+           // dispatch(handleCreateReport([]))
+
+           dispatch(endAjaxCall())
+        } catch (error) {
+            dispatch(ajaxCallError(error))
+
+            throw error
+        }
+    }
+}
+
+export function createVacantReportSuccess(report) {
+    return {
+        type: types.CREATE_VACANTREPORT_SUCCESS,
+        data: { createVacantReport: createVacantReport }
+    }
+}
 
 export function createReport() {
     return async function(dispatch) {

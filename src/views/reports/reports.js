@@ -129,6 +129,32 @@ create = () => {
     this.props.reportActions.createReport()
 }
 
+createOnboard = (destination) => {
+    debugger;
+
+    const model= {
+      //resignDate:requestDate.appDate,
+     destination:destination?[destination.destination]:[]
+
+      //destination: [destination.destination]
+
+    }
+    this.props.reportActions.createOnboardReport(model)
+}
+
+createVacant = (destination) => {
+    debugger;
+
+    const model= {
+      //resignDate:requestDate.appDate,
+     destination:destination?[destination.destination]:[]
+
+      //destination: [destination.destination]
+
+    }
+    this.props.reportActions.createVacantReport(model)
+}
+
 createResign = (requestDate,destination) => {
     debugger;
 

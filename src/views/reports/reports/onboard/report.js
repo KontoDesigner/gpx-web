@@ -44,7 +44,7 @@ const Report = (props) => {
          placeholder="All Destinations"
         />
         <p></p>
-           <Button   color="success"  onClick={() => { props.create() }}>Create Report</Button>
+           <Button   color="success"  onClick={() => { props.createOnboard(props.selectedDestination) }}>Create Report</Button>
            {/* <input type="file" /> */}
       </Col>
 </div>
