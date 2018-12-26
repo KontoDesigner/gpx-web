@@ -51,6 +51,9 @@ const AbscenseInformation = props => {
                     ? moment(props.abscenseHistory.absentStart).format("YYYY-MM-DD")
                     : null
                 }
+                onChange={v => {
+                  props.handleStaffDatePicker('absentStart', v)
+                }}
               timeFormat={false}
               dateFormat="YYYY-MM-DD"
               closeOnSelect
@@ -68,6 +71,9 @@ const AbscenseInformation = props => {
                       ? moment(props.abscenseHistory.absentEnd).format("YYYY-MM-DD")
                       : null
                   }
+                  onChange={v => {
+                    props.handleStaffDatePicker('absentEnd', v)
+                  }}
               timeFormat={false}
               dateFormat="YYYY-MM-DD"
               closeOnSelect

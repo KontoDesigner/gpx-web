@@ -239,6 +239,7 @@ createResign = (requestDate,destination) => {
                               selectedYear={this.props.selectedYear}
                               handleYearSelect={this.handleYearSelect}
                               create={this.create}
+                              createVacant={this.createVacant}
 
                             />
                         </TabPane>
@@ -251,6 +252,7 @@ createResign = (requestDate,destination) => {
                               selectedYear={this.props.selectedYear}
                               handleYearSelect={this.handleYearSelect}
                               create={this.create}
+                              createOnboard={this.createOnboard}
 
                             />
                         </TabPane>
