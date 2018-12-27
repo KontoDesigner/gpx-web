@@ -206,9 +206,9 @@ export function createVacantReportSuccess(report) {
     }
 }
 
-export function createReport() {
+export function createReport(model) {
     return async function(dispatch) {
-        dispatch(beginAjaxCall())
+       // dispatch(beginAjaxCall())
 
         try {
 
@@ -221,7 +221,7 @@ export function createReport() {
               currentdate.getDate()
 
              //await RestClient.Download(`resign/GetResignReports?datetime=2018-10-02`,null,'ResignReport.xlsx')
-             await RestClient.Download(`report/GetReports`,null,'PlanningReport_'+newdatemodified+'.xlsx')
+             await RestClient.Download(`report/GetReports`,model,'PlanningReport_'+newdatemodified+'.xlsx')
             
             //const replyYesNoRoles = await RestClient.Get(`positionassign/GetAllPositionsAssignData`)
 

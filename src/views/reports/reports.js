@@ -125,15 +125,38 @@ handleMonthSelect = (val) => {
 
     //this.props.handleUnsavedEdit()
 } 
-create = () => {
-    this.props.reportActions.createReport()
+create = (destination) => {
+
+    var currentdate = new Date()
+    var newdatemodified =
+      currentdate.getFullYear() +
+      '-' +
+      (currentdate.getMonth() + 1) +
+      '-' +
+      currentdate.getDate()
+
+    const model= {
+       // resignDate:newdatemodified,
+       destination:destination?[destination.destination]:[]
+  
+        //destination: [destination.destination]
+
+    }
+debugger;
+    this.props.reportActions.createReport(model)
 }
 
 createOnboard = (destination) => {
     debugger;
-
+    var currentdate = new Date()
+    var newdatemodified =
+      currentdate.getFullYear() +
+      '-' +
+      (currentdate.getMonth() + 1) +
+      '-' +
+      currentdate.getDate()
     const model= {
-      //resignDate:requestDate.appDate,
+      //resignDate: newdatemodified,
      destination:destination?[destination.destination]:[]
 
       //destination: [destination.destination]

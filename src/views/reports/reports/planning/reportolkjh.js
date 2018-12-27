@@ -2,17 +2,13 @@ import React, { Component } from 'react'
 import { Card, CardBody, CardHeader, Col,Button } from 'reactstrap'
 import TextInput from '../../../../components/textInput'
 import Select from 'react-select'
+
 import Datetime from 'react-datetime'
 
- 
-class Report extends Component {
-    constructor() {
-        super();
-    }
 
+const Report = (props) => {
  
-    render() {
-        return (
+    return (
  
         <Card>
             <CardHeader>Reports: Planning Report</CardHeader>
@@ -42,21 +38,20 @@ class Report extends Component {
           valueKey="destination"
           labelKey="destination"
           className="form-control"
-          options={this.props.position}
-         onChange = {this.props.handleDestinationSelect}
-         value={this.props.selectedDestination}
+          options={props.position}
+         onChange = { props.handleDestinationSelect }
+         value={props.selectedDestination}
          placeholder="All Destinations"
         />
         <p></p>
-           <Button   color="success"  onClick={() => { this.props.create(this.props.selectedDestination) }}>Create Report</Button>
+           <Button   color="success"  onClick={() => { props.create(props.selectedDestination) }}>Create Report</Button>
            {/* <input type="file" /> */}
       </Col>
 </div>
             </CardBody>
         </Card>
-        )
-    }
-}
+    );
+};
 
 export default Report
 
