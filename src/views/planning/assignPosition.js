@@ -14,8 +14,9 @@ import {
 } from 'reactstrap'
 import Datetime from 'react-datetime'
 import Select from 'react-select'
-
-
+import * as planningActions from '../../actions/planning/planningActions'
+import { bindActionCreators } from 'redux'
+import { connect } from 'react-redux'
 class AssignPosition extends Component {
     constructor() {
         super();
@@ -130,6 +131,7 @@ placementPeriodChange = placementPeriods => {
 }
 
 componentDidMount() {
+  this.props.planningActions.getStaffCandidate()
   //this.props.filterActions.handleFilter() //when page loads
   //this.props.allRolesActions.getAllRoles()
   
@@ -285,4 +287,21 @@ debugger;
     }
 }
 
-export default AssignPosition
+function mapStateToProps(state) {
+  return {
+
+      candidate: state.planning.candidate
+  }
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+      planningActions: bindActionCreators(planningActions, dispatch),
+  
+  } 
+}
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(AssignPosition)

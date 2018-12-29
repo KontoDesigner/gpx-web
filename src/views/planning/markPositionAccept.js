@@ -53,7 +53,7 @@ toggle = () => {
         </ModalHeader>
         <ModalBody>
                     <Alert color="success">
-                    Are you sure you want to mark the assigned position as accepted?<br></br> This action will also create a flight request in the CTX system.
+                    Are you sure you want to mark the assigned position as accepted?<br></br> This action will also create a flight request in the Fly2Work system.
                  
                     </Alert>
                 </ModalBody>

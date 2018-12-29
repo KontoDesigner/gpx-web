@@ -188,7 +188,7 @@ class Season extends Component {
                                         }}
                                         color="danger"
                                         style={{ marginRight: '10px', marginBottom: '10px' }}>
-                                        Remove Position
+                                        Remove Assignment
                                     </Button>
                                     {this.props.send !== null && (
                                         <Button

@@ -23,7 +23,7 @@ const Tabs = props => {
                             onClick={() => {
                                 props.toggle('allRole', props.getAllRoles, props.handleAllRoles)
                             }}>
-                            All Roles
+                            All Positions
                         </ListGroupItem>
                         <ListGroupItem
                             className={classnames({ active: props.activeTab === 'placedRoles' })}
@@ -31,14 +31,14 @@ const Tabs = props => {
                                 debugger;
                                 props.toggle('placedRoles', props.getPlacedRoles, props.handlePlacedRoles)
                             }}>
-                            Placed Roles
+                            Placed Positions
                         </ListGroupItem>
                         <ListGroupItem
                             className={classnames({ active: props.activeTab === 'vacantRoles' })}
                             onClick={() => {
                                 props.toggle('vacantRoles', props.getVacantRoles, props.handleVacantRoles)
                             }}>
-                            Vacant Roles
+                            Vacant Positions
                         </ListGroupItem>
                         <ListGroupItem
                             className={classnames({ active: props.activeTab === 'replyYesNoRoles' })}

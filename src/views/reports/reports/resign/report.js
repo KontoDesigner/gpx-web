@@ -1,8 +1,5 @@
-
-
 import React, { Component } from 'react'
 import moment from "moment";
-
 import { Card, CardBody, CardHeader, Col,Button } from 'reactstrap'
 import TextInput from '../../../../components/textInput'
 import Select from 'react-select'
@@ -10,18 +7,37 @@ import Select from 'react-select'
 import Datetime from 'react-datetime'
 
 
-const Report = (props) => {
+class Report extends Component {
+    constructor(props) {
+        super(props);
+        
+        
+
+    }
+
+
+
+render() {
+
+    const options = this.props.resigndate ? this.props.resigndate.map(c => (
+        {
+        appDate: moment(c.appDate).format("YYYY-MM"),
+        appDate: moment(c.appDate).format("YYYY-MM")
+
+    }
+    )
+    
+    )
+    
+    :[]
+
+
  
-    const options = props.resigndate ? props.resigndate.map(c => ({
-        appDate: moment(c.appDate).format("YYYY-MM-DD"),
-        appDate: moment(c.appDate).format("YYYY-MM-DD")
-
-    })):[]
 
 
-   // const distinctyears=[... new Set(options)];
-  debugger;
     return (
+
+   
  
         <Card>
             <CardHeader>Reports: Resign Report</CardHeader>
@@ -42,9 +58,9 @@ const Report = (props) => {
           valueKey="destination"
           labelKey="destination"
           className="form-group form-group-select"
-          options={props.position}
-          onChange = { props.handleDestinationSelect }
-          value={props.selectedDestination}
+          options={this.props.position}
+          onChange = { this.props.handleDestinationSelect }
+          value={this.props.selectedDestination}
           placeholder="All Destinations"
         
         />
@@ -63,21 +79,22 @@ const Report = (props) => {
    
     options={options}
 
-   onChange = { props.handleMonthSelect }
-   value={props.selectedResignDates}
+   onChange = { this.props.handleMonthSelect }
+   value={this.props.selectedResignDates}
     placeholder="Select Month"
 />
 
 <p></p> 
 
-           <Button   color="success"  onClick={() => { props.createResign(props.selectedResignDates,props.selectedDestination) }}>Create Report</Button>
+           <Button   color="success"  onClick={() => { this.props.createResign(this.props.selectedResignDates,this.props.selectedDestination) }}>Create Report</Button>
            {/* <input type="file" /> */}
       </Col>
 </div>
             </CardBody>
         </Card>
-    );
-};
+        )
+    }
+}
 
 export default Report
 

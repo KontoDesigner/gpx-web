@@ -8,7 +8,7 @@ class VacantRole extends Component {
   render() {
     return (
       <Card>
-        <CardHeader>Vacant Roles</CardHeader>
+        <CardHeader>Vacant Positions</CardHeader>
 
         <CardBody className="no-padding-bottom">
           <div className="form-row">

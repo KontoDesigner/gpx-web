@@ -8,7 +8,7 @@ class PlacedRole extends Component {
   render() {
     return (
       <Card>
-        <CardHeader>Placed Roles</CardHeader>
+        <CardHeader>Placed Positions</CardHeader>
 
         <CardBody className="no-padding-bottom">
           <div className="form-row">

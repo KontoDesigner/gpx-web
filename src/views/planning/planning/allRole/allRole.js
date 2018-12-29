@@ -8,7 +8,7 @@ class AllRole extends Component {
   render() {
     return (
       <Card>
-        <CardHeader>All Roles</CardHeader>
+        <CardHeader>All Positions</CardHeader>
 
         <CardBody className="no-padding-bottom">
           <div className="form-row">
