@@ -2,6 +2,7 @@
 
 import React, { Component } from 'react'
 import moment from "moment";
+
 import { Card, CardBody, CardHeader, Col,Button } from 'reactstrap'
 import TextInput from '../../../../components/textInput'
 import Select from 'react-select'
@@ -29,15 +30,18 @@ const Report = (props) => {
                 <div className="form-row">
 
         <Col key={0} sm="12" md="4" lg="3" xl="3" className="form-group form-group-select">
+
+       
                 
     <label htmlFor="destination">Destination</label>
 
-        <Select 
-    
+
+         <Select.Creatable 
+            multi={true}
           id="destinations"
           valueKey="destination"
           labelKey="destination"
-          className="form-control"
+          className="form-group form-group-select"
           options={props.position}
           onChange = { props.handleDestinationSelect }
           value={props.selectedDestination}
@@ -54,7 +58,7 @@ const Report = (props) => {
     id="month"
     valueKey="appDate"
     labelKey="appDate"
-    className="form-control"
+    className="form-group form-group-select"
    // options={moment(props.resigndate).format('YYYY-MM-DD')}
    
     options={options}

@@ -219,7 +219,7 @@ export function createReport(model) {
               (currentdate.getMonth() + 1) +
               '-' +
               currentdate.getDate()
-
+debugger;
              //await RestClient.Download(`resign/GetResignReports?datetime=2018-10-02`,null,'ResignReport.xlsx')
              await RestClient.Download(`report/GetReports`,model,'PlanningReport_'+newdatemodified+'.xlsx')
             

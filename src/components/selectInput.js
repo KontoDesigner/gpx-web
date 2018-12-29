@@ -1,6 +1,6 @@
 import React from 'react';
 
-const SelectInput = ({ name, label, onChange, placeholder, value, disabled }) => {
+const SelectInput = ({ name, label, onChange, placeholder, value, disabled,IsMulti }) => {
     return ([
         <label
             key={0}
@@ -10,6 +10,7 @@ const SelectInput = ({ name, label, onChange, placeholder, value, disabled }) =>
 
         <Select
             key={1}
+          
             type="text"
             name={name}
             className="form-control"

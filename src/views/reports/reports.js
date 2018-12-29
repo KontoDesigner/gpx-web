@@ -58,7 +58,7 @@ class Reports extends Component {
         const _this = this
     
        
-     this.props.reportActions.getResignDatesLookup();
+      this.props.reportActions.getResignDatesLookup();
       
   
         this.props.reportActions.getReport().then(function () {
@@ -134,14 +134,22 @@ create = (destination) => {
       (currentdate.getMonth() + 1) +
       '-' +
       currentdate.getDate()
+debugger;
 
-    const model= {
-       // resignDate:newdatemodified,
-       destination:destination?[destination.destination]:[]
+let model = destination? destination.map(x => {
+    return {destination:x.destination}
+  }
+
+  ):[]
+
+      //var model = [];
+    // const model= {
+    //    // resignDate:newdatemodified,
+    //    destination:destination?[destination.destination]:[]
   
-        //destination: [destination.destination]
+    //     //destination: [destination.destination]
 
-    }
+    // }
 debugger;
     this.props.reportActions.createReport(model)
 }
@@ -155,39 +163,68 @@ createOnboard = (destination) => {
       (currentdate.getMonth() + 1) +
       '-' +
       currentdate.getDate()
-    const model= {
-      //resignDate: newdatemodified,
-     destination:destination?[destination.destination]:[]
 
-      //destination: [destination.destination]
+      let model = destination? destination.map(x => {
+        return {destination:x.destination}
+      }
 
-    }
+      ):[]
+
+
+    // const model= {
+    //   //resignDate: newdatemodified,
+    //  destination:destination?[destination.destination]:[]
+
+    //   //destination: [destination.destination]
+
+    // }
     this.props.reportActions.createOnboardReport(model)
 }
 
 createVacant = (destination) => {
     debugger;
 
-    const model= {
-      //resignDate:requestDate.appDate,
-     destination:destination?[destination.destination]:[]
 
-      //destination: [destination.destination]
 
-    }
+    let model = destination? destination.map(x => {
+        return {destination:x.destination}
+      }
+
+      ):[]
+
+    // const model= {
+    //   //resignDate:requestDate.appDate,
+    //  destination:destination?destination.destination:[]
+
+    //   //destination:destination? [destination.destination]
+
+    // }
     this.props.reportActions.createVacantReport(model)
 }
 
 createResign = (requestDate,destination) => {
     debugger;
+    
+    // let model = destination? destination.map(x => {
+    //     return {destination:x.destination}
+    //   }
 
-    const model= {
-      resignDate:requestDate.appDate,
-     destination:destination?[destination.destination]:[]
+    //   ):[]
 
-      //destination: [destination.destination]
 
-    }
+    let model =destination? destination.map(x => {
+        return {destination:x.destination, resignDate: requestDate.appDate}
+      }
+
+      ):[{destination:null, resignDate: requestDate.appDate}]
+debugger;
+    // const model= {
+    //   resignDate:requestDate.appDate,
+    //  destination:destination?[destination.destination]:[]
+
+    //   //destination: [destination.destination]
+
+    // }
     this.props.reportActions.createResignReport(model)
 }
 

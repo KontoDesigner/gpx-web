@@ -33,11 +33,13 @@ const Report = (props) => {
 <p></p> */}
  <label htmlFor="destination">Destination</label>
 
-        <Select 
+        
+        <Select.Creatable 
+            multi={true}
           id="destinations"
           valueKey="destination"
           labelKey="destination"
-          className="form-control"
+          className="form-group form-group-select"
           options={props.position}
          onChange = { props.handleDestinationSelect }
          value={props.selectedDestination}

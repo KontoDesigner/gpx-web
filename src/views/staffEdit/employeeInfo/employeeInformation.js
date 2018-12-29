@@ -46,7 +46,9 @@ const EmployeeInformation = (props) => {
                         <label htmlFor="positionType">Position Type</label>
 
                         <Select
+              
                             id="positionType"
+                         
                             valueKey="id"
                             labelKey="name"
                             className="form-control"
