@@ -34,6 +34,7 @@ class Staff extends Component {
         super(props)
 
         this.state = {
+            loaded: false,
             selectedReason: null,
             fileName:null,
             importType:'',

@@ -52,6 +52,7 @@ class Planning extends Component {
     }
 
     handleChange(event) {
+  
 
         this.setState({value: event.target.value});
       }
@@ -304,7 +305,7 @@ debugger;
         debugger;
         this.props.allRolesActions.getAllRoles()
         debugger;
-       // this.props.planningActions.getStaffCandidate()
+       this.props.planningActions.getStaffCandidate()
     }
 
     toggle = (tab, getData, resetData) => {
@@ -350,7 +351,7 @@ debugger;
                 modal={this.state.assignPositionModal}
                 toggle={this.toogleAssignPositionModal}
                 createAssign= {this.createAssign}
-               // candidate={this.props.candidate }
+               candidate={  this.props.candidate}
                 selectedTitle={this.props.selectedTitle} 
             />
 
@@ -505,7 +506,7 @@ function mapStateToProps(state) {
         vacantRoles: state.planning.planning.vacantRoles,
         replyYesNoRoles: state.planning.planning.replyYesNoRoles,
         selectedTitle: state.planning.filter.selectedTitle,
-        //candidate: state.planning.candidate
+        candidate: state.planning.candidate
     }
 }
 

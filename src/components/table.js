@@ -126,6 +126,7 @@ class Table extends Component {
         const target = event.target
         const value = target.checked
 
+    
         let selected = Object.assign([], this.state.selected)
 
         const id = row.rowData[this.props.identifier]

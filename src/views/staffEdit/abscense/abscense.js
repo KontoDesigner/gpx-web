@@ -49,7 +49,7 @@ class Abscense extends Component {
       StaffID: this.props.staff.staffID
     }
 
-    debugger
+    debugger;
 
     try {
       const res = await RestClient.Post('abscense/abscenseUser', model)
