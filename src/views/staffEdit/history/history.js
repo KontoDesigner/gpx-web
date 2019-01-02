@@ -12,7 +12,7 @@ class History extends Component {
                     <Col>
                         <DestinationHistory 
                         destinationHistory={this.props.destinationHistory} 
-                          staff= {this.props.staff}
+                        status= {this.props.status}
                         />
                     </Col>
                 </Row>

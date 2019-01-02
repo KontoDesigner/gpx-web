@@ -40,7 +40,7 @@ Enable
 
   return (
     <Card>
-         <CardHeader> Resignation <div class="pull-right">Status = {props.staff.status}</div> </CardHeader>
+         <CardHeader> Resignation <div className="pull-right">Status = {props.staff.status}</div> </CardHeader>
       {/* <CardHeader>Resignation   -  {enableResignBtn} </CardHeader> */}
       <CardBody className="no-padding-bottom"> 
         <div className="form-row">

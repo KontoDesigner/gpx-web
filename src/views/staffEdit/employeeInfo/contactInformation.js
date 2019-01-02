@@ -10,15 +10,15 @@ const ContactInformation = (props) => {
             <CardBody className="no-padding-bottom">
                 <div className="form-row">
                     <Col sm="12" md="6" lg="6" xl="4" className="form-group">
-                        <TextInput name="firstName" label="First Name" value={props.staff.firstName} onChange={props.handleStaffField} />
+                        <TextInput name="firstName" label="First Name" disabled value={props.staff.firstName} onChange={props.handleStaffField} />
                     </Col>
 
                     <Col sm="12" md="6" lg="6" xl="4" className="form-group">
-                        <TextInput name="lastName" label="Sur Name" value={props.staff.lastName} onChange={props.handleStaffField} />
+                        <TextInput name="lastName" label="Sur Name"disabled value={props.staff.lastName} onChange={props.handleStaffField} />
                     </Col>
 
                     <Col sm="12" md="6" lg="6" xl="4" className="form-group">
-                        <TextInput name="lastName2" label="2nd Sur Name" value={ props.staff.lastName2} disabled={true} />
+                        <TextInput name="lastName2" label="2nd Sur Name" disabled value={ props.staff.lastName2} disabled={true} />
                     </Col>
 
                     <Col sm="12" md="6" lg="6" xl="4" className="form-group">

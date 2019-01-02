@@ -31,15 +31,15 @@ const EmployeeInformation = (props) => {
                     </Col>
 
                     <Col sm="12" md="6" lg="6" xl="4" className="form-group">
-                        <TextInput name="sapID" label="SAP ID"  value={props.staff.sapID} onChange={props.handleStaffField} />
+                        <TextInput name="sapID" label="SAP ID" disabled value={props.staff.sapID} onChange={props.handleStaffField} />
                     </Col>
 
                        <Col sm="12" md="6" lg="6" xl="4" className="form-group">
-                        <TextInput name="mopedID"  label="Moped ID" value={props.staff.mopedID} onChange={props.handleStaffField} />
+                        <TextInput name="mopedID"  label="Moped ID" disabled value={props.staff.mopedID} onChange={props.handleStaffField} />
                     </Col>
 
                        <Col sm="12" md="6" lg="6" xl="4" className="form-group">
-                        <TextInput name="centralID" label="Central ID" value={props.staff.centralID} onChange={props.handleStaffField} />
+                        <TextInput name="centralID" label="Central ID" disabled value={props.staff.centralID} onChange={props.handleStaffField} />
                     </Col>
 
                     <Col sm="12" md="6" lg="6" xl="4" className="form-group form-group-select">
@@ -62,20 +62,26 @@ const EmployeeInformation = (props) => {
 
                     <Col sm="12" md="6" lg="6" xl="4" className="form-group">
                         <TextInput name="costCenter" label="Cost Center" value={props.staff.costCenter} onChange={props.handleStaffField} />
+                    
                     </Col>
 
                     <Col sm="12" md="6" lg="6" xl="4" className="form-group">
-                        <label htmlFor="dateOfBirth">Date Of Birth</label>
-
-                        <Datetime
+                        {/* <label htmlFor="dateOfBirth">Date Of Birth</label> */}
+                        <TextInput name="dateOfBirth" label="Date Of Birth" disabled value={props.staff.dateOfBirth} onChange={props.handleStaffField} />
+                    
+                        {/* <Datetime
+                    
                             value={props.staff.dateOfBirth}
                             onChange={(v) => { props.handleStaffDatePicker('dateOfBirth', v) }}
                             timeFormat={false}
                             dateFormat="YYYY-MM-DD"
                             closeOnSelect
                             utc={true}
-                            inputProps={{ placeholder: 'YYYY-MM-DD' }} />
-                    </Col>
+                            inputProps={{ placeholder: 'YYYY-MM-DD' }} 
+                            disabled = {true}
+                            />
+                      */}
+                    </Col> 
 
                     <Col sm="12" md="6" lg="6" xl="4" className="form-group">
                         <label htmlFor="dateOfBirth">Date First Joined The Company</label>

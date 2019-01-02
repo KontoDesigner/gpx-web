@@ -3,17 +3,23 @@ import { Row, Col } from 'reactstrap'
 import TeamInformation from './teamInformation'
 
 class Team extends Component {
+    constructor() {
+        super()
+    }
     render() {
         return (
             <div>
                 <Row>
                     <Col>
-                        <TeamInformation />
+                        <TeamInformation 
+                          status= {this.props.status}
+                        />
                     </Col>
                 </Row>
             </div>
         )
     }
+
 }
 
 export default Team

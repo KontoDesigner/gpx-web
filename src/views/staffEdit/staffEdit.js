@@ -18,7 +18,6 @@ import Abscense from './abscense/abscense'
 //import FullYearReview from './fullYearReview/fullYearReview'
 import Team from './team/team'
 import Applications from './applications/applications'
-
 import History from './history/history'
 import { LinkContainer } from 'react-router-bootstrap'
 import Buttons from './buttons'
@@ -277,7 +276,12 @@ class StaffEdit extends Component {
 
   render() {
     const buttons = (
-      <Buttons save={this.save} unsavedEdit={this.state.unsavedEdit} />
+    <Buttons 
+    save={this.save} 
+    unsavedEdit={this.state.unsavedEdit} 
+    // staff={this.props.staff}
+    />
+    
     )
 
     if (this.props.staff === null || this.state.loaded === false) {
@@ -315,12 +319,17 @@ class StaffEdit extends Component {
           />
 
           <Row>
+
             <Col
               className="d-xs-block d-sm-block d-md-block d-lg-none"
               style={{ paddingBottom: '15px' }}
-            >
-              {buttons}
+           >
+
+  {buttons}
+              
             </Col>
+         
+
           </Row>
 
           <Row>
@@ -377,13 +386,15 @@ class StaffEdit extends Component {
                 <TabPane tabId="applications">
                   <Applications
                     applicationHistory={this.props.applicationHistory}
-                    staff= {this.props.staff}
+                    status= {this.props.staff.status}
                     abscenseHistory={this.props.abscenseHistory}
                   />
                 </TabPane>
 
                 <TabPane tabId="team">
-                  <Team />
+                  <Team 
+                    status= {this.props.staff.status}
+                  />
          
                 </TabPane>
 
@@ -393,11 +404,11 @@ class StaffEdit extends Component {
                ?
                <History
                destinationHistory={this.props.destinationHistory}
-               staff={this.props.staff}
+               status= {this.props.staff.status}
              />
              
              :     <History
-             staff={this.props.staff}
+             status= {this.props.staff.status}
 
            />}
 

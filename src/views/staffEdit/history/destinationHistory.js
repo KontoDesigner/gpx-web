@@ -6,7 +6,7 @@ import { ListGroup, ListGroupItem, Card, CardBody, CardHeader } from 'reactstrap
 const DestinationHistory = (props) => {
     return (
         <Card>
-            <CardHeader>DestinationHistory {props.destinationHistory.length}<div class="pull-right">Status = {props.staff.status}</div></CardHeader>
+            <CardHeader>DestinationHistory {props.destinationHistory.length}<div class="pull-right">Status = {props.status}</div></CardHeader>
 
             <CardBody>
             <table className="table">

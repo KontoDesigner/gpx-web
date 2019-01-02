@@ -4,7 +4,9 @@ import { Row, Col, Button } from 'reactstrap'
 const Buttons = props => {
     return (
         <Row>
-            <Col className="col-btn-menu">
+        
+            <Col className="col-btn-menu pull-left">
+           
                 <Button
                     onClick={() => {
                         window.close()
@@ -12,13 +14,13 @@ const Buttons = props => {
                     color="danger">
                     Close
                 </Button>
-                <Button
+                {/* <Button
                     onClick={() => {
                         window.print()
                     }}
                     color="primary">
                     Print
-                </Button>
+                </Button> */}
                 <Button
                    // disabled={props.unsavedEdit === false}
                    // disabled={props.unsavedEdit === false}
@@ -27,8 +29,10 @@ const Buttons = props => {
                         props.save()
                     }}>
                     Save
-                </Button>
+                </Button> 
+                {/* <label>Status = {props.staff.status}</label> */}
             </Col>
+            
         </Row>
     )
 }
