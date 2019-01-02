@@ -24,7 +24,7 @@ class NotificationEdit extends Component {   //Notification smart component
         
 
         this.state = {
-           
+            languages:"English",
             templatename: templatename,
            // mplID: mplID,
             notification: null
@@ -138,7 +138,7 @@ class NotificationEdit extends Component {   //Notification smart component
                            
                                
                                     <NotificationInfo 
-                                
+                                        languages={this.state.languages}
                                         notification={this.props.notification}
                                         handleInputField={this.handleInputField}
                                         //handleChange={this.handleChange}

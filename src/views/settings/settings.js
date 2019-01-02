@@ -20,9 +20,10 @@ class Settings extends Component {
         super(props)
    
         this.state = {
+           
             activeTab: 'settings',
             resetData: this.props.settingActions.handleSetting,
-            
+         
            
        
             sourceMarketId: '',
@@ -102,6 +103,7 @@ handleUnsavedEdit = () => {
 }
 
 edit = (e, notification) => {
+    debugger;
     if (!$(e.target).is(":checkbox")) {
         const win = window.open(`/notification/${notification.templateName}`, '_this');
 
@@ -111,7 +113,7 @@ edit = (e, notification) => {
 
 save = async(model) => {
   // this.props.settingActions.save()
-
+debugger;
 
 try {
     const res =  await RestClient.Post('setting/updateSetting', model)
@@ -297,6 +299,7 @@ handleCurSeasonOld = event => {
                         } 
                         <TabPane tabId="notification">
                             <Notification
+                            
                               notification={this.props.notification }
                               selectedSetting={this.props.selectedSetting}
                              getNotification={this.props.notificationActions.getNotification}

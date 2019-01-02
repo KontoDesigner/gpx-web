@@ -41,6 +41,7 @@ const TemplateTable = props => {
                 checkbox={true}
                 identifier={'templateName'}
                 edit={props.edit}
+                status={props.status }
                updateSelectedState={props.handleSelectedNotification} 
                 selected={props.selectedNotification}
                 //selected={props.selectedSetting}

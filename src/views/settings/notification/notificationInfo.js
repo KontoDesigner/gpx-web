@@ -15,9 +15,10 @@ const NotificationEdit = props => {
   }
 
   return (
-
+  
     <Card>
-      <CardHeader>Mail Templates </CardHeader>
+
+      <CardHeader>{props.notification.subject?props.notification.subject:"New Notification Template"} </CardHeader>
 
       <CardBody className="no-padding-bottom">
         <div className="form-row">
@@ -49,10 +50,13 @@ const NotificationEdit = props => {
 
           <Col sm="12" md="6" lg="6" xl="4" className="form-group">
             <TextInput
+     
               name="language"
               label="Language"
-              value={props.notification.language}
+              value={props.languages}
               onChange={props.handleInputField}
+              //placeholder={props.languages}
+              disabled
             />
           </Col>
 

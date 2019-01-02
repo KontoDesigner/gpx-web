@@ -8,7 +8,7 @@ import Filter from '../filter'
 import Datetime from 'react-datetime'
 
 
-class Notification extends Component {   // This is the Notification view page
+class Notification extends Component {   // This is the Notification view smart component page
     toggleCollapse = () => {
         this.setState({ expanded: !this.state.expanded })
     }
@@ -42,6 +42,7 @@ class Notification extends Component {   // This is the Notification view page
                             handleSelectedNotification={this.props.handleSelectedNotification}
                              selectedNotification={this.props.selectedNotification}
                            edit={this.props.edit}
+                           
                            selectedSetting={this.props.selectedSetting}
                            handleSelectedSetting={this.props.handleSelectedSetting}
                             maxTableHeight={maxTableHeight}
