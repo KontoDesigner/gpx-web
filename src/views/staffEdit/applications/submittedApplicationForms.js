@@ -14,11 +14,8 @@ const SubmittedApplicationForms = props => {
     
     <Card>
       {/* <CardHeader>SubmittedApplicationForms {props.applicationHistory.length}</CardHeader> */}
-      <CardHeader>
-        SubmittedApplicationForms{" "}
-        {/* {props.lengthOfHistory(props.applicationHistory.length)} */}
-        {/* {props.lengthOfHistory(props.applicationHistory.length)} */}
-      </CardHeader>
+      
+      <CardHeader> SubmittedApplicationForms{" "}<div class="pull-right">Status = {props.staff.status}</div> </CardHeader>
 
       <CardBody>
         <table className="table">

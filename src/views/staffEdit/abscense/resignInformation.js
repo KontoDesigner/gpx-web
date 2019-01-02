@@ -40,9 +40,9 @@ Enable
 
   return (
     <Card>
-         <CardHeader> Resignation  </CardHeader>
+         <CardHeader> Resignation <div class="pull-right">Status = {props.staff.status}</div> </CardHeader>
       {/* <CardHeader>Resignation   -  {enableResignBtn} </CardHeader> */}
-      <CardBody className="no-padding-bottom">
+      <CardBody className="no-padding-bottom"> 
         <div className="form-row">
           <Col sm="12" md="6" lg="6" xl="4" className="form-group">
             <label htmlFor="appDate">Last Working Date</label>

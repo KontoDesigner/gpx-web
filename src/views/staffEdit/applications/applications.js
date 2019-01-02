@@ -39,6 +39,7 @@ incrementCounter = ( ) => {
                     incrementCounter={this.incrementCounter} 
                     lengthOfHistory={this.lengthOfHistory} 
                     abscenseHistory={this.props.abscenseHistory} 
+                    staff= {this.props.staff}
                     />
                     </Col>
                 </Row>

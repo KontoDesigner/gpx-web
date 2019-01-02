@@ -377,21 +377,56 @@ class StaffEdit extends Component {
                 <TabPane tabId="applications">
                   <Applications
                     applicationHistory={this.props.applicationHistory}
-                    //resignHistory={this.props.resignHistory}
+                    staff= {this.props.staff}
                     abscenseHistory={this.props.abscenseHistory}
                   />
                 </TabPane>
 
                 <TabPane tabId="team">
                   <Team />
+         
                 </TabPane>
 
                 <TabPane tabId="history">
-                  {this.props.destinationHistory && (
+               {this.props.destinationHistory
+               
+               ?
+               <History
+               destinationHistory={this.props.destinationHistory}
+               staff={this.props.staff}
+             />
+             
+             :     <History
+             staff={this.props.staff}
+
+           />}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                  {/* {this.props.destinationHistory && (
+                    <History
+                      destinationHistory={this.props.destinationHistory}
+                    />?
                     <History
                       destinationHistory={this.props.destinationHistory}
                     />
-                  )}
+                 :
+                  <History
+                      destinationHistory={this.props.destinationHistory}
+                    />
+                    )
+                  } */}
                 </TabPane>
               </TabContent>
             </Col>

@@ -9,7 +9,7 @@ import { Row, Col,  Label, Input,Button } from 'reactstrap'
 const Profiling = (props) => {
     return (
         <Card>
-            <CardHeader>Profiling</CardHeader>
+            <CardHeader>Profiling <div class="pull-right">Status = {props.staff.status}</div> </CardHeader>
 
             <CardBody className="no-padding-bottom">
             <div className="form-row">

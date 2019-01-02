@@ -7,7 +7,7 @@ import Datetime from 'react-datetime'
 const EmployeeInformation = (props) => {
     return (
         <Card>
-            <CardHeader>Employee Information</CardHeader>
+            <CardHeader>Employee Information    <div class="pull-right">Status = {props.staff.status}</div> </CardHeader>
 
             <CardBody className="no-padding-bottom">
                 <div className="form-row">
