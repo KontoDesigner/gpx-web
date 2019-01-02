@@ -5,6 +5,7 @@ import { TabContent, TabPane, Row, Col } from 'reactstrap'
 import Tabs from './tabs'
 import * as notificationActions from '../../actions/notification/notificationActions'
 import * as settingActions from '../../actions/setting/settingActions'
+import * as filterActions from '../../actions/setting/filterActions'
 import { toastr } from 'react-redux-toastr'
 import RestClient from '../../infrastructure/restClient'
 import Notification from  './notification/cfgNotification'
@@ -300,6 +301,7 @@ handleCurSeasonOld = event => {
                               selectedSetting={this.props.selectedSetting}
                              getNotification={this.props.notificationActions.getNotification}
                              handleSelectedSetting={this.props.handleSelectedSetting}
+                             handleSelectedNotification={this.props.filterActions.handleSelectedNotification}
                             save={this.save}
                             edit={this.edit}
                             
@@ -330,7 +332,8 @@ function mapDispatchToProps(dispatch) {
     return {
         //positionInfoActions: bindActionCreators(positionInfoActions, dispatch),
         settingActions: bindActionCreators(settingActions, dispatch),
-        notificationActions: bindActionCreators(notificationActions, dispatch)
+        notificationActions: bindActionCreators(notificationActions, dispatch),
+        filterActions: bindActionCreators(filterActions, dispatch)
     }
 }
 

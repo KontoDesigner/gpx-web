@@ -446,7 +446,7 @@ function mapStateToProps(state) {
        recentlyInactive: state.staff.inactive.recentlyInactive,
        newEmployee: state.staff.other.newEmployee,
        selectedReason:state.staff.modal,
-       notification: state.notification.notification,
+       //notification: state.notification.notification,
        fileImport: state.staff.other.imports
     }
 }

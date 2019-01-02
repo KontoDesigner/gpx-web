@@ -4,11 +4,11 @@ import TextInput from '../../../components/textInput'
 import Select from 'react-select'
 import TemplateTable from './templateTable'
 import Action from '../action'
-
+import Filter from '../filter'
 import Datetime from 'react-datetime'
 
 
-class Notification extends Component {
+class Notification extends Component {   // This is the Notification view page
     toggleCollapse = () => {
         this.setState({ expanded: !this.state.expanded })
     }
@@ -28,18 +28,18 @@ class Notification extends Component {
         return (
             <Card className="card-accordion card-country">
                 <CardHeader>Notifications</CardHeader>
- 
+                <CardBody className="no-padding-bottom">
                 <div className="form-row">
-           {/* <Filter getData={this.props.getNotification} />  */}
+           {<Filter getData={this.props.getNotification} />  }
 
-            {/* <Action selected={this.props.selectedNotification} /> */}
+            { <Action selected={this.props.selectedNotification} /> }
           </div>
                 {this.props.notification.length > 0 && (
                     <CardBody style={style} className="card-body-table">
                         <TemplateTable  
                              index={this.props.index}
                              notification={this.props.notification}
-                            handleNotification={this.props.handleSelectedNotification}
+                            handleSelectedNotification={this.props.handleSelectedNotification}
                              selectedNotification={this.props.selectedNotification}
                            edit={this.props.edit}
                            selectedSetting={this.props.selectedSetting}
@@ -48,6 +48,7 @@ class Notification extends Component {
                         />
                     </CardBody>
                 )}
+                 </CardBody>
             </Card>
         )
     }

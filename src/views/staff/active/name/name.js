@@ -18,7 +18,8 @@ class Name extends Component {
         return (
             <Card className="card-accordion card-country">
                 <CardHeader>Name</CardHeader>
- 
+                <CardBody className="no-padding-bottom">
+               
                 <div className="form-row">
            <Filter getData={this.props.getName} /> 
 
@@ -42,6 +43,7 @@ class Name extends Component {
                         />
                     </CardBody>
                 )} 
+                </CardBody>
             </Card>
         )
     }

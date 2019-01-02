@@ -83,14 +83,14 @@ const NotificationEdit = props => {
         </div>
 
         <div className="col-btn-menu">
-          <Button
+          {/* <Button
             onClick={() => {
               window.close()
             }}
             color="primary"
           >
             New Template
-          </Button>
+          </Button> */}
           <Button
             onClick={() => {
               window.close()

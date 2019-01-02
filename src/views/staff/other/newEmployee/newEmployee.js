@@ -18,7 +18,8 @@ class NewEmployee extends Component {
         return (
             <Card className="card-accordion card-country">
                 <CardHeader>New Employee</CardHeader>
- 
+                <CardBody className="no-padding-bottom">
+             
                 <div className="form-row"> 
            <Filter getData={this.props.getNewEmployee} /> 
 
@@ -41,6 +42,7 @@ class NewEmployee extends Component {
                         />
                     </CardBody>
                 )} 
+          </CardBody>
             </Card>
         )
     }

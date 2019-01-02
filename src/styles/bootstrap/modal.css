@@ -47,3 +47,10 @@ body.modal-open
 {
   overflow-y: auto; 
 }
+
+
+
+.modal-dialog {
+    max-width: 600px;
+ 
+}

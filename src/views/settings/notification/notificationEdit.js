@@ -11,7 +11,7 @@ import $ from 'jquery'
 import { toastr } from 'react-redux-toastr'
 import RestClient from '../../../infrastructure/restClient'
 
-class NotificationEdit extends Component {
+class NotificationEdit extends Component {   //Notification smart component
 
     constructor(props) {
         super()
