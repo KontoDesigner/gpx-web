@@ -9,14 +9,15 @@ export function getVacantRolesSuccess(vacantRoles) {
   }
 }
 
-export function getVacantRoles(sourcemarket = 'ALL', criteria = null) {
+
+export function getVacantRoles(sourcemarket = 'ALL', jobfamily='ALL', criteria = null) {
   return async function (dispatch) {
     dispatch(beginAjaxCall())
 
     try {
-   
+   debugger;
       
-      const vacantRoles = await RestClient.Get(`positionassign/GetAllUnAssignedPositions`)
+      const vacantRoles = await RestClient.Get(`positionassign/GetAllUnAssignedPositions/${sourcemarket}/${jobfamily}/${criteria !== null ? `${criteria}` : ''}`)
 
       //For some reason we need to reset value here, (bug when loading in new data with filter), don't touch h3h3
       dispatch(handleVacantRoles([]))

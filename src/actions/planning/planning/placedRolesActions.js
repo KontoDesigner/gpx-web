@@ -9,15 +9,14 @@ export function getPlacedRolesSuccess(placedRoles) {
   }
 }
 
-export function getPlacedRoles(sourcemarket = 'ALL', criteria = null) {
+export function getPlacedRoles(sourcemarket = 'ALL', jobfamily='ALL', criteria = null) {
   return async function (dispatch) {
     dispatch(beginAjaxCall())
 
     try {
 
-      const placedRoles = await RestClient.Get(`positionassign/GetAllAssignedPositions`)
-     // const placedRoles = await RestClient.Get(`positionassign/GetAllAssignedPositions/${sourcemarket}/${criteria !== null ? `/${criteria}` : ''}`)
-    
+      const placedRoles = await RestClient.Get(`positionassign/GetAllAssignedPositions/${sourcemarket}/${jobfamily}/${criteria !== null ? `${criteria}` : ''}`)
+
       //For some reason we need to reset value here, (bug when loading in new data with filter), don't touch h3h3
       dispatch(handlePlacedRoles([]))
 

@@ -12,9 +12,9 @@ class PlacedRole extends Component {
 
         <CardBody className="no-padding-bottom">
           <div className="form-row">
-          <Filter getData={this.props.getPlacedRole} />
+          <Filter getData={this.props.getPlacedRoles} />
 
-                  <Action 
+          <Action 
             selected={this.props.selectedTitle} 
             toogleMakePositionVacantModal={this.props.toogleMakePositionVacantModal}
             toogleUnmarkPositionActingModal ={this.props.toogleUnmarkPositionActingModal}

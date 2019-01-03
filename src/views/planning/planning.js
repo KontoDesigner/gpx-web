@@ -309,7 +309,7 @@ debugger;
     }
 
     toggle = (tab, getData, resetData) => {
-   
+   debugger;
         if (this.state.activeTab !== tab) {
             //Reset current tab state
             this.state.resetData([])
@@ -415,7 +415,8 @@ debugger;
                         <TabPane tabId="allRole">
                             <AllRole
                                 allRoles={this.props.allRoles}
-                                getAllRoles={(sourcemarket, criteria) => this.props.allRolesActions.getAllRoles(sourcemarket, criteria)}
+                                getAllRoles={this.props.allRolesActions.getAllRoles}
+                               //getAllRoles={(sourcemarket, jobfamily,criteria) => this.props.allRolesActions.getAllRoles(sourcemarket, jobfamily,criteria)}
                                 handleSelectedTitle={this.props.filterActions.handleSelectedTitle}
                                 selectedTitle={this.props.selectedTitle}
                                 edit={this.edit}
@@ -433,7 +434,8 @@ debugger;
                         <TabPane tabId="placedRoles">
                             <PlacedRole
                                 placedRoles={this.props.placedRoles}
-                                getPlacedRoles={(sourcemarket, criteria) => this.props.placedRolesActions.getPlacedRoles(sourcemarket, criteria)}
+                                getPlacedRoles={this.props.placedRolesActions.getPlacedRoles}
+                              //  getPlacedRoles={(sourcemarket, criteria) => this.props.placedRolesActions.getPlacedRoles(sourcemarket, criteria)}
                                 handleSelectedTitle={this.props.filterActions.handleSelectedTitle}
                                 selectedTitle={this.props.selectedTitle}
                                 edit={this.edit}
@@ -451,7 +453,8 @@ debugger;
                         <TabPane tabId="vacantRoles">
                             <VacantRole
                                 vacantRoles={this.props.vacantRoles}
-                                getVacantRoles={(sourcemarket, criteria) => this.props.vacantRolesActions.getVacantRoles(sourcemarket, criteria)}
+                                getVacantRoles={this.props.vacantRolesActions.getVacantRoles}
+                                //getVacantRoles={(sourcemarket, criteria) => this.props.vacantRolesActions.getVacantRoles(sourcemarket, criteria)}
                                 handleSelectedTitle={this.props.filterActions.handleSelectedTitle}
                                 selectedTitle={this.props.selectedTitle}
                                 edit={this.edit}
@@ -468,10 +471,13 @@ debugger;
 
                         <TabPane tabId="replyYesNoRoles">
                             <ReplyYesNoRole
+
+
                                 replyYesNoRoles={this.props.replyYesNoRoles}
-                                getReplyYesNoRoles={(sourcemarket, criteria) =>
-                                this.props.replyYesNoRolesActions.getReplyYesNoRoles(sourcemarket, criteria)
-                                }
+                                // getReplyYesNoRoles={(sourcemarket, criteria) =>
+                                // this.props.replyYesNoRolesActions.getReplyYesNoRoles(sourcemarket, criteria)
+                                // }
+                                getReplyYesNoRoles={this.props.replyYesNoRolesActions.getReplyYesNoRoles}
                                 handleSelectedTitle={this.props.filterActions.handleSelectedTitle}
                                 selectedTitle={this.props.selectedTitle}
                                 edit={this.edit}

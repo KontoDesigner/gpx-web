@@ -8,6 +8,7 @@ import debounce from 'lodash/debounce'
 import Select from 'react-select'
 
 class Filter extends Component {
+
   constructor(props) {
     super(props)
 
@@ -32,9 +33,9 @@ class Filter extends Component {
 
   updateSourceMarketState = sourceMarket => {
     const sourceMarketId = sourceMarket != null ? sourceMarket.id : undefined
-
+debugger;
     this.props.filterActions.handleSourceMarket(sourceMarketId)
-
+debugger;
     this.props.getData(sourceMarketId, this.props.filter.selectedJobFamily, this.props.filter.text)
   }
 

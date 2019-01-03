@@ -12,7 +12,7 @@ class VacantRole extends Component {
 
         <CardBody className="no-padding-bottom">
           <div className="form-row">
-          <Filter getData={this.props.getVacantRole} />
+          <Filter getData={this.props.getVacantRoles} />
        
           <Action 
             selected={this.props.selectedTitle} 
