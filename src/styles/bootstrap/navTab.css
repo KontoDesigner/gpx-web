@@ -48,11 +48,13 @@
 }
 
 .nav-tab > li > .nav-link.active, .nav-tab > li > .nav-link.active:hover, .nav-tab > li > .nav-link.active:focus {
-    color: #3082c7;
+    color: black;
     cursor: default;
-    background-color: #fff;
+    xbackground-color: #fff;
+    background-color: #e2f3fe;
     border: 1px solid #ddd;
     border-bottom-color: transparent;
+    
 }
 
 .nav > .nav-item > a
