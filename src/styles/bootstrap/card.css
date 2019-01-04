@@ -13,6 +13,8 @@
     xpadding:15px;
 }
 
+
+
 .card-header
 {
 
@@ -21,6 +23,7 @@
     font-size: 12px;
     xpadding: 10px 15px;
     border-radius: 0px;
+    background-color: #f5f2ea;
     font-weight: 500;
     xfont-size: 13px;
     border-radius: 0px!important;
