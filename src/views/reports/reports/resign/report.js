@@ -20,9 +20,10 @@ class Report extends Component {
 render() {
 
     const options = this.props.resigndate ? this.props.resigndate.map(c => (
-        {
-        appDate: moment(c.appDate).format("YYYY-MM"),
-        appDate: moment(c.appDate).format("YYYY-MM")
+         {
+        appDate: moment(c.appDate).format("YYYY-MM-DD"),
+         appDate: moment(c.appDate).format("YYYY-MM-DD")
+
 
     }
     )
@@ -75,9 +76,9 @@ render() {
     valueKey="appDate"
     labelKey="appDate"
     className="form-group form-group-select"
-   // options={moment(props.resigndate).format('YYYY-MM-DD')}
+    options={this.props.resigndate}
    
-    options={options}
+    //options={options}
 
    onChange = { this.props.handleMonthSelect }
    value={this.props.selectedResignDates}
