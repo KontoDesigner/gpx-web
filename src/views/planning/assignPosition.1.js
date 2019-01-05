@@ -93,39 +93,40 @@ class AssignPosition extends Component {
       debugger;
      // const selectedCandidate = candidate ;
      
-     
+      let dates = [];
       const selectedCandidate = candidate != null ? candidate: null
 
-     // this.options = {value: ''};
+      this.options = {value: ''};
 
       this.setState({
-        selectedCandidate,
-dates:[]
+        selectedCandidate
+
       })
 
 
-      const dates=this.props.candidate ? this.props.candidate 
 
-      .filter(x => x.staffID === selectedCandidate.staffID).map(h => (
-   {
-         startDate: moment(h.startDate).format("YYYY-MM-DD") + ' - ' + moment(h.endDate).format("YYYY-MM-DD"),
-        startDate: moment(h.startDate).format("YYYY-MM-DD") + ' - ' + moment(h.endDate).format("YYYY-MM-DD"),
+  //     dates=this.props.candidate ? this.props.candidate
+
+  //     .filter(x => x.staffID === this.state.selectedCandidate).map(h => (
+  // {
+  //       startDate: moment(h.startDate).format("YYYY-MM-DD") + ' - ' + moment(h.endDate).format("YYYY-MM-DD"),
+  //       startDate: moment(h.startDate).format("YYYY-MM-DD") + ' - ' + moment(h.endDate).format("YYYY-MM-DD"),
        
       
-   }
+  // }
   
-      )
+  //     )
      
       
-       )
+  //     )
     
-     :[]
+  //   :[]
 
-     this.setState({
+    // this.setState({
       
-      dates
+    //   dates
 
-    })
+    // })
 
 
      // const dest = this.props.candidate.filter(ap => ap.firstNameLastNameStatus=== selectedCandidate)[0];
@@ -223,7 +224,7 @@ dates:[]
 }
 
 placementPeriodChange = placementPeriods => {
-  const selectedPlacementPeriod = placementPeriods.startDate ;
+  const selectedPlacementPeriod = placementPeriods ;
  // const selectedAssignStart = selectedPlacementPeriod.startDate.substr(0, 10); 
   //const selectedAssignEnd = selectedPlacementPeriod.startDate.substr(-10); 
   
@@ -279,26 +280,26 @@ debugger;
 
 
 
-// if (this.state.selectedCandidate!== null) {
+if (this.state.selectedCandidate!== null) {
 
-// this.options=this.props.candidate ? 
+this.options=this.props.candidate ? 
 
-// this.props.candidate.filter(x => x.staffID === this.state.selectedCandidate.staffID).map(h => (
-//  {
-//        startDate: moment(h.startDate).format("YYYY-MM-DD") + ' - ' + moment(h.endDate).format("YYYY-MM-DD"),
-//        startDate: moment(h.startDate).format("YYYY-MM-DD") + ' - ' + moment(h.endDate).format("YYYY-MM-DD")
+this.props.candidate.filter(x => x.staffID === this.state.selectedCandidate.staffID).map(h => (
+ {
+       startDate: moment(h.startDate).format("YYYY-MM-DD") + ' - ' + moment(h.endDate).format("YYYY-MM-DD"),
+       startDate: moment(h.startDate).format("YYYY-MM-DD") + ' - ' + moment(h.endDate).format("YYYY-MM-DD")
     
-// }
+}
   
-//    ),
+   ),
    
 
 
    
-//     )
-//  :[]
+    )
+ :[]
 
-// }
+}
 
 
 // const options = this.props.candidate ? this.props.candidate.map(c => (
@@ -372,7 +373,7 @@ debugger;
                                        valueKey="startDate"
                                        labelKey="startDate" 
                                         className="form-control"
-                                        options={this.state.dates}
+                                        options={this.options}
                                         onChange={this.placementPeriodChange}
                                         value={this.state.selectedPlacementPeriod}
                                         placeholder="Select"

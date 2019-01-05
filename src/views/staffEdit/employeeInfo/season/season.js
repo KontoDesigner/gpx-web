@@ -87,7 +87,7 @@ class Season extends Component {
                         <CardBody>
                             <Row>
                                 <Col>
-                                    <b className="card-text text-danger">No {this.props.title.toLowerCase()} found.</b>
+                                    {/* <b className="card-text text-danger">No {this.props.title.toLowerCase()} found.</b> */}
                                 </Col>
                             </Row>
                         </CardBody>

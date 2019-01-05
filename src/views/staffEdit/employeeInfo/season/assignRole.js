@@ -24,7 +24,7 @@ class AssignRole extends Component {
         const selectedDestination = destination != null ? destination.destination : null
 
         const dest = this.props.availablePositions.filter(ap => ap.destination === selectedDestination)[0];
-
+debugger;
         let jobTitles = [];
 
         if (dest !== undefined) {
@@ -42,6 +42,7 @@ class AssignRole extends Component {
             positionEndDate: null,
             jobTitles
         })
+        debugger;
     }
 
     jobTitleOnChange = jobTitle => {
