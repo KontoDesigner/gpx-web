@@ -23,6 +23,7 @@ class AssignPosition extends Component {
         this.state = {
         
           dates:[],
+          dates:[],
              dateModified: null,
              selectedCandidate: null,
             selectedAssignStart:null,
@@ -120,6 +121,9 @@ dates:[]
        )
     
      :[]
+
+     var newarray=dates.slice();
+     newarray.push("New assignment");
 
      this.setState({
       
@@ -223,17 +227,18 @@ dates:[]
 }
 
 placementPeriodChange = placementPeriods => {
+  debugger;
   const selectedPlacementPeriod = placementPeriods.startDate ;
- // const selectedAssignStart = selectedPlacementPeriod.startDate.substr(0, 10); 
-  //const selectedAssignEnd = selectedPlacementPeriod.startDate.substr(-10); 
+ const selectedAssignStart = selectedPlacementPeriod ? selectedPlacementPeriod.substr(0, 10):''; 
+  const selectedAssignEnd = selectedPlacementPeriod ? selectedPlacementPeriod.substr(-10):''; 
   
 debugger;
 
 
   this.setState({
     selectedPlacementPeriod,
-    //selectedAssignStart,
-    //selectedAssignEnd
+    selectedAssignStart,
+    selectedAssignEnd
  
   })
   debugger;
@@ -248,7 +253,7 @@ componentDidMount() {
 
     createAssign = (val) => {
        
-        this.toggle();
+       // this.toggle();   commented out for now
 
        // const destination = this.props.availablePositions.filter(ap => ap.destination === this.state.selectedDestination)[0];
        
@@ -266,7 +271,8 @@ componentDidMount() {
              candidate: this.state.selectedCandidate.staffID,
             startDate: this.state.selectedAssignStart,
              endDate: this.state.selectedAssignEnd,
-             selectedTitle:this.props.selectedTitle[0]
+             selectedTitle:this.props.selectedTitle[0],
+             oldDate: this.state.selectedPlacementPeriod.substr(0, 10)
         }
 debugger;
        this.props.createAssign(model);

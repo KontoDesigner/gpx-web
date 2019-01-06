@@ -203,10 +203,11 @@ export function deletePositionAssign(model) {
 
          try {
            const modelnew = {
-
+// StaffID:model.StaffID,
+// OldDates:model.OldDates
              }
-            
-             await RestClient.Post('positionassign/deletepositionassignselect', model.StaffID)
+            debugger;
+             await RestClient.Post('positionassign/deletepositionassignselect', model)
          
             dispatch(endAjaxCall())
         } catch (error) {
