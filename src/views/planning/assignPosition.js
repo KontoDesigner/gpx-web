@@ -23,7 +23,7 @@ class AssignPosition extends Component {
         this.state = {
         
           dates:[],
-          dates:[],
+       
              dateModified: null,
              selectedCandidate: null,
             selectedAssignStart:null,
