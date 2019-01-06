@@ -19,11 +19,11 @@ import Select from 'react-select'
 class AssignPosition extends Component {
     constructor() {
         super();
-        this.options=[],
+        this.options=[],  //temporary class variable
         this.state = {
         
           dates:[],
-       
+       //newArray:[],
              dateModified: null,
              selectedCandidate: null,
             selectedAssignStart:null,
@@ -80,6 +80,7 @@ class AssignPosition extends Component {
           selectedAssignEnd:null,
           selectedPlacementPeriod:null,
           dates:[],
+         // newArray:[],
             dateModified: null,
             count:0
             
@@ -102,10 +103,11 @@ class AssignPosition extends Component {
       this.setState({
         selectedCandidate,
 dates:[]
+//newArray:[]
       })
 
 
-      const dates=this.props.candidate ? this.props.candidate 
+      let dates=this.props.candidate ? this.props.candidate 
 
       .filter(x => x.staffID === selectedCandidate.staffID).map(h => (
    {
@@ -122,9 +124,9 @@ dates:[]
     
      :[]
 
-     var newarray=dates.slice();
-     newarray.push("New assignment");
-
+//      var newArray=dates.slice();
+//      newArray.push("New assignment");
+// debugger;
      this.setState({
       
       dates
