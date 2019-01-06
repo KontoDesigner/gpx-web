@@ -103,7 +103,7 @@ class AssignPosition extends Component {
       this.setState({
         selectedCandidate,
 dates:[]
-//newArray:[]
+
       })
 
 
@@ -124,12 +124,17 @@ dates:[]
     
      :[]
 
-//      var newArray=dates.slice();
-//      newArray.push("New assignment");
+     var newArray=  dates.slice();
+
+    newArray.push({
+      startDate: "Add New" ,   //Should be role start date
+      startDate: "Add New"  
+     
+ });
 // debugger;
      this.setState({
       
-      dates
+      dates:newArray
 
     })
 
@@ -230,17 +235,18 @@ dates:[]
 
 placementPeriodChange = placementPeriods => {
   debugger;
-  const selectedPlacementPeriod = placementPeriods.startDate ;
- const selectedAssignStart = selectedPlacementPeriod ? selectedPlacementPeriod.substr(0, 10):''; 
-  const selectedAssignEnd = selectedPlacementPeriod ? selectedPlacementPeriod.substr(-10):''; 
+
+const selectedPlacementPeriod = placementPeriods.startDate ;
+// const selectedAssignStart = selectedPlacementPeriod ? selectedPlacementPeriod.substr(0, 10):''; 
+  //const selectedAssignEnd = selectedPlacementPeriod ? selectedPlacementPeriod.substr(-10):''; 
   
 debugger;
 
 
   this.setState({
     selectedPlacementPeriod,
-    selectedAssignStart,
-    selectedAssignEnd
+    //selectedAssignStart,
+    //selectedAssignEnd
  
   })
   debugger;

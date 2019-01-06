@@ -240,12 +240,17 @@ debugger;
 debugger;
          const _this = this
       
+         if(assignmodel.OldDate!='Add New'){
                   this.props.planningActions.deletePositionAssign(assignmodel).then(function() {
                      _this.props.planningActions.insertStaffAssign(assignmodel)
          
               })
 
-
+            }
+            else
+            {
+                _this.props.planningActions.insertStaffAssign(assignmodel)
+            }
          //this.props.planningActions.insertStaffAssign(assignmodel)
      }
      createUpdate = model => {
