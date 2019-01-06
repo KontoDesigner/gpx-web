@@ -121,7 +121,18 @@ class Planning extends Component {
         
         })
     }
+    createPosition = model => {
+      
+        // let positionModel = {
 
+        //      Id : model.mplid,
+        //      DateModified:model.dateModified
+        //  }
+debugger;
+ 
+      this.props.planningActions.createPosition(model)
+         
+              }
 
     createVacant = model => {
       
@@ -498,7 +509,7 @@ debugger;
                         </TabPane>
                         <TabPane tabId="newPosition">
                             <NewPosition
-                             
+                             createPosition={this.createPosition}
                             
                             />
                         </TabPane>

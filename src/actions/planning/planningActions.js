@@ -106,6 +106,34 @@ debugger;
 }
 
 
+export function createPosition(model) {
+    return async function(dispatch) {
+        dispatch(beginAjaxCall())
+debugger;
+        try {
+             const modelobsolete = {
+                  Id: model.id
+        }
+debugger;
+           const res= await RestClient.Post('position/createPosition', model)
+        
+       
+            if (res) {
+                toastr.success('Success', `Position(s) is now created`)
+            } else {
+                toastr.error('Error', `Position(s) is not created: ${res ? res.message : 'Error'}`)
+            }
+
+
+
+            dispatch(endAjaxCall())
+        } catch (error) {
+            dispatch(ajaxCallError(error))
+
+            throw error
+        }
+    }
+}
 
 
 export function createVacant(model) {
