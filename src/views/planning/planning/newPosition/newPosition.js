@@ -16,6 +16,9 @@ class NewPosition extends Component {
     super();
 
     this.state = {
+      selectedStart:null,
+      selectedEnd:null,
+
       value: '',
       value2: '',
       value3: '',
@@ -84,10 +87,7 @@ class NewPosition extends Component {
   name: 'Posted Local Contract '
 },
 
-{
-id: 'Local Agency/Hotel Paid Rep',
-name: 'Local Agency/Hotel Paid Rep'
-},
+
   
     ],
 
@@ -102,12 +102,61 @@ createPosition = (val) => {
 
   let model = {
 
-      dateModified: moment(newdatemodified).format("YYYY-MM-DD HH:MM:DD")  ,
-     // mplid:this.props.selectedTitle[0]
+    Destination:this.props.selectedDestination.destination,
+    JobTitle:this.state.selectedJobTitle.name,
+    StartDate:this.state.selectedStart,
+    EndDate:this.state.selectedEnd,
+    Country:this.state.selectedCountry.name,
+    DateModified: moment(newdatemodified).format("YYYY-MM-DD HH:MM:DD")  ,
+    So:"TUI Sweden",
+    No:"TUI Norway",
+    Dk:"TUI Denmark",
+    Fi:"TUI Finland",
+    Uk:"TUI UK&I",
+    Ne:"TUI Netherlands",
+    Fr:"TUI France",
+    Ru:"TUI Russia",
+    Gas:"TUI Gas",
+    Be:"TUI Belgium",
+    Po:"TUI Poland",
+    Tui:"TUI",
+    Ltur:"L'Tur",
 
-  }
+    Se01:this.state.value,
+    No01:this.state.value2,
+    Dk01:this.state.value3,
+    Fi01:this.state.value4,
+    Uk01:this.state.value5,
+    Ne01:this.state.value6,
+    Gas01:this.state.value7,
+    Fr01:this.state.value8,
+    Be01:this.state.value9,
+    Po01:this.state.value10,
+    Ru01:this.state.value11,
+    Tu01:this.state.value12,
+    Tur01:this.state.value13,
+   
+    PositionTypeSe01:this.state.selectvalue.name,
+    PositionTypeNo01:this.state.selectvalue2.name,
+    PositionTypeDk01:this.state.selectvalue3.name,
+    PositionTypeFi01:this.state.selectvalue4.name,
+    PositionTypeUk01:this.state.selectvalue5.name,
+    PositionTypeNe01:this.state.selectvalue6.name,
+    PositionTypeGas01:this.state.selectvalue7.name,
+    PositionTypeFr01:this.state.selectvalue8.name,
+    PositionTypeBe01:this.state.selectvalue9.name,
+    PositionTypePo01:this.state.selectvalue10.name,
+    PositionTypeRu01:this.state.selectvalue11.name,
+    PositionTypeTu01:this.state.selectvalue12.name,
+    PositionTypeTur01:this.state.selectvalue13.name,
+
+   }
+
+
 debugger;
+ //this.props.createPosition(this.state);
  this.props.createPosition(model);
+ 
 }
 
 
@@ -129,6 +178,28 @@ async componentWillMount() {
   })
 }
 
+startChange = start => {
+  debugger;
+  const selectedStart = start ;
+debugger;
+  this.setState({
+    selectedStart
+ 
+  })
+  debugger;
+}
+
+endChange = end => {
+const selectedEnd = end ;
+
+this.setState({
+  selectedEnd
+
+})
+
+}
+
+
 handleChange(field,event) {
   debugger;
   
@@ -136,43 +207,42 @@ handleChange(field,event) {
    case 'se01':
    this.setState({value: event.target.value});
    break;
-   case 'se02':
+   case 'no01':
    this.setState({value2: event.target.value});
    break;
-   case 'se03':
+   case 'dk01':
    this.setState({value3: event.target.value});
    break;
-   case 'se04':
+   case 'fi01':
    this.setState({value4: event.target.value});
    break;
-   case 'se05':
+   case 'uk01':
    this.setState({value5: event.target.value});
    break;
-   case 'se06':
+   case 'ne01':
    this.setState({value6: event.target.value});
    break;
-   case 'se07':
+   case 'gas01':
    this.setState({value7: event.target.value});
    break;
-   case 'se08':
+   case 'fr01':
    this.setState({value8: event.target.value});
    break;
-   case 'se09':
+   case 'be01':
    this.setState({value9: event.target.value});
    break;
-   case 'se10':
+   case 'po01':
    this.setState({value10: event.target.value});
    break;
-   case 'se11':
+   case 'ru01':
    this.setState({value11: event.target.value});
    break;
-   case 'se12':
+   case 'tu01':
    this.setState({value12: event.target.value});
    break;
-   case 'se13':
+   case 'tur01':
    this.setState({value13: event.target.value});
-   case 'se14':
-   this.setState({value14: event.target.value});
+ 
    
   }
 
@@ -284,10 +354,8 @@ handleDestinationSelect = (val) => {
             <label htmlFor="startDate">Start Date</label>
 
             <Datetime
-             // value={this.props.staff.absentEnd}
-              onChange={v => {
-                //this.props.handleStaffDatePicker('absentEnd', v)
-              }}
+               onChange={this.startChange}
+               value={this.state.selectedStart}
               timeFormat={false}
               dateFormat="YYYY-MM-DD"
               closeOnSelect
@@ -299,10 +367,8 @@ handleDestinationSelect = (val) => {
             <label htmlFor="endDate">End Date</label>
 
             <Datetime
-             // value={this.props.staff.absentEnd}
-              onChange={v => {
-                //this.props.handleStaffDatePicker('absentEnd', v)
-              }}
+            onChange={this.endChange}
+            value={this.state.selectedEnd}
               timeFormat={false}
               dateFormat="YYYY-MM-DD"
               closeOnSelect
@@ -391,24 +457,24 @@ handleDestinationSelect = (val) => {
                     </Col>
 
                <Col sm="12" md="4" lg="4" xl="4" className="form-group">
-                        <TextInput name="se01" label="# of Positions"  value={this.state.value} onChange={(v) => {this.handleChange('se01', v) }} />
+                        <TextInput name="no01" label="# of Positions"  value={this.state.value2} onChange={(v) => {this.handleChange('no01', v) }} />
                     </Col>
 
 
  <Col sm="12" md="4" lg="4" xl="4" className="form-group form-group-select">
- <label htmlFor="positionType">PositionType</label>
+ <label htmlFor="positionType2">PositionType</label>
 
         <Select 
-          id="positionType"
+          id="positionType2"
           valueKey="id"
           labelKey="name"
           className="form-control"
          options={this.state.positionTypes}
         //onChange = {this.handleChangeSelect}
-         onChange={(v) => {this.handleChangeSelect('positionType', v) }}
+         onChange={(v) => {this.handleChangeSelect('positionType2', v) }}
          
         // value={this.props.selectedPositionType} 
-         value={this.state.selectvalue}
+         value={this.state.selectvalue2}
          placeholder=""
         />
              </Col> 
@@ -417,24 +483,24 @@ handleDestinationSelect = (val) => {
                     </Col>
 
                <Col sm="12" md="4" lg="4" xl="4" className="form-group">
-                        <TextInput name="se01" label="# of Positions"  value={this.state.value} onChange={(v) => {this.handleChange('se01', v) }} />
+                        <TextInput name="dk01" label="# of Positions"  value={this.state.value3} onChange={(v) => {this.handleChange('dk01', v) }} />
                     </Col>
 
 
  <Col sm="12" md="4" lg="4" xl="4" className="form-group form-group-select">
- <label htmlFor="positionType">PositionType</label>
+ <label htmlFor="positionType3">PositionType</label>
 
         <Select 
-          id="positionType"
+          id="positionType3"
           valueKey="id"
           labelKey="name"
           className="form-control"
          options={this.state.positionTypes}
         //onChange = {this.handleChangeSelect}
-         onChange={(v) => {this.handleChangeSelect('positionType', v) }}
+         onChange={(v) => {this.handleChangeSelect('positionType3', v) }}
          
         // value={this.props.selectedPositionType} 
-         value={this.state.selectvalue}
+         value={this.state.selectvalue3}
          placeholder=""
         />
              </Col> 
@@ -443,24 +509,24 @@ handleDestinationSelect = (val) => {
                     </Col>
 
                <Col sm="12" md="4" lg="4" xl="4" className="form-group">
-                        <TextInput name="se01" label="# of Positions"  value={this.state.value} onChange={(v) => {this.handleChange('se01', v) }} />
+                        <TextInput name="fi01" label="# of Positions"  value={this.state.value4} onChange={(v) => {this.handleChange('fi01', v) }} />
                     </Col>
 
 
  <Col sm="12" md="4" lg="4" xl="4" className="form-group form-group-select">
- <label htmlFor="positionType">PositionType</label>
+ <label htmlFor="positionType4">PositionType</label>
 
         <Select 
-          id="positionType"
+          id="positionType4"
           valueKey="id"
           labelKey="name"
           className="form-control"
          options={this.state.positionTypes}
         //onChange = {this.handleChangeSelect}
-         onChange={(v) => {this.handleChangeSelect('positionType', v) }}
+         onChange={(v) => {this.handleChangeSelect('positionType4', v) }}
          
         // value={this.props.selectedPositionType} 
-         value={this.state.selectvalue}
+         value={this.state.selectvalue4}
          placeholder="" 
         />
              </Col> 
@@ -469,24 +535,24 @@ handleDestinationSelect = (val) => {
                     </Col>
 
                <Col sm="12" md="4" lg="4" xl="4" className="form-group">
-                        <TextInput name="se01" label="# of Positions"  value={this.state.value} onChange={(v) => {this.handleChange('se01', v) }} />
+                        <TextInput name="uk01" label="# of Positions"  value={this.state.value5} onChange={(v) => {this.handleChange('uk01', v) }} />
                     </Col>
 
 
  <Col sm="12" md="4" lg="4" xl="4" className="form-group form-group-select">
- <label htmlFor="positionType">PositionType</label>
+ <label htmlFor="positionType5">PositionType</label>
 
         <Select 
-          id="positionType"
+          id="positionType5"
           valueKey="id"
           labelKey="name"
           className="form-control"
          options={this.state.positionTypes}
         //onChange = {this.handleChangeSelect}
-         onChange={(v) => {this.handleChangeSelect('positionType', v) }}
+         onChange={(v) => {this.handleChangeSelect('positionType5', v) }}
          
         // value={this.props.selectedPositionType} 
-         value={this.state.selectvalue}
+         value={this.state.selectvalue5}
          placeholder=""
         />
              </Col> 
@@ -495,24 +561,24 @@ handleDestinationSelect = (val) => {
                     </Col>
 
                <Col sm="12" md="4" lg="4" xl="4" className="form-group">
-                        <TextInput name="se01" label="# of Positions"  value={this.state.value} onChange={(v) => {this.handleChange('se01', v) }} />
+                        <TextInput name="ne01" label="# of Positions"  value={this.state.value6} onChange={(v) => {this.handleChange('ne01', v) }} />
                     </Col>
 
 
  <Col sm="12" md="4" lg="4" xl="4" className="form-group form-group-select">
- <label htmlFor="positionType">PositionType</label>
+ <label htmlFor="positionType6">PositionType</label>
 
         <Select 
-          id="positionType"
+          id="positionType6"
           valueKey="id"
           labelKey="name"
           className="form-control"
          options={this.state.positionTypes}
         //onChange = {this.handleChangeSelect}
-         onChange={(v) => {this.handleChangeSelect('positionType', v) }}
+         onChange={(v) => {this.handleChangeSelect('positionType6', v) }}
          
         // value={this.props.selectedPositionType} 
-         value={this.state.selectvalue}
+         value={this.state.selectvalue6}
          placeholder=""
         />
              </Col> 
@@ -521,24 +587,24 @@ handleDestinationSelect = (val) => {
                     </Col>
 
                <Col sm="12" md="4" lg="4" xl="4" className="form-group">
-                        <TextInput name="se01" label="# of Positions"  value={this.state.value} onChange={(v) => {this.handleChange('se01', v) }} />
+                        <TextInput name="gas01" label="# of Positions"  value={this.state.value7} onChange={(v) => {this.handleChange('gas01', v) }} />
                     </Col>
 
 
  <Col sm="12" md="4" lg="4" xl="4" className="form-group form-group-select">
- <label htmlFor="positionType">PositionType</label>
+ <label htmlFor="positionType7">PositionType</label>
 
         <Select 
-          id="positionType"
+          id="positionType7"
           valueKey="id"
           labelKey="name"
           className="form-control"
          options={this.state.positionTypes}
         //onChange = {this.handleChangeSelect}
-         onChange={(v) => {this.handleChangeSelect('positionType', v) }}
+         onChange={(v) => {this.handleChangeSelect('positionType7', v) }}
          
         // value={this.props.selectedPositionType} 
-         value={this.state.selectvalue}
+         value={this.state.selectvalue7}
          placeholder=""
         />
              </Col> 
@@ -547,157 +613,157 @@ handleDestinationSelect = (val) => {
                     </Col>
 
                <Col sm="12" md="4" lg="4" xl="4" className="form-group">
-                        <TextInput name="se01" label="# of Positions"  value={this.state.value} onChange={(v) => {this.handleChange('se01', v) }} />
+                        <TextInput name="fr01" label="# of Positions"  value={this.state.value8} onChange={(v) => {this.handleChange('fr01', v) }} />
                     </Col>
 
 
  <Col sm="12" md="4" lg="4" xl="4" className="form-group form-group-select">
- <label htmlFor="positionType">PositionType</label>
+ <label htmlFor="positionType8">PositionType</label>
 
         <Select 
-          id="positionType"
+          id="positionType8"
           valueKey="id"
           labelKey="name"
           className="form-control"
          options={this.state.positionTypes}
         //onChange = {this.handleChangeSelect}
-         onChange={(v) => {this.handleChangeSelect('positionType', v) }}
+         onChange={(v) => {this.handleChangeSelect('positionType8', v) }}
          
         // value={this.props.selectedPositionType} 
-         value={this.state.selectvalue}
+         value={this.state.selectvalue8}
          placeholder=""
         />
              </Col> 
              
              <Col sm="12" md="4" lg="4" xl="4" className="form-group">
-                        <TextInput name="mplfr" label="MPL SM Origin" disabled  value="TUI Belgium"  />
+                        <TextInput name="mplbe" label="MPL SM Origin" disabled  value="TUI Belgium"  />
                     </Col>
 
                <Col sm="12" md="4" lg="4" xl="4" className="form-group">
-                        <TextInput name="se01" label="# of Positions"  value={this.state.value} onChange={(v) => {this.handleChange('se01', v) }} />
+                        <TextInput name="be01" label="# of Positions"  value={this.state.value9} onChange={(v) => {this.handleChange('be01', v) }} />
                     </Col>
 
 
  <Col sm="12" md="4" lg="4" xl="4" className="form-group form-group-select">
- <label htmlFor="positionType">PositionType</label>
+ <label htmlFor="positionType9">PositionType</label>
 
         <Select 
-          id="positionType"
+          id="positionType9"
           valueKey="id"
           labelKey="name"
           className="form-control"
          options={this.state.positionTypes}
         //onChange = {this.handleChangeSelect}
-         onChange={(v) => {this.handleChangeSelect('positionType', v) }}
+         onChange={(v) => {this.handleChangeSelect('positionType9', v) }}
          
         // value={this.props.selectedPositionType} 
-         value={this.state.selectvalue}
+         value={this.state.selectvalue9}
          placeholder=""
         />
              </Col> 
 
              <Col sm="12" md="4" lg="4" xl="4" className="form-group">
-                        <TextInput name="mplfr" label="MPL SM Origin" disabled  value="TUI Poland"  />
+                        <TextInput name="mplpo" label="MPL SM Origin" disabled  value="TUI Poland"  />
                     </Col>
 
                <Col sm="12" md="4" lg="4" xl="4" className="form-group">
-                        <TextInput name="se01" label="# of Positions"  value={this.state.value} onChange={(v) => {this.handleChange('se01', v) }} />
+                        <TextInput name="po01" label="# of Positions"  value={this.state.value10} onChange={(v) => {this.handleChange('po01', v) }} />
                     </Col>
 
 
  <Col sm="12" md="4" lg="4" xl="4" className="form-group form-group-select">
- <label htmlFor="positionType">PositionType</label>
+ <label htmlFor="positionType10">PositionType</label>
 
         <Select 
-          id="positionType"
+          id="positionType10"
           valueKey="id"
           labelKey="name"
           className="form-control"
          options={this.state.positionTypes}
         //onChange = {this.handleChangeSelect}
-         onChange={(v) => {this.handleChangeSelect('positionType', v) }}
+         onChange={(v) => {this.handleChangeSelect('positionType10', v) }}
          
         // value={this.props.selectedPositionType} 
-         value={this.state.selectvalue}
+         value={this.state.selectvalue10}
          placeholder=""
         />
              </Col> 
 
              <Col sm="12" md="4" lg="4" xl="4" className="form-group">
-                        <TextInput name="mplfr" label="MPL SM Origin" disabled  value="TUI Russia"  />
+                        <TextInput name="mplru" label="MPL SM Origin" disabled  value="TUI Russia"  />
                     </Col>
 
                <Col sm="12" md="4" lg="4" xl="4" className="form-group">
-                        <TextInput name="se01" label="# of Positions"  value={this.state.value} onChange={(v) => {this.handleChange('se01', v) }} />
+                        <TextInput name="ru01" label="# of Positions"  value={this.state.value11} onChange={(v) => {this.handleChange('ru01', v) }} />
                     </Col>
 
 
  <Col sm="12" md="4" lg="4" xl="4" className="form-group form-group-select">
- <label htmlFor="positionType">PositionType</label>
+ <label htmlFor="positionType11">PositionType</label>
 
         <Select 
-          id="positionType"
+          id="positionType11"
           valueKey="id"
           labelKey="name"
           className="form-control"
          options={this.state.positionTypes}
         //onChange = {this.handleChangeSelect}
-         onChange={(v) => {this.handleChangeSelect('positionType', v) }}
+         onChange={(v) => {this.handleChangeSelect('positionType11', v) }}
          
         // value={this.props.selectedPositionType} 
-         value={this.state.selectvalue}
+         value={this.state.selectvalue11}
          placeholder=""
         />
              </Col> 
              <Col sm="12" md="4" lg="4" xl="4" className="form-group">
-                        <TextInput name="mplfr" label="MPL SM Origin" disabled  value="TUI"  />
+                        <TextInput name="mpltui" label="MPL SM Origin" disabled  value="TUI"  />
                     </Col>
 
                <Col sm="12" md="4" lg="4" xl="4" className="form-group">
-                        <TextInput name="se01" label="# of Positions"  value={this.state.value} onChange={(v) => {this.handleChange('se01', v) }} />
+                        <TextInput name="tu01" label="# of Positions"  value={this.state.value12} onChange={(v) => {this.handleChange('tu01', v) }} />
                     </Col>
 
 
  <Col sm="12" md="4" lg="4" xl="4" className="form-group form-group-select">
- <label htmlFor="positionType">PositionType</label>
+ <label htmlFor="positionType12">PositionType</label>
 
         <Select 
-          id="positionType"
+          id="positionType12"
           valueKey="id"
           labelKey="name"
           className="form-control"
          options={this.state.positionTypes}
         //onChange = {this.handleChangeSelect}
-         onChange={(v) => {this.handleChangeSelect('positionType', v) }}
+         onChange={(v) => {this.handleChangeSelect('positionType12', v) }}
          
         // value={this.props.selectedPositionType} 
-         value={this.state.selectvalue}
+         value={this.state.selectvalue12}
          placeholder=""
         />
              </Col> 
              <Col sm="12" md="4" lg="4" xl="4" className="form-group">
-                        <TextInput name="mplfr" label="MPL SM Origin" disabled  value="L'Tur"  />
+                        <TextInput name="mpltur" label="MPL SM Origin" disabled  value="L'Tur"  />
                     </Col>
 
                <Col sm="12" md="4" lg="4" xl="4" className="form-group">
-                        <TextInput name="se01" label="# of Positions"  value={this.state.value} onChange={(v) => {this.handleChange('se01', v) }} />
+                        <TextInput name="tur01" label="# of Positions"  value={this.state.value13} onChange={(v) => {this.handleChange('tur01', v) }} />
                     </Col>
 
 
  <Col sm="12" md="4" lg="4" xl="4" className="form-group form-group-select">
- <label htmlFor="positionType">PositionType</label>
+ <label htmlFor="positionType13">PositionType</label>
 
         <Select 
-          id="positionType"
+          id="positionType13"
           valueKey="id"
           labelKey="name"
           className="form-control"
          options={this.state.positionTypes}
         //onChange = {this.handleChangeSelect}
-         onChange={(v) => {this.handleChangeSelect('positionType', v) }}
+         onChange={(v) => {this.handleChangeSelect('positionType13', v) }}
          
         // value={this.props.selectedPositionType} 
-         value={this.state.selectvalue}
+         value={this.state.selectvalue13}
          placeholder=""
         />
              </Col> 

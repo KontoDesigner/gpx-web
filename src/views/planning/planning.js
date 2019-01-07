@@ -124,11 +124,7 @@ class Planning extends Component {
     }
     createPosition = model => {
       
-        // let positionModel = {
 
-        //      Id : model.mplid,
-        //      DateModified:model.dateModified
-        //  }
 debugger;
  
       this.props.planningActions.createPosition(model)
