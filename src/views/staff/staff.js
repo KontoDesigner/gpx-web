@@ -21,7 +21,7 @@ import * as jobTitleActions from '../../actions/staff/active/jobTitleActions'
 import * as recentlyInactiveActions from '../../actions/staff/inactive/recentlyInactiveActions'
 import * as nameActions from '../../actions/staff/active/nameActions'
 import * as newEmployeeActions from '../../actions/staff/other/newEmployeeActions'
-import * as notificationActions from '../../actions/notification/notificationActions'
+//import * as notificationActions from '../../actions/notification/notificationActions'
 import * as fileImportActions from '../../actions/staff/other/fileImportActions'
 import $ from 'jquery'
 import Tabs from './tabs'
@@ -205,7 +205,7 @@ class Staff extends Component {
 
     componentDidMount() {
         this.props.filterActions.handleFilter()   //when page loads
-        this.props.notificationActions.getNotification()
+        //this.props.notificationActions.getNotification()
         this.props.destinationActions.getDestination()
     }
 
@@ -450,7 +450,7 @@ function mapDispatchToProps(dispatch) {
     return {
         staffActions: bindActionCreators(staffActions, dispatch),
         headOfActions: bindActionCreators(headOfActions, dispatch),
-        notificationActions: bindActionCreators(notificationActions, dispatch),
+        //notificationActions: bindActionCreators(notificationActions, dispatch),
          
         destinationActions: bindActionCreators(destinationActions, dispatch),
         filterActions: bindActionCreators(filterActions, dispatch),

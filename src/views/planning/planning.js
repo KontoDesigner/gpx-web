@@ -23,6 +23,7 @@ import * as planningActions from '../../actions/planning/planningActions'
 import * as placedRolesActions from '../../actions/planning/planning/placedRolesActions'
 import * as vacantRolesActions from '../../actions/planning/planning/vacantRolesActions'
 import * as replyYesNoRolesActions from '../../actions/planning/planning/replyYesNoRolesActions'
+
 import $ from 'jquery'
 import * as filterActions from '../../actions/planning/filterActions'
 import '../../styles/staff.css'

@@ -4,7 +4,8 @@ var defaultState = {
     setting:{},
     selectedApplyOpen: null,
     jobFamilies: [],
-    jobTitle: []
+    jobTitle: [],
+
     
 }
 
@@ -22,7 +23,7 @@ export default function settingReducer(state = defaultState, action) {
             ...state,
             setting: {
                 ...state.setting,
-                [action.data.field]: action.data.val
+                [action.data.field]: action.data.val 
             },
         }
 
@@ -33,7 +34,8 @@ export default function settingReducer(state = defaultState, action) {
                 ...state,
                 jobFamilies: action.data.jobFamilies
             }
-            
+       
+
             case types.HANDLE_SELECTEDSETTING:
             return action.data.selectedSetting;
 

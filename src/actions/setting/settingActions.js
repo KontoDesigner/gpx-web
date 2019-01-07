@@ -17,12 +17,7 @@ export function handleSelectedSetting(selectedSetting) {
   }
   
 
-// export function getJobFamilySuccess(jobFamily) {
-//     return {
-//       type: types.GET_JOBFAMILY_SUCCESS,
-//       data: { jobFamily: jobFamily }
-//     }
-//   }
+
 
   export function getAllJobTitleSuccess(jobTitle) {
     return {

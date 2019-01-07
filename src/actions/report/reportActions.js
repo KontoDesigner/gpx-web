@@ -22,6 +22,13 @@ export function handleDestinationField(val) {
     }
 }
 
+export function handleChangeField(field, val) {
+    return {
+        type: types.HANDLE_CHANGE_FIELD,
+        data: { field: field, val: val }
+    }
+}
+
 export function handleResignDates(val) {
 
     return {

@@ -9,6 +9,7 @@ export function getJobTitleSuccess(jobTitle) {
   }
 }
 
+//Obsolete  this call is already done in the setting actions
 export function getJobTitle(sourcemarket = 'ALL', jobfamily='ALL', criteria = null) {
   return async function(dispatch) {
     dispatch(beginAjaxCall())
