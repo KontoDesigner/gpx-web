@@ -570,7 +570,7 @@ handleDestinationSelect = (val) => {
              </Col> 
              
              <Col sm="12" md="4" lg="4" xl="4" className="form-group">
-                        <TextInput name="mplfr" label="MPL SM Origin" disabled  value="TUI France"  />
+                        <TextInput name="mplfr" label="MPL SM Origin" disabled  value="TUI Belgium"  />
                     </Col>
 
                <Col sm="12" md="4" lg="4" xl="4" className="form-group">
@@ -597,7 +597,7 @@ handleDestinationSelect = (val) => {
              </Col> 
 
              <Col sm="12" md="4" lg="4" xl="4" className="form-group">
-                        <TextInput name="mplfr" label="MPL SM Origin" disabled  value="TUI France"  />
+                        <TextInput name="mplfr" label="MPL SM Origin" disabled  value="TUI Poland"  />
                     </Col>
 
                <Col sm="12" md="4" lg="4" xl="4" className="form-group">
@@ -624,7 +624,7 @@ handleDestinationSelect = (val) => {
              </Col> 
 
              <Col sm="12" md="4" lg="4" xl="4" className="form-group">
-                        <TextInput name="mplfr" label="MPL SM Origin" disabled  value="TUI France"  />
+                        <TextInput name="mplfr" label="MPL SM Origin" disabled  value="TUI Russia"  />
                     </Col>
 
                <Col sm="12" md="4" lg="4" xl="4" className="form-group">
@@ -649,9 +649,34 @@ handleDestinationSelect = (val) => {
          placeholder=""
         />
              </Col> 
-
              <Col sm="12" md="4" lg="4" xl="4" className="form-group">
-                        <TextInput name="mplfr" label="MPL SM Origin" disabled  value="TUI France"  />
+                        <TextInput name="mplfr" label="MPL SM Origin" disabled  value="TUI"  />
+                    </Col>
+
+               <Col sm="12" md="4" lg="4" xl="4" className="form-group">
+                        <TextInput name="se01" label="# of Positions"  value={this.state.value} onChange={(v) => {this.handleChange('se01', v) }} />
+                    </Col>
+
+
+ <Col sm="12" md="4" lg="4" xl="4" className="form-group form-group-select">
+ <label htmlFor="positionType">PositionType</label>
+
+        <Select 
+          id="positionType"
+          valueKey="id"
+          labelKey="name"
+          className="form-control"
+         options={this.state.positionTypes}
+        //onChange = {this.handleChangeSelect}
+         onChange={(v) => {this.handleChangeSelect('positionType', v) }}
+         
+        // value={this.props.selectedPositionType} 
+         value={this.state.selectvalue}
+         placeholder=""
+        />
+             </Col> 
+             <Col sm="12" md="4" lg="4" xl="4" className="form-group">
+                        <TextInput name="mplfr" label="MPL SM Origin" disabled  value="L'Tur"  />
                     </Col>
 
                <Col sm="12" md="4" lg="4" xl="4" className="form-group">
