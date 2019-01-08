@@ -34,7 +34,7 @@ const Report = (props) => {
  <label htmlFor="destination">Destination</label>
 
        
-       <Select.Creatable 
+       <Select
             multi={true}
           id="destinations"
           valueKey="destination"

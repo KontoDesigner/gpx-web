@@ -48,12 +48,12 @@ render() {
 
         <Col key={0} sm="12" md="4" lg="3" xl="3" className="form-group form-group-select">
 
-       
+        
                 
     <label htmlFor="destination">Destination</label>
 
 
-         <Select.Creatable 
+         <Select
             multi={true}
           id="destinations"
           valueKey="destination"

@@ -56,7 +56,7 @@ class Report extends Component {
 
 
 <div>
-      <Select.Creatable 
+<Select 
             multi={true}
             id="destinations"
             valueKey="destination"

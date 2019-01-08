@@ -28,17 +28,17 @@ const JobTitleTable = (props) => {
 
   return (
     <div>
-      {/* <ContextMenu id={contextMenuId}>
+      <ContextMenu id={contextMenuId}>
         <MenuItem data={{ foo: 'bar' }} onClick={onContextMenuClick}>
-          ContextMenu Item 1
+         Mark Crawley - 2019-02-02 - 2019-06-04
           </MenuItem>
         <MenuItem data={{ foo: 'bar' }} onClick={onContextMenuClick}>
-          ContextMenu Item 2
+        Estephan Right  - 2019-06-12 - 2019-09-06
           </MenuItem>
         <MenuItem data={{ foo: 'bar' }} onClick={onContextMenuClick}>
-          ContextMenu Item 3
+        Eskil Thorwaldsson - 2019-09-09 - 2019-12-12
           </MenuItem>
-      </ContextMenu> */}
+      </ContextMenu>
 
       <Table
        

@@ -4,6 +4,8 @@ var defaultState = [];
 
 export default function cvReducer(state = defaultState, action) {
     switch (action.type) {
+
+
         case (types.HANDLE_STAFF_FIELD):
             return {
                 ...state, 

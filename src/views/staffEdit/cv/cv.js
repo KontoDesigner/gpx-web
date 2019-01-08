@@ -141,13 +141,25 @@ class Cv extends Component {
 
       }
 
-      handleStaffSelect = (field, val, selector) => {
-        const id = val != null ? val[selector] : undefined
+      handleStaffSelect = (field,val) => {
 
-        this.props.cvActions.handleStaffField(field, id)
 
-        this.props.handleUnsavedEdit()
-    }
+        val = val != null || val != undefined ? val : '' 
+        
+        
+        this.props.cvActions.handleStaffField(field,val)
+       //this.props.reportActions.handleDestinationField(val)
+   
+       //this.props.handleUnsavedEdit()
+   } 
+
+    //   handleStaffSelect = (field, val, selector) => {
+    //     const id = val != null ? val[selector] : undefined
+
+    //     this.props.cvActions.handleStaffField(field, id)
+
+    //     this.props.handleUnsavedEdit()
+    // }
 
 
     handleStaffField = event => {

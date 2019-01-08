@@ -5,6 +5,7 @@ import Select from 'react-select'
 import { colourOptions } from './docs/data';
 import Datetime from 'react-datetime'
 import { Row, Col,  Label, Input,Button } from 'reactstrap'
+//import CreatableSelect from 'react-select/lib/Creatable'
 
 const Profiling = (props) => {
     return (
@@ -17,14 +18,14 @@ const Profiling = (props) => {
       <Col sm="12" md="12" lg="12" xl="12" className="form-group form-group-select">
                         <label htmlFor="suitable">If applicable to your job role. Indicate what type of guest you are suitable to work with</label>
 
-                        <Select 
-                            id="suitable"
-                       
+                      <Select
+                           multi={true}
                             valueKey="id"
                             labelKey="name"
                             className="form-control"
                             options={props.suitable}
-                            onChange={(v) => { props.handleStaffSelect('suitable', v, 'id') }}
+                           onChange={(v) => { props.handleStaffSelect('suitable', v) }}
+                            //onChange = { this.props.handleStaffField('suitable',v) }
                             value={props.staff.suitable === '' ? null : props.staff.suitable}
                             placeholder="Select"
                            
@@ -37,12 +38,12 @@ const Profiling = (props) => {
 
                         <Select 
                             id="international"
-                            
+                            multi={true}
                             valueKey="id"
                             labelKey="name"
                             className="form-control"
                             options={props.international}
-                            onChange={(v) => { props.handleStaffSelect('international', v, 'id') }}
+                            onChange={(v) => { props.handleStaffSelect('international', v) }}
                             value={props.staff.international === '' ? null : props.staff.international}
                             placeholder="Select"
                             
@@ -54,12 +55,12 @@ const Profiling = (props) => {
 
                         <Select 
                             id="national"
-                            
+                            multi={true}
                             valueKey="id"
                             labelKey="name"
                             className="form-control"
                             options={props.national}
-                            onChange={(v) => { props.handleStaffSelect('national', v, 'id') }}
+                            onChange={(v) => { props.handleStaffSelect('national', v) }}
                             value={props.staff.national === '' ? null : props.staff.national}
                             placeholder="Select"
                            
