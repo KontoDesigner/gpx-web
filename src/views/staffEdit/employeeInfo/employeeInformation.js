@@ -30,13 +30,13 @@ const EmployeeInformation = (props) => {
                         />
                     </Col>
 
-                    <Col sm="12" md="6" lg="6" xl="4" className="form-group">
+                    {/* <Col sm="12" md="6" lg="6" xl="4" className="form-group">
                         <TextInput name="sapID" label="SAP ID" disabled value={props.staff.sapID} onChange={props.handleStaffField} />
                     </Col>
 
                        <Col sm="12" md="6" lg="6" xl="4" className="form-group">
                         <TextInput name="mopedID"  label="Moped ID" disabled value={props.staff.mopedID} onChange={props.handleStaffField} />
-                    </Col>
+                    </Col> */}
 
                        <Col sm="12" md="6" lg="6" xl="4" className="form-group">
                         <TextInput name="centralID" label="Central ID" disabled value={props.staff.centralID} onChange={props.handleStaffField} />
@@ -84,7 +84,7 @@ const EmployeeInformation = (props) => {
                     </Col> 
 
                     <Col sm="12" md="6" lg="6" xl="4" className="form-group">
-                        <label htmlFor="dateOfBirth">Date First Joined The Company</label>
+                        <label htmlFor="dateJoined">Candidate Available From</label>
 
                         <Datetime
                             value={props.staff.dateJoined}
@@ -104,15 +104,15 @@ const EmployeeInformation = (props) => {
                         <TextInput name="drivingYear" label="Driving Year" value={props.staff.drivingYear} onChange={props.handleStaffField} />
                     </Col>
                     <Col sm="12" md="12" lg="12" xl="12" className="form-group">
-            <Label for="empcontent">Remarks</Label>
+            <Label for="empContent">Remarks</Label>
             <Input
               required
               type="textarea"
               maxLength="1000"
-              name="empcontent"
-              id="empcontent"
+              name="empContent"
+              id="empContent"
               rows={3}
-              value={props.staff.empcontent}
+              value={props.staff.empContent}
               onChange={props.handleStaffField}
               aria-multiline="true"
             />

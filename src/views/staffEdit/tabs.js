@@ -47,7 +47,7 @@ const Tabs = (props) => {
                             Applications
                                 </NavLink>
                     </NavItem>
-                    <NavItem>
+                    {/* <NavItem>
                         <NavLink
                             className={classnames({ active: props.activeTab === 'team' })}
                             onClick={() => {
@@ -55,7 +55,7 @@ const Tabs = (props) => {
                             }}>
                             Team
                                 </NavLink>
-                    </NavItem>
+                    </NavItem> */}
                     <NavItem>
                         <NavLink
                             className={classnames({ active: props.activeTab === 'history' })}

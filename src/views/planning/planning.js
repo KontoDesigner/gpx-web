@@ -319,6 +319,11 @@ debugger;
         this.props.allRolesActions.getAllRoles()
         debugger;
        this.props.planningActions.getStaffCandidate()
+
+
+      
+
+
     }
 
     toggle = (tab, getData, resetData) => {
@@ -382,7 +387,8 @@ debugger;
                 toggle={this.toogleMakePositionVacantModal}
                 createVacant= {this.createVacant}
                 selectedTitle={this.props.selectedTitle} 
-
+                candidate={  this.props.candidate}
+               
             />
 
             <MarkPositionAccept

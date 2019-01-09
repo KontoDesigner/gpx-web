@@ -223,6 +223,8 @@ class StaffEdit extends Component {
     }
   }
 
+
+
   getAvailablePositionNew = async () => {
     const nowAvailablePositions = await RestClient.Get(
       'positionassign/getallcand'
@@ -269,7 +271,7 @@ class StaffEdit extends Component {
   }
 
   save = () => {
-    debugger
+    debugger;
 
     this.props.employeeInfoActions.save(this.props.staff)
   }
@@ -360,6 +362,7 @@ class StaffEdit extends Component {
                   <Cv
                     staff={this.props.staff}
                     handleUnsavedEdit={this.handleUnsavedEdit}
+                   
                   />
                 </TabPane>
 
@@ -391,12 +394,12 @@ class StaffEdit extends Component {
                   />
                 </TabPane>
 
-                <TabPane tabId="team">
+                 <TabPane tabId="team">
                   <Team 
                     status= {this.props.staff.status}
                   />
          
-                </TabPane>
+                </TabPane> 
 
                 <TabPane tabId="history">
                {this.props.destinationHistory

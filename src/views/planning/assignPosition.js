@@ -71,6 +71,7 @@ class AssignPosition extends Component {
             
             
         };
+        
     }
 
     toggle = () => {

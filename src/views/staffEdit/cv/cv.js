@@ -144,7 +144,7 @@ class Cv extends Component {
       handleStaffSelect = (field,val) => {
 
 
-        val = val != null || val != undefined ? val : '' 
+        val = val != null || val != undefined ? val.id : '' 
         
         
         this.props.cvActions.handleStaffField(field,val)
@@ -194,6 +194,7 @@ class Cv extends Component {
                         staff={this.props.staff} 
                         languages={this.state.languages}
                         handleStaffSelect={this.handleStaffSelect} 
+                    
                         //handleStaffDatePicker={this.handleStaffDatePicker}
                        // handleStaffSelect={this.handleStaffSelect} 
                        // resignType={this.props.resignType}

@@ -19,7 +19,7 @@ const Profiling = (props) => {
                         <label htmlFor="suitable">If applicable to your job role. Indicate what type of guest you are suitable to work with</label>
 
                       <Select
-                           multi={true}
+                          //multi={true}
                             valueKey="id"
                             labelKey="name"
                             className="form-control"
@@ -38,7 +38,7 @@ const Profiling = (props) => {
 
                         <Select 
                             id="international"
-                            multi={true}
+                            //  multi={true}
                             valueKey="id"
                             labelKey="name"
                             className="form-control"
@@ -55,13 +55,13 @@ const Profiling = (props) => {
 
                         <Select 
                             id="national"
-                            multi={true}
+                            // multi={true}
                             valueKey="id"
                             labelKey="name"
                             className="form-control"
                             options={props.national}
-                            onChange={(v) => { props.handleStaffSelect('national', v) }}
-                            value={props.staff.national === '' ? null : props.staff.national}
+                            onChange={(v) => { props.handleStaffSelect('nationalConcept', v) }}
+                            value={props.staff.nationalConcept === '' ? null : props.staff.nationalConcept}
                             placeholder="Select"
                            
                             

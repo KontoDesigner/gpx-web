@@ -34,24 +34,24 @@ const ContactInformation = (props) => {
                     </Col>
 
                     <Col sm="12" md="6" lg="6" xl="4" className="form-group">
-                        <TextInput name="phonehome" label="Phone" value={props.staff.phonehome} onChange={props.handleStaffField} />
+                        <TextInput name="phoneHome" label="Phone" value={props.staff.phoneHome} onChange={props.handleStaffField} />
                     </Col>
 
                     <Col sm="12" md="6" lg="6" xl="4" className="form-group">
-                        <TextInput name="phoneDestination" label="Phone (Destination)" value={props.staff.phone} onChange={props.handleStaffField} />
+                        <TextInput name="phoneDestination" label="Phone (Destination)" value={props.staff.phoneDestination} onChange={props.handleStaffField} />
                     </Col>
 
                     <Col sm="12" md="6" lg="6" xl="4" className="form-group">
-                        <TextInput name="homeAirport" label="Home Airport" value={props.staff.homeAirport} onChange={props.handleStaffField} />
+                        <TextInput name="adCountry" label="Country of Residence" value={props.staff.adCountry} onChange={props.handleStaffField} />
                     </Col>
 
                     <Col sm="12" md="6" lg="6" xl="4" className="form-group">
-                        <TextInput name="homeAirportAlt" label="Alt Home Airport" value={props.staff.homeAirportAlt} onChange={props.handleStaffField} />
+                        <TextInput name="adCity" label="City" value={props.staff.adCity} onChange={props.handleStaffField} />
                     </Col>
 
                     <Col sm="12" md="6" lg="6" xl="4" className="form-group">
-                        <TextInput name="homeAirportAlt2" label="Alt Home Airport 2" value={props.staff.homeAirportAlt2} onChange={props.handleStaffField} />
-                    </Col>
+                        <TextInput name="address" label="Address" value={props.staff.address} onChange={props.handleStaffField} />
+                    </Col> 
                 </div>
             </CardBody>
         </Card>

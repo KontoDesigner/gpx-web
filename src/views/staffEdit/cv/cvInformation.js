@@ -28,7 +28,7 @@ valueKey="id"
 labelKey="name"
 className="form-control"
 options={props.languages}
-onChange={(v) => { props.handleStaffSelect('arabic', v, 'id') }}
+onChange={(v) => { props.handleStaffSelect('arabic', v) }}
 value={props.staff.arabic === '' ? null : props.staff.arabic}
 placeholder="Select"
                     
@@ -45,7 +45,7 @@ placeholder="Select"
                             labelKey="name"
                             className="form-control"
                             options={props.languages}
-                            onChange={(v) => { props.handleStaffSelect('danish', v, 'id') }}
+                            onChange={(v) => { props.handleStaffSelect('danish', v) }}
                             value={props.staff.danish === '' ? null : props.staff.danish}
                             placeholder="Select"
                            
@@ -63,7 +63,7 @@ placeholder="Select"
                             labelKey="name"
                             className="form-control"
                             options={props.languages}
-                            onChange={(v) => { props.handleStaffSelect('dutch', v, 'id') }}
+                            onChange={(v) => { props.handleStaffSelect('dutch', v) }}
                             value={props.staff.dutch === '' ? null : props.staff.dutch}
                             placeholder="Select"
                            
@@ -81,7 +81,7 @@ placeholder="Select"
                             labelKey="name"
                             className="form-control"
                             options={props.languages}
-                            onChange={(v) => { props.handleStaffSelect('english', v, 'id') }}
+                            onChange={(v) => { props.handleStaffSelect('english', v) }}
                             value={props.staff.english === '' ? null : props.staff.english}
                             placeholder="Select"
                            
@@ -98,7 +98,7 @@ placeholder="Select"
                             labelKey="name"
                             className="form-control"
                             options={props.languages}
-                            onChange={(v) => { props.handleStaffSelect('finnish', v, 'id') }}
+                            onChange={(v) => { props.handleStaffSelect('finnish', v) }}
                             value={props.staff.finnish=== '' ? null : props.staff.finnish}
                             placeholder="Select"
                            
@@ -116,7 +116,7 @@ placeholder="Select"
                             labelKey="name"
                             className="form-control"
                             options={props.languages}
-                            onChange={(v) => { props.handleStaffSelect('french', v, 'id') }}
+                            onChange={(v) => { props.handleStaffSelect('french', v) }}
                             value={props.staff.french === '' ? null : props.staff.french}
                             placeholder="Select"
                            
@@ -134,7 +134,7 @@ placeholder="Select"
                             labelKey="name"
                             className="form-control"
                             options={props.languages}
-                            onChange={(v) => { props.handleStaffSelect('german', v, 'id') }}
+                            onChange={(v) => { props.handleStaffSelect('german', v) }}
                             value={props.staff.german === '' ? null : props.staff.german}
                             placeholder="Select"
                            
@@ -152,7 +152,7 @@ placeholder="Select"
                             labelKey="name"
                             className="form-control"
                             options={props.languages}
-                            onChange={(v) => { props.handleStaffSelect('greek', v, 'id') }}
+                            onChange={(v) => { props.handleStaffSelect('greek', v) }}
                             value={props.staff.greek === '' ? null : props.staff.greek}
                             placeholder="Select"
                             
@@ -169,7 +169,7 @@ placeholder="Select"
                             labelKey="name"
                             className="form-control"
                             options={props.languages}
-                            onChange={(v) => { props.handleStaffSelect('norwegian', v, 'id') }}
+                            onChange={(v) => { props.handleStaffSelect('norwegian', v) }}
                             value={props.staff.norwegian === '' ? null : props.staff.norwegian}
                             placeholder="Select"
                            
@@ -187,7 +187,7 @@ placeholder="Select"
                             labelKey="name"
                             className="form-control"
                             options={props.languages}
-                            onChange={(v) => { props.handleStaffSelect('italian', v, 'id') }}
+                            onChange={(v) => { props.handleStaffSelect('italian', v) }}
                             value={props.staff.italian === '' ? null : props.staff.italian}
                             placeholder="Select"
                            
@@ -205,7 +205,7 @@ placeholder="Select"
                             labelKey="name"
                             className="form-control"
                             options={props.languages}
-                            onChange={(v) => { props.handleStaffSelect('polish', v, 'id') }}
+                            onChange={(v) => { props.handleStaffSelect('polish', v) }}
                             value={props.staff.polish === '' ? null : props.staff.polish}
                             placeholder="Select"
                             
@@ -222,7 +222,7 @@ placeholder="Select"
                             labelKey="name"
                             className="form-control"
                             options={props.languages}
-                            onChange={(v) => { props.handleStaffSelect('portuguese', v, 'id') }}
+                            onChange={(v) => { props.handleStaffSelect('portuguese', v) }}
                             value={props.staff.portuguese=== '' ? null : props.staff.portuguese}
                             placeholder="Select"
                             
@@ -234,13 +234,13 @@ placeholder="Select"
 
                         <Select 
                             
-                            id="russia"
+                            id="russian"
                             
                             valueKey="id"
                             labelKey="name"
                             className="form-control"
                             options={props.languages}
-                            onChange={(v) => { props.handleStaffSelect('russia', v, 'id') }}
+                            onChange={(v) => { props.handleStaffSelect('russian', v) }}
                             value={props.staff.russian === '' ? null : props.staff.russian}
                             placeholder="Select"
                            
@@ -258,7 +258,7 @@ placeholder="Select"
                             labelKey="name"
                             className="form-control"
                             options={props.languages}
-                            onChange={(v) => { props.handleStaffSelect('spanish', v, 'id') }}
+                            onChange={(v) => { props.handleStaffSelect('spanish', v) }}
                             value={props.staff.spanish === '' ? null : props.staff.spanish}
                             placeholder="Select"
                            
@@ -276,7 +276,7 @@ placeholder="Select"
                             labelKey="name"
                             className="form-control"
                             options={props.languages}
-                            onChange={(v) => { props.handleStaffSelect('turkish', v, 'id') }}
+                            onChange={(v) => { props.handleStaffSelect('turkish', v) }}
                             value={props.staff.turkish === '' ? null : props.staff.turkish}
                             placeholder="Select"
                            
@@ -294,7 +294,7 @@ placeholder="Select"
                             labelKey="name"
                             className="form-control"
                             options={props.languages}
-                            onChange={(v) => { props.handleStaffSelect('swedish', v, 'id') }}
+                            onChange={(v) => { props.handleStaffSelect('swedish', v) }}
                             value={props.staff.swedish === '' ? null : props.staff.swedish}
                             placeholder="Select"
                             
