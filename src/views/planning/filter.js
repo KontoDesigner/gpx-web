@@ -20,12 +20,12 @@ class Filter extends Component {
   }
 
 
-
   updateTextState = event => {
+  
     const value = event.target.value
 
     this.props.filterActions.handleText(value)
-
+    debugger;
     this.getData(this.props.filter.sourceMarket, this.props.filter.selectedJobFamily, value)
   }
 

@@ -23,6 +23,7 @@ class Filter extends Component {
 
 
   updateTextState = event => {
+    debugger;
     const value = event.target.value
 
     this.props.filterActions.handleText(value)
