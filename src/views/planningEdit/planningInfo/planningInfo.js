@@ -1,6 +1,7 @@
 import React from 'react';
 import { Card, CardBody, CardHeader, Col } from 'reactstrap'
 import TextInput from '../../../components/textInput'
+import moment from "moment";
 
 const PlanningInfo = (props) => {
    
@@ -99,11 +100,11 @@ const PlanningInfo = (props) => {
                     </Col>
 
                       <Col sm="12" md="6" lg="6" xl="4" className="form-group">
-                        <TextInput name="startDate" label="Role Start Date"  value={props.position.startDate}/>
+                        <TextInput name="startDate" label="Start Date"  value={moment(props.position.startDate).format("YYYY-MM-DD")}/>
                     </Col>
-
+                    
                      <Col sm="12" md="6" lg="6" xl="4" className="form-group">
-                        <TextInput name="endDate" label="Role End Date"  value={props.position.endDate}/>
+                        <TextInput name="endDate" label="End Date"  value={moment(props.position.endDate).format("YYYY-MM-DD")}/>
                     </Col>
                 </div>
             </CardBody>
