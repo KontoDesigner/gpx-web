@@ -182,6 +182,7 @@ debugger;
                                        Accept:'Accepted',
                                        AcceptDate:model.dateModified,
                                        AcceptBy:'',
+                                       OldDate: model.oldDate
                                    }
                           debugger;
                            
@@ -397,6 +398,7 @@ debugger;
                 toggle={this.toogleMarkPositionAcceptModal}
                 createAccept= {this.createAccept}
                 selectedTitle={this.props.selectedTitle} 
+                candidate={  this.props.candidate}
             />
 
             <MarkPositionActing
@@ -404,7 +406,7 @@ debugger;
                 toggle={this.toogleMarkPositionActingModal}
                 createActing= {this.createActing}
                 selectedTitle={this.props.selectedTitle} 
-
+                candidate={  this.props.candidate}
 
 
             />
@@ -414,6 +416,7 @@ debugger;
                 toggle={this.toogleMarkPositionDeclineModal}
                 createDecline= {this.createDecline}
                 selectedTitle={this.props.selectedTitle} 
+                candidate={  this.props.candidate}
             />
 
             <ResetPositionAccept
@@ -421,6 +424,7 @@ debugger;
                 toggle={this.toogleResetPositionAcceptModal}
                 createResetAccept= {this.createResetAccept}
                 selectedTitle={this.props.selectedTitle} 
+                candidate={  this.props.candidate}
             />
 
             <UnmarkPositionActing
@@ -428,6 +432,7 @@ debugger;
                 toggle={this.toogleUnmarkPositionActingModal}
                 createUnActing= {this.createUnActing}
                 selectedTitle={this.props.selectedTitle} 
+                candidate={  this.props.candidate}
             />
 
                 <Col sm="12" md="9" lg="9" xl="10">

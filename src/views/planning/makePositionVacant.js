@@ -32,12 +32,9 @@ this.dates=[]
     this.toggle()
 
     var currentdate = new Date()
-    var newdatemodified =
-      currentdate.getFullYear() +
-      '-' +
-      (currentdate.getMonth() + 1) +
-      '-' +
-      currentdate.getDate()
+
+   var newdatemodified=moment(currentdate).format("YYYY-MM-DD HH:mm:ss")
+
 
     let model = {
       dateModified: newdatemodified,
@@ -49,45 +46,12 @@ this.dates=[]
     this.props.createVacant(model)
   }
 
-  // getMplCandidates = () => {
-  //   const candidates = this.props.candidate ? this.props.candidate : null
-  //   const mplid = this.props.selectedTitle[0]
 
-  //   this.setState({
-  //     dates: []
-  //   })
-  //   debugger
-  //   let dates = candidates
-
-  //     .filter(x => x.mplid === mplid)
-  //     .map(h => ({
-  //       startDate:
-  //         moment(h.startDate).format('YYYY-MM-DD') +
-  //         ' - ' +
-  //         moment(h.endDate).format('YYYY-MM-DD'),
-  //       startDate:
-  //         moment(h.startDate).format('YYYY-MM-DD') +
-  //         ' - ' +
-  //         moment(h.endDate).format('YYYY-MM-DD')
-  //     }))
-
-  //   this.setState({
-  //     dates
-  //   })
-  // }
-
-  // componentDidMount() {
-  //   debugger;
-
-  //  this.getMplCandidates()
-  // }
 
   placementPeriodChange = placementPeriods => {
     debugger
 
     const selectedPlacementPeriod = placementPeriods.startDate
-    // const selectedAssignStart = selectedPlacementPeriod ? selectedPlacementPeriod.substr(0, 10):'';
-    //const selectedAssignEnd = selectedPlacementPeriod ? selectedPlacementPeriod.substr(-10):'';
 
     debugger
 
@@ -146,14 +110,11 @@ this.dates=[]
   }
 
   render() {
-    const candidates = this.props.candidate ? this.props.candidate : null
+   
     const mplid = this.props.selectedTitle[0]  ? this.props.selectedTitle[0].toString() : []
     
-    
-
-    
 debugger;
-    const options = this.props.candidate
+    const options = this.props.candidate 
       .filter(x => x.mplid === mplid)
        .map(h => ({
          startDate:
