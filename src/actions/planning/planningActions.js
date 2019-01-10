@@ -30,9 +30,9 @@ debugger;
         
        
             if (res) {
-                toastr.success('Success', `Selected position(s) is now marked/unmarked as acting`)
+                toastr.success('Success', `Selected position(s) is now reset`)
             } else {
-                toastr.error('Error', `Selected position(s) is not marked/unmarked as acting: ${res ? res.message : 'Error'}`)
+                toastr.error('Error', `Selected position(s) is not reset: ${res ? res.message : 'Error'}`)
             }
 
 
