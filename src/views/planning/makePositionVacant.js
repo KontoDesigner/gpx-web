@@ -41,7 +41,9 @@ this.dates=[]
 
     let model = {
       dateModified: newdatemodified,
-      mplid: this.props.selectedTitle[0]
+      mplid: this.props.selectedTitle[0],
+    
+      oldDate: this.state.selectedPlacementPeriod.substr(0, 10)
     }
 
     this.props.createVacant(model)

@@ -262,7 +262,7 @@ componentDidMount() {
 
     createAssign = (val) => {
        
-       // this.toggle();   commented out for now
+        this.toggle();   //commented in for now
 
        // const destination = this.props.availablePositions.filter(ap => ap.destination === this.state.selectedDestination)[0];
        

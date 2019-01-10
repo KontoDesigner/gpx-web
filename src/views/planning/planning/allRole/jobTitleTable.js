@@ -1,7 +1,7 @@
 import React from 'react'
 import { ContextMenu, MenuItem } from 'react-contextmenu'
 import Table from '../../../../components/table.js';
-
+import moment from "moment";
 const columns = [
   { label: 'MPLID', dataKey: 'mplID' },
   //{ label: 'MPLIDVersion', dataKey: 'mplIDVersion' },
@@ -18,7 +18,7 @@ const columns = [
   { label: 'Placed', dataKey: 'firstNameLastName' },
  // { label: 'Id', dataKey: 'staffID' }
 ];
-
+ 
 const JobTitleTable = (props) => {
   function onContextMenuClick(e, data) {
     alert(data.foo)

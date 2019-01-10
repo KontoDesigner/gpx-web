@@ -12,6 +12,7 @@ class AllRole extends Component {
 
         <CardBody className="no-padding-bottom">
           <div className="form-row">
+          
           <Filter 
           getData={this.props.getAllRoles} />
         
