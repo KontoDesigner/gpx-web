@@ -10,7 +10,7 @@ import { toastr } from 'react-redux-toastr'
 import RestClient from '../../infrastructure/restClient'
 import Notification from  './notification/cfgNotification'
 import Setting from './setting/cfgSetting'
-import $ from 'jquery'
+import $ from 'jquery' 
 //import Buttons from './buttons'
 
 class Settings extends Component {
@@ -335,7 +335,7 @@ function mapDispatchToProps(dispatch) {
     return {
         //positionInfoActions: bindActionCreators(positionInfoActions, dispatch),
         settingActions: bindActionCreators(settingActions, dispatch),
-        notificationActions: bindActionCreators(notificationActions, dispatch),
+       notificationActions: bindActionCreators(notificationActions, dispatch),
         filterActions: bindActionCreators(filterActions, dispatch)
     }
 }
