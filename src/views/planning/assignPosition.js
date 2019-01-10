@@ -269,10 +269,9 @@ componentDidMount() {
        
        // const position = destination.jobTitles.filter(ap => ap.mplid === mplid)[0];
        
-       var currentdate = new Date(); 
-       var newdatemodified  = currentdate.getFullYear() + "-"
-     + (currentdate.getMonth()+1)  + "-" 
-      + currentdate.getDate() ; 
+       var currentdate = new Date()
+
+       var newdatemodified=moment(currentdate).format("YYYY-MM-DD HH:mm:ss")
 
         let model = {
             // staffID: position.mplid,

@@ -163,6 +163,7 @@ class Cv extends Component {
 
 
     handleStaffField = event => {
+        debugger;
         const field = event.target.name
         const val = event.target.value
 

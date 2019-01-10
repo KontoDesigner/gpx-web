@@ -151,7 +151,8 @@ debugger;
                   
                                Id : model.mplid,
                                DateModified:model.dateModified,
-                               Extra:'Y'
+                               Acting:'Y',
+                               OldDate: model.oldDate
                            }
                   debugger;
                    
@@ -165,7 +166,8 @@ debugger;
         
                      Id : model.mplid,
                      DateModified:model.dateModified,
-                     Extra:''
+                     Acting:'',
+                     OldDate: model.oldDate
                  }
         debugger;
          
@@ -203,6 +205,7 @@ debugger;
                                                            Accept:'',
                                                            AcceptDate:model.dateModified,
                                                            AcceptBy:'',
+                                                           OldDate: model.oldDate
                                                        }
                                               debugger;
                                                
@@ -222,6 +225,7 @@ debugger;
                                                            Accept:'Declined',
                                                            AcceptDate:model.dateModified,
                                                            AcceptBy:'',
+                                                           OldDate: model.oldDate
                                                        }
                                               debugger;
                                                

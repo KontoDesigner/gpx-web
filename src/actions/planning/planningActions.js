@@ -89,9 +89,9 @@ debugger;
         
        
             if (res) {
-                toastr.success('Success', `Selected assigns is now marked as declined`)
+                toastr.success('Success', `Selected assignment is now marked as declined`)
             } else {
-                toastr.error('Error', `Selected assigns is not marked as declined: ${res ? res.message : 'Error'}`)
+                toastr.error('Error', `Selected assignment is not marked as declined: ${res ? res.message : 'Error'}`)
             }
 
 

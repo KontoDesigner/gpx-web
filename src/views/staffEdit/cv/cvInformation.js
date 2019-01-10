@@ -15,7 +15,7 @@ const CvInformation = (props) => {
     
                 <Col sm="12" md="12" lg="12" xl="12" className="form-group">
              
-             <TextInput name="language" label="Language(s) (not in list below)"  value={props.staff.language} onChange={props.handleStaffField}/>
+             <TextInput name="language" label="Language(s) (not in list below)"  value={props.staff.languages} onChange={props.handleStaffField}/>
          </Col>
 
          <Col sm="12" md="6" lg="6" xl="6" className="form-group form-group-select">
