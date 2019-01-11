@@ -1,7 +1,7 @@
 import { ActionTypes as types } from '../../constants/report/reportConstants'
 import { beginAjaxCall, ajaxCallError, endAjaxCall } from '../ajaxStatusActions'
 import RestClient from '../../infrastructure/restClient'
-
+import moment from 'moment'
 export function handleYearField(val) {
 
     return {
@@ -104,12 +104,8 @@ debugger;
         try {
 
             var currentdate = new Date()
-            var newdatemodified =
-              currentdate.getFullYear() +
-              '-' +
-              (currentdate.getMonth() + 1) +
-              '-' +
-              currentdate.getDate()
+
+            var newdatemodified=moment(currentdate).format("YYYY-MM-DD HH:mm:ss")
 
             //   const req = {
             //       resignDate: appDate.appDate,
@@ -140,12 +136,8 @@ debugger;
         try {
 
             var currentdate = new Date()
-            var newdatemodified =
-              currentdate.getFullYear() +
-              '-' +
-              (currentdate.getMonth() + 1) +
-              '-' +
-              currentdate.getDate()
+
+            var newdatemodified=moment(currentdate).format("YYYY-MM-DD HH:mm:ss")
 
             //   const req = {
             //       resignDate: appDate.appDate,
@@ -177,13 +169,8 @@ debugger;
         try {
 
             var currentdate = new Date()
-            var newdatemodified =
-              currentdate.getFullYear() +
-              '-' +
-              (currentdate.getMonth() + 1) +
-              '-' +
-              currentdate.getDate()
 
+            var newdatemodified=moment(currentdate).format("YYYY-MM-DD HH:mm:ss")
             //   const req = {
             //       resignDate: appDate.appDate,
             //       destination: ['ACE']
@@ -220,12 +207,8 @@ export function createReport(model) {
         try {
 
             var currentdate = new Date()
-            var newdatemodified =
-              currentdate.getFullYear() +
-              '-' +
-              (currentdate.getMonth() + 1) +
-              '-' +
-              currentdate.getDate()
+
+            var newdatemodified=moment(currentdate).format("YYYY-MM-DD HH:mm:ss")
 debugger;
              //await RestClient.Download(`resign/GetResignReports?datetime=2018-10-02`,null,'ResignReport.xlsx')
              await RestClient.Download(`report/GetReports`,model,'PlanningReport_'+newdatemodified+'.xlsx')

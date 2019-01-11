@@ -20,7 +20,7 @@ class JobTitle extends Component {
 
         <CardBody className="no-padding-bottom">
           <div className="form-row">
-            <Filter />
+          <Filter getData={this.props.getJobTitle} />
 
             <Action 
             selected={this.props.selectedStaff} 

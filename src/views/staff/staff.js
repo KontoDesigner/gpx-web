@@ -398,7 +398,7 @@ debugger;
                             <NewEmployee
                             newEmployee={this.props.newEmployee}
     
-                            getNewEmployee={this.props.getNewEmployee}
+                            getNewEmployee={this.props.newEmployeeActions.getNewEmployee}
                           
                             handleSelectedStaff={this.props.filterActions.handleSelectedStaff}
                             selectedStaff={this.props.selectedStaff}
