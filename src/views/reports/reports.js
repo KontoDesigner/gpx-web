@@ -11,11 +11,13 @@ import OnBoardReport from './reports/onboard/report'
 import PlacementReport from './reports/placement/report'
 import * as reportActions from '../../actions/report/reportActions'
 import RestClient from '../../infrastructure/restClient'
+
 class Reports extends Component {
 
 
     constructor(props) {
         super(props)
+       
        
         this.state = {
             activeTab: 'planningReport',
@@ -216,7 +218,7 @@ createResign = (requestDate,destination) => {
         return {destination:x.destination, resignDate: requestDate.appDate}
       }
 
-      ):[{destination:null, resignDate: requestDate.appDate}]
+      ):[]
 debugger;
     // const model= {
     //   resignDate:requestDate.appDate,
@@ -279,7 +281,7 @@ debugger;
                             position={this.props.position }
                                 resigndate={this.props.resigndate }
                               selectedDestination={this.props.selectedDestination}
-
+                      
                                 selectedResignDates={this.props.selectedResignDates}
                               handleDestinationSelect={this.handleDestinationSelect}
                               years={this.state.years}

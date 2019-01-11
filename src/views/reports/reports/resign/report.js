@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component} from 'react'
 import moment from "moment";
 import { Card, CardBody, CardHeader, Col,Button } from 'reactstrap'
 import TextInput from '../../../../components/textInput'
@@ -8,10 +8,11 @@ import Datetime from 'react-datetime'
 
 
 class Report extends Component {
+
+ 
     constructor(props) {
         super(props);
-        
-        
+       
 
     }
 
@@ -59,14 +60,14 @@ render() {
           valueKey="destination"
           labelKey="destination"
           className="form-group form-group-select"
-          options={this.props.position}
+          options={[...[{destination: 'All Destinations'}],...this.props.position]}
           onChange = { this.props.handleDestinationSelect }
           value={this.props.selectedDestination}
           placeholder="All Destinations"
-        
+         
         />
         <p></p>
-
+    
     <label htmlFor="month">Month</label>
 
 

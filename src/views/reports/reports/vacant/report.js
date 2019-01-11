@@ -40,7 +40,7 @@ const Report = (props) => {
           valueKey="destination"
           labelKey="destination"
           className="form-group form-group-select"
-          options={props.position}
+          options={[...[{destination: 'All Destinations'}],...props.position]}
          onChange = { props.handleDestinationSelect }
          value={props.selectedDestination}
          placeholder="All Destinations"

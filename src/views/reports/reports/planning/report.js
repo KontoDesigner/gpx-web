@@ -63,7 +63,7 @@ class Report extends Component {
             labelKey="destination"
             className="form-group form-group-select"
             value = {this.props.selectedDestination}
-            options = {this.props.position}
+            options={[...[{destination: 'All Destinations'}],...this.props.position]}
             onChange = {this.props.handleDestinationSelect}
             placeholder="All Destinations"
             />

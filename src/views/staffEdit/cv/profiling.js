@@ -19,7 +19,7 @@ const Profiling = (props) => {
                         <label htmlFor="suitable">If applicable to your job role. Indicate what type of guest you are suitable to work with</label>
 
                       <Select
-                          //multi={true}
+                        //  multi={true}
                             valueKey="id"
                             labelKey="name"
                             className="form-control"
