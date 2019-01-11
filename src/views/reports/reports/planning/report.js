@@ -45,7 +45,7 @@ class Report extends Component {
             
  
         <Card>
-            <CardHeader>Reports: Planning Report</CardHeader>
+            <CardHeader>Reports: Staffing List</CardHeader>
 
             <CardBody className="no-padding-bottom">
                 <div className="form-row">

@@ -15,7 +15,7 @@ const Tabs = props => {
                             onClick={() => {
                                 props.toggle('planningReport', props.getReport, props.handleReport)
                             }}>
-                            Planning Report
+                            Staffing List
                         </ListGroupItem> 
                         <ListGroupItem
                             className={classnames({ active: props.activeTab === 'resignReport' })}
