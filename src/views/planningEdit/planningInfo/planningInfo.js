@@ -100,11 +100,11 @@ const PlanningInfo = (props) => {
                     </Col>
 
                       <Col sm="12" md="6" lg="6" xl="4" className="form-group">
-                        <TextInput name="startDate" label="Start Date"  value={moment(props.position.startDate).format("YYYY-MM-DD")}/>
+                        <TextInput name="startDate" label="Start Date"  value={moment(props.position.positionStartDate).format("YYYY-MM-DD")}/>
                     </Col>
                     
                      <Col sm="12" md="6" lg="6" xl="4" className="form-group">
-                        <TextInput name="endDate" label="End Date"  value={moment(props.position.endDate).format("YYYY-MM-DD")}/>
+                        <TextInput name="endDate" label="End Date"  value={moment(props.position.positionEndDate).format("YYYY-MM-DD")}/>
                     </Col>
                 </div>
             </CardBody>

@@ -3,8 +3,8 @@ import { Button, Modal, ModalHeader, ModalBody, ModalFooter, Alert } from 'react
 
 const RemoveRole = (props) => {
 debugger;
-    function removeRole(positionAssignId) {
-        props.removeRole(positionAssignId);
+    function removeRole(positionAssignId,startDate) {
+        props.removeRole(positionAssignId,startDate);
 
         props.toggle();
     }
@@ -19,7 +19,7 @@ debugger;
                     </Alert>
                 </ModalBody>
                 <ModalFooter>
-                    <Button color="success" onClick={() => removeRole(props.positionAssign.MPLID)}>Remove</Button>{' '}
+                    <Button color="success" onClick={() => removeRole(props.positionAssign.MPLID,props.positionAssign.StaffStartDate)}>Remove</Button>{' '}
                     <Button color="danger" onClick={props.toggle}>Cancel</Button>
                 </ModalFooter>
             </Modal>

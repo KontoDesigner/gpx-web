@@ -21,6 +21,7 @@ class AssignRole extends Component {
     }
 
     destinationOnChange = destination => {
+        debugger;
         const selectedDestination = destination != null ? destination.destination : null
 
         const dest = this.props.availablePositions.filter(ap => ap.destination === selectedDestination)[0];
@@ -48,8 +49,8 @@ debugger;
     jobTitleOnChange = jobTitle => {
         debugger;
         const selectedJobTitle = jobTitle != null ? jobTitle.mplid : null;
-        const positionStartDate = jobTitle != null ? jobTitle.startDate: null;
-        const positionEndDate = jobTitle != null ? jobTitle.endDate: null
+        const positionStartDate = jobTitle != null ? jobTitle.positionStartDate: null;
+        const positionEndDate = jobTitle != null ? jobTitle.positionEndDate: null
         this.setState({
             selectedJobTitle,
             positionStartDate ,

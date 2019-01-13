@@ -196,9 +196,12 @@ class StaffEdit extends Component {
       this.props.employeeInfoActions
         .getStaff(this.state.staffId)
         .then(function() {
+         
           if (_this.props.staff != null) {
-            document.title = `${_this.props.staff.firstNameLastName}`
+           
+            document.title = `${_this.props.staff.firstName + ' ' + _this.props.staff.lastName}`
           } else {
+       
             document.title = 'Staff not found - GPX'
           }
         })
@@ -285,7 +288,7 @@ class StaffEdit extends Component {
     />
     
     )
-
+debugger;
     if (this.props.staff === null || this.state.loaded === false) {
       //Loading
       return ''

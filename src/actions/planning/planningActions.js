@@ -259,7 +259,7 @@ debugger;
             if (res && res.ok) {
                 toastr.success('Success', ` ${res ? res.message : 'Success'}`)
             } else {
-                toastr.error('Position is occupied', ` ${res ? res.message : 'Position is occupied'}`)
+                toastr.error('Position is occupied ', ` ${res ? res.message : ' Position is occupied'}`)
             }
         } catch (error) {
             dispatch(ajaxCallError(error))

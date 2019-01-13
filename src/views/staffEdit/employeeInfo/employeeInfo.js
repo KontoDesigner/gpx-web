@@ -92,10 +92,14 @@ debugger;
         })
     }
 
-    removeRole = positionAssignId => {
+    removeRole = (positionAssignId, startDate) => {
+    
+        debugger;
+
+
         const _this = this
-debugger;
-        this.props.employeeInfoActions.deletePositionAssign(positionAssignId).then(function() {
+
+        this.props.employeeInfoActions.deletePositionAssign(positionAssignId,startDate).then(function() {
 
         _this.props.getAvailablePositionNew
    
@@ -145,7 +149,7 @@ debugger;
                  <Row className="row-panel-4"> 
                     <Col sm="12" md="12" lg="12">
                         <Season
-                            title={'Placement 1'}
+                            title={'Assignment 1'}
                             positionAssign={this.props.currentPositionAssign}
                             nowAvailablePositions={this.props.nowAvailablePositions}
                             assignRole={this.assignRole}
@@ -164,7 +168,7 @@ debugger;
 
                     <Col sm="12" md="12" lg="12">
                         <Season
-                            title={'Placement 2'}
+                            title={'Assignment 2'}
                             positionAssign={this.props.nextPositionAssign}
                             nowAvailablePositions={this.props.nowAvailablePositions}
                             assignRole={this.assignRole}
@@ -179,7 +183,7 @@ debugger;
 
                          <Col sm="12" md="12" lg="12">
                         <Season
-                            title={'Placement 3'}
+                            title={'Assignment 3'}
                             positionAssign={this.props.followingPositionAssign}
                             nowAvailablePositions={this.props.nowAvailablePositions}
                             assignRole={this.assignRole}

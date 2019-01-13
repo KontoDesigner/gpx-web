@@ -122,7 +122,7 @@ class Season extends Component {
                                 <Col sm="12" md="6" lg="6" xl="6" className="form-group">
                                     <TextInput
                                         name="location"
-                                        label="Location"
+                                        label="Destination"
                                         disabled={true}
                                         value={
                                             this.props.positionAssign.SDD_DM +
@@ -139,7 +139,7 @@ class Season extends Component {
                                 </Col>
 
                                 <Col sm="12" md="6" lg="6" xl="6" className="form-group">
-                                    <TextInput name="jobTitle" label="Job Title" disabled={true} value={this.props.positionAssign.JobTitle} />
+                                    <TextInput name="jobTitle" label="Job Title" disabled={true} value={this.props.positionAssign.JobTitle } />
                                 </Col>
 
                                 <Col sm="12" md="6" lg="6" xl="6" className="form-group">

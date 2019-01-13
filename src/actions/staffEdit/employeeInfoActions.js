@@ -181,13 +181,19 @@ export function handleFilterFromSuccess(from) {
     }
 }
 
-export function deletePositionAssign(id) {
+export function deletePositionAssign(id,startDate) {
     return async function(dispatch) {
         dispatch(beginAjaxCall())
 
+        var currentdate = new Date()
+
+        var newdatemodified=moment(currentdate).format("YYYY-MM-DD HH:mm:ss")
+
         try {
             const model = {
-                Id: id
+                Id: id,
+                StartDate: startDate,
+                DateModified:newdatemodified
             }
 debugger;
             await RestClient.Post('positionassign/deletepositionassign', model)
@@ -306,6 +312,7 @@ export function getStaffSuccess(staff) {
 }
 
 export function getStaff(staffId) {
+    debugger;
     return async function(dispatch) {
         dispatch(beginAjaxCall())
 

@@ -103,9 +103,10 @@ export function createResignReport(model) {
 debugger;
         try {
 
-            var currentdate = new Date()
+       
+    var currentdate = new Date()
 
-            var newdatemodified=moment(currentdate).format("YYYY-MM-DD HH:mm:ss")
+    var newdatemodified=moment(currentdate).format("YYYY-MM-DD HH:mm:ss")
 
             //   const req = {
             //       resignDate: appDate.appDate,
@@ -135,6 +136,7 @@ export function createOnboardReport(model) {
 debugger;
         try {
 
+   
             var currentdate = new Date()
 
             var newdatemodified=moment(currentdate).format("YYYY-MM-DD HH:mm:ss")
@@ -211,7 +213,7 @@ export function createReport(model) {
             var newdatemodified=moment(currentdate).format("YYYY-MM-DD HH:mm:ss")
 debugger;
              //await RestClient.Download(`resign/GetResignReports?datetime=2018-10-02`,null,'ResignReport.xlsx')
-             await RestClient.Download(`report/GetReports`,model,'PlanningReport_'+newdatemodified+'.xlsx')
+             await RestClient.Download(`report/GetReports`,model,'StaffingList_'+newdatemodified+'.xlsx')
             
             //const replyYesNoRoles = await RestClient.Get(`positionassign/GetAllPositionsAssignData`)
 
