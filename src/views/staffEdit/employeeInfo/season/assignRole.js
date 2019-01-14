@@ -30,7 +30,7 @@ debugger;
 
         if (dest !== undefined) {
           
-            jobTitles = dest.jobTitles;
+            jobTitles = dest.jobTitles ;
             debugger;
         }
 
@@ -178,7 +178,7 @@ debugger;
 
                             <Col sm="12" md="6" lg="6" xl="6">
                                 <div className="form-group form-group-select">
-                                    <label htmlFor="jobTitle">Position</label>
+                                    <label htmlFor="jobTitle">Position (MPLSourceMarket  MPLID  MPL_DL_Required)</label>
 
                                     <Select
                                         id="jobTitle"
