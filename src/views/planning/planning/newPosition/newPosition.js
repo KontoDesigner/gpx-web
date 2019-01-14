@@ -352,10 +352,12 @@ handleDestinationSelect = (val) => {
 
   <Col sm="12" md="6" lg="6" xl="4" className="form-group">
             <label htmlFor="startDate">Start Date</label>
+         
 
             <Datetime
                onChange={this.startChange}
-               value={this.state.selectedStart}
+               value={moment(this.state.selectedStart).format("YYYY-MM-DD")}
+            
               timeFormat={false}
               dateFormat="YYYY-MM-DD"
               closeOnSelect
@@ -368,7 +370,7 @@ handleDestinationSelect = (val) => {
 
             <Datetime
             onChange={this.endChange}
-            value={this.state.selectedEnd}
+            value={moment(this.state.selectedEnd).format("YYYY-MM-DD")}
               timeFormat={false}
               dateFormat="YYYY-MM-DD"
               closeOnSelect

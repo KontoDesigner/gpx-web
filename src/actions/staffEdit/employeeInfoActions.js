@@ -132,7 +132,7 @@ export function sendToCtx(model) {
             const res = await RestClient.Post('ctx/send', model)
 
             dispatch(endAjaxCall())
-
+debugger;
             if (res && res.ok) {
                 toastr.success('Success', `Request sent to CTX`)
             } else {

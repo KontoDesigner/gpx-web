@@ -20,10 +20,12 @@ class AssignPosition extends Component {
     constructor() {
         super();
         this.options=[],  //temporary class variable
+
         this.state = {
         
+          loaded: false,
           dates:[],
-       //newArray:[],
+    
              dateModified: null,
              selectedCandidate: null,
             selectedAssignStart:null,
@@ -83,8 +85,8 @@ class AssignPosition extends Component {
           dates:[],
          // newArray:[],
             dateModified: null,
-            count:0
-            
+            count:0,
+       
 
         })
 
@@ -99,11 +101,19 @@ class AssignPosition extends Component {
      
       const selectedCandidate = candidate != null ? candidate: null
 
+  
+      
+      
+
+
+
+debugger;
      // this.options = {value: ''};
 
       this.setState({
         selectedCandidate,
-dates:[]
+dates:[],
+
 
       })
 
@@ -140,77 +150,9 @@ dates:[]
     })
 
 
-     // const dest = this.props.candidate.filter(ap => ap.firstNameLastNameStatus=== selectedCandidate)[0];
-
-
-    //   const dates=this.props.candidate ? this.props.candidate
-
-    //    .filter(x => x.staffID === selectedCandidate.staffID).map(h => (
-
-    //     //this.state.dates([this.state.count]==h.staffID)
-        
-    //     this.setState({count:this.state.count++})
-       
-       
-     
-    //    )
-      
-      
-    //    )
-    //  :[]
-
-    //alert({options});
-    
-
-    //   this.props.candidate ? this.props.candidate.map(c => (
-    //     {
-    //    startDate: moment(c.startDate).format("YYYY-MM-DD"),
-    //     startDate: moment(c.startDate).format("YYYY-MM-DD")
-      
-    //  }
-    
-    //  )
-    
-    // )
-   
-    // :[]
-
-   
-// debugger;
-//         const dest = this.props.candidate.filter(ap => ap.firstNameLastNameStatus=== selectedCandidate)[0];
-//           let dates= [];
-
-//           debugger;
-
-        //   if (dest !== undefined) {
-          
-        //     dates= moment(dest.startDate).format("YYYY-MM-DD")
-        //     debugger;
-        // }
-
-      
-
-
-
-      
-
         debugger;
        
-          // //beginAjaxCall()
-       
-          // try {
-
-          //    const placementDynamicPeriods = await RestClient.Get(`positionassign/getmypositionassign/${selectedCandidate.staffID}`)
-             
-          //    debugger;
-
-          // } catch (error) {
-          //  // dispatch(ajaxCallError(error))
-          
-          //   throw error
-          // }
     
-          // debugger;
 
     }
 
@@ -253,12 +195,7 @@ debugger;
   debugger;
 }
 
-componentDidMount() {
-  //this.props.planningActions.getStaffCandidate()
-  //this.props.filterActions.handleFilter() //when page loads
-  //this.props.allRolesActions.getAllRoles()
-  
-}
+
 
     createAssign = (val) => {
        
@@ -286,55 +223,20 @@ debugger;
        this.props.createAssign(model);
     }
     
-
+ 
 
     render() {
-debugger;
 
 
 
-// if (this.state.selectedCandidate!== null) {
-
-// this.options=this.props.candidate ? 
-
-// this.props.candidate.filter(x => x.staffID === this.state.selectedCandidate.staffID).map(h => (
-//  {
-//        startDate: moment(h.startDate).format("YYYY-MM-DD") + ' - ' + moment(h.endDate).format("YYYY-MM-DD"),
-//        startDate: moment(h.startDate).format("YYYY-MM-DD") + ' - ' + moment(h.endDate).format("YYYY-MM-DD")
-    
-// }
-  
-//    ),
-   
 
 
-   
-//     )
-//  :[]
 
-// }
-
-
-// const options = this.props.candidate ? this.props.candidate.map(c => (
-//   {
-//  startDate: moment(c.startDate).format("YYYY-MM-DD") + ' - ' + moment(c.endDate).format("YYYY-MM-DD"),
-// startDate: moment(c.startDate).format("YYYY-MM-DD") + ' - ' + moment(c.endDate).format("YYYY-MM-DD")
-
-
-// }
-// )
-
-// )
-
-// :[]
-
-
-//alert(this.state.selectedCandidate);
   return (
     <div>
       <Modal isOpen={this.props.modal} toggle={this.toggle}>
         <ModalHeader toggle={this.toggle}>
-         Assign Staff To Position - {this.props.selectedTitle}
+         Assign Staff To Position - {this.props.selectedTitle}  
         </ModalHeader>
         <ModalBody>
           <Row>
@@ -431,6 +333,18 @@ debugger;
                     </td>
                   </tr>
                 </tbody>
+                <thead>
+                                            <tr>
+                                                <th>Position StartDate</th> <th> Position EndDate</th>
+                                     
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            <tr>
+                                              {/* <td>{this.state.positionStartDate} </td> <td>{this.state.positionEndDate}</td>   */}
+                                          
+                                            </tr>
+                                        </tbody>
               </Table>
             </Col>
           </Row>

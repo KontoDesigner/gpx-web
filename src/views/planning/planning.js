@@ -15,7 +15,7 @@ import PlacedRole from './planning/placedRole/placedRole'
 import VacantRole from './planning/vacantRole/vacantRole'
 import UpdatePosition from './updatePosition'
 import ReplyYesNoRole from './planning/replyYesNoRole/replyYesNoRole'
-
+//import RestClient from '../../infrastructure/restClient'
 import { bindActionCreators } from 'redux'
 import * as allRolesActions from '../../actions/planning/planning/allRolesActions'
 import * as newPositionActions from '../../actions/planning/planning/newPositionActions'
@@ -38,6 +38,7 @@ class Planning extends Component {
         super(props)
 
         this.state = {
+            nowAvailablePositions:[],
             activeTab: 'allRole',
             resetData: this.props.allRolesActions.handleAllRoles,
             markPositionAcceptModal : false,
@@ -130,6 +131,16 @@ debugger;
       this.props.planningActions.createPosition(model)
          
               }
+
+            //   getAvailablePositionNew = async () => {
+            //     const nowAvailablePositions = await RestClient.Get(
+            //       'positionassign/getallcand'
+            //     )
+            
+            //     this.setState({
+            //       nowAvailablePositions
+            //     })
+            //   }
 
     createVacant = model => {
       
@@ -236,6 +247,8 @@ debugger;
                                                        
                                                             }
 
+                                                            
+
     createAssign = model => {
       
         let assignmodel = {
@@ -294,6 +307,8 @@ debugger;
          //this.props.planningActions.insertStaffAssign(assignmodel)
      }
 
+
+
     edit = (e, position) => {
 
         if (!$(e.target).is(':checkbox')) {
@@ -325,6 +340,7 @@ debugger;
         this.props.allRolesActions.getAllRoles()
         debugger;
        this.props.planningActions.getStaffCandidate()
+       //this.getAvailablePositionNew()
 
 
       
@@ -377,6 +393,7 @@ debugger;
                 createAssign= {this.createAssign}
                candidate={  this.props.candidate}
                 selectedTitle={this.props.selectedTitle} 
+                //nowAvailablePositions={this.state.nowAvailablePositions}
             />
 
               <UpdatePosition

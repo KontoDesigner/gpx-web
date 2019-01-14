@@ -9,6 +9,7 @@ class AssignRole extends Component {
         super();
 
         this.state = {
+        
             jobTitles: [],
             selectedDestination: null,
             selectedJobTitle: null,
@@ -178,7 +179,7 @@ debugger;
 
                             <Col sm="12" md="6" lg="6" xl="6">
                                 <div className="form-group form-group-select">
-                                    <label htmlFor="jobTitle">Position (MPLSourceMarket  MPLID  MPL_DL_Required)</label>
+                                    <label htmlFor="jobTitle">Position (MPLID - MPLSourceMarket - MPL_DL_Required)</label>
 
                                     <Select
                                         id="jobTitle"

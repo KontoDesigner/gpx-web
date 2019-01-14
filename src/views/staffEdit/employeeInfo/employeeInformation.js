@@ -3,6 +3,7 @@ import { Card, CardBody, CardHeader, Col,Label,Input } from 'reactstrap'
 import TextInput from '../../../components/textInput'
 import Select from 'react-select'
 import Datetime from 'react-datetime'
+import moment from "moment";
 
 const EmployeeInformation = (props) => {
     return (
@@ -87,7 +88,7 @@ const EmployeeInformation = (props) => {
                         <label htmlFor="dateJoined">Candidate Available From</label>
 
                         <Datetime
-                            value={props.staff.dateJoined}
+                            value={moment(props.staff.dateJoined).format("YYYY-MM-DD")}
                             onChange={(v) => { props.handleStaffDatePicker('dateJoined', v) }}
                             timeFormat={false}
                             dateFormat="YYYY-MM-DD"

@@ -16,7 +16,8 @@ const columns = [
   { label: 'StartDate', dataKey: 'startDate' },
   { label: 'DepDate', dataKey: 'endDate' },
   { label: 'Placed', dataKey: 'firstNameLastName' },
- { label: 'Acting', dataKey: 'acting',iconClass:'fa fa-thumbs-up',iconValue:'Y' }
+//  { label: 'Acting', dataKey: 'acting',iconClass:'fa fa-thumbs-up',iconValue:'Y' }
+ { label: 'Acting', dataKey: 'acting' }
 ];
 
 const JobTitleTable = (props) => {
