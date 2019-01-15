@@ -25,7 +25,8 @@ class AssignPosition extends Component {
         
           loaded: false,
           dates:[],
-    
+          positionStartDate: null,
+          positionEndDate: null,
              dateModified: null,
              selectedCandidate: null,
             selectedAssignStart:null,
@@ -82,6 +83,8 @@ class AssignPosition extends Component {
           selectedAssignStart:null,
           selectedAssignEnd:null,
           selectedPlacementPeriod:null,
+          positionStartDate: null,
+          positionEndDate: null,
           dates:[],
          // newArray:[],
             dateModified: null,
@@ -156,6 +159,30 @@ dates:[],
 
     }
 
+    
+   positionStartChange = positionStart => {
+    debugger;
+    const positionStartDate = positionStart ;
+ debugger;
+    this.setState({
+        positionStartDate
+   
+    })
+  
+}
+
+
+positionEndChange = positionEnd => {
+debugger;
+const positionEndDate = positionEnd ;
+debugger;
+this.setState({
+    positionEndDate
+
+})
+
+}
+
     assignStartChange = assignStart => {
       const selectedAssignStart = assignStart ;
  debugger;
@@ -199,10 +226,21 @@ debugger;
 
     createAssign = (val) => {
        
-        this.toggle();   //commented in for now
+      debugger;
 
        // const destination = this.props.availablePositions.filter(ap => ap.destination === this.state.selectedDestination)[0];
-       
+       var check= this.state.selectedCandidate ? true: false
+       var check2= this.state.selectedPlacementPeriod ? true: false
+
+       if(!check){  
+        alert('Please select a Staff to assign');
+        return false;
+      }
+
+      if(!check2){  
+        alert('Please select an assignment period to replace or select Add New');
+        return false;
+      }
        
        // const position = destination.jobTitles.filter(ap => ap.mplid === mplid)[0];
        
@@ -219,9 +257,40 @@ debugger;
              selectedTitle:this.props.selectedTitle[0],
              oldDate: this.state.selectedPlacementPeriod.substr(0, 10)
         }
+
+var assignCompareStart = new Date(this.state.selectedAssignStart);
+var assignCompareEnd  = new Date(this.state.selectedAssignEnd);
+var positionCompareStart = new Date(this.state.positionStartDate);
+var positionCompareEnd  = new Date(this.state.positionEndDate);
 debugger;
-       this.props.createAssign(model);
-    }
+
+var checkok= (assignCompareStart.getTime() >= positionCompareStart.getTime() && assignCompareEnd.getTime() <= positionCompareEnd.getTime());
+var checkok2= (assignCompareStart.getTime() < assignCompareEnd.getTime());
+ debugger;
+
+
+
+ if(checkok){   // temporary
+     if(checkok2){
+
+   
+ this.toggle();
+ debugger;
+ this.props.createAssign(model);
+}
+else
+{
+
+    alert('Assign startdate must be before Assign End Date') ;
+}
+ } else
+  {
+   
+   alert('Assign dates does not match the position dates, please try again') ;
+
+
+}
+}
     
  
 
@@ -341,8 +410,38 @@ debugger;
                                             </thead>
                                             <tbody>
                                             <tr>
-                                              {/* <td>{this.state.positionStartDate} </td> <td>{this.state.positionEndDate}</td>   */}
-                                          
+
+                                               <td>
+                                              
+                                               <Datetime
+                        className={'custom-datepicker'}
+                        onChange={this.positionStartChange}
+                        value={this.state.positionStartDate}
+                        timeFormat={false}
+                        dateFormat="YYYY-MM-DD"
+                        closeOnSelect
+                        utc={true}
+                        inputProps={{ placeholder: 'YYYY-MM-DD' }}
+                      /> </td> 
+                                                
+                                                
+                                                
+                                                <td>
+                                                <Datetime
+                        className={'custom-datepicker'}
+                        onChange={this.positionEndChange}
+                        value={this.state.positionEndDate}
+                        timeFormat={false}
+                        dateFormat="YYYY-MM-DD"
+                        closeOnSelect
+                        utc={true}
+                        inputProps={{ placeholder: 'YYYY-MM-DD' }}
+                      />
+                                                
+                                                
+                                                </td>  
+                                           
+                                            
                                             </tr>
                                         </tbody>
               </Table>

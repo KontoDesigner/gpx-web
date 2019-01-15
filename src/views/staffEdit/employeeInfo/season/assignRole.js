@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter, Row, Col, Table } from 'reactstrap'
 import Select from 'react-select'
 import Datetime from 'react-datetime'
-
+import moment from "moment";
 
 class AssignRole extends Component {
     constructor() {
@@ -106,10 +106,9 @@ debugger;
         
         const position = destination.jobTitles.filter(ap => ap.mplid === mplid)[0];
        
-        var currentdate = new Date(); 
-        var newdatemodified  = currentdate.getFullYear() + "-"
-      + (currentdate.getMonth()+1)  + "-" 
-       + currentdate.getDate() ; 
+        var currentdate = new Date()
+
+        var newdatemodified=moment(currentdate).format("YYYY-MM-DD HH:mm:ss")
 
         const model = {
             mplid: position.mplid,

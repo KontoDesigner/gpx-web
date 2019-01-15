@@ -344,9 +344,7 @@ debugger;
                   <EmployeeInfo
                     staff={this.props.staff}
                     sourceMarkets={this.props.sourceMarkets}
-                    //currentAvailablePositions={this.props.currentAvailablePositions}
-                    // nextAvailablePositions={this.props.nextAvailablePositions}
-                    // followingAvailablePositions={this.props.followingAvailablePositions}
+
                     currentPositionAssign={this.props.currentPositionAssign}
                     nextPositionAssign={this.props.nextPositionAssign}
                     followingPositionAssign={this.props.followingPositionAssign}
