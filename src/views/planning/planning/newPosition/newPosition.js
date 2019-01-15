@@ -19,6 +19,7 @@ class NewPosition extends Component {
       selectedStart:null,
       selectedEnd:null,
 
+
       value: '',
       value2: '',
       value3: '',
@@ -356,7 +357,7 @@ handleDestinationSelect = (val) => {
 
             <Datetime
                onChange={this.startChange}
-               value={moment(this.state.selectedStart).format("YYYY-MM-DD")}
+               value={this.state.selectedStart}
             
               timeFormat={false}
               dateFormat="YYYY-MM-DD"
@@ -370,7 +371,7 @@ handleDestinationSelect = (val) => {
 
             <Datetime
             onChange={this.endChange}
-            value={moment(this.state.selectedEnd).format("YYYY-MM-DD")}
+            value={this.state.selectedEnd}
               timeFormat={false}
               dateFormat="YYYY-MM-DD"
               closeOnSelect

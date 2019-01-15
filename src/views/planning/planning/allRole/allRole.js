@@ -18,6 +18,7 @@ class AllRole extends Component {
         
             <Action 
             selected={this.props.selectedTitle} 
+            allRoles={this.props.allRoles}
             toogleMakePositionVacantModal={this.props.toogleMakePositionVacantModal}
                                 toogleUnmarkPositionActingModal ={this.props.toogleUnmarkPositionActingModal}
                                 toogleResetPositionAcceptModal  ={this.props.toogleResetPositionAcceptModal}

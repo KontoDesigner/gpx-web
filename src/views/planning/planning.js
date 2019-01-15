@@ -28,553 +28,536 @@ import $ from 'jquery'
 import * as filterActions from '../../actions/planning/filterActions'
 import '../../styles/staff.css'
 
-
 class Planning extends Component {
-    componentWillMount() {
-        document.title = 'Planning - GPX'
+  componentWillMount() {
+    document.title = 'Planning - GPX'
+  }
+
+  constructor(props) {
+    super(props)
+
+    this.state = {
+      nowAvailablePositions: [],
+      activeTab: 'allRole',
+      resetData: this.props.allRolesActions.handleAllRoles,
+      markPositionAcceptModal: false,
+      makePositionVacantModal: false,
+      markPositionActingModal: false,
+      markPositionDeclineModal: false,
+      resetPositionAcceptModal: false,
+      unmarkPositionActingModal: false,
+      assignPositionModal: false,
+      updatePositionModal: false
     }
+    this.handleChange = this.handleChange.bind(this)
+  }
 
-    constructor(props) {
-        super(props)
+  handleChange(event) {
+    this.setState({ value: event.target.value })
+  }
 
-        this.state = {
-            nowAvailablePositions:[],
-            activeTab: 'allRole',
-            resetData: this.props.allRolesActions.handleAllRoles,
-            markPositionAcceptModal : false,
-            makePositionVacantModal: false,
-            markPositionActingModal: false,
-            markPositionDeclineModal: false,
-            resetPositionAcceptModal: false,
-            unmarkPositionActingModal: false,
-            assignPositionModal: false,
-            updatePositionModal:false
-        }
-        this.handleChange = this.handleChange.bind(this);
+  toogleMakePositionVacantModal = val => {
+    this.setState({
+      makePositionVacantModal: !this.state.makePositionVacantModal
+    })
+  }
+
+  toogleAssignPositionModal = val => {
+    this.setState({
+      assignPositionModal: !this.state.assignPositionModal
+    })
+  }
+
+  toogleUpdatePositionModal = val => {
+    this.setState({
+      updatePositionModal: !this.state.updatePositionModal
+    })
+  }
+
+  toogleMarkPositionAcceptModal = val => {
+    this.setState({
+      markPositionAcceptModal: !this.state.markPositionAcceptModal
+    })
+  }
+
+  toogleMarkPositionActingModal = val => {
+    this.setState({
+      markPositionActingModal: !this.state.markPositionActingModal
+    })
+  }
+
+  toogleMarkPositionDeclineModal = val => {
+    this.setState({
+      markPositionDeclineModal: !this.state.markPositionDeclineModal
+    })
+  }
+
+  toogleResetPositionAcceptModal = val => {
+    this.setState({
+      resetPositionAcceptModal: !this.state.resetPositionAcceptModal
+    })
+  }
+
+  toogleUnmarkPositionActingModal = val => {
+    this.setState({
+      unmarkPositionActingModal: !this.state.unmarkPositionActingModal
+    })
+  }
+  createPosition = model => {
+    debugger
+
+    this.props.planningActions.createPosition(model)
+  }
+
+  //   getAvailablePositionNew = async () => {
+  //     const nowAvailablePositions = await RestClient.Get(
+  //       'positionassign/getallcand'
+  //     )
+
+  //     this.setState({
+  //       nowAvailablePositions
+  //     })
+  //   }
+
+  createVacant = model => {
+    let vacantModel = {
+      Id: model.mplid,
+      DateModified: model.dateModified,
+      OldDate: model.oldDate
     }
+    debugger
 
-    handleChange(event) {
-  
+    this.props.planningActions.createVacant(vacantModel)
+  }
 
-        this.setState({value: event.target.value});
+  createActing = model => {
+    debugger
+    let actingModel = {
+      Id: model.mplid,
+      DateModified: model.dateModified,
+      Acting: 'Y',
+      OldDate: model.oldDate
+    }
+    debugger
+
+    this.props.planningActions.createActing(actingModel)
+  }
+
+  createUnActing = model => {
+    debugger
+    let actingModel = {
+      Id: model.mplid,
+      DateModified: model.dateModified,
+      Acting: '',
+      OldDate: model.oldDate
+    }
+    debugger
+
+    this.props.planningActions.createActing(actingModel)
+  }
+
+  createAccept = model => {
+    debugger
+    let acceptModel = {
+      Id: model.mplid,
+      DateModified: model.dateModified,
+      Accept: 'Accepted',
+      AcceptDate: model.dateModified,
+      AcceptBy: '',
+      OldDate: model.oldDate
+    }
+    debugger
+
+    // _this.props.planningActions.sendToCtx(positionAssign)
+
+    this.props.planningActions.createAccept(acceptModel)
+  }
+
+  createResetAccept = model => {
+    debugger
+    let resetAcceptModel = {
+      Id: model.mplid,
+      DateModified: model.dateModified,
+      Accept: '',
+      AcceptDate: model.dateModified,
+      AcceptBy: '',
+      OldDate: model.oldDate
+    }
+    debugger
+
+    // _this.props.planningActions.sendToCtx(positionAssign)
+
+    this.props.planningActions.createResetAccept(resetAcceptModel)
+  }
+
+  createDecline = model => {
+    debugger
+    let declineModel = {
+      Id: model.mplid,
+      DateModified: model.dateModified,
+      Accept: 'Declined',
+      AcceptDate: model.dateModified,
+      AcceptBy: '',
+      OldDate: model.oldDate
+    }
+    debugger
+
+    // _this.props.planningActions.sendToCtx(positionAssign)
+
+    this.props.planningActions.createDecline(declineModel)
+  }
+
+  createAssign = model => {
+    let assignmodel = {
+      // TemplateName:model.selectedNotification,
+      // StaffID:this.props.selectedStaff,
+      DateModified: model.dateModified,
+
+      StaffID: model.candidate,
+      MPLID: model.selectedTitle,
+
+      StartDate: model.startDate,
+      EndDate: model.endDate,
+      OldDate: model.oldDate
+    }
+    debugger
+    const _this = this
+
+    if (assignmodel.OldDate != 'Add New') {
+      this.props.planningActions
+        .deletePositionAssign(assignmodel)
+        .then(function() {
+          _this.props.planningActions.insertStaffAssign(assignmodel)
+        })
+    } else {
+      _this.props.planningActions.insertStaffAssign(assignmodel)
+    }
+    //this.props.planningActions.insertStaffAssign(assignmodel)
+  }
+  createUpdate = model => {
+    let updatemodel = {
+      // TemplateName:model.selectedNotification,
+      // StaffID:this.props.selectedStaff,
+      DateModified: model.dateModified,
+
+      StaffID: model.candidate,
+      MPLID: model.selectedTitle,
+
+      StartDate: model.startDate,
+      EndDate: model.endDate
+    }
+    debugger
+    const _this = this
+
+    this.props.planningActions.createUpdate(updatemodel)
+
+    //this.props.planningActions.insertStaffAssign(assignmodel)
+  }
+
+  edit = (e, position) => {
+    if (!$(e.target).is(':checkbox')) {
+      // alert(position.staffID);
+      if (position.staffID != null) {
+        const win = window.open(`/staff/${position.staffID}`, '_blank')
+        win.focus()
+      } else {
+        const win2 = window.open(`/planning/${position.mplID}`, '_blank')
+        win2.focus()
       }
-
-      toogleMakePositionVacantModal = (val) => {
- 
-        this.setState({
-            makePositionVacantModal: !this.state.makePositionVacantModal
-        
-        })
     }
+  }
 
-    toogleAssignPositionModal = (val) => {
- 
-        this.setState({
-            assignPositionModal: !this.state.assignPositionModal
-        
-        })
+  componentDidMount() {
+    debugger
+    this.props.filterActions.handleFilter() //when page loads
+    debugger
+    this.props.allRolesActions.getAllRoles()
+    debugger
+    this.props.planningActions.getStaffCandidate()
+    //this.getAvailablePositionNew()
+  }
+
+  toggle = (tab, getData, resetData) => {
+    debugger
+    if (this.state.activeTab !== tab) {
+      //Reset current tab state
+      this.state.resetData([])
+
+      //Reset filter
+      this.props.filterActions.handleFilter()
+
+      //Get tab data
+      getData()
+
+      this.setState({
+        activeTab: tab,
+        resetData: resetData
+      })
     }
+  }
 
-    toogleUpdatePositionModal = (val) => {
- 
-        this.setState({
-            updatePositionModal: !this.state.updatePositionModal
-        
-        })
-    }
+  render() {
+    return (
+      <Row>
+        <Tabs
+          toggle={this.toggle}
+          activeTab={this.state.activeTab}
+          getAllRoles={this.props.allRolesActions.getAllRoles}
+          handleAllRoles={this.props.allRolesActions.handleAllRoles}
+          getPlacedRoles={this.props.placedRolesActions.getPlacedRoles}
+          handlePlacedRoles={this.props.placedRolesActions.handlePlacedRoles}
+          getVacantRoles={this.props.vacantRolesActions.getVacantRoles}
+          handleVacantRoles={this.props.vacantRolesActions.handleVacantRoles}
+          getReplyYesNoRoles={
+            this.props.replyYesNoRolesActions.getReplyYesNoRoles
+          } 
+          handleReplyYesNoRoles={
+            this.props.replyYesNoRolesActions.handleReplyYesNoRoles
+          }
+          getNewPosition={this.props.newPositionActions.getNewPosition}
+          handleNewPosition={this.props.newPositionActions.handleNewPosition}
+        />
 
-    toogleMarkPositionAcceptModal = (val) => {
- 
-        this.setState({
-            markPositionAcceptModal: !this.state.markPositionAcceptModal
-        
-        })
-    }
+        <AssignPosition
+          modal={this.state.assignPositionModal}
+          toggle={this.toogleAssignPositionModal}
+          createAssign={this.createAssign}
+          candidate={this.props.candidate}
+          selectedTitle={this.props.selectedTitle}
+          //nowAvailablePositions={this.state.nowAvailablePositions}
+         // allRoles={this.props.allRoles.concat(this.props.placedRoles)}
+          allRoles={[...this.props.allRoles,...this.props.placedRoles, ...this.props.vacantRoles, ...this.props.replyYesNoRoles]}
+        />
 
-    toogleMarkPositionActingModal = (val) => {
- 
-        this.setState({
-            markPositionActingModal: !this.state.markPositionActingModal
-        
-        })
-    }
+        <UpdatePosition
+          modal={this.state.updatePositionModal}
+          toggle={this.toogleUpdatePositionModal}
+          createUpdate={this.createUpdate}
+          selectedTitle={this.props.selectedTitle}
+          // candidate={this.props.candidate }
+          // selectedTitle={this.props.selectedTitle}
+        />
 
-    toogleMarkPositionDeclineModal = (val) => {
-    
-        this.setState({
-            markPositionDeclineModal : !this.state.markPositionDeclineModal 
-        
-        })
-       
-    }
+        <MakePositionVacant
+          modal={this.state.makePositionVacantModal}
+          toggle={this.toogleMakePositionVacantModal}
+          createVacant={this.createVacant}
+          selectedTitle={this.props.selectedTitle}
+          candidate={this.props.candidate}
+        />
 
-    toogleResetPositionAcceptModal = (val) => {
- 
-        this.setState({
-            resetPositionAcceptModal: !this.state.resetPositionAcceptModal
-        
-        })
-    }
+        <MarkPositionAccept
+          modal={this.state.markPositionAcceptModal}
+          toggle={this.toogleMarkPositionAcceptModal}
+          createAccept={this.createAccept}
+          selectedTitle={this.props.selectedTitle}
+          candidate={this.props.candidate}
+        />
 
-    toogleUnmarkPositionActingModal = (val) => {
- 
-        this.setState({
-            unmarkPositionActingModal: !this.state.unmarkPositionActingModal
-        
-        })
-    }
-    createPosition = model => {
-      
+        <MarkPositionActing
+          modal={this.state.markPositionActingModal}
+          toggle={this.toogleMarkPositionActingModal}
+          createActing={this.createActing}
+          selectedTitle={this.props.selectedTitle}
+          candidate={this.props.candidate}
+        />
 
-debugger;
- 
-      this.props.planningActions.createPosition(model)
-         
-              }
+        <MarkPositionDecline
+          modal={this.state.markPositionDeclineModal}
+          toggle={this.toogleMarkPositionDeclineModal}
+          createDecline={this.createDecline}
+          selectedTitle={this.props.selectedTitle}
+          candidate={this.props.candidate}
+        />
 
-            //   getAvailablePositionNew = async () => {
-            //     const nowAvailablePositions = await RestClient.Get(
-            //       'positionassign/getallcand'
-            //     )
-            
-            //     this.setState({
-            //       nowAvailablePositions
-            //     })
-            //   }
+        <ResetPositionAccept
+          modal={this.state.resetPositionAcceptModal}
+          toggle={this.toogleResetPositionAcceptModal}
+          createResetAccept={this.createResetAccept}
+          selectedTitle={this.props.selectedTitle}
+          candidate={this.props.candidate}
+        />
 
-    createVacant = model => {
-      
-        let vacantModel = {
+        <UnmarkPositionActing
+          modal={this.state.unmarkPositionActingModal}
+          toggle={this.toogleUnmarkPositionActingModal}
+          createUnActing={this.createUnActing}
+          selectedTitle={this.props.selectedTitle}
+          candidate={this.props.candidate}
+        />
 
-             Id : model.mplid,
-             DateModified:model.dateModified,
-             OldDate: model.oldDate
-         }
-debugger;
- 
-      this.props.planningActions.createVacant(vacantModel)
-         
-              }
+        <Col sm="12" md="9" lg="9" xl="10">
+          <TabContent activeTab={this.state.activeTab}>
+            <TabPane tabId="allRole">
+              <AllRole
+                allRoles={this.props.allRoles}
+                getAllRoles={this.props.allRolesActions.getAllRoles}
+                //getAllRoles={(sourcemarket, jobfamily,criteria) => this.props.allRolesActions.getAllRoles(sourcemarket, jobfamily,criteria)}
+                handleSelectedTitle={
+                  this.props.filterActions.handleSelectedTitle
+                }
+                selectedTitle={this.props.selectedTitle}
+                edit={this.edit}
+                toogleMakePositionVacantModal={
+                  this.toogleMakePositionVacantModal
+                }
+                toogleUnmarkPositionActingModal={
+                  this.toogleUnmarkPositionActingModal
+                }
+                toogleResetPositionAcceptModal={
+                  this.toogleResetPositionAcceptModal
+                }
+                toogleMarkPositionDeclineModal={
+                  this.toogleMarkPositionDeclineModal
+                }
+                toogleMarkPositionActingModal={
+                  this.toogleMarkPositionActingModal
+                }
+                toogleMarkPositionAcceptModal={
+                  this.toogleMarkPositionAcceptModal
+                }
+                toogleAssignPositionModal={this.toogleAssignPositionModal}
+                toogleUpdatePositionModal={this.toogleUpdatePositionModal}
+              />
+            </TabPane>
 
-              createActing = model => {
-                debugger;
-                          let actingModel = {
-                  
-                               Id : model.mplid,
-                               DateModified:model.dateModified,
-                               Acting:'Y',
-                               OldDate: model.oldDate
-                           }
-                  debugger;
-                   
-                        this.props.planningActions.createActing(actingModel)
-                           
-                                }
+            <TabPane tabId="placedRoles">
+              <PlacedRole
+                placedRoles={this.props.placedRoles}
+                getPlacedRoles={this.props.placedRolesActions.getPlacedRoles}
+                //  getPlacedRoles={(sourcemarket, criteria) => this.props.placedRolesActions.getPlacedRoles(sourcemarket, criteria)}
+                handleSelectedTitle={
+                  this.props.filterActions.handleSelectedTitle
+                }
+                selectedTitle={this.props.selectedTitle}
+                edit={this.edit}
+                toogleMakePositionVacantModal={
+                  this.toogleMakePositionVacantModal
+                }
+                toogleUnmarkPositionActingModal={
+                  this.toogleUnmarkPositionActingModal
+                }
+                toogleResetPositionAcceptModal={
+                  this.toogleResetPositionAcceptModal
+                }
+                toogleMarkPositionDeclineModal={
+                  this.toogleMarkPositionDeclineModal
+                }
+                toogleMarkPositionActingModal={
+                  this.toogleMarkPositionActingModal
+                }
+                toogleMarkPositionAcceptModal={
+                  this.toogleMarkPositionAcceptModal
+                }
+                toogleAssignPositionModal={this.toogleAssignPositionModal}
+                toogleUpdatePositionModal={this.toogleUpdatePositionModal}
+              />
+            </TabPane>
 
-              createUnActing = model => {
-      debugger;
-                let actingModel = {
-        
-                     Id : model.mplid,
-                     DateModified:model.dateModified,
-                     Acting:'',
-                     OldDate: model.oldDate
-                 }
-        debugger;
-         
-              this.props.planningActions.createActing(actingModel)
-                 
-                      }
+            <TabPane tabId="vacantRoles">
+              <VacantRole
+                vacantRoles={this.props.vacantRoles}
+                getVacantRoles={this.props.vacantRolesActions.getVacantRoles}
+                //getVacantRoles={(sourcemarket, criteria) => this.props.vacantRolesActions.getVacantRoles(sourcemarket, criteria)}
+                handleSelectedTitle={
+                  this.props.filterActions.handleSelectedTitle
+                }
+                selectedTitle={this.props.selectedTitle}
+                edit={this.edit}
+                toogleMakePositionVacantModal={
+                  this.toogleMakePositionVacantModal
+                }
+                toogleUnmarkPositionActingModal={
+                  this.toogleUnmarkPositionActingModal
+                }
+                toogleResetPositionAcceptModal={
+                  this.toogleResetPositionAcceptModal
+                }
+                toogleMarkPositionDeclineModal={
+                  this.toogleMarkPositionDeclineModal
+                }
+                toogleMarkPositionActingModal={
+                  this.toogleMarkPositionActingModal
+                }
+                toogleMarkPositionAcceptModal={
+                  this.toogleMarkPositionAcceptModal
+                }
+                toogleAssignPositionModal={this.toogleAssignPositionModal}
+                toogleUpdatePositionModal={this.toogleUpdatePositionModal}
+              />
+            </TabPane>
 
-                      createAccept = model => {
-                        debugger;
-                                  let acceptModel = {
-                          
-                                       Id : model.mplid,
-                                       DateModified:model.dateModified,
-                                       Accept:'Accepted',
-                                       AcceptDate:model.dateModified,
-                                       AcceptBy:'',
-                                       OldDate: model.oldDate
-                                   }
-                          debugger;
-                           
-
-  // _this.props.planningActions.sendToCtx(positionAssign)
-                          
-                                this.props.planningActions.createAccept(acceptModel)
-                                   
-                                        }
-
-
-                                        createResetAccept = model => {
-                                            debugger;
-                                                      let resetAcceptModel = {
-                                              
-                                                           Id : model.mplid,
-                                                           DateModified:model.dateModified,
-                                                           Accept:'',
-                                                           AcceptDate:model.dateModified,
-                                                           AcceptBy:'',
-                                                           OldDate: model.oldDate
-                                                       }
-                                              debugger;
-                                               
-                    
-                      // _this.props.planningActions.sendToCtx(positionAssign)
-                                              
-                                                    this.props.planningActions.createResetAccept(resetAcceptModel)
-                                                       
-                                                            }
-
-                                        createDecline = model => {
-                                            debugger;
-                                                      let declineModel = {
-                                              
-                                                           Id : model.mplid,
-                                                           DateModified:model.dateModified,
-                                                           Accept:'Declined',
-                                                           AcceptDate:model.dateModified,
-                                                           AcceptBy:'',
-                                                           OldDate: model.oldDate
-                                                       }
-                                              debugger;
-                                               
-                    
-                      // _this.props.planningActions.sendToCtx(positionAssign)
-                                              
-                                                    this.props.planningActions.createDecline(declineModel)
-                                                       
-                                                            }
-
-                                                            
-
-    createAssign = model => {
-      
-        let assignmodel = {
-   
-          // TemplateName:model.selectedNotification,
-            // StaffID:this.props.selectedStaff,
-             DateModified:model.dateModified,
-
-             StaffID: model.candidate,
-             MPLID : model.selectedTitle,
-       
-             StartDate: model.startDate,
-             EndDate: model.endDate,
-             OldDate: model.oldDate
-         }
-debugger;
-         const _this = this
-      
-         if(assignmodel.OldDate!='Add New'){
-                  this.props.planningActions.deletePositionAssign(assignmodel).then(function() {
-                     _this.props.planningActions.insertStaffAssign(assignmodel)
-         
-              })
-
-            }
-            else
-            {
-                _this.props.planningActions.insertStaffAssign(assignmodel)
-            }
-         //this.props.planningActions.insertStaffAssign(assignmodel)
-     }
-     createUpdate = model => {
-      
-        let updatemodel = {
-   
-          // TemplateName:model.selectedNotification,
-            // StaffID:this.props.selectedStaff,
-             DateModified:model.dateModified,
-
-             StaffID: model.candidate,
-             MPLID : model.selectedTitle,
-       
-             StartDate: model.startDate,
-             EndDate: model.endDate
-             
-         }
-debugger;
-         const _this = this
-      
-   
-                     this.props.planningActions.createUpdate(updatemodel)
-         
-              
-
-
-         //this.props.planningActions.insertStaffAssign(assignmodel)
-     }
-
-
-
-    edit = (e, position) => {
-
-        if (!$(e.target).is(':checkbox')) {
-           // alert(position.staffID);
-            if(position.staffID!=null){
-
-                const win = window.open(`/staff/${position.staffID}`, '_blank')
-                win.focus()
-            } 
-            else
-
-            {
-
-                const win2 = window.open(`/planning/${position.mplID}`, '_blank')
-                win2.focus()
-
-            }
-
-
-      
-            
-        }
-    }
-
-    componentDidMount() {
-        debugger;
-        this.props.filterActions.handleFilter() //when page loads
-        debugger;
-        this.props.allRolesActions.getAllRoles()
-        debugger;
-       this.props.planningActions.getStaffCandidate()
-       //this.getAvailablePositionNew()
-
-
-      
-
-
-    }
-
-    toggle = (tab, getData, resetData) => {
-   debugger;
-        if (this.state.activeTab !== tab) {
-            //Reset current tab state
-            this.state.resetData([])
-
-            //Reset filter
-            this.props.filterActions.handleFilter()
-
-            //Get tab data
-            getData()
-
-            this.setState({
-                activeTab: tab,
-                resetData: resetData
-            })
-        }
-    }
-
-    render() {
-        return (
-            <Row>
-                <Tabs
-                    toggle={this.toggle}
-                    activeTab={this.state.activeTab}
-                    getAllRoles={this.props.allRolesActions.getAllRoles}
-                    handleAllRoles={this.props.allRolesActions.handleAllRoles}
-                    getPlacedRoles={this.props.placedRolesActions.getPlacedRoles}
-                    handlePlacedRoles={this.props.placedRolesActions.handlePlacedRoles}
-                    getVacantRoles={this.props.vacantRolesActions.getVacantRoles}
-                    handleVacantRoles={this.props.vacantRolesActions.handleVacantRoles}
-                    getReplyYesNoRoles={this.props.replyYesNoRolesActions.getReplyYesNoRoles}
-                    handleReplyYesNoRoles={this.props.replyYesNoRolesActions.handleReplyYesNoRoles}
-                  
-                    getNewPosition={this.props.newPositionActions.getNewPosition}
-                    handleNewPosition={this.props.newPositionActions.handleNewPosition}
-
-                />
-
-     <AssignPosition
-                modal={this.state.assignPositionModal}
-                toggle={this.toogleAssignPositionModal}
-                createAssign= {this.createAssign}
-               candidate={  this.props.candidate}
-                selectedTitle={this.props.selectedTitle} 
-                //nowAvailablePositions={this.state.nowAvailablePositions}
-            />
-
-              <UpdatePosition
-                modal={this.state.updatePositionModal}
-                toggle={this.toogleUpdatePositionModal}
-                createUpdate= {this.createUpdate}
-                selectedTitle={this.props.selectedTitle} 
-                // candidate={this.props.candidate }
-                // selectedTitle={this.props.selectedTitle} 
-            />
-
-              <MakePositionVacant
-                modal={this.state.makePositionVacantModal}
-                toggle={this.toogleMakePositionVacantModal}
-                createVacant= {this.createVacant}
-                selectedTitle={this.props.selectedTitle} 
-                candidate={  this.props.candidate}
-               
-            />
-
-            <MarkPositionAccept
-                modal={this.state.markPositionAcceptModal}
-                toggle={this.toogleMarkPositionAcceptModal}
-                createAccept= {this.createAccept}
-                selectedTitle={this.props.selectedTitle} 
-                candidate={  this.props.candidate}
-            />
-
-            <MarkPositionActing
-                modal={this.state.markPositionActingModal}
-                toggle={this.toogleMarkPositionActingModal}
-                createActing= {this.createActing}
-                selectedTitle={this.props.selectedTitle} 
-                candidate={  this.props.candidate}
-
-
-            />
-
-            <MarkPositionDecline
-                modal={this.state.markPositionDeclineModal}
-                toggle={this.toogleMarkPositionDeclineModal}
-                createDecline= {this.createDecline}
-                selectedTitle={this.props.selectedTitle} 
-                candidate={  this.props.candidate}
-            />
-
-            <ResetPositionAccept
-                modal={this.state.resetPositionAcceptModal}
-                toggle={this.toogleResetPositionAcceptModal}
-                createResetAccept= {this.createResetAccept}
-                selectedTitle={this.props.selectedTitle} 
-                candidate={  this.props.candidate}
-            />
-
-            <UnmarkPositionActing
-                modal={this.state.unmarkPositionActingModal}
-                toggle={this.toogleUnmarkPositionActingModal}
-                createUnActing= {this.createUnActing}
-                selectedTitle={this.props.selectedTitle} 
-                candidate={  this.props.candidate}
-            />
-
-                <Col sm="12" md="9" lg="9" xl="10">
-                    <TabContent activeTab={this.state.activeTab}>
-                        <TabPane tabId="allRole">
-                            <AllRole
-                                allRoles={this.props.allRoles}
-                                getAllRoles={this.props.allRolesActions.getAllRoles}
-                               //getAllRoles={(sourcemarket, jobfamily,criteria) => this.props.allRolesActions.getAllRoles(sourcemarket, jobfamily,criteria)}
-                                handleSelectedTitle={this.props.filterActions.handleSelectedTitle}
-                                selectedTitle={this.props.selectedTitle}
-                                edit={this.edit}
-                                toogleMakePositionVacantModal={this.toogleMakePositionVacantModal}
-                                toogleUnmarkPositionActingModal ={this.toogleUnmarkPositionActingModal}
-                                toogleResetPositionAcceptModal  ={this.toogleResetPositionAcceptModal}
-                                toogleMarkPositionDeclineModal ={this.toogleMarkPositionDeclineModal}
-                                toogleMarkPositionActingModal ={this.toogleMarkPositionActingModal}
-                                toogleMarkPositionAcceptModal = {this.toogleMarkPositionAcceptModal}
-                                toogleAssignPositionModal = {this.toogleAssignPositionModal}
-                                toogleUpdatePositionModal = {this.toogleUpdatePositionModal}
-                            />
-                        </TabPane>
-
-                        <TabPane tabId="placedRoles">
-                            <PlacedRole
-                                placedRoles={this.props.placedRoles}
-                                getPlacedRoles={this.props.placedRolesActions.getPlacedRoles}
-                              //  getPlacedRoles={(sourcemarket, criteria) => this.props.placedRolesActions.getPlacedRoles(sourcemarket, criteria)}
-                                handleSelectedTitle={this.props.filterActions.handleSelectedTitle}
-                                selectedTitle={this.props.selectedTitle}
-                                edit={this.edit}
-                                toogleMakePositionVacantModal={this.toogleMakePositionVacantModal}
-                                toogleUnmarkPositionActingModal ={this.toogleUnmarkPositionActingModal}
-                                toogleResetPositionAcceptModal  ={this.toogleResetPositionAcceptModal}
-                                toogleMarkPositionDeclineModal ={this.toogleMarkPositionDeclineModal}
-                                toogleMarkPositionActingModal ={this.toogleMarkPositionActingModal}
-                                toogleMarkPositionAcceptModal = {this.toogleMarkPositionAcceptModal}
-                                toogleAssignPositionModal = {this.toogleAssignPositionModal}
-                                toogleUpdatePositionModal = {this.toogleUpdatePositionModal}
-                            />
-                        </TabPane>
-
-                        <TabPane tabId="vacantRoles">
-                            <VacantRole
-                                vacantRoles={this.props.vacantRoles}
-                                getVacantRoles={this.props.vacantRolesActions.getVacantRoles}
-                                //getVacantRoles={(sourcemarket, criteria) => this.props.vacantRolesActions.getVacantRoles(sourcemarket, criteria)}
-                                handleSelectedTitle={this.props.filterActions.handleSelectedTitle}
-                                selectedTitle={this.props.selectedTitle}
-                                edit={this.edit}
-                                toogleMakePositionVacantModal={this.toogleMakePositionVacantModal}
-                                toogleUnmarkPositionActingModal ={this.toogleUnmarkPositionActingModal}
-                                toogleResetPositionAcceptModal  ={this.toogleResetPositionAcceptModal}
-                                toogleMarkPositionDeclineModal ={this.toogleMarkPositionDeclineModal}
-                                toogleMarkPositionActingModal ={this.toogleMarkPositionActingModal}
-                                toogleMarkPositionAcceptModal = {this.toogleMarkPositionAcceptModal}
-                                toogleAssignPositionModal = {this.toogleAssignPositionModal}
-                                toogleUpdatePositionModal = {this.toogleUpdatePositionModal}
-                            />
-                        </TabPane>
-
-                        <TabPane tabId="replyYesNoRoles">
-                            <ReplyYesNoRole
-
-
-                                replyYesNoRoles={this.props.replyYesNoRoles}
-                                // getReplyYesNoRoles={(sourcemarket, criteria) =>
-                                // this.props.replyYesNoRolesActions.getReplyYesNoRoles(sourcemarket, criteria)
-                                // }
-                                getReplyYesNoRoles={this.props.replyYesNoRolesActions.getReplyYesNoRoles}
-                                handleSelectedTitle={this.props.filterActions.handleSelectedTitle}
-                                selectedTitle={this.props.selectedTitle}
-                                edit={this.edit}
-                                toogleMakePositionVacantModal={this.toogleMakePositionVacantModal}
-                                toogleUnmarkPositionActingModal ={this.toogleUnmarkPositionActingModal}
-                                toogleResetPositionAcceptModal  ={this.toogleResetPositionAcceptModal}
-                                toogleMarkPositionDeclineModal ={this.toogleMarkPositionDeclineModal}
-                                toogleMarkPositionActingModal ={this.toogleMarkPositionActingModal}
-                                toogleMarkPositionAcceptModal = {this.toogleMarkPositionAcceptModal}
-                                toogleAssignPositionModal = {this.toogleAssignPositionModal}
-                                toogleUpdatePositionModal = {this.toogleUpdatePositionModal}
-                            />
-                        </TabPane>
-                        <TabPane tabId="newPosition">
-                            <NewPosition
-                             createPosition={this.createPosition}
-                            
-                            />
-                        </TabPane>
-                    </TabContent>
-                </Col>
-            </Row>
-        )
-    }
+            <TabPane tabId="replyYesNoRoles">
+              <ReplyYesNoRole
+                replyYesNoRoles={this.props.replyYesNoRoles}
+                // getReplyYesNoRoles={(sourcemarket, criteria) =>
+                // this.props.replyYesNoRolesActions.getReplyYesNoRoles(sourcemarket, criteria)
+                // }
+                getReplyYesNoRoles={
+                  this.props.replyYesNoRolesActions.getReplyYesNoRoles
+                }
+                handleSelectedTitle={
+                  this.props.filterActions.handleSelectedTitle
+                }
+                selectedTitle={this.props.selectedTitle}
+                edit={this.edit}
+                toogleMakePositionVacantModal={
+                  this.toogleMakePositionVacantModal
+                }
+                toogleUnmarkPositionActingModal={
+                  this.toogleUnmarkPositionActingModal
+                }
+                toogleResetPositionAcceptModal={
+                  this.toogleResetPositionAcceptModal
+                }
+                toogleMarkPositionDeclineModal={
+                  this.toogleMarkPositionDeclineModal
+                }
+                toogleMarkPositionActingModal={
+                  this.toogleMarkPositionActingModal
+                }
+                toogleMarkPositionAcceptModal={
+                  this.toogleMarkPositionAcceptModal
+                }
+                toogleAssignPositionModal={this.toogleAssignPositionModal}
+                toogleUpdatePositionModal={this.toogleUpdatePositionModal}
+              />
+            </TabPane>
+            <TabPane tabId="newPosition">
+              <NewPosition createPosition={this.createPosition} />
+            </TabPane>
+          </TabContent>
+        </Col>
+      </Row>
+    )
+  }
 }
 
 function mapStateToProps(state) {
-    return {
-        newPosition: state.planning.planning.newPosition,
-        allRoles: state.planning.planning.allRoles,
-        placedRoles: state.planning.planning.placedRoles,
-        vacantRoles: state.planning.planning.vacantRoles,
-        replyYesNoRoles: state.planning.planning.replyYesNoRoles,
-        selectedTitle: state.planning.filter.selectedTitle,
-        candidate: state.planning.candidate
-    }
+  return {
+    newPosition: state.planning.planning.newPosition,
+    allRoles: state.planning.planning.allRoles,
+    placedRoles: state.planning.planning.placedRoles,
+    vacantRoles: state.planning.planning.vacantRoles,
+    replyYesNoRoles: state.planning.planning.replyYesNoRoles,
+    selectedTitle: state.planning.filter.selectedTitle,
+    candidate: state.planning.candidate
+  }
 }
 
 function mapDispatchToProps(dispatch) {
-    return {
-        planningActions: bindActionCreators(planningActions, dispatch),
-        allRolesActions: bindActionCreators(allRolesActions, dispatch),
-        placedRolesActions: bindActionCreators(placedRolesActions, dispatch),
-        vacantRolesActions: bindActionCreators(vacantRolesActions, dispatch),
-        newPositionActions: bindActionCreators(newPositionActions, dispatch),
-        filterActions: bindActionCreators(filterActions, dispatch),
-        replyYesNoRolesActions: bindActionCreators(replyYesNoRolesActions, dispatch)
-    } 
+  return {
+    planningActions: bindActionCreators(planningActions, dispatch),
+    allRolesActions: bindActionCreators(allRolesActions, dispatch),
+    placedRolesActions: bindActionCreators(placedRolesActions, dispatch),
+    vacantRolesActions: bindActionCreators(vacantRolesActions, dispatch),
+    newPositionActions: bindActionCreators(newPositionActions, dispatch),
+    filterActions: bindActionCreators(filterActions, dispatch),
+    replyYesNoRolesActions: bindActionCreators(replyYesNoRolesActions, dispatch)
+  }
 }
 
 export default connect(
-    mapStateToProps,
-    mapDispatchToProps
+  mapStateToProps,
+  mapDispatchToProps
 )(Planning)

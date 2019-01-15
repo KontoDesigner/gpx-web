@@ -17,8 +17,8 @@ import {
 import Datetime from 'react-datetime'
 import Select from 'react-select'
 class AssignPosition extends Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.options=[],  //temporary class variable
 
         this.state = {
@@ -296,9 +296,12 @@ else
 
     render() {
 
+      const mplresult = this.props.allRoles
+      .filter( x => x != null ).map(x => x.headOfs).reduce((prev, x) => prev.concat(x), [])
+      .filter( x => x != null ).map(x => x.destinations).reduce((prev, x) => prev.concat(x), [])
+      .filter( x => x !=null ).map(x => x.positions).reduce((prev, x) => prev.concat(x), []).filter(x => x.mplID == this.props.selectedTitle[0])
 
-
-
+  
 
 
   return (
@@ -412,8 +415,8 @@ else
                                             <tr>
 
                                                <td>
-                                              
-                                               <Datetime
+                                         
+                                                <Datetime
                         className={'custom-datepicker'}
                         onChange={this.positionStartChange}
                         value={this.state.positionStartDate}
@@ -422,7 +425,12 @@ else
                         closeOnSelect
                         utc={true}
                         inputProps={{ placeholder: 'YYYY-MM-DD' }}
-                      /> </td> 
+                      /> 
+                       
+                      
+                  
+                      
+                      </td> 
                                                 
                                                 
                                                 
