@@ -13,8 +13,11 @@ const columns = [
   { label: 'Position Type', dataKey: 'positionType' },
   //{ label: 'Languages', dataKey: 'languages' },
   { label: 'HighSeason', dataKey: 'highseason' },
-  { label: 'StartDate', dataKey: 'positionStartDate' },
-  { label: 'DepDate', dataKey: 'positionEndDate' },
+  { label: 'Position StartDate', dataKey: 'positionStartDate' },
+  { label: 'Position EndDate', dataKey: 'positionEndDate' },
+  { label: 'Assign StartDate', dataKey: 'startDate' },
+  { label: 'Assign EndDate', dataKey: 'endDate' },
+  
   { label: 'Placed', dataKey: 'firstNameLastName' },
  // { label: 'Id', dataKey: 'staffID' }
 ];

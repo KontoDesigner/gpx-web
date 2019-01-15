@@ -269,7 +269,7 @@ class StaffEdit extends Component {
       IataCode: positionAssign.IataCode,
       PositionAssignId: positionAssign.PositionAssignId
     }
-
+debugger;
     this.props.employeeInfoActions.sendToCtx(model)
   }
 

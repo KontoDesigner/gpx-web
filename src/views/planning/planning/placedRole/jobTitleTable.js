@@ -13,11 +13,13 @@ const columns = [
   { label: 'Position Type', dataKey: 'positionType' },
   //{ label: 'Languages', dataKey: 'languages' },
   { label: 'HighSeason', dataKey: 'highseason' },
-  { label: 'StartDate', dataKey: 'startDate' },
-  { label: 'DepDate', dataKey: 'endDate' },
+  { label: 'Position StartDate', dataKey: 'positionStartDate' },
+  { label: 'Position EndDate', dataKey: 'positionEndDate' },
+  { label: 'Assign StartDate', dataKey: 'startDate' },
+  { label: 'Assign EndDate', dataKey: 'endDate' },
   { label: 'Placed', dataKey: 'firstNameLastName' },
 //  { label: 'Acting', dataKey: 'acting',iconClass:'fa fa-thumbs-up',iconValue:'Y' }
- { label: 'Acting', dataKey: 'acting' }
+//  { label: 'Acting', dataKey: 'acting' }
 ];
 
 const JobTitleTable = (props) => {

@@ -19,10 +19,18 @@ import Select from 'react-select'
 class AssignPosition extends Component {
     constructor(props) {
         super(props);
-        this.options=[],  //temporary class variable
+        //this.options=[],  //temporary class variable
+      //  this.options = this.props.allRoles
+      //  .filter( x => x != null ).map(x => x.headOfs).reduce((prev, x) => prev.concat(x), [])
+      //  .filter( x => x != null ).map(x => x.destinations).reduce((prev, x) => prev.concat(x), [])
+      // .filter( x => x !=null ).map(x => x.positions).reduce((prev, x) => prev.concat(x), []).filter(x => x.mplID == this.props.selectedTitle[0])
+
 
         this.state = {
         
+        
+
+
           loaded: false,
           dates:[],
           positionStartDate: null,
@@ -296,12 +304,12 @@ else
 
     render() {
 
-      const mplresult = this.props.allRoles
-      .filter( x => x != null ).map(x => x.headOfs).reduce((prev, x) => prev.concat(x), [])
-      .filter( x => x != null ).map(x => x.destinations).reduce((prev, x) => prev.concat(x), [])
-      .filter( x => x !=null ).map(x => x.positions).reduce((prev, x) => prev.concat(x), []).filter(x => x.mplID == this.props.selectedTitle[0])
+       let mplresult = this.props.allRoles
+       .filter( x => x != null ).map(x => x.headOfs).reduce((prev, x) => prev.concat(x), [])
+       .filter( x => x != null ).map(x => x.destinations).reduce((prev, x) => prev.concat(x), [])
+       .filter( x => x !=null ).map(x => x.positions).reduce((prev, x) => prev.concat(x), []).filter(x => x.mplID == this.props.selectedTitle[0])
 
-  
+debugger;
 
 
   return (
@@ -415,8 +423,13 @@ else
                                             <tr>
 
                                                <td>
-                                         
-                                                <Datetime
+
+                                              {/* { mplresult[0].mplID}  */}
+
+                                                 </td> 
+                            
+                                          
+                                                {/* <Datetime
                         className={'custom-datepicker'}
                         onChange={this.positionStartChange}
                         value={this.state.positionStartDate}
@@ -426,12 +439,11 @@ else
                         utc={true}
                         inputProps={{ placeholder: 'YYYY-MM-DD' }}
                       /> 
-                       
+                        */}
                       
                   
                       
-                      </td> 
-                                                
+                                       
                                                 
                                                 
                                                 <td>
