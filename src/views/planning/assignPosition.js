@@ -28,9 +28,9 @@ class AssignPosition extends Component {
 
         this.state = {
         
-        
-
-
+          validStaff:'',
+          validAssign:'',
+          validDate:'',
           loaded: false,
           dates:[],
           positionStartDate: null,
@@ -93,6 +93,9 @@ class AssignPosition extends Component {
           selectedPlacementPeriod:null,
           positionStartDate: null,
           positionEndDate: null,
+          validStaff:'',
+          validAssign:'',
+          validDate:'',
           dates:[],
          // newArray:[],
             dateModified: null,
@@ -112,17 +115,12 @@ class AssignPosition extends Component {
      
       const selectedCandidate = candidate != null ? candidate: null
 
-  
-      
-      
-
-
-
 debugger;
      // this.options = {value: ''};
 
       this.setState({
         selectedCandidate,
+        validStaff:'',
 dates:[],
 
 
@@ -195,7 +193,9 @@ this.setState({
       const selectedAssignStart = assignStart ;
  debugger;
       this.setState({
-        selectedAssignStart
+        selectedAssignStart,
+     
+     
      
       })
       debugger;
@@ -205,7 +205,8 @@ this.setState({
     const selectedAssignEnd = assignEnd ;
  
     this.setState({
-      selectedAssignEnd
+      selectedAssignEnd,
+      
    
     })
   
@@ -241,12 +242,28 @@ debugger;
        var check2= this.state.selectedPlacementPeriod ? true: false
 
        if(!check){  
-        alert('Please select a Staff to assign');
+        //alert('Please select a Staff to assign');
+
+        this.setState({
+          validStaff:'Please select a Staff to assign'
+          //selectedAssignStart,
+          //selectedAssignEnd
+       
+        })
+
         return false;
       }
 
       if(!check2){  
-        alert('Please select an assignment period to replace or select Add New');
+        //alert('Please select an assignment period to replace or select Add New');
+
+        this.setState({
+          validAssign:'Please select an assignment period to replace or select Add New'
+          //selectedAssignStart,
+          //selectedAssignEnd
+       
+        })
+     
         return false;
       }
        
@@ -281,6 +298,8 @@ var checkok2= (assignCompareStart.getTime() < assignCompareEnd.getTime());
  if(checkok){   // temporary
      if(checkok2){
 
+
+
    
  this.toggle();
  debugger;
@@ -289,7 +308,17 @@ var checkok2= (assignCompareStart.getTime() < assignCompareEnd.getTime());
 else
 {
 
-    alert('Assign startdate must be before Assign End Date') ;
+  this.setState({
+    validDate:'Check Assign Date'
+    //selectedAssignStart,
+    //selectedAssignEnd
+ 
+  })
+
+  
+
+
+    //alert('Assign startdate must be before Assign End Date') ;
 }
  } else
   {
@@ -343,7 +372,12 @@ debugger;
                                         placeholder="Select"
                                         className="form-group form-group-select"
                                     />
+                                 {/* <div dangerouslySetInnerHTML={{ __html: this.state.validStaff }} /> */}
 
+                                    <b className="card-text text-danger">{this.state.validStaff }</b>
+
+                                  
+                                
                     {/* <select value={this.props.value} onChange={this.props.handleChange}  className="form-control"  >
                     <option value="" disabled selected>Select your option</option>
             <option value="Studies">Studies</option>
@@ -374,6 +408,7 @@ debugger;
                                         placeholder="Select"
                                         className="form-group form-group-select"
                                     />
+                                     <b className="card-text text-danger">{this.state.validAssign }</b>
                                     </td>
                                     </tr>
                   </tbody>
@@ -397,7 +432,9 @@ debugger;
                         utc={true}
                         inputProps={{ placeholder: 'YYYY-MM-DD' }}
                       />
+                  <b className="card-text text-danger">{this.state.validDate }</b>
                     </td>
+                  
                     <td>
                 
                       <Datetime
@@ -410,7 +447,9 @@ debugger;
                         utc={true}
                         inputProps={{ placeholder: 'YYYY-MM-DD' }}
                       />
+                             <b className="card-text text-danger">{this.state.validDate }</b>
                     </td>
+                  
                   </tr>
                 </tbody>
                 <thead>
@@ -423,13 +462,7 @@ debugger;
                                             <tr>
 
                                                <td>
-
-                                              {/* { mplresult[0].mplID}  */}
-
-                                                 </td> 
-                            
-                                          
-                                                {/* <Datetime
+                                               <Datetime
                         className={'custom-datepicker'}
                         onChange={this.positionStartChange}
                         value={this.state.positionStartDate}
@@ -439,12 +472,11 @@ debugger;
                         utc={true}
                         inputProps={{ placeholder: 'YYYY-MM-DD' }}
                       /> 
-                        */}
-                      
-                  
-                      
-                                       
-                                                
+ 
+                                                 </td> 
+                            
+                                          
+         
                                                 
                                                 <td>
                                                 <Datetime
