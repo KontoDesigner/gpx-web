@@ -28,8 +28,22 @@ class Abscense extends Component {
       validAbsentStart:'',
       validAbsentEnd:'',
       validAbsentReason:'',
+      validRecommend:'',
+      validComment:'',
       resignHistoryLocal: Object.assign({}, resignHistoryLocal ? resignHistoryLocal : {}),
-      abscenseLocal: Object.assign({}, abscenseLocal ? abscenseLocal : {})
+      abscenseLocal: Object.assign({}, abscenseLocal ? abscenseLocal : {}),
+      recommend: [    //not in use  delete
+        {
+            id: 'Yes',
+            name: 'Yes' 
+        },
+        {
+            id: 'No',
+            name: 'No'
+        },
+  
+    ],
+
     }
   } 
 
@@ -106,19 +120,21 @@ class Abscense extends Component {
     } catch (error) {
       throw error
     }
-  }
+  } 
 
   handleSaveResign = async () => {
     // this.props.settingActions.save()
     var currentdate = new Date()
 
     var newdatemodified=moment(currentdate).format("YYYY-MM-DD HH:mm:ss")
-
-      var check= this.state.resignHistoryLocal.appDate ? true: false
+debugger;
+      var check= this.state.resignHistoryLocal.appDate ?  true: false
       var check2= this.state.resignHistoryLocal.managerReason ? true: false
       var check3= this.state.resignHistoryLocal.reasonForResignment ? true: false
       var check4= this.state.resignHistoryLocal.jobTitleWhenResigned ? true: false
+      var check6= this.state.resignHistoryLocal.recommend ? true: false
       var check5= this.state.resignHistoryLocal.signature ? true: false
+      
   
       if(!check){  
         this.setState({
@@ -160,6 +176,42 @@ class Abscense extends Component {
       this.setState({
         validJobTitleWhen:''
       })
+
+      if(!check6){ 
+        this.setState({
+          validRecommend:'Select recommendation'
+        })
+        return false;
+      }
+      this.setState({
+        validRecommend:''
+      })
+
+           if(!check6){ 
+             debugger;
+        this.setState({
+          validRecommend:'Select recommendation'
+        })
+        return false;
+      }
+      this.setState({
+        validRecommend:''
+      })
+
+
+      if(this.state.resignHistoryLocal.recommend=='No'){ 
+        debugger;
+
+   this.setState({
+     validComment:'Enter comment'
+   })
+   return false;
+ }
+ this.setState({
+   validComment:''
+ })
+
+
       if(!check5){  
         this.setState({
           validSignature:'Enter a signature'
@@ -169,7 +221,7 @@ class Abscense extends Component {
       this.setState({
         validSignature:''
       })
- 
+    
 
 
 
@@ -243,12 +295,15 @@ class Abscense extends Component {
     //  this.setState({applicationHistory})
     this.setState({ resignHistoryLocal })
 
-    field=='managerReason' || field=='reasonForResignment' || field=='jobTitleWhenResigned' ?
+    field=='managerReason' || field=='reasonForResignment' || field=='jobTitleWhenResigned' || field=='recommend'  ?
     this.setState({
       validMgrReason:'',
       validReasonFor:'',
-            validJobTitleWhen:''
+            validJobTitleWhen:'',
+            validRecommend:''
           }):'';
+
+          
 
   }
 
@@ -297,9 +352,10 @@ class Abscense extends Component {
     const field = event.target.name
     const val = event.target.value
 
-    field=='signature' ?
+    field=='signature' || field=='resignComm' ?
   this.setState({
-          validSignature:''
+          validSignature:'',
+          validComment:''
         }):'';
 
     
@@ -374,7 +430,9 @@ class Abscense extends Component {
               validLastWorking={this.state.validLastWorking}
               validSignature={this.state.validSignature}
               validReasonFor={this.state.validReasonFor}
-              handleKeyDown={this.handleKeyDown}
+              validRecommend={this.state.validRecommend}
+              validComment={this.state.validComment}
+              recommend={this.state.recommend}
               // title={"Skills"}
               // name={"skills"}
               // options={this.props.skillOptions}

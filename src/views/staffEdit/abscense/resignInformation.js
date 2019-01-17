@@ -150,7 +150,49 @@ Enable
                <b className="card-text text-danger">{props.validJobTitleWhen }</b>
           </Col>
 
-          <Col sm="12" md="6" lg="12" xl="4" className="form-group">
+    <Col
+            sm="12"
+            md="6"
+            lg="6"
+            xl="4"
+            className="form-group form-group-select"
+          >
+            <label htmlFor="recommend">Do you recommend for re-employment?</label>
+
+            <Select
+              id="recommend"
+              valueKey="id"
+              labelKey="name"
+              className="form-control"
+              options={props.recommend}
+              onChange={v => {
+                props.handleSelectTypes('recommend', v, 'id')
+              }}
+              value={
+                props.resignHistory.recommend === ''
+                  ? null
+                  : props.resignHistory.recommend
+              }
+              placeholder="Select"
+            />
+                {<b className="card-text text-danger">{props.validRecommend}</b> } 
+          </Col>
+
+
+               <Col sm="12" md="6" lg="6" xl="4" className="form-group">
+            <TextInput
+              name="signature" 
+              label="Signature"
+              value={props.resignHistory.signature}
+              onChange={props.handleStaffField}
+             
+            />
+               <b className="card-text text-danger">{props.validSignature }</b>
+          </Col>
+
+      
+
+          <Col sm="12" md="12" lg="12" xl="12" className="form-group">
             {/* {<TextInput name="title" label="Title" value={props.staff.title} onChange={props.handleStaffField} /> } */}
             <Label for="resignComm">Comments</Label>
             <Input
@@ -164,19 +206,10 @@ Enable
               rows={6}
               aria-multiline="true"
             />
-             
+                     <b className="card-text text-danger">{props.validComment }</b>
           </Col>
 
-          <Col sm="12" md="6" lg="6" xl="4" className="form-group">
-            <TextInput
-              name="signature" 
-              label="Signature"
-              value={props.resignHistory.signature}
-              onChange={props.handleStaffField}
-              onkeydown={props.handleKeyDown}
-            />
-               <b className="card-text text-danger">{props.validSignature }</b>
-          </Col>
+     
         </div>
       </CardBody>
       <CardFooter style={{ paddingBottom: '4px', paddingTop: '4px' }}>
