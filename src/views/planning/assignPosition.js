@@ -31,6 +31,7 @@ class AssignPosition extends Component {
           validStaff:'',
           validAssign:'',
           validDate:'',
+          validDate2:'',
           loaded: false,
           dates:[],
           positionStartDate: null,
@@ -96,6 +97,7 @@ class AssignPosition extends Component {
           validStaff:'',
           validAssign:'',
           validDate:'',
+          validDate2:'',
           dates:[],
          // newArray:[],
             dateModified: null,
@@ -194,7 +196,7 @@ this.setState({
  debugger;
       this.setState({
         selectedAssignStart,
-     
+        validDate:''
      
      
       })
@@ -206,7 +208,7 @@ this.setState({
  
     this.setState({
       selectedAssignEnd,
-      
+      validDate:''
    
     })
   
@@ -224,6 +226,8 @@ debugger;
 
   this.setState({
     selectedPlacementPeriod,
+    validAssign:''
+ 
     //selectedAssignStart,
     //selectedAssignEnd
  
@@ -323,8 +327,13 @@ else
  } else
   {
    
-   alert('Assign dates does not match the position dates, please try again') ;
-
+  // alert('Assign dates does not match the position dates, please try again') ;
+   this.setState({
+    validDate2:'Assign dates does not match the position dates'
+    //selectedAssignStart,
+    //selectedAssignEnd
+ 
+  })
 
 }
 }
@@ -472,7 +481,7 @@ debugger;
                         utc={true}
                         inputProps={{ placeholder: 'YYYY-MM-DD' }}
                       /> 
- 
+    <b className="card-text text-danger">{this.state.validDate2 }</b>
                                                  </td> 
                             
                                           
@@ -489,7 +498,7 @@ debugger;
                         utc={true}
                         inputProps={{ placeholder: 'YYYY-MM-DD' }}
                       />
-                                                
+                                             <b className="card-text text-danger">{this.state.validDate2 }</b>      
                                                 
                                                 </td>  
                                            

@@ -86,8 +86,9 @@ debugger;
         const selectedStartDate = assignStart ;
      debugger;
         this.setState({
-            selectedStartDate
-       
+            selectedStartDate,
+            validDate2:''
+            
         })
       
     }
@@ -96,8 +97,8 @@ debugger;
       const selectedEndDate = assignEnd ;
    
       this.setState({
-        selectedEndDate
-     
+        selectedEndDate,
+        validDate2:''
       })
     
   }
