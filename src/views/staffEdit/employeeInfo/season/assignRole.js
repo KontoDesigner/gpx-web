@@ -17,6 +17,9 @@ class AssignRole extends Component {
             selectedEndDate: null,
             positionStartDate: null,
             positionEndDate: null,
+       
+            validDate:'',
+            validDate2:''
            //errorMessage:''
         };
     }
@@ -67,6 +70,8 @@ debugger;
             selectedEndDate: null,
             positionStartDate: null,
             positionEndDate: null,
+            validDate2:'',
+            validDate:''
             //errorMessage:''
 
         })
@@ -119,7 +124,7 @@ debugger;
             startDate: this.state.selectedStartDate,
             endDate: this.state.selectedEndDate
         }
-        debugger;
+    
         var assignCompareStart = new Date(this.state.selectedStartDate);
         var assignCompareEnd  = new Date(this.state.selectedEndDate);
         var positionCompareStart = new Date(this.state.positionStartDate);
@@ -127,28 +132,43 @@ debugger;
 
         var checkok= (assignCompareStart.getTime() >= positionCompareStart.getTime() && assignCompareEnd.getTime() <= positionCompareEnd.getTime());
         var checkok2= (assignCompareStart.getTime() < assignCompareEnd.getTime());
-         debugger;
+        
+        if(!checkok2){
+            this.setState({
+                validDate2:'Check assign dates',
+                validDate:''
 
-         if(checkok){
-             if(checkok2){
+              })
+              return false;
 
-           
-         this.toggle();
-         debugger;
-         this.props.assignRole(model);
-        }
-        else
+        } else 
+        
         {
-   
-            alert('Assign startdate must be before Assign End Date') ;
+            if(!checkok){
+                debugger;
+                this.setState({
+                    validDate:'Assign dates does not match position dates',
+                    validDate2:''
+    
+                  })
+                  debugger;
+                  return false;
+    
+            }
+            
         }
-         } else
-          {
-           
-           alert('Assign dates does not match the position dates, please try again') ;
+       
+      
+
+
+        this.toggle();
+        debugger;
+        this.props.assignRole(model);
+
+         
 
    
-        }
+        
      }
 
     render() {
@@ -218,7 +238,7 @@ debugger;
                             closeOnSelect
                             utc={true}
                             inputProps={{ placeholder: 'YYYY-MM-DD' }} />
-
+  <b className="card-text text-danger">{this.state.validDate2 }</b>
                                              </td> 
                                              <td>
                                              <Datetime  className={'custom-datepicker'}
@@ -230,6 +250,7 @@ debugger;
                             closeOnSelect
                             utc={true}
                             inputProps={{ placeholder: 'YYYY-MM-DD' }} />  
+                              <b className="card-text text-danger">{this.state.validDate2 }</b>
                                               </td>
                                      
                                         
@@ -243,8 +264,14 @@ debugger;
                                             </thead>
                                             <tbody>
                                             <tr>
-                                            <td>{this.state.positionStartDate } </td> <td>{this.state.positionEndDate}   </td>
-                                    
+                                            <td>{this.state.positionStartDate }
+                                            <b className="card-text text-danger">{this.state.validDate }</b>
+                                             </td> 
+                                       
+                                             <td>{this.state.positionEndDate}
+                                             <b className="card-text text-danger">{this.state.validDate }</b>
+                                                </td>
+                                        
                                             </tr>
                                         </tbody>
                                     </Table>

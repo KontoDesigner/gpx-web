@@ -47,7 +47,8 @@ class Planning extends Component {
       resetPositionAcceptModal: false,
       unmarkPositionActingModal: false,
       assignPositionModal: false,
-      updatePositionModal: false
+      updatePositionModal: false,
+ 
     }
     this.handleChange = this.handleChange.bind(this)
   }
@@ -127,7 +128,10 @@ class Planning extends Component {
     }
     debugger
 
+
+
     this.props.planningActions.createVacant(vacantModel)
+  
   }
 
   createActing = model => {
@@ -268,17 +272,17 @@ class Planning extends Component {
   }
 
   componentDidMount() {
-    debugger
+    
     this.props.filterActions.handleFilter() //when page loads
-    debugger
+ 
     this.props.allRolesActions.getAllRoles()
-    debugger
+    
     this.props.planningActions.getStaffCandidate()
     //this.getAvailablePositionNew()
   }
 
   toggle = (tab, getData, resetData) => {
-    debugger
+  
     if (this.state.activeTab !== tab) {
       //Reset current tab state
       this.state.resetData([])
@@ -344,6 +348,7 @@ class Planning extends Component {
           createVacant={this.createVacant}
           selectedTitle={this.props.selectedTitle}
           candidate={this.props.candidate}
+          runApi={this.state.runApi}
         />
 
         <MarkPositionAccept
@@ -418,6 +423,7 @@ class Planning extends Component {
                 }
                 toogleAssignPositionModal={this.toogleAssignPositionModal}
                 toogleUpdatePositionModal={this.toogleUpdatePositionModal}
+                
               />
             </TabPane>
 

@@ -390,7 +390,7 @@ debugger;
                   </tbody>
                   <thead>
                   <tr>
-                    <th colSpan="2">Assignments <i className="card-text text-danger"> (Selected assignment will be replaced)</i></th>
+                    <th colSpan="2">Assignments <i> (Selected assignment will be replaced)</i></th>
                   </tr>
                 </thead>
                 <tbody>

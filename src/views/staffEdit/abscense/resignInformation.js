@@ -64,6 +64,7 @@ Enable
               utc={true}
               inputProps={{ placeholder: 'YYYY-MM-DD' }}
             />
+              <b className="card-text text-danger">{props.validLastWorking }</b>
           </Col>
 
           <Col
@@ -90,7 +91,7 @@ Enable
               }
               placeholder="Select"
             />
-            
+               <b className="card-text text-danger">{props.validMgrReason }</b>
           </Col>
 
           <Col
@@ -118,6 +119,7 @@ Enable
               }
               placeholder="Select"
             />
+               <b className="card-text text-danger">{props.validReasonFor }</b>
           </Col>
 
           <Col
@@ -145,6 +147,7 @@ Enable
               }
               placeholder="JobTitleWhenResigned"
             />
+               <b className="card-text text-danger">{props.validJobTitleWhen }</b>
           </Col>
 
           <Col sm="12" md="6" lg="12" xl="4" className="form-group">
@@ -161,6 +164,7 @@ Enable
               rows={6}
               aria-multiline="true"
             />
+             
           </Col>
 
           <Col sm="12" md="6" lg="6" xl="4" className="form-group">
@@ -169,7 +173,9 @@ Enable
               label="Signature"
               value={props.resignHistory.signature}
               onChange={props.handleStaffField}
+              onkeydown={props.handleKeyDown}
             />
+               <b className="card-text text-danger">{props.validSignature }</b>
           </Col>
         </div>
       </CardBody>

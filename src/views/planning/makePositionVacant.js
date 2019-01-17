@@ -24,7 +24,8 @@ this.dates=[]
     this.state = {
       //dates:[],
       selectedCandidate: null,
-      placementDynamicPeriods: []
+      placementDynamicPeriods: [],
+    
     }
   }
 
@@ -44,6 +45,7 @@ this.dates=[]
     }
 
     this.props.createVacant(model)
+ 
   }
 
 

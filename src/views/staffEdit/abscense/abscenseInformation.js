@@ -60,6 +60,7 @@ const AbscenseInformation = props => {
               utc={true}
               inputProps={{ placeholder: 'YYYY-MM-DD' }}
             />
+                 <b className="card-text text-danger">{props.validAbsentStart }</b>
           </Col>
 
           <Col sm="12" md="6" lg="6" xl="4" className="form-group">
@@ -79,7 +80,9 @@ const AbscenseInformation = props => {
               closeOnSelect
               utc={true}
               inputProps={{ placeholder: 'YYYY-MM-DD' }}
+              
             />
+            <b className="card-text text-danger">{props.validAbsentEnd }</b>
           </Col>
 
           <Col
@@ -107,6 +110,7 @@ const AbscenseInformation = props => {
               }
               placeholder="Select"
             />
+            <b className="card-text text-danger">{props.validAbsentReason }</b>
           </Col>
 
           <Col sm="12" md="6" lg="12" xl="12" className="form-group">

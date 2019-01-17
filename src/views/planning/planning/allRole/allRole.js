@@ -5,6 +5,7 @@ import Filter from '../../filter'
 import Action from '../../action'
 
 class AllRole extends Component {
+
   render() {
     return (
       <Card>
@@ -17,6 +18,7 @@ class AllRole extends Component {
           getData={this.props.getAllRoles} />
         
             <Action 
+              
             selected={this.props.selectedTitle} 
             allRoles={this.props.allRoles}
             toogleMakePositionVacantModal={this.props.toogleMakePositionVacantModal}

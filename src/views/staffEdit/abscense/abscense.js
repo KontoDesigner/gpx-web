@@ -9,7 +9,7 @@ import { bindActionCreators } from 'redux'
 //import restClientConfig from '../../../infrastructure/restClientConfig'
 import { toastr } from 'react-redux-toastr'
 import RestClient from '../../../infrastructure/restClient'
-
+import moment from "moment";
 class Abscense extends Component {
   constructor(props) {
     super(props)
@@ -19,7 +19,15 @@ class Abscense extends Component {
     let resignHistoryLocal = this.props.resignHistory?this.props.resignHistory[0]:{};
     debugger;
     this.state = {
-      value: '',
+      value: '',   
+      validLastWorking:'',
+      validMgrReason:'',
+      validReasonFor:'',
+      validJobTitleWhen:'',
+      validSignature:'',
+      validAbsentStart:'',
+      validAbsentEnd:'',
+      validAbsentReason:'',
       resignHistoryLocal: Object.assign({}, resignHistoryLocal ? resignHistoryLocal : {}),
       abscenseLocal: Object.assign({}, abscenseLocal ? abscenseLocal : {})
     }
@@ -29,13 +37,45 @@ class Abscense extends Component {
   handleSaveAbscense = async () => {
     // this.props.settingActions.save()
     var currentdate = new Date()
-    var newdatemodified =
-      currentdate.getFullYear() +
-      '-' +
-      (currentdate.getMonth() + 1) +
-      '-' +
-      currentdate.getDate()
-    debugger
+
+    var newdatemodified=moment(currentdate).format("YYYY-MM-DD HH:mm:ss")
+
+    var check= this.state.abscenseLocal.absentStart ? true: false
+    var check2= this.state.abscenseLocal.absentEnd ? true: false
+    var check3= this.state.abscenseLocal.absentReason ? true: false
+
+
+    if(!check){  
+      this.setState({
+        validAbsentStart:'Date´s missing'
+      })
+      return false;
+    }
+    this.setState({
+      validAbsentStart:''
+    })
+
+    if(!check2){  
+      this.setState({
+        validAbsentEnd:'Date´s missing'
+      })
+      return false;
+    }
+
+    this.setState({
+      validAbsentEnd:''
+    })
+
+    if(!check3){  
+      this.setState({
+        validAbsentReason:'Select reason for abscense'
+      })
+      return false;
+    }
+
+    this.setState({
+      validAbsentReason:''
+    })
 
     let model = {
       // to the database
@@ -71,12 +111,70 @@ class Abscense extends Component {
   handleSaveResign = async () => {
     // this.props.settingActions.save()
     var currentdate = new Date()
-    var newdatemodified =
-      currentdate.getFullYear() +
-      '-' +
-      (currentdate.getMonth() + 1) +
-      '-' +
-      currentdate.getDate()
+
+    var newdatemodified=moment(currentdate).format("YYYY-MM-DD HH:mm:ss")
+
+      var check= this.state.resignHistoryLocal.appDate ? true: false
+      var check2= this.state.resignHistoryLocal.managerReason ? true: false
+      var check3= this.state.resignHistoryLocal.reasonForResignment ? true: false
+      var check4= this.state.resignHistoryLocal.jobTitleWhenResigned ? true: false
+      var check5= this.state.resignHistoryLocal.signature ? true: false
+  
+      if(!check){  
+        this.setState({
+          validLastWorking:'Date´s missing'
+        })
+        return false;
+      }
+      this.setState({
+        validLastWorking:''
+      })
+
+      if(!check2){  
+        this.setState({
+          validMgrReason:'Select a manager reason'
+        })
+        return false;
+      }
+      this.setState({
+        validMgrReason:''
+      })
+
+
+      if(!check3){  
+        this.setState({
+          validReasonFor:'Select a reason for resignment'
+        })
+        return false;
+      }
+      this.setState({
+        validReasonFor:''
+      })
+
+      if(!check4){  
+        this.setState({
+          validJobTitleWhen:'Select a Jobtitle'
+        })
+        return false;
+      }
+      this.setState({
+        validJobTitleWhen:''
+      })
+      if(!check5){  
+        this.setState({
+          validSignature:'Enter a signature'
+        })
+        return false;
+      }
+      this.setState({
+        validSignature:''
+      })
+ 
+
+
+
+
+
 
     let model = {
       // to the database
@@ -129,6 +227,11 @@ class Abscense extends Component {
     }
 
     this.setState({ resignHistoryLocal })
+
+    field=='appDate'  ?
+    this.setState({
+            validLastWorking:''
+          }):null;
   }
 
   handleSelectTypes = (field, val, id) => {
@@ -139,6 +242,14 @@ class Abscense extends Component {
     resignHistoryLocal[field] = val[id]
     //  this.setState({applicationHistory})
     this.setState({ resignHistoryLocal })
+
+    field=='managerReason' || field=='reasonForResignment' || field=='jobTitleWhenResigned' ?
+    this.setState({
+      validMgrReason:'',
+      validReasonFor:'',
+            validJobTitleWhen:''
+          }):'';
+
   }
 
   handleStaffDatePicker = (field, date) => {
@@ -157,9 +268,14 @@ class Abscense extends Component {
     let abscenseLocal = Object.assign({}, this.state.abscenseLocal)
     abscenseLocal[field] = val
     this.setState({abscenseLocal})
-    // this.props.employeeInfoActions.handleStaffField(field, val)
 
-    // this.props.handleUnsavedEdit()
+    field=='absentEnd' || field=='absentStart' ?
+    this.setState({
+            validAbsentStart:'',
+            validAbsentEnd:''
+          }):'';
+
+
   }
 
   handleStaffSelect = (field, val, selector) => {
@@ -169,6 +285,10 @@ class Abscense extends Component {
     abscenseLocal[field] = id
     this.setState({abscenseLocal})
 
+    field=='absentReason' ?
+    this.setState({
+            validAbsentReason:''
+          }):'';
     
   }
 
@@ -176,6 +296,13 @@ class Abscense extends Component {
     debugger
     const field = event.target.name
     const val = event.target.value
+
+    field=='signature' ?
+  this.setState({
+          validSignature:''
+        }):'';
+
+    
 
     let resignHistoryLocal = Object.assign({}, this.state.resignHistoryLocal)
     resignHistoryLocal[field] = val
@@ -185,6 +312,8 @@ class Abscense extends Component {
 
     //this.props.handleUnsavedEdit()
   }
+
+
 
   
   handleStaffFieldAbscense = event => {
@@ -219,6 +348,9 @@ class Abscense extends Component {
               handleStaffFieldAbscense={this.handleStaffFieldAbscense}
               //handleSelectTypes={this.handleSelectTypes}
               resignType={this.props.resignType}
+              validAbsentStart={this.state.validAbsentStart}
+              validAbsentEnd={this.state.validAbsentEnd}
+              validAbsentReason={this.state.validAbsentReason}
             />
           </Col>
 
@@ -236,7 +368,13 @@ class Abscense extends Component {
               resignHistory={this.state.resignHistoryLocal}
               handleSelectTypes={this.handleSelectTypes}
               managerReasons={this.props.managerReasons}
-
+              validLastWorking={this.state.validLastWorking}
+              validMgrReason={this.state.validMgrReason}
+              validJobTitleWhen={this.state.validJobTitleWhen}
+              validLastWorking={this.state.validLastWorking}
+              validSignature={this.state.validSignature}
+              validReasonFor={this.state.validReasonFor}
+              handleKeyDown={this.handleKeyDown}
               // title={"Skills"}
               // name={"skills"}
               // options={this.props.skillOptions}

@@ -154,14 +154,15 @@ debugger;
                 toastr.error('Error', `Selected position(s) is not vacant: ${res ? res.message : 'Error'}`)
             }
 
-
-
             dispatch(endAjaxCall())
+        
+        
         } catch (error) {
             dispatch(ajaxCallError(error))
 
             throw error
         }
+        
     }
 }
 
