@@ -24,6 +24,7 @@ import Buttons from './buttons'
 import Tabs from './tabs'
 import * as employeeInfoActions from '../../actions/staffEdit/employeeInfoActions'
 import * as abscenseActions from '../../actions/staffEdit/abscenseActions'
+import * as historyActions from '../../actions/staffEdit/historyActions'
 import * as destinationHistoryActions from '../../actions/staffEdit/destinationHistoryActions'
 import * as applicationHistoryActions from '../../actions/staffEdit/applicationHistoryActions'
 import * as abscenseHistoryActions from '../../actions/staffEdit/abscenseHistoryActions'
@@ -189,6 +190,7 @@ class StaffEdit extends Component {
       this.props.employeeInfoActions.getPositionAssigns(this.state.staffId),
       this.props.applicationHistoryActions.getResignHistory(this.state.staffId),
       this.props.abscenseHistoryActions.getAbscenseHistory(this.state.staffId),
+      this.props.historyActions.getHistory(this.state.staffId),
       this.props.destinationHistoryActions.getDestinationHistory(
         this.state.staffId
       ),
@@ -469,6 +471,7 @@ function mapStateToProps(state) {
     nextSeason: state.geography.nextSeason,
     followingSeason: state.geography.followingSeason,
     destinationHistory: state.staffEdit.destinationHistory,
+    history: state.staffEdit.history,
     applicationHistory: state.staffEdit.applicationHistory,
 
     resignHistory: state.staffEdit.resignHistory
@@ -479,11 +482,9 @@ function mapDispatchToProps(dispatch) {
   return {
     employeeInfoActions: bindActionCreators(employeeInfoActions, dispatch),
     abscenseActions: bindActionCreators(abscenseActions, dispatch),
-    destinationHistoryActions: bindActionCreators(
-      destinationHistoryActions,
-      dispatch
-    ),
-    applicationHistoryActions: bindActionCreators(
+    destinationHistoryActions: bindActionCreators(destinationHistoryActions,dispatch),
+    historyActions: bindActionCreators(historyActions,dispatch),
+    applicationHistoryActions: bindActionCreators( 
       applicationHistoryActions,
       dispatch
     ),

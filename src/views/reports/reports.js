@@ -21,6 +21,7 @@ class Reports extends Component {
        
         this.state = {
             activeTab: 'planningReport',
+            validDate:'',
          
             resetData: this.props.reportActions.handleReport,
             sourceMarketId: '',
@@ -213,6 +214,20 @@ createResign = (requestDate,destination) => {
 
     //   ):[]
 
+    var check= requestDate ? true: false
+
+
+    if(!check){  
+      this.setState({
+        validDate:'Date´s missing'
+      })
+      debugger;
+      return false;
+    }
+    this.setState({
+      validDate:''
+    })
+
 
     let model =destination? destination.map(x => {
         return {destination:x.destination, resignDate: requestDate.appDate}
@@ -289,6 +304,7 @@ debugger;
                               handleMonthSelect={this.handleMonthSelect}
                              // getResignDates={this.props.reportActions.getResignDates}
                               createResign={this.createResign}
+                              validDate={this.validDate}
 
                             />
                         </TabPane>

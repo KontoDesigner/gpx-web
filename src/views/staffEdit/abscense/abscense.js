@@ -238,6 +238,7 @@ debugger;
       JobTitleWhenResigned: this.state.resignHistoryLocal.jobTitleWhenResigned,
       ReasonForResignment: this.state.resignHistoryLocal.reasonForResignment,
       ResignComm: this.state.resignHistoryLocal.resignComm,
+      Recommend: this.state.resignHistoryLocal.recommend,
       DateModified: newdatemodified,
       // //EmpID: this.state.resignHistory.empID,
       StaffID: this.props.staff.staffID
@@ -287,10 +288,12 @@ debugger;
   }
 
   handleSelectTypes = (field, val, id) => {
-    //let val = ''
+    //let val = '' 
     // debugger
 
-    let resignHistoryLocal = Object.assign({}, this.state.resignHistoryLocal)
+    let resignHistoryLocal = Object.assign({}, this.state.resignHistoryLocal) 
+    
+    
     resignHistoryLocal[field] = val[id]
     //  this.setState({applicationHistory})
     this.setState({ resignHistoryLocal })

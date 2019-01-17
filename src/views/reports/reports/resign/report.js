@@ -85,7 +85,7 @@ render() {
    value={this.props.selectedResignDates}
     placeholder="Select Month"
 />
-
+<b className="card-text text-danger">{this.props.validDate }</b>
 <p></p> 
 
            <Button   color="success"  onClick={() => { this.props.createResign(this.props.selectedResignDates,this.props.selectedDestination) }}>Create Report</Button>
