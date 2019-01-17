@@ -483,7 +483,7 @@ function mapDispatchToProps(dispatch) {
     employeeInfoActions: bindActionCreators(employeeInfoActions, dispatch),
     abscenseActions: bindActionCreators(abscenseActions, dispatch),
     destinationHistoryActions: bindActionCreators(destinationHistoryActions,dispatch),
-    historyActions: bindActionCreators(historyActions,dispatch),
+   historyActions: bindActionCreators(historyActions,dispatch),
     applicationHistoryActions: bindActionCreators( 
       applicationHistoryActions,
       dispatch
