@@ -22,7 +22,6 @@ class History extends Component {
                         <ConfirmedDates />
                     </Col>
                 </Row>
-
                 <Row>
                     <Col>
                         <Revisions />

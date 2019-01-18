@@ -487,7 +487,7 @@ function mapDispatchToProps(dispatch) {
     applicationHistoryActions: bindActionCreators( 
       applicationHistoryActions,
       dispatch
-    ),
+    ), 
     abscenseHistoryActions: bindActionCreators(abscenseHistoryActions, dispatch)
   }
 }

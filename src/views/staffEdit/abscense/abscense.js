@@ -199,7 +199,7 @@ debugger;
       })
 
 
-      if(this.state.resignHistoryLocal.recommend=='No'){ 
+      if(this.state.resignHistoryLocal.recommend=='No' && this.state.resignHistoryLocal.resignComm.trim()=='' ){ 
         debugger;
 
    this.setState({
@@ -222,11 +222,6 @@ debugger;
         validSignature:''
       })
     
-
-
-
-
-
 
     let model = {
       // to the database
