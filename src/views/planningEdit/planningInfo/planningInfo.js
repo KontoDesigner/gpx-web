@@ -64,7 +64,7 @@ const PlanningInfo = (props) => {
                         <TextInput name="jobFamily" label="Jobfamily"  value={props.position.jobFamily}/>
                     </Col>
                     <Col sm="12" md="6" lg="6" xl="4" className="form-group">
-                        <TextInput name="jobTitle" label="Position"  value={props.position.jobTitle}/>
+                        <TextInput name="jobTitle" label="jobTitle"  value={props.position.jobTitle}/>
                     </Col>
 
                      <Col sm="12" md="6" lg="6" xl="4" className="form-group">
@@ -100,11 +100,11 @@ const PlanningInfo = (props) => {
                     </Col>
 
                       <Col sm="12" md="6" lg="6" xl="4" className="form-group">
-                        <TextInput name="startDate" label="Start Date"  value={moment(props.position.positionStartDate).format("YYYY-MM-DD")}/>
+                        <TextInput name="startDate" label="Start Date"  value={props.position.positionStartDate}/>
                     </Col>
                     
                      <Col sm="12" md="6" lg="6" xl="4" className="form-group">
-                        <TextInput name="endDate" label="End Date"  value={moment(props.position.positionEndDate).format("YYYY-MM-DD")}/>
+                        <TextInput name="endDate" label="End Date"  value={props.position.positionEndDate}/>
                     </Col>
                 </div>
             </CardBody>

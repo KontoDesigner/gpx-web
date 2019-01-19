@@ -39,7 +39,7 @@ class Planning extends Component {
     this.state = {
       nowAvailablePositions: [],
       activeTab: 'allRole',
-      resetData: this.props.allRolesActions.handleAllRoles,
+      resetData: this.props.allRolesActions.handleAllRoles,  // send to all views
       markPositionAcceptModal: false,
       makePositionVacantModal: false,
       markPositionActingModal: false,
@@ -120,19 +120,41 @@ class Planning extends Component {
   //     })
   //   }
 
-  createVacant = model => {
+  createVacant = async model => {
     let vacantModel = {
-      Id: model.mplid,
-      DateModified: model.dateModified,
-      OldDate: model.oldDate
+        Id: model.mplid,
+        DateModified: model.dateModified,
+        OldDate: model.oldDate
     }
-    debugger
+   
+
+    await this.props.planningActions.createVacant(vacantModel)
+    debugger;
+    let all = Object.assign([], this.props.selected)  // All Role view or array into this let var
+
+            const index = all.indexOf(model.mplid)
+
+            if (index !== -1) {
+                all.splice(index, 1)
+            }
+
+            this.props.updateSelectedState(all)
+    
+}
+
+  // createVacant = model => {
+  //   let vacantModel = {
+  //     Id: model.mplid,
+  //     DateModified: model.dateModified,
+  //     OldDate: model.oldDate
+  //   }
+  //   debugger
 
 
 
-    this.props.planningActions.createVacant(vacantModel)
+  //   this.props.planningActions.createVacant(vacantModel)
   
-  }
+  // }
 
   createActing = model => {
     debugger
@@ -283,22 +305,22 @@ class Planning extends Component {
 
   toggle = (tab, getData, resetData) => {
   
-    if (this.state.activeTab !== tab) {
-      //Reset current tab state
-      this.state.resetData([])
+     if (this.state.activeTab !== tab) {
+       //Reset current tab state
+       this.state.resetData([])
 
-      //Reset filter
+       //Reset filter
       this.props.filterActions.handleFilter()
 
-      //Get tab data
+       //Get tab data
       getData()
 
-      this.setState({
-        activeTab: tab,
-        resetData: resetData
+       this.setState({
+         activeTab: tab,
+         resetData: resetData
       })
-    }
-  }
+   }
+   }
 
   render() {
     return (
@@ -348,7 +370,7 @@ class Planning extends Component {
           createVacant={this.createVacant}
           selectedTitle={this.props.selectedTitle}
           candidate={this.props.candidate}
-          runApi={this.state.runApi}
+         // runApi={this.state.runApi}
         />
 
         <MarkPositionAccept

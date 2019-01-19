@@ -346,7 +346,7 @@ else
        .filter( x => x != null ).map(x => x.headOfs).reduce((prev, x) => prev.concat(x), [])
        .filter( x => x != null ).map(x => x.destinations).reduce((prev, x) => prev.concat(x), [])
        .filter( x => x !=null ).map(x => x.positions).reduce((prev, x) => prev.concat(x), []).filter(x => x.mplID == this.props.selectedTitle[0])
-
+        mplresult=mplresult.length > 0 ? mplresult :[{}]
 debugger;
 
 
@@ -471,16 +471,8 @@ debugger;
                                             <tr>
 
                                                <td>
-                                               <Datetime
-                        className={'custom-datepicker'}
-                        onChange={this.positionStartChange}
-                        value={this.state.positionStartDate}
-                        timeFormat={false}
-                        dateFormat="YYYY-MM-DD"
-                        closeOnSelect
-                        utc={true}
-                        inputProps={{ placeholder: 'YYYY-MM-DD' }}
-                      /> 
+                                               {mplresult[0].positionStartDate}
+
     <b className="card-text text-danger">{this.state.validDate2 }</b>
                                                  </td> 
                             
@@ -488,16 +480,7 @@ debugger;
          
                                                 
                                                 <td>
-                                                <Datetime
-                        className={'custom-datepicker'}
-                        onChange={this.positionEndChange}
-                        value={this.state.positionEndDate}
-                        timeFormat={false}
-                        dateFormat="YYYY-MM-DD"
-                        closeOnSelect
-                        utc={true}
-                        inputProps={{ placeholder: 'YYYY-MM-DD' }}
-                      />
+                                                {mplresult[0].positionEndDate}
                                              <b className="card-text text-danger">{this.state.validDate2 }</b>      
                                                 
                                                 </td>  

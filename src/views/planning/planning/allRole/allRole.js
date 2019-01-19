@@ -15,7 +15,8 @@ class AllRole extends Component {
           <div className="form-row">
           
           <Filter 
-          getData={this.props.getAllRoles} />
+          getData={this.props.getAllRoles}
+          />
         
             <Action 
               

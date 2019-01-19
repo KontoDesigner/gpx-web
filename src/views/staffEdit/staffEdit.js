@@ -18,10 +18,13 @@ import Abscense from './abscense/abscense'
 //import FullYearReview from './fullYearReview/fullYearReview'
 import Team from './team/team'
 import Applications from './applications/applications'
-import History from './history/history'
+import DestinationHistory from './history/destinationHistory'
+import Revisions from './history/revisions'
+import ConfirmedDates from './history/confirmedDates'
+
 import { LinkContainer } from 'react-router-bootstrap'
 import Buttons from './buttons'
-import Tabs from './tabs'
+import Tabs from './tabs' 
 import * as employeeInfoActions from '../../actions/staffEdit/employeeInfoActions'
 import * as abscenseActions from '../../actions/staffEdit/abscenseActions'
 import * as historyActions from '../../actions/staffEdit/historyActions'
@@ -189,11 +192,12 @@ class StaffEdit extends Component {
       this.getAvailablePositionNew(),
       this.props.employeeInfoActions.getPositionAssigns(this.state.staffId),
       this.props.applicationHistoryActions.getResignHistory(this.state.staffId),
-      this.props.abscenseHistoryActions.getAbscenseHistory(this.state.staffId),
+      
       this.props.historyActions.getHistory(this.state.staffId),
       this.props.destinationHistoryActions.getDestinationHistory(
         this.state.staffId
       ),
+      this.props.abscenseHistoryActions.getAbscenseHistory(this.state.staffId),
 
       this.props.employeeInfoActions
         .getStaff(this.state.staffId)
@@ -404,47 +408,34 @@ debugger;
          
                 </TabPane> 
 
-                <TabPane tabId="history">
-               {this.props.destinationHistory
+              <TabPane tabId="history">
+
+  <DestinationHistory
+  destinationHistory={this.props.destinationHistory}
+  status= {this.props.staff.status}
+/>
+{ <ConfirmedDates
+  confirmedDates={this.props.confirmedDates}
+ 
+/> 
+ }
+
+<Revisions
+
+  history= {this.props.history}
+  //destinationHistory={this.props.destinationHistory}
+    />
+
+
+
+
+
+           </TabPane>
+
+                
                
-               ?
-               <History
-               destinationHistory={this.props.destinationHistory}
-               status= {this.props.staff.status}
-             />
-             
-             :     <History
-             status= {this.props.staff.status}
-
-           />}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                  {/* {this.props.destinationHistory && (
-                    <History
-                      destinationHistory={this.props.destinationHistory}
-                    />?
-                    <History
-                      destinationHistory={this.props.destinationHistory}
-                    />
-                 :
-                  <History
-                      destinationHistory={this.props.destinationHistory}
-                    />
-                    )
-                  } */}
-                </TabPane>
+                
+               
               </TabContent>
             </Col>
           </Row>

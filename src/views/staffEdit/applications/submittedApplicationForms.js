@@ -4,7 +4,7 @@ import {
   ListGroupItem,
   Card,
   CardBody,
-  CardHeader
+  CardHeader,Col
 } from "reactstrap";
 import moment from "moment";
 
@@ -18,37 +18,66 @@ const SubmittedApplicationForms = props => {
       <CardHeader> SubmittedApplicationForms{" "}<div class="pull-right">Status = {props.status}</div> </CardHeader>
 
       <CardBody>
-        <table className="table">
-          <thead>
-            <tr>
-              <th scope="col">ApplicationType</th>
-              <th scope="col">StartDate</th> 
-               <th scope="col">Modified</th>
-              <th scope="col">Status</th>
-            </tr>
-          </thead>
-          <tbody>
-            {props.abscenseHistory.map(h => (
-                <tr>
-                  <td>{h.applicationType?h.applicationType:"LeaveOfAbscense"}</td>
-                  <td>{h.absentStart?moment(h.absentStart).format("YYYY-MM-DD"):"Abscense Start Date missing"}</td>
-                   <td>{moment(h.dateModified).format("YYYY-MM-DD")}</td>
 
-              <td>{h.status?h.status:"Received"}</td>
-                </tr>
-              ))}
-                 {props.applicationHistory.map(ap => (
-                <tr>
-                  <td>{ap.applicationType?ap.applicationType:"Resigned"}</td>
-                  <td>{ap.appDate?moment(ap.appDate).format("YYYY-MM-DD"):"Resign Start Date missing"}</td>
-                   <td>{moment(ap.dateModified).format("YYYY-MM-DD")}</td>
-                 
+         <div className="form-row">
+                    <Col sm="12" md="3" lg="3" xl="3" className="form-group">
+                   <b>ApplicationType</b>  
+                    </Col>
+                    <Col sm="12" md="3" lg="3" xl="3" className="form-group">
+                   <b> StartDate </b>
+                    </Col>
+                    <Col sm="12" md="3" lg="3" xl="3" className="form-group">
+                    <b>Date Modified</b> 
+                    </Col>
+                    <Col sm="12" md="3" lg="3" xl="3" className="form-group">
+                   <b>Status </b>
+                    </Col>
+
+                    </div>
+                    {props.abscenseHistory.map(h => (
+
+                    <div className="form-row">
+                    <Col sm="12" md="3" lg="3" xl="3" className="form-group">
+                    {h.applicationType?h.applicationType:"LeaveOfAbscense"}
+                    </Col>
+                    <Col sm="12" md="3" lg="3" xl="3" className="form-group">
+                    {h.absentStart?moment(h.absentStart).format("YYYY-MM-DD"):"Abscense Start Date missing"}
+                    </Col>
+                    <Col sm="12" md="3" lg="3" xl="3" className="form-group">
+                       
+                    {moment(h.dateModified).format("YYYY-MM-DD")}
+                    </Col>
+                    <Col sm="12" md="3" lg="3" xl="3" className="form-group">
+                    {h.status?h.status:"Received"}
+                    </Col> 
+
+                    </div>
         
-                  <td>{ap.status?ap.status:"Received"}</td>
-                </tr>
+        ))}
+        
+
+          
+              {props.applicationHistory.map(ap => (
+
+<div className="form-row">
+<Col sm="12" md="3" lg="3" xl="3" className="form-group">
+{ap.applicationType?ap.applicationType:"Resigned"}
+</Col>
+<Col sm="12" md="3" lg="3" xl="3" className="form-group">
+{ap.appDate?moment(ap.appDate).format("YYYY-MM-DD"):"Resign Start Date missing"}
+</Col>
+<Col sm="12" md="3" lg="3" xl="3" className="form-group">
+   
+{moment(ap.dateModified).format("YYYY-MM-DD")}
+</Col>
+<Col sm="12" md="3" lg="3" xl="3" className="form-group">
+{ap.status?ap.status:"Received"}
+</Col> 
+
+</div>
+
               ))}
-          </tbody>
-        </table>
+        
 
         {/* <ListGroup>
                     

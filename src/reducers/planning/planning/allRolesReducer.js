@@ -8,6 +8,10 @@ export default function allRolesReducer(state = defaultState, action) {
             return action.data.allRoles;
         case types.HANDLE_ALLROLES:
             return action.data.allRoles;
+
+
+
+
         default:
             return state;
     }
