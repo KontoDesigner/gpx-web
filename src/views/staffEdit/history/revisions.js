@@ -19,7 +19,7 @@ const Revisions = (props) => {
                     <b>Who</b> 
                     </Col>
                     <Col sm="12" md="3" lg="3" xl="3" className="form-group">
-                   <b>Modified </b>
+                   <b>Date Modified </b>
                     </Col>
 
                     </div>
