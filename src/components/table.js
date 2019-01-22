@@ -44,7 +44,7 @@ class Table extends Component {
 
         return (
             <div key={index} style={style}>
-                <ContextMenuTrigger id={this.props.contextMenuId}>
+                <ContextMenuTrigger collect={() => props.rowData} id={this.props.contextMenuId}>
                     <div onClick={e => this.props.edit(e, props.rowData)} className={rowClassName} role="row">
                         {columns}
                     </div>
@@ -125,7 +125,6 @@ class Table extends Component {
     selectRow = (event, row) => {
         const target = event.target
         const value = target.checked
-
 
         let selected = Object.assign([], this.state.selected)
 
