@@ -40,6 +40,7 @@ class DestinationRow extends Component {
               handleSelectedTitle={this.props.handleSelectedTitle}
              selectedTitle={this.props.selectedTitle}
               edit={this.props.edit}
+              toogleAssignPositionModal = {this.props.toogleAssignPositionModal}
             />
           </CardBody>
         </Collapse>

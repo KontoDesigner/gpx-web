@@ -11,24 +11,49 @@ const columns = [
 ]
 
 const PersonTable = props => {
-  const onContextMenuClick = (e, data) => {
-    alert(data.foo)
-  }
+  function onContextMenuClick(e, data) {
+    debugger;
+       //alert(data.mplID)
+     // console.log(data,e,test,hello)
+     
+     props.toogleAbsentStaffModal() 
+       
+     }
+    
+     function onContextMenuClick2(e, data) {
+      debugger;
+         //alert(data.mplID)
+       // console.log(data,e,test,hello)
+       
+       props.toogleResignStaffModal() 
+         
+       }
+
+       function onContextMenuClick3(e, data) {
+        debugger;
+           //alert(data.mplID)
+         // console.log(data,e,test,hello)
+         
+         props.toogleSendMailModal() 
+           
+         }
 
   const contextMenuId = props.index + '-jobTitleContextMenu'
 
   return (
     <div>
-      <ContextMenu id={contextMenuId}>
-        <MenuItem data={{ foo: 'bar' }} onClick={onContextMenuClick}>
-          ContextMenu Item 1
-        </MenuItem>
-        <MenuItem data={{ foo: 'bar' }} onClick={onContextMenuClick}>
-          ContextMenu Item 2
-        </MenuItem>
-        <MenuItem data={{ foo: 'bar' }} onClick={onContextMenuClick}>
-          ContextMenu Item 3
-        </MenuItem>
+  <ContextMenu id={contextMenuId}>
+      <MenuItem data={{ foo: 'bar' }} onClick={onContextMenuClick}>
+        Mark As Absent
+          </MenuItem>
+      <MenuItem data={{foo: 'bar'}} onClick={onContextMenuClick2}>
+        Mark As Resign
+          </MenuItem>
+   
+        <MenuItem data={{ foo: 'bar' }} onClick={onContextMenuClick3}>
+        Send Mail Using Template
+          </MenuItem>
+
       </ContextMenu>
 
       <Table

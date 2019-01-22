@@ -39,6 +39,9 @@ class TitleRow extends Component {
                 handleSelectedStaff={this.props.handleSelectedStaff}
                 selectedStaff={this.props.selectedStaff}
                 edit={this.props.edit}
+                toogleAbsentStaffModal={this.props.toogleAbsentStaffModal}
+                toogleResignStaffModal={this.props.toogleResignStaffModal}
+                toogleSendMailModal={this.props.toogleSendMailModal}
               />
             ))}
           </CardBody>

@@ -632,7 +632,7 @@ debugger;
                   this.toogleMarkPositionDeclineModal
                 }
                 toogleMarkPositionActingModal={
-                  this.toogleMarkPositionActingModal
+                  this.toogleMarkPositionActingModal 
                 }
                 toogleMarkPositionAcceptModal={
                   this.toogleMarkPositionAcceptModal

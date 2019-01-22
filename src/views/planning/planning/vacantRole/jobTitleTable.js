@@ -21,24 +21,29 @@ const columns = [
 
 const JobTitleTable = (props) => {
   function onContextMenuClick(e, data) {
-    alert(data.foo)
-  }
+    debugger;
+       //alert(data.mplID)
+     // console.log(data,e,test,hello)
+     
+       props.toogleAssignPositionModal() 
+       
+     }
 
   const contextMenuId = props.index + "-allRoleContextMenu";
 
   return (
     <div>
-      {/* <ContextMenu id={contextMenuId}>
-        <MenuItem data={{ foo: 'bar' }} onClick={onContextMenuClick}>
-          ContextMenu Item 1
+      <ContextMenu id={contextMenuId}>
+      <MenuItem data={{ foo: 'bar' }} onClick={onContextMenuClick}>
+        Assign Staff To Position
           </MenuItem>
-        <MenuItem data={{ foo: 'bar' }} onClick={onContextMenuClick}>
+        {/* <MenuItem data={{ foo: 'bar' }} onClick={onContextMenuClick}>
           ContextMenu Item 2
           </MenuItem>
         <MenuItem data={{ foo: 'bar' }} onClick={onContextMenuClick}>
           ContextMenu Item 3
-          </MenuItem>
-      </ContextMenu> */}
+          </MenuItem> */}
+      </ContextMenu> 
 
       <Table
        

@@ -23,27 +23,99 @@ const columns = [
 ];
  
 const JobTitleTable = (props) => {
+
   function onContextMenuClick(e, data) {
-    props.toogleMakePositionVacantModal()
-    //alert(data.foo)
-    
-  }
+    debugger;
+       //alert(data.mplID)
+     // console.log(data,e,test,hello)
+     
+       props.toogleAssignPositionModal() 
+       
+     }
+   
+   
+     function onContextMenuClick2(e, data) {
+       debugger;
+          //alert(data.mplID)
+        // console.log(data,e,test,hello)
+        props.toogleMakePositionVacantModal()
+          
+        }
+   
+        function onContextMenuClick3(e, data) {
+         debugger;
+            //alert(data.mplID)
+          // console.log(data,e,test,hello)
+          props.toogleResetPositionAcceptModal()
+            
+          }
+   
+          function onContextMenuClick4(e, data) {
+           debugger;
+              //alert(data.mplID)
+            // console.log(data,e,test,hello)
+            props.toogleResetPositionAcceptModal()
+              
+            }
+   
+            function onContextMenuClick5(e, data) {
+             debugger;
+                //alert(data.mplID)
+              // console.log(data,e,test,hello)
+              props.toogleMarkPositionDeclineModal()
+                
+              }
+   
+              function onContextMenuClick6(e, data) {
+               debugger;
+                  //alert(data.mplID)
+                // console.log(data,e,test,hello)
+                props.toogleMarkPositionActingModal()
+                  
+                }
+   
+                function onContextMenuClick7(e, data) {
+                 debugger;
+                    //alert(data.mplID)
+                  // console.log(data,e,test,hello)
+                  props.toogleUnmarkPositionActingModal()
+                    
+                  }
+     
+       
 
   const contextMenuId = props.index + "-allRoleContextMenu";
 
   return (
     <div>
-      <ContextMenu id={contextMenuId}>
-      <MenuItem data={{foo: 'bar'}} onClick={onContextMenuClick}>
+<ContextMenu id={contextMenuId}>
+      <MenuItem data={{ foo: 'bar' }} onClick={onContextMenuClick}>
+        Assign Staff To Position
+          </MenuItem>
+      <MenuItem data={{foo: 'bar'}} onClick={onContextMenuClick2}>
         Make Position Vacant
           </MenuItem>
-        <MenuItem data={{ foo: 'bar' }} onClick={onContextMenuClick}>
-        Estephan Right  - 2019-06-12 - 2019-09-06
+   
+        <MenuItem data={{ foo: 'bar' }} onClick={onContextMenuClick3}>
+        Mark Position Accept
           </MenuItem>
-        <MenuItem data={{ foo: 'bar' }} onClick={onContextMenuClick}>
-        Eskil Thorwaldsson - 2019-09-09 - 2019-12-12
+
+            <MenuItem data={{ foo: 'bar' }} onClick={onContextMenuClick4}>
+        Reset Position Accept
           </MenuItem>
-      </ContextMenu>
+
+            <MenuItem data={{ foo: 'bar' }} onClick={onContextMenuClick5}>
+        Mark Position Decline
+          </MenuItem>
+
+                 <MenuItem data={{ foo: 'bar' }} onClick={onContextMenuClick6}>
+        Mark As Acting
+          </MenuItem>
+
+                 <MenuItem data={{ foo: 'bar' }} onClick={onContextMenuClick7}>
+        Unmark As Acting
+          </MenuItem>
+      </ContextMenu> 
 
       <Table
        

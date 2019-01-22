@@ -40,6 +40,9 @@ class Name extends Component {
                             selectedStaff={this.props.selectedStaff}
                             edit={this.props.edit}
                             maxTableHeight={maxTableHeight}
+                            toogleAbsentStaffModal={this.props.toogleAbsentStaffModal}
+                            toogleResignStaffModal={this.props.toogleResignStaffModal}
+                            toogleSendMailModal={this.props.toogleSendMailModal}
                         />
                     </CardBody>
                 )} 

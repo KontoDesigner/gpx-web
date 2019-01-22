@@ -28,23 +28,92 @@ const JobTitleTable = (props) => {
  debugger;
     //alert(data.mplID)
   // console.log(data,e,test,hello)
-    props.toogleMakePositionVacantModal()
+  
+    props.toogleAssignPositionModal() 
     
   }
+
+
+  function onContextMenuClick2(e, data) {
+    debugger;
+       //alert(data.mplID)
+     // console.log(data,e,test,hello)
+     props.toogleMakePositionVacantModal()
+       
+     }
+
+     function onContextMenuClick3(e, data) {
+      debugger;
+         //alert(data.mplID)
+       // console.log(data,e,test,hello)
+       props.toogleResetPositionAcceptModal()
+         
+       }
+
+       function onContextMenuClick4(e, data) {
+        debugger;
+           //alert(data.mplID)
+         // console.log(data,e,test,hello)
+         props.toogleResetPositionAcceptModal()
+           
+         }
+
+         function onContextMenuClick5(e, data) {
+          debugger;
+             //alert(data.mplID)
+           // console.log(data,e,test,hello)
+           props.toogleMarkPositionDeclineModal()
+             
+           }
+
+           function onContextMenuClick6(e, data) {
+            debugger;
+               //alert(data.mplID)
+             // console.log(data,e,test,hello)
+             props.toogleMarkPositionActingModal()
+               
+             }
+
+             function onContextMenuClick7(e, data) {
+              debugger;
+                 //alert(data.mplID)
+               // console.log(data,e,test,hello)
+               props.toogleUnmarkPositionActingModal()
+                 
+               }
+  
+    
 
   const contextMenuId = props.index + "-placedRoleContextMenu";
 
   return (
     <div>
       <ContextMenu id={contextMenuId}>
-      <MenuItem data={{foo: 'bar'}} onClick={onContextMenuClick}>
+      <MenuItem data={{ foo: 'bar' }} onClick={onContextMenuClick}>
+        Assign Staff To Position
+          </MenuItem>
+      <MenuItem data={{foo: 'bar'}} onClick={onContextMenuClick2}>
         Make Position Vacant
           </MenuItem>
-        <MenuItem data={{ foo: 'bar' }} onClick={onContextMenuClick}>
-          ContextMenu Item 2
+   
+        <MenuItem data={{ foo: 'bar' }} onClick={onContextMenuClick3}>
+        Mark Position Accept
           </MenuItem>
-        <MenuItem data={{ foo: 'bar' }} onClick={onContextMenuClick}>
-          ContextMenu Item 3
+
+            <MenuItem data={{ foo: 'bar' }} onClick={onContextMenuClick4}>
+        Reset Position Accept
+          </MenuItem>
+
+            <MenuItem data={{ foo: 'bar' }} onClick={onContextMenuClick5}>
+        Mark Position Decline
+          </MenuItem>
+
+                 <MenuItem data={{ foo: 'bar' }} onClick={onContextMenuClick6}>
+        Mark As Acting
+          </MenuItem>
+
+                 <MenuItem data={{ foo: 'bar' }} onClick={onContextMenuClick7}>
+        Unmark As Acting
           </MenuItem>
       </ContextMenu> 
 
