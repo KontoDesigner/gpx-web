@@ -10,9 +10,10 @@ import { withRouter } from 'react-router-dom'
 import * as geographyActions from './actions/geographyActions'
 import * as settingActions from './actions/setting/settingActions'
 import * as footerActions from './actions/footerActions'
-
+import * as userActions from './actions/userActions'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
+import { UserRoles as userRoles } from './constants/userConstants'
 
 class App extends Component {
     constructor() {
@@ -33,8 +34,11 @@ class App extends Component {
             this.props.geographyActions.getSeasons(),
             this.props.footerActions.getVersion(),
             this.props.footerActions.getSupportEmail(),
-            this.props.footerActions.getWikiUrl()
+            this.props.footerActions.getWikiUrl(),
+            this.props.userActions.getUser()
         ]).then(function() {
+            //EXEMPEL ROLECHECK
+            //const HR = this.props.userRoles.includes(userRoles.DS_F2W_HR_Team)
             _this.setState({ loaded: true })
         })
     }
@@ -95,7 +99,7 @@ function mapDispatchToProps(dispatch) {
         geographyActions: bindActionCreators(geographyActions, dispatch),
         settingActions: bindActionCreators(settingActions, dispatch),
         footerActions: bindActionCreators(footerActions, dispatch),
-    
+        userActions: bindActionCreators(userActions, dispatch)
     }
 }
 

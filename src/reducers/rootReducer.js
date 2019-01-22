@@ -1,6 +1,6 @@
-import { combineReducers } from 'redux';
-import ajaxCallsInProgress from './ajaxStatusReducer';
-import footer from './footerReducer';
+import { combineReducers } from 'redux'
+import ajaxCallsInProgress from './ajaxStatusReducer'
+import footer from './footerReducer'
 import { reducer as toastrReducer } from 'react-redux-toastr'
 import staff from './staff/staffRootReducer'
 import staffEdit from './staffEdit/staffEditRootReducer'
@@ -11,6 +11,7 @@ import planning from './planning/planningRootReducer'
 import planningEdit from './planningEdit/planningEditRootReducer'
 import notificationEdit from './notificationEdit/notificationEditReducer'
 import report from './report/reportRootReducer'
+import user from './userReducer'
 
 export default combineReducers({
     ajaxCallsInProgress,
@@ -24,5 +25,6 @@ export default combineReducers({
     setting,
     notification,
     notificationEdit,
-    report
+    report,
+    user
 })
