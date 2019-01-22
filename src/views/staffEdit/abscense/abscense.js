@@ -199,7 +199,7 @@ debugger;
       })
 debugger;
 
-      if(this.state.resignHistoryLocal.recommend=='No' && this.state.resignHistoryLocal.resignComm=='' ){ 
+      if((this.state.resignHistoryLocal.recommend='No') && (this.state.resignHistoryLocal.resignComm='') ){ 
         debugger;
 
    this.setState({

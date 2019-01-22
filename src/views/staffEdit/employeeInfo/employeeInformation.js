@@ -6,7 +6,10 @@ import Datetime from 'react-datetime'
 import moment from "moment";
 
 const EmployeeInformation = (props) => {
+    const candidateStart = props.staff.dateJoined ?  moment(props.staff.dateJoined).format("YYYY-MM-DD") :null
     return (
+
+     
         <Card>
             <CardHeader>Employee Information    <div class="pull-right">Status = {props.staff.status}</div> </CardHeader>
 
@@ -88,7 +91,7 @@ const EmployeeInformation = (props) => {
                         <label htmlFor="dateJoined">Candidate Available From</label>
 
                         <Datetime
-                            value={moment(props.staff.dateJoined).format("YYYY-MM-DD")}
+                            value={candidateStart}
                             onChange={(v) => { props.handleStaffDatePicker('dateJoined', v) }}
                             timeFormat={false}
                             dateFormat="YYYY-MM-DD"

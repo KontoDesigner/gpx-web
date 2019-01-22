@@ -18,7 +18,9 @@ const columns = [
   { label: 'Assign StartDate', dataKey: 'startDate' },
   { label: 'Assign EndDate', dataKey: 'endDate' },
   { label: 'Placed', dataKey: 'firstNameLastName' },
-//  { label: 'Acting', dataKey: 'acting',iconClass:'fa fa-thumbs-up',iconValue:'Y' }
+  { label: '', dataKey: 'accept' },
+  { label: '', dataKey: 'acting' },
+  // { label: '', dataKey: 'acting',iconClass:'fa fa-thumbs-up',iconValue:'Y' }
 //  { label: 'Acting', dataKey: 'acting' }
 ];
 
