@@ -35,6 +35,7 @@ class PlacedRole extends Component {
               handleSelectedTitle={this.props.handleSelectedTitle}
               selectedTitle={this.props.selectedTitle}
               edit={this.props.edit}
+              toogleMakePositionVacantModal={this.props.toogleMakePositionVacantModal}
             />
           )}
         </CardBody>

@@ -23,17 +23,22 @@ const columns = [
 ];
 
 const JobTitleTable = (props) => {
+  
   function onContextMenuClick(e, data) {
-    alert(data.foo)
+ debugger;
+    //alert(data.mplID)
+  // console.log(data,e,test,hello)
+    props.toogleMakePositionVacantModal()
+    
   }
 
   const contextMenuId = props.index + "-placedRoleContextMenu";
 
   return (
     <div>
-      {/* <ContextMenu id={contextMenuId}>
-        <MenuItem data={{ foo: 'bar' }} onClick={onContextMenuClick}>
-          ContextMenu Item 1
+      <ContextMenu id={contextMenuId}>
+      <MenuItem data={{foo: 'bar'}} onClick={onContextMenuClick}>
+        Make Position Vacant
           </MenuItem>
         <MenuItem data={{ foo: 'bar' }} onClick={onContextMenuClick}>
           ContextMenu Item 2
@@ -41,7 +46,7 @@ const JobTitleTable = (props) => {
         <MenuItem data={{ foo: 'bar' }} onClick={onContextMenuClick}>
           ContextMenu Item 3
           </MenuItem>
-      </ContextMenu> */}
+      </ContextMenu> 
 
       <Table
        

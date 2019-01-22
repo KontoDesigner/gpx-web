@@ -237,7 +237,7 @@ debugger;
 
 
 
-    createAssign = (val) => {
+    createAssign = (val,val2) => {
        
       debugger;
 
@@ -287,10 +287,10 @@ debugger;
              oldDate: this.state.selectedPlacementPeriod.substr(0, 10)
         }
 
-var assignCompareStart = new Date(this.state.selectedAssignStart);
+var assignCompareStart = new Date(this.state.selectedAssignStart); 
 var assignCompareEnd  = new Date(this.state.selectedAssignEnd);
-var positionCompareStart = new Date(this.state.positionStartDate);
-var positionCompareEnd  = new Date(this.state.positionEndDate);
+var positionCompareStart = new Date(val);
+var positionCompareEnd  = new Date(val2);
 debugger;
 
 var checkok= (assignCompareStart.getTime() >= positionCompareStart.getTime() && assignCompareEnd.getTime() <= positionCompareEnd.getTime());
@@ -495,7 +495,7 @@ debugger;
         <ModalFooter>
           <Button
             color="success"
-            onClick={() => this.createAssign()}
+            onClick={() => this.createAssign(mplresult[0].positionStartDate,mplresult[0].positionEndDate)}
           >
             Ok
           </Button>{' '}
@@ -509,8 +509,6 @@ debugger;
   )
     }
 }
-
-
 
 
 

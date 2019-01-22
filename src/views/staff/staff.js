@@ -216,10 +216,11 @@ class Staff extends Component {
             this.state.resetData([])
 
             //Reset filter
-            this.props.filterActions.handleFilter()
+           // this.props.filterActions.handleFilter()
 
             //Get tab data
-            getData()
+           // getData()
+            getData(this.props.filter.sourceMarket,this.props.filter.jobFamily,this.props.filter.criteria)
 
             this.setState({
                 activeTab: tab,
@@ -442,7 +443,8 @@ function mapStateToProps(state) {
        newEmployee: state.staff.other.newEmployee,
        selectedReason:state.staff.modal,
        notification: state.notification.notification,
-       fileImport: state.staff.other.imports
+       fileImport: state.staff.other.imports,
+       filter: state.staff.filter
     }
 }
 

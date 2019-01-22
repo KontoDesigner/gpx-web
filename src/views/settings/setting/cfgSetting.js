@@ -44,51 +44,7 @@ let model = {
                 <div className="form-row"> 
          
 
-<Col sm="12" md="6" lg="6" xl="4" className="form-group">
-<label htmlFor="curSeason">Current Season (obsolete)</label>
 
-<Select 
-  id="curSeason"
-  valueKey="id"
-  labelKey="name"
-  className="form-control"
-  options={props.seasons}
- onChange = {props.handleCurSeasonSelect}
- 
-  value={curSeason}
- placeholder=""
-/>
-</Col>
-
-<Col sm="12" md="6" lg="6" xl="4" className="form-group">
-<label htmlFor="nextSeason">Next Season (obsolete)</label>
-
-<Select 
-  id="nextSeason"
-  valueKey="id"
-  labelKey="name"
-  className="form-control"
-  options={props.seasons}
- onChange = {props.handleNextSeasonSelect}
- value={nextSeason}
- placeholder=""
-/>
-</Col>
-
-<Col sm="12" md="6" lg="6" xl="4" className="form-group">
-<label htmlFor="nextNextSeason">Following Season (obsolete)</label>
-
-<Select 
-  id="nextNextSeason"
-  valueKey="id"
-  labelKey="name"
-  className="form-control"
-  options={props.seasons}
- onChange = { props.handleNextNextSeasonSelect}
- value={nextNextSeason} 
- placeholder=""
-/>
-</Col>
 
 
 {/* <Col sm="12" md="6" lg="6" xl="4" className="form-group">
@@ -176,6 +132,52 @@ let model = {
 />
 
           
+</Col>
+
+<Col sm="12" md="6" lg="6" xl="4" className="form-group">
+<label htmlFor="curSeason">Current Season (obsolete)</label>
+
+<Select 
+  id="curSeason"
+  valueKey="id"
+  labelKey="name"
+  className="form-control"
+  options={props.seasons}
+ onChange = {props.handleCurSeasonSelect}
+ 
+  value={curSeason}
+ placeholder=""
+/>
+</Col>
+
+<Col sm="12" md="6" lg="6" xl="4" className="form-group">
+<label htmlFor="nextSeason">Next Season (obsolete)</label>
+
+<Select 
+  id="nextSeason"
+  valueKey="id"
+  labelKey="name"
+  className="form-control"
+  options={props.seasons}
+ onChange = {props.handleNextSeasonSelect}
+ value={nextSeason}
+ placeholder=""
+/>
+</Col>
+
+<Col sm="12" md="6" lg="6" xl="4" className="form-group">
+<label htmlFor="nextNextSeason">Following Season (obsolete)</label>
+
+<Select 
+  id="nextNextSeason"
+  valueKey="id"
+  labelKey="name"
+  className="form-control"
+  options={props.seasons}
+ onChange = { props.handleNextNextSeasonSelect}
+ value={nextNextSeason} 
+ placeholder=""
+/>
 </Col>
                   
 </div>

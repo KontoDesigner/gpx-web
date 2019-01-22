@@ -40,6 +40,7 @@ class PositionTable extends Component {
               handleSelectedStaff={this.props.handleSelectedStaff}
               selectedStaff={this.props.selectedStaff}
               edit={this.props.edit}
+              toogleMakePositionVacantModal={this.props.toogleMakePositionVacantModal}
             />
           </CardBody>
         </Collapse>

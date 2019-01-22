@@ -19,27 +19,29 @@ const Import = (props) => {
 
         <Col key={0} sm="12" md="4" lg="3" xl="3" className="form-group form-group-select">
 
- <label htmlFor="importTypes">Select File Import Type</label>
+ <label htmlFor="importTypes">Select File Import Typeww</label>
 
         <Select 
           id="importTypes"
           valueKey="name"
           labelKey="id"
-          className="form-control"
+          className="form-control form-group-select"
           options={props.importTypes}
        onChange = {props.handleImportType }
           value={props.importType}
          placeholder="Select"
         />
 
-<p></p>
+</Col></div>
+        <div className="row">
+          <Col key={0} sm="12" md="4" lg="3" xl="3" className="form-group ">
 <input
 onChange={e => props.handleFile(e.target.files[0])}
  type="file"
 name="file" 
 id="file"
 />
-        <p></p>
+       
            <Button   color="success"  onClick={() => { props.create() }}>Start Import</Button>
   
       </Col>

@@ -11,7 +11,7 @@ const columns = [
 ];
 const PersonTable = (props) => {
   function onContextMenuClick(e, data) {
-    alert(data.foo)
+    alert(data.identifier)
   }
 
   const contextMenuId = props.index + "-recentlyInactiveContextMenu";

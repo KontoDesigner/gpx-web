@@ -22,6 +22,8 @@ html
   background:#fff;
 }
 
+
+
 body {
   margin: 0;
   padding: 0;
@@ -129,6 +131,10 @@ b, strong
  
 }
 
+/* .ReactVirtualized__Table__row:selected { 
+  background-color: yellow;
+} */
+
 .ReactVirtualized__Table__row::-webkit-scrollbar
 {
   border-top:1px solid #c2e6fa;
@@ -172,7 +178,10 @@ position:static;
 }
 
 
-
+x.Select
+{
+position:static;
+}
 
 
 .Select-placeholder, .Select--single > .Select-control .Select-value {

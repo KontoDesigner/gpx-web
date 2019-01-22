@@ -58,6 +58,11 @@ class Planning extends Component {
   }
 
   toogleMakePositionVacantModal = val => {
+    if(val){ 
+      this.props.filterActions.handleSelectedTitle([val])
+  
+
+    }
     this.setState({
       makePositionVacantModal: !this.state.makePositionVacantModal
     })
@@ -231,23 +236,6 @@ debugger;
     debugger
 
     this.props.planningActions.createActing(actingModel)
-
-    switch (this.state.activeTab) {
-      case "allRole":
-      this.props.allRolesActions.getAllRoles()
-        break;
-       case "placedRoles":
-        this.props.placedRolesActions.getPlacedRoles()
-          break;
-        case "vacantRoles":
-       this.props.vacantRolesActions.getVacantRoles()
-         break;
-        case "replyYesNoRoles":
-       this.props.replyYesNoRolesActions.getreplyYesNoRoles()
-          break;
-     
-      }
-
   }
 
   createUnActing = model => {
@@ -261,22 +249,6 @@ debugger;
     debugger
 
     this.props.planningActions.createActing(actingModel)
-
-    switch (this.state.activeTab) {
-      case "allRole":
-      this.props.allRolesActions.getAllRoles()
-        break;
-       case "placedRoles":
-        this.props.placedRolesActions.getPlacedRoles()
-          break;
-        case "vacantRoles":
-       this.props.vacantRolesActions.getVacantRoles()
-         break;
-        case "replyYesNoRoles":
-       this.props.replyYesNoRolesActions.getreplyYesNoRoles()
-          break;
-     
-      }
   }
 
   createAccept = model => {
@@ -294,22 +266,6 @@ debugger;
     // _this.props.planningActions.sendToCtx(positionAssign)
 
     this.props.planningActions.createAccept(acceptModel)
-
-    switch (this.state.activeTab) {
-      case "allRole":
-      this.props.allRolesActions.getAllRoles()
-        break;
-       case "placedRoles":
-        this.props.placedRolesActions.getPlacedRoles()
-          break;
-        case "vacantRoles":
-       this.props.vacantRolesActions.getVacantRoles()
-         break;
-        case "replyYesNoRoles":
-       this.props.replyYesNoRolesActions.getreplyYesNoRoles()
-          break;
-     
-      }
   }
 
   createResetAccept = model => {
@@ -327,22 +283,6 @@ debugger;
     // _this.props.planningActions.sendToCtx(positionAssign)
 
     this.props.planningActions.createResetAccept(resetAcceptModel)
-
-    switch (this.state.activeTab) {
-      case "allRole":
-      this.props.allRolesActions.getAllRoles()
-        break;
-       case "placedRoles":
-        this.props.placedRolesActions.getPlacedRoles()
-          break;
-        case "vacantRoles":
-       this.props.vacantRolesActions.getVacantRoles()
-         break;
-        case "replyYesNoRoles":
-       this.props.replyYesNoRolesActions.getreplyYesNoRoles()
-          break;
-     
-      }
   }
 
   createDecline = model => {
@@ -360,21 +300,6 @@ debugger;
     // _this.props.planningActions.sendToCtx(positionAssign)
 
     this.props.planningActions.createDecline(declineModel)
-    switch (this.state.activeTab) {
-      case "allRole":
-      this.props.allRolesActions.getAllRoles()
-        break;
-       case "placedRoles":
-        this.props.placedRolesActions.getPlacedRoles()
-          break;
-        case "vacantRoles":
-       this.props.vacantRolesActions.getVacantRoles()
-         break;
-        case "replyYesNoRoles":
-       this.props.replyYesNoRolesActions.getreplyYesNoRoles()
-          break;
-     
-      }
   }
 
   createAssign = model => {
@@ -403,22 +328,6 @@ debugger;
       _this.props.planningActions.insertStaffAssign(assignmodel)
     }
     //this.props.planningActions.insertStaffAssign(assignmodel)
-
-    switch (this.state.activeTab) {
-      case "allRole":
-      this.props.allRolesActions.getAllRoles()
-        break;
-       case "placedRoles":
-        this.props.placedRolesActions.getPlacedRoles()
-          break;
-        case "vacantRoles":
-       this.props.vacantRolesActions.getVacantRoles()
-         break;
-        case "replyYesNoRoles":
-       this.props.replyYesNoRolesActions.getreplyYesNoRoles()
-          break;
-     
-      }
   }
   createUpdate = model => {
     let updatemodel = {
@@ -470,10 +379,10 @@ debugger;
        this.state.resetData([])
 
        //Reset filter
-      //this.props.filterActions.handleFilter()
+      // this.props.filterActions.handleFilter()
 
        //Get tab data
-       getData(this.props.filter.sourceMarket,this.props.filter.jobFamily,this.props.filter.criteria)
+      getData(this.props.filter.sourceMarket,this.props.filter.jobFamily,this.props.filter.criteria)
 
        this.setState({
          activeTab: tab,
@@ -529,8 +438,8 @@ debugger;
           toggle={this.toogleMakePositionVacantModal}
           createVacant={this.createVacant}
           selectedTitle={this.props.selectedTitle}
-          candidate={this.props.candidate}
-         // runApi={this.state.runApi}
+          candidate={this.props.candidate} 
+         
         />
 
         <MarkPositionAccept

@@ -24,7 +24,9 @@ const columns = [
  
 const JobTitleTable = (props) => {
   function onContextMenuClick(e, data) {
-    alert(data.foo)
+    props.toogleMakePositionVacantModal()
+    //alert(data.foo)
+    
   }
 
   const contextMenuId = props.index + "-allRoleContextMenu";
@@ -32,8 +34,8 @@ const JobTitleTable = (props) => {
   return (
     <div>
       <ContextMenu id={contextMenuId}>
-        <MenuItem data={{ foo: 'bar' }} onClick={onContextMenuClick}>
-         Mark Crawley - 2019-02-02 - 2019-06-04
+      <MenuItem data={{foo: 'bar'}} onClick={onContextMenuClick}>
+        Make Position Vacant
           </MenuItem>
         <MenuItem data={{ foo: 'bar' }} onClick={onContextMenuClick}>
         Estephan Right  - 2019-06-12 - 2019-09-06
