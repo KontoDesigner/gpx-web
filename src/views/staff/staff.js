@@ -44,6 +44,7 @@ class Staff extends Component {
             absentStaffModal: false,
             resignStaffModal: false,
             sendMailModal: false,
+            selectedStaffID:null,
             importTypes: [    //not in use  delete
                 {
                     id: 'Staff',
@@ -109,17 +110,32 @@ class Staff extends Component {
         let mailmodel = {
    
            TemplateName:model.selectedNotification,
-             StaffID:this.props.selectedStaff,
+           StaffID:this.state.selectedStaffID,
              DateModified:model.dateModified
       
              
          }
         
          this.props.staffActions.createMail(mailmodel)
+
+         switch (this.state.activeTab) {
+            case "destination":
+            this.props.destinationActions.getDestination()
+              break;
+             case "name":
+              this.props.nameActions.getName()
+           
+                break;
+              case "jobTitle":
+             this.props.jobTitleActions.getJobTitle()
+               break;
+           
+           
+            }
      }
 
     createAbscense = model => {
-      
+      debugger;
        let abscensemodel = {
   
             ApplicationType:"Abscense",
@@ -129,13 +145,28 @@ class Staff extends Component {
              AbsentReason: model.absentReason,
              AbsentEnd: model.endDate,
              AbsentReason2: this.state.value,
-            StaffID:this.props.selectedStaff,
+            StaffID:this.state.selectedStaffID,
             DateModified:model.dateModified
      
             
         }
-        
+        debugger;
         this.props.staffActions.createAbsense(abscensemodel)
+
+        switch (this.state.activeTab) {
+            case "destination":
+            this.props.destinationActions.getDestination()
+              break;
+             case "name":
+              this.props.nameActions.getName()
+           
+                break;
+              case "jobTitle":
+             this.props.jobTitleActions.getJobTitle()
+               break;
+           
+           
+            }
     }
 
     handleFile=(fileName) => {
@@ -151,7 +182,7 @@ class Staff extends Component {
             Status:"Resigned",
                Comments: this.state.value,
               FromDate: model.fromDate,
-               StaffID:this.props.selectedStaff,
+              StaffID:this.state.selectedStaffID,
                DateModified:model.dateModified
                // StaffID: this.props.staff.staffID,
                // FirstName: this.props.staff.firstName,
@@ -164,18 +195,74 @@ class Staff extends Component {
            }
            debugger;
            this.props.staffActions.createResign(resignmodel)
+
+           switch (this.state.activeTab) {
+            case "destination":
+            this.props.destinationActions.getDestination()
+              break;
+             case "name":
+              this.props.nameActions.getName()
+           
+                break;
+              case "jobTitle":
+             this.props.jobTitleActions.getJobTitle()
+               break;
+           
+           
+            }
+
+
        }
 
        toogleSendMailModal = (val) => {
-        this.setState({
-            sendMailModal: !this.state.sendMailModal
-        })
+
+        if(val) {
+            this.setState({
+                sendMailModal: !this.state.sendMailModal,
+                selectedStaffID: val
+            })
+      
+          }else 
+          {
+      
+            this.setState({
+                sendMailModal: !this.state.sendMailModal,
+              selectedStaffID: this.props.selectedStaff
+            }) 
+            
+         
+          }
+
+        // this.setState({
+        //     sendMailModal: !this.state.sendMailModal
+        // })
     }
 
     toogleAbsentStaffModal = (val) => {
-        this.setState({
-            absentStaffModal: !this.state.absentStaffModal
-        })
+        debugger;
+
+        if(val) {
+            this.setState({
+                absentStaffModal: !this.state.absentStaffModal,
+                selectedStaffID: val
+            })
+      
+          }else 
+          {
+      
+            this.setState({
+              absentStaffModal: !this.state.absentStaffModal,
+              selectedStaffID: this.props.selectedStaff
+            }) 
+            
+         
+          }
+          debugger;
+
+
+        // this.setState({
+        //     absentStaffModal: !this.state.absentStaffModal
+        // })
 
 
     //     switch (val) {
@@ -192,11 +279,39 @@ class Staff extends Component {
     }
 
     toogleResignStaffModal = (val) => {
+
+        if(val) {
+            this.setState({
+                resignStaffModal: !this.state.resignStaffModal,
+                selectedStaffID: val
+            })
+      
+          }else 
+          {
+      
+            this.setState({
+                resignStaffModal: !this.state.resignStaffModal,
+              selectedStaffID: this.props.selectedStaff
+            }) 
+            
+         
+          }
+
+
+
+
+
+
+
+
+
+
+
  
-        this.setState({
-            resignStaffModal: !this.state.resignStaffModal
+        // this.setState({
+        //     resignStaffModal: !this.state.resignStaffModal
         
-        })
+        // })
     }
 
     componentWillMount() {
@@ -296,6 +411,7 @@ debugger;
                 handleSelect= {this.handleSelect}
                 createAbscense= {this.createAbscense}
                 value={this.state.value}
+                selectedStaffID={this.state.selectedStaffID}
               
             />
 
@@ -308,6 +424,7 @@ debugger;
                 createMail= {this.createMail}
                 value={this.state.value}
                 notification={this.props.notification }
+                selectedStaffID={this.state.selectedStaffID}
               
             />
 
@@ -320,6 +437,7 @@ debugger;
                 handleSelect= {this.handleSelect}
                 value={this.state.value}
                 createResign= {this.createResign}
+                selectedStaffID={this.state.selectedStaffID}
                 // availablePositions={this.props.availablePositions}
                 // assignRole={this.props.assignRole}
                 // positionAssign={this.props.positionAssign}

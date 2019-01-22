@@ -25,11 +25,11 @@ const JobTitleTable = (props) => {
        //alert(data.mplID)
      // console.log(data,e,test,hello)
      
-       props.toogleAssignPositionModal() 
+       props.toogleAssignPositionModal(data.mplID) 
        
      }
 
-  const contextMenuId = props.index + "-allRoleContextMenu";
+  const contextMenuId = props.index + "-vacantRoleContextMenu";
 
   return (
     <div>

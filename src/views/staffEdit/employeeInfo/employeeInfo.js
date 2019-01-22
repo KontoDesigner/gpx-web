@@ -142,6 +142,8 @@ debugger;
                             handleStaffDatePicker={this.handleStaffDatePicker}
                             handleStaffSelect={this.handleStaffSelect}
                             positionTypes={this.props.positionTypes}
+                            spainRegistred={this.props.spainRegistred}
+                            
                         />
                     </Col>
                 </Row>

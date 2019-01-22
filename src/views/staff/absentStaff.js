@@ -14,6 +14,7 @@ import {
 } from 'reactstrap'
 import Datetime from 'react-datetime'
 import Select from 'react-select'
+import moment from "moment";
 
 class AbsentStaff extends Component {
     constructor() {
@@ -85,10 +86,9 @@ class AbsentStaff extends Component {
        // const destination = this.props.availablePositions.filter(ap => ap.destination === this.state.selectedDestination)[0];
        // const position = destination.jobTitles.filter(ap => ap.mplid === mplid)[0];
        
-       var currentdate = new Date(); 
-       var newdatemodified  = currentdate.getFullYear() + "-"
-     + (currentdate.getMonth()+1)  + "-" 
-      + currentdate.getDate() ; 
+       var currentdate = new Date()
+
+       var newdatemodified=moment(currentdate).format("YYYY-MM-DD HH:mm:ss")
 
         let model = {
             // staffID: position.mplid,

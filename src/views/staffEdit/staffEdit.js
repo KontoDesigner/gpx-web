@@ -117,6 +117,15 @@ class StaffEdit extends Component {
         }
       ],
 
+      spainRegistred: [
+        {
+          id: 'Yes',
+          name: 'Yes'
+        }
+        
+      ],
+
+
       resignmentReasons: [
         {
           id: 'Expectations of Job',
@@ -283,6 +292,7 @@ debugger;
     debugger;
 
     this.props.employeeInfoActions.save(this.props.staff)
+   
   }
 
   render() {
@@ -358,6 +368,7 @@ debugger;
                     nextSeason={this.props.nextSeason}
                     followingSeason={this.props.followingSeason}
                     positionTypes={this.state.positionTypes}
+                    spainRegistred={this.state.spainRegistred}
                     handleUnsavedEdit={this.handleUnsavedEdit}
                     send={this.send}
                     nowAvailablePositions={this.state.nowAvailablePositions}

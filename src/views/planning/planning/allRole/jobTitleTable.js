@@ -29,7 +29,7 @@ const JobTitleTable = (props) => {
        //alert(data.mplID)
      // console.log(data,e,test,hello)
      
-       props.toogleAssignPositionModal() 
+       props.toogleAssignPositionModal(data.mplID) 
        
      }
    
@@ -38,7 +38,7 @@ const JobTitleTable = (props) => {
        debugger;
           //alert(data.mplID)
         // console.log(data,e,test,hello)
-        props.toogleMakePositionVacantModal()
+        props.toogleMakePositionVacantModal(data.mplID)
           
         }
    
@@ -46,7 +46,7 @@ const JobTitleTable = (props) => {
          debugger;
             //alert(data.mplID)
           // console.log(data,e,test,hello)
-          props.toogleResetPositionAcceptModal()
+          props.toogleMarkPositionAcceptModal(data.mplID)
             
           }
    
@@ -54,7 +54,7 @@ const JobTitleTable = (props) => {
            debugger;
               //alert(data.mplID)
             // console.log(data,e,test,hello)
-            props.toogleResetPositionAcceptModal()
+            props.toogleResetPositionAcceptModal(data.mplID)
               
             }
    
@@ -62,7 +62,7 @@ const JobTitleTable = (props) => {
              debugger;
                 //alert(data.mplID)
               // console.log(data,e,test,hello)
-              props.toogleMarkPositionDeclineModal()
+              props.toogleMarkPositionDeclineModal(data.mplID)
                 
               }
    
@@ -70,7 +70,7 @@ const JobTitleTable = (props) => {
                debugger;
                   //alert(data.mplID)
                 // console.log(data,e,test,hello)
-                props.toogleMarkPositionActingModal()
+                props.toogleMarkPositionActingModal(data.mplID)
                   
                 }
    
@@ -78,11 +78,12 @@ const JobTitleTable = (props) => {
                  debugger;
                     //alert(data.mplID)
                   // console.log(data,e,test,hello)
-                  props.toogleUnmarkPositionActingModal()
+                  props.toogleUnmarkPositionActingModal(data.mplID)
                     
                   }
      
-       
+
+        
 
   const contextMenuId = props.index + "-allRoleContextMenu";
 

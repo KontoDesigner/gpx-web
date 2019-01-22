@@ -4,7 +4,9 @@ import RestClient from '../../infrastructure/restClient'
 import { toastr } from 'react-redux-toastr'
 import moment from "moment";
 export function save(model) {
-    var newdatemodified = new Date();
+    var currentdate = new Date()
+
+    var newdatemodified=moment(currentdate).format("YYYY-MM-DD HH:mm:ss")
 debugger;
     
 let cleanModel =  {}
@@ -21,7 +23,7 @@ debugger;
  cleanModel.NationalConcept = model.nationalConcept  ? model.nationalConcept:null
  cleanModel.Suitable=model.suitable  ? model.suitable:null
 
- cleanModel. DateModified= moment(newdatemodified).format("YYYY-MM-DD HH:MM:DD")  
+ cleanModel.DateModified= newdatemodified
 
  cleanModel.StaffID = model.staffID 
  cleanModel.FirstName = model.firstName

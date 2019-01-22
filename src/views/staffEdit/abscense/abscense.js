@@ -197,9 +197,9 @@ debugger;
       this.setState({
         validRecommend:''
       })
+debugger;
 
-
-      if(this.state.resignHistoryLocal.recommend=='No' && this.state.resignHistoryLocal.resignComm.trim()=='' ){ 
+      if(this.state.resignHistoryLocal.recommend=='No' && this.state.resignHistoryLocal.resignComm=='' ){ 
         debugger;
 
    this.setState({

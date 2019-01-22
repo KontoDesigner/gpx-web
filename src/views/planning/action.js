@@ -10,27 +10,27 @@ const Action = (props) => {
                 </DropdownToggle>
 
                 <DropdownMenu>
-                <DropdownItem title="dsds" onClick={() => {props.toogleAssignPositionModal("1")}}>
+                <DropdownItem title="dsds" onClick={() => {props.toogleAssignPositionModal()}}>
                 Assign Staff To Position  </DropdownItem>
-                <DropdownItem title="dsds" onClick={() => {props.toogleUpdatePositionModal("1")}}>
+                <DropdownItem title="dsds" onClick={() => {props.toogleUpdatePositionModal()}}>
                 Update Position  </DropdownItem>
                     
-                    <DropdownItem title="dsds" onClick={() => {props.toogleMakePositionVacantModal("1")}}>
+                    <DropdownItem title="dsds" onClick={() => {props.toogleMakePositionVacantModal()}}>
                 Make Position Vacant  </DropdownItem>
 
-                <DropdownItem title="dsds" onClick={() => {props.toogleMarkPositionAcceptModal("1")}}>
+                <DropdownItem title="dsds" onClick={() => {props.toogleMarkPositionAcceptModal()}}>
                 Mark Position Accept </DropdownItem>
 
-                <DropdownItem title="dsds" onClick={() => {props.toogleResetPositionAcceptModal("1")}}>
+                <DropdownItem title="dsds" onClick={() => {props.toogleResetPositionAcceptModal()}}>
                 Reset Position Accept  </DropdownItem>
 
-                <DropdownItem title="hemma" onClick={() => {props.toogleMarkPositionDeclineModal("1")}}>
+                <DropdownItem title="hemma" onClick={() => {props.toogleMarkPositionDeclineModal()}}>
                 Mark Position Decline  </DropdownItem>
 
-                <DropdownItem title="dsds" onClick={() => {props.toogleMarkPositionActingModal ("1")}}>
+                <DropdownItem title="dsds" onClick={() => {props.toogleMarkPositionActingModal ()}}>
                 Mark As Acting </DropdownItem>
 
-                <DropdownItem title="dsds" onClick={() => {props.toogleUnmarkPositionActingModal("1")}}>
+                <DropdownItem title="dsds" onClick={() => {props.toogleUnmarkPositionActingModal()}}>
                 UnMark As Acting  </DropdownItem>
 
 

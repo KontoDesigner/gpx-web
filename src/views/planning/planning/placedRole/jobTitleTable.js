@@ -25,63 +25,63 @@ const columns = [
 const JobTitleTable = (props) => {
   
   function onContextMenuClick(e, data) {
- debugger;
-    //alert(data.mplID)
-  // console.log(data,e,test,hello)
-  
-    props.toogleAssignPositionModal() 
-    
-  }
-
-
-  function onContextMenuClick2(e, data) {
     debugger;
        //alert(data.mplID)
      // console.log(data,e,test,hello)
-     props.toogleMakePositionVacantModal()
+     
+       props.toogleAssignPositionModal(data.mplID) 
        
      }
-
-     function onContextMenuClick3(e, data) {
-      debugger;
-         //alert(data.mplID)
-       // console.log(data,e,test,hello)
-       props.toogleResetPositionAcceptModal()
-         
-       }
-
-       function onContextMenuClick4(e, data) {
-        debugger;
-           //alert(data.mplID)
-         // console.log(data,e,test,hello)
-         props.toogleResetPositionAcceptModal()
-           
-         }
-
-         function onContextMenuClick5(e, data) {
-          debugger;
-             //alert(data.mplID)
-           // console.log(data,e,test,hello)
-           props.toogleMarkPositionDeclineModal()
-             
-           }
-
-           function onContextMenuClick6(e, data) {
-            debugger;
-               //alert(data.mplID)
-             // console.log(data,e,test,hello)
-             props.toogleMarkPositionActingModal()
-               
-             }
-
-             function onContextMenuClick7(e, data) {
-              debugger;
-                 //alert(data.mplID)
-               // console.log(data,e,test,hello)
-               props.toogleUnmarkPositionActingModal()
-                 
-               }
-  
+   
+   
+     function onContextMenuClick2(e, data) {
+       debugger;
+          //alert(data.mplID)
+        // console.log(data,e,test,hello)
+        props.toogleMakePositionVacantModal(data.mplID)
+          
+        }
+   
+        function onContextMenuClick3(e, data) {
+         debugger;
+            //alert(data.mplID)
+          // console.log(data,e,test,hello)
+          props.toogleMarkPositionAcceptModal(data.mplID)
+            
+          }
+   
+          function onContextMenuClick4(e, data) {
+           debugger;
+              //alert(data.mplID)
+            // console.log(data,e,test,hello)
+            props.toogleResetPositionAcceptModal(data.mplID)
+              
+            }
+   
+            function onContextMenuClick5(e, data) {
+             debugger;
+                //alert(data.mplID)
+              // console.log(data,e,test,hello)
+              props.toogleMarkPositionDeclineModal(data.mplID)
+                
+              }
+   
+              function onContextMenuClick6(e, data) {
+               debugger;
+                  //alert(data.mplID)
+                // console.log(data,e,test,hello)
+                props.toogleMarkPositionActingModal(data.mplID)
+                  
+                }
+   
+                function onContextMenuClick7(e, data) {
+                 debugger;
+                    //alert(data.mplID)
+                  // console.log(data,e,test,hello)
+                  props.toogleUnmarkPositionActingModal(data.mplID)
+                    
+                  }
+     
     
 
   const contextMenuId = props.index + "-placedRoleContextMenu";

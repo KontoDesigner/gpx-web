@@ -39,7 +39,7 @@ class Planning extends Component {
     this.state = {
       nowAvailablePositions: [],
       activeTab: 'allRole',
-      resetData: this.props.allRolesActions.handleAllRoles,  // send to all views
+      resetData: this.props.allRolesActions.handleAllRoles,  // send to all role view
       markPositionAcceptModal: false,
       makePositionVacantModal: false,
       markPositionActingModal: false,
@@ -48,6 +48,7 @@ class Planning extends Component {
       unmarkPositionActingModal: false,
       assignPositionModal: false,
       updatePositionModal: false,
+      selectedMplID:null,
  
     }
     this.handleChange = this.handleChange.bind(this)
@@ -58,15 +59,54 @@ class Planning extends Component {
   }
 
   toogleMakePositionVacantModal = val => {
-    this.setState({
-      makePositionVacantModal: !this.state.makePositionVacantModal
-    })
+    if(val) {
+      this.setState({
+        makePositionVacantModal: !this.state.makePositionVacantModal,
+        selectedMplID: val
+      })
+
+    }else 
+    {
+
+      this.setState({
+        makePositionVacantModal: !this.state.makePositionVacantModal,
+        selectedMplID: this.props.selectedTitle
+      })
+      
+
+    }
+
   }
 
   toogleAssignPositionModal = val => {
-    this.setState({
-      assignPositionModal: !this.state.assignPositionModal
-    })
+debugger;
+        if(val) {
+          this.setState({
+            assignPositionModal: !this.state.assignPositionModal,
+            selectedMplID: val
+          })
+
+        }else 
+        {
+
+          this.setState({
+            assignPositionModal: !this.state.assignPositionModal,
+            selectedMplID: this.props.selectedTitle
+          })
+          
+
+        }
+
+
+
+      // this.setState({
+      //   assignPositionModal: !this.state.assignPositionModal,
+      //   selectedMplID: val
+      // })
+
+
+
+
   }
 
   toogleUpdatePositionModal = val => {
@@ -76,33 +116,141 @@ class Planning extends Component {
   }
 
   toogleMarkPositionAcceptModal = val => {
-    this.setState({
-      markPositionAcceptModal: !this.state.markPositionAcceptModal
-    })
+
+    if(val) {
+      this.setState({
+        markPositionAcceptModal: !this.state.markPositionAcceptModal,
+        selectedMplID: val
+      })
+
+    }else 
+    {
+
+      this.setState({
+        markPositionAcceptModal: !this.state.markPositionAcceptModal,
+        selectedMplID: this.props.selectedTitle
+      })
+      
+
+    }
+    debugger;
+
+
+    // this.setState({
+    //   markPositionAcceptModal: !this.state.markPositionAcceptModal
+    // })
   }
 
   toogleMarkPositionActingModal = val => {
-    this.setState({
-      markPositionActingModal: !this.state.markPositionActingModal
-    })
+
+   
+    if(val) {
+      this.setState({
+        markPositionActingModal: !this.state.markPositionActingModal,
+        selectedMplID: val
+      })
+
+    }else 
+    {
+
+      this.setState({
+        markPositionActingModal: !this.state.markPositionActingModal,
+        selectedMplID: this.props.selectedTitle
+      })
+      
+
+    }
+
+
+    // this.setState({
+    //   markPositionActingModal: !this.state.markPositionActingModal
+    // })
   }
 
   toogleMarkPositionDeclineModal = val => {
-    this.setState({
-      markPositionDeclineModal: !this.state.markPositionDeclineModal
-    })
+
+    if(val) {
+      this.setState({
+        markPositionDeclineModal: !this.state.markPositionDeclineModal,
+        selectedMplID: val
+      })
+
+    }else 
+    {
+
+      this.setState({
+        markPositionDeclineModal: !this.state.markPositionDeclineModal,
+        selectedMplID: this.props.selectedTitle
+      })
+      
+
+    }
+
+
+
+
+
+
+
+    // this.setState({
+    //   markPositionDeclineModal: !this.state.markPositionDeclineModal
+    // })
   }
 
   toogleResetPositionAcceptModal = val => {
-    this.setState({
-      resetPositionAcceptModal: !this.state.resetPositionAcceptModal
-    })
+
+    
+    if(val) {
+      this.setState({
+        resetPositionAcceptModal: !this.state.resetPositionAcceptModal,
+        selectedMplID: val
+      })
+
+    }else 
+    {
+
+      this.setState({
+        resetPositionAcceptModal: !this.state.resetPositionAcceptModal,
+        selectedMplID: this.props.selectedTitle
+      })
+      
+
+    }
+
+
+
+
+
+
+
+
+    // this.setState({
+    //   resetPositionAcceptModal: !this.state.resetPositionAcceptModal
+    // })
   }
 
   toogleUnmarkPositionActingModal = val => {
-    this.setState({
-      unmarkPositionActingModal: !this.state.unmarkPositionActingModal
-    })
+
+    if(val) {
+      this.setState({
+        unmarkPositionActingModal: !this.state.unmarkPositionActingModal,
+        selectedMplID: val
+      })
+
+    }else 
+    {
+
+      this.setState({
+        unmarkPositionActingModal: !this.state.unmarkPositionActingModal,
+        selectedMplID: this.props.selectedTitle
+      })
+      
+
+    }
+
+    // this.setState({
+    //   unmarkPositionActingModal: !this.state.unmarkPositionActingModal
+    // })
   }
   createPosition = model => {
     debugger
@@ -122,7 +270,7 @@ class Planning extends Component {
 
   createVacant = async model => {
     let vacantModel = {
-        Id: model.mplid,
+        Id: this.state.selectedMplID,
         DateModified: model.dateModified,
         OldDate: model.oldDate
     }
@@ -144,6 +292,7 @@ switch (this.state.activeTab) {
    break;
   case "placedRoles":
    this.props.placedRolesActions.getPlacedRoles()
+  
      break;
    case "vacantRoles":
   this.props.vacantRolesActions.getVacantRoles()
@@ -384,7 +533,7 @@ debugger;
       DateModified: model.dateModified,
 
       StaffID: model.candidate,
-      MPLID: model.selectedTitle,
+      MPLID: this.state.selectedMplID,
 
       StartDate: model.startDate,
       EndDate: model.endDate,
@@ -510,8 +659,8 @@ debugger;
           createAssign={this.createAssign}
           candidate={this.props.candidate}
           selectedTitle={this.props.selectedTitle}
-          //nowAvailablePositions={this.state.nowAvailablePositions}
-         // allRoles={this.props.allRoles.concat(this.props.placedRoles)}
+          selectedMplID={this.state.selectedMplID}
+       
           allRoles={[...this.props.allRoles,...this.props.placedRoles, ...this.props.vacantRoles, ...this.props.replyYesNoRoles]}
         />
 
@@ -520,6 +669,7 @@ debugger;
           toggle={this.toogleUpdatePositionModal}
           createUpdate={this.createUpdate}
           selectedTitle={this.props.selectedTitle}
+   
           // candidate={this.props.candidate }
           // selectedTitle={this.props.selectedTitle}
         />
@@ -530,6 +680,7 @@ debugger;
           createVacant={this.createVacant}
           selectedTitle={this.props.selectedTitle}
           candidate={this.props.candidate}
+          selectedMplID={this.state.selectedMplID}
          // runApi={this.state.runApi}
         />
 
@@ -539,6 +690,7 @@ debugger;
           createAccept={this.createAccept}
           selectedTitle={this.props.selectedTitle}
           candidate={this.props.candidate}
+          selectedMplID={this.state.selectedMplID}
         />
 
         <MarkPositionActing
@@ -547,6 +699,7 @@ debugger;
           createActing={this.createActing}
           selectedTitle={this.props.selectedTitle}
           candidate={this.props.candidate}
+          selectedMplID={this.state.selectedMplID}
         />
 
         <MarkPositionDecline
@@ -555,6 +708,7 @@ debugger;
           createDecline={this.createDecline}
           selectedTitle={this.props.selectedTitle}
           candidate={this.props.candidate}
+          selectedMplID={this.state.selectedMplID}
         />
 
         <ResetPositionAccept
@@ -563,6 +717,7 @@ debugger;
           createResetAccept={this.createResetAccept}
           selectedTitle={this.props.selectedTitle}
           candidate={this.props.candidate}
+          selectedMplID={this.state.selectedMplID}
         />
 
         <UnmarkPositionActing
@@ -571,6 +726,7 @@ debugger;
           createUnActing={this.createUnActing}
           selectedTitle={this.props.selectedTitle}
           candidate={this.props.candidate}
+          selectedMplID={this.state.selectedMplID}
         />
 
         <Col sm="12" md="9" lg="9" xl="10">

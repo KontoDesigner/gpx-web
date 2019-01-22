@@ -104,6 +104,26 @@ const EmployeeInformation = (props) => {
                     <Col sm="12" md="6" lg="6" xl="4" className="form-group">
                         <TextInput name="drivingYear" label="Driving Year" value={props.staff.drivingYear} onChange={props.handleStaffField} />
                     </Col>
+                    <Col sm="12" md="6" lg="6" xl="4" className="form-group form-group-select">
+                        <label htmlFor="spain registred">Spain Registred</label>
+
+                        <Select
+              
+                            id="spainRegistred"
+                         
+                            valueKey="id"
+                            labelKey="name"
+                            className="form-control"
+                            options={props.spainRegistred}
+                            onChange={(v) => { props.handleStaffSelect('spainRegistred', v, 'id') }}
+                            value={props.staff.spainRegistred === '' ? null : props.staff.spainRegistred}
+                            placeholder=""
+                           
+                        />
+                    </Col>
+                    <Col sm="12" md="6" lg="6" xl="4" className="form-group">
+                        <TextInput name="daysStayedInCountry" label="Number Of Days in Country" disabled value={props.staff.daysStayedInCountry} onChange={props.handleStaffField} />
+                    </Col>
                     <Col sm="12" md="12" lg="12" xl="12" className="form-group">
             <Label for="empContent">Remarks</Label>
             <Input

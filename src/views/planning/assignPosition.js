@@ -283,7 +283,7 @@ debugger;
              candidate: this.state.selectedCandidate.staffID,
             startDate: this.state.selectedAssignStart,
              endDate: this.state.selectedAssignEnd,
-             selectedTitle:this.props.selectedTitle[0],
+             selectedTitle:this.props.selectedMplID,
              oldDate: this.state.selectedPlacementPeriod.substr(0, 10)
         }
 
@@ -345,7 +345,7 @@ else
        let mplresult = this.props.allRoles
        .filter( x => x != null ).map(x => x.headOfs).reduce((prev, x) => prev.concat(x), [])
        .filter( x => x != null ).map(x => x.destinations).reduce((prev, x) => prev.concat(x), [])
-       .filter( x => x !=null ).map(x => x.positions).reduce((prev, x) => prev.concat(x), []).filter(x => x.mplID == this.props.selectedTitle[0])
+       .filter( x => x !=null ).map(x => x.positions).reduce((prev, x) => prev.concat(x), []).filter(x => x.mplID == this.props.selectedMplID)
         mplresult=mplresult.length > 0 ? mplresult :[{}]
 debugger;
 
@@ -354,7 +354,7 @@ debugger;
     <div>
       <Modal isOpen={this.props.modal} toggle={this.toggle}>
         <ModalHeader toggle={this.toggle}>
-         Assign Staff To Position - {this.props.selectedTitle}  
+         Assign Staff To Position - {this.props.selectedMplID}  
         </ModalHeader>
         <ModalBody>
           <Row>

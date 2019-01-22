@@ -37,7 +37,7 @@ this.dates=[]
 
     let model = {
       dateModified: newdatemodified,
-      mplid: this.props.selectedTitle[0],
+      mplid: this.props.selectedMplID,
     
       oldDate: this.state.selectedPlacementPeriod.substr(0, 10)
     }
@@ -78,7 +78,7 @@ this.dates=[]
 
   render() {
     
-    const mplid = this.props.selectedTitle[0]  ? this.props.selectedTitle[0].toString() : []
+    const mplid = this.props.selectedMplID ? this.props.selectedMplID.toString() : []
     
 
 debugger;
@@ -99,7 +99,7 @@ const options = this.props.candidate
       <div>
         <Modal isOpen={this.props.modal} toggle={this.toggle}>
           <ModalHeader toggle={this.toggle}>
-            Mark Position Decline - {this.props.selectedTitle}
+            Mark Position Decline - {this.props.selectedMplID}  
           </ModalHeader>
           <ModalBody>
             {/* <Alert color="danger">

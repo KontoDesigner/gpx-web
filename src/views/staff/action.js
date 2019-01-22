@@ -17,15 +17,15 @@ const Action = (props) => {
 
                 <DropdownMenu>
     
-                <DropdownItem title="dsds" onClick={() => {props.toogleAbsentStaffModal("1")}}>
+                <DropdownItem title="dsds" onClick={() => {props.toogleAbsentStaffModal()}}>
                 Mark As Absent  </DropdownItem>
                 
                 {/* <AccountSettingModal /> */}
 
-                   <DropdownItem title="dsds" onClick={() => {props.toogleResignStaffModal("2")}}>
+                   <DropdownItem title="dsds" onClick={() => {props.toogleResignStaffModal()}}>
                 Mark As Resign </DropdownItem>
             
-                <DropdownItem title="dsds" onClick={() => {props.toogleSendMailModal("3")}}>
+                <DropdownItem title="dsds" onClick={() => {props.toogleSendMailModal()}}>
                 Send Mail (Using Template) </DropdownItem>
                 </DropdownMenu>
             </UncontrolledDropdown>

@@ -16,7 +16,7 @@ const PersonTable = props => {
        //alert(data.mplID)
      // console.log(data,e,test,hello)
      
-     props.toogleAbsentStaffModal() 
+     props.toogleAbsentStaffModal(data.staffID) 
        
      }
     
@@ -25,7 +25,7 @@ const PersonTable = props => {
          //alert(data.mplID)
        // console.log(data,e,test,hello)
        
-       props.toogleResignStaffModal() 
+       props.toogleResignStaffModal(data.staffID) 
          
        }
 
@@ -34,7 +34,7 @@ const PersonTable = props => {
            //alert(data.mplID)
          // console.log(data,e,test,hello)
          
-         props.toogleSendMailModal() 
+         props.toogleSendMailModal(data.staffID) 
            
          }
 

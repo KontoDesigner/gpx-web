@@ -34,8 +34,8 @@ export function createResign(model) {
 
         try {
             debugger;
-            const res = await RestClient.Post('resign/resignuserselect', model)
-
+            //const res = await RestClient.Post('resign/resignuserselect', model)
+            const res = await RestClient.Post('resign/resignuser', model)
             dispatch(endAjaxCall())
 
             if (res) {
@@ -57,7 +57,8 @@ export function createAbsense(model) {
 
         try {
             debugger;
-            const res = await RestClient.Post('abscense/abscenseuserselect', model)
+            const res = await RestClient.Post('abscense/abscenseuser', model)
+            //const res = await RestClient.Post('abscense/abscenseuser', model)
 
             dispatch(endAjaxCall())
 

@@ -24,11 +24,24 @@ const Buttons = props => {
                 <Button
                    // disabled={props.unsavedEdit === false}
                    // disabled={props.unsavedEdit === false}
-                    color="success"
+                    color="success" 
                     onClick={() => {
                         props.save()
+                      
+                      
                     }}>
                     Save
+                </Button> 
+                <Button
+                   // disabled={props.unsavedEdit === false}
+                   // disabled={props.unsavedEdit === false}
+                    color="success" 
+                    onClick={() => {
+                        props.save()
+                        window.close()
+                      
+                    }}>
+                    Save & Close
                 </Button> 
                 {/* <label>Status = {props.staff.status}</label> */}
             </Col>

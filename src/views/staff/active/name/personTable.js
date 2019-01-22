@@ -16,7 +16,7 @@ const PersonTable = (props) => {
        //alert(data.mplID)
      // console.log(data,e,test,hello)
      
-     props.toogleAbsentStaffModal() 
+     props.toogleAbsentStaffModal(data.staffID) 
        
      }
     
@@ -25,7 +25,7 @@ const PersonTable = (props) => {
          //alert(data.mplID)
        // console.log(data,e,test,hello)
        
-       props.toogleResignStaffModal() 
+       props.toogleResignStaffModal(data.staffID) 
          
        }
 
@@ -34,14 +34,14 @@ const PersonTable = (props) => {
            //alert(data.mplID)
          // console.log(data,e,test,hello)
          
-         props.toogleSendMailModal() 
+         props.toogleSendMailModal(data.staffID) 
            
          }
   const contextMenuId = props.index + "-nameContextMenu";
 
   return (
     <div>
-    <ContextMenu id={contextMenuId}>
+   <ContextMenu id={contextMenuId}>
       <MenuItem data={{ foo: 'bar' }} onClick={onContextMenuClick}>
         Mark As Absent
           </MenuItem>
