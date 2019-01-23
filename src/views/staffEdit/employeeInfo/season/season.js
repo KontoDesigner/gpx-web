@@ -74,7 +74,7 @@ class Season extends Component {
                 }}
                 color="primary"
                 style={{ marginRight: '10px', marginBottom: '10px' }}>
-                Assign Position
+                Assign To Position
             </Button>
         )
 
@@ -143,7 +143,7 @@ class Season extends Component {
                                 </Col>
 
                                 <Col sm="12" md="6" lg="6" xl="6" className="form-group">
-                                    <label htmlFor="StaffStartDate">Start Date</label>
+                                    <label htmlFor="StaffStartDate">Planned Staff Arrival</label>
 
                                     <Datetime
                                         value={this.props.positionAssign !== null ? moment(this.props.positionAssign.StaffStartDate).format("YYYY-MM-DD") : ''}
@@ -159,12 +159,43 @@ class Season extends Component {
                                 </Col>
 
                                 <Col sm="12" md="6" lg="6" xl="6" className="form-group">
-                                    <label htmlFor="StaffEndDate">End Date</label>
+                                    <label htmlFor="StaffEndDate">Planned Staff Departure</label>
                                 
                                     <Datetime
                                         value={this.props.positionAssign !== null ? moment(this.props.positionAssign.StaffEndDate).format("YYYY-MM-DD") : ''}
                                         onChange={v => {
                                             this.handlePositionAssignDatePicker('StaffEndDate', v, this.props.title)
+                                        }}
+                                        timeFormat={false}
+                                        dateFormat="YYYY-MM-DD"
+                                        closeOnSelect
+                                        utc={true}
+                                        inputProps={{ placeholder: 'YYYY-MM-DD' }}
+                                    />
+                                </Col>
+                                <Col sm="12" md="6" lg="6" xl="6" className="form-group">
+                                    <label htmlFor="ConfirmedDate">Confirmed Staff Arrival</label>
+
+                                    <Datetime
+                                        value={this.props.positionAssign !== null ? moment(this.props.positionAssign.ConfirmedDate).format("YYYY-MM-DD") : ''}
+                                        onChange={v => {
+                                            this.handlePositionAssignDatePicker('ConfirmedDate', v, this.props.title)
+                                        }}
+                                        timeFormat={false}
+                                        dateFormat="YYYY-MM-DD"
+                                        closeOnSelect
+                                        utc={true}
+                                        inputProps={{ placeholder: 'YYYY-MM-DD' }}
+                                    />
+                                </Col>
+
+                                <Col sm="12" md="6" lg="6" xl="6" className="form-group">
+                                    <label htmlFor="ConfirmedEndDate">Planned Staff Departure</label>
+                                
+                                    <Datetime
+                                        value={this.props.positionAssign !== null ? moment(this.props.positionAssign.ConfirmedEndDate).format("YYYY-MM-DD") : ''}
+                                        onChange={v => {
+                                            this.handlePositionAssignDatePicker('ConfirmedEndDate', v, this.props.title)
                                         }}
                                         timeFormat={false}
                                         dateFormat="YYYY-MM-DD"

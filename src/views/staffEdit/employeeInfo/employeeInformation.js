@@ -124,9 +124,7 @@ const EmployeeInformation = (props) => {
                            
                         />
                     </Col>
-                    <Col sm="12" md="6" lg="6" xl="4" className="form-group">
-                        <TextInput name="daysStayedInCountry" label="Number Of Days in Country" disabled value={props.staff.daysStayedInCountry} onChange={props.handleStaffField} />
-                    </Col>
+                 
                     <Col sm="12" md="12" lg="12" xl="12" className="form-group">
             <Label for="empContent">Remarks</Label>
             <Input

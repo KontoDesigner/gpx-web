@@ -115,7 +115,7 @@ class Staff extends Component {
       
              
          }
-        
+        debugger;
          this.props.staffActions.createMail(mailmodel)
 
          switch (this.state.activeTab) {
