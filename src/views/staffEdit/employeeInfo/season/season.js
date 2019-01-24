@@ -187,10 +187,10 @@ class Season extends Component {
                                         utc={true}
                                         inputProps={{ placeholder: 'YYYY-MM-DD' }}
                                     />
-                                </Col>
+                                </Col> 
 
                                 <Col sm="12" md="6" lg="6" xl="6" className="form-group">
-                                    <label htmlFor="ConfirmedEndDate">Planned Staff Departure</label>
+                                    <label htmlFor="ConfirmedEndDate">Confirmed Staff Departure</label>
                                 
                                     <Datetime
                                         value={this.props.positionAssign !== null ? moment(this.props.positionAssign.ConfirmedEndDate).format("YYYY-MM-DD") : ''}
