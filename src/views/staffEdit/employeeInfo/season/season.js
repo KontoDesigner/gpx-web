@@ -4,6 +4,7 @@ import TextInput from '../../../../components/textInput'
 import AssignRole from './assignRole'
 import MoveRole from './moveRole'
 import RemoveRole from './removeRole'
+import Fly2Work from './fly2Work'
 import Datetime from 'react-datetime'
 import moment from "moment";
 class Season extends Component {
@@ -13,7 +14,13 @@ class Season extends Component {
         this.state = {
             assignRoleModal: false,
             moveRoleModal: false,
-            removeRoleModal: false
+            removeRoleModal: false,
+            fly2WorkModal: false,
+
+        
+
+
+
         }
     }
 
@@ -32,6 +39,13 @@ class Season extends Component {
     toggleRemoveRoleModal = () => {
         this.setState({
             removeRoleModal: !this.state.removeRoleModal
+        })
+    }
+
+    toggleFly2WorkModal = (positionAssign) => {
+        
+        this.setState({
+            fly2WorkModal: !this.state.fly2WorkModal
         })
     }
 
@@ -64,6 +78,8 @@ class Season extends Component {
                 season={this.props.season}
             />
         )
+
+      
 
         const assignBtn = (
             <Button
@@ -100,6 +116,8 @@ class Season extends Component {
                     </Card>
 
                     {assignModal}
+                    
+                   
                 </div>
             )
         } else {
@@ -215,6 +233,7 @@ class Season extends Component {
                                     <Button
                                         size="sm"
                                         onClick={() => {
+                                            debugger;
                                             this.toggleRemoveRoleModal()
                                         }}
                                         color="danger"
@@ -225,7 +244,11 @@ class Season extends Component {
                                         <Button
                                             size="sm"
                                             onClick={() => {
-                                                this.props.send(this.props.positionAssign)
+debugger;
+                                                
+                                                    this.toggleFly2WorkModal()
+                
+                                               // this.props.send(this.props.positionAssign)
                                             }}
                                             color="warning"
                                             style={{ marginBottom: '10px' }}>
@@ -237,9 +260,19 @@ class Season extends Component {
                         </CardFooter>
                     </Card>
 
-                    
+               
 
                     {assignModal}
+
+
+            <Fly2Work
+                modal={this.state.fly2WorkModal}
+                toggle={this.toggleFly2WorkModal}
+                positionAssign={this.props.positionAssign}
+                send={this.props.send}
+               
+            />
+        
 
                     <MoveRole
                         modal={this.state.moveRoleModal}
