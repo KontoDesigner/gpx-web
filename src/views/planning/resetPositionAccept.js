@@ -143,7 +143,7 @@ const options = this.props.candidate
             </Row>
           </ModalBody>
           <ModalFooter>
-            <Button color="success" onClick={() => this.createAccept()}>
+            <Button color="success" onClick={() => this.createResetAccept()}>
               Ok
             </Button>{' '}
             <Button color="danger" onClick={this.toggle}>
