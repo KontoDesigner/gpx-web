@@ -22,7 +22,7 @@ const Tabs = (props) => {
                         <ListGroupItem
                             className={classnames({ active: props.activeTab === 'destination' })}
                             onClick={() => {
-                                debugger;
+                                
                                 props.toggle('destination',
                                 
                                     props.getDestination,

@@ -7,7 +7,7 @@ export function save(model) {
     var currentdate = new Date()
 
     var newdatemodified=moment(currentdate).format("YYYY-MM-DD HH:mm:ss")
-debugger;
+
     
 let cleanModel =  {}
    
@@ -17,7 +17,7 @@ let cleanModel =  {}
 //     return {model.international:x.international} }
 
 //     ):[],
-debugger;
+
  cleanModel.International=model.international  ? model.international:null  
 
  cleanModel.NationalConcept = model.nationalConcept  ? model.nationalConcept:null
@@ -101,7 +101,7 @@ debugger;
 
 
 
-debugger;
+
 
     return async function(dispatch) {
         dispatch(beginAjaxCall())
@@ -130,11 +130,11 @@ export function sendToCtx(model) {
         dispatch(beginAjaxCall())
 
         try {
-            debugger;
+            
             const res = await RestClient.Post('ctx/send', model)
 
             dispatch(endAjaxCall())
-debugger;
+
             if (res && res.ok) {
                 toastr.success('Success', `Request sent to CTX`)
             } else {
@@ -197,7 +197,7 @@ export function deletePositionAssign(id,startDate) {
                 StartDate: startDate,
                 DateModified:newdatemodified
             }
-debugger;
+
             await RestClient.Post('positionassign/deletepositionassign', model)
 
             dispatch(endAjaxCall())
@@ -233,13 +233,13 @@ export function movePositionAssign(oldPositionAssignId, newMPLID) {
 export function insertPositionAssign(positionAssign) {
     return async function(dispatch) {
         dispatch(beginAjaxCall())
-debugger;
+
 try {
  
     const res = await RestClient.Post('positionassign', positionAssign)
 
     dispatch(endAjaxCall())
-    debugger;
+    
     if (res && res.ok) {
         toastr.success('Success', ` ${res ? res.message : 'Success'}`)
     } else {
@@ -270,7 +270,7 @@ export function getAvailablePositions(currentSeason, nextSeason, followingSeason
                 NextSeason: nextSeason,
                 FollowingSeason: followingSeason
             }
-debugger;
+
             const availablePositions = await RestClient.Post('positionassign/getavailablepositions', data)
 
             dispatch(getAvailablePositionsSuccess(availablePositions))
@@ -296,7 +296,7 @@ export function getPositionAssigns(staffId) {
         try {
           
             const positionAssigns = await RestClient.Get(`positionassign/assignment/${staffId}`)
-            debugger;
+            
             dispatch(getPositionAssignsSuccess(positionAssigns))
         } catch (error) {
             dispatch(ajaxCallError(error))
@@ -314,7 +314,7 @@ export function getStaffSuccess(staff) {
 }
 
 export function getStaff(staffId) {
-    debugger;
+    
     return async function(dispatch) {
         dispatch(beginAjaxCall())
 

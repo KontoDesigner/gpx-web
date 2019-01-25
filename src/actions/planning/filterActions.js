@@ -15,6 +15,7 @@ export function handleSourceMarket(sourceMarket) {
 }
 
 export function handleSelectedJobFamily(selectedJobFamily) {
+  debugger;
   return {
     type: types.HANDLE_SELECTEDJOBFAMILY,
     data: { selectedJobFamily: selectedJobFamily }

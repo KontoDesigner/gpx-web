@@ -17,7 +17,7 @@ class Abscense extends Component {
     //*************** */add a local state for the resign part since that is not part of the staff object*********************
     let abscenseLocal = this.props.abscenseHistory[0]?this.props.abscenseHistory[0]:{};
     let resignHistoryLocal = this.props.resignHistory?this.props.resignHistory[0]:{};
-    debugger;
+    
     this.state = {
       value: '',   
       validLastWorking:'',
@@ -103,7 +103,7 @@ class Abscense extends Component {
       StaffID: this.props.staff.staffID
     }
 
-    debugger;
+    
 
     try {
       const res = await RestClient.Post('abscense/abscenseUser', model)
@@ -127,7 +127,7 @@ class Abscense extends Component {
     var currentdate = new Date()
 
     var newdatemodified=moment(currentdate).format("YYYY-MM-DD HH:mm:ss")
-debugger;
+
       var check= this.state.resignHistoryLocal.appDate ?  true: false
       var check2= this.state.resignHistoryLocal.managerReason ? true: false
       var check3= this.state.resignHistoryLocal.reasonForResignment ? true: false
@@ -188,7 +188,7 @@ debugger;
       })
 
            if(!check6){ 
-             debugger;
+             
         this.setState({
           validRecommend:'Select recommendation'
         })
@@ -197,10 +197,10 @@ debugger;
       this.setState({
         validRecommend:''
       })
-debugger;
+
 
       if((this.state.resignHistoryLocal.recommend='No') && (this.state.resignHistoryLocal.resignComm='') ){ 
-        debugger;
+        
 
    this.setState({
      validComment:'Enter comment'
@@ -239,7 +239,7 @@ debugger;
       StaffID: this.props.staff.staffID
     } 
 
-    debugger;
+    
     try {
       const res = await RestClient.Post('resign/resignUser', model)
       debugger
@@ -306,7 +306,7 @@ debugger;
   }
 
   handleStaffDatePicker = (field, date) => {
-    debugger;
+    
     let val = ''
 
     //Picker

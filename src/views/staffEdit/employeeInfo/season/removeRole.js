@@ -2,7 +2,7 @@ import React from 'react';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter, Alert } from 'reactstrap';
 
 const RemoveRole = (props) => {
-debugger;
+
     function removeRole(positionAssignId,startDate) {
         props.removeRole(positionAssignId,startDate);
 

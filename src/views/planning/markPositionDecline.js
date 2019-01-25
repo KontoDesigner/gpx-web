@@ -42,7 +42,7 @@ this.dates=[]
       oldDate: this.state.selectedPlacementPeriod.substr(0, 10)
     }
 
-    this.props.createAccept(model)
+    this.props.createDecline(model)
   }
 
   
@@ -81,7 +81,7 @@ this.dates=[]
     const mplid = this.props.selectedMplID ? this.props.selectedMplID.toString() : []
     
 
-debugger;
+
 const options = this.props.candidate  
       .filter(x => x.mplid === mplid)
        .map(h => ({
@@ -94,7 +94,7 @@ const options = this.props.candidate
          ' - ' +
            moment(h.endDate).format('YYYY-MM-DD')
        }))
-      debugger;
+      
     return (
       <div>
         <Modal isOpen={this.props.modal} toggle={this.toggle}>

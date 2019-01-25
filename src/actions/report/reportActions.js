@@ -11,7 +11,7 @@ export function handleYearField(val) {
 }
 
 export function handleDestinationField(val) {
- debugger;
+ 
     return {
         
        type: types.HANDLE_DESTINATION_FIELD,
@@ -56,7 +56,7 @@ export function getResignDatesLookup() {
         try { 
             
             const resigndates = await RestClient.Get(`resign/GetAllResignDatesLookup`)
-       debugger;
+       
        //dispatch(handleResignDates)
             dispatch(getResignDatesLookupSuccess(resigndates))
         } catch (error) {
@@ -85,7 +85,7 @@ export function getResignDates() {
         try { 
             
             const resigndates = await RestClient.Get(`resign/GetAllResignDates`)
-       debugger;
+       
        //dispatch(handleResignDates)
             dispatch(getResignDatesSuccess(resigndates))
         } catch (error) {
@@ -100,7 +100,7 @@ export function getResignDates() {
 export function createResignReport(model) {
     return async function(dispatch) {
       //  dispatch(beginAjaxCall())
-debugger;
+
         try {
 
        
@@ -112,7 +112,7 @@ debugger;
             //       resignDate: appDate.appDate,
             //       destination: ['ACE']
             //   }
-  debugger;
+  
              //await RestClient.Download(`resign/GetResignReports?datetime=2018-10-02`,null,'ResignReport.xlsx')
               await RestClient.Download(`report/GetResignReports`,model, 'ResignReport_'+newdatemodified+'.xlsx')
           
@@ -133,7 +133,7 @@ debugger;
 export function createOnboardReport(model) {
     return async function(dispatch) {
       //  dispatch(beginAjaxCall())
-debugger;
+
         try {
 
    
@@ -145,7 +145,7 @@ debugger;
             //       resignDate: appDate.appDate,
             //       destination: ['ACE']
             //   }
-  debugger;
+  
              //await RestClient.Download(`resign/GetResignReports?datetime=2018-10-02`,null,'ResignReport.xlsx')
               await RestClient.Download(`report/GetOnboardReports`,model, 'OnboardReport_'+newdatemodified+'.xlsx')
           
@@ -167,7 +167,7 @@ debugger;
 export function createVacantReport(model) {
     return async function(dispatch) {
       //  dispatch(beginAjaxCall())
-debugger;
+
         try {
 
             var currentdate = new Date()
@@ -177,7 +177,7 @@ debugger;
             //       resignDate: appDate.appDate,
             //       destination: ['ACE']
             //   }
-  debugger;
+  
              //await RestClient.Download(`resign/GetResignReports?datetime=2018-10-02`,null,'ResignReport.xlsx')
               await RestClient.Download(`report/GetVacantReports`,model, 'VacantReport_'+newdatemodified+'.xlsx')
           
@@ -211,7 +211,7 @@ export function createReport(model) {
             var currentdate = new Date()
 
             var newdatemodified=moment(currentdate).format("YYYY-MM-DD HH:mm:ss")
-debugger;
+
              //await RestClient.Download(`resign/GetResignReports?datetime=2018-10-02`,null,'ResignReport.xlsx')
              await RestClient.Download(`report/GetReports`,model,'StaffingList_'+newdatemodified+'.xlsx')
             

@@ -137,7 +137,7 @@ create = (destination) => {
       (currentdate.getMonth() + 1) +
       '-' +
       currentdate.getDate()
-debugger;
+
 
 let model = destination? destination.map(x => {
     return {destination:x.destination}
@@ -153,12 +153,12 @@ let model = destination? destination.map(x => {
     //     //destination: [destination.destination]
 
     // }
-debugger;
+
     this.props.reportActions.createReport(model)
 }
 
 createOnboard = (destination) => {
-    debugger;
+    
     var currentdate = new Date()
     var newdatemodified =
       currentdate.getFullYear() +
@@ -185,7 +185,7 @@ createOnboard = (destination) => {
 }
 
 createVacant = (destination) => {
-    debugger;
+    
 
 
 
@@ -206,7 +206,7 @@ createVacant = (destination) => {
 }
 
 createResign = (requestDate,destination) => {
-    debugger;
+    
     
     // let model = destination? destination.map(x => {
     //     return {destination:x.destination}
@@ -221,7 +221,7 @@ createResign = (requestDate,destination) => {
       this.setState({
         validDate:'Date´s missing'
       })
-      debugger;
+      
       return false;
     }
     this.setState({
@@ -234,7 +234,7 @@ createResign = (requestDate,destination) => {
       }
 
       ):[]
-debugger;
+
     // const model= {
     //   resignDate:requestDate.appDate,
     //  destination:destination?[destination.destination]:[]
@@ -246,7 +246,7 @@ debugger;
 }
 
     toggle = (tab, getData, resetData) => {
-     debugger;
+     
         if (this.state.activeTab !== tab) {
             //Reset current tab state
             this.state.resetData([])

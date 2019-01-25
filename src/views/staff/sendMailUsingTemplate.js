@@ -78,7 +78,7 @@ class SendMailUsingTemplate extends Component {
              selectedNotification: this.state.selectedNotification,
            
         }
-debugger;
+
        this.props.createMail(model);
     }
     

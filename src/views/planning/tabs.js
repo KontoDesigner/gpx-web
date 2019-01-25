@@ -28,7 +28,7 @@ const Tabs = props => {
                         <ListGroupItem
                             className={classnames({ active: props.activeTab === 'placedRoles' })}
                             onClick={() => {
-                                debugger;
+                                
                                 props.toggle('placedRoles', props.getPlacedRoles, props.handlePlacedRoles)
                             }}>
                             Placed Positions

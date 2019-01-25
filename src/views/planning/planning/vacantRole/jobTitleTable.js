@@ -21,7 +21,7 @@ const columns = [
 
 const JobTitleTable = (props) => {
   function onContextMenuClick(e, data) {
-    debugger;
+    
        //alert(data.mplID)
      // console.log(data,e,test,hello)
      

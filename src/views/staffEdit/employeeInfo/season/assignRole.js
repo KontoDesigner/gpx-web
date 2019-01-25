@@ -25,17 +25,17 @@ class AssignRole extends Component {
     }
 
     destinationOnChange = destination => {
-        debugger;
+        
         const selectedDestination = destination != null ? destination.destination : null
 
         const dest = this.props.availablePositions.filter(ap => ap.destination === selectedDestination)[0];
-debugger;
+
         let jobTitles = [];
 
         if (dest !== undefined) {
           
             jobTitles = dest.jobTitles ;
-            debugger;
+            
         }
 
         this.setState({
@@ -47,11 +47,11 @@ debugger;
             positionEndDate: null,
             jobTitles
         })
-        debugger;
+        
     }
 
     jobTitleOnChange = jobTitle => {
-        debugger;
+        
         const selectedJobTitle = jobTitle != null ? jobTitle.mplid : null;
         const positionStartDate = jobTitle != null ? jobTitle.positionStartDate: null;
         const positionEndDate = jobTitle != null ? jobTitle.positionEndDate: null
@@ -82,9 +82,9 @@ debugger;
 
 
     assignStartChange = assignStart => {
-        debugger;
+        
         const selectedStartDate = assignStart ;
-     debugger;
+     
         this.setState({
             selectedStartDate,
             validDate2:''
@@ -146,13 +146,13 @@ debugger;
         
         {
             if(!checkok){
-                debugger;
+                
                 this.setState({
                     validDate:'Assign dates does not match position dates',
                     validDate2:''
     
                   })
-                  debugger;
+                  
                   return false;
     
             }
@@ -163,7 +163,7 @@ debugger;
 
 
         this.toggle();
-        debugger;
+        
         this.props.assignRole(model);
 
          

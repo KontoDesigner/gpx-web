@@ -4,7 +4,7 @@ import RestClient from '../../infrastructure/restClient'
 import { toastr } from 'react-redux-toastr'
 
 export function handleStaffSelect(val) {
-    debugger;
+    
        return {
            
           type: types.HANDLE_STAFF_SELECT,

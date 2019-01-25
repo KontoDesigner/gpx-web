@@ -15,7 +15,7 @@ export function getVacantRoles(sourcemarket = 'ALL', jobfamily='ALL', criteria =
     dispatch(beginAjaxCall())
 
     try {
-   debugger;
+   
       
       const vacantRoles = await RestClient.Get(`positionassign/GetAllUnAssignedPositions/${sourcemarket}/${jobfamily}/${criteria !== null ? `${criteria}` : ''}`)
 

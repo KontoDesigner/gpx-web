@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { ListGroup, ListGroupItem, Card, CardBody, CardHeader,Col } from 'reactstrap'
 import moment from "moment";
 const Revisions = (props) => {
-    debugger;
+    
     return (
         <Card>
             {<CardHeader>Revisions <div class="pull-right"></div></CardHeader> }

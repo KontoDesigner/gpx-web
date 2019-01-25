@@ -25,20 +25,21 @@ class Filter extends Component {
     const value = event.target.value
 
     this.props.filterActions.handleText(value)
-    debugger;
+    
     this.getData(this.props.filter.sourceMarket, this.props.filter.selectedJobFamily, value)
   }
 
 
   updateSourceMarketState = sourceMarket => {
     const sourceMarketId = sourceMarket != null ? sourceMarket.id : undefined
-debugger;
+
     this.props.filterActions.handleSourceMarket(sourceMarketId)
-debugger;
+
     this.props.getData(sourceMarketId, this.props.filter.selectedJobFamily, this.props.filter.text)
   }
 
   updateJobFamilyState = jobFamily => {
+    debugger;
     const jobFamilyId = jobFamily != null ? jobFamily.id : undefined
 
     this.props.filterActions.handleSelectedJobFamily(jobFamilyId)

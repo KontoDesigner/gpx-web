@@ -136,7 +136,7 @@ class Planning extends Component {
     this.props.planningActions.createVacant(vacantModel)
     // this.props.placedRolesActions.getPlacedRoles()
     // return
-    debugger;
+    
    
     // let all = JSON.parse(JSON.stringify(this.props.placedRoles))  // All Role view or array into this let var
  // All Role view or array into this let var
@@ -190,7 +190,7 @@ switch (this.state.activeTab) {
 //       const row = all[0].headOfs[0].destinations[0].positions[0]
 
  //const index = all.findIndex(pr => pr.mplid === model.mplid)
- debugger;
+ 
 //  all{index}.mplid = 'test'
 
 //  if (index !== -1) {
@@ -206,7 +206,7 @@ switch (this.state.activeTab) {
             //   //all[index] = "Kiwi";
             //     all.splice(index, 1)
             // }
-debugger;
+
             //this.props.handleAllRoles(all)
     
 }

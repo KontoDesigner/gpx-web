@@ -20,12 +20,12 @@ export function getStaffCandidateSuccess(candidate) {
 export function createAccept(model) {
     return async function(dispatch) {
         dispatch(beginAjaxCall())
-debugger;
+
         try {
              const modelobsolete = {
                   Id: model.id
         }
-debugger;
+
            const res= await RestClient.Post('positionassign/markaccept', model)
         
        
@@ -49,19 +49,19 @@ debugger;
 export function createResetAccept(model) {
     return async function(dispatch) {
         dispatch(beginAjaxCall())
-debugger;
+
         try {
              const modelobsolete = {
                   Id: model.id
         }
-debugger;
+
            const res= await RestClient.Post('positionassign/markaccept', model)
         
        
             if (res) {
-                toastr.success('Success', `Selected position assign (s) is now resetted`)
+                toastr.success('Success', `Selected position assign (s) is now accepted`)
             } else {
-                toastr.error('Error', `Selected position assign(s) is not resetted: ${res ? res.message : 'Error'}`)
+                toastr.error('Error', `Selected position assign(s) is not accepted: ${res ? res.message : 'Error'}`)
             }
 
 
@@ -79,12 +79,12 @@ debugger;
 export function createDecline(model) {
     return async function(dispatch) {
         dispatch(beginAjaxCall())
-debugger;
+
         try {
              const modelobsolete = {
                   Id: model.id
         }
-debugger;
+
            const res= await RestClient.Post('positionassign/markaccept', model)
         
        
@@ -109,12 +109,12 @@ debugger;
 export function createPosition(model) {
     return async function(dispatch) {
         dispatch(beginAjaxCall())
-debugger;
+
         try {
              const modelobsolete = {
                   Id: model.id
         }
-debugger;
+
            const res= await RestClient.Post('position/createPosition', model)
         
        
@@ -139,12 +139,12 @@ debugger;
 export function createVacant(model) {
     return async function(dispatch) {
         dispatch(beginAjaxCall())
-debugger;
+
         try {
              const modelobsolete = {
                   Id: model.id
         }
-debugger;
+
            const res= await RestClient.Post('positionassign/makevacant', model)
         
        
@@ -170,12 +170,12 @@ debugger;
 export function createActing(model) {
     return async function(dispatch) {
         dispatch(beginAjaxCall())
-debugger;
+
         try {
              const modelobsolete = {
                   Id: model.id
         }
-debugger;
+
            const res= await RestClient.Post('position/markacting', model)
         
        
@@ -200,12 +200,12 @@ debugger;
 export function createUpdate(model) {
     return async function(dispatch) {
         dispatch(beginAjaxCall())
-debugger;
+
         try {
              const modelobsolete = {
                   Id: model.id
         }
-debugger;
+
            const res= await RestClient.Post('position/updateposition', model)
         
        
@@ -235,7 +235,7 @@ export function deletePositionAssign(model) {
 // StaffID:model.StaffID,
 // OldDates:model.OldDates
              }
-            debugger;
+            
              await RestClient.Post('positionassign/deletepositionassignselect', model)
          
             dispatch(endAjaxCall())
@@ -250,13 +250,13 @@ export function deletePositionAssign(model) {
 export function insertStaffAssign(positionAssign) {
     return async function(dispatch) {
         dispatch(beginAjaxCall())
-debugger;
+
         try {
  
             const res = await RestClient.Post('positionassign', positionAssign)
         
             dispatch(endAjaxCall())
-            debugger;
+            
             if (res && res.ok) {
                 toastr.success('Success', ` ${res ? res.message : 'Success'}`)
             } else {
@@ -278,7 +278,7 @@ export function getStaffCandidate() {
       try {
          
           const candidate= await RestClient.Get(`staff/GetStaffInitload`)
-          debugger;
+          
         
        
           dispatch(getStaffCandidateSuccess(candidate))

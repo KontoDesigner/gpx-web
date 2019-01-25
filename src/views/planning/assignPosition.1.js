@@ -90,7 +90,7 @@ class AssignPosition extends Component {
 
 
     candidateOnChange = async candidate => {
-      debugger;
+      
      // const selectedCandidate = candidate ;
      
       let dates = [];
@@ -165,16 +165,16 @@ class AssignPosition extends Component {
     // :[]
 
    
-// debugger;
+// 
 //         const dest = this.props.candidate.filter(ap => ap.firstNameLastNameStatus=== selectedCandidate)[0];
 //           let dates= [];
 
-//           debugger;
+//           
 
         //   if (dest !== undefined) {
           
         //     dates= moment(dest.startDate).format("YYYY-MM-DD")
-        //     debugger;
+        //     
         // }
 
       
@@ -183,7 +183,7 @@ class AssignPosition extends Component {
 
       
 
-        debugger;
+        
        
           // //beginAjaxCall()
        
@@ -191,7 +191,7 @@ class AssignPosition extends Component {
 
           //    const placementDynamicPeriods = await RestClient.Get(`positionassign/getmypositionassign/${selectedCandidate.staffID}`)
              
-          //    debugger;
+          //    
 
           // } catch (error) {
           //  // dispatch(ajaxCallError(error))
@@ -199,18 +199,18 @@ class AssignPosition extends Component {
           //   throw error
           // }
     
-          // debugger;
+          // 
 
     }
 
     assignStartChange = assignStart => {
       const selectedAssignStart = assignStart ;
- debugger;
+ 
       this.setState({
         selectedAssignStart
      
       })
-      debugger;
+      
   }
 
   assignEndChange = assignEnd => {
@@ -228,7 +228,7 @@ placementPeriodChange = placementPeriods => {
  // const selectedAssignStart = selectedPlacementPeriod.startDate.substr(0, 10); 
   //const selectedAssignEnd = selectedPlacementPeriod.startDate.substr(-10); 
   
-debugger;
+
 
 
   this.setState({
@@ -237,7 +237,7 @@ debugger;
     //selectedAssignEnd
  
   })
-  debugger;
+  
 }
 
 componentDidMount() {
@@ -269,14 +269,14 @@ componentDidMount() {
              endDate: this.state.selectedAssignEnd,
              selectedTitle:this.props.selectedTitle[0]
         }
-debugger;
+
        this.props.createAssign(model);
     }
     
 
 
     render() {
-debugger;
+
 
 
 

@@ -96,7 +96,7 @@ class NewPosition extends Component {
 }
 
 createPosition = (val) => {
-       debugger;
+       
   //this.toggle();
   var newdatemodified = new Date();
  
@@ -154,7 +154,7 @@ createPosition = (val) => {
    }
 
 
-debugger;
+
  //this.props.createPosition(this.state);
  this.props.createPosition(model);
  
@@ -180,14 +180,14 @@ async componentWillMount() {
 }
 
 startChange = start => {
-  debugger;
+  
   const selectedStart = start ;
-debugger;
+
   this.setState({
     selectedStart
  
   })
-  debugger;
+  
 }
 
 endChange = end => {
@@ -202,7 +202,7 @@ this.setState({
 
 
 handleChange(field,event) {
-  debugger;
+  
   
   switch (field) {
    case 'se01':
@@ -251,7 +251,7 @@ handleChange(field,event) {
 }
 
 handleChangeSelect= (field, event, ) => {
-  debugger;
+  
    switch (field) {
     case 'positionType':
     this.setState({selectvalue: event});
@@ -310,7 +310,7 @@ handleChangeSelect= (field, event, ) => {
 // }
 
 handleCountrySelect = country => {
-  debugger;
+  
   const selectedCountry = country != null ? country: null;
 
   this.setState({
@@ -321,7 +321,7 @@ handleCountrySelect = country => {
 
 handleJobTitleSelect = jobTitle => {
 
-  debugger;
+  
   const selectedJobTitle = jobTitle != null ? jobTitle: null;
 
   this.setState({

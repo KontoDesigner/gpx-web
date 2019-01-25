@@ -165,14 +165,14 @@ class StaffEdit extends Component {
         const _this = this
 
         // try {
-        //     debugger;
+        //     
         //     const nowAvailablePositions =  await RestClient.Get('positionassign/getallcand')
 
         // this.setState({
         //     nowAvailablePositions
 
         //   })
-        //   debugger;
+        //   
         //     // if (nowAvailablePositions) {
         //     //     //toastr.success('Success', `Abscense Document is updated`)
         //     // } else {

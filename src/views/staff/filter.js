@@ -23,7 +23,7 @@ class Filter extends Component {
 
 
   updateTextState = event => {
-    debugger;
+    
     const value = event.target.value
 
     this.props.filterActions.handleText(value)
@@ -34,9 +34,9 @@ class Filter extends Component {
 
   updateSourceMarketState = sourceMarket => {
     const sourceMarketId = sourceMarket != null ? sourceMarket.id : undefined
-debugger;
+
     this.props.filterActions.handleSourceMarket(sourceMarketId)
-debugger;
+
     this.props.getData(sourceMarketId, this.props.filter.selectedJobFamily, this.props.filter.text)
   }
 

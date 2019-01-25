@@ -101,7 +101,7 @@ class UpdatePosition extends Component {
         selectedAssignStart
      
       })
-      debugger;
+      
   }
 
   assignEndChange = assignEnd => {
@@ -121,7 +121,7 @@ placementPeriodChange = placementPeriods => {
     selectedPlacementPeriod
  
   })
-  debugger;
+  
 }
 
 componentDidMount() {
@@ -150,7 +150,7 @@ componentDidMount() {
              endDate: this.state.selectedAssignEnd,
              selectedTitle:this.props.selectedTitle[0]
         }
-debugger;
+
        this.props.createUpdate(model);
     }
     

@@ -40,7 +40,7 @@ class Imports extends Component {
     }
 
     handleFile=(fileName) => {
-        debugger;
+        
    this.setState({fileName})
 
     }
@@ -65,7 +65,7 @@ class Imports extends Component {
     }
   
     handleImportType = ( val) => {
-                debugger;       
+                       
         this.setState({importType:val.id});
     }
 

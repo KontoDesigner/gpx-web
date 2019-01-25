@@ -91,7 +91,7 @@ export function getSetting() {
         dispatch(beginAjaxCall())
 
         try {
-           debugger;
+           
             const setting = await RestClient.Get(`setting/setting`)
 
             dispatch(getSettingSuccess(setting))

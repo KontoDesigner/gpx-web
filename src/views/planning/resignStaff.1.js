@@ -33,14 +33,14 @@ createResign = (val) => {
       // startDate: this.state.selectedAbsentStart,
       //  endDate: this.state.selectedAbsentEnd
   }
-debugger;
+
  this.props.createResign(model);
 }
 
 
 resignAppDateChange = appDate => {
   const selectedResignAppDate = appDate ;
-debugger;
+
   this.setState({
     selectedResignAppDate
  

@@ -103,7 +103,7 @@ handleUnsavedEdit = () => {
 }
 
 edit = (e, notification) => {
-    debugger;
+    
     if (!$(e.target).is(":checkbox")) {
         const win = window.open(`/notification/${notification.templateName}`, '_this');
 
@@ -113,7 +113,7 @@ edit = (e, notification) => {
 
 save = async(model) => {
   // this.props.settingActions.save()
-debugger;
+
 
 try {
     const res =  await RestClient.Post('setting/updateSetting', model)

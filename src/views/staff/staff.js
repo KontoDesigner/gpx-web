@@ -115,7 +115,7 @@ class Staff extends Component {
       
              
          }
-        debugger;
+        
          this.props.staffActions.createMail(mailmodel)
 
          switch (this.state.activeTab) {
@@ -135,7 +135,7 @@ class Staff extends Component {
      }
 
     createAbscense = model => {
-      debugger;
+      
        let abscensemodel = {
   
             ApplicationType:"Abscense",
@@ -150,7 +150,7 @@ class Staff extends Component {
      
             
         }
-        debugger;
+        
         this.props.staffActions.createAbsense(abscensemodel)
 
         switch (this.state.activeTab) {
@@ -170,7 +170,7 @@ class Staff extends Component {
     }
 
     handleFile=(fileName) => {
-        debugger;
+        
    this.setState({fileName})
 
     }
@@ -193,7 +193,7 @@ class Staff extends Component {
                // EndDate: role.endDate
                
            }
-           debugger;
+           
            this.props.staffActions.createResign(resignmodel)
 
            switch (this.state.activeTab) {
@@ -239,7 +239,7 @@ class Staff extends Component {
     }
 
     toogleAbsentStaffModal = (val) => {
-        debugger;
+        
 
         if(val) {
             this.setState({
@@ -257,7 +257,7 @@ class Staff extends Component {
             
          
           }
-          debugger;
+          
 
 
         // this.setState({
@@ -325,7 +325,7 @@ class Staff extends Component {
     }
 
     toggle = (tab, getData, resetData) => {
-        debugger;
+        
         if (this.state.activeTab !== tab) {
             //Reset current tab state
             this.state.resetData([])
@@ -345,7 +345,7 @@ class Staff extends Component {
     }
 
     handleImportType = ( val) => {
-debugger;       
+       
 this.setState({importType:val.id});
 }
 
@@ -363,7 +363,7 @@ try {
   const res =  await RestClient.Upload('import/UploadFile/'+ this.state.importType,this.state.fileName)
 
 this.setState({fileName:null, importType:''})
-debugger;
+
    if (res) {
       toastr.success('Success', `GPX - Import routine finished`)
 } else {

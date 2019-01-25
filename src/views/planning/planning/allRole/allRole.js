@@ -17,21 +17,20 @@ class AllRole extends Component {
           <Filter 
           getData={this.props.getAllRoles}
           />
-        
             <Action 
               
             selected={this.props.selectedTitle} 
             allRoles={this.props.allRoles}
             toogleMakePositionVacantModal={this.props.toogleMakePositionVacantModal}
-                                toogleUnmarkPositionActingModal ={this.props.toogleUnmarkPositionActingModal}
-                                toogleResetPositionAcceptModal  ={this.props.toogleResetPositionAcceptModal}
-                                toogleMarkPositionDeclineModal ={this.props.toogleMarkPositionDeclineModal}
-                                toogleMarkPositionActingModal ={this.props.toogleMarkPositionActingModal}
-                                toogleMarkPositionAcceptModal = {this.props.toogleMarkPositionAcceptModal}
-                                toogleAssignPositionModal = {this.props.toogleAssignPositionModal}
-                                toogleUpdatePositionModal = {this.props.toogleUpdatePositionModal}
+            toogleUnmarkPositionActingModal ={this.props.toogleUnmarkPositionActingModal}
+            toogleResetPositionAcceptModal  ={this.props.toogleResetPositionAcceptModal}
+            toogleMarkPositionDeclineModal ={this.props.toogleMarkPositionDeclineModal}
+            toogleMarkPositionActingModal ={this.props.toogleMarkPositionActingModal}
+            toogleMarkPositionAcceptModal = {this.props.toogleMarkPositionAcceptModal}
+            toogleAssignPositionModal = {this.props.toogleAssignPositionModal}
+           toogleUpdatePositionModal = {this.props.toogleUpdatePositionModal}
                                
-            />
+            /> 
           </div>
 
           {this.props.allRoles.map((allRole, index) =>

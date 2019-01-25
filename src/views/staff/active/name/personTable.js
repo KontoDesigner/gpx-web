@@ -12,7 +12,7 @@ const columns = [
 
 const PersonTable = (props) => {
   function onContextMenuClick(e, data) {
-    debugger;
+    
        //alert(data.mplID)
      // console.log(data,e,test,hello)
      
@@ -21,7 +21,7 @@ const PersonTable = (props) => {
      }
     
      function onContextMenuClick2(e, data) {
-      debugger;
+      
          //alert(data.mplID)
        // console.log(data,e,test,hello)
        
@@ -30,7 +30,7 @@ const PersonTable = (props) => {
        }
 
        function onContextMenuClick3(e, data) {
-        debugger;
+        
            //alert(data.mplID)
          // console.log(data,e,test,hello)
          

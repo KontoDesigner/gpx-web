@@ -58,10 +58,10 @@ class NotificationEdit extends Component {   //Notification smart component
     save = async(model) => {
         // this.props.settingActions.save()
       
-      debugger;
+      
       try {
           const res =  await RestClient.Post('mail/updateTemplate', model)
-      debugger;
+      
      
       
           if (res) {

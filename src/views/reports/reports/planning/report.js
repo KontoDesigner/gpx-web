@@ -22,7 +22,7 @@ class Report extends Component {
 
         // onChange = (selections) => {
         //     console.log("Change Handler 1 : Selected: ", selections);
-        //     debugger;
+        //     
         //     const newOptions = [].concat(this.state.options);
             
         //     selections.forEach(selection => {

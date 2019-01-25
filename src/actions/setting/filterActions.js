@@ -11,7 +11,7 @@ export function handleText(text) {
 
 
 export function handleSelectedNotification(selectedNotification) {
-  debugger;
+  
   return {
     type: types.HANDLE_SELECTEDNOTIFICATION,
     data: { selectedNotification: selectedNotification }

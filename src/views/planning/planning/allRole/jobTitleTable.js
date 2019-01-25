@@ -27,7 +27,7 @@ const columns = [
 const JobTitleTable = (props) => {
 
   function onContextMenuClick(e, data) {
-    debugger;
+    
        //alert(data.mplID)
      // console.log(data,e,test,hello)
      
@@ -37,7 +37,7 @@ const JobTitleTable = (props) => {
    
    
      function onContextMenuClick2(e, data) {
-       debugger;
+       
           //alert(data.mplID)
         // console.log(data,e,test,hello)
         props.toogleMakePositionVacantModal(data.mplID)
@@ -45,7 +45,7 @@ const JobTitleTable = (props) => {
         }
    
         function onContextMenuClick3(e, data) {
-         debugger;
+         
             //alert(data.mplID)
           // console.log(data,e,test,hello)
           props.toogleMarkPositionAcceptModal(data.mplID)
@@ -53,7 +53,7 @@ const JobTitleTable = (props) => {
           }
    
           function onContextMenuClick4(e, data) {
-           debugger;
+           
               //alert(data.mplID)
             // console.log(data,e,test,hello)
             props.toogleResetPositionAcceptModal(data.mplID)
@@ -61,7 +61,7 @@ const JobTitleTable = (props) => {
             }
    
             function onContextMenuClick5(e, data) {
-             debugger;
+             
                 //alert(data.mplID)
               // console.log(data,e,test,hello)
               props.toogleMarkPositionDeclineModal(data.mplID)
@@ -69,7 +69,7 @@ const JobTitleTable = (props) => {
               }
    
               function onContextMenuClick6(e, data) {
-               debugger;
+               
                   //alert(data.mplID)
                 // console.log(data,e,test,hello)
                 props.toogleMarkPositionActingModal(data.mplID)
@@ -77,7 +77,7 @@ const JobTitleTable = (props) => {
                 }
    
                 function onContextMenuClick7(e, data) {
-                 debugger;
+                 
                     //alert(data.mplID)
                   // console.log(data,e,test,hello)
                   props.toogleUnmarkPositionActingModal(data.mplID)

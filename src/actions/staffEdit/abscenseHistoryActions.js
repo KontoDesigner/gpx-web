@@ -20,7 +20,7 @@ export function getAbscenseHistory(staffId) {
         try {
             
             const abscenseHistory = await RestClient.Get(`staff/getStaffAbscenseHistory/${staffId}`)
-            debugger;
+            
             dispatch(getAbscenseHistorySuccess(abscenseHistory))
         } catch (error) {
             dispatch(ajaxCallError(error))

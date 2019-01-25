@@ -13,7 +13,7 @@ import { bindActionCreators } from 'redux'
 class EmployeeInfo extends Component {
     
     async componentWillMount() {
-debugger;
+
     }
 
 
@@ -79,7 +79,7 @@ debugger;
         }
 
         const _this = this
-debugger;
+
         _this.props.employeeInfoActions.insertPositionAssign(positionAssign).then(function() 
         {
             _this.props.getAvailablePositionNew
@@ -94,7 +94,7 @@ debugger;
 
     removeRole = (positionAssignId, startDate) => {
     
-        debugger;
+        
 
 
         const _this = this

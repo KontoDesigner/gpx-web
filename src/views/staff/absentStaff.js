@@ -60,7 +60,7 @@ class AbsentStaff extends Component {
 
     absentStartChange = absentStart => {
       const selectedAbsentStart = absentStart ;
-   debugger;
+   
       this.setState({
         selectedAbsentStart
      

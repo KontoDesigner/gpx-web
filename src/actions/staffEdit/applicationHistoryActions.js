@@ -18,7 +18,7 @@ export function getResignHistory(staffId) {
         try {
 
             const resignHistory = await RestClient.Get(`staff/getStaffResignHistory/${staffId}`)
-debugger;
+
             dispatch(getResignHistorySuccess(resignHistory))
         } catch (error) {
             dispatch(ajaxCallError(error))
@@ -42,7 +42,7 @@ debugger;
 //         try {
             
 //             const abscenseHistory = await RestClient.Get(`staff/getStaffAbscenseHistory/${staffId}`)
-//             debugger;
+//             
 //             dispatch(getAbscenseHistorySuccess(abscenseHistory))
 //         } catch (error) {
 //             dispatch(ajaxCallError(error))

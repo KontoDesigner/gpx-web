@@ -9,7 +9,7 @@ export function createMail(model) {
         dispatch(beginAjaxCall())
 
         try {
-            debugger;
+            
             const res = await RestClient.Post('mail/sendMailAsync', model)
 
             dispatch(endAjaxCall())
@@ -33,7 +33,7 @@ export function createResign(model) {
         dispatch(beginAjaxCall())
 
         try {
-            debugger;
+            
             //const res = await RestClient.Post('resign/resignuserselect', model)
             const res = await RestClient.Post('resign/resignuser', model)
             dispatch(endAjaxCall())
@@ -56,7 +56,7 @@ export function createAbsense(model) {
         dispatch(beginAjaxCall())
 
         try {
-            debugger;
+            
             const res = await RestClient.Post('abscense/abscenseuser', model)
             //const res = await RestClient.Post('abscense/abscenseuser', model)
 
@@ -76,7 +76,7 @@ export function createAbsense(model) {
 }
 
 export function handleStaffField(field, val) {
-    debugger;
+    
     return {
         type: types.HANDLE_STAFF_FIELD,
         data: { field: field, val: val }

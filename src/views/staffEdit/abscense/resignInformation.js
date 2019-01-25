@@ -14,7 +14,7 @@ const resignInformation = props => {
       size="sm"
       className="pull-right"
       onClick={() => {
-        debugger;
+        
         props.handleSaveResign()
       }} 
       color="warning"

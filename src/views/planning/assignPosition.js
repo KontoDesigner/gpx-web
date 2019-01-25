@@ -111,13 +111,13 @@ class AssignPosition extends Component {
 
 
     candidateOnChange = async candidate => {
-      debugger;
+      
      // const selectedCandidate = candidate ;
      
      
       const selectedCandidate = candidate != null ? candidate: null
 
-debugger;
+
      // this.options = {value: ''};
 
       this.setState({
@@ -153,7 +153,7 @@ dates:[],
       startDate: "Add New"  
      
  });
-// debugger;
+// 
      this.setState({
       
       dates:newArray
@@ -161,7 +161,7 @@ dates:[],
     })
 
 
-        debugger;
+        
        
     
 
@@ -169,9 +169,9 @@ dates:[],
 
     
    positionStartChange = positionStart => {
-    debugger;
+    
     const positionStartDate = positionStart ;
- debugger;
+ 
     this.setState({
         positionStartDate
    
@@ -181,9 +181,9 @@ dates:[],
 
 
 positionEndChange = positionEnd => {
-debugger;
+
 const positionEndDate = positionEnd ;
-debugger;
+
 this.setState({
     positionEndDate
 
@@ -193,14 +193,14 @@ this.setState({
 
     assignStartChange = assignStart => {
       const selectedAssignStart = assignStart ;
- debugger;
+ 
       this.setState({
         selectedAssignStart,
         validDate:''
      
      
       })
-      debugger;
+      
   }
 
   assignEndChange = assignEnd => {
@@ -215,13 +215,13 @@ this.setState({
 }
 
 placementPeriodChange = placementPeriods => {
-  debugger;
+  
 
 const selectedPlacementPeriod = placementPeriods.startDate ;
 // const selectedAssignStart = selectedPlacementPeriod ? selectedPlacementPeriod.substr(0, 10):''; 
   //const selectedAssignEnd = selectedPlacementPeriod ? selectedPlacementPeriod.substr(-10):''; 
   
-debugger;
+
 
 
   this.setState({
@@ -232,14 +232,14 @@ debugger;
     //selectedAssignEnd
  
   })
-  debugger;
+  
 }
 
 
 
     createAssign = (val,val2) => {
        
-      debugger;
+      
 
        // const destination = this.props.availablePositions.filter(ap => ap.destination === this.state.selectedDestination)[0];
        var check= this.state.selectedCandidate ? true: false
@@ -291,11 +291,11 @@ var assignCompareStart = new Date(this.state.selectedAssignStart);
 var assignCompareEnd  = new Date(this.state.selectedAssignEnd);
 var positionCompareStart = new Date(val);
 var positionCompareEnd  = new Date(val2);
-debugger;
+
 
 var checkok= (assignCompareStart.getTime() >= positionCompareStart.getTime() && assignCompareEnd.getTime() <= positionCompareEnd.getTime());
 var checkok2= (assignCompareStart.getTime() < assignCompareEnd.getTime());
- debugger;
+ 
 
 
 
@@ -306,7 +306,7 @@ var checkok2= (assignCompareStart.getTime() < assignCompareEnd.getTime());
 
    
  this.toggle();
- debugger;
+ 
  this.props.createAssign(model);
 }
 else
@@ -347,7 +347,7 @@ else
        .filter( x => x != null ).map(x => x.destinations).reduce((prev, x) => prev.concat(x), [])
        .filter( x => x !=null ).map(x => x.positions).reduce((prev, x) => prev.concat(x), []).filter(x => x.mplID == this.props.selectedMplID)
         mplresult=mplresult.length > 0 ? mplresult :[{}]
-debugger;
+
 
 
   return (

@@ -12,7 +12,7 @@ const AbscenseInformation = props => {
       size="sm"
       className="pull-right"
       onClick={() => {
-        debugger;
+        
          props.handleSaveAbscense()
       }}
       color="warning"
