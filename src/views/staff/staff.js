@@ -93,6 +93,7 @@ class Staff extends Component {
     
     }
 
+
    
 
     edit = (e, staff) => {
@@ -118,20 +119,7 @@ class Staff extends Component {
         
          this.props.staffActions.createMail(mailmodel)
 
-         switch (this.state.activeTab) {
-            case "destination":
-            this.props.destinationActions.getDestination()
-              break;
-             case "name":
-              this.props.nameActions.getName()
-           
-                break;
-              case "jobTitle":
-             this.props.jobTitleActions.getJobTitle()
-               break;
-           
-           
-            }
+         this.getActTabAndRequest(this.state.activeTab) 
      }
 
     createAbscense = model => {
@@ -153,20 +141,7 @@ class Staff extends Component {
         
         this.props.staffActions.createAbsense(abscensemodel)
 
-        switch (this.state.activeTab) {
-            case "destination":
-            this.props.destinationActions.getDestination()
-              break;
-             case "name":
-              this.props.nameActions.getName()
-           
-                break;
-              case "jobTitle":
-             this.props.jobTitleActions.getJobTitle()
-               break;
-           
-           
-            }
+        this.getActTabAndRequest(this.state.activeTab) 
     }
 
     handleFile=(fileName) => {
@@ -196,23 +171,28 @@ class Staff extends Component {
            
            this.props.staffActions.createResign(resignmodel)
 
-           switch (this.state.activeTab) {
+           this.getActTabAndRequest(this.state.activeTab) 
+
+
+       }
+
+       getActTabAndRequest = async (actTab) => {
+ 
+        switch (actTab) {
             case "destination":
-            this.props.destinationActions.getDestination()
+            this.props.destinationActions.getDestination(this.props.filter.sourceMarket,this.props.filter.selectedJobFamily,this.props.filter.text)
               break;
              case "name":
-              this.props.nameActions.getName()
+              this.props.nameActions.getName(this.props.filter.sourceMarket,this.props.filter.selectedJobFamily,this.props.filter.text)
            
                 break;
               case "jobTitle":
-             this.props.jobTitleActions.getJobTitle()
+             this.props.jobTitleActions.getJobTitle(this.props.filter.sourceMarket,this.props.filter.selectedJobFamily,this.props.filter.text)
                break;
            
            
             }
-
-
-       }
+          }
 
        toogleSendMailModal = (val) => {
 
@@ -335,8 +315,8 @@ class Staff extends Component {
 
             //Get tab data
            // getData()
-            getData(this.props.filter.sourceMarket,this.props.filter.jobFamily,this.props.filter.criteria)
-
+            getData(  getData(this.props.filter.sourceMarket,this.props.filter.selectedJobFamily,this.props.filter.text))
+ 
             this.setState({
                 activeTab: tab,
                 resetData: resetData

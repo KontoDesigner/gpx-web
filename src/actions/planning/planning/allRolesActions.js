@@ -12,7 +12,7 @@ export function getAllRolesSuccess(allRoles) {
 export function getAllRoles(sourcemarket = 'ALL', jobfamily='ALL', criteria = null) {
   return async function (dispatch) {
     dispatch(beginAjaxCall())
-
+debugger;
     try {
       
      // const allRoles = await RestClient.Get(`positionassign/GetAllPositionsAssignData`)

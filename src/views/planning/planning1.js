@@ -39,7 +39,7 @@ class Planning extends Component {
     this.state = {
       nowAvailablePositions: [],
       activeTab: 'allRole',
-      resetData: this.props.allRolesActions.handleAllRoles,  // send to all views
+      resetData: this.props.allRolesActions.handleAllRoles,  // send to all role view
       markPositionAcceptModal: false,
       makePositionVacantModal: false,
       markPositionActingModal: false,
@@ -48,6 +48,7 @@ class Planning extends Component {
       unmarkPositionActingModal: false,
       assignPositionModal: false,
       updatePositionModal: false,
+      selectedMplID:null,
  
     }
     this.handleChange = this.handleChange.bind(this)
@@ -58,20 +59,54 @@ class Planning extends Component {
   }
 
   toogleMakePositionVacantModal = val => {
-    if(val){ 
-      this.props.filterActions.handleSelectedTitle([val])
-  
+    if(val) {
+      this.setState({
+        makePositionVacantModal: !this.state.makePositionVacantModal,
+        selectedMplID: val
+      })
+
+    }else 
+    {
+
+      this.setState({
+        makePositionVacantModal: !this.state.makePositionVacantModal,
+        selectedMplID: this.props.selectedTitle
+      })
+      
 
     }
-    this.setState({
-      makePositionVacantModal: !this.state.makePositionVacantModal
-    })
+
   }
 
   toogleAssignPositionModal = val => {
-    this.setState({
-      assignPositionModal: !this.state.assignPositionModal
-    })
+
+        if(val) {
+          this.setState({
+            assignPositionModal: !this.state.assignPositionModal,
+            selectedMplID: val
+          })
+
+        }else 
+        {
+
+          this.setState({
+            assignPositionModal: !this.state.assignPositionModal,
+            selectedMplID: this.props.selectedTitle
+          })
+          
+
+        }
+
+
+
+      // this.setState({
+      //   assignPositionModal: !this.state.assignPositionModal,
+      //   selectedMplID: val
+      // })
+
+
+
+
   }
 
   toogleUpdatePositionModal = val => {
@@ -81,33 +116,141 @@ class Planning extends Component {
   }
 
   toogleMarkPositionAcceptModal = val => {
-    this.setState({
-      markPositionAcceptModal: !this.state.markPositionAcceptModal
-    })
+
+    if(val) {
+      this.setState({
+        markPositionAcceptModal: !this.state.markPositionAcceptModal,
+        selectedMplID: val
+      })
+
+    }else 
+    {
+
+      this.setState({
+        markPositionAcceptModal: !this.state.markPositionAcceptModal,
+        selectedMplID: this.props.selectedTitle
+      })
+      
+
+    }
+    
+
+
+    // this.setState({
+    //   markPositionAcceptModal: !this.state.markPositionAcceptModal
+    // })
   }
 
   toogleMarkPositionActingModal = val => {
-    this.setState({
-      markPositionActingModal: !this.state.markPositionActingModal
-    })
+
+   
+    if(val) {
+      this.setState({
+        markPositionActingModal: !this.state.markPositionActingModal,
+        selectedMplID: val
+      })
+
+    }else 
+    {
+
+      this.setState({
+        markPositionActingModal: !this.state.markPositionActingModal,
+        selectedMplID: this.props.selectedTitle
+      })
+      
+
+    }
+
+
+    // this.setState({
+    //   markPositionActingModal: !this.state.markPositionActingModal
+    // })
   }
 
   toogleMarkPositionDeclineModal = val => {
-    this.setState({
-      markPositionDeclineModal: !this.state.markPositionDeclineModal
-    })
+
+    if(val) {
+      this.setState({
+        markPositionDeclineModal: !this.state.markPositionDeclineModal,
+        selectedMplID: val
+      })
+
+    }else 
+    {
+
+      this.setState({
+        markPositionDeclineModal: !this.state.markPositionDeclineModal,
+        selectedMplID: this.props.selectedTitle
+      })
+      
+
+    }
+
+
+
+
+
+
+
+    // this.setState({
+    //   markPositionDeclineModal: !this.state.markPositionDeclineModal
+    // })
   }
 
   toogleResetPositionAcceptModal = val => {
-    this.setState({
-      resetPositionAcceptModal: !this.state.resetPositionAcceptModal
-    })
+
+    
+    if(val) {
+      this.setState({
+        resetPositionAcceptModal: !this.state.resetPositionAcceptModal,
+        selectedMplID: val
+      })
+
+    }else 
+    {
+
+      this.setState({
+        resetPositionAcceptModal: !this.state.resetPositionAcceptModal,
+        selectedMplID: this.props.selectedTitle
+      })
+      
+
+    }
+
+
+
+
+
+
+
+
+    // this.setState({
+    //   resetPositionAcceptModal: !this.state.resetPositionAcceptModal
+    // })
   }
 
   toogleUnmarkPositionActingModal = val => {
-    this.setState({
-      unmarkPositionActingModal: !this.state.unmarkPositionActingModal
-    })
+
+    if(val) {
+      this.setState({
+        unmarkPositionActingModal: !this.state.unmarkPositionActingModal,
+        selectedMplID: val
+      })
+
+    }else 
+    {
+
+      this.setState({
+        unmarkPositionActingModal: !this.state.unmarkPositionActingModal,
+        selectedMplID: this.props.selectedTitle
+      })
+      
+
+    }
+
+    // this.setState({
+    //   unmarkPositionActingModal: !this.state.unmarkPositionActingModal
+    // })
   }
   createPosition = model => {
     debugger
@@ -127,37 +270,42 @@ class Planning extends Component {
 
   createVacant = async model => {
     let vacantModel = {
-        Id: model.mplid,
+        Id: this.state.selectedMplID,
         DateModified: model.dateModified,
         OldDate: model.oldDate
     }
    
-
+debugger;
     this.props.planningActions.createVacant(vacantModel)
     // this.props.placedRolesActions.getPlacedRoles()
     // return
-    
+    this.getActTabAndRequest(this.state.activeTab) 
    
     // let all = JSON.parse(JSON.stringify(this.props.placedRoles))  // All Role view or array into this let var
  // All Role view or array into this let var
 
 
 
-switch (this.state.activeTab) {
- case "allRole":
- this.props.allRolesActions.getAllRoles()
-   break;
-  case "placedRoles":
-   this.props.placedRolesActions.getPlacedRoles()
-     break;
-   case "vacantRoles":
-  this.props.vacantRolesActions.getVacantRoles()
-    break;
-   case "replyYesNoRoles":
-  this.props.replyYesNoRolesActions.getreplyYesNoRoles()
-     break;
+// switch (this.state.activeTab) {
+//  case "allRole":
+//  //this.props.allRolesActions.getAllRoles()
+//  this.props.allRolesActions.getAllRoles(this.props.filter.sourceMarket,this.props.filter.selectedJobFamily,this.props.filter.text)
 
- }
+//    break;
+//   case "placedRoles":
+//   // this.props.placedRolesActions.getPlacedRoles()
+//   debugger;
+//     this.props.placedRolesActions.getPlacedRoles(this.props.filter.sourceMarket,this.props.filter.selectedJobFamily,this.props.filter.text)
+
+//      break;
+//    case "vacantRoles":
+//   this.props.vacantRolesActions.getVacantRoles()
+//     break;
+//    case "replyYesNoRoles":
+//   this.props.replyYesNoRolesActions.getreplyYesNoRoles()
+//      break;
+
+//  }
 
  this.props.filterActions.handleSelectedTitle([])
 
@@ -225,6 +373,8 @@ switch (this.state.activeTab) {
   
   // }
 
+
+
   createActing = model => {
     debugger
     let actingModel = {
@@ -236,6 +386,9 @@ switch (this.state.activeTab) {
     debugger
 
     this.props.planningActions.createActing(actingModel)
+
+    this.getActTabAndRequest(this.state.activeTab) 
+
   }
 
   createUnActing = model => {
@@ -249,6 +402,8 @@ switch (this.state.activeTab) {
     debugger
 
     this.props.planningActions.createActing(actingModel)
+
+    this.getActTabAndRequest(this.state.activeTab) 
   }
 
   createAccept = model => {
@@ -266,6 +421,8 @@ switch (this.state.activeTab) {
     // _this.props.planningActions.sendToCtx(positionAssign)
 
     this.props.planningActions.createAccept(acceptModel)
+
+    this.getActTabAndRequest(this.state.activeTab) 
   }
 
   createResetAccept = model => {
@@ -283,6 +440,8 @@ switch (this.state.activeTab) {
     // _this.props.planningActions.sendToCtx(positionAssign)
 
     this.props.planningActions.createResetAccept(resetAcceptModel)
+
+    this.getActTabAndRequest(this.state.activeTab) 
   }
 
   createDecline = model => {
@@ -300,6 +459,7 @@ switch (this.state.activeTab) {
     // _this.props.planningActions.sendToCtx(positionAssign)
 
     this.props.planningActions.createDecline(declineModel)
+    this.getActTabAndRequest(this.state.activeTab) 
   }
 
   createAssign = model => {
@@ -309,7 +469,7 @@ switch (this.state.activeTab) {
       DateModified: model.dateModified,
 
       StaffID: model.candidate,
-      MPLID: model.selectedTitle,
+      MPLID: this.state.selectedMplID,
 
       StartDate: model.startDate,
       EndDate: model.endDate,
@@ -328,7 +488,36 @@ switch (this.state.activeTab) {
       _this.props.planningActions.insertStaffAssign(assignmodel)
     }
     //this.props.planningActions.insertStaffAssign(assignmodel)
+
+    this.getActTabAndRequest(this.state.activeTab) 
   }
+
+
+  getActTabAndRequest =  actTab => {
+    debugger;
+       switch (actTab) {
+         case "allRole":
+         this.props.allRolesActions.getAllRoles(this.props.filter.sourceMarket,this.props.filter.selectedJobFamily,this.props.filter.text)
+
+           break;
+          case "placedRoles":
+          // this.props.placedRolesActions.getPlacedRoles()
+          
+            this.props.placedRolesActions.getPlacedRoles(this.props.filter.sourceMarket,this.props.filter.selectedJobTitle,this.props.filter.text)
+        
+             break;
+           case "vacantRoles":
+          this.props.vacantRolesActions.getVacantRoles(this.props.filter.sourceMarket,this.props.filter.selectedJobTitle,this.props.filter.text)
+            break;
+           case "replyYesNoRoles":
+          this.props.replyYesNoRolesActions.getreplyYesNoRoles(this.props.filter.sourceMarket,this.props.filter.selectedJobTitle,this.props.filter.text)
+             break;
+        
+   
+          }
+         }
+   
+
   createUpdate = model => {
     let updatemodel = {
       // TemplateName:model.selectedNotification,
@@ -379,14 +568,14 @@ switch (this.state.activeTab) {
        this.state.resetData([])
 
        //Reset filter
-      // this.props.filterActions.handleFilter()
+      //this.props.filterActions.handleFilter()
 
        //Get tab data
-      getData(this.props.filter.sourceMarket,this.props.filter.jobFamily,this.props.filter.criteria)
+       getData(this.props.filter.sourceMarket,this.props.filter.jobFamily,this.props.filter.criteria)
 
        this.setState({
          activeTab: tab,
-         resetData: resetData
+       resetData: resetData
       })
    }
    }
@@ -419,8 +608,8 @@ switch (this.state.activeTab) {
           createAssign={this.createAssign}
           candidate={this.props.candidate}
           selectedTitle={this.props.selectedTitle}
-          //nowAvailablePositions={this.state.nowAvailablePositions}
-         // allRoles={this.props.allRoles.concat(this.props.placedRoles)}
+          selectedMplID={this.state.selectedMplID}
+       
           allRoles={[...this.props.allRoles,...this.props.placedRoles, ...this.props.vacantRoles, ...this.props.replyYesNoRoles]}
         />
 
@@ -429,6 +618,7 @@ switch (this.state.activeTab) {
           toggle={this.toogleUpdatePositionModal}
           createUpdate={this.createUpdate}
           selectedTitle={this.props.selectedTitle}
+   
           // candidate={this.props.candidate }
           // selectedTitle={this.props.selectedTitle}
         />
@@ -438,8 +628,9 @@ switch (this.state.activeTab) {
           toggle={this.toogleMakePositionVacantModal}
           createVacant={this.createVacant}
           selectedTitle={this.props.selectedTitle}
-          candidate={this.props.candidate} 
-         
+          candidate={this.props.candidate}
+          selectedMplID={this.state.selectedMplID}
+         // runApi={this.state.runApi}
         />
 
         <MarkPositionAccept
@@ -448,6 +639,7 @@ switch (this.state.activeTab) {
           createAccept={this.createAccept}
           selectedTitle={this.props.selectedTitle}
           candidate={this.props.candidate}
+          selectedMplID={this.state.selectedMplID}
         />
 
         <MarkPositionActing
@@ -456,6 +648,7 @@ switch (this.state.activeTab) {
           createActing={this.createActing}
           selectedTitle={this.props.selectedTitle}
           candidate={this.props.candidate}
+          selectedMplID={this.state.selectedMplID}
         />
 
         <MarkPositionDecline
@@ -464,6 +657,7 @@ switch (this.state.activeTab) {
           createDecline={this.createDecline}
           selectedTitle={this.props.selectedTitle}
           candidate={this.props.candidate}
+          selectedMplID={this.state.selectedMplID}
         />
 
         <ResetPositionAccept
@@ -472,6 +666,7 @@ switch (this.state.activeTab) {
           createResetAccept={this.createResetAccept}
           selectedTitle={this.props.selectedTitle}
           candidate={this.props.candidate}
+          selectedMplID={this.state.selectedMplID}
         />
 
         <UnmarkPositionActing
@@ -480,6 +675,7 @@ switch (this.state.activeTab) {
           createUnActing={this.createUnActing}
           selectedTitle={this.props.selectedTitle}
           candidate={this.props.candidate}
+          selectedMplID={this.state.selectedMplID}
         />
 
         <Col sm="12" md="9" lg="9" xl="10">
@@ -489,6 +685,7 @@ switch (this.state.activeTab) {
                 allRoles={this.props.allRoles}
                 getAllRoles={this.props.allRolesActions.getAllRoles}
                 //getAllRoles={(sourcemarket, jobfamily,criteria) => this.props.allRolesActions.getAllRoles(sourcemarket, jobfamily,criteria)}
+               
                 handleSelectedTitle={
                   this.props.filterActions.handleSelectedTitle
                 }
@@ -521,7 +718,7 @@ switch (this.state.activeTab) {
             <TabPane tabId="placedRoles">
               <PlacedRole
                 placedRoles={this.props.placedRoles}
-                getPlacedRoles={this.props.placedRolesActions.getPlacedRoles}
+                getPlacedRoles={this.props.placedRolesActions.getPlacedRoles()}
                 //  getPlacedRoles={(sourcemarket, criteria) => this.props.placedRolesActions.getPlacedRoles(sourcemarket, criteria)}
                 handleSelectedTitle={
                   this.props.filterActions.handleSelectedTitle
@@ -541,7 +738,7 @@ switch (this.state.activeTab) {
                   this.toogleMarkPositionDeclineModal
                 }
                 toogleMarkPositionActingModal={
-                  this.toogleMarkPositionActingModal
+                  this.toogleMarkPositionActingModal 
                 }
                 toogleMarkPositionAcceptModal={
                   this.toogleMarkPositionAcceptModal

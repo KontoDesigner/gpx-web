@@ -18,6 +18,7 @@ import Tabs from './tabs'
 import * as employeeInfoActions from '../../actions/staffEdit/employeeInfoActions'
 import * as abscenseActions from '../../actions/staffEdit/abscenseActions'
 import * as historyActions from '../../actions/staffEdit/historyActions'
+import * as confirmedDatesActions from '../../actions/staffEdit/confirmedDatesActions'
 import * as destinationHistoryActions from '../../actions/staffEdit/destinationHistoryActions'
 import * as applicationHistoryActions from '../../actions/staffEdit/applicationHistoryActions'
 import * as abscenseHistoryActions from '../../actions/staffEdit/abscenseHistoryActions'
@@ -191,6 +192,7 @@ class StaffEdit extends Component {
             this.props.applicationHistoryActions.getResignHistory(this.state.staffId),
 
             this.props.historyActions.getHistory(this.state.staffId),
+            this.props.confirmedDatesActions.getConfirmedDates(this.state.staffId),  
             this.props.destinationHistoryActions.getDestinationHistory(this.state.staffId),
             this.props.abscenseHistoryActions.getAbscenseHistory(this.state.staffId),
 
@@ -246,7 +248,7 @@ class StaffEdit extends Component {
     //************************************************************************** */
 
     send = (positionAssign , direction) =>  {
-        debugger;
+        
         const model = {
             Id: this.props.staff.staffID,
             FirstName: this.props.staff.firstName,
@@ -382,7 +384,10 @@ class StaffEdit extends Component {
 
                                 <TabPane tabId="history">
                                     <DestinationHistory destinationHistory={this.props.destinationHistory} status={this.props.staff.status} />
-                                    {<ConfirmedDates confirmedDates={this.props.confirmedDates} />}
+                                    
+                                     <ConfirmedDates 
+                                    confirmedDate={this.props.confirmedDate} 
+                                    /> 
 
                                     <Revisions
                                         history={this.props.history}
@@ -416,13 +421,14 @@ function mapStateToProps(state) {
         destinationHistory: state.staffEdit.destinationHistory,
         history: state.staffEdit.history,
         applicationHistory: state.staffEdit.applicationHistory,
-
+        confirmedDate: state.staffEdit.confirmedDate,
         resignHistory: state.staffEdit.resignHistory
     }
-}
+} 
 
 function mapDispatchToProps(dispatch) {
     return {
+        confirmedDatesActions: bindActionCreators(confirmedDatesActions, dispatch),
         employeeInfoActions: bindActionCreators(employeeInfoActions, dispatch),
         abscenseActions: bindActionCreators(abscenseActions, dispatch),
         destinationHistoryActions: bindActionCreators(destinationHistoryActions, dispatch),

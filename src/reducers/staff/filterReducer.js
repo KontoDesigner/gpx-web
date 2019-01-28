@@ -18,7 +18,7 @@ export default function filterReducer(state = defaultState, action) {
       
       return {
         ...state,
-        selectedJobFamily: action.data.selectedJobFamily
+        selectedJobFamily: action.data.selectedJobFamily 
       }
     case types.HANDLE_FILTER:
       return defaultState

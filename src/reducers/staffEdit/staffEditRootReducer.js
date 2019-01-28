@@ -5,6 +5,7 @@ import destinationHistory from './destinationHistoryReducer'
 import applicationHistory from './applicationHistoryReducer'
 import abscenseHistory from './abscenseHistoryReducer'
 import history from './historyReducer'
+import confirmedDate from './confirmedDatesReducer'
 import cv from './cvReducer'
 export default combineReducers({
     employeeInfo,    abscense, 
@@ -12,5 +13,6 @@ export default combineReducers({
     applicationHistory,
     cv,
     abscenseHistory,
-    history
+    history,
+    confirmedDate
 })

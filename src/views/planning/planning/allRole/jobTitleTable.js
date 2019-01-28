@@ -18,7 +18,7 @@ const columns = [
   { label: 'Assign StartDate', dataKey: 'startDate' },
   { label: 'Assign EndDate', dataKey: 'endDate' },
   
-  { label: 'Placed', dataKey: 'firstNameLastName' },
+  { label: 'Placed', dataKey: 'firstnameLastName' },
   { label: '', dataKey: 'accept' },
   { label: '', dataKey: 'acting' },
  // { label: 'Id', dataKey: 'staffID' }

@@ -39,7 +39,7 @@ class Filter extends Component {
   }
 
   updateJobFamilyState = jobFamily => {
-    debugger;
+    
     const jobFamilyId = jobFamily != null ? jobFamily.id : undefined
 
     this.props.filterActions.handleSelectedJobFamily(jobFamilyId)

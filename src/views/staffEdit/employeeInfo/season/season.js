@@ -192,36 +192,13 @@ class Season extends Component {
                                     />
                                 </Col>
                                 <Col sm="12" md="6" lg="6" xl="6" className="form-group">
-                                    <label htmlFor="ConfirmedDate">Confirmed Staff Arrival</label>
-
-                                    <Datetime
-                                        value={this.props.positionAssign !== null ? moment(this.props.positionAssign.ConfirmedDate).format("YYYY-MM-DD") : ''}
-                                        onChange={v => {
-                                            this.handlePositionAssignDatePicker('ConfirmedDate', v, this.props.title)
-                                        }}
-                                        timeFormat={false}
-                                        dateFormat="YYYY-MM-DD"
-                                        closeOnSelect
-                                        utc={true}
-                                        inputProps={{ placeholder: 'YYYY-MM-DD' }}
-                                    />
-                                </Col> 
-
-                                <Col sm="12" md="6" lg="6" xl="6" className="form-group">
-                                    <label htmlFor="ConfirmedEndDate">Confirmed Staff Departure</label>
-                                
-                                    <Datetime
-                                        value={this.props.positionAssign !== null ? moment(this.props.positionAssign.ConfirmedEndDate).format("YYYY-MM-DD") : ''}
-                                        onChange={v => {
-                                            this.handlePositionAssignDatePicker('ConfirmedEndDate', v, this.props.title)
-                                        }}
-                                        timeFormat={false}
-                                        dateFormat="YYYY-MM-DD"
-                                        closeOnSelect
-                                        utc={true}
-                                        inputProps={{ placeholder: 'YYYY-MM-DD' }}
-                                    />
+                                    <TextInput name="ConfirmedDate" label="Confirmed Staff Arrival" disabled={true} value={this.props.positionAssign.ConfirmedDate } />
                                 </Col>
+
+                                     <Col sm="12" md="6" lg="6" xl="6" className="form-group">
+                                    <TextInput name="ConfirmedDepDate" label="Confirmed Staff Departure" disabled={true} value={this.props.positionAssign.ConfirmedDepDate } />
+                                </Col>
+
                             </div>
                         </CardBody>
 
@@ -233,7 +210,7 @@ class Season extends Component {
                                     <Button
                                         size="sm"
                                         onClick={() => {
-                                            debugger;
+                                            
                                             this.toggleRemoveRoleModal()
                                         }}
                                         color="danger"
@@ -244,7 +221,7 @@ class Season extends Component {
                                         <Button
                                             size="sm"
                                             onClick={() => {
-debugger;
+
                                                 
                                                     this.toggleFly2WorkModal()
                 
