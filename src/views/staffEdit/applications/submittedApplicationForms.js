@@ -27,11 +27,12 @@ const SubmittedApplicationForms = props => {
                    <b> StartDate </b>
                     </Col>
                     <Col sm="12" md="3" lg="3" xl="3" className="form-group">
-                    <b>Date Modified</b> 
+                    <b>Action</b> 
                     </Col>
                     <Col sm="12" md="3" lg="3" xl="3" className="form-group">
-                   <b>Status </b>
+                    <b>Date Modified</b> 
                     </Col>
+                   
 
                     </div>
                     {props.abscenseHistory.map(h => (
@@ -47,9 +48,7 @@ const SubmittedApplicationForms = props => {
                        
                     {moment(h.dateModified).format("YYYY-MM-DD")}
                     </Col>
-                    <Col sm="12" md="3" lg="3" xl="3" className="form-group">
-                    {h.status?h.status:"Received"}
-                    </Col> 
+                
 
                     </div>
         
@@ -68,11 +67,13 @@ const SubmittedApplicationForms = props => {
 </Col>
 <Col sm="12" md="3" lg="3" xl="3" className="form-group">
    
-{moment(ap.dateModified).format("YYYY-MM-DD")}
+{ap.destination ? ap.destination :""}{ap.jobTitleWhenResigned ? ap.jobTitleWhenResigned :""}
 </Col>
 <Col sm="12" md="3" lg="3" xl="3" className="form-group">
-{ap.status?ap.status:"Received"}
-</Col> 
+   
+{moment(ap.dateModified).format("YYYY-MM-DD")}
+</Col>
+
 
 </div>
 

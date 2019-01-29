@@ -25,7 +25,7 @@ export function createAccept(model) {
              const modelobsolete = {
                   Id: model.id
         }
-
+debugger;
            const res= await RestClient.Post('positionassign/markaccept', model)
         
        
@@ -44,7 +44,7 @@ export function createAccept(model) {
             throw error
         }
     }
-}
+} 
 
 export function createResetAccept(model) {
     return async function(dispatch) {

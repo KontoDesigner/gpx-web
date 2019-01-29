@@ -120,7 +120,7 @@ class Planning extends Component {
     if(val) {
       this.setState({
         markPositionAcceptModal: !this.state.markPositionAcceptModal,
-        selectedMplID: val
+        selectedMplID: [val]
       })
 
     }else 
