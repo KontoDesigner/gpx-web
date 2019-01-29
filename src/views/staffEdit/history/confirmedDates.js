@@ -19,7 +19,7 @@ class ConfirmedDates extends Component {
                    <b> Destination </b>
                     </Col>
                     <Col sm="12" md="3" lg="3" xl="3" className="form-group">
-                    <b>Who</b> 
+                    <b>Direction</b> 
                     </Col>
                     <Col sm="12" md="3" lg="3" xl="3" className="form-group">
                    <b>Date Modified </b>
@@ -31,14 +31,15 @@ class ConfirmedDates extends Component {
 
 <div className="form-row">
 <Col sm="12" md="3" lg="3" xl="3" className="form-group">
-{dh.confirmedDate?dh.confirmedDate:""}
+{dh.confirmedDate?moment(dh.confirmedDate).format("YYYY-MM-DD"):""}
+
 </Col>
 <Col sm="12" md="3" lg="3" xl="3" className="form-group">
 {dh.destination?dh.destination:""}
 </Col>   
 
 <Col sm="12" md="3" lg="3" xl="3" className="form-group">
-""
+{dh.direction?dh.direction:""}
 </Col>   
              
 <Col sm="12" md="3" lg="3" xl="3" className="form-group">

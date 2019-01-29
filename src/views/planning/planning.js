@@ -286,25 +286,7 @@ class Planning extends Component {
 
 
 
- switch (this.state.activeTab) {
-  case "allRole":
-  this.props.allRolesActions.getAllRoles(this.props.filter.sourceMarket,this.props.filter.selectedJobFamily,this.props.filter.text)
- 
-    break;
-   case "placedRoles":
-   // this.props.placedRolesActions.getPlacedRoles()
-   debugger;
-     this.props.placedRolesActions.getPlacedRoles(this.props.filter.sourceMarket,this.props.filter.selectedJobFamily,this.props.filter.text)
- 
-      break;
-    case "vacantRoles":
-   this.props.vacantRolesActions.getVacantRoles()
-     break;
-    case "replyYesNoRoles":
-   this.props.replyYesNoRolesActions.getreplyYesNoRoles()
-      break;
- 
-  }
+ this.getActTabAndRequest(this.state.activeTab) 
 
  this.props.filterActions.handleSelectedTitle([])
 
@@ -384,25 +366,7 @@ class Planning extends Component {
 
     this.props.planningActions.createActing(actingModel)
 
-    switch (this.state.activeTab) {
-      case "allRole":
-      this.props.allRolesActions.getAllRoles(this.props.filter.sourceMarket,this.props.filter.selectedJobFamily,this.props.filter.text)
-     
-        break;
-       case "placedRoles":
-       // this.props.placedRolesActions.getPlacedRoles()
-       debugger;
-         this.props.placedRolesActions.getPlacedRoles(this.props.filter.sourceMarket,this.props.filter.selectedJobFamily,this.props.filter.text)
-     
-          break;
-        case "vacantRoles":
-       this.props.vacantRolesActions.getVacantRoles()
-         break;
-        case "replyYesNoRoles":
-       this.props.replyYesNoRolesActions.getreplyYesNoRoles()
-          break;
-     
-      }
+    this.getActTabAndRequest(this.state.activeTab) 
 
   }
 
@@ -418,25 +382,7 @@ class Planning extends Component {
 
     this.props.planningActions.createActing(actingModel)
 
-    switch (this.state.activeTab) {
-      case "allRole":
-      this.props.allRolesActions.getAllRoles(this.props.filter.sourceMarket,this.props.filter.selectedJobFamily,this.props.filter.text)
-     
-        break;
-       case "placedRoles":
-       // this.props.placedRolesActions.getPlacedRoles()
-       debugger;
-         this.props.placedRolesActions.getPlacedRoles(this.props.filter.sourceMarket,this.props.filter.selectedJobFamily,this.props.filter.text)
-     
-          break;
-        case "vacantRoles":
-       this.props.vacantRolesActions.getVacantRoles()
-         break;
-        case "replyYesNoRoles":
-       this.props.replyYesNoRolesActions.getreplyYesNoRoles()
-          break;
-     
-      }
+    this.getActTabAndRequest(this.state.activeTab) 
   }
 
   createAccept = model => {
@@ -455,25 +401,7 @@ class Planning extends Component {
 
     this.props.planningActions.createAccept(acceptModel)
 
-    switch (this.state.activeTab) {
-      case "allRole":
-      this.props.allRolesActions.getAllRoles(this.props.filter.sourceMarket,this.props.filter.selectedJobFamily,this.props.filter.text)
-     
-        break;
-       case "placedRoles":
-       // this.props.placedRolesActions.getPlacedRoles()
-       debugger;
-         this.props.placedRolesActions.getPlacedRoles(this.props.filter.sourceMarket,this.props.filter.selectedJobFamily,this.props.filter.text)
-     
-          break;
-        case "vacantRoles":
-       this.props.vacantRolesActions.getVacantRoles()
-         break;
-        case "replyYesNoRoles":
-       this.props.replyYesNoRolesActions.getreplyYesNoRoles()
-          break;
-     
-      }
+    this.getActTabAndRequest(this.state.activeTab) 
   }
 
   createResetAccept = model => {
@@ -493,25 +421,7 @@ class Planning extends Component {
     this.props.planningActions.createResetAccept(resetAcceptModel)
 
  
-switch (this.state.activeTab) {
-  case "allRole":
-  this.props.allRolesActions.getAllRoles(this.props.filter.sourceMarket,this.props.filter.selectedJobFamily,this.props.filter.text)
- 
-    break;
-   case "placedRoles":
-   // this.props.placedRolesActions.getPlacedRoles()
-   debugger;
-     this.props.placedRolesActions.getPlacedRoles(this.props.filter.sourceMarket,this.props.filter.selectedJobFamily,this.props.filter.text)
- 
-      break;
-    case "vacantRoles":
-   this.props.vacantRolesActions.getVacantRoles()
-     break;
-    case "replyYesNoRoles":
-   this.props.replyYesNoRolesActions.getreplyYesNoRoles()
-      break;
- 
-  }
+    this.getActTabAndRequest(this.state.activeTab) 
   }
 
   createDecline = model => {
@@ -529,25 +439,7 @@ switch (this.state.activeTab) {
     // _this.props.planningActions.sendToCtx(positionAssign)
 
     this.props.planningActions.createDecline(declineModel)
-    switch (this.state.activeTab) {
-      case "allRole":
-      this.props.allRolesActions.getAllRoles(this.props.filter.sourceMarket,this.props.filter.selectedJobFamily,this.props.filter.text)
-     
-        break;
-       case "placedRoles":
-       // this.props.placedRolesActions.getPlacedRoles()
-       debugger;
-         this.props.placedRolesActions.getPlacedRoles(this.props.filter.sourceMarket,this.props.filter.selectedJobFamily,this.props.filter.text)
-     
-          break;
-        case "vacantRoles":
-       this.props.vacantRolesActions.getVacantRoles()
-         break;
-        case "replyYesNoRoles":
-       this.props.replyYesNoRolesActions.getreplyYesNoRoles()
-          break;
-     
-      }
+    this.getActTabAndRequest(this.state.activeTab) 
   }
 
   createAssign = model => {
@@ -577,26 +469,36 @@ switch (this.state.activeTab) {
     }
     //this.props.planningActions.insertStaffAssign(assignmodel)
 
-    switch (this.state.activeTab) {
-      case "allRole":
-      this.props.allRolesActions.getAllRoles(this.props.filter.sourceMarket,this.props.filter.selectedJobFamily,this.props.filter.text)
-     
-        break;
-       case "placedRoles":
-       // this.props.placedRolesActions.getPlacedRoles()
-       debugger;
-         this.props.placedRolesActions.getPlacedRoles(this.props.filter.sourceMarket,this.props.filter.selectedJobFamily,this.props.filter.text)
-     
-          break;
-        case "vacantRoles":
-       this.props.vacantRolesActions.getVacantRoles()
-         break;
-        case "replyYesNoRoles":
-       this.props.replyYesNoRolesActions.getreplyYesNoRoles()
-          break;
-     
-      }
+    this.getActTabAndRequest(this.state.activeTab) 
   }
+
+
+  getActTabAndRequest =  actTab => {
+    debugger;
+       switch (actTab) {
+         case "allRole":
+         this.props.allRolesActions.getAllRoles(this.props.filter.sourceMarket,this.props.filter.selectedJobFamily,this.props.filter.text)
+
+           break;
+          case "placedRoles":
+          // this.props.placedRolesActions.getPlacedRoles()
+          
+            this.props.placedRolesActions.getPlacedRoles(this.props.filter.sourceMarket,this.props.filter.selectedJobTitle,this.props.filter.text)
+        
+             break;
+           case "vacantRoles":
+          this.props.vacantRolesActions.getVacantRoles(this.props.filter.sourceMarket,this.props.filter.selectedJobTitle,this.props.filter.text)
+            break;
+           case "replyYesNoRoles":
+          this.props.replyYesNoRolesActions.getreplyYesNoRoles(this.props.filter.sourceMarket,this.props.filter.selectedJobTitle,this.props.filter.text)
+             break;
+        
+   
+          }
+         }
+   
+
+
   createUpdate = model => {
     let updatemodel = {
       // TemplateName:model.selectedNotification,
