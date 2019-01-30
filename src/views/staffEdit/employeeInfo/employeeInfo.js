@@ -99,7 +99,7 @@ class EmployeeInfo extends Component {
 
         const _this = this
 
-        this.props.employeeInfoActions.deletePositionAssign(positionAssignId,startDate).then(function() {
+        this.props.employeeInfoActions.deletePositionAssign(positionAssignId,startDate,_this.props.staff.staffID).then(function() {
 
         _this.props.getAvailablePositionNew
    

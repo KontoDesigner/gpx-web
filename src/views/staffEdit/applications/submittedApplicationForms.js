@@ -45,6 +45,10 @@ const SubmittedApplicationForms = props => {
                     {h.absentStart?moment(h.absentStart).format("YYYY-MM-DD"):"Abscense Start Date missing"}
                     </Col>
                     <Col sm="12" md="3" lg="3" xl="3" className="form-group">
+   
+{h.destination ? h.destination :""}{h.jobTitle ? h.jobTitle :""}
+</Col>
+                    <Col sm="12" md="3" lg="3" xl="3" className="form-group">
                        
                     {moment(h.dateModified).format("YYYY-MM-DD")}
                     </Col>

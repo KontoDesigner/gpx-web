@@ -183,18 +183,19 @@ export function handleFilterFromSuccess(from) {
     }
 }
 
-export function deletePositionAssign(id,startDate) {
+export function deletePositionAssign(id,startDate,staffId) {
     return async function(dispatch) {
         dispatch(beginAjaxCall())
 
         var currentdate = new Date()
 
         var newdatemodified=moment(currentdate).format("YYYY-MM-DD HH:mm:ss")
-
+debugger;
         try {
             const model = {
                 Id: id,
                 StartDate: startDate,
+                StaffID: staffId,
                 DateModified:newdatemodified
             }
 
