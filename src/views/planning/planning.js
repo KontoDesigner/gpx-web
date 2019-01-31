@@ -120,7 +120,7 @@ this.toogleMarkPositionAcceptModal
     if(val) {
       this.setState({
         markPositionAcceptModal: !this.state.markPositionAcceptModal,
-        selectedMplID: [val]
+        selectedMplID: val
       })
 
     }else 
