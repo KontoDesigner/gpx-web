@@ -19,6 +19,10 @@ const EmployeeInformation = (props) => {
                         <TextInput name="nat" label="Nationality" value={props.staff.nat} onChange={props.handleStaffField} />
                     </Col>
 
+                       <Col sm="12" md="6" lg="6" xl="4" className="form-group">
+                        <TextInput name="nat2" label="Dual Nationality" value={props.staff.nat2} onChange={props.handleStaffField} />
+                    </Col>
+
                     <Col sm="12" md="6" lg="6" xl="4" className="form-group form-group-select">
                         <label htmlFor="sourceMarket">Source Market</label>
 

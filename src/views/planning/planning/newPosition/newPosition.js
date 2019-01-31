@@ -51,6 +51,7 @@ class NewPosition extends Component {
       loaded: false,
       selectedCountry:null,
       selectedJobTitle:null,
+      selectedJobFamily:null,
       countries: [    //not in use  delete
         {
             id: 'Spain',
@@ -99,12 +100,13 @@ createPosition = (val) => {
        
   //this.toggle();
   var newdatemodified = new Date();
- 
+  debugger;
 
   let model = {
 
     Destination:this.props.selectedDestination.destination,
     JobTitle:this.state.selectedJobTitle.name,
+    JobFamily:this.state.selectedJobFamily.name,
     StartDate:this.state.selectedStart,
     EndDate:this.state.selectedEnd,
     Country:this.state.selectedCountry.name,
@@ -329,6 +331,16 @@ handleJobTitleSelect = jobTitle => {
   })
 }
 
+handleJobFamilySelect = jobFamily => {
+
+  
+  const selectedJobFamily = jobFamily != null ? jobFamily: null;
+
+  this.setState({
+    selectedJobFamily
+  })
+}
+
 
 handleDestinationSelect = (val) => {
 
@@ -405,9 +417,24 @@ handleDestinationSelect = (val) => {
          options={this.props.position}
           onChange = { this.handleDestinationSelect }
          value={this.props.selectedDestination}
-         placeholder="All Destinations"
+         placeholder="Select Destination"
         />
              </Col> 
+
+               <Col key={1} sm="12" md="6" lg="6" xl="4" className="form-group form-group-select">
+        <label htmlFor="jobFamily">JobFamily</label>
+
+        <Select
+          id="jobFamily"
+          valueKey="id"
+          labelKey="name"
+          className="form-control"
+          options={this.props.jobFamily}
+          onChange={this.handleJobFamilySelect }
+          value={this.state.selectedJobFamily}
+          placeholder="JobFamily"
+        />
+      </Col>
 
 
 <Col sm="12" md="6" lg="6" xl="4" className="form-group form-group-select">
@@ -421,7 +448,7 @@ handleDestinationSelect = (val) => {
          options={this.props.jobTitle}
          onChange = { this.handleJobTitleSelect }
          value={this.state.selectedJobTitle}
-         placeholder="All Destinations"
+         placeholder="Select JobTitle"
         />
              </Col> 
 
@@ -793,6 +820,7 @@ function mapStateToProps(state) {
       //resigndate: state.report.report.resigndates,
       position: state.report.report.report,
       jobTitle: state.setting.setting.jobTitle,
+      jobFamily: state.setting.setting.jobFamilies,
       selectedDestination:state.report.report.selectedDestination,
       selectedPositionType:state.report.report.selectedPositionType,
       selectedJobTitle:state.setting.setting.selectedJobTitle,

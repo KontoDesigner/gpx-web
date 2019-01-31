@@ -24,24 +24,29 @@ this.dates=[]
     this.state = {
       //dates:[],
       selectedCandidate: null,
-      placementDynamicPeriods: []
+      placementDynamicPeriods: [],
+      selectedPlacementPeriod:null
     }
   }
 
   createAccept = val => {
+
+    debugger;
     this.toggle()
 
     var currentdate = new Date()
 
     var newdatemodified=moment(currentdate).format("YYYY-MM-DD HH:mm:ss")
 
+    //const oldDates = [val].length < 2 ? this.state.selectedPlacementPeriod.substr(0, 10) : this.state.selectedPlacementPeriod
+
     let model = {
       dateModified: newdatemodified,
       mplid: this.props.selectedMplID,
-    
-      oldDate: this.state.selectedPlacementPeriod.substr(0, 10)
+    // oldDate: this.state.selectedPlacementPeriod.substr(0, 10)
+     oldDate:this.state.selectedPlacementPeriod ? this.state.selectedPlacementPeriod.substr(0, 10): newdatemodified
     }
-
+    debugger;
     this.props.createAccept(model)
   }
 
@@ -49,7 +54,7 @@ this.dates=[]
 
 
   placementPeriodChange = placementPeriods => {
-    debugger
+    debugger;
 
     const selectedPlacementPeriod = placementPeriods.startDate
     // const selectedAssignStart = selectedPlacementPeriod ? selectedPlacementPeriod.substr(0, 10):'';
@@ -88,23 +93,36 @@ const options = this.props.candidate
          startDate:
            moment(h.startDate).format('YYYY-MM-DD') +
            ' - ' +
-           moment(h.endDate).format('YYYY-MM-DD'),
+           moment(h.endDate).format('YYYY-MM-DD') + 
+           ' - ' +
+           h.firstNameLastNameStatus ,
+           
+           
+           
+           
          startDate:
            moment(h.startDate).format('YYYY-MM-DD') +
          ' - ' +
-           moment(h.endDate).format('YYYY-MM-DD')
+           moment(h.endDate).format('YYYY-MM-DD')+ 
+           ' - ' +
+           h.firstNameLastNameStatus 
        }))
-      
+      debugger;
     return (
       <div>
         <Modal isOpen={this.props.modal} toggle={this.toggle}>
           <ModalHeader toggle={this.toggle}>
-            Make Position Accept -  {this.props.selectedMplID}  
+            Make Position Accept -  {this.props.selectedMplID + " "}  
           </ModalHeader>
           <ModalBody>
             {/* <Alert color="danger">
                         Are you sure you want to make position vacant? 
                     </Alert> */}
+
+                   
+
+ 
+                   
 
             <Row>
               <Col>
@@ -141,6 +159,7 @@ const options = this.props.candidate
                 </Table>
               </Col>
             </Row>
+           
           </ModalBody>
           <ModalFooter>
             <Button color="success" onClick={() => this.createAccept()}>

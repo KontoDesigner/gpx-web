@@ -102,13 +102,16 @@ const PlanningInfo = (props) => {
                       <Col sm="12" md="6" lg="6" xl="4" className="form-group">
                         <TextInput name="startDate" label="Start Date"  value={props.position.positionStartDate}/>
                     </Col>
-                    
+                
                      <Col sm="12" md="6" lg="6" xl="4" className="form-group">
                         <TextInput name="endDate" label="End Date"  value={props.position.positionEndDate}/>
                     </Col>
+                    <Col sm="12" md="6" lg="6" xl="4" className="form-group">
+                        <TextInput name="dateModified" label="DateModified"  value={props.position.dateModified}/>
+                    </Col>
                 </div>
             </CardBody>
-        </Card>
+        </Card> 
     );
 };
 

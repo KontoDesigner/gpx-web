@@ -75,7 +75,7 @@ class Planning extends Component {
       
 
     }
-
+this.toogleMarkPositionAcceptModal
   }
 
   toogleAssignPositionModal = val => {

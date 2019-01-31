@@ -30,7 +30,7 @@ const Import = props => {
             xl="3"
             className="form-group form-group-select"
           >
-            <label htmlFor="importTypes">Select File Import Typeww</label>
+            <label htmlFor="importTypes">Select File Import Type</label>
 
             <Select
               id="importTypes"

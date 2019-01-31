@@ -73,7 +73,7 @@ const Tabs = (props) => {
             </Card>
 
             <Card>
-                <CardHeader>Draft</CardHeader>
+                <CardHeader>New Recruit</CardHeader>
 
                 <CardBody className="no-padding">
                     <ListGroup>

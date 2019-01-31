@@ -27,7 +27,7 @@ const Revisions = (props) => {
                     {props.history.map(dh => (
                     <div className="form-row">
                     <Col sm="12" md="3" lg="3" xl="3" className="form-group">
-                    {moment(dh.historyDate).format("YYYY-MM-DD HH:mm:ss")}
+                    {moment(dh.historyDate).format("YYYY-MM-DD")}
                     </Col>
                     <Col sm="12" md="3" lg="3" xl="3" className="form-group">
                     {dh.historyAction} {dh.destination}  {dh.jobTitleWhenResigned}  {dh.jobTitle}
