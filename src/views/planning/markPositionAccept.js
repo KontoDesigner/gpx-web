@@ -44,7 +44,7 @@ this.dates=[]
       dateModified: newdatemodified,
       mplid: this.props.selectedMplID,
     // oldDate: this.state.selectedPlacementPeriod.substr(0, 10)
-     oldDate:this.state.selectedPlacementPeriod ? this.state.selectedPlacementPeriod.substr(0, 10): newdatemodified
+     oldDate:this.state.selectedPlacementPeriod.substr(0, 10)
     }
     debugger;
     this.props.createAccept(model)
