@@ -9,7 +9,7 @@ const columns = [
   { label: 'JobTitle', dataKey: 'jobTitle' },
   { label: 'Profile', dataKey: 'profile' },
 
-  { label: 'Source Market', dataKey: 'sourceMarket' },
+  { label: 'Source Market', dataKey: 'mplSourceMarket' },
   { label: 'Position Type', dataKey: 'positionType' },
   //{ label: 'Languages', dataKey: 'languages' },
   { label: 'HighSeason', dataKey: 'highseason' },
@@ -17,7 +17,7 @@ const columns = [
   { label: 'Position EndDate', dataKey: 'positionEndDate' },
   { label: 'Assign StartDate', dataKey: 'startDate' },
   { label: 'Assign EndDate', dataKey: 'endDate' },
-  { label: 'Placed', dataKey: 'firstNameLastName' },
+  { label: 'Placed', dataKey: 'firstNameLastName' }, 
   { label: '', dataKey: 'accept' },
   { label: '', dataKey: 'acting' },
   // { label: '', dataKey: 'acting',iconClass:'fa fa-thumbs-up',iconValue:'Y' }

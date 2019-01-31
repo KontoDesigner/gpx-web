@@ -9,7 +9,7 @@ const columns = [
   { label: 'JobTitle', dataKey: 'jobTitle' },
   { label: 'Profile', dataKey: 'profile' },
 
-  { label: 'Source Market', dataKey: 'sourceMarket' },
+  { label: 'Source Market', dataKey: 'mplSourceMarket' },
   { label: 'Position Type', dataKey: 'positionType' },
   //{ label: 'Languages', dataKey: 'languages' },
   { label: 'HighSeason', dataKey: 'highseason' },
