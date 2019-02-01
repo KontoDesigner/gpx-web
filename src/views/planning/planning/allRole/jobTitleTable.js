@@ -95,7 +95,7 @@ const JobTitleTable = (props) => {
       <MenuItem data={{ foo: 'bar' }} onClick={onContextMenuClick}>
         Assign Staff To Position
           </MenuItem>
-      <MenuItem data={{foo: 'bar'}} onClick={onContextMenuClick2}>
+      {/* <MenuItem data={{foo: 'bar'}} onClick={onContextMenuClick2}>
         Make Position Vacant
           </MenuItem>
    
@@ -117,7 +117,7 @@ const JobTitleTable = (props) => {
 
                  <MenuItem data={{ foo: 'bar' }} onClick={onContextMenuClick7}>
         Unmark As Acting
-          </MenuItem>
+          </MenuItem> */}
       </ContextMenu> 
 
       <Table

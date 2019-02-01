@@ -3,6 +3,7 @@ import { ContextMenu, MenuItem } from 'react-contextmenu'
 import Table from '../../../../components/table.js';
 
 const columns = [
+
   { label: 'MPLID', dataKey: 'mplID' },
   //{ label: 'MPLIDVersion', dataKey: 'mplIDVersion' },
 
@@ -40,7 +41,7 @@ const JobTitleTable = (props) => {
        
           //alert(data.mplID)
         // console.log(data,e,test,hello)
-        props.toogleMakePositionVacantModal(data.mplID)
+        props.toogleMakePositionVacantModal(data.positionAssignId)
           
         }
    
@@ -48,7 +49,7 @@ const JobTitleTable = (props) => {
          
             //alert(data.mplID)
           // console.log(data,e,test,hello)
-          props.toogleMarkPositionAcceptModal(data.mplID)
+          props.toogleMarkPositionAcceptModal(data.positionAssignId)
             
           }
    
@@ -56,7 +57,7 @@ const JobTitleTable = (props) => {
            
               //alert(data.mplID)
             // console.log(data,e,test,hello)
-            props.toogleResetPositionAcceptModal(data.mplID)
+            props.toogleResetPositionAcceptModal(data.positionAssignId)
               
             }
    
@@ -64,7 +65,7 @@ const JobTitleTable = (props) => {
              
                 //alert(data.mplID)
               // console.log(data,e,test,hello)
-              props.toogleMarkPositionDeclineModal(data.mplID)
+              props.toogleMarkPositionDeclineModal(data.positionAssignId)
                 
               }
    
@@ -72,7 +73,7 @@ const JobTitleTable = (props) => {
                
                   //alert(data.mplID)
                 // console.log(data,e,test,hello)
-                props.toogleMarkPositionActingModal(data.mplID)
+                props.toogleMarkPositionActingModal(data.positionAssignId)
                   
                 }
    
@@ -80,7 +81,7 @@ const JobTitleTable = (props) => {
                  
                     //alert(data.mplID)
                   // console.log(data,e,test,hello)
-                  props.toogleUnmarkPositionActingModal(data.mplID)
+                  props.toogleUnmarkPositionActingModal(data.positionAssignId)
                     
                   }
      
@@ -125,9 +126,9 @@ const JobTitleTable = (props) => {
         contextMenuId={contextMenuId}
         columns={columns}
         checkbox={true}
-        identifier={'mplID'}
+        identifier={'positionAssignId'}
         edit={props.edit}
-        updateSelectedState={props.handleSelectedTitle}
+        updateSelectedState={props.handleSelectedTitle} 
         selected={props.selectedTitle}
       />
     </div>

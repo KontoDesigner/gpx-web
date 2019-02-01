@@ -39,7 +39,7 @@ this.dates=[]
       dateModified: newdatemodified,
       mplid: this.props.selectedMplID,
     
-      oldDate: this.state.selectedPlacementPeriod.substr(0, 10)
+      oldDate: newdatemodified
     }
 
     this.props.createActing(model)
@@ -99,14 +99,14 @@ const options = this.props.candidate
       <div>
         <Modal isOpen={this.props.modal} toggle={this.toggle}>
           <ModalHeader toggle={this.toggle}>
-            Mark Position as Acting -  {this.props.selectedMplID}  
+            Mark Placement as Acting -  {this.props.selectedMplID}  
           </ModalHeader>
           <ModalBody>
-            {/* <Alert color="danger">
-                        Are you sure you want to make position vacant? 
-                    </Alert> */}
+            { <Alert color="primary">
+                        Are you sure you want to make placement as acting? 
+                    </Alert> }
 
-            <Row>
+            {/* <Row>
               <Col>
                 <Table striped bordered responsive>
       
@@ -140,7 +140,7 @@ const options = this.props.candidate
                   </tbody>
                 </Table>
               </Col>
-            </Row>
+            </Row> */}
           </ModalBody>
           <ModalFooter>
             <Button color="success" onClick={() => this.createActing()}>

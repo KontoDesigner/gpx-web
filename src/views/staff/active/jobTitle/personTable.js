@@ -7,7 +7,8 @@ const columns = [
   { label: 'SourceMarket', dataKey: 'sourceMarket' },
   { label: 'PositionType', dataKey: 'positionType' },
    { label: 'Concept Hotel', dataKey: 'conceptHotel' },
-  { label: 'Childcare', dataKey: 'Education' }
+  { label: 'Education', dataKey: 'education' }
+
 ]
 
 const PersonTable = props => {

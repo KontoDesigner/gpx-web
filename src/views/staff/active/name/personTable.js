@@ -7,6 +7,7 @@ const columns = [
   { label: 'SourceMarket', dataKey: 'sourceMarket' },
   { label: 'PositionType', dataKey: 'positionType' },
   { label: 'Driver', dataKey: 'driver' },
+  { label: 'Education', dataKey: 'edcuation' },
  // { label: 'Concept Hotel', dataKey: 'concepthotel' }
 ];
 

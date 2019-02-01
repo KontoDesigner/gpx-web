@@ -39,7 +39,7 @@ this.dates=[]
       dateModified: newdatemodified,
       mplid: this.props.selectedMplID,
     
-      oldDate: this.state.selectedPlacementPeriod.substr(0, 10)
+      oldDate: newdatemodified
     }
 
     this.props.createResetAccept(model)
@@ -99,14 +99,14 @@ const options = this.props.candidate
       <div>
         <Modal isOpen={this.props.modal} toggle={this.toggle}>
           <ModalHeader toggle={this.toggle}>
-            Reset Position Accept - {this.props.selectedMplID}
+            Reset Placement Accept - {this.props.selectedMplID}
           </ModalHeader>
           <ModalBody>
-            {/* <Alert color="danger">
-                        Are you sure you want to make position vacant? 
-                    </Alert> */}
+            { <Alert color="danger">
+                        Are you sure you want to reset placement as accepted? 
+                    </Alert> }
 
-            <Row>
+            {/* <Row>
               <Col>
                 <Table striped bordered responsive>
       
@@ -140,7 +140,7 @@ const options = this.props.candidate
                   </tbody>
                 </Table>
               </Col>
-            </Row>
+            </Row> */}
           </ModalBody>
           <ModalFooter>
             <Button color="success" onClick={() => this.createResetAccept()}>

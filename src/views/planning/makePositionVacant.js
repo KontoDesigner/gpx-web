@@ -41,7 +41,7 @@ this.dates=[]
       dateModified: newdatemodified,
       mplid: this.props.selectedMplID,
     
-      oldDate: this.state.selectedPlacementPeriod.substr(0, 10)
+      oldDate: newdatemodified
     }
 
     this.props.createVacant(model)
@@ -136,13 +136,13 @@ this.dates=[]
             Make Position Vacant -  {this.props.selectedMplID}  
           </ModalHeader>
           <ModalBody>
-            {/* <Alert color="danger">
+            { <Alert color="danger">
                         Are you sure you want to make position vacant? 
-                    </Alert> */}
+                    </Alert> }
 
-            <Row>
+            {/* <Row>
               <Col>
-                <Table striped bordered responsive>
+                <Table striped bordered responsive> */}
                   {/* <thead>
                   <tr>
                     <th colSpan="2">Select Staff Assignments</th>
@@ -174,7 +174,7 @@ this.dates=[]
                   {/* </td>
                   </tr>
                   </tbody>  */}
-                  <thead>
+                  {/* <thead>
                     <tr>
                       <th colSpan="2">
                         Assignments dates{' '}
@@ -204,7 +204,7 @@ this.dates=[]
                   </tbody>
                 </Table>
               </Col>
-            </Row>
+            </Row> */}
           </ModalBody>
           <ModalFooter>
             <Button color="success" onClick={() => this.createVacant()}>

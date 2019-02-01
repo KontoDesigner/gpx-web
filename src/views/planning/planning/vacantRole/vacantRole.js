@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import SeasonRow from './seasonRow'
 import { Card, CardBody, CardHeader } from 'reactstrap'
 import Filter from '../../filter'
-import Action from '../../action'
+import Action from '../../action2'
 
 class VacantRole extends Component {
   render() {
@@ -16,15 +16,9 @@ class VacantRole extends Component {
        
           <Action 
             selected={this.props.selectedTitle} 
-            toogleMakePositionVacantModal={this.props.toogleMakePositionVacantModal}
-            toogleMakePositionVacantModal={this.props.toogleMakePositionVacantModal}
-            toogleUnmarkPositionActingModal ={this.props.toogleUnmarkPositionActingModal}
-            toogleResetPositionAcceptModal  ={this.props.toogleResetPositionAcceptModal}
-            toogleMarkPositionDeclineModal ={this.props.toogleMarkPositionDeclineModal}
-            toogleMarkPositionActingModal ={this.props.toogleMarkPositionActingModal}
-            toogleMarkPositionAcceptModal = {this.props.toogleMarkPositionAcceptModal}
+  
             toogleAssignPositionModal = {this.props.toogleAssignPositionModal}
-            toogleUpdatePositionModal = {this.props.toogleUpdatePositionModal}
+           
                              
             />
           </div>

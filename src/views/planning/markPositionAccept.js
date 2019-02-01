@@ -43,8 +43,8 @@ this.dates=[]
     let model = {
       dateModified: newdatemodified,
       mplid: this.props.selectedMplID,
-    // oldDate: this.state.selectedPlacementPeriod.substr(0, 10)
-     oldDate:this.state.selectedPlacementPeriod.substr(0, 10)
+     oldDate: newdatemodified
+   //  oldDate:this.state.selectedPlacementPeriod.substr(0, 10)
     }
     debugger;
     this.props.createAccept(model)
@@ -74,7 +74,7 @@ this.dates=[]
 
   toggle = () => {
     //this.setState({
-    //selectedResignAppDate:null,
+      
 
     //})
 
@@ -83,12 +83,12 @@ this.dates=[]
 
   render() {
     
-    const mplid = this.props.selectedMplID  ? this.props.selectedMplID.toString() : []
+    const id = this.props.selectedMplID  ? this.props.selectedMplID : []
     
 
-
+ 
 const options = this.props.candidate  
-      .filter(x => x.mplid === mplid)
+      .filter(x => x.id === id)
        .map(h => ({
          startDate:
            moment(h.startDate).format('YYYY-MM-DD') +
@@ -112,21 +112,21 @@ const options = this.props.candidate
       <div>
         <Modal isOpen={this.props.modal} toggle={this.toggle}>
           <ModalHeader toggle={this.toggle}>
-            Make Position Accept -  {this.props.selectedMplID + " "}  
+            Make Placement Accept -  {this.props.selectedMplID + " "}  
           </ModalHeader>
           <ModalBody>
-            {/* <Alert color="danger">
-                        Are you sure you want to make position vacant? 
-                    </Alert> */}
+            { <Alert color="success">
+                        Are you sure you want to set the placement as accepted ? 
+                    </Alert> }
 
                    
 
  
                    
 
-            <Row>
-              <Col>
-                <Table striped bordered responsive>
+            {/* <Row>
+              <Col> */}
+                {/* <Table striped bordered responsive>
       
                   <thead>
                     <tr>
@@ -156,9 +156,9 @@ const options = this.props.candidate
                       </td>
                     </tr>
                   </tbody>
-                </Table>
-              </Col>
-            </Row>
+                </Table> */}
+              {/* </Col>
+            </Row> */}
            
           </ModalBody>
           <ModalFooter>

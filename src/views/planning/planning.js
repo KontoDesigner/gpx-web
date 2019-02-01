@@ -62,7 +62,7 @@ class Planning extends Component {
     if(val) {
       this.setState({
         makePositionVacantModal: !this.state.makePositionVacantModal,
-        selectedMplID: val
+        selectedMplID: [val]
       })
 
     }else 
@@ -75,7 +75,7 @@ class Planning extends Component {
       
 
     }
-this.toogleMarkPositionAcceptModal
+//this.toogleMarkPositionAcceptModal
   }
 
   toogleAssignPositionModal = val => {
@@ -83,7 +83,7 @@ this.toogleMarkPositionAcceptModal
         if(val) {
           this.setState({
             assignPositionModal: !this.state.assignPositionModal,
-            selectedMplID: val
+            selectedMplID: [val]
           })
 
         }else 
@@ -116,11 +116,11 @@ this.toogleMarkPositionAcceptModal
   }
 
   toogleMarkPositionAcceptModal = val => {
-
+debugger;
     if(val) {
       this.setState({
         markPositionAcceptModal: !this.state.markPositionAcceptModal,
-        selectedMplID: val
+        selectedMplID: [val]
       })
 
     }else 
@@ -147,7 +147,7 @@ this.toogleMarkPositionAcceptModal
     if(val) {
       this.setState({
         markPositionActingModal: !this.state.markPositionActingModal,
-        selectedMplID: val
+        selectedMplID: [val]
       })
 
     }else 
@@ -172,7 +172,7 @@ this.toogleMarkPositionAcceptModal
     if(val) {
       this.setState({
         markPositionDeclineModal: !this.state.markPositionDeclineModal,
-        selectedMplID: val
+        selectedMplID: [val]
       })
 
     }else 
@@ -203,7 +203,7 @@ this.toogleMarkPositionAcceptModal
     if(val) {
       this.setState({
         resetPositionAcceptModal: !this.state.resetPositionAcceptModal,
-        selectedMplID: val
+        selectedMplID: [val]
       })
 
     }else 
@@ -234,7 +234,7 @@ this.toogleMarkPositionAcceptModal
     if(val) {
       this.setState({
         unmarkPositionActingModal: !this.state.unmarkPositionActingModal,
-        selectedMplID: val
+        selectedMplID: [val]
       })
 
     }else 
@@ -246,7 +246,7 @@ this.toogleMarkPositionAcceptModal
       })
       
 
-    }
+    } 
 
     // this.setState({
     //   unmarkPositionActingModal: !this.state.unmarkPositionActingModal
@@ -434,7 +434,7 @@ this.toogleMarkPositionAcceptModal
       AcceptBy: '',
       OldDate: model.oldDate
     }
-    debugger
+    debugger;
 
     // _this.props.planningActions.sendToCtx(positionAssign)
 
@@ -478,11 +478,14 @@ this.toogleMarkPositionAcceptModal
        switch (actTab) {
          case "allRole":
          this.props.allRolesActions.getAllRoles(this.props.filter.sourceMarket,this.props.filter.selectedJobFamily,this.props.filter.text)
-
+      
            break;
           case "placedRoles":
           // this.props.placedRolesActions.getPlacedRoles()
-          
+          this.setState({
+         
+            selectedMplID:null
+          })
             this.props.placedRolesActions.getPlacedRoles(this.props.filter.sourceMarket,this.props.filter.selectedJobTitle,this.props.filter.text)
         
              break;
