@@ -192,11 +192,11 @@ class Season extends Component {
                                     />
                                 </Col>
                                 <Col sm="12" md="6" lg="6" xl="6" className="form-group">
-                                    <TextInput name="ConfirmedDate" label="Confirmed Staff Arrival" disabled={true} value={this.props.positionAssign.ConfirmedDate?moment(this.props.positionAssign.ConfirmedDate).format("YYYY-MM-DD"):""} />
+                                    <TextInput name="ConfirmedDate" label="Confirmed Staff Arrival" disabled={true} value={this.props.positionAssign.ConfirmedDate? moment(this.props.positionAssign.ConfirmedDate).format("YYYY-MM-DD"):""} />
                                 </Col>
 
                                      <Col sm="12" md="6" lg="6" xl="6" className="form-group">
-                                    <TextInput name="ConfirmedDepDate" label="Confirmed Staff Departure" disabled={true} value={this.props.positionAssign.ConfirmedDepDate?moment(this.props.positionAssign.ConfirmedDepDate).format("YYYY-MM-DD"):""} />
+                                    <TextInput name="ConfirmedDepDate" label="Confirmed Staff Departure" disabled={true} value={this.props.positionAssign.ConfirmedDepDate? moment(this.props.positionAssign.ConfirmedDepDate).format("YYYY-MM-DD"):""} />
                                 </Col>
 
                             </div>

@@ -181,6 +181,7 @@ class Staff extends Component {
         switch (actTab) {
             case "destination":
             this.props.destinationActions.getDestination(this.props.filter.sourceMarket,this.props.filter.selectedJobFamily,this.props.filter.text)
+            this.props.filterActions.handleSelectedTitle([])
               break;
              case "name":
               this.props.nameActions.getName(this.props.filter.sourceMarket,this.props.filter.selectedJobFamily,this.props.filter.text)
