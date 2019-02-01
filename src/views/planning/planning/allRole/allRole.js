@@ -17,7 +17,7 @@ class AllRole extends Component {
           <Filter 
           getData={this.props.getAllRoles}
           />
-            <Action 
+            {/* <Action 
               
             selected={this.props.selectedTitle} 
             allRoles={this.props.allRoles}
@@ -31,7 +31,7 @@ class AllRole extends Component {
             toogleAssignPositionModal = {this.props.toogleAssignPositionModal}
         
                                
-            /> 
+            />  */}
           </div>
 
           {this.props.allRoles.map((allRole, index) =>

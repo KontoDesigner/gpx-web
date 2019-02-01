@@ -79,11 +79,11 @@ class Planning extends Component {
   }
 
   toogleAssignPositionModal = val => {
-
+debugger;
         if(val) {
           this.setState({
             assignPositionModal: !this.state.assignPositionModal,
-            selectedMplID: [val]
+            selectedMplID: val
           })
 
         }else 
@@ -97,7 +97,7 @@ class Planning extends Component {
 
         }
 
-
+        debugger;
 
       // this.setState({
       //   assignPositionModal: !this.state.assignPositionModal,
@@ -443,6 +443,7 @@ debugger;
   }
 
   createAssign = model => {
+    debugger;
     let assignmodel = {
       // TemplateName:model.selectedNotification,
       // StaffID:this.props.selectedStaff,

@@ -348,7 +348,7 @@ else
        .filter( x => x !=null ).map(x => x.positions).reduce((prev, x) => prev.concat(x), []).filter(x => x.mplID == this.props.selectedMplID)
         mplresult=mplresult.length > 0 ? mplresult :[{}]
 
-
+debugger;
 
   return (
     <div>
