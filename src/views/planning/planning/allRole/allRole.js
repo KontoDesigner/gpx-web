@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import SeasonRow from './seasonRow'
 import { Card, CardBody, CardHeader } from 'reactstrap'
 import Filter from '../../filter'
-import Action from '../../action2'
+import Action from '../../action'
 
 class AllRole extends Component {
 
@@ -17,21 +17,21 @@ class AllRole extends Component {
           <Filter 
           getData={this.props.getAllRoles}
           />
-            {/* <Action 
+            {/* { <Action 
               
             selected={this.props.selectedTitle} 
             allRoles={this.props.allRoles}
-            // toogleMakePositionVacantModal={this.props.toogleMakePositionVacantModal}
-            // toogleUnmarkPositionActingModal ={this.props.toogleUnmarkPositionActingModal}
-            // toogleResetPositionAcceptModal  ={this.props.toogleResetPositionAcceptModal}
-            // toogleMarkPositionDeclineModal ={this.props.toogleMarkPositionDeclineModal}
-            // toogleMarkPositionActingModal ={this.props.toogleMarkPositionActingModal}
-            // toogleMarkPositionAcceptModal = {this.props.toogleMarkPositionAcceptModal}
-            // toogleUpdatePositionModal = {this.props.toogleUpdatePositionModal}
+            toogleMakePositionVacantModal={this.props.toogleMakePositionVacantModal}
+             toogleUnmarkPositionActingModal ={this.props.toogleUnmarkPositionActingModal}
+            toogleResetPositionAcceptModal  ={this.props.toogleResetPositionAcceptModal}
+            toogleMarkPositionDeclineModal ={this.props.toogleMarkPositionDeclineModal}
+            toogleMarkPositionActingModal ={this.props.toogleMarkPositionActingModal}
+             toogleMarkPositionAcceptModal = {this.props.toogleMarkPositionAcceptModal}
+            toogleUpdatePositionModal = {this.props.toogleUpdatePositionModal}
             toogleAssignPositionModal = {this.props.toogleAssignPositionModal}
         
                                
-            />  */}
+            />  } */}
           </div>
 
           {this.props.allRoles.map((allRole, index) =>

@@ -25,11 +25,13 @@ class SeasonRow extends Component {
     return (
       <Card className="card-accordion card-country">
         <CardHeader onClick={() => this.toggleCollapse()}>
-          {this.props.placedRole.season} {icon}
+          {this.props.placedRole.season} {icon}     
         </CardHeader>
 
         <Collapse isOpen={this.state.expanded}>
           <CardBody className="no-padding-bottom">
+     
+          
             {this.props.placedRole.headOfs.map((headOf, index) => (
               <HeadOfRow
                 key={index}
