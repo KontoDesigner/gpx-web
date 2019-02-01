@@ -479,23 +479,28 @@ debugger;
          case "allRole":
          this.props.allRolesActions.getAllRoles(this.props.filter.sourceMarket,this.props.filter.selectedJobFamily,this.props.filter.text)
       
+ this.props.filterActions.handleSelectedTitle([])
            break;
           case "placedRoles":
           // this.props.placedRolesActions.getPlacedRoles()
-          this.setState({
-         
-            selectedMplID:null
-          })
+    
             this.props.placedRolesActions.getPlacedRoles(this.props.filter.sourceMarket,this.props.filter.selectedJobTitle,this.props.filter.text)
         
+ this.props.filterActions.handleSelectedTitle([])
              break;
            case "vacantRoles":
           this.props.vacantRolesActions.getVacantRoles(this.props.filter.sourceMarket,this.props.filter.selectedJobTitle,this.props.filter.text)
-            break;
+          this.props.filterActions.handleSelectedTitle([])
+          break;
+            
+
            case "replyYesNoRoles":
           this.props.replyYesNoRolesActions.getreplyYesNoRoles(this.props.filter.sourceMarket,this.props.filter.selectedJobTitle,this.props.filter.text)
-             break;
+          this.props.filterActions.handleSelectedTitle([])
+          
+          break;
         
+ 
    
           }
          }
