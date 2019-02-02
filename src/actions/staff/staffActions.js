@@ -9,7 +9,7 @@ export function createMail(model) {
         dispatch(beginAjaxCall())
 
         try {
-            
+            debugger;
             const res = await RestClient.Post('mail/sendMailAsync', model)
 
             dispatch(endAjaxCall())

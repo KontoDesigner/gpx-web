@@ -99,7 +99,7 @@ const options = this.props.candidate
       <div>
         <Modal isOpen={this.props.modal} toggle={this.toggle}>
           <ModalHeader toggle={this.toggle}>
-            Mark Placement as Acting -  {this.props.selectedMplID}  
+            Mark Placement as Acting -  {this.props.selectedMplID + " "}  
           </ModalHeader>
           <ModalBody>
             { <Alert color="primary">

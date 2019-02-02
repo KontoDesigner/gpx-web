@@ -133,7 +133,7 @@ this.dates=[]
       <div>
         <Modal isOpen={this.props.modal} toggle={this.toggle}>
           <ModalHeader toggle={this.toggle}>
-            Make Position Vacant -  {this.props.selectedMplID}  
+            Make Position Vacant -  {this.props.selectedMplID + " "}   
           </ModalHeader>
           <ModalBody>
             { <Alert color="danger">
