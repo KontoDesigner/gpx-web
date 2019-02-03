@@ -63,7 +63,7 @@ class App extends Component {
                     <Loader />
 
                     <ReduxToastr
-                        timeOut={3000}
+                        timeOut={4000}
                         newestOnTop={false}
                         preventDuplicates={false}
                         position="bottom-right"

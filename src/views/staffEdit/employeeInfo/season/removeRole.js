@@ -4,6 +4,7 @@ import { Button, Modal, ModalHeader, ModalBody, ModalFooter, Alert } from 'react
 const RemoveRole = (props) => {
 
     function removeRole(positionAssignId,startDate) {
+        debugger;
         props.removeRole(positionAssignId,startDate);
 
         props.toggle();

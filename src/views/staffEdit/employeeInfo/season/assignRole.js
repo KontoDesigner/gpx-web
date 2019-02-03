@@ -76,7 +76,7 @@ class AssignRole extends Component {
 
         })
 
-        this.props.toggle();
+       this.props.toggle();
     }
 
 

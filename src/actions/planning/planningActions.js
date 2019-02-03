@@ -260,7 +260,7 @@ export function insertStaffAssign(positionAssign) {
             if (res && res.ok) {
                 toastr.success('Success', ` ${res ? res.message : 'Success'}`)
             } else {
-                toastr.error('Position is occupied ', ` ${res ? res.message : ' Position is occupied'}`)
+                toastr.error('Position is occupied ', ` ${res ? res.message + ' ' +  res.id  : ' Not assigned'}`)
             }
         } catch (error) {
             dispatch(ajaxCallError(error))
@@ -276,7 +276,7 @@ export function getStaffCandidate() {
       dispatch(beginAjaxCall())
 
       try {
-         
+         debugger;
           const candidate= await RestClient.Get(`staff/GetStaffInitload`)
           
         

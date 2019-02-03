@@ -1,8 +1,10 @@
 import React, { Component } from 'react'
 import moment from "moment";
 import RestClient from '../../infrastructure/restClient'
+import TextInput from '../../components/textInput'
 import {
   Button,
+
   Modal,
   ModalHeader,
   ModalBody,
@@ -305,7 +307,7 @@ var checkok2= (assignCompareStart.getTime() < assignCompareEnd.getTime());
 
 
    
- this.toggle();
+ //this.toggle();
  
  this.props.createAssign(model);
 }
@@ -404,7 +406,8 @@ debugger;
                 </thead>
                 <tbody>
                   <tr>
-                    <td colSpan="2"> 
+              
+                    <td ColSpan="2"> 
                   
                     <Select
                                        id="startDate"
@@ -434,6 +437,7 @@ debugger;
                         className={'custom-datepicker'}
                         //value={this.props.staff.dateOfBirth}
                         onChange={this.assignStartChange}
+                        
                         value={this.state.selectedAssignStart}
                         timeFormat={false}
                         dateFormat="YYYY-MM-DD"
