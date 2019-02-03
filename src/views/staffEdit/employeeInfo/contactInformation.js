@@ -47,6 +47,7 @@ const ContactInformation = (props) => {
 
                     <Col sm="12" md="6" lg="6" xl="4" className="form-group">
                         <TextInput name="adCity" label="City" value={props.staff.adCity} onChange={props.handleStaffField} />
+                    
                     </Col>
 
                     <Col sm="12" md="6" lg="6" xl="4" className="form-group">

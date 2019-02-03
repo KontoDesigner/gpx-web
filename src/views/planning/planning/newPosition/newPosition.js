@@ -799,7 +799,7 @@ handleDestinationSelect = (val) => {
              </Col> 
 
     <Col sm="12" md="12" lg="12" xl="12" className="form-group">
-           <Button   color="success"  onClick={() => this.createPosition()}>Add Position(s)</Button>
+           <Button   color="success" className="float-right" onClick={() => this.createPosition()}>Add Position(s)</Button>
            {/* <input type="file" /> */}
            </Col>
 

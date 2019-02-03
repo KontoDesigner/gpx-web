@@ -34,6 +34,7 @@ class AssignPosition extends Component {
           validAssign:'',
           validDate:'',
           validDate2:'',
+          validAssignLength:'',
           loaded: false,
           dates:[],
           positionStartDate: null,
@@ -100,6 +101,7 @@ class AssignPosition extends Component {
           validAssign:'',
           validDate:'',
           validDate2:'',
+          validAssignLength:'',
           dates:[],
          // newArray:[],
             dateModified: null,
@@ -237,8 +239,30 @@ const selectedPlacementPeriod = placementPeriods.startDate ;
   
 }
 
+checkAssignmentLength = () => {
+debugger;
+    if (this.state.selectedPlacementPeriod=="Add New"){
 
 
+
+     if(this.state.dates.length == 2) {
+
+
+      return false;
+     } else
+
+     {
+
+
+      return true;
+     }
+
+
+    }
+    return false;
+   }
+    
+    
     createAssign = (val,val2) => {
        
       
@@ -246,6 +270,8 @@ const selectedPlacementPeriod = placementPeriods.startDate ;
        // const destination = this.props.availablePositions.filter(ap => ap.destination === this.state.selectedDestination)[0];
        var check= this.state.selectedCandidate ? true: false
        var check2= this.state.selectedPlacementPeriod ? true: false
+       debugger;
+       var check3= this.checkAssignmentLength()
 
        if(!check){  
         //alert('Please select a Staff to assign');
@@ -267,6 +293,18 @@ const selectedPlacementPeriod = placementPeriods.startDate ;
           validAssign:'Please select an assignment period to replace or select Add New'
           //selectedAssignStart,
           //selectedAssignEnd
+       
+        })
+     
+        return false;
+      }
+
+      if(!check3){  
+ 
+
+        this.setState({
+          validAssignLength:'By selecting Add New you will exceed the number of assignments for one staff.'
+   
        
         })
      
@@ -387,28 +425,35 @@ debugger;
 
                                     <b className="card-text text-danger">{this.state.validStaff }</b>
 
-                                  
-                                
-                    {/* <select value={this.props.value} onChange={this.props.handleChange}  className="form-control"  >
-                    <option value="" disabled selected>Select your option</option>
-            <option value="Studies">Studies</option>
-            <option value="Parental Leave">Parental Leave</option>
-            <option value="Other Please Specify">Other Please Specify</option>
-           
-          </select> */}
                     </td>
                   </tr>
                   </tbody>
+                  
                   <thead>
                   <tr>
-                    <th colSpan="2">Assignments <i> (Selected assignment will be replaced)</i></th>
+                    <th colSpan="2">Assignments  
+                      
+            
+                    {this.state.dates.map(dh => (
+                    
+
+                    <b className="card-text text-primary">{" " + dh.startDate.replace('Add New','')+ " "}</b>
+                    
+               
+         
+                ))}   
+              
+                
+                    </th>
                   </tr>
                 </thead>
                 <tbody>
                   <tr>
               
                     <td ColSpan="2"> 
-                  
+                    
+
+                   
                     <Select
                                        id="startDate"
                                        valueKey="startDate"
@@ -417,10 +462,12 @@ debugger;
                                         options={this.state.dates}
                                         onChange={this.placementPeriodChange}
                                         value={this.state.selectedPlacementPeriod}
-                                        placeholder="Select"
+                                        placeholder="Selected assignment will be replaced"
                                         className="form-group form-group-select"
                                     />
                                      <b className="card-text text-danger">{this.state.validAssign }</b>
+                                     <b className="card-text text-danger">{this.state.validAssignLength }</b>
+                                 
                                     </td>
                                     </tr>
                   </tbody>

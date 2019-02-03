@@ -278,7 +278,7 @@ export function getStaffCandidate() {
       try {
          debugger;
           const candidate= await RestClient.Get(`staff/GetStaffInitload`)
-          
+          debugger;
         
        
           dispatch(getStaffCandidateSuccess(candidate))
