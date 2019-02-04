@@ -2,106 +2,99 @@ import { ActionTypes as types } from '../../constants/staffEdit/employeeInfoCons
 import { beginAjaxCall, ajaxCallError, endAjaxCall } from '../ajaxStatusActions'
 import RestClient from '../../infrastructure/restClient'
 import { toastr } from 'react-redux-toastr'
-import moment from "moment";
+import moment from 'moment'
 export function save(model) {
     var currentdate = new Date()
 
-    var newdatemodified=moment(currentdate).format("YYYY-MM-DD HH:mm:ss")
+    var newdatemodified = moment(currentdate).format('YYYY-MM-DD HH:mm:ss')
 
-    
-let cleanModel =  {}
-   
-//  ProfilingSelect : model.
+    let cleanModel = {}
 
-// International: model.international ? model.international.map(x => {
-//     return {model.international:x.international} }
+    //  ProfilingSelect : model.
 
-//     ):[],
+    // International: model.international ? model.international.map(x => {
+    //     return {model.international:x.international} }
 
- cleanModel.International=model.international  ? model.international:null  
+    //     ):[],
 
- cleanModel.NationalConcept = model.nationalConcept  ? model.nationalConcept:null
- cleanModel.Suitable=model.suitable  ? model.suitable:null
+    //  cleanModel.International=model.international  ? model.international:null
+    //  cleanModel.NationalConcept = model.nationalConcept  ? model.nationalConcept:null
+    //  cleanModel.Suitable=model.suitable  ? model.suitable:null
 
- cleanModel.DateModified= newdatemodified
+    cleanModel.Suitable = model.suitable ? model.suitable.join() : null
+    cleanModel.International = model.international ? model.international.join() : null
+    cleanModel.NationalConcept = model.nationalConcept ? model.nationalConcept.join() : null
 
- cleanModel.StaffID = model.staffID 
- cleanModel.FirstName = model.firstName
- cleanModel.LastName = model.lastName
- cleanModel.LastName2 = model.lastName2
- cleanModel.CostCenter =model.costCenter
- cleanModel.SpainRegistred = model.spainRegistred
- cleanModel.SapID = model.sapID
- cleanModel.MopedID = model.mopedID
- cleanModel.CentralID =model.centralID
- 
- cleanModel.Email = model.email
- cleanModel.EmailWork = model.emailWork
- 
- cleanModel.Education = model.education
- cleanModel.Title = model.title 
- cleanModel.EmpContent=model.empContent
- cleanModel.Phone = model.phoneHome
- 
- cleanModel.PhoneDestination = model.phoneDestination
+    cleanModel.DateModified = newdatemodified
 
- cleanModel.Nationality = model.nationality
- cleanModel.SourceMarket = model.sourceMarket
- cleanModel.PositionType = model.positionType
- cleanModel.DateJoined = model.dateJoined
- cleanModel.CostCenter = model.costCenter
- cleanModel.Driver = model.driver
- cleanModel.DrivingYear = model.drivingYear
- cleanModel.Status = model.status 
- //SubStatus : model. 
- 
+    cleanModel.StaffID = model.staffID
+    cleanModel.FirstName = model.firstName
+    cleanModel.LastName = model.lastName
+    cleanModel.LastName2 = model.lastName2
+    cleanModel.CostCenter = model.costCenter
+    cleanModel.SpainRegistred = model.spainRegistred
+    cleanModel.SapID = model.sapID
+    cleanModel.MopedID = model.mopedID
+    cleanModel.CentralID = model.centralID
 
- cleanModel.ChildCareRemarks = model.childCareRemarks
+    cleanModel.Email = model.email
+    cleanModel.EmailWork = model.emailWork
 
+    cleanModel.Education = model.education
+    cleanModel.Title = model.title
+    cleanModel.EmpContent = model.empContent
+    cleanModel.Phone = model.phoneHome
 
- cleanModel.Languages = model.languages
+    cleanModel.PhoneDestination = model.phoneDestination
 
- cleanModel.Address = model.address
- cleanModel.AdCountry = model.adCountry
- cleanModel.AdZip = model.adZip
+    cleanModel.Nationality = model.nationality
+    cleanModel.SourceMarket = model.sourceMarket
+    cleanModel.PositionType = model.positionType
+    cleanModel.DateJoined = model.dateJoined
+    cleanModel.CostCenter = model.costCenter
+    cleanModel.Driver = model.driver
+    cleanModel.DrivingYear = model.drivingYear
+    cleanModel.Status = model.status
+    //SubStatus : model.
 
+    cleanModel.ChildCareRemarks = model.childCareRemarks
 
- cleanModel.AdCity = model.adCity
+    cleanModel.Languages = model.languages
 
+    cleanModel.Address = model.address
+    cleanModel.AdCountry = model.adCountry
+    cleanModel.AdZip = model.adZip
 
- cleanModel.Nat = model.nat
- cleanModel.Nat2 = model.nat2
- cleanModel.PhoneHome = model.phoneHome 
- cleanModel.ChildCare = model.childCare ?  model.childCare:null
- cleanModel.IsManager = model.isManager
- cleanModel.PaF = model.paF 
- cleanModel.PafFromDate = model.pafFromDate 
- cleanModel.PafEndDate = model.pafEndDate
- cleanModel.SportFitness =model.sportFitness
- cleanModel.SportFitnessRemarks = model.sportFitnessRemarks
+    cleanModel.AdCity = model.adCity
 
- cleanModel.Arabic = model.arabic ? model.arabic : null
- cleanModel.Danish = model.danish ? model.danish: null
- cleanModel.Dutch = model.dutch ? model.dutch: null
- 
- cleanModel.English =model.english  ? model.english: null 
- cleanModel.Finnish = model.finnish ? model.finnish: null 
- cleanModel.French =model.french  ? model.french: null 
- cleanModel.German =model.german  ? model.german: null 
- cleanModel.Greek =model.greek  ? model.greek: null 
- cleanModel.Norwegian =model.norwegian  ? model.norwegian: null
- cleanModel.Italian = model.italian ? model.italian: null 
- cleanModel.Polish =model.polish  ? model.polish: null 
- cleanModel.Portuguese =model.portuguese ? model.portuguese: null
- cleanModel.Russian = model.russian ? model.russian: null
- cleanModel.Spanish =model.spanish  ? model.spanish: null
- cleanModel.Turkish = model.turkish  ? model.turkish: null
- cleanModel.Swedish = model.swedish ? model.swedish: null 
+    cleanModel.Nat = model.nat
+    cleanModel.Nat2 = model.nat2
+    cleanModel.PhoneHome = model.phoneHome
+    cleanModel.ChildCare = model.childCare ? model.childCare : null
+    cleanModel.IsManager = model.isManager
+    cleanModel.PaF = model.paF
+    cleanModel.PafFromDate = model.pafFromDate
+    cleanModel.PafEndDate = model.pafEndDate
+    cleanModel.SportFitness = model.sportFitness
+    cleanModel.SportFitnessRemarks = model.sportFitnessRemarks
 
+    cleanModel.Arabic = model.arabic ? model.arabic : null
+    cleanModel.Danish = model.danish ? model.danish : null
+    cleanModel.Dutch = model.dutch ? model.dutch : null
 
-
-
-
+    cleanModel.English = model.english ? model.english : null
+    cleanModel.Finnish = model.finnish ? model.finnish : null
+    cleanModel.French = model.french ? model.french : null
+    cleanModel.German = model.german ? model.german : null
+    cleanModel.Greek = model.greek ? model.greek : null
+    cleanModel.Norwegian = model.norwegian ? model.norwegian : null
+    cleanModel.Italian = model.italian ? model.italian : null
+    cleanModel.Polish = model.polish ? model.polish : null
+    cleanModel.Portuguese = model.portuguese ? model.portuguese : null
+    cleanModel.Russian = model.russian ? model.russian : null
+    cleanModel.Spanish = model.spanish ? model.spanish : null
+    cleanModel.Turkish = model.turkish ? model.turkish : null
+    cleanModel.Swedish = model.swedish ? model.swedish : null
 
     return async function(dispatch) {
         dispatch(beginAjaxCall())
@@ -121,16 +114,14 @@ let cleanModel =  {}
 
             throw error
         }
-    } 
+    }
 }
-
 
 export function sendToCtx(model) {
     return async function(dispatch) {
         dispatch(beginAjaxCall())
 
         try {
-            
             const res = await RestClient.Post('ctx/send', model)
 
             dispatch(endAjaxCall())
@@ -145,7 +136,7 @@ export function sendToCtx(model) {
 
             throw error
         }
-    } 
+    }
 }
 
 export function handleCurrentPositionAssignField(field, val) {
@@ -183,20 +174,20 @@ export function handleFilterFromSuccess(from) {
     }
 }
 
-export function deletePositionAssign(id,startDate,staffId) {
+export function deletePositionAssign(id, startDate, staffId) {
     return async function(dispatch) {
         dispatch(beginAjaxCall())
 
         var currentdate = new Date()
 
-        var newdatemodified=moment(currentdate).format("YYYY-MM-DD HH:mm:ss")
-debugger;
+        var newdatemodified = moment(currentdate).format('YYYY-MM-DD HH:mm:ss')
+        debugger
         try {
             const model = {
                 Id: id,
                 StartDate: startDate,
                 StaffID: staffId,
-                DateModified:newdatemodified
+                DateModified: newdatemodified
             }
 
             await RestClient.Post('positionassign/deletepositionassign', model)
@@ -235,22 +226,21 @@ export function insertPositionAssign(positionAssign) {
     return async function(dispatch) {
         dispatch(beginAjaxCall())
 
-try {
- 
-    const res = await RestClient.Post('positionassign', positionAssign)
+        try {
+            const res = await RestClient.Post('positionassign', positionAssign)
 
-    dispatch(endAjaxCall())
-    
-    if (res && res.ok) {
-        toastr.success('Success', ` ${res ? res.message : 'Success'}`)
-    } else {
-        toastr.error('Position is occupied', ` ${res ? res.message : 'Position is occupied'}`)
-    }
-} catch (error) {
-    dispatch(ajaxCallError(error))
+            dispatch(endAjaxCall())
 
-    throw error
-}
+            if (res && res.ok) {
+                toastr.success('Success', ` ${res ? res.message : 'Success'}`)
+            } else {
+                toastr.error('Position is occupied', ` ${res ? res.message : 'Position is occupied'}`)
+            }
+        } catch (error) {
+            dispatch(ajaxCallError(error))
+
+            throw error
+        }
     }
 }
 
@@ -295,9 +285,8 @@ export function getPositionAssigns(staffId) {
         dispatch(beginAjaxCall())
 
         try {
-          
             const positionAssigns = await RestClient.Get(`positionassign/assignment/${staffId}`)
-            debugger;
+            debugger
             dispatch(getPositionAssignsSuccess(positionAssigns))
         } catch (error) {
             dispatch(ajaxCallError(error))
@@ -315,12 +304,15 @@ export function getStaffSuccess(staff) {
 }
 
 export function getStaff(staffId) {
-    
     return async function(dispatch) {
         dispatch(beginAjaxCall())
 
         try {
-            const staff = await RestClient.Get(`staff/${staffId}`)
+            let staff = await RestClient.Get(`staff/${staffId}`)
+
+            staff.suitable = staff.suitable && staff.suitable !== '' ? staff.suitable.split(',') : []
+            staff.international = staff.international && staff.international !== '' ? staff.international.split(',') : []
+            staff.nationalConcept = staff.nationalConcept && staff.nationalConcept !== '' ? staff.nationalConcept.split(',') : []
 
             dispatch(getStaffSuccess(staff))
         } catch (error) {
