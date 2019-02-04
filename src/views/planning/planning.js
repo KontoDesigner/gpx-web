@@ -478,7 +478,7 @@ debugger;
     debugger;
        switch (actTab) {
          case "allRole":
-         this.props.allRolesActions.getAllRoles(this.props.filter.sourceMarket,this.props.filter.selectedJobFamily,this.props.filter.text)
+        this.props.allRolesActions.getAllRoles(this.props.filter.sourceMarket,this.props.filter.selectedJobFamily,this.props.filter.text)
       
  this.props.filterActions.handleSelectedTitle([])
            break;
