@@ -180,15 +180,15 @@ class Staff extends Component {
  
         switch (actTab) {
             case "destination":
-            this.props.destinationActions.getDestination(this.props.filter.sourceMarket,this.props.filter.selectedJobFamily,this.props.filter.text)
+           await this.props.destinationActions.getDestination(this.props.filter.sourceMarket,this.props.filter.selectedJobFamily,this.props.filter.text)
             this.props.filterActions.handleSelectedStaff([])
               break;
              case "name":
-              this.props.nameActions.getName(this.props.filter.sourceMarket,this.props.filter.selectedJobFamily,this.props.filter.text)
+            await  this.props.nameActions.getName(this.props.filter.sourceMarket,this.props.filter.selectedJobFamily,this.props.filter.text)
               this.props.filterActions.handleSelectedStaff([])
                 break;
               case "jobTitle":
-             this.props.jobTitleActions.getJobTitle(this.props.filter.sourceMarket,this.props.filter.selectedJobFamily,this.props.filter.text)
+           await  this.props.jobTitleActions.getJobTitle(this.props.filter.sourceMarket,this.props.filter.selectedJobFamily,this.props.filter.text)
              this.props.filterActions.handleSelectedStaff([])
              break;
            
