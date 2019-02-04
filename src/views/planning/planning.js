@@ -442,7 +442,7 @@ debugger;
     this.getActTabAndRequest(this.state.activeTab) 
   }
 
-  createAssign = model => {
+  createAssign = async model => {
     debugger;
     let assignmodel = {
       // TemplateName:model.selectedNotification,
@@ -463,10 +463,16 @@ debugger;
       this.props.planningActions
         .deletePositionAssign(assignmodel)
         .then(function() {
-          _this.props.planningActions.insertStaffAssign(assignmodel)
+
+         
         })
     } else {
-      _this.props.planningActions.insertStaffAssign(assignmodel)
+      const returnValue= await _this.props.planningActions.insertStaffAssign(assignmodel)
+
+      if(returnValue) {
+
+        this.toogleAssignPositionModal()
+      }
     }
     //this.props.planningActions.insertStaffAssign(assignmodel)
 

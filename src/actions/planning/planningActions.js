@@ -38,6 +38,7 @@ debugger;
 
 
             dispatch(endAjaxCall())
+          
         } catch (error) {
             dispatch(ajaxCallError(error))
 
@@ -259,8 +260,10 @@ export function insertStaffAssign(positionAssign) {
             
             if (res && res.ok) {
                 toastr.success('Success', ` ${res ? res.message : 'Success'}`)
+                return true;
             } else {
                 toastr.error('Position is occupied ', ` ${res ? res.message + ' ' +  res.id  : ' Not assigned'}`)
+                return false;
             }
         } catch (error) {
             dispatch(ajaxCallError(error))
