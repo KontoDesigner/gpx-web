@@ -474,29 +474,29 @@ debugger;
   }
 
 
-  getActTabAndRequest =  actTab => {
+  getActTabAndRequest =  async actTab => {
     debugger;
        switch (actTab) {
          case "allRole":
-         this.props.allRolesActions.getAllRoles(this.props.filter.sourceMarket,this.props.filter.selectedJobFamily,this.props.filter.text)
+       await this.props.allRolesActions.getAllRoles(this.props.filter.sourceMarket,this.props.filter.selectedJobFamily,this.props.filter.text)
       
  this.props.filterActions.handleSelectedTitle([])
            break;
           case "placedRoles":
           // this.props.placedRolesActions.getPlacedRoles()
     
-            this.props.placedRolesActions.getPlacedRoles(this.props.filter.sourceMarket,this.props.filter.selectedJobTitle,this.props.filter.text)
+           await this.props.placedRolesActions.getPlacedRoles(this.props.filter.sourceMarket,this.props.filter.selectedJobTitle,this.props.filter.text)
         
  this.props.filterActions.handleSelectedTitle([])
              break;
            case "vacantRoles":
-          this.props.vacantRolesActions.getVacantRoles(this.props.filter.sourceMarket,this.props.filter.selectedJobTitle,this.props.filter.text)
+        await  this.props.vacantRolesActions.getVacantRoles(this.props.filter.sourceMarket,this.props.filter.selectedJobTitle,this.props.filter.text)
           this.props.filterActions.handleSelectedTitle([])
           break;
             
 
            case "replyYesNoRoles":
-          this.props.replyYesNoRolesActions.getreplyYesNoRoles(this.props.filter.sourceMarket,this.props.filter.selectedJobTitle,this.props.filter.text)
+        await  this.props.replyYesNoRolesActions.getreplyYesNoRoles(this.props.filter.sourceMarket,this.props.filter.selectedJobTitle,this.props.filter.text)
           this.props.filterActions.handleSelectedTitle([])
           
           break;

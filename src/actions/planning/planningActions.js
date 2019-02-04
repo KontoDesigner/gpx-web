@@ -18,7 +18,7 @@ export function getStaffCandidateSuccess(candidate) {
 }
 
 export function createAccept(model) {
-    return async function(dispatch) {
+    return async function(dispatch) { 
         dispatch(beginAjaxCall())
 
         try {

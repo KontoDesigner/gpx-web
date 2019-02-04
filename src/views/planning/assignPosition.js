@@ -245,7 +245,7 @@ debugger;
 
 
 
-     if(this.state.dates.length == 2) {
+     if(this.state.dates.length > 3) {
 
 
       return false;
@@ -346,7 +346,7 @@ var checkok2= (assignCompareStart.getTime() < assignCompareEnd.getTime());
 
    
  //this.toggle();
- 
+ debugger;
  this.props.createAssign(model);
 }
 else
@@ -484,7 +484,7 @@ debugger;
                         className={'custom-datepicker'}
                         //value={this.props.staff.dateOfBirth}
                         onChange={this.assignStartChange}
-                        
+                        defaultValue={mplresult[0].positionStartDate}
                         value={this.state.selectedAssignStart}
                         timeFormat={false}
                         dateFormat="YYYY-MM-DD"
@@ -500,6 +500,7 @@ debugger;
                       <Datetime
                         className={'custom-datepicker'}
                         onChange={this.assignEndChange}
+                        defaultValue={mplresult[0].positionEndDate}
                         value={this.state.selectedAssignEnd}
                         timeFormat={false}
                         dateFormat="YYYY-MM-DD"
