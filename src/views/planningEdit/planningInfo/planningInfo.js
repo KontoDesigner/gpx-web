@@ -17,6 +17,10 @@ const PlanningInfo = (props) => {
                         <TextInput name="mplid" label="MPLID"  value={props.position.mplid}  />
                     </Col>
 
+                           <Col sm="12" md="6" lg="6" xl="4" className="form-group">
+                        <TextInput name="season" label="Season"  value={props.position.season}  />
+                    </Col>
+
                               <Col sm="12" md="6" lg="6" xl="4" className="form-group">
                         <TextInput name="mplidVersion" label="MPLID Version (for local adds)"  value={props.position.mplidVersion}  />
                     </Col>

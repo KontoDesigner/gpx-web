@@ -4,6 +4,7 @@ import Table from '../../../../components/table.js';
 import moment from "moment";
 const columns = [
   { label: 'MPLID', dataKey: 'mplID' },
+  { label: 'Season', dataKey: 'season' },
   //{ label: 'MPLIDVersion', dataKey: 'mplIDVersion' },
 
   { label: 'JobTitle', dataKey: 'jobTitle' },

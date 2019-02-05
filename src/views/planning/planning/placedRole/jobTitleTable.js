@@ -5,6 +5,7 @@ import Table from '../../../../components/table.js';
 const columns = [
 
   { label: 'MPLID', dataKey: 'mplID' },
+  { label: 'Season', dataKey: 'season' },
   //{ label: 'MPLIDVersion', dataKey: 'mplIDVersion' },
 
   { label: 'JobTitle', dataKey: 'jobTitle' },
