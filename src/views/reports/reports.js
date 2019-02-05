@@ -67,14 +67,7 @@ class Reports extends Component {
         this.props.reportActions.getReport().then(function () {
            
     
-           if (_this.props.report != null) {  
-      
-               document.title = 'Planning Report'
-          }
-           else {
-     
-              document.title = 'Report not found - GPX'
-          }
+            document.title = 'Reports'
           
           _this.setState({loaded: true})
 

@@ -249,7 +249,7 @@ export function getReport() {
 
         try {
             const report = await RestClient.Get(`Report/GetAllDestSingle`)
-            
+            debugger;
             //const replyYesNoRoles = await RestClient.Get(`positionassign/GetAllPositionsAssignData`)
 
             //For some reason we need to reset value here, (bug when loading in new data with filter), don't touch h3h3

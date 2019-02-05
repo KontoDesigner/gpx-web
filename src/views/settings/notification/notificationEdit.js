@@ -45,7 +45,7 @@ class NotificationEdit extends Component {   //Notification smart component
      
             if (_this.props.notification != null) { 
                
-                document.title = `${_this.props.notification.templatename}  `
+                document.title = `${_this.props.notification.templateName}  `
            }
             else {
                 

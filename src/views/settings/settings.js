@@ -79,7 +79,8 @@ class Settings extends Component {
       
             if (_this.props.setting != null) {  
                
-               document.title = `${_this.props.setting.settingid} `
+              // document.title = `Settings   ${_this.props.setting.settingId } `
+               document.title = `Settings   `
           }
            else {
      

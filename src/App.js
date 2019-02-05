@@ -26,7 +26,7 @@ class App extends Component {
 
     async componentWillMount() {
         const _this = this
-
+debugger;
         return Promise.all([
             this.props.geographyActions.getSourceMarkets(),
             this.props.settingActions.getJobFamilies(),

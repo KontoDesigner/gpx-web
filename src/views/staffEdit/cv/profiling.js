@@ -36,7 +36,7 @@ const Profiling = props => {
                     </Col>
 
                     <Col sm="12" md="12" lg="12" xl="12" className="form-group form-group-select">
-                        <label htmlFor="childCare">I am interested and happy to work in following international concepts</label>
+                        <label htmlFor="international">I am interested and happy to work in following international concepts</label>
 
                         <Select
                             id="international"
@@ -55,10 +55,10 @@ const Profiling = props => {
                     </Col>
 
                     <Col sm="12" md="12" lg="12" xl="12" className="form-group form-group-select">
-                        <label htmlFor="national">I am interested and happy to work in following national concepts</label>
+                        <label htmlFor="nationalConcept">I am interested and happy to work in following national concepts</label>
 
                         <Select
-                            id="national"
+                            id="nationalConcept"
                             // multi={true}
                             valueKey="id"
                             labelKey="name"

@@ -10,7 +10,7 @@ const columns = [
   { label: 'Profile', dataKey: 'profile' },
 
   { label: 'Source Market', dataKey: 'mplSourceMarket' },
-  { label: 'Position Type', dataKey: 'positionType' },
+  { label: 'Position Type', dataKey: 'mplPositionType' },
   //{ label: 'Languages', dataKey: 'languages' },
   { label: 'HighSeason', dataKey: 'highseason' },
   { label: 'Position StartDate', dataKey: 'positionStartDate' },
