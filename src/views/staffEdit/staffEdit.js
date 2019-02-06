@@ -151,7 +151,12 @@ class StaffEdit extends Component {
                 {
                     id: 'Found a new job',
                     name: 'Found a new job'
+                },
+                {
+                    id: 'Placement Declined',
+                    name: 'Placement Declined'
                 }
+                
             ],
             skillOptions: ['Programming', 'Development', 'Design', 'Testing'],
 
