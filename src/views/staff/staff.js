@@ -35,6 +35,8 @@ class Staff extends Component {
 
         this.state = {
             loaded: false,
+            validFileName: '',
+
             selectedReason: null,
             fileName:null,
             importType:'',
@@ -321,7 +323,8 @@ class Staff extends Component {
  
             this.setState({
                 activeTab: tab,
-                resetData: resetData
+                resetData: resetData,
+                validFileName: ''
             })
         }
     }
@@ -339,7 +342,22 @@ handleFile=(fileName) => {
 create = async(model) => {
 // this.props.settingActions.save()
 
+var check = this.state.fileName ? true : false
 
+if (!check) {
+
+
+  this.setState({
+      validFileName: 'Please select a File Import Type'
+
+  })
+
+  return false;
+}
+this.setState({
+    validFileName: ''
+
+})
 try {
 
   const res =  await RestClient.Upload('import/UploadFile/'+ this.state.importType,this.state.fileName)
@@ -515,7 +533,7 @@ this.setState({fileName:null, importType:''})
                         <FileImport
                          importTypes={this.state.importTypes}
                          //fileimportTypes={this.state.fileimportTypes}
-                       
+                         validFileName={this.state.validFileName}
                          handleFile={this.handleFile}
                          handleImportType={this.handleImportType}
                          importType={this.state.importType}

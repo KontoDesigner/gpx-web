@@ -16,7 +16,14 @@ import Select from 'react-select'
 import Datetime from 'react-datetime'
 
 const Import = props => {
+
+
+
+
   return (
+
+
+
     <Card>
       <CardHeader>File Imports</CardHeader>
 
@@ -42,6 +49,8 @@ const Import = props => {
               value={props.importType}
               placeholder="Select"
             />
+                <b className="card-text text-danger">   {props.validFileName}</b>
+           
           </Col>
         </div>
         <div className="row">
@@ -59,10 +68,11 @@ const Import = props => {
             <Button
               color="success"
               onClick={() => {
+             
                 props.create()
               }}
             >
-              Start Import
+              Start Importing
             </Button>
           </Col>
         </div>
