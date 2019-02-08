@@ -105,7 +105,7 @@ class AssignRole extends Component {
 
 
  
-    assignRole = (mplid,val,val2) => {
+    editPosition = (mplid,val,val2) => {
    
 
         const destination = this.props.availablePositions.filter(ap => ap.destination === this.state.selectedDestination)[0];
@@ -296,7 +296,7 @@ class AssignRole extends Component {
                     </ModalBody>
 
                     <ModalFooter>
-                        <Button disabled={this.state.selectedJobTitle !== null} onClick={() => this.assignRole(this.state.selectedJobTitle , moment(this.state.positionStartDate).format('YYYY-MM-DD'),
+                        <Button disabled={this.state.selectedJobTitle === null} onClick={() => this.editPosition(this.state.selectedJobTitle , moment(this.state.positionStartDate).format('YYYY-MM-DD'),
                   moment(this.state.positionEndDate).format('YYYY-MM-DD'))} color="success">Assign</Button>{' '}
                         <Button color="danger" onClick={this.toggle}>Cancel</Button>
                     </ModalFooter>

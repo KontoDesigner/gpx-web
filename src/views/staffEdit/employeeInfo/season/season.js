@@ -218,7 +218,7 @@ class Season extends Component {
                                     {assignBtn}
 
                                          <Button
-                disabled={this.props.positionAssign !== undefined && this.props.positionAssign !== null}
+                disabled={this.props.positionAssign === undefined && this.props.positionAssign === null}
                 size="sm"
                 onClick={() => {
                     this.toggleEditPositionModal()

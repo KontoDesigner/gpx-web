@@ -49,7 +49,7 @@ const Import = props => {
               value={props.importType}
               placeholder="Select"
             />
-                <b className="card-text text-danger">   {props.validFileName}</b>
+                <b className="card-text text-danger">   {props.validImportType}</b>
            
           </Col>
         </div>
@@ -61,6 +61,8 @@ const Import = props => {
               name="file"
               id="file"
             />
+            <br></br>
+           <b className="card-text text-danger">{props.validFileName}</b>
 </Col>
 </div>
 <div className="row">
@@ -72,7 +74,7 @@ const Import = props => {
                 props.create()
               }}
             >
-              Start Importing
+              Start Import
             </Button>
           </Col>
         </div>
