@@ -107,17 +107,19 @@ class AssignRole extends Component {
  
     editPosition = (mplid,val,val2) => {
    
-
-        const destination = this.props.availablePositions.filter(ap => ap.destination === this.state.selectedDestination)[0];
-        
-        const position = destination.jobTitles.filter(ap => ap.mplid === mplid)[0];
+debugger;
+       // const destination = this.props.availablePositions.filter(ap => ap.destination === this.state.selectedDestination)[0];
+        debugger;
+        const position = this.props.positionAssign.MPLID
+        const positionAssignId = this.props.positionAssign.PositionAssignId
        
         var currentdate = new Date()
 
         var newdatemodified=moment(currentdate).format("YYYY-MM-DD HH:mm:ss")
 
         const model = {
-            mplid: position.mplid,
+            mplid: mplid,
+            positionAssignId: positionAssignId,
             season: this.props.season.name,
             dateModified: newdatemodified ,
             startDate: this.state.selectedStartDate
@@ -127,12 +129,12 @@ class AssignRole extends Component {
             ? this.state.selectedEndDate
             : val2,
         }
-    debugger;
+    
         var assignCompareStart = new Date(model.startDate);
         var assignCompareEnd  = new Date(model.endDate);
-        var positionCompareStart = new Date(this.state.positionStartDate);
-        var positionCompareEnd  = new Date(this.state.positionEndDate);
-
+        var positionCompareStart = new Date(val)
+        var positionCompareEnd = new Date(val2)
+        debugger;
         var checkok= (assignCompareStart.getTime() >= positionCompareStart.getTime() && assignCompareEnd.getTime() <= positionCompareEnd.getTime());
         var checkok2= (assignCompareStart.getTime() < assignCompareEnd.getTime());
         
@@ -166,7 +168,7 @@ class AssignRole extends Component {
 
         this.toggle();
         
-        this.props.assignRole(model);
+        this.props.editPosition(model);
 
          
 
@@ -248,7 +250,7 @@ class AssignRole extends Component {
                                              <Datetime  className={'custom-datepicker'}
                                            
                                               onChange={this.assignEndChange}
-                                              defaultValue={   moment(this.props.positionAssign.StaffendDate).format('YYYY-MM-DD')}
+                                              defaultValue={   moment(this.props.positionAssign.StaffEndDate).format('YYYY-MM-DD')}
                                               value={this.state.selectedEndDate}
                             timeFormat={false}
                             dateFormat="YYYY-MM-DD"
@@ -269,11 +271,11 @@ class AssignRole extends Component {
                                             </thead>
                                             <tbody>
                                             <tr>
-                                            <td>    {moment(this.props.positionAssign.positionStartDate).format('YYYY-MM-DD') }
+                                            <td>    {moment(this.props.positionAssign.PositionStartDate).format('YYYY-MM-DD') }
                                             <b className="card-text text-danger">{this.state.validDate }</b>
                                              </td> 
                                        
-                                             <td>    {moment(this.props.positionAssign.positionEndDate).format('YYYY-MM-DD') }
+                                             <td>    {moment(this.props.positionAssign.PositionEndDate).format('YYYY-MM-DD') }
                                              <b className="card-text text-danger">{this.state.validDate }</b>
                                                 </td>
                                         
@@ -296,8 +298,8 @@ class AssignRole extends Component {
                     </ModalBody>
 
                     <ModalFooter>
-                        <Button disabled={this.state.selectedJobTitle === null} onClick={() => this.editPosition(this.state.selectedJobTitle , moment(this.state.positionStartDate).format('YYYY-MM-DD'),
-                  moment(this.state.positionEndDate).format('YYYY-MM-DD'))} color="success">Assign</Button>{' '}
+                        <Button disabled={this.props.positionAssign.StaffStartDate === null} onClick={() => this.editPosition(this.props.positionAssign.MPLID , moment(this.props.positionAssign.PositionStartDate).format('YYYY-MM-DD'),
+                  moment(this.props.positionAssign.PositionEndDate).format('YYYY-MM-DD'))} color="success">Assign</Button>{' '}
                         <Button color="danger" onClick={this.toggle}>Cancel</Button>
                     </ModalFooter>
                 </Modal>

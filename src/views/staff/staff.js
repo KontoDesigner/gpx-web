@@ -338,7 +338,7 @@ class Staff extends Component {
        
 this.setState({
     
-    importType:val.id,
+    importType:val ? val.id :'',
     validImportType:''
 
 
@@ -351,6 +351,8 @@ handleFile=(fileName) => {
      }
 
 create = async(model) => {
+    alert('This routine will be shut down until Monday 09.00 AM');
+    return false;
 // this.props.settingActions.save()
 debugger;
 var check = this.state.fileName ? true : false
@@ -359,7 +361,7 @@ if (!check) {
 
 
   this.setState({
-      validFileName: 'Please select a File to import'
+      validFileName: 'Please select a file to import. You can´t import a file with the same name twice.'
 
   })
   return false;
@@ -382,7 +384,12 @@ try {
 
   const res =  await RestClient.Upload('import/UploadFile/'+ this.state.importType,this.state.fileName)
 
-this.setState({fileName:null, importType:''})
+this.setState({
+    fileName:null,
+
+    validFileImport:'',
+    validFileName:''
+})
 
    if (res) {
       toastr.success('Success', `GPX - Import routine finished`)

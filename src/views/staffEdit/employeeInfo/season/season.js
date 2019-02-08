@@ -223,7 +223,7 @@ class Season extends Component {
                 onClick={() => {
                     this.toggleEditPositionModal()
                 }}
-                color="info"
+               color="info"
                 style={{ marginRight: '10px', marginBottom: '10px' }}>
                 Edit Assignment
             </Button>

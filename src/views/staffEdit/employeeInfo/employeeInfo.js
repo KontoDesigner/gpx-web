@@ -105,19 +105,11 @@ class EmployeeInfo extends Component {
             EndDate: role.endDate,
             DateModified:role.dateModified
         }
+debugger;
+       
 
-        const _this = this
-
-        _this.props.employeeInfoActions.insertPositionAssign(positionAssign).then(function() 
-        {
-            _this.props.getAvailablePositionNew
-            // _this.props.employeeInfoActions.getAvailablePositions(
-            //     _this.props.currentSeason.name,
-            //     _this.props.nextSeason.name,
-            //     _this.props.followingSeason.name
-            // )
-             _this.props.employeeInfoActions.getPositionAssigns(_this.props.staff.staffID)
-        })
+        this.props.employeeInfoActions.updatePositionAssign(role)
+     
     }
 
 

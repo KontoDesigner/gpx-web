@@ -73,8 +73,7 @@ class Imports extends Component {
 
     createImport = async() => {
         // this.props.settingActions.save()
-alert('ldld');
-        
+
       var check = this.state.fileName ? true : false
 
       if (!check) {

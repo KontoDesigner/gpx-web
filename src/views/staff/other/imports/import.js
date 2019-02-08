@@ -33,8 +33,8 @@ const Import = props => {
             key={0}
             sm="12"
             md="4"
-            lg="3"
-            xl="3"
+            lg="4"
+            xl="4"
             className="form-group form-group-select"
           >
             <label htmlFor="importTypes">Select File Import Type</label>
@@ -54,7 +54,7 @@ const Import = props => {
           </Col>
         </div>
         <div className="row">
-          <Col key={0} sm="12" md="4" lg="3" xl="3" className="form-group ">
+          <Col key={0} sm="12" md="4" lg="4" xl="4" className="form-group ">
             <input
               onChange={e => props.handleFile(e.target.files[0])}
               type="file"
