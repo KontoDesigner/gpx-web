@@ -107,7 +107,7 @@ class AssignRole extends Component {
  
     assignRole = (mplid,val,val2) => {
    
-debugger;
+
         const destination = this.props.availablePositions.filter(ap => ap.destination === this.state.selectedDestination)[0];
         
         const position = destination.jobTitles.filter(ap => ap.mplid === mplid)[0];
@@ -120,15 +120,12 @@ debugger;
             mplid: position.mplid,
             season: this.props.season.name,
             dateModified: newdatemodified ,
-     
             startDate: this.state.selectedStartDate
             ? this.state.selectedStartDate
             : val,
           endDate: this.state.selectedEndDate
             ? this.state.selectedEndDate
             : val2,
-
-
         }
     debugger;
         var assignCompareStart = new Date(model.startDate);
@@ -181,10 +178,10 @@ debugger;
         return (
             <div>
                 <Modal isOpen={this.props.modal} toggle={this.toggle} >
-                    <ModalHeader toggle={this.toggle}>Assign Position  {this.state.selectedJobTitle}</ModalHeader>
+                    <ModalHeader toggle={this.toggle}>Edit Assignment  {this.props.selectedJobTitle}</ModalHeader>
 
                     <ModalBody className="no-padding-bottom">
-                        <Row>
+                        {/* <Row>
                             <Col sm="12" md="6" lg="6" xl="6">
                                 <div className="form-group form-group-select">
                                     <label htmlFor="destination">Destination</label>
@@ -219,9 +216,9 @@ debugger;
                                     />
                                 </div>
                             </Col>
-                        </Row>
+                        </Row> */}
                       
-                        {this.state.selectedJobTitle !== null ?
+                        {/* {this.state.selectedJobTitle !== null ? */}
                             <Row>
                                 <Col>
                                     <Table striped bordered responsive>
@@ -233,12 +230,12 @@ debugger;
                                             </thead>
                                             <tbody>
                                             <tr>
-
+                                         
                                             <td>
                                             <Datetime  className={'custom-datepicker'}
                                         id="assignStart"
-                                        defaultValue={moment(this.state.positionStartDate).format('YYYY-MM-DD') }
                            onChange={this.assignStartChange}
+                           defaultValue={moment(this.props.positionAssign.StaffStartDate).format('YYYY-MM-DD')}
                            value={this.state.selectedStartDate}
                             timeFormat={false}
                             dateFormat="YYYY-MM-DD"
@@ -251,8 +248,8 @@ debugger;
                                              <Datetime  className={'custom-datepicker'}
                                            
                                               onChange={this.assignEndChange}
+                                              defaultValue={   moment(this.props.positionAssign.StaffendDate).format('YYYY-MM-DD')}
                                               value={this.state.selectedEndDate}
-                                              defaultValue={moment(this.state.positionEndDate).format('YYYY-MM-DD') }
                             timeFormat={false}
                             dateFormat="YYYY-MM-DD"
                             closeOnSelect
@@ -260,7 +257,7 @@ debugger;
                             inputProps={{ placeholder: 'YYYY-MM-DD' }} />  
                               <b className="card-text text-danger">{this.state.validDate2 }</b>
                                               </td>
-                                     
+                                          
                                         
                                             </tr>
                                             </tbody>
@@ -272,11 +269,11 @@ debugger;
                                             </thead>
                                             <tbody>
                                             <tr>
-                                            <td>{moment(this.state.positionStartDate).format('YYYY-MM-DD') }
+                                            <td>    {moment(this.props.positionAssign.positionStartDate).format('YYYY-MM-DD') }
                                             <b className="card-text text-danger">{this.state.validDate }</b>
                                              </td> 
                                        
-                                             <td>{moment(this.state.positionEndDate).format('YYYY-MM-DD') }
+                                             <td>    {moment(this.props.positionAssign.positionEndDate).format('YYYY-MM-DD') }
                                              <b className="card-text text-danger">{this.state.validDate }</b>
                                                 </td>
                                         
@@ -285,7 +282,7 @@ debugger;
                                     </Table>
                                 </Col>
                             </Row>
-                            : ''}
+                            {/* : ''} */}
 
     
     {/* {this.state.errormessage !== '' ?  
@@ -299,7 +296,7 @@ debugger;
                     </ModalBody>
 
                     <ModalFooter>
-                        <Button disabled={this.state.selectedJobTitle === null} onClick={() => this.assignRole(this.state.selectedJobTitle , moment(this.state.positionStartDate).format('YYYY-MM-DD'),
+                        <Button disabled={this.state.selectedJobTitle !== null} onClick={() => this.assignRole(this.state.selectedJobTitle , moment(this.state.positionStartDate).format('YYYY-MM-DD'),
                   moment(this.state.positionEndDate).format('YYYY-MM-DD'))} color="success">Assign</Button>{' '}
                         <Button color="danger" onClick={this.toggle}>Cancel</Button>
                     </ModalFooter>

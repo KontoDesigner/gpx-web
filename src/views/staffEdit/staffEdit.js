@@ -6,7 +6,7 @@ import EmployeeInfo from './employeeInfo/employeeInfo'
 import Cv from './cv/cv'
 import Abscense from './abscense/abscense'
 //import FullYearReview from './fullYearReview/fullYearReview'
-import Team from './team/team'
+import Team from './team/team' 
 import Applications from './applications/applications'
 import DestinationHistory from './history/destinationHistory'
 import Revisions from './history/revisions'
@@ -189,9 +189,10 @@ class StaffEdit extends Component {
         //     throw error
         // }
 
-        debugger
+        debugger;
 
         return Promise.all([
+            
             this.getAvailablePositionNew(),
             this.props.employeeInfoActions.getPositionAssigns(this.state.staffId),
             this.props.applicationHistoryActions.getResignHistory(this.state.staffId),
@@ -230,6 +231,7 @@ class StaffEdit extends Component {
     }
 
     getAvailablePositionNew = async () => {
+        debugger;
         const nowAvailablePositions = await RestClient.Get('positionassign/getallcand')
 
         this.setState({
