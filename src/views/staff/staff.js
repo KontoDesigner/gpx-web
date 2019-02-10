@@ -351,8 +351,8 @@ handleFile=(fileName) => {
      }
 
 create = async(model) => {
-    alert('This routine will be shut down until Monday 09.00 AM');
-    return false;
+    //alert('This routine will be shut down until Monday 09.00 AM');
+    //return false;
 // this.props.settingActions.save()
 debugger;
 var check = this.state.fileName ? true : false
