@@ -9,6 +9,7 @@ import * as reportActions from '../../../../actions/report/reportActions'
 import TextInput from '../../../../components/textInput'
 import Select from 'react-select'
 
+
 class NewPosition extends Component {
 
 //const ResignStaff = props => {
@@ -394,7 +395,7 @@ handleDestinationSelect = (val) => {
           <Col sm="12" md="6" lg="6" xl="4" className="form-group form-group-select">
  <label htmlFor="Country">Country</label>
 
-        <Select 
+       <Select 
           id="country"
           valueKey="id"
           labelKey="name"
@@ -414,7 +415,8 @@ handleDestinationSelect = (val) => {
           valueKey="destination"
           labelKey="destination"
           className="form-control"
-         options={this.props.position}
+          options={[...[{destination: 'Non-Spain Destination TBC'},{destination: 'Spain Destination TBC'},{destination: 'Stand by - Not contracted'}],...this.props.position]}
+        // options={this.props.position}
           onChange = { this.handleDestinationSelect }
          value={this.props.selectedDestination}
          placeholder="Select Destination"
