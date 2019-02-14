@@ -15,6 +15,8 @@ class AssignRole extends Component {
             selectedJobTitle: null,
             selectedStartDate: null,
             selectedEndDate: null,
+            selectedConfirmedDate: null,
+            selectedConfirmedDepDate: null,
             positionStartDate: null,
             positionEndDate: null,
        
@@ -68,6 +70,8 @@ class AssignRole extends Component {
             selectedJobTitle: null,
             selectedStartDate: null,
             selectedEndDate: null,
+            selectedConfirmedDate: null,
+            selectedConfirmedDepDate: null,
             positionStartDate: null,
             positionEndDate: null,
             validDate2:'',
@@ -79,8 +83,29 @@ class AssignRole extends Component {
        this.props.toggle();
     }
 
+    confirmedStartChange = confirmStart => {
+        
+        const selectedConfirmedDate = confirmStart ;
+     
+        this.setState({
+            selectedConfirmedDate,
+           
+            
+        })
+      debugger;
+    }
 
-
+    confirmedEndChange = confirmEnd => {
+        
+        const selectedConfirmedDepDate = confirmEnd ;
+     debugger;
+        this.setState({
+            selectedConfirmedDepDate,
+           
+            
+        })
+      
+    }
     assignStartChange = assignStart => {
         
         const selectedStartDate = assignStart ;
@@ -92,7 +117,6 @@ class AssignRole extends Component {
         })
       
     }
-  
     assignEndChange = assignEnd => {
       const selectedEndDate = assignEnd ;
    
@@ -105,7 +129,7 @@ class AssignRole extends Component {
 
 
  
-    editPosition = (mplid,val,val2) => {
+    editPosition = (mplid,val,val2,val3,val4) => {
    
 debugger;
        // const destination = this.props.availablePositions.filter(ap => ap.destination === this.state.selectedDestination)[0];
@@ -128,6 +152,12 @@ debugger;
           endDate: this.state.selectedEndDate
             ? this.state.selectedEndDate
             : val2,
+            confirmedDate: this.state.selectedConfirmedDate
+            ? this.state.selectedConfirmedDate
+            : val3,
+          confirmedDepDate: this.state.selectedConfirmedDepDate
+            ? this.state.selectedConfirmedDepDate
+            : val4,
         }
     
         var assignCompareStart = new Date(model.startDate);
@@ -263,6 +293,55 @@ debugger;
                                         
                                             </tr>
                                             </tbody>
+
+
+
+
+
+                                            <thead>
+                                            <tr>
+                                                <th>Confirmed Staff Arrival</th> <th> Confirmed Staff Departure</th>
+                                     
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            <tr>
+                                         
+                                            <td>
+                                            <Datetime  className={'custom-datepicker'}
+                                        id="confirmStart"
+                           onChange={this.confirmedStartChange}
+                           defaultValue=  {this.props.positionAssign.ConfirmedDate ? moment(this.props.positionAssign.ConfirmedDate).format('YYYY-MM-DD'):''}
+                           value={this.state.selectedConfirmedDate}
+                            timeFormat={false}
+                            dateFormat="YYYY-MM-DD"
+                            closeOnSelect
+                            utc={true}
+                            inputProps={{ placeholder: 'YYYY-MM-DD' }} />
+
+                                             </td> 
+                                             <td>
+                                             <Datetime  className={'custom-datepicker'}
+                                              id="confirmEnd"
+                                              onChange={this.confirmedEndChange}
+                                            defaultValue= {this.props.positionAssign.ConfirmedDepDate ? moment(this.props.positionAssign.ConfirmedDepDate).format('YYYY-MM-DD'):''}
+                                              value={this.state.selectedConfirmedDepDate}
+                            timeFormat={false}
+                            dateFormat="YYYY-MM-DD"
+                            closeOnSelect
+                            utc={true}
+                            inputProps={{ placeholder: 'YYYY-MM-DD' }} />  
+                
+                                              </td>
+                                          
+                                        
+                                            </tr>
+                                            </tbody>
+
+
+
+
+
                                             <thead>
                                             <tr>
                                                 <th>Position StartDate</th> <th> Position EndDate</th>
@@ -299,7 +378,7 @@ debugger;
 
                     <ModalFooter>
                         <Button disabled={this.props.positionAssign.StaffStartDate === null} onClick={() => this.editPosition(this.props.positionAssign.MPLID , moment(this.props.positionAssign.PositionStartDate).format('YYYY-MM-DD'),
-                  moment(this.props.positionAssign.PositionEndDate).format('YYYY-MM-DD'))} color="success">Assign</Button>{' '}
+                  moment(this.props.positionAssign.PositionEndDate).format('YYYY-MM-DD'), this.props.positionAssign.ConfirmedDate, this.props.positionAssign.ConfirmedDepDate)} color="success">Assign</Button>{' '}
                         <Button color="danger" onClick={this.toggle}>Cancel</Button>
                     </ModalFooter>
                 </Modal>

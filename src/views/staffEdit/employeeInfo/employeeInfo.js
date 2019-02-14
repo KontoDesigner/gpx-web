@@ -103,6 +103,8 @@ class EmployeeInfo extends Component {
             FullName: this.props.staff.fullName,
             StartDate: role.startDate,
             EndDate: role.endDate,
+            ConfirmedDate: role.confirmedDate,
+            ConfirmedDepDate: role.confirmedDepDate,
             DateModified:role.dateModified
         }
 

@@ -272,16 +272,37 @@ debugger;
                                             </thead>
                                             <tbody>
                                             <tr>
-                                            <td>{moment(this.state.positionStartDate).format('YYYY-MM-DD') }
-                                            <b className="card-text text-danger">{this.state.validDate }</b>
+
+                                            <td>
+                                            <Datetime  className={'custom-datepicker'}
+                                        id="assignStart"
+                                        defaultValue={moment(this.state.positionStartDate).format('YYYY-MM-DD') }
+                           onChange={this.assignStartChange}
+                           value={this.state.selectedStartDate}
+                            timeFormat={false}
+                            dateFormat="YYYY-MM-DD"
+                            closeOnSelect
+                            utc={true}
+                            inputProps={{ placeholder: 'YYYY-MM-DD' }} />
+  <b className="card-text text-danger">{this.state.validDate2 }</b>
                                              </td> 
-                                       
-                                             <td>{moment(this.state.positionEndDate).format('YYYY-MM-DD') }
-                                             <b className="card-text text-danger">{this.state.validDate }</b>
-                                                </td>
+                                             <td>
+                                             <Datetime  className={'custom-datepicker'}
+                                           
+                                              onChange={this.assignEndChange}
+                                              value={this.state.selectedEndDate}
+                                              defaultValue={moment(this.state.positionEndDate).format('YYYY-MM-DD') }
+                            timeFormat={false}
+                            dateFormat="YYYY-MM-DD"
+                            closeOnSelect
+                            utc={true}
+                            inputProps={{ placeholder: 'YYYY-MM-DD' }} />  
+                              <b className="card-text text-danger">{this.state.validDate2 }</b>
+                                              </td>
+                                     
                                         
                                             </tr>
-                                        </tbody>
+                                            </tbody>
                                     </Table>
                                 </Col>
                             </Row>
