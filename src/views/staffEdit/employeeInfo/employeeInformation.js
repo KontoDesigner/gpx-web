@@ -75,7 +75,7 @@ const EmployeeInformation = (props) => {
 
                     <Col sm="12" md="6" lg="6" xl="4" className="form-group">
                         {/* <label htmlFor="dateOfBirth">Date Of Birth</label> */}
-                        <TextInput name="dateOfBirth" label="Date Of Birth" disabled value= {props.staff.dateOfBirth?moment(props.staff.dateOfBirth).format("YYYY-MM-DD"):""} onChange={props.handleStaffField} />
+                        <TextInput name="dateOfBirth" label="Date Of Birth"  value= {props.staff.dateOfBirth?moment(props.staff.dateOfBirth).format("YYYY-MM-DD"):""} onChange={props.handleStaffField} />
                        
                         {/* <Datetime
                     
