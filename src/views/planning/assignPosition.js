@@ -115,13 +115,13 @@ class AssignPosition extends Component {
           .filter(x => x.staffID === selectedCandidate.staffID)
           .map(h => ({
             startDate:
-              moment(h.startDate).format('YYYY-MM-DD') +
+              h.startDate ? moment(h.startDate).format('YYYY-MM-DD') +
               ' - ' +
-              moment(h.endDate).format('YYYY-MM-DD'),
+              moment(h.endDate).format('YYYY-MM-DD'):'Dates missing',
             startDate:
-              moment(h.startDate).format('YYYY-MM-DD') +
+             h.startDate ? moment(h.startDate).format('YYYY-MM-DD') +
               ' - ' +
-              moment(h.endDate).format('YYYY-MM-DD')
+              moment(h.endDate).format('YYYY-MM-DD'):'Dates missing'
           }))
       : []
 
@@ -186,7 +186,7 @@ class AssignPosition extends Component {
   }
 
   checkAssignmentLength = () => {
-    debugger
+    debugger;
     if (this.state.selectedPlacementPeriod == 'Add New') {
       if (this.state.dates.length > 3) {
         return false
@@ -194,16 +194,16 @@ class AssignPosition extends Component {
         return true
       }
     }
-    return false
+    return true
   }
 
   createAssign = (val, val2) => {
     // const destination = this.props.availablePositions.filter(ap => ap.destination === this.state.selectedDestination)[0];
     var check = this.state.selectedCandidate ? true : false
     var check2 = this.state.selectedPlacementPeriod ? true : false
-    debugger
-    var check3 = this.checkAssignmentLength()
 
+    var check3 = this.checkAssignmentLength()
+    debugger;
     if (!check) {
       //alert('Please select a Staff to assign');
 
@@ -257,7 +257,7 @@ class AssignPosition extends Component {
       selectedTitle: this.props.selectedMplID,
       oldDate: this.state.selectedPlacementPeriod.substr(0, 10)
     }
-
+debugger;
     var assignCompareStart = new Date(model.startDate).setHours(0, 0, 0, 0);
     var assignCompareEnd = new Date(model.endDate).setHours(0, 0, 0, 0);
     var positionCompareStart = new Date(val)

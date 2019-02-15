@@ -39,6 +39,15 @@ const PersonTable = props => {
            
          }
 
+         function onContextMenuClick4(e, data) {
+        
+          //alert(data.mplID)
+        // console.log(data,e,test,hello)
+        
+        props.toogleRemoveStaffModal(data.staffID) 
+          
+        }
+
   const contextMenuId = props.index + '-jobTitleContextMenu'
 
   return (
@@ -53,6 +62,10 @@ const PersonTable = props => {
    
         <MenuItem data={{ foo: 'bar' }} onClick={onContextMenuClick3}>
         Send Mail Using Template
+          </MenuItem>
+
+             <MenuItem data={{ foo: 'bar' }} onClick={onContextMenuClick4}>
+        Remove Staff
           </MenuItem>
 
       </ContextMenu>

@@ -37,7 +37,7 @@ const Revisions = (props) => {
                     </Col>
                 
                     <Col sm="12" md="3" lg="3" xl="3" className="form-group">
-                    {moment(dh.DateModified).format("YYYY-MM-DD HH:mm:ss")}
+                    {moment(dh.dateModified).format("YYYY-MM-DD HH:mm:ss")}
                     </Col>
 
                     </div>
