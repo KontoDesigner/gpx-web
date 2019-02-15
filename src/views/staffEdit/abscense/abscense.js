@@ -242,7 +242,7 @@ class Abscense extends Component {
     
     try {
       const res = await RestClient.Post('resign/resignUser', model)
-      debugger
+      debugger;
 
       if (res) {
         toastr.success('Success', `Resign Document is updated`)

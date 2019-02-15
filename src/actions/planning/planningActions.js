@@ -115,7 +115,7 @@ export function createPosition(model) {
              const modelobsolete = {
                   Id: model.id
         }
-
+debugger;
            const res= await RestClient.Post('position/createPosition', model)
         
        

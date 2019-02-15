@@ -222,6 +222,28 @@ export function movePositionAssign(oldPositionAssignId, newMPLID) {
     }
 }
 
+export function updatePositionAssign(positionAssign) {
+    return async function(dispatch) {
+        dispatch(beginAjaxCall()) 
+
+        try {
+            const res = await RestClient.Post('positionassign/updatepositionassign', positionAssign)
+            debugger;
+            dispatch(endAjaxCall())
+
+            if (res && res.ok) {
+                toastr.success('Success', ` ${res ? res.message : 'Success'}`)
+            } else {
+                toastr.error('Position is occupied', ` ${res ? res.message : 'Position is occupied'}`)
+            }
+        } catch (error) {
+            dispatch(ajaxCallError(error))
+
+            throw error
+        }
+    }
+}
+
 export function insertPositionAssign(positionAssign) {
     return async function(dispatch) {
         dispatch(beginAjaxCall())

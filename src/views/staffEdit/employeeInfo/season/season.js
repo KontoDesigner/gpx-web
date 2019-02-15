@@ -4,6 +4,7 @@ import TextInput from '../../../../components/textInput'
 import AssignRole from './assignRole'
 import MoveRole from './moveRole'
 import RemoveRole from './removeRole'
+import EditPosition from './editPosition'
 import Fly2Work from './fly2Work'
 import Datetime from 'react-datetime'
 import moment from "moment";
@@ -16,6 +17,7 @@ class Season extends Component {
             moveRoleModal: false,
             removeRoleModal: false,
             fly2WorkModal: false,
+            editPositionModal:false
 
         
 
@@ -29,6 +31,14 @@ class Season extends Component {
             assignRoleModal: !this.state.assignRoleModal
         })
     }
+
+
+    toggleEditPositionModal = () => {
+        this.setState({
+            editPositionModal: !this.state.editPositionModal
+        })
+    }
+    
 
     toggleMoveRoleModal = () => {
         this.setState({
@@ -206,6 +216,17 @@ class Season extends Component {
                             <Row>
                                 <Col>
                                     {assignBtn}
+
+                                         <Button
+                disabled={this.props.positionAssign === undefined && this.props.positionAssign === null}
+                size="sm"
+                onClick={() => {
+                    this.toggleEditPositionModal()
+                }}
+               color="info"
+                style={{ marginRight: '10px', marginBottom: '10px' }}>
+                Edit Assignment
+            </Button>
                               
                                     <Button
                                         size="sm"
@@ -241,6 +262,15 @@ class Season extends Component {
 
                     {assignModal}
 
+
+       <EditPosition
+                modal={this.state.editPositionModal}
+                toggle={this.toggleEditPositionModal}
+                availablePositions={this.props.nowAvailablePositions}
+                editPosition={this.props.editPosition}
+                positionAssign={this.props.positionAssign}
+                season={this.props.season}
+            />
 
             <Fly2Work
                 modal={this.state.fly2WorkModal}

@@ -13,7 +13,7 @@ const Tabs = (props) => {
                         <ListGroupItem
                             className={classnames({ active: props.activeTab === 'headOf' })}
                             onClick={() => {
-                                props.toggle('headOf',
+                                props.toggle('headOf', 
                                     props.getHeadOf,
                                     props.handleHeadOf)
                             }}>

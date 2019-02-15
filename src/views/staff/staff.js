@@ -35,6 +35,9 @@ class Staff extends Component {
 
         this.state = {
             loaded: false,
+            validFileName: '',
+            validImportType:'',
+            valid: '',
             selectedReason: null,
             fileName:null,
             importType:'',
@@ -146,7 +149,11 @@ class Staff extends Component {
 
     handleFile=(fileName) => {
         
-   this.setState({fileName})
+   this.setState({
+       
+    fileName,
+    validFileName:''
+})
 
     }
 
@@ -321,14 +328,21 @@ class Staff extends Component {
  
             this.setState({
                 activeTab: tab,
-                resetData: resetData
+                resetData: resetData,
+                validFileName: ''
             })
         }
     }
 
     handleImportType = ( val) => {
        
-this.setState({importType:val.id});
+this.setState({
+    
+    importType:val ? val.id :'',
+    validImportType:''
+
+
+});
 }
 
 handleFile=(fileName) => {
@@ -337,14 +351,45 @@ handleFile=(fileName) => {
      }
 
 create = async(model) => {
+    //alert('This routine will be shut down until Monday 09.00 AM');
+    //return false;
 // this.props.settingActions.save()
+debugger;
+var check = this.state.fileName ? true : false
+var check2 = this.state.importType ? true : false
+if (!check) {
+
+
+  this.setState({
+      validFileName: 'Please select a file to import. You can´t import a file with the same name twice.'
+
+  })
+  return false;
+ 
+}
+
+if (!check2) {
+
+
+    this.setState({
+        validImportType: 'Please select a File Import Type'
+  
+    })
+    return false;
+   
+  }
 
 
 try {
 
   const res =  await RestClient.Upload('import/UploadFile/'+ this.state.importType,this.state.fileName)
 
-this.setState({fileName:null, importType:''})
+this.setState({
+    fileName:null,
+
+    validFileImport:'',
+    validFileName:''
+})
 
    if (res) {
       toastr.success('Success', `GPX - Import routine finished`)
@@ -515,7 +560,8 @@ this.setState({fileName:null, importType:''})
                         <FileImport
                          importTypes={this.state.importTypes}
                          //fileimportTypes={this.state.fileimportTypes}
-                       
+                         validFileName={this.state.validFileName}
+                         validImportType={this.state.validImportType}
                          handleFile={this.handleFile}
                          handleImportType={this.handleImportType}
                          importType={this.state.importType}

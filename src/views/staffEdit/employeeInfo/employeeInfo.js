@@ -92,6 +92,47 @@ class EmployeeInfo extends Component {
         })
     }
 
+    editPosition = role => {
+     
+        const positionAssign = {
+            MPLID: role.mplid,
+            StaffID: this.props.staff.staffID,
+            FirstName: this.props.staff.firstName,
+            LastName: this.props.staff.lastName,
+            Season: role.season,
+            FullName: this.props.staff.fullName,
+            StartDate: role.startDate,
+            EndDate: role.endDate,
+            ConfirmedDate: role.confirmedDate,
+            ConfirmedDepDate: role.confirmedDepDate,
+            DateModified:role.dateModified
+        }
+
+        const _this = this
+
+        _this.props.employeeInfoActions.updatePositionAssign(role).then(function() 
+        {
+            _this.props.getAvailablePositionNew
+            // _this.props.employeeInfoActions.getAvailablePositions(
+            //     _this.props.currentSeason.name,
+            //     _this.props.nextSeason.name,
+            //     _this.props.followingSeason.name
+            // )
+             _this.props.employeeInfoActions.getPositionAssigns(_this.props.staff.staffID)
+        })
+
+
+
+
+       
+
+       
+     
+    }
+
+
+
+
     removeRole = (positionAssignId, startDate) => {
     
         
@@ -155,6 +196,7 @@ class EmployeeInfo extends Component {
                             positionAssign={this.props.currentPositionAssign}
                             nowAvailablePositions={this.props.nowAvailablePositions}
                             assignRole={this.assignRole}
+                            editPosition={this.editPosition}
                             removeRole={this.removeRole}
                             moveRole={this.moveRole}
                             season={this.props.currentSeason}
@@ -174,6 +216,7 @@ class EmployeeInfo extends Component {
                             positionAssign={this.props.nextPositionAssign}
                             nowAvailablePositions={this.props.nowAvailablePositions}
                             assignRole={this.assignRole}
+                            editPosition={this.editPosition}
                             removeRole={this.removeRole}
                             moveRole={this.moveRole}
                             season={this.props.nextSeason}
@@ -189,6 +232,7 @@ class EmployeeInfo extends Component {
                             positionAssign={this.props.followingPositionAssign}
                             nowAvailablePositions={this.props.nowAvailablePositions}
                             assignRole={this.assignRole}
+                            editPosition={this.editPosition}
                             removeRole={this.removeRole}
                             moveRole={this.moveRole}
                             season={this.props.nextSeason}
@@ -226,7 +270,7 @@ class EmployeeInfo extends Component {
             </div>
         )
     }
-}
+} 
 
 function mapDispatchToProps(dispatch) {
     return {

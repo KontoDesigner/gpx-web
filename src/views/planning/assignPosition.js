@@ -398,8 +398,9 @@ class AssignPosition extends Component {
                           className={'custom-datepicker'}
                           //value={this.props.staff.dateOfBirth}
                           onChange={this.assignStartChange}
-                          defaultValue={mplresult[0].positionStartDate}
-                          value={this.state.selectedAssignStart}
+                          defaultValue={moment(mplresult[0].positionStartDate).format('YYYY-MM-DD') }
+                           value={this.state.selectedAssignStart}
+                          //value={moment(this.state.selectedAssignStart).format('YYYY-MM-DD') }
                           timeFormat={false}
                           dateFormat="YYYY-MM-DD"
                           closeOnSelect
@@ -415,8 +416,9 @@ class AssignPosition extends Component {
                         <Datetime
                           className={'custom-datepicker'}
                           onChange={this.assignEndChange}
-                          defaultValue={mplresult[0].positionEndDate}
-                          value={this.state.selectedAssignEnd}
+                          defaultValue={moment(mplresult[0].positionEndDate).format('YYYY-MM-DD') }
+                           value={this.state.selectedAssignEnd}
+                          //value={moment(this.state.selectedAssignEnd).format('YYYY-MM-DD') }
                           timeFormat={false}
                           dateFormat="YYYY-MM-DD"
                           closeOnSelect
@@ -437,15 +439,15 @@ class AssignPosition extends Component {
                   <tbody>
                     <tr>
                       <td>
-                        {mplresult[0].positionStartDate}
-
+                        {/* {mplresult[0].positionStartDate} */}
+                        {moment(mplresult[0].positionStartDate).format('YYYY-MM-DD') }
                         <b className="card-text text-danger">
                           {this.state.validDate2}
                         </b>
                       </td>
 
                       <td>
-                        {mplresult[0].positionEndDate}
+                      {moment(mplresult[0].positionEndDate).format('YYYY-MM-DD') }
                         <b className="card-text text-danger">
                           {this.state.validDate2}
                         </b>

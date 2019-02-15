@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Row, Col } from 'reactstrap'
-import Import from './import'
+import Import from './importold'
 import Tabs from './tabs'
 import RestClient from '../../infrastructure/restClient'
 import { toastr } from 'react-redux-toastr'
@@ -10,6 +10,7 @@ class Imports extends Component {
         super(props)
        // this.downloadBtn = React.createRef()
         this.state = {
+            validFileName: '',
             importType:'',
             fileName:null,
             activeTab: 'fileImport',
@@ -59,16 +60,32 @@ class Imports extends Component {
 
             this.setState({
                 activeTab: tab,
+                validFileName: '',
                 //resetData: resetData
             })
         }
     }
   
     create = async(model) => {
-        // this.props.settingActions.save()
+        // this.props.settingActions.save() 
+
+      debugger;
+
+      var check = this.state.fileName ? true : false
+
+      if (!check) {
+    
+  
+        this.setState({
+            validFileName: 'Please select a File Import Type'
       
-      
+        })
+  
+        return false
+      }
+
       try {
+          debugger;
           const res =  await RestClient.Upload('import/UploadFile/'+ this.state.importType,this.state.fileName)
       
        this.setState({fileName:'', importType:''})
@@ -104,6 +121,7 @@ class Imports extends Component {
                         handleImportType={this.handleImportType}
                         importType={this.state.importType}
                         create={this.create}
+                        validFileName={this.state.validFileName}
                         //downloadBtn={this.downloadBtn}
                         />
                     </Col>

@@ -35,6 +35,7 @@ const Import = props => {
               value={props.importType}
               placeholder="Select"
             />
+                {this.state.validStaff}
             </Col>
 </div>
 
@@ -53,10 +54,11 @@ const Import = props => {
             <Button
               color="success"
               onClick={() => {
-                props.create()
+         
+                 props.create()
               }}
             >
-              Start Import
+              Start Importjsjdj
             </Button>
           </Col>
         </div>

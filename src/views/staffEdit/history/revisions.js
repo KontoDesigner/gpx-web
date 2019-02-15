@@ -10,13 +10,13 @@ const Revisions = (props) => {
             <CardBody>
             <div className="form-row">
                     <Col sm="12" md="3" lg="3" xl="3" className="form-group">
-                   <b>Action Date</b>  
+                   <b>Hist.Date</b>  
                     </Col>
                     <Col sm="12" md="3" lg="3" xl="3" className="form-group">
-                   <b> Action </b>
+                   <b> Hist.Who </b>
                     </Col>
                     <Col sm="12" md="3" lg="3" xl="3" className="form-group">
-                    <b>Who</b> 
+                    <b>Hist.Action</b> 
                     </Col>
                     <Col sm="12" md="3" lg="3" xl="3" className="form-group">
                    <b>Date Modified </b>
@@ -30,11 +30,12 @@ const Revisions = (props) => {
                     {moment(dh.historyDate).format("YYYY-MM-DD")}
                     </Col>
                     <Col sm="12" md="3" lg="3" xl="3" className="form-group">
-                    {dh.historyAction} {dh.destination}  {dh.jobTitleWhenResigned}  {dh.jobTitle}
-                    </Col>
-                    <Col sm="12" md="3" lg="3" xl="3" className="form-group">
                     {dh.historyWho}
                     </Col>
+                    <Col sm="12" md="3" lg="3" xl="3" className="form-group">
+                    {dh.historyAction} {dh.destination}  {dh.jobTitleWhenResigned}  {dh.jobTitle}
+                    </Col>
+                
                     <Col sm="12" md="3" lg="3" xl="3" className="form-group">
                     {moment(dh.DateModified).format("YYYY-MM-DD HH:mm:ss")}
                     </Col>

@@ -74,10 +74,10 @@ const EmployeeInformation = (props) => {
                     </Col>
 
                     <Col sm="12" md="6" lg="6" xl="4" className="form-group">
-                        {/* <label htmlFor="dateOfBirth">Date Of Birth</label> */}
-                        <TextInput name="dateOfBirth" label="Date Of Birth" disabled value= {props.staff.dateOfBirth?moment(props.staff.dateOfBirth).format("YYYY-MM-DD"):""} onChange={props.handleStaffField} />
-                       
-                        {/* <Datetime
+                        { <label htmlFor="dateOfBirth">Date Of Birth</label> }
+                        {/* <TextInput name="dateOfBirth" label="Date Of Birth"  value= {props.staff.dateOfBirth?moment(props.staff.dateOfBirth).format("YYYY-MM-DD"):""} onChange={props.handleStaffField} />
+                        */}
+                        {<Datetime
                     
                             value={props.staff.dateOfBirth}
                             onChange={(v) => { props.handleStaffDatePicker('dateOfBirth', v) }}
@@ -88,7 +88,7 @@ const EmployeeInformation = (props) => {
                             inputProps={{ placeholder: 'YYYY-MM-DD' }} 
                             disabled = {true}
                             />
-                      */}
+                      }
                     </Col> 
 
                     <Col sm="12" md="6" lg="6" xl="4" className="form-group">

@@ -16,7 +16,14 @@ import Select from 'react-select'
 import Datetime from 'react-datetime'
 
 const Import = props => {
+
+
+
+
   return (
+
+
+
     <Card>
       <CardHeader>File Imports</CardHeader>
 
@@ -26,8 +33,8 @@ const Import = props => {
             key={0}
             sm="12"
             md="4"
-            lg="3"
-            xl="3"
+            lg="4"
+            xl="4"
             className="form-group form-group-select"
           >
             <label htmlFor="importTypes">Select File Import Type</label>
@@ -42,16 +49,20 @@ const Import = props => {
               value={props.importType}
               placeholder="Select"
             />
+                <b className="card-text text-danger">   {props.validImportType}</b>
+           
           </Col>
         </div>
         <div className="row">
-          <Col key={0} sm="12" md="4" lg="3" xl="3" className="form-group ">
+          <Col key={0} sm="12" md="4" lg="4" xl="4" className="form-group ">
             <input
               onChange={e => props.handleFile(e.target.files[0])}
               type="file"
               name="file"
               id="file"
             />
+            <br></br>
+           <b className="card-text text-danger">{props.validFileName}</b>
 </Col>
 </div>
 <div className="row">
@@ -59,6 +70,7 @@ const Import = props => {
             <Button
               color="success"
               onClick={() => {
+             
                 props.create()
               }}
             >
