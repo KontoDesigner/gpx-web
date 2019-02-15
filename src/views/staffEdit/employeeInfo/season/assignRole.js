@@ -130,14 +130,14 @@ debugger;
 
 
         }
-    debugger;
-        var assignCompareStart = new Date(model.startDate);
-        var assignCompareEnd  = new Date(model.endDate);
+
+        var assignCompareStart = new Date(model.startDate).setHours(0, 0, 0, 0);
+        var assignCompareEnd  = new Date(model.endDate).setHours(0, 0, 0, 0);
         var positionCompareStart = new Date(this.state.positionStartDate);
         var positionCompareEnd  = new Date(this.state.positionEndDate);
-
-        var checkok= (assignCompareStart.getTime() >= positionCompareStart.getTime() && assignCompareEnd.getTime() <= positionCompareEnd.getTime());
-        var checkok2= (assignCompareStart.getTime() < assignCompareEnd.getTime());
+    debugger;
+        var checkok= (assignCompareStart >= positionCompareStart.getTime() && assignCompareEnd <= positionCompareEnd.getTime());
+        var checkok2= (assignCompareStart < assignCompareEnd);
         
         if(!checkok2){
             this.setState({
@@ -272,37 +272,16 @@ debugger;
                                             </thead>
                                             <tbody>
                                             <tr>
-
-                                            <td>
-                                            <Datetime  className={'custom-datepicker'}
-                                        id="assignStart"
-                                        defaultValue={moment(this.state.positionStartDate).format('YYYY-MM-DD') }
-                           onChange={this.assignStartChange}
-                           value={this.state.selectedStartDate}
-                            timeFormat={false}
-                            dateFormat="YYYY-MM-DD"
-                            closeOnSelect
-                            utc={true}
-                            inputProps={{ placeholder: 'YYYY-MM-DD' }} />
-  <b className="card-text text-danger">{this.state.validDate2 }</b>
+                                            <td>{moment(this.state.positionStartDate).format('YYYY-MM-DD') }
+                                            <b className="card-text text-danger">{this.state.validDate }</b>
                                              </td> 
-                                             <td>
-                                             <Datetime  className={'custom-datepicker'}
-                                           
-                                              onChange={this.assignEndChange}
-                                              value={this.state.selectedEndDate}
-                                              defaultValue={moment(this.state.positionEndDate).format('YYYY-MM-DD') }
-                            timeFormat={false}
-                            dateFormat="YYYY-MM-DD"
-                            closeOnSelect
-                            utc={true}
-                            inputProps={{ placeholder: 'YYYY-MM-DD' }} />  
-                              <b className="card-text text-danger">{this.state.validDate2 }</b>
-                                              </td>
-                                     
+                                       
+                                             <td>{moment(this.state.positionEndDate).format('YYYY-MM-DD') }
+                                             <b className="card-text text-danger">{this.state.validDate }</b>
+                                                </td>
                                         
                                             </tr>
-                                            </tbody>
+                                        </tbody>
                                     </Table>
                                 </Col>
                             </Row>
