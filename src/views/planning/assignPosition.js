@@ -258,16 +258,16 @@ class AssignPosition extends Component {
       oldDate: this.state.selectedPlacementPeriod.substr(0, 10)
     }
 
-    var assignCompareStart = new Date(model.startDate)
-    var assignCompareEnd = new Date(model.endDate)
+    var assignCompareStart = new Date(model.startDate).setHours(0, 0, 0, 0);
+    var assignCompareEnd = new Date(model.endDate).setHours(0, 0, 0, 0);
     var positionCompareStart = new Date(val)
     var positionCompareEnd = new Date(val2)
 
     var checkok =
-      assignCompareStart.getTime() >= positionCompareStart.getTime() &&
-      assignCompareEnd.getTime() <= positionCompareEnd.getTime()
+      assignCompareStart >= positionCompareStart.getTime() &&
+      assignCompareEnd <= positionCompareEnd.getTime()
 
-    var checkok2 = assignCompareStart.getTime() < assignCompareEnd.getTime()
+    var checkok2 = assignCompareStart < assignCompareEnd
 
     debugger
 
