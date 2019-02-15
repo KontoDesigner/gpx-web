@@ -276,10 +276,11 @@ class StaffEdit extends Component {
         this.props.employeeInfoActions.sendToCtx(model)
     }
 
-    save = () => {
+    save  = async () => {
         debugger
 
-        this.props.employeeInfoActions.save(this.props.staff)
+        await this.props.employeeInfoActions.save(this.props.staff)
+        window.close()
     }
 
     render() {

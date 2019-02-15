@@ -21,7 +21,7 @@ const Buttons = props => {
                     color="primary">
                     Print
                 </Button> */}
-                <Button
+                {/* <Button
                    // disabled={props.unsavedEdit === false}
                    // disabled={props.unsavedEdit === false}
                     color="success" 
@@ -31,8 +31,8 @@ const Buttons = props => {
                       
                     }}>
                     Save
-                </Button> 
-                {/* <Button
+                </Button>  */}
+                { <Button
                    // disabled={props.unsavedEdit === false}
                    // disabled={props.unsavedEdit === false}
                     color="success" 
@@ -40,11 +40,11 @@ const Buttons = props => {
 
                         
                         props.save()
-                        window.close()
+                      
                       
                     }}>
                     Save & Close
-                </Button>  */}
+                </Button>  }
                 {/* <label>Status = {props.staff.status}</label> */}
             </Col>
             

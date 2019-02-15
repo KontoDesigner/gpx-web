@@ -12,7 +12,7 @@ class Filter extends Component {
   constructor(props) {
     super(props)
 
-    this.getData = debounce(this.getDataDebouncer, 500)
+    this.getData = debounce(this.getDataDebouncer, 1500)
 
   }
 
@@ -23,7 +23,7 @@ class Filter extends Component {
 
 
   updateTextState = event => {
-    
+
     const value = event.target.value
 
     this.props.filterActions.handleText(value)
