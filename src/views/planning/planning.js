@@ -196,6 +196,7 @@ debugger;
     if(val) {
       this.setState({
         removePositionModal: !this.state.removePositionModal,
+        // selectedMplID: val[]
         selectedMplID: val
       })
       debugger;

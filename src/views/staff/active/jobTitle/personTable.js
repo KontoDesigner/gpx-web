@@ -65,7 +65,7 @@ const PersonTable = props => {
           </MenuItem>
 
              <MenuItem data={{ foo: 'bar' }} onClick={onContextMenuClick4}>
-        Remove Staff
+        Move Staff To Archive
           </MenuItem>
 
       </ContextMenu>
