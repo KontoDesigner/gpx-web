@@ -46,6 +46,7 @@ class HeadOfRow extends Component {
                 toogleMarkPositionAcceptModal = {this.props.toogleMarkPositionAcceptModal}
                 toogleAssignPositionModal = {this.props.toogleAssignPositionModal}
                 toogleUpdatePositionModal = {this.props.toogleUpdatePositionModal}
+                toogleRemovePositionModal={this.props.toogleRemovePositionModal }
               />
             ))}
           </CardBody>

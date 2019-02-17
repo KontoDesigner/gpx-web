@@ -38,11 +38,11 @@ const JobTitleTable = (props) => {
    
    
      function onContextMenuClick2(e, data) {
-       
+     debugger;  
           //alert(data.mplID)
         // console.log(data,e,test,hello)
-        props.toogleMakePositionVacantModal(data.mplID)
-          
+        //props.toogleMakePositionVacantModal(data.mplID)
+        props.toogleRemovePositionModal(data.mplID)
         }
    
         function onContextMenuClick3(e, data) {
@@ -95,6 +95,9 @@ const JobTitleTable = (props) => {
 <ContextMenu id={contextMenuId}>
       <MenuItem data={{ foo: 'bar' }} onClick={onContextMenuClick}>
         Assign Staff To Position
+          </MenuItem>
+          <MenuItem data={{ foo: 'bar' }} onClick={onContextMenuClick2}>
+        Remove Position
           </MenuItem>
        {/* <MenuItem data={{foo: 'bar'}} onClick={onContextMenuClick2}>
         Make Position Vacant

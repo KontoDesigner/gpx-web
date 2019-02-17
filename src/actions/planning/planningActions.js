@@ -105,6 +105,32 @@ export function createDecline(model) {
         }
     }
 }
+export function createRemovePosition(model) {
+    return async function(dispatch) {
+        dispatch(beginAjaxCall())
+
+        try {
+           
+           // const res = await RestClient.Post(`staff/removestaff/${model.StaffID}`)
+            const res= await RestClient.Post('position/removeposition', model.MPLID)
+            debugger;
+            //const res = await RestClient.Post('abscense/abscenseuser', model)
+            
+            dispatch(endAjaxCall())
+
+            if (res) {
+                toastr.success('Success', `Selected position was deleted`)
+            } else {
+                toastr.error('Error', `Selected position was not deleted: ${res ? res.message : 'Error'}`)
+            }
+        } catch (error) {
+            dispatch(ajaxCallError(error))
+
+            throw error
+        }
+    } 
+}
+
 
 
 export function createPosition(model) {

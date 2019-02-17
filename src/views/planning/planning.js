@@ -8,6 +8,7 @@ import MarkPositionAccept from './markPositionAccept'
 import MarkPositionActing from './markPositionActing'
 import MarkPositionDecline from './markPositionDecline'
 import ResetPositionAccept from './resetPositionAccept'
+import RemovePosition from './removePosition'
 import UnmarkPositionActing from './unmarkPositionActing'
 import AllRole from './planning/allRole/allRole'
 import NewPosition from './planning/newPosition/newPosition'
@@ -45,6 +46,7 @@ class Planning extends Component {
       markPositionActingModal: false,
       markPositionDeclineModal: false,
       resetPositionAcceptModal: false,
+      removePositionModal: false,
       unmarkPositionActingModal: false,
       assignPositionModal: false,
       updatePositionModal: false,
@@ -186,15 +188,28 @@ debugger;
 
     }
 
+  }
 
+  toogleRemovePositionModal = val => {
 
+    
+    if(val) {
+      this.setState({
+        removePositionModal: !this.state.removePositionModal,
+        selectedMplID: val
+      })
+      debugger;
+    }else 
+    {
 
+      this.setState({
+        removePositionModal: !this.state.removePositionModal,
+        selectedMplID: this.props.selectedTitle
+      })
+      
 
+    }
 
-
-    // this.setState({
-    //   markPositionDeclineModal: !this.state.markPositionDeclineModal
-    // })
   }
 
   toogleResetPositionAcceptModal = val => {
@@ -217,16 +232,6 @@ debugger;
 
     }
 
-
-
-
-
-
-
-
-    // this.setState({
-    //   resetPositionAcceptModal: !this.state.resetPositionAcceptModal
-    // })
   }
 
   toogleUnmarkPositionActingModal = val => {
@@ -423,6 +428,23 @@ debugger;
  
     this.getActTabAndRequest(this.state.activeTab) 
   }
+
+  createRemovePosition = model => {
+    debugger; 
+       let positionmodel = {
+  
+        
+            
+        MPLID: model.mplid,
+        DateModified:model.dateModified
+     
+            
+        }
+        debugger; 
+        this.props.planningActions.createRemovePosition(positionmodel)
+        this.getActTabAndRequest(this.state.activeTab) 
+    }
+
 
   createDecline = model => {
     debugger
@@ -656,6 +678,15 @@ debugger;
           selectedMplID={this.state.selectedMplID}
         />
 
+
+        <RemovePosition
+          modal={this.state.removePositionModal}
+          toggle={this.toogleRemovePositionModal}
+          createRemovePosition={this.createRemovePosition}
+          selectedTitle={this.props.selectedTitle}
+          candidate={this.props.candidate}
+          selectedMplID={this.state.selectedMplID}
+        />
         <ResetPositionAccept
           modal={this.state.resetPositionAcceptModal}
           toggle={this.toogleResetPositionAcceptModal}
@@ -698,6 +729,9 @@ debugger;
                 }
                 toogleMarkPositionDeclineModal={
                   this.toogleMarkPositionDeclineModal
+                }
+                toogleRemovePositionModal={
+                  this.toogleRemovePositionModal
                 }
                 toogleMarkPositionActingModal={
                   this.toogleMarkPositionActingModal

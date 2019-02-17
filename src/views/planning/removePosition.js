@@ -15,7 +15,7 @@ import {
 import Datetime from 'react-datetime'
 import Select from 'react-select'
 import moment from 'moment'
-class RemoveStaff extends Component {
+class RemovePosition extends Component {
   //const ResignStaff = props => {
   constructor(props) {
     super(props)
@@ -28,21 +28,21 @@ this.dates=[]
     }
   }
 
-  removeStaff = val => {
+  removePosition = val => {
     this.toggle()
-
+debugger;
     var currentdate = new Date()
 
     var newdatemodified=moment(currentdate).format("YYYY-MM-DD HH:mm:ss")
 
     let model = {
       dateModified: newdatemodified,
-      staffid: this.props.selectedStaffID,
+      mplid: this.props.selectedMplID,
      
       oldDate:newdatemodified
     }
-
-    this.props.createRemoveStaff(model)
+debugger;
+    this.props.createRemovePosition(model)
   }
 
   
@@ -99,11 +99,11 @@ this.dates=[]
       <div>
         <Modal isOpen={this.props.modal} toggle={this.toggle}>
           <ModalHeader toggle={this.toggle}>
-            Remove Staff - {this.props.selectedStaffID + " "}   
+            Remove Position - {this.props.selectedTitle + " "}   
           </ModalHeader>
           <ModalBody>
             { <Alert color="danger">
-                        Are you sure you want to remove Staff? 
+                        Are you sure you want to remove Position? 
                     </Alert> }
 
             {/* <Row>
@@ -143,7 +143,7 @@ this.dates=[]
             </Row> */}
           </ModalBody>
           <ModalFooter>
-            <Button color="success" onClick={() => this.removeStaff()}>
+            <Button color="success" onClick={() => this.removePosition()}>
               Ok
             </Button>{' '}
             <Button color="danger" onClick={this.toggle}>
@@ -156,4 +156,4 @@ this.dates=[]
   }
 }
 
-export default RemoveStaff
+export default RemovePosition

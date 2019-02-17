@@ -149,6 +149,22 @@ class Staff extends Component {
         this.getActTabAndRequest(this.state.activeTab) 
     }
 
+    createRemoveStaff = model => {
+     debugger; 
+        let staffmodel = {
+   
+         
+             StaffID:this.state.selectedStaffID,
+             DateModified:model.dateModified
+      
+             
+         }
+         debugger; 
+         this.props.staffActions.createRemoveStaff(staffmodel)
+ 
+         this.getActTabAndRequest(this.state.activeTab) 
+     }
+
     handleFile=(fileName) => {
         
    this.setState({
@@ -273,7 +289,7 @@ class Staff extends Component {
     }
 
     toogleRemoveStaffModal = (val) => {
-
+debugger;
         if(val) {
             this.setState({
                 removeStaffModal: !this.state.removeStaffModal,
@@ -501,6 +517,7 @@ this.setState({
                 resignType={this.state.resignType}
                 handleChange={this.handleChange}
                 handleSelect= {this.handleSelect}
+                createRemoveStaff= {this.createRemoveStaff}
                 value={this.state.value}
                 createResign= {this.createResign}
                 selectedStaffID={this.state.selectedStaffID}
