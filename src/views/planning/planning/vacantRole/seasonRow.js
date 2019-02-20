@@ -39,6 +39,7 @@ class SeasonRow extends Component {
                selectedTitle={this.props.selectedTitle}
                edit={this.props.edit}
                toogleAssignPositionModal = {this.props.toogleAssignPositionModal}
+               toogleRemovePositionModal={this.props.toogleRemovePositionModal  }
               />
             ))}
           </CardBody>

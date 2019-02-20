@@ -85,6 +85,10 @@ class Season extends Component {
                 availablePositions={this.props.nowAvailablePositions}
                 assignRole={this.props.assignRole}
                 positionAssign={this.props.positionAssign}
+
+                currentPositionAssign={this.props.currentPositionAssign}
+                nextPositionAssign={this.props.nextPositionAssign}
+                followingPositionAssign={this.props.followingPositionAssign}
                 season={this.props.season}
             />
         )
@@ -106,6 +110,7 @@ class Season extends Component {
 
         if (this.props.positionAssign === undefined || this.props.positionAssign === null) {
             return (
+              
                 <div>
                     <Card>
                         <CardHeader>{this.props.title}</CardHeader>
@@ -133,6 +138,7 @@ class Season extends Component {
         } else {
             return (
                 <div>
+                                          {/* {this.props.positionAssign.StaffStartDate} */}
                     <Card>
                         <CardHeader>{this.props.title}</CardHeader>
 

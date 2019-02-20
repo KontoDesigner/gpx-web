@@ -188,12 +188,14 @@ class EmployeeInfo extends Component {
                         />
                     </Col>
                 </Row>
-
                  <Row className="row-panel-4"> 
                     <Col sm="12" md="12" lg="12">
                         <Season
                             title={'Assignment 1'}
                             positionAssign={this.props.currentPositionAssign}
+                            currentPositionAssign={this.props.currentPositionAssign}
+                            nextPositionAssign={this.props.nextPositionAssign}
+                            followingPositionAssign={this.props.followingPositionAssign}
                             nowAvailablePositions={this.props.nowAvailablePositions}
                             assignRole={this.assignRole}
                             editPosition={this.editPosition}
@@ -214,6 +216,9 @@ class EmployeeInfo extends Component {
                         <Season
                             title={'Assignment 2'}
                             positionAssign={this.props.nextPositionAssign}
+                            currentPositionAssign={this.props.currentPositionAssign}
+                            nextPositionAssign={this.props.nextPositionAssign}
+                            followingPositionAssign={this.props.followingPositionAssign}
                             nowAvailablePositions={this.props.nowAvailablePositions}
                             assignRole={this.assignRole}
                             editPosition={this.editPosition}
@@ -230,6 +235,9 @@ class EmployeeInfo extends Component {
                         <Season
                             title={'Assignment 3'}
                             positionAssign={this.props.followingPositionAssign}
+                            currentPositionAssign={this.props.currentPositionAssign}
+                            nextPositionAssign={this.props.nextPositionAssign}
+                            followingPositionAssign={this.props.followingPositionAssign}
                             nowAvailablePositions={this.props.nowAvailablePositions}
                             assignRole={this.assignRole}
                             editPosition={this.editPosition}

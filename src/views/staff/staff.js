@@ -608,6 +608,7 @@ this.setState({
                              toogleAbsentStaffModal={this.toogleAbsentStaffModal}
                              toogleResignStaffModal={this.toogleResignStaffModal}
                              toogleSendMailModal={this.toogleSendMailModal}
+                             toogleRemoveStaffModal={this.toogleRemoveStaffModal}
                             />
                         </TabPane>
 
@@ -624,6 +625,7 @@ this.setState({
                             toogleResignStaffModal={this.toogleResignStaffModal}
                             edit={this.edit}
                             toogleSendMailModal={this.toogleSendMailModal}
+                            toogleRemoveStaffModal={this.toogleRemoveStaffModal}
                             />
                         </TabPane>
 

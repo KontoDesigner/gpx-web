@@ -40,6 +40,10 @@ class StatusTable extends Component {
               handleSelectedStaff={this.props.handleSelectedStaff}
               selectedStaff={this.props.selectedStaff}
               edit={this.props.edit}
+              toogleRemoveStaffModal={this.props.toogleRemoveStaffModal}
+              toogleAbsentStaffModal={this.props.toogleAbsentStaffModal}
+              toogleResignStaffModal={this.props.toogleResignStaffModal}
+              toogleSendMailModal={this.props.toogleSendMailModal}
             />
           </CardBody>
         </Collapse>

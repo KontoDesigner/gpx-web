@@ -28,6 +28,7 @@ class NewEmployee extends Component {
             toogleAbsentStaffModal={this.props.toogleAbsentStaffModal}
             toogleResignStaffModal={this.props.toogleResignStaffModal}
             toogleSendMailModal={this.props.toogleSendMailModal}
+            toogleRemoveStaffModal={this.props.toogleRemoveStaffModal}
             /> 
           </div>
                 {this.props.newEmployee.length > 0 && (
@@ -39,6 +40,11 @@ class NewEmployee extends Component {
                             selectedStaff={this.props.selectedStaff}
                             edit={this.props.edit}
                             maxTableHeight={maxTableHeight}
+                            toogleRemoveStaffModal={this.props.toogleRemoveStaffModal}
+                                toogleAbsentStaffModal={this.props.toogleAbsentStaffModal}
+            toogleResignStaffModal={this.props.toogleResignStaffModal}
+            toogleSendMailModal={this.props.toogleSendMailModal}
+        
                         />
                     </CardBody>
                 )} 

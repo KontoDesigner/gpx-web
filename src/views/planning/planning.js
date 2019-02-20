@@ -846,6 +846,7 @@ debugger;
                 }
                 toogleAssignPositionModal={this.toogleAssignPositionModal}
                 toogleUpdatePositionModal={this.toogleUpdatePositionModal}
+                toogleRemovePositionModal={this.toogleRemovePositionModal}
               />
             </TabPane>
             <TabPane tabId="newPosition">

@@ -24,6 +24,7 @@ class YesNoRole extends Component {
             toogleMarkPositionAcceptModal = {this.props.toogleMarkPositionAcceptModal}
             toogleAssignPositionModal = {this.props.toogleAssignPositionModal}
             toogleUpdatePositionModal = {this.props.toogleUpdatePositionModal}
+            toogleRemovePositionModal={this.props.toogleRemovePositionModal  }
             />
           
           </div> 
@@ -37,6 +38,7 @@ class YesNoRole extends Component {
             handleSelectedTitle={this.props.handleSelectedTitle}
             selectedTitle={this.props.selectedTitle}
             edit={this.props.edit}
+            toogleRemovePositionModal={this.props.toogleRemovePositionModal  }
             />
           )}
         </CardBody>

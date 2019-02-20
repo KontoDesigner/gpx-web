@@ -4,6 +4,7 @@ import Import from 'import'
 import Tabs from './tabs'
 import RestClient from '../../infrastructure/restClient'
 import { toastr } from 'react-redux-toastr'
+import { beginAjaxCall, ajaxCallError, endAjaxCall } from '../ajaxStatusActions'
 class Imports extends Component {
 
     constructor(props) {
@@ -73,6 +74,7 @@ class Imports extends Component {
 
     createImport = async() => {
         // this.props.settingActions.save()
+  
 
       var check = this.state.fileName ? true : false
 
@@ -87,10 +89,10 @@ class Imports extends Component {
         return false
       }
        
-      
+      dispatch(beginAjaxCall())
       try {
           const res =  await RestClient.Upload('import/UploadFile/'+ this.state.importType,this.state.fileName)
-      
+     //dispatch(endAjaxCall())
        this.setState({fileName:'', importType:''})
       
            if (res) {

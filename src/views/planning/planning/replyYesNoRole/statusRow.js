@@ -41,7 +41,7 @@ class StatusTable extends Component {
                   handleSelectedTitle={this.props.handleSelectedTitle}
                   selectedTitle={this.props.selectedTitle}
                   edit={this.props.edit}
-                  
+                  toogleRemovePositionModal={this.props.toogleRemovePositionModal  }
                   maxTableHeight={maxTableHeight}
 
       

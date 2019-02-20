@@ -21,24 +21,101 @@ const columns = [
 
 const JobTitleTable = props => {
     function onContextMenuClick(e, data) {
-        alert(data.foo)
-    }
-
-    const contextMenuId = props.index + '-replyYesNoRoleContextMenu'
-
-    return (
-        <div>
-            <ContextMenu id={contextMenuId}>
-                <MenuItem data={{ foo: 'bar' }} onClick={onContextMenuClick}>
-                    ContextMenu Item 1
-                </MenuItem>
-                <MenuItem data={{ foo: 'bar' }} onClick={onContextMenuClick}>
-                    ContextMenu Item 2
-                </MenuItem>
-                <MenuItem data={{ foo: 'bar' }} onClick={onContextMenuClick}>
-                    ContextMenu Item 3
-                </MenuItem>
-            </ContextMenu>
+    
+        //alert(data.mplID)
+      // console.log(data,e,test,hello)
+      
+        props.toogleAssignPositionModal(data.mplID) 
+        
+      }
+    
+    
+      function onContextMenuClick2(e, data) {
+      debugger;  
+           //alert(data.mplID)
+         // console.log(data,e,test,hello)
+         //props.toogleMakePositionVacantModal(data.mplID)
+         props.toogleRemovePositionModal(data.mplID)
+         }
+    
+         function onContextMenuClick3(e, data) {
+          
+             //alert(data.mplID)
+           // console.log(data,e,test,hello)
+           props.toogleMarkPositionAcceptModal(data.mplID)
+             
+           }
+    
+           function onContextMenuClick4(e, data) {
+            
+               //alert(data.mplID)
+             // console.log(data,e,test,hello)
+             props.toogleResetPositionAcceptModal(data.mplID)
+               
+             }
+    
+             function onContextMenuClick5(e, data) {
+              
+                 //alert(data.mplID)
+               // console.log(data,e,test,hello)
+               props.toogleMarkPositionDeclineModal(data.mplID)
+                 
+               }
+    
+               function onContextMenuClick6(e, data) {
+                
+                   //alert(data.mplID)
+                 // console.log(data,e,test,hello)
+                 props.toogleMarkPositionActingModal(data.mplID)
+                   
+                 }
+    
+                 function onContextMenuClick7(e, data) {
+                  
+                     //alert(data.mplID)
+                   // console.log(data,e,test,hello)
+                   props.toogleUnmarkPositionActingModal(data.mplID)
+                     
+                   }
+      
+ 
+         
+ 
+   const contextMenuId = props.index + "-replyYesNoRoleContextMenu";
+ 
+   return (
+     <div>
+ <ContextMenu id={contextMenuId}>
+       {/* <MenuItem data={{ foo: 'bar' }} onClick={onContextMenuClick}>
+         Assign Staff To Position
+           </MenuItem> */}
+           <MenuItem data={{ foo: 'bar' }} onClick={onContextMenuClick2}>
+         Remove Position
+           </MenuItem>
+        {/* <MenuItem data={{foo: 'bar'}} onClick={onContextMenuClick2}>
+         Make Position Vacant
+           </MenuItem>
+    
+         <MenuItem data={{ foo: 'bar' }} onClick={onContextMenuClick3}>
+         Mark Position Accept
+           </MenuItem>
+ 
+             <MenuItem data={{ foo: 'bar' }} onClick={onContextMenuClick4}>
+         Reset Position Accept
+           </MenuItem>
+ 
+             <MenuItem data={{ foo: 'bar' }} onClick={onContextMenuClick5}>
+         Mark Position Decline
+           </MenuItem>
+ 
+                  <MenuItem data={{ foo: 'bar' }} onClick={onContextMenuClick6}>
+         Mark As Acting
+           </MenuItem>
+ 
+                  <MenuItem data={{ foo: 'bar' }} onClick={onContextMenuClick7}>
+         Unmark As Acting
+           </MenuItem>  */}
+       </ContextMenu> 
             <Table
                     list={props.replyYesNoRoles}
                     contextMenuId={contextMenuId}

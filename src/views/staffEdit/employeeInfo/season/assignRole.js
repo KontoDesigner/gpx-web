@@ -15,6 +15,8 @@ class AssignRole extends Component {
             selectedJobTitle: null,
             selectedStartDate: null,
             selectedEndDate: null,
+            existingStartDate: null,
+            existingEndDate: null,
             positionStartDate: null,
             positionEndDate: null,
        
@@ -131,10 +133,19 @@ debugger;
 
         }
 
+
         var assignCompareStart = new Date(model.startDate).setHours(0, 0, 0, 0);
         var assignCompareEnd  = new Date(model.endDate).setHours(0, 0, 0, 0);
         var positionCompareStart = new Date(this.state.positionStartDate);
         var positionCompareEnd  = new Date(this.state.positionEndDate);
+debugger;
+        // var existingStartDate = this.props.currentPositionAssign ? this.props.currentPositionAssign.StaffStartDate :'' ;
+        // var existingStartDate = this.props.currentPositionAssign ? this.props.currentPositionAssign.StaffEndDate :'' ;
+       
+ 
+        
+        
+
     debugger;
         var checkok= (assignCompareStart >= positionCompareStart.getTime() && assignCompareEnd <= positionCompareEnd.getTime());
         var checkok2= (assignCompareStart < assignCompareEnd);

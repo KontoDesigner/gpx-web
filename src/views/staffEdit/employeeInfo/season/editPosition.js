@@ -217,7 +217,6 @@ debugger;
                             <Col sm="12" md="6" lg="6" xl="6">
                                 <div className="form-group form-group-select">
                                     <label htmlFor="destination">Destination</label>
-
                                     <Select
                                         id="destination"
                                         valueKey="destination"
@@ -230,11 +229,9 @@ debugger;
                                     />
                                 </div>
                             </Col>
-
                             <Col sm="12" md="6" lg="6" xl="6">
                                 <div className="form-group form-group-select">
                                     <label htmlFor="jobTitle">Position (MPLID - MPLSourceMarket - MPL_DL_Required)</label>
-
                                     <Select
                                         id="jobTitle"
                                         valueKey="mplid"
