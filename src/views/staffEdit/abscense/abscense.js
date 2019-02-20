@@ -134,7 +134,7 @@ class Abscense extends Component {
       var check4= this.state.resignHistoryLocal.jobTitleWhenResigned ? true: false
       var check6= this.state.resignHistoryLocal.recommend ? true: false
       var check5= this.state.resignHistoryLocal.signature ? true: false
-      
+ 
   
       if(!check){  
         this.setState({
@@ -176,7 +176,7 @@ class Abscense extends Component {
       this.setState({
         validJobTitleWhen:''
       })
-
+      debugger;
       if(!check6){ 
         this.setState({
           validRecommend:'Select recommendation'
@@ -187,20 +187,11 @@ class Abscense extends Component {
         validRecommend:''
       })
 
-           if(!check6){ 
-             
-        this.setState({
-          validRecommend:'Select recommendation'
-        })
-        return false;
-      }
-      this.setState({
-        validRecommend:''
-      })
+ debugger;
 
 
-      if((this.state.resignHistoryLocal.recommend='No') && (this.state.resignHistoryLocal.resignComm='') ){ 
-        
+      if((this.state.resignHistoryLocal.recommend=='No') && (this.state.resignHistoryLocal.resignComm=='') ){ 
+        debugger;
 
    this.setState({
      validComment:'Enter comment'
@@ -222,7 +213,7 @@ class Abscense extends Component {
         validSignature:''
       })
     
-
+debugger;
     let model = {
       // to the database
       ApplicationType: this.state.resignHistoryLocal.applicationType,
@@ -239,7 +230,7 @@ class Abscense extends Component {
       StaffID: this.props.staff.staffID
     } 
 
-    
+    debugger;
     try {
       const res = await RestClient.Post('resign/resignUser', model)
       debugger;
