@@ -29,6 +29,7 @@ this.dates=[]
   }
 
   createReResignStaff = val => {
+    debugger;
     this.toggle()
 
     var currentdate = new Date()
@@ -47,63 +48,27 @@ debugger;
 
   
 
-
-  placementPeriodChange = placementPeriods => {
-    debugger
-
-    const selectedPlacementPeriod = placementPeriods.startDate
-    // const selectedAssignStart = selectedPlacementPeriod ? selectedPlacementPeriod.substr(0, 10):'';
-    //const selectedAssignEnd = selectedPlacementPeriod ? selectedPlacementPeriod.substr(-10):'';
-
-    debugger
-
-    this.setState({
-      selectedPlacementPeriod
-      //selectedAssignStart,
-      //selectedAssignEnd
-    })
-    debugger
-  }
-
   
 
   toggle = () => {
-    //this.setState({
-    //selectedResignAppDate:null,
 
-    //})
 
     this.props.toggle()
   }
 
   render() {
     
-//     const mplid = this.props.selectedMplID ? this.props.selectedMplID.toString() : []
-    
 
-
-// const options = this.props.candidate  
-//       .filter(x => x.mplid === mplid)
-//        .map(h => ({
-//          startDate:
-//            moment(h.startDate).format('YYYY-MM-DD') +
-//            ' - ' +
-//            moment(h.endDate).format('YYYY-MM-DD'),
-//          startDate:
-//            moment(h.startDate).format('YYYY-MM-DD') +
-//          ' - ' +
-//            moment(h.endDate).format('YYYY-MM-DD')
-//        }))
       
     return (
       <div>
         <Modal isOpen={this.props.modal} toggle={this.toggle}>
           <ModalHeader toggle={this.toggle}>
-            ReResign Staff - {this.props.selectedStaffID + " "}   
+            ReActivate Staff - {this.props.selectedStaffID + " "}   
           </ModalHeader>
           <ModalBody>
             { <Alert color="danger">
-                        Are you sure you want to ReResign Staff? 
+                        Are you sure you want to ReActivate Staff? 
                     </Alert> }
 
             {/* <Row>

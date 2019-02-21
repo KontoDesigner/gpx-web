@@ -312,7 +312,7 @@ class Staff extends Component {
         debugger;
                 if(val) {
                     this.setState({
-                        reResignStaffModal: !this.state.removeStaffModal,
+                        reResignStaffModal: !this.state.reResignStaffModal,
                         selectedStaffID: val
                     })
               
@@ -320,7 +320,7 @@ class Staff extends Component {
                   {
               
                     this.setState({
-                        reResignStaffModal: !this.state.removeStaffModal,
+                        reResignStaffModal: !this.state.reResignStaffModal,
                       selectedStaffID: this.props.selectedStaff
                     }) 
                     
@@ -368,15 +368,6 @@ debugger;
             
          
           }
-
-
-
-
-
-
-
-
-
 
 
  

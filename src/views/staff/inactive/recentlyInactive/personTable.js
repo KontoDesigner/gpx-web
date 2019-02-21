@@ -77,7 +77,7 @@ return (
        </MenuItem>
 
                <MenuItem data={{ foo: 'bar' }} onClick={onContextMenuClick5}>
-     ReResign Staff
+     ReActivate Staff
        </MenuItem>
 
    </ContextMenu>

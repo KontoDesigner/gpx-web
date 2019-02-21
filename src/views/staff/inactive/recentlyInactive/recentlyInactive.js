@@ -19,8 +19,8 @@ class RecentlyInactive extends Component {
             toogleAbsentStaffModal={this.props.toogleAbsentStaffModal}
             toogleResignStaffModal={this.props.toogleResignStaffModal}
             toogleSendMailModal={this.props.toogleSendMailModal}
-            toogleRemoveStaffModal={this.toogleRemoveStaffModal}
-            toogleReResignStaffModal={this.toogleReResignStaffModal}
+            toogleRemoveStaffModal={this.props.toogleRemoveStaffModal}
+            toogleReResignStaffModal={this.props.toogleReResignStaffModal}
             //AbsentStaffModal={this.props.AbsentStaffModal}
             />
           
