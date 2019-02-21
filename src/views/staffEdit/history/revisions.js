@@ -33,7 +33,7 @@ const Revisions = (props) => {
                     {dh.historyWho}
                     </Col>
                     <Col sm="12" md="3" lg="3" xl="3" className="form-group">
-                    {dh.historyAction} {dh.destination}  {dh.jobTitleWhenResigned}  {dh.jobTitle}
+                    {dh.historyAction} {dh.destination}  {dh.jobTitleWhenResigned?dh.jobTitleWhenResigned:null}  {dh.jobTitle?dh.jobTitle:null} {dh.startDate?moment(dh.startDate).format("YYYY-MM-DD"):null} {dh.endDate?moment(dh.endDate).format("YYYY-MM-DD"):null}
                     </Col>
                 
                     <Col sm="12" md="3" lg="3" xl="3" className="form-group">

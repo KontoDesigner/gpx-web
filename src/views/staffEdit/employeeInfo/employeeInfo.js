@@ -93,24 +93,28 @@ class EmployeeInfo extends Component {
     }
 
     editPosition = role => {
-     
+     debugger;
         const positionAssign = {
             MPLID: role.mplid,
             StaffID: this.props.staff.staffID,
-            FirstName: this.props.staff.firstName,
-            LastName: this.props.staff.lastName,
-            Season: role.season,
-            FullName: this.props.staff.fullName,
+            MPLID: role.positionAssignId,
+          
+            
             StartDate: role.startDate,
             EndDate: role.endDate,
             ConfirmedDate: role.confirmedDate,
             ConfirmedDepDate: role.confirmedDepDate,
             DateModified:role.dateModified
+            
+        
+
+
+
         }
 
         const _this = this
 
-        _this.props.employeeInfoActions.updatePositionAssign(role).then(function() 
+        _this.props.employeeInfoActions.updatePositionAssign(positionAssign).then(function() 
         {
             _this.props.getAvailablePositionNew
             // _this.props.employeeInfoActions.getAvailablePositions(

@@ -157,7 +157,8 @@ debugger;
             : val3,
           confirmedDepDate: this.state.selectedConfirmedDepDate
             ? this.state.selectedConfirmedDepDate
-            : val4,
+            : val4
+        
         }
     
         var assignCompareStart = new Date(model.startDate);
