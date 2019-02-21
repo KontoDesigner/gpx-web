@@ -43,6 +43,7 @@ class StatusTable extends Component {
               toogleRemoveStaffModal={this.props.toogleRemoveStaffModal}
               toogleAbsentStaffModal={this.props.toogleAbsentStaffModal}
               toogleResignStaffModal={this.props.toogleResignStaffModal}
+              toogleReResignStaffModal={this.props.toogleReResignStaffModal}
               toogleSendMailModal={this.props.toogleSendMailModal}
             />
           </CardBody>

@@ -10,6 +10,7 @@ import Name from './active/name/name'
 import AbsentStaff from './absentStaff'
 import ResignStaff from './resignStaff'
 import RemoveStaff from './removeStaff'
+import ReResignStaff from './reResignStaff'
 import SendMail from './sendMailUsingTemplate'
 import RecentlyInactive from './inactive/recentlyInactive/recentlyInactive'
 import NewEmployee from './other/newEmployee/newEmployee'
@@ -47,6 +48,7 @@ class Staff extends Component {
             resetData: this.props.destinationActions.handleDestination,
             absentStaffModal: false,
             resignStaffModal: false,
+            reResignStaffModal: false,
             removeStaffModal: false,
             sendMailModal: false,
             selectedStaffID:null,
@@ -148,6 +150,24 @@ class Staff extends Component {
 
         this.getActTabAndRequest(this.state.activeTab) 
     }
+
+
+    createReResignStaff = model => {
+        debugger; 
+           let staffmodel = {
+      
+            
+                StaffID:this.state.selectedStaffID,
+                DateModified:model.dateModified
+         
+                
+            }
+            debugger; 
+            this.props.staffActions.createReResignStaff(staffmodel)
+    
+            this.getActTabAndRequest(this.state.activeTab) 
+        }
+
 
     createRemoveStaff = model => {
      debugger; 
@@ -288,6 +308,27 @@ class Staff extends Component {
     //     }
     }
 
+    toogleReResignStaffModal = (val) => {
+        debugger;
+                if(val) {
+                    this.setState({
+                        reResignStaffModal: !this.state.removeStaffModal,
+                        selectedStaffID: val
+                    })
+              
+                  }else 
+                  {
+              
+                    this.setState({
+                        reResignStaffModal: !this.state.removeStaffModal,
+                      selectedStaffID: this.props.selectedStaff
+                    }) 
+                    
+                 
+                  }
+        
+            }
+
     toogleRemoveStaffModal = (val) => {
 debugger;
         if(val) {
@@ -307,21 +348,6 @@ debugger;
          
           }
 
-
-
-
-
-
-
-
-
-
-
- 
-        // this.setState({
-        //     resignStaffModal: !this.state.resignStaffModal
-        
-        // })
     }
 
     toogleResignStaffModal = (val) => {
@@ -526,6 +552,22 @@ this.setState({
                 // positionAssign={this.props.positionAssign}
                 // season={this.props.season}
             />
+
+            <ReResignStaff
+                modal={this.state.reResignStaffModal}
+                toggle={this.toogleReResignStaffModal}
+                resignType={this.state.resignType}
+                handleChange={this.handleChange}
+                handleSelect= {this.handleSelect}
+                createReResignStaff= {this.createReResignStaff}
+                value={this.state.value}
+               // createResign= {this.createResign}
+                selectedStaffID={this.state.selectedStaffID}
+                // availablePositions={this.props.availablePositions}
+                // assignRole={this.props.assignRole}
+                // positionAssign={this.props.positionAssign}
+                // season={this.props.season}
+            />
             
 <ResignStaff
                 modal={this.state.resignStaffModal}
@@ -609,6 +651,7 @@ this.setState({
                              toogleResignStaffModal={this.toogleResignStaffModal}
                              toogleSendMailModal={this.toogleSendMailModal}
                              toogleRemoveStaffModal={this.toogleRemoveStaffModal}
+                             toogleReResignStaffModal={this.toogleReResignStaffModal}
                             />
                         </TabPane>
 
