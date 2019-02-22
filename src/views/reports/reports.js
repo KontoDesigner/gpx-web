@@ -19,6 +19,7 @@ class Reports extends Component {
         this.state = {
             activeTab: 'planningReport',
             validDate: '',
+            vacantDisabled: false,
 
             resetData: this.props.reportActions.handleReport,
             sourceMarketId: '',
@@ -156,6 +157,10 @@ class Reports extends Component {
         await this.props.reportActions.createVacantReport(model)
 
         this.props.ajaxStatusActions.endAjaxCall()
+
+        this.setState({
+            vacantDisabled: true
+        })
     }
 
     createResign = (requestDate, destination) => {
@@ -261,6 +266,7 @@ class Reports extends Component {
                                 handleYearSelect={this.handleYearSelect}
                                 create={this.create}
                                 createVacant={this.createVacant}
+                                vacantDisabled={this.state.vacantDisabled}
                             />
                         </TabPane>
                         <TabPane tabId="onboardReport">
