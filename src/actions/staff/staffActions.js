@@ -51,6 +51,31 @@ export function createResign(model) {
     } 
 }
 
+export function createReResignStaff(model) {
+    return async function(dispatch) {
+        dispatch(beginAjaxCall())
+
+        try {
+           
+           // const res = await RestClient.Post(`staff/removestaff/${model.StaffID}`)
+            const res= await RestClient.Post('staff/reresignstaff', model.StaffID)
+            //const res = await RestClient.Post('abscense/abscenseuser', model)
+            debugger;
+            dispatch(endAjaxCall())
+
+            if (res) {
+                toastr.success('Success', `Selected staff was ReResigned and set as Active`)
+            } else {
+                toastr.error('Error', `Selected staff was not ReResigned: ${res ? res.message : 'Error'}`)
+            }
+        } catch (error) {
+            dispatch(ajaxCallError(error))
+
+            throw error
+        }
+    } 
+}
+
 export function createRemoveStaff(model) {
     return async function(dispatch) {
         dispatch(beginAjaxCall())

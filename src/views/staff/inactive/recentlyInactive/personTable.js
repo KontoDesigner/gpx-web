@@ -47,6 +47,15 @@ const PersonTable = (props) => {
        
      }
 
+     function onContextMenuClick5(e, data) {
+     
+      //alert(data.mplID)
+    // console.log(data,e,test,hello)
+    
+    props.toogleReResignStaffModal(data.staffID) 
+      
+    }
+
 const contextMenuId = props.index + '-recentlyInactiveContextMenu'
 
 return (
@@ -65,6 +74,10 @@ return (
 
           <MenuItem data={{ foo: 'bar' }} onClick={onContextMenuClick4}>
      Move Staff To Archive
+       </MenuItem>
+
+               <MenuItem data={{ foo: 'bar' }} onClick={onContextMenuClick5}>
+     ReActivate Staff
        </MenuItem>
 
    </ContextMenu>
