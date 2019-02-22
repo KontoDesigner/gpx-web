@@ -97,7 +97,7 @@ class EmployeeInfo extends Component {
         const positionAssign = {
             MPLID: role.mplid,
             StaffID: this.props.staff.staffID,
-            MPLID: role.positionAssignId,
+            PositionAssignID: role.positionAssignId,
           
             
             StartDate: role.startDate,
