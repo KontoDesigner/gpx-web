@@ -5,6 +5,7 @@ import Table from '../../../../components/table.js'
 const columns = [
   { label: 'Name', dataKey: 'firstNameLastName' },
   { label: 'SourceMarket', dataKey: 'sourceMarket' },
+  { label: 'Education', dataKey: 'education' },
   { label: 'PositionType', dataKey: 'positionType' },
   { label: 'Driver', dataKey: 'driver' },
  // { label: 'Concept Hotel', dataKey: 'concepthotel' }
