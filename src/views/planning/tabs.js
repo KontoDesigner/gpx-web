@@ -2,6 +2,15 @@ import React from 'react'
 import { Card, Col, CardBody, CardHeader, ListGroup, ListGroupItem } from 'reactstrap'
 import classnames from 'classnames'
 
+const hostName = window.location.hostname
+let tableau = ''
+
+if (hostName === 'localhost' || hostName === 'gpx-web-uat.tuinordic.net' || hostName === 'gpx-web.uat.tuinordic.net') {
+    tableau = 'https://gpx-tableau-uat.tuinordic.net'
+} else if (hostName === 'gpx-web.tuinordic.net') {
+    tableau = 'https://gpx-tableau.tuinordic.net'
+}
+
 const Tabs = props => {
     return (
         <Col sm="12" md="3" lg="3" xl="2" className="col-menu">
@@ -10,11 +19,11 @@ const Tabs = props => {
 
                 <CardBody className="no-padding">
                     <ListGroup>
-                    <ListGroupItem
+                        <ListGroupItem
                             className={classnames({ active: props.activeTab === 'tableaux' })}
                             onClick={() => {
-                                 const win = window.open(`https://tableau-web-uat.tuinordic.net/home`, '_blank')
-                                 win.focus()
+                                const win = window.open(tableau, '_blank')
+                                win.focus()
                             }}>
                             Tableaux
                         </ListGroupItem>
@@ -28,7 +37,6 @@ const Tabs = props => {
                         <ListGroupItem
                             className={classnames({ active: props.activeTab === 'placedRoles' })}
                             onClick={() => {
-                                
                                 props.toggle('placedRoles', props.getPlacedRoles, props.handlePlacedRoles)
                             }}>
                             Placed Positions
@@ -47,7 +55,6 @@ const Tabs = props => {
                             }}>
                             Reply (Yes/No)
                         </ListGroupItem>
-                        
                     </ListGroup>
                 </CardBody>
             </Card>
@@ -56,18 +63,15 @@ const Tabs = props => {
 
                 <CardBody className="no-padding">
                     <ListGroup>
-                    <ListGroupItem
+                        <ListGroupItem
                             className={classnames({ active: props.activeTab === 'newPosition' })}
                             onClick={() => {
-                                props.toggle('newPosition', props.getNewPosition,props.handleNewPosition)
+                                props.toggle('newPosition', props.getNewPosition, props.handleNewPosition)
                             }}>
                             Add New Position
                         </ListGroupItem>
-        
                     </ListGroup>
-                    
                 </CardBody>
-                
             </Card>
         </Col>
     )
