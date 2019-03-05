@@ -11,7 +11,7 @@ const Profiling = props => {
     return (
         <Card>
             <CardHeader>
-                Profiling <div class="pull-right">Status = {props.staff.status}</div>{' '}
+                Profiling <div class="pull-right">Status = {props.staff.status=='Active' ? 'Experienced':props.staff.status}</div>{' '}
             </CardHeader>
 
             <CardBody className="no-padding-bottom">

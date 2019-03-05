@@ -6,7 +6,7 @@ const Tabs = (props) => {
     return (
         <Col sm="12" md="3" lg="3" xl="2" className="col-menu">
             <Card>
-                <CardHeader>Active</CardHeader>
+                <CardHeader>Experienced</CardHeader>
 
                 <CardBody className="no-padding">
                     <ListGroup>

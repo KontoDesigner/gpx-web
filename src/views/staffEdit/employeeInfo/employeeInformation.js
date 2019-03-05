@@ -11,7 +11,7 @@ const EmployeeInformation = (props) => {
       
      
         <Card>
-            <CardHeader>Employee Information    <div class="pull-right">Status = {props.staff.status}</div> </CardHeader>
+            <CardHeader>Employee Information    <div class="pull-right">Status = {props.staff.status=='Active' ? 'Experienced':props.staff.status}</div> </CardHeader>
 
             <CardBody className="no-padding-bottom">
                 <div className="form-row">
@@ -125,10 +125,12 @@ const EmployeeInformation = (props) => {
                             onChange={(v) => { props.handleStaffSelect('spainRegistred', v, 'id') }}
                             value={props.staff.spainRegistred === '' ? null : props.staff.spainRegistred}
                             placeholder=""
-                           
+                            
                         />
                     </Col>
-                 
+                    <Col sm="12" md="6" lg="6" xl="4" className="form-group">
+                        <TextInput name="lateStarterMonth" label="Late Starter Month" value={props.staff.lateStarterMonth} onChange={props.handleStaffField} />
+                    </Col>
                     <Col sm="12" md="12" lg="12" xl="12" className="form-group">
             <Label for="empContent">Remarks</Label>
             <Input

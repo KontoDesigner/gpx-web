@@ -9,7 +9,7 @@ const DestinationHistory = (props) => {
 
     return (
         <Card>
-            <CardHeader>DestinationHistory {props.destinationHistory.length}<div class="pull-right">Status = {props.status}</div></CardHeader>
+            <CardHeader>DestinationHistory {props.destinationHistory.length}<div class="pull-right">Status = {props.status=='Active' ? 'Experienced':props.status}</div></CardHeader>
 
             <CardBody>
             <div className="form-row">
