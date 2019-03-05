@@ -6,9 +6,9 @@ const hostName = window.location.hostname
 let tableau = ''
 
 if (hostName === 'localhost' || hostName === 'gpx-web-uat.tuinordic.net' || hostName === 'gpx-web.uat.tuinordic.net') {
-    tableau = 'https://tableau-web-uat.tuinordic.net/home'
+    tableau = 'https://gpx-tableau-uat.tuinordic.net'
 } else if (hostName === 'gpx-web.tuinordic.net') {
-    tableau = 'https://tableau-web.tuinordic.net/home'
+    tableau = 'https://gpx-tableau.tuinordic.net'
 }
 
 const Tabs = props => {
