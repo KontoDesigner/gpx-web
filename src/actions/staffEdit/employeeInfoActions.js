@@ -53,6 +53,7 @@ export function save(model) {
     cleanModel.DateJoined = model.dateJoined
     cleanModel.CostCenter = model.costCenter
     cleanModel.Driver = model.driver
+    cleanModel.DateOfBirth = model.dateOfBirth
     cleanModel.DrivingYear = model.drivingYear
     cleanModel.Status = model.status
     //SubStatus : model.
