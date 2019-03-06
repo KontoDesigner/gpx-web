@@ -70,6 +70,9 @@ const PlanningInfo = (props) => {
                     <Col sm="12" md="6" lg="6" xl="4" className="form-group">
                         <TextInput name="jobTitle" label="jobTitle"  value={props.position.jobTitle}/>
                     </Col>
+                    <Col sm="12" md="6" lg="6" xl="4" className="form-group">
+                        <TextInput name="mplDlRequired" label="DL-Req."  value={props.position.mpL_DL_Required}/>
+                    </Col>
 
                      <Col sm="12" md="6" lg="6" xl="4" className="form-group">
                         <TextInput name="languages" label="Languages"  value={props.position.languages}/>
@@ -104,14 +107,14 @@ const PlanningInfo = (props) => {
                     </Col>
 
                       <Col sm="12" md="6" lg="6" xl="4" className="form-group">
-                        <TextInput name="startDate" label="Start Date"  value={props.position.positionStartDate}/>
+                        <TextInput name="startDate" label="Start Date"  value={props.position.positionStartDate?moment(props.position.positionStartDate).format("YYYY-MM-DD"):null}/>
                     </Col>
                 
                      <Col sm="12" md="6" lg="6" xl="4" className="form-group">
-                        <TextInput name="endDate" label="End Date"  value={props.position.positionEndDate}/>
+                        <TextInput name="endDate" label="End Date"  value={props.position.positionEndDate?moment(props.position.positionEndDate).format("YYYY-MM-DD"):null}/>
                     </Col>
                     <Col sm="12" md="6" lg="6" xl="4" className="form-group">
-                        <TextInput name="dateModified" label="DateModified"  value={props.position.dateModified}/>
+                        <TextInput name="dateModified" label="Position DateModified"  value={props.position.mplDateModified}/>
                     </Col>
                 </div>
             </CardBody>
