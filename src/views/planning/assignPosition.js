@@ -198,6 +198,7 @@ class AssignPosition extends Component {
   }
 
   createAssign = (val, val2) => {
+    debugger;
     // const destination = this.props.availablePositions.filter(ap => ap.destination === this.state.selectedDestination)[0];
     var check = this.state.selectedCandidate ? true : false
     var check2 = this.state.selectedPlacementPeriod ? true : false

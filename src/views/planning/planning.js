@@ -483,12 +483,17 @@ debugger;
     const _this = this
 
     if (assignmodel.OldDate != 'Add New') {
-      this.props.planningActions
-        .deletePositionAssign(assignmodel)
-        .then(function() {
+      this.props.planningActions.deletePositionAssign(assignmodel)
+     
+       
+          const returnValue2= this.props.planningActions.insertStaffAssign(assignmodel)
+debugger;
+          if(returnValue2) {
 
-         
-        })
+            this.toogleAssignPositionModal()
+          }
+
+      
     } else {
       const returnValue= await _this.props.planningActions.insertStaffAssign(assignmodel)
 

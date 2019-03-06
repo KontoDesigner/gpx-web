@@ -21,7 +21,7 @@ export function getHistory(staffId) {
         try {
 
             const history = await RestClient.Get(`staff/getStaffHistory/${staffId}`)
-            
+            debugger;
             dispatch(getHistorySuccess(history))
         } catch (error) {
             dispatch(ajaxCallError(error))
