@@ -79,7 +79,7 @@ const EmployeeInformation = (props) => {
                         */}
                         {<Datetime
                     
-                            value={props.staff.dateOfBirth}
+                            value={props.staff.dateJoined?moment(props.staff.dateOfBirth).format("YYYY-MM-DD"):null}
                             onChange={(v) => { props.handleStaffDatePicker('dateOfBirth', v) }}
                             timeFormat={false}
                             dateFormat="YYYY-MM-DD"
@@ -129,7 +129,7 @@ const EmployeeInformation = (props) => {
                         />
                     </Col>
                     <Col sm="12" md="6" lg="6" xl="4" className="form-group">
-                        <TextInput name="lateStarterMonth" label="Late Starter Month" value={props.staff.lateStarterMonth} onChange={props.handleStaffField} />
+                        <TextInput name="lateStarterMonth" label="Late Starter Month" value={props.staff.lateStarterMonth?moment(props.staff.dateJoined).format("YYYY-MM-DD"):null} onChange={props.handleStaffField} />
                     </Col>
                     <Col sm="12" md="12" lg="12" xl="12" className="form-group">
             <Label for="empContent">Remarks</Label>
