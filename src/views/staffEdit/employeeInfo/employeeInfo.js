@@ -72,12 +72,13 @@ class EmployeeInfo extends Component {
             FirstName: this.props.staff.firstName,
             LastName: this.props.staff.lastName,
             Season: role.season,
+          
             FullName: this.props.staff.fullName,
             StartDate: role.startDate,
             EndDate: role.endDate,
             DateModified:role.dateModified
         }
-
+ debugger;
         const _this = this
 
         _this.props.employeeInfoActions.insertPositionAssign(positionAssign).then(function() 
@@ -240,7 +241,7 @@ class EmployeeInfo extends Component {
                             title={'Assignment 3'}
                             positionAssign={this.props.followingPositionAssign}
                             currentPositionAssign={this.props.currentPositionAssign}
-                            nextPositionAssign={this.props.nextPositionAssign}
+                        nextPositionAssign={this.props.nextPositionAssign}
                             followingPositionAssign={this.props.followingPositionAssign}
                             nowAvailablePositions={this.props.nowAvailablePositions}
                             assignRole={this.assignRole}

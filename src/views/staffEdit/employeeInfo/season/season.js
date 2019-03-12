@@ -86,9 +86,9 @@ class Season extends Component {
                 assignRole={this.props.assignRole}
                 positionAssign={this.props.positionAssign}
 
-                currentPositionAssign={this.props.currentPositionAssign}
-                nextPositionAssign={this.props.nextPositionAssign}
-                followingPositionAssign={this.props.followingPositionAssign}
+               // currentPositionAssign={this.props.currentPositionAssign}
+               // nextPositionAssign={this.props.nextPositionAssign}
+               // followingPositionAssign={this.props.followingPositionAssign}
                 season={this.props.season}
             />
         )

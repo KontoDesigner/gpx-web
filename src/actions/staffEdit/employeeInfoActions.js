@@ -3,7 +3,7 @@ import { beginAjaxCall, ajaxCallError, endAjaxCall } from '../ajaxStatusActions'
 import RestClient from '../../infrastructure/restClient'
 import { toastr } from 'react-redux-toastr'
 import moment from 'moment'
-export function save(model) {
+export function save(model) {deletePositionAssign
     var currentdate = new Date()
 
     var newdatemodified = moment(currentdate).format('YYYY-MM-DD HH:mm:ss')
@@ -294,7 +294,7 @@ export function getAvailablePositions(currentSeason, nextSeason, followingSeason
             throw error
         }
     }
-}
+} 
 
 export function getPositionAssignsSuccess(positionAssigns) {
     return {

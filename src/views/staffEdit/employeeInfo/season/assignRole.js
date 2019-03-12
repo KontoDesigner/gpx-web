@@ -53,7 +53,7 @@ class AssignRole extends Component {
     }
 
     jobTitleOnChange = jobTitle => {
-        
+        debugger;
         const selectedJobTitle = jobTitle != null ? jobTitle.mplid : null;
         const positionStartDate = jobTitle != null ? jobTitle.positionStartDate: null;
         const positionEndDate = jobTitle != null ? jobTitle.positionEndDate: null
@@ -107,7 +107,7 @@ class AssignRole extends Component {
 
 
  
-    assignRole = (mplid,val,val2) => {
+    assignRole = (mplid,val,val2,val3) => {
    
 debugger;
         const destination = this.props.availablePositions.filter(ap => ap.destination === this.state.selectedDestination)[0];
@@ -122,7 +122,7 @@ debugger;
             mplid: position.mplid,
             season: this.props.season.name,
             dateModified: newdatemodified ,
-     
+    
             startDate: this.state.selectedStartDate
             ? this.state.selectedStartDate
             : val,
