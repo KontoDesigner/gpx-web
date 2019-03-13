@@ -6,7 +6,7 @@ import EmployeeInfo from './employeeInfo/employeeInfo'
 import Cv from './cv/cv'
 import Abscense from './abscense/abscense'
 //import FullYearReview from './fullYearReview/fullYearReview'
-import Team from './team/team' 
+import Team from './team/team'
 import Applications from './applications/applications'
 import DestinationHistory from './history/destinationHistory'
 import Revisions from './history/revisions'
@@ -156,7 +156,6 @@ class StaffEdit extends Component {
                     id: 'Placement Declined',
                     name: 'Placement Declined'
                 }
-                
             ],
             skillOptions: ['Programming', 'Development', 'Design', 'Testing'],
 
@@ -171,14 +170,14 @@ class StaffEdit extends Component {
         const _this = this
 
         // try {
-        //     
+        //
         //     const nowAvailablePositions =  await RestClient.Get('positionassign/getallcand')
 
         // this.setState({
         //     nowAvailablePositions
 
         //   })
-        //   
+        //
         //     // if (nowAvailablePositions) {
         //     //     //toastr.success('Success', `Abscense Document is updated`)
         //     // } else {
@@ -189,16 +188,15 @@ class StaffEdit extends Component {
         //     throw error
         // }
 
-        debugger;
+        debugger
 
         return Promise.all([
-            
             this.getAvailablePositionNew(),
             this.props.employeeInfoActions.getPositionAssigns(this.state.staffId),
             this.props.applicationHistoryActions.getResignHistory(this.state.staffId),
 
             this.props.historyActions.getHistory(this.state.staffId),
-            this.props.confirmedDatesActions.getConfirmedDates(this.state.staffId),  
+            this.props.confirmedDatesActions.getConfirmedDates(this.state.staffId),
             this.props.destinationHistoryActions.getDestinationHistory(this.state.staffId),
             this.props.abscenseHistoryActions.getAbscenseHistory(this.state.staffId),
 
@@ -231,7 +229,7 @@ class StaffEdit extends Component {
     }
 
     getAvailablePositionNew = async () => {
-        debugger;
+        debugger
         const nowAvailablePositions = await RestClient.Get('positionassign/getallcand')
 
         this.setState({
@@ -254,8 +252,7 @@ class StaffEdit extends Component {
     }
     //************************************************************************** */
 
-    send = (positionAssign , direction) =>  {
-        
+    send = (positionAssign, direction) => {
         const model = {
             Id: this.props.staff.staffID,
             FirstName: this.props.staff.firstName,
@@ -263,20 +260,20 @@ class StaffEdit extends Component {
             LastName2: this.props.staff.lastName2,
             DateOfBirth: this.props.staff.dateOfBirth,
             SourceMarket: this.props.staff.sourceMarket,
-            Phone: this.props.staff.phone,
+            Phone: this.props.staff.phoneHome,
             Gender: this.props.staff.title,
             Destination: positionAssign.Destination,
             PositionStart: positionAssign.StaffStartDate,
             JobTitle: positionAssign.JobTitle,
             IataCode: positionAssign.IataCode,
             PositionAssignId: positionAssign.PositionAssignId,
-            Direction:direction
+            Direction: direction
         }
         debugger
         this.props.employeeInfoActions.sendToCtx(model)
     }
 
-    save  = async () => {
+    save = async () => {
         debugger
 
         await this.props.employeeInfoActions.save(this.props.staff)
@@ -392,10 +389,8 @@ class StaffEdit extends Component {
 
                                 <TabPane tabId="history">
                                     <DestinationHistory destinationHistory={this.props.destinationHistory} status={this.props.staff.status} />
-                                    
-                                     <ConfirmedDates 
-                                    confirmedDate={this.props.confirmedDate} 
-                                    /> 
+
+                                    <ConfirmedDates confirmedDate={this.props.confirmedDate} />
 
                                     <Revisions
                                         history={this.props.history}
@@ -432,7 +427,7 @@ function mapStateToProps(state) {
         confirmedDate: state.staffEdit.confirmedDate,
         resignHistory: state.staffEdit.resignHistory
     }
-} 
+}
 
 function mapDispatchToProps(dispatch) {
     return {
