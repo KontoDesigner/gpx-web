@@ -23,7 +23,7 @@ const Tabs = (props) => {
                             onClick={() => {
                                 props.toggle('abscense')
                             }}>
-                           Abscense / Resign
+                           Absence / Resign
                                 </NavLink>
                     </NavItem>
 

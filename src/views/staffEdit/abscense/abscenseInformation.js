@@ -38,7 +38,7 @@ const AbscenseInformation = props => {
 
   return (
     <Card>
-      <CardHeader>Approved Leave Of Abscense </CardHeader>
+      <CardHeader>Approved Leave Of Absence </CardHeader>
 
       <CardBody className="no-padding-bottom">
         <div className="form-row">
