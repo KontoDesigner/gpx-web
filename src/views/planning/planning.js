@@ -566,7 +566,8 @@ debugger;
   edit = (e, position) => {
     if (!$(e.target).is(':checkbox')) {
       // alert(position.staffID);
-      if (position.staffID != null || position.staffID == 0) {
+      debugger;
+      if (position.staffID != null && (position.staffID != 0  && position.staffID != "No StaffId defined")  ) {
         const win = window.open(`/staff/${position.staffID}`, '_blank')
         win.focus()
       } else {
