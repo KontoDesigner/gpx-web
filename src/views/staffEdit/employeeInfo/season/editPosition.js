@@ -160,7 +160,7 @@ debugger;
             : val4
         
         }
-    
+    debugger;
         var assignCompareStart = new Date(model.startDate);
         var assignCompareEnd  = new Date(model.endDate);
         var positionCompareStart = new Date(val)
@@ -375,8 +375,8 @@ debugger;
                     </ModalBody>
 
                     <ModalFooter>
-                        <Button disabled={this.props.positionAssign.StaffStartDate === null} onClick={() => this.editPosition(this.props.positionAssign.MPLID , moment(this.props.positionAssign.PositionStartDate).format('YYYY-MM-DD'),
-                  moment(this.props.positionAssign.PositionEndDate).format('YYYY-MM-DD'), this.props.positionAssign.ConfirmedDate, this.props.positionAssign.ConfirmedDepDate)} color="success">Assign</Button>{' '}
+                        <Button disabled={this.props.positionAssign.StaffStartDate === null} onClick={() => this.editPosition(this.props.positionAssign.MPLID , moment(this.props.positionAssign.StaffStartDate).format('YYYY-MM-DD'),
+                  moment(this.props.positionAssign.StaffEndDate).format('YYYY-MM-DD'), this.props.positionAssign.ConfirmedDate, this.props.positionAssign.ConfirmedDepDate)} color="success">Assign</Button>{' '}
                         <Button color="danger" onClick={this.toggle}>Cancel</Button>
                     </ModalFooter>
                 </Modal>
