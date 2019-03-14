@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
+
 import { TabContent, TabPane, Row, Col } from 'reactstrap'
 import Tabs from './tabs'
 import PlanningReport from './reports/planning/report'
