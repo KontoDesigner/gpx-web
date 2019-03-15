@@ -157,17 +157,17 @@ debugger;
             : val3,
           confirmedDepDate: this.state.selectedConfirmedDepDate
             ? this.state.selectedConfirmedDepDate
-            : val4
+            : val4 
         
         }
     debugger;
-        var assignCompareStart = new Date(model.startDate);
-        var assignCompareEnd  = new Date(model.endDate);
-        var positionCompareStart = new Date(val)
-        var positionCompareEnd = new Date(val2)
+        var assignCompareStart = new Date(model.startDate).setHours(0, 0, 0, 0);
+        var assignCompareEnd  = new Date(model.endDate).setHours(0, 0, 0, 0);
+        var positionCompareStart = new Date(this.props.positionAssign.PositionStartDate)
+        var positionCompareEnd = new Date(this.props.positionAssign.PositionEndDate)
         debugger;
-        var checkok= (assignCompareStart.getTime() >= positionCompareStart.getTime() && assignCompareEnd.getTime() <= positionCompareEnd.getTime());
-        var checkok2= (assignCompareStart.getTime() < assignCompareEnd.getTime());
+        var checkok= (assignCompareStart >= positionCompareStart.getTime() && assignCompareEnd <= positionCompareEnd.getTime());
+        var checkok2= (assignCompareStart < assignCompareEnd);
         
         if(!checkok2){
             this.setState({
