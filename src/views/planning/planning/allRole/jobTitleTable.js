@@ -5,7 +5,9 @@ import moment from "moment";
 const columns = [
   { label: 'MPLID', dataKey: 'mplID' },
   { label: 'Season', dataKey: 'season' },
+  { label: 'DL-Req.', dataKey: 'mplDlRequired' },
   { label: 'Education', dataKey: 'education' },
+  
   { label: 'ConceptUnit', dataKey: 'concepthotel' },
 
   { label: 'JobTitle', dataKey: 'jobTitle' },

@@ -6,7 +6,7 @@ const columns = [
 
   { label: 'MPLID', dataKey: 'mplID' },
   { label: 'Season', dataKey: 'season' },
-  //{ label: 'MPLIDVersion', dataKey: 'mplIDVersion' },
+  { label: 'DL-Req.', dataKey: 'mplDlRequired' },
   { label: 'Education', dataKey: 'education' },
   { label: 'ConceptUnit', dataKey: 'concepthotel' },
   { label: 'JobTitle', dataKey: 'jobTitle' },

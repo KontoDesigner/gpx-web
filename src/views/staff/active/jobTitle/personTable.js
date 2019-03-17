@@ -6,6 +6,7 @@ const columns = [
   { label: 'Name', dataKey: 'firstNameLastName' },
   { label: 'SourceMarket', dataKey: 'sourceMarket' },
   { label: 'PositionType', dataKey: 'positionType' },
+  { label: 'Driver', dataKey: 'driver' },
    { label: 'Concept Hotel', dataKey: 'conceptHotel' },
   { label: 'Education', dataKey: 'education' }
 
