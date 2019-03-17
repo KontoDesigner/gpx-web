@@ -27,6 +27,28 @@ export function createMail(model) {
     } 
 }
 
+export function createImport(type, file) {
+    return async function(dispatch) {
+        dispatch(beginAjaxCall())
+debugger;
+        try {
+            
+            //const t res = await RestClient.Post('resign/resignuserselect', model)
+           const res = await RestClient.Upload('import/UploadFile/'+ type,file)
+            dispatch(endAjaxCall())
+
+            if (res) {
+                toastr.success('Success', `GPX - Import routine finished`)
+          } else {
+                toastr.error('Error', `GPX - Could not Import: ${res ? res.message : 'Error'}`)
+            } }catch (error) {
+            dispatch(ajaxCallError(error))
+
+            throw error
+        }
+    } 
+}
+
 
 export function createResign(model) {
     return async function(dispatch) {

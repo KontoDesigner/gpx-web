@@ -97,7 +97,7 @@ class Reports extends Component {
 
         //this.props.handleUnsavedEdit()
     }
-    create = destination => {
+    create = async destination => {
         var currentdate = new Date()
         var newdatemodified = currentdate.getFullYear() + '-' + (currentdate.getMonth() + 1) + '-' + currentdate.getDate()
 
@@ -116,10 +116,10 @@ class Reports extends Component {
 
         // }
 
-        this.props.reportActions.createReport(model)
+       await this.props.reportActions.createReport(model)
     }
 
-    createOnboard = destination => {
+    createOnboard = async destination => {
         var currentdate = new Date()
         var newdatemodified = currentdate.getFullYear() + '-' + (currentdate.getMonth() + 1) + '-' + currentdate.getDate()
 
@@ -136,7 +136,8 @@ class Reports extends Component {
         //   //destination: [destination.destination]
 
         // }
-        this.props.reportActions.createOnboardReport(model)
+        debugger;
+        const res = await  this.props.reportActions.createOnboardReport(model)
     }
 
     createVacant = async destination => {
@@ -164,7 +165,7 @@ class Reports extends Component {
         })
     }
 
-    createResign = (requestDate, destination) => {
+    createResign = async (requestDate, destination) => {
         // let model = destination? destination.map(x => {
         //     return {destination:x.destination}
         //   }
@@ -197,7 +198,8 @@ class Reports extends Component {
         //   //destination: [destination.destination]
 
         // }
-        this.props.reportActions.createResignReport(model)
+      
+        await this.props.reportActions.createResignReport(model)
     }
 
     toggle = (tab, getData, resetData) => {

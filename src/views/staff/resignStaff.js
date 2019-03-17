@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { Button,Modal,ModalHeader, ModalBody, ModalFooter,Alert,Row,Col,Table,Label,Input} from 'reactstrap'
 import Datetime from 'react-datetime'
 import Select from 'react-select'
-
+import TextInput from '../../components/textInput'
 class ResignStaff extends Component {
 
 //const ResignStaff = props => {
@@ -75,12 +75,12 @@ toggle = () => {
               <Table striped bordered responsive>
                 <thead>
                   <tr>
-                    <th colSpan="2">Last Working Date</th> {' '}
+                    <th >Last Working Date</th><th>Manager Reason</th><th>Reason For Resignment</th>  {' '}
                   </tr>
                 </thead>
                 <tbody>
                   <tr>
-                    <td colSpan="2">
+                    <td>
                       <Datetime
                         className={'custom-datepicker'}
                         onChange={this.resignAppDateChange}
@@ -92,10 +92,104 @@ toggle = () => {
                         inputProps={{ placeholder: 'YYYY-MM-DD' }}
                       />
                     </td>
-                    
+                    <td >
+                    <Select
+              id="managerReason"
+              valueKey="id"
+              labelKey="name"
+              className="form-group form-group-select"
+              // options={props.managerReasons}
+              onChange={v => {
+                this.props.handleSelectTypes('managerReason', v, 'id')
+              }}
+              // value={
+              //   this.props.resignHistory.managerReason === ''
+              //     ? null
+              //     : this.props.resignHistory.managerReason
+              // }
+              placeholder="Select"
+            />
+               {/* <b className="card-text text-danger">{this.props.validMgrReason }</b> */}
+                    </td>
+                    <td >
+                    <Select
+              id="reasonForResignment"
+              valueKey="id"
+              labelKey="name"
+              className="form-group form-group-select"
+              // options={props.resignmentReasons}
+              onChange={v => {
+                this.props.handleSelectTypes('reasonForResignment', v, 'id')
+              }}
+              // value={
+              //   props.resignHistory.reasonForResignment === ''
+              //     ? null
+              //     : props.resignHistory.reasonForResignment
+              // }
+              placeholder="Select"
+            />
+               {/* <b className="card-text text-danger">{props.validReasonFor }</b> */}
+                    </td>
                   </tr>
+                  </tbody>
+                  <thead>
                   <tr>
-                  <td colSpan="2">
+                    <th >JobTitle When Resigned</th><th>Do you recommend for re-employment?</th><th>Signature</th>  {' '}
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                  <td>
+                  <Select
+              id="jobTitleWhenResigned"
+              valueKey="id"
+              labelKey="name"
+              className="form-group form-group-select"
+              // options={props.allJobTitles}
+              onChange={v => {
+                this.props.handleSelectTypes('jobTitleWhenResigned', v, 'id')
+              }}
+              // value={
+              //   props.resignHistory.jobTitleWhenResigned === ''
+              //     ? null
+              //     : props.resignHistory.jobTitleWhenResigned
+              // }
+              placeholder="JobTitleWhenResigned"
+            />
+               {/* <b className="card-text text-danger">{props.validJobTitleWhen }</b> */}
+                    </td>
+                    <td >
+                    <Select
+              id="recommend"
+              valueKey="id"
+              labelKey="name"
+              className="form-group form-group-select"
+              // options={props.recommend}
+              onChange={v => {
+                this.props.handleSelectTypes('recommend', v, 'id')
+              }}
+              // value={
+              //   props.resignHistory.recommend === ''
+              //     ? null
+              //     : props.resignHistory.recommend
+              // }
+              placeholder="Select"
+            />
+                {<b className="card-text text-danger">{this.props.validRecommend}</b> } 
+                    </td>
+                    <td >
+                    <Input
+              name="signature" 
+      
+              // value={props.resignHistory.signature}
+              onChange={this.props.handleStaffField}
+             
+            />
+               {/* <b className="card-text text-danger">{this.props.validSignature }</b> */}
+                    </td>
+                    </tr>
+                    <tr>
+                  <td colSpan="3">
                       {' '}
                       <Label for="resignComm">Comments</Label>
                       <Input

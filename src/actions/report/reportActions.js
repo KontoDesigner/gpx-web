@@ -81,7 +81,7 @@ export function getResignDates() {
 }
 export function createResignReport(model) {
     return async function(dispatch) {
-        //  dispatch(beginAjaxCall())
+         dispatch(beginAjaxCall())
 
         try {
             var currentdate = new Date()
@@ -94,8 +94,13 @@ export function createResignReport(model) {
             //   }
 
             //await RestClient.Download(`resign/GetResignReports?datetime=2018-10-02`,null,'ResignReport.xlsx')
-            await RestClient.Download(`report/GetResignReports`, model, 'ResignReport_' + newdatemodified + '.xlsx')
+            const res=await RestClient.Download(`report/GetResignReports`, model, 'ResignReport_' + newdatemodified + '.xlsx')
 
+            if (res) {
+                toastr.success('Success', `GPX - Report Resign routine finished`)
+          } else {
+                toastr.error('Error', `GPX - Could not create Report Resign: ${res ? res.message : 'Error'}`)
+            }
             //const replyYesNoRoles = await RestClient.Get(`positionassign/GetAllPositionsAssignData`)
 
             //For some reason we need to reset value here, (bug when loading in new data with filter), don't touch h3h3
@@ -112,7 +117,7 @@ export function createResignReport(model) {
 
 export function createOnboardReport(model) {
     return async function(dispatch) {
-        //  dispatch(beginAjaxCall())
+          dispatch(beginAjaxCall())
 
         try {
             var currentdate = new Date()
@@ -125,14 +130,21 @@ export function createOnboardReport(model) {
             //   }
 
             //await RestClient.Download(`resign/GetResignReports?datetime=2018-10-02`,null,'ResignReport.xlsx')
-            await RestClient.Download(`report/GetOnboardReports`, model, 'OnboardReport_' + newdatemodified + '.xlsx')
+            const res =  await RestClient.Download(`report/GetOnboardReports`, model, 'OnboardReport_' + newdatemodified + '.xlsx')
+
+            dispatch(endAjaxCall())
+
+            if (res) {
+                toastr.success('Success', `GPX - Report Onboard routine finished`)
+          } else {
+                toastr.error('Error', `GPX - Could not create Report Onboard: ${res ? res.message : 'Error'}`)
+            }
 
             //const replyYesNoRoles = await RestClient.Get(`positionassign/GetAllPositionsAssignData`)
 
             //For some reason we need to reset value here, (bug when loading in new data with filter), don't touch h3h3
             // dispatch(handleCreateReport([]))
 
-            dispatch(endAjaxCall())
         } catch (error) {
             dispatch(ajaxCallError(error))
 
@@ -143,7 +155,7 @@ export function createOnboardReport(model) {
 
 export function createVacantReport(model) {
     return async function(dispatch) {
-        //  dispatch(beginAjaxCall())
+          dispatch(beginAjaxCall())
 
         try {
             var currentdate = new Date()
@@ -184,7 +196,7 @@ export function createVacantReportSuccess(report) {
 
 export function createReport(model) {
     return async function(dispatch) {
-        // dispatch(beginAjaxCall())
+         dispatch(beginAjaxCall())
 
         try {
             var currentdate = new Date()
@@ -192,7 +204,13 @@ export function createReport(model) {
             var newdatemodified = moment(currentdate).format('YYYY-MM-DD HH:mm:ss')
 
             //await RestClient.Download(`resign/GetResignReports?datetime=2018-10-02`,null,'ResignReport.xlsx')
-            await RestClient.Download(`report/GetReports`, model, 'StaffingList_' + newdatemodified + '.xlsx')
+            const res = await RestClient.Download(`report/GetReports`, model, 'StaffingList_' + newdatemodified + '.xlsx')
+
+            if (res) {
+                toastr.success('Success', `GPX - Report Staffing List routine finished`)
+          } else {
+                toastr.error('Error', `GPX - Could not create Report Staffing List: ${res ? res.message : 'Error'}`)
+            }
 
             //const replyYesNoRoles = await RestClient.Get(`positionassign/GetAllPositionsAssignData`)
 

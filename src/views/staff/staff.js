@@ -456,7 +456,8 @@ if (!check2) {
 
 try {
 
-  const res =  await RestClient.Upload('import/UploadFile/'+ this.state.importType,this.state.fileName)
+  const res =  await this.props.staffActions.createImport(this.state.importType,this.state.fileName)
+ // const res =  await RestClient.Upload('import/UploadFile/'+ this.state.importType,this.state.fileName)
 
 this.setState({
     fileName:null,
@@ -464,14 +465,10 @@ this.setState({
     validFileImport:'',
     validFileName:''
 })
+debugger;
 
-   if (res) {
-      toastr.success('Success', `GPX - Import routine finished`)
-} else {
-      toastr.error('Error', `GPX - Could not Import: ${res ? res.message : 'Error'}`)
-  }
 } catch (error) {
- // dispatch(ajaxCallError(error))
+
 
   throw error
 }

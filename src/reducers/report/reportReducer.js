@@ -61,17 +61,17 @@ export default function reportReducer(state = defaultState, action) {
                 ...state,
                 resigndates: action.data.resigndates
             }
-            case types.CREATEREPORT_SUCCESS:
-            return {
-                ...state,
-                createreport: action.data.createreport
-            }
-            case (types.HANDLE_CREATEREPORT):
-            return {
-                ...state,
-                handleCreateReport:action.data.handleCreateReport
+            // case types.CREATEREPORT_SUCCESS:
+            // return {
+            //     ...state,
+            //     createreport: action.data.createreport
+            // }
+            // case (types.HANDLE_CREATEREPORT):
+            // return {
+            //     ...state,
+            //     handleCreateReport:action.data.handleCreateReport
     
-            }
+            // }
             case types.HANDLE_SELECTEDYEAR:
             return    {
   ...state,
