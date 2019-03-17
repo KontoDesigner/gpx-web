@@ -19,7 +19,8 @@ class AssignRole extends Component {
             selectedConfirmedDepDate: null,
             positionStartDate: null,
             positionEndDate: null,
-       
+            confirmStart:false,
+            confirmEnd:false,
             validDate:'',
             validDate2:''
            //errorMessage:''
@@ -75,7 +76,9 @@ class AssignRole extends Component {
             positionStartDate: null,
             positionEndDate: null,
             validDate2:'',
-            validDate:''
+            validDate:'',
+            confirmStart:false,
+            confirmEnd:false
             //errorMessage:''
 
         })
@@ -85,10 +88,11 @@ class AssignRole extends Component {
 
     confirmedStartChange = confirmStart => {
         
-        const selectedConfirmedDate = confirmStart ;
+        const selectedConfirmedDate = confirmStart?confirmStart:null ;
      
         this.setState({
             selectedConfirmedDate,
+            confirmStart:true
            
             
         })
@@ -96,15 +100,19 @@ class AssignRole extends Component {
     }
 
     confirmedEndChange = confirmEnd => {
-        
-        const selectedConfirmedDepDate = confirmEnd ;
-     debugger;
+  
+    
+
+        const selectedConfirmedDepDate = confirmEnd?confirmEnd:null ;
+  
+
         this.setState({
             selectedConfirmedDepDate,
+            confirmEnd:true
            
             
         })
-      
+    
     }
     assignStartChange = assignStart => {
         
@@ -112,7 +120,7 @@ class AssignRole extends Component {
      
         this.setState({
             selectedStartDate,
-            validDate2:''
+            validDate2:''            
             
         })
       
@@ -123,6 +131,7 @@ class AssignRole extends Component {
       this.setState({
         selectedEndDate,
         validDate2:''
+      
       })
     
   }
@@ -136,6 +145,26 @@ debugger;
         debugger;
         const position = this.props.positionAssign.MPLID
         const positionAssignId = this.props.positionAssign.PositionAssignId
+
+       
+
+        if(this.state.confirmStart) {
+            debugger;
+            var editconfirmDate=this.state.selectedConfirmedDate
+        } else{
+
+          var editconfirmDate=val3
+        }
+     
+       
+        if(this.state.confirmEnd) {
+            debugger;
+            var editconfirmDepDate=this.state.selectedConfirmedDepDate
+        } else{
+
+          var  editconfirmDepDate=val4
+        }
+        debugger;
        
         var currentdate = new Date()
 
@@ -152,15 +181,11 @@ debugger;
           endDate: this.state.selectedEndDate
             ? this.state.selectedEndDate
             : val2,
-            confirmedDate: this.state.selectedConfirmedDate
-            ? this.state.selectedConfirmedDate
-            : val3,
-          confirmedDepDate: this.state.selectedConfirmedDepDate
-            ? this.state.selectedConfirmedDepDate
-            : val4 
+            confirmedDate: editconfirmDate,
+            confirmedDepDate: editconfirmDepDate
         
         }
-    debugger;
+
         var assignCompareStart = new Date(model.startDate).setHours(0, 0, 0, 0);
         var assignCompareEnd  = new Date(model.endDate).setHours(0, 0, 0, 0);
         var positionCompareStart = new Date(this.props.positionAssign.PositionStartDate)
