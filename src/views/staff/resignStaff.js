@@ -3,6 +3,8 @@ import { Button,Modal,ModalHeader, ModalBody, ModalFooter,Alert,Row,Col,Table,La
 import Datetime from 'react-datetime'
 import Select from 'react-select'
 import TextInput from '../../components/textInput'
+import { connect } from 'react-redux'
+
 class ResignStaff extends Component {
 
 //const ResignStaff = props => {
@@ -10,8 +12,67 @@ class ResignStaff extends Component {
     super();
 
     this.state = {
-      selectedResignAppDate:null
+      selectedResignAppDate:null,
+      selectedReasonForResign:null,
+      selectedJobTitle:null,
+      selectedManagerReason:null,
+      selectedRecommend:null,
+      recommend: [    //not in use  delete
+        {
+            id: 'Yes',
+            name: 'Yes' 
+        },
+        {
+            id: 'No',
+            name: 'No'
+        },
+  
+    ]
     };
+}
+
+handleResonforResign = reasonForResign => {
+  debugger;
+  const selectedReasonForResign = reasonForResign ;
+  
+  this.setState({
+    selectedReasonForResign
+
+  })
+}
+
+handleChange = event => {
+
+  this.setState({value: event.target.value});
+}
+
+
+handleJobTitle = jobTitle => {
+  debugger;
+  const selectedJobTitle = jobTitle ;
+  
+  this.setState({
+    selectedJobTitle
+
+  })
+}
+handleManagerReason = managerReason => {
+  debugger;
+  const selectedManagerReason = managerReason ;
+  
+  this.setState({
+    selectedManagerReason
+
+  })
+}
+handleRecommend = recommend => {
+  debugger;
+  const selectedRecommend = recommend ;
+  
+  this.setState({
+    selectedRecommend
+
+  })
 }
 
 createResign = (val) => {
@@ -51,6 +112,9 @@ resignAppDateChange = appDate => {
 toggle = () => {
   this.setState({
     selectedResignAppDate:null,
+    selectedReasonForResign:null,
+    selectedJobTitle:null,
+    selectedRecommend:null
 
   })
 
@@ -98,15 +162,9 @@ toggle = () => {
               valueKey="id"
               labelKey="name"
               className="form-group form-group-select"
-              // options={props.managerReasons}
-              onChange={v => {
-                this.props.handleSelectTypes('managerReason', v, 'id')
-              }}
-              // value={
-              //   this.props.resignHistory.managerReason === ''
-              //     ? null
-              //     : this.props.resignHistory.managerReason
-              // }
+              options={this.props.managerReasons}
+              onChange={this.handleManagerReason }
+                value={this.state.selectedManagerReason}
               placeholder="Select"
             />
                {/* <b className="card-text text-danger">{this.props.validMgrReason }</b> */}
@@ -117,15 +175,9 @@ toggle = () => {
               valueKey="id"
               labelKey="name"
               className="form-group form-group-select"
-              // options={props.resignmentReasons}
-              onChange={v => {
-                this.props.handleSelectTypes('reasonForResignment', v, 'id')
-              }}
-              // value={
-              //   props.resignHistory.reasonForResignment === ''
-              //     ? null
-              //     : props.resignHistory.reasonForResignment
-              // }
+               options={this.props.resignmentReasons}
+               onChange={this.handleResonforResign }
+                value={this.state.selectedReasonForResign}
               placeholder="Select"
             />
                {/* <b className="card-text text-danger">{props.validReasonFor }</b> */}
@@ -145,15 +197,9 @@ toggle = () => {
               valueKey="id"
               labelKey="name"
               className="form-group form-group-select"
-              // options={props.allJobTitles}
-              onChange={v => {
-                this.props.handleSelectTypes('jobTitleWhenResigned', v, 'id')
-              }}
-              // value={
-              //   props.resignHistory.jobTitleWhenResigned === ''
-              //     ? null
-              //     : props.resignHistory.jobTitleWhenResigned
-              // }
+              options={this.props.allJobTitles}
+              onChange={this.handleJobTitle }
+              value={this.state.selectedJobTitle}
               placeholder="JobTitleWhenResigned"
             />
                {/* <b className="card-text text-danger">{props.validJobTitleWhen }</b> */}
@@ -164,15 +210,9 @@ toggle = () => {
               valueKey="id"
               labelKey="name"
               className="form-group form-group-select"
-              // options={props.recommend}
-              onChange={v => {
-                this.props.handleSelectTypes('recommend', v, 'id')
-              }}
-              // value={
-              //   props.resignHistory.recommend === ''
-              //     ? null
-              //     : props.resignHistory.recommend
-              // }
+               options={this.state.recommend}
+               onChange={this.handleRecommend }
+               value={this.state.selectedRecommend}
               placeholder="Select"
             />
                 {<b className="card-text text-danger">{this.props.validRecommend}</b> } 
@@ -182,7 +222,7 @@ toggle = () => {
               name="signature" 
       
               // value={props.resignHistory.signature}
-              onChange={this.props.handleStaffField}
+              onBlur={this.props.handleChange}
              
             />
                {/* <b className="card-text text-danger">{this.props.validSignature }</b> */}
@@ -226,5 +266,25 @@ toggle = () => {
 }
 }
 
+function mapStateToProps(state) {
+  return {
+    allJobTitles: state.setting.setting.jobTitle
+     
+  }
+}
 
-export default ResignStaff
+// function mapDispatchToProps(dispatch) {
+//   return {
+//       confirmedDatesActions: bindActionCreators(confirmedDatesActions, dispatch),
+//       employeeInfoActions: bindActionCreators(employeeInfoActions, dispatch),
+//       abscenseActions: bindActionCreators(abscenseActions, dispatch),
+//       destinationHistoryActions: bindActionCreators(destinationHistoryActions, dispatch),
+//       historyActions: bindActionCreators(historyActions, dispatch),
+//       applicationHistoryActions: bindActionCreators(applicationHistoryActions, dispatch),
+//       abscenseHistoryActions: bindActionCreators(abscenseHistoryActions, dispatch)
+//   }
+// }
+export default connect(
+  mapStateToProps,
+  //mapDispatchToProps
+)(ResignStaff)

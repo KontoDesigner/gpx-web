@@ -79,7 +79,64 @@ class Staff extends Component {
                     name: ' Other (Please Specify)'
                 }
             ],
+            managerReasons: [
+                {
+                    id: 'Dismissed',
+                    name: 'Dismissed'
+                },
+                {
+                    id: 'Resigned',
+                    name: 'Resigned'
+                },
+                {
+                    id: 'Other (Please Specify)',
+                    name: 'Other (Please Specify)'
+                }
+            ],
+            
 
+            resignmentReasons: [
+                {
+                    id: 'Expectations of Job',
+                    name: 'Expectations of Job'
+                },
+                {
+                    id: 'Management',
+                    name: 'Management'
+                },
+                {
+                    id: 'Training',
+                    name: 'Training'
+                },
+                {
+                    id: 'Pay & Reward',
+                    name: 'Pay & Reward'
+                },
+                {
+                    id: 'Working Hours',
+                    name: 'Working Hours'
+                },
+                {
+                    id: 'Personal/Family Reasons',
+                    name: 'Personal/Family Reasons'
+                },
+                {
+                    id: 'Destination',
+                    name: 'Destination'
+                },
+                {
+                    id: 'Returned to School/University',
+                    name: 'Returned to School/University'
+                },
+                {
+                    id: 'Found a new job',
+                    name: 'Found a new job'
+                },
+                {
+                    id: 'Placement Declined',
+                    name: 'Placement Declined'
+                }
+            ]
 
         };
      
@@ -561,6 +618,8 @@ debugger;
                 modal={this.state.resignStaffModal}
                 toggle={this.toogleResignStaffModal}
                 resignType={this.state.resignType}
+                managerReasons={this.state.managerReasons}
+                resignmentReasons={this.state.resignmentReasons}
                 handleChange={this.handleChange}
                 handleSelect= {this.handleSelect}
                 value={this.state.value}

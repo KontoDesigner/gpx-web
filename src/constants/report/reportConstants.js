@@ -9,7 +9,7 @@ export var ActionTypes = keyMirror({
   GET_RESIGNDATESLOOKUP: null,
   HANDLE_RESIGNDATES: null,
   // CREATEREPORT_SUCCESS: null,
-  // CREATEREPORT: null,
+  //  CREATEREPORT: null,
   HANDLE_CREATEREPORT: null,
   HANDLE_REPORT: null,
   HANDLE_SELECTEDDESTINATION: null,

@@ -258,10 +258,10 @@ debugger;
     //   unmarkPositionActingModal: !this.state.unmarkPositionActingModal
     // })
   }
-  createPosition = model => {
+  createPosition = async model => {
     debugger
 
-    this.props.planningActions.createPosition(model)
+    await this.props.planningActions.createPosition(model)
   }
 
   //   getAvailablePositionNew = async () => {

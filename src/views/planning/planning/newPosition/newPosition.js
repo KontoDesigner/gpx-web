@@ -97,7 +97,7 @@ class NewPosition extends Component {
     };
 }
 
-createPosition = (val) => {
+createPosition = async (val) => {
        
   //this.toggle();
   var newdatemodified = new Date();
@@ -159,7 +159,7 @@ createPosition = (val) => {
 
 
  //this.props.createPosition(this.state);
- this.props.createPosition(model);
+ await this.props.createPosition(model);
  
 }
 
