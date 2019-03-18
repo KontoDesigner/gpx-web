@@ -6,6 +6,7 @@ import MoveRole from './moveRole'
 import RemoveRole from './removeRole'
 import EditPosition from './editPosition'
 import Fly2Work from './fly2Work'
+import Accept from './accept'
 import Datetime from 'react-datetime'
 import moment from "moment";
 class Season extends Component {
@@ -17,6 +18,7 @@ class Season extends Component {
             moveRoleModal: false,
             removeRoleModal: false,
             fly2WorkModal: false,
+            acceptModal: false,
             editPositionModal:false
 
         
@@ -56,6 +58,13 @@ class Season extends Component {
         
         this.setState({
             fly2WorkModal: !this.state.fly2WorkModal
+        })
+    }
+
+    toggleAcceptModal = (positionAssign) => {
+        
+        this.setState({
+            acceptModal: !this.state.acceptModal
         })
     }
 
@@ -140,7 +149,8 @@ class Season extends Component {
                 <div>
                                           {/* {this.props.positionAssign.StaffStartDate} */}
                     <Card>
-                        <CardHeader>{this.props.title}</CardHeader>
+                        <CardHeader>{this.props.title} {this.props.positionAssign.Accept? " - " + this.props.positionAssign.Accept:""} 
+                                </CardHeader>
 
                         <CardBody className="no-padding-bottom">
                             <div className="form-row">
@@ -215,6 +225,7 @@ class Season extends Component {
                                     <TextInput name="ConfirmedDepDate" label="Confirmed Staff Departure" disabled={true} value={this.props.positionAssign.ConfirmedDepDate? moment(this.props.positionAssign.ConfirmedDepDate).format("YYYY-MM-DD"):""} />
                                 </Col>
 
+                               
                             </div>
                         </CardBody>
 
@@ -244,7 +255,25 @@ class Season extends Component {
                                         style={{ marginRight: '10px', marginBottom: '10px' }}>
                                         Remove Assignment
                                     </Button>
-                                    {this.props.send !== null && (
+                         
+                                         {/* {this.props.accept !== null && ( */}
+                                        <Button
+                                            size="sm"
+                                            onClick={() => {
+
+                                                
+                                                    this.toggleAcceptModal()
+                
+                                               // this.props.send(this.props.positionAssign)
+                                            }}
+                                            color="success"
+                                            style={{ marginRight: '10px', marginBottom: '10px' }}>
+                                         Accept Position
+                                        </Button>
+                                     {/* )} */}
+                                
+                               
+                                           {this.props.send !== null && (
                                         <Button
                                             size="sm"
                                             onClick={() => {
@@ -259,7 +288,7 @@ class Season extends Component {
                                             Send to Fly2Work
                                         </Button>
                                     )}
-                                </Col>
+                                    </Col>
                             </Row>
                         </CardFooter>
                     </Card>
@@ -285,7 +314,13 @@ class Season extends Component {
                 send={this.props.send}
                
             />
-        
+             <Accept
+                modal={this.state.acceptModal}
+                toggle={this.toggleAcceptModal}
+                positionAssign={this.props.positionAssign}
+                createAcceptStaff ={this.props.createAcceptStaff}
+               
+            />
 
                     <MoveRole
                         modal={this.state.moveRoleModal}

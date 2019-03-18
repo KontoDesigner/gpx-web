@@ -346,6 +346,8 @@ class StaffEdit extends Component {
                                         spainRegistred={this.state.spainRegistred}
                                         handleUnsavedEdit={this.handleUnsavedEdit}
                                         send={this.send}
+                                      
+                                        
                                         nowAvailablePositions={this.state.nowAvailablePositions}
                                         getAvailablePositionNew={this.getAvailablePositionNew}
                                     />

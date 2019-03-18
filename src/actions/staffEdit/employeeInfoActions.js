@@ -140,6 +140,30 @@ export function sendToCtx(model) {
     }
 }
 
+export function createAcceptStaff(model) {
+    return async function(dispatch) { 
+        dispatch(beginAjaxCall())
+
+        try {
+       
+debugger;
+           await RestClient.Post('positionassign/markacceptstaff', model)
+        
+       
+        
+
+
+
+            dispatch(endAjaxCall())
+          
+        } catch (error) {
+            dispatch(ajaxCallError(error))
+
+            throw error
+        }
+    }
+} 
+
 export function handleCurrentPositionAssignField(field, val) {
     return {
         type: types.HANDLE_CURRENTPOSITIONASSIGN_FIELD,

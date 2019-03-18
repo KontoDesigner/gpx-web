@@ -62,7 +62,7 @@ export function createResetAccept(model) {
             if (res) {
                 toastr.success('Success', `Selected position assign (s) is now accepted`)
             } else {
-                toastr.error('Error', `Selected position assign(s) is not accepted: ${res ? res.message : 'Error'}`)
+                toastr.error('Error', `Selected position assign(s) is : ${res ? res.message : 'Error'}`)
             }
 
 

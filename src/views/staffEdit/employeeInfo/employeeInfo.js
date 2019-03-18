@@ -92,7 +92,27 @@ class EmployeeInfo extends Component {
              _this.props.employeeInfoActions.getPositionAssigns(_this.props.staff.staffID)
         })
     }
+    createAcceptStaff = (positionAssign, action) => {
+        const model = {
+            Id: this.props.staff.staffID,
+       
+            Id: positionAssign.PositionAssignId,
+            Accept:action
+        }
+        debugger
+        const _this = this
 
+        _this.props.employeeInfoActions.createAcceptStaff(model).then(function() 
+        {
+            _this.props.getAvailablePositionNew
+            // _this.props.employeeInfoActions.getAvailablePositions(
+            //     _this.props.currentSeason.name,
+            //     _this.props.nextSeason.name,
+            //     _this.props.followingSeason.name
+            // )
+             _this.props.employeeInfoActions.getPositionAssigns(_this.props.staff.staffID)
+        })
+    }
     editPosition = role => {
      debugger;
         const positionAssign = {
@@ -210,6 +230,7 @@ class EmployeeInfo extends Component {
                             handleUnsavedEdit={this.props.handleUnsavedEdit}
                             handlePositionAssignField={(field, val) => this.props.employeeInfoActions.handleCurrentPositionAssignField(field, val)}
                             send={this.props.send}
+                            createAcceptStaff ={this.createAcceptStaff}
                         />
                     </Col>
                     {/* </Row> */}
@@ -233,6 +254,7 @@ class EmployeeInfo extends Component {
                             handleUnsavedEdit={this.props.handleUnsavedEdit}
                             handlePositionAssignField={(field, val) => this.props.employeeInfoActions.handleNextPositionAssignField(field, val)}
                             send={this.props.send}
+                            createAcceptStaff ={this.createAcceptStaff}
                         />
                         </Col>
 
@@ -252,6 +274,7 @@ class EmployeeInfo extends Component {
                             handleUnsavedEdit={this.props.handleUnsavedEdit}
                             handlePositionAssignField={(field, val) => this.props.employeeInfoActions.handleNextPositionAssignField(field, val)}
                             send={this.props.send}
+                            createAcceptStaff ={this.createAcceptStaff}
                         />
                         </Col>
                   
