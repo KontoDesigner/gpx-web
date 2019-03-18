@@ -55,7 +55,7 @@ export function createResign(model) {
         dispatch(beginAjaxCall())
 
         try {
-            
+            debugger;
             //const res = await RestClient.Post('resign/resignuserselect', model)
             const res = await RestClient.Post('resign/resignuser', model)
             dispatch(endAjaxCall())

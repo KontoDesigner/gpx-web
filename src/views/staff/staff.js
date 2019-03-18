@@ -144,6 +144,7 @@ class Staff extends Component {
     }
 
     handleChange(event) {
+        debugger;
 
         this.setState({value: event.target.value});
       }
@@ -260,17 +261,19 @@ class Staff extends Component {
                Comments: this.state.value,
               FromDate: model.fromDate,
               StaffID:this.state.selectedStaffID,
-               DateModified:model.dateModified
-               // StaffID: this.props.staff.staffID,
-               // FirstName: this.props.staff.firstName,
-               // LastName: this.props.staff.lastName,
-               // Season: role.season,
-               // FullName: this.props.staff.fullName,
-               // StartDate: role.startDate,
-               // EndDate: role.endDate
+               DateModified:model.dateModified,
+            
+               AppDate: model.fromDate,
+               ManagerReason: model.managerReason.name,
+               Signature: model.signature,
+               JobTitleWhenResigned: model.jobTitleWhenResigned.name,
+               ReasonForResignment: model.reasonForResign.name,
+               ResignComm: model.resignComm,
+               Recommend: model.recommend.name
+       
                
            }
-           
+           debugger;
            this.props.staffActions.createResign(resignmodel)
 
            this.getActTabAndRequest(this.state.activeTab) 

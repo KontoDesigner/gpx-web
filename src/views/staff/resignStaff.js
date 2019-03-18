@@ -4,6 +4,7 @@ import Datetime from 'react-datetime'
 import Select from 'react-select'
 import TextInput from '../../components/textInput'
 import { connect } from 'react-redux'
+import thunk from 'redux-thunk';
 
 class ResignStaff extends Component {
 
@@ -17,6 +18,8 @@ class ResignStaff extends Component {
       selectedJobTitle:null,
       selectedManagerReason:null,
       selectedRecommend:null,
+      signature:null,
+      resignComm:null,
       recommend: [    //not in use  delete
         {
             id: 'Yes',
@@ -27,7 +30,16 @@ class ResignStaff extends Component {
             name: 'No'
         },
   
-    ]
+    ],
+
+    validLastWorking:'',
+    validMgrReason:'',
+    validReasonFor:'',
+    validJobTitleWhen:'',
+    validSignature:'',
+    validRecommend:'',
+    validComment:''
+
     };
 }
 
@@ -41,11 +53,32 @@ handleResonforResign = reasonForResign => {
   })
 }
 
-handleChange = event => {
+handleSignature = signature => {
+  debugger;
+  const selectedSignature = signature ;
+  
+  this.setState({
+    selectedSignature
 
-  this.setState({value: event.target.value});
+  })
 }
 
+handleResignComm = comm => {
+  debugger;
+  const selectedResignComm = comm ;
+  
+  this.setState({
+    selectedResignComm
+
+  })
+}
+
+handleChange = (e) => {
+
+  let change = {}
+  change[e.target.name] = e.target.value
+  this.setState(change)
+}
 
 handleJobTitle = jobTitle => {
   debugger;
@@ -77,8 +110,91 @@ handleRecommend = recommend => {
 
 createResign = (val) => {
        
-  this.toggle();
 
+  var check= this.state.selectedResignAppDate ?  true: false
+  var check2= this.state.selectedManagerReason ? true: false
+  var check3= this.state.selectedReasonForResign ? true: false
+
+ 
+  var check4= this.state.selectedJobTitle ? true: false
+  var check5= this.state.signature ? true: false
+  var check6= this.state.selectedRecommend ? true: false
+
+debugger;
+  if(!check){  
+    this.setState({
+      validLastWorking:'Date´s missing'
+    })
+    return false;
+  }
+  this.setState({
+    validLastWorking:''
+  })
+
+  if(!check2){  
+    this.setState({
+      validMgrReason:'Select a manager reason'
+    })
+    return false;
+  }
+  this.setState({
+    validMgrReason:''
+  })
+
+
+  if(!check3){  
+    this.setState({
+      validReasonFor:'Select a reason for resignment'
+    })
+    return false;
+  }
+  this.setState({
+    validReasonFor:''
+  })
+
+  if(!check4){  
+    this.setState({
+      validJobTitleWhen:'Select a Jobtitle'
+    })
+    return false;
+  }
+  this.setState({
+    validJobTitleWhen:''
+  })
+
+  if(!check5){ 
+    this.setState({
+      validSignature:'Enter signature'
+    })
+    return false;
+  }
+  this.setState({
+    validSignature:''
+  })
+
+  if(!check6){ 
+    this.setState({
+      validRecommend:'Select recommendation'
+    })
+    return false;
+  }
+  this.setState({
+    validRecommend:''
+  })
+
+  debugger;
+  if((this.state.selectedRecommend.name=='No') && (this.state.resignComm==null) ){ 
+   
+
+this.setState({
+ validComment:'Enter comment'
+})
+return false;
+}
+
+
+
+  this.toggle();
   var currentdate = new Date(); 
   var newdatemodified  = currentdate.getFullYear() + "-"
 + (currentdate.getMonth()+1)  + "-" 
@@ -91,10 +207,14 @@ createResign = (val) => {
       // staffID: position.mplid,
       dateModified: newdatemodified ,
        fromDate: this.state.selectedResignAppDate,
-      // startDate: this.state.selectedAbsentStart,
-      //  endDate: this.state.selectedAbsentEnd
+      reasonForResign: this.state.selectedReasonForResign,
+       jobTitleWhenResigned:this.state.selectedJobTitle,
+       managerReason:this.state.selectedManagerReason,
+     recommend: this.state.selectedRecommend,
+       resignComm: this.state.resignComm,
+       signature:this.state.signature
   }
-
+debugger;
  this.props.createResign(model);
 }
 
@@ -114,8 +234,16 @@ toggle = () => {
     selectedResignAppDate:null,
     selectedReasonForResign:null,
     selectedJobTitle:null,
-    selectedRecommend:null
-
+    selectedRecommend:null,
+    signature:null,
+    resignComm:null,
+    validLastWorking:'',
+    validMgrReason:'',
+    validReasonFor:'',
+    validJobTitleWhen:'',
+    validSignature:'',
+    validRecommend:'',
+    validComment:''
   })
 
   this.props.toggle();
@@ -154,7 +282,8 @@ toggle = () => {
                         closeOnSelect
                         utc={true}
                         inputProps={{ placeholder: 'YYYY-MM-DD' }}
-                      />
+                      />  <b className="card-text text-danger">{this.state.validLastWorking }</b>
+                  
                     </td>
                     <td >
                     <Select
@@ -167,7 +296,7 @@ toggle = () => {
                 value={this.state.selectedManagerReason}
               placeholder="Select"
             />
-               {/* <b className="card-text text-danger">{this.props.validMgrReason }</b> */}
+               { <b className="card-text text-danger">{this.state.validMgrReason }</b> }
                     </td>
                     <td >
                     <Select
@@ -179,8 +308,8 @@ toggle = () => {
                onChange={this.handleResonforResign }
                 value={this.state.selectedReasonForResign}
               placeholder="Select"
-            />
-               {/* <b className="card-text text-danger">{props.validReasonFor }</b> */}
+            />  { <b className="card-text text-danger">{this.state.validReasonFor }</b> }
+             
                     </td>
                   </tr>
                   </tbody>
@@ -201,8 +330,8 @@ toggle = () => {
               onChange={this.handleJobTitle }
               value={this.state.selectedJobTitle}
               placeholder="JobTitleWhenResigned"
-            />
-               {/* <b className="card-text text-danger">{props.validJobTitleWhen }</b> */}
+            />  { <b className="card-text text-danger">{this.state.validJobTitleWhen }</b> }
+             
                     </td>
                     <td >
                     <Select
@@ -214,34 +343,34 @@ toggle = () => {
                onChange={this.handleRecommend }
                value={this.state.selectedRecommend}
               placeholder="Select"
-            />
-                {<b className="card-text text-danger">{this.props.validRecommend}</b> } 
+            />{<b className="card-text text-danger">{this.state.validRecommend}</b> } 
+                
                     </td>
                     <td >
-                    <Input
+                    <TextInput
               name="signature" 
-      
-              // value={props.resignHistory.signature}
-              onBlur={this.props.handleChange}
-             
-            />
-               {/* <b className="card-text text-danger">{this.props.validSignature }</b> */}
+              id="signature" 
+           onChange={this.handleChange} 
+           value={this.state.signature} 
+            />      { <b className="card-text text-danger">{this.state.validSignature }</b> }
+         
                     </td>
                     </tr>
                     <tr>
                   <td colSpan="3">
                       {' '}
                       <Label for="resignComm">Comments</Label>
-                      <Input
+                      <TextInput
                         required
                         type="textarea"
                         maxLength="1000"
                         name="resignComm"
                         id="resignComm"
-                        onBlur={this.props.handleChange}
+                        onChange={this.handleChange} 
+                        value={this.state.resignComm} 
                         rows={6}
                         aria-multiline="true"
-                      />
+                      />  { <b className="card-text text-danger">{this.state.validComment }</b> }
                     </td>
                     </tr>
                 </tbody>
