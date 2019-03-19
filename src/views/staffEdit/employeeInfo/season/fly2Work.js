@@ -68,7 +68,7 @@ class Fly2Work extends Component {
                                     </thead>
                                     <tbody>
                                         <tr>
-                                            <td colSpan="2">
+                                            <td colSpan="2" height="100">
                                                 <Select
                                                     id="id"
                                                     valueKey="id"

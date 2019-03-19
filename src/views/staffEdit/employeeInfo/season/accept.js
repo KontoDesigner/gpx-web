@@ -56,12 +56,10 @@ class Accept extends Component {
     render() {
         return (
             <div>
-                <Modal isOpen={this.props.modal} toggle={this.toggle}>
-                    <ModalHeader toggle={this.toggle}>Accept/Decline/Reset - {this.props.selectedAction}</ModalHeader>
-                    <ModalBody>
-                        {/* <Alert color="danger">
-                          Are you sure you want to make position vacant? 
-                      </Alert> */}
+                <Modal isOpen={this.props.modal} toggle={this.toggle} >
+                    <ModalHeader toggle={this.toggle}>Accept/Decline/Reset </ModalHeader>
+                    <ModalBody > 
+     
 
                         <Row>
                             <Col>
@@ -73,8 +71,9 @@ class Accept extends Component {
                                     </thead>
                                     <tbody>
                                         <tr>
-                                            <td colSpan="2">
-                                                <Select size="3"
+                                            <td colSpan="2" height="150">
+                                                { <Select
+ 
                                                     id="id"
                                                     valueKey="id"
                                                     labelKey="name"
@@ -85,26 +84,20 @@ class Accept extends Component {
                                                     placeholder="Select"
                                                     className="form-group form-group-select"
                                                     
-                                                />
-                                               
-                                            </td>
-                                            <tr>
+                                                /> }
 
-                                            </tr>
-                                            <tr>
+
+                                        
+                                            </td>
+                                        
                                                 
-                                            </tr>
-                                            <tr>
-                                                
-                                            </tr>
-                                            <tr>
-                                                
-                                            </tr>
+                                            
                                         </tr>
                                     </tbody>
                                 </Table>
                             </Col>
                         </Row>
+                        
                     </ModalBody>
                     <ModalFooter>
                         <Button color="success" onClick={() => this.createAcceptStaff(this.props.positionAssign)}>
