@@ -173,7 +173,9 @@ class Season extends Component {
                                             ' ' +
                                             this.props.positionAssign.Destination +
                                             ' ' +
-                                            this.props.positionAssign.ConceptHotel
+                                            this.props.positionAssign.ConceptHotel 
+
+                                          
                                         }
                                     />
                                 </Col>
@@ -183,7 +185,15 @@ class Season extends Component {
                                 </Col>
 
                                 <Col sm="12" md="6" lg="6" xl="6" className="form-group">
-                                    <TextInput name="jobTitle" label="Job Title" disabled={true} value={this.props.positionAssign.JobTitle } />
+                                    <TextInput name="jobTitle" label="Job Title" disabled={true} value=
+                                    
+                                    {this.props.positionAssign.JobTitle +
+                                    
+                                        ' ' +
+                                        this.props.positionAssign.MPLID
+                                    
+                                    
+                                    } />
                                 </Col>
 
                                 <Col sm="12" md="6" lg="6" xl="6" className="form-group">
