@@ -77,7 +77,7 @@ class Accept extends Component {
                                                     id="id"
                                                     valueKey="id"
                                                     labelKey="name"
-                                                    
+                                                    className="form-control"
                                                     options={this.state.actions}
                                                     onChange={this.actionChange}
                                                     value={this.state.selectedAction}

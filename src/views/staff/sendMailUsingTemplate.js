@@ -149,7 +149,7 @@ class SendMailUsingTemplate extends Component {
                         name="resignComm"
                         id="resignComm"
                         onChange={this.props.handleChange}
-                        rows={20}
+                        rows={15}
                         aria-multiline="true"
                         value={this.state.selectedContent}
                       />
