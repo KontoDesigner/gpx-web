@@ -103,7 +103,7 @@ class SendMailUsingTemplate extends Component {
                 </thead>
                 <tbody>
                   <tr>
-                    <td colSpan="2" height="200"> 
+                    <td colSpan="2" height="150"> 
 
                         <Select
                                        id="templateName"
