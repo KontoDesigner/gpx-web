@@ -27,7 +27,7 @@ export function getNotification() {
         try {
             
             const notification = await RestClient.Get(`mail`)
-            
+            dispatch(handleNotification([]))
             dispatch(getNotificationSuccess(notification))
         } catch (error) {
             dispatch(ajaxCallError(error))
