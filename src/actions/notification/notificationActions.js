@@ -23,7 +23,7 @@ export function getNotificationSuccess(notification) {
 export function getNotification() {
     return async function (dispatch) {
         dispatch(beginAjaxCall())
-
+debugger;
         try {
             
             const notification = await RestClient.Get(`mail`)
