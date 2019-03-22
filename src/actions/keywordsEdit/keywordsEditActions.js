@@ -29,12 +29,33 @@ export function getKeywordsSuccess(keywords) {
     }
 }
 
+export function getKeywordName(keywordname) {
+    // console.log('Templatename', templatename);
+     return async function (dispatch) {
+         dispatch(beginAjaxCall())
+         try {
+ 
+          //  const staff = await RestClient.Get(`staff/${staffId}`)
+     
+            const keywords = await RestClient.Get(`setting/${keywordname}`)
+            dispatch(endAjaxCall())
+           
+           
+             dispatch(getKeywordsSuccess(keywords))
+         } catch (error) {
+             dispatch(ajaxCallError(error))
+ 
+             throw error
+         }
+     }
+ }
+
 export function getKeywords(keywordname) {
    // console.log('Templatename', templatename);
     return async function (dispatch) {
         dispatch(beginAjaxCall())
         try {
-
+debugger;
          //  const staff = await RestClient.Get(`staff/${staffId}`)
     
            const keywords = await RestClient.Get(`settings/${keywordname}`)
