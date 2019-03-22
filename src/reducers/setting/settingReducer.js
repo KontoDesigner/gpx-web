@@ -2,6 +2,7 @@ import { ActionTypes as types } from '../../constants/setting/settingConstants';
 
 var defaultState = {
     setting:{},
+
     selectedApplyOpen: null,
     jobFamilies: [],
     jobTitle: [],
@@ -27,6 +28,8 @@ export default function settingReducer(state = defaultState, action) {
             },
         }
 
+
+
         case types.HANDLE_SETTING:
         return action.data.setting;
             case types.GET_JOBFAMILIES_SUCCESS:
@@ -50,6 +53,7 @@ export default function settingReducer(state = defaultState, action) {
                 ...state,
                 setting: action.data.setting
             }
+
      
         default:
             return state

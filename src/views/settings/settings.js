@@ -5,12 +5,15 @@ import { TabContent, TabPane, Row, Col } from 'reactstrap'
 import Tabs from './tabs'
 import * as notificationActions from '../../actions/notification/notificationActions'
 import * as settingActions from '../../actions/setting/settingActions'
+import * as keywordsActions from '../../actions/setting/keywordsActions'
 import * as filterActions from '../../actions/setting/filterActions'
 import { toastr } from 'react-redux-toastr'
 import RestClient from '../../infrastructure/restClient'
 import Notification from  './notification/cfgNotification'
+import Keywords from './keywords/cfgKeywords'
 import Setting from './setting/cfgSetting'
 import $ from 'jquery' 
+import ReResignStaff from './notification/reResignStaff'
 //import Buttons from './buttons'
 
 class Settings extends Component {
@@ -20,10 +23,10 @@ class Settings extends Component {
         super(props)
    
         this.state = {
-           
+            templateName:null,
             activeTab: 'settings',
             resetData: this.props.settingActions.handleSetting,
-         
+            reResignStaffModal: false,
            
        
             sourceMarketId: '',
@@ -67,6 +70,57 @@ class Settings extends Component {
 
 
     }
+
+    toogleReResignStaffModal = (val) => {
+     
+                if(val) {
+                    this.setState({
+                        reResignStaffModal: !this.state.reResignStaffModal,
+                        templateName: val
+                    })
+              
+                  }else 
+                  {
+              
+                    this.setState({
+                        reResignStaffModal: !this.state.reResignStaffModal,
+                      selectedStaffID: this.props.selectedStaff
+                    }) 
+                    
+                 
+                  }
+        
+            }
+
+
+            
+
+    removeTemplate = async model => {
+        debugger; 
+           let templateModel = {
+      
+            
+                TemplateName:this.state.templateName,
+                DateModified:model.dateModified
+         
+                
+            }
+          
+            const _this = this
+
+            this.props.settingActions.removeTemplate(templateModel).then(function () {
+  
+         
+                _this.props.notificationActions.getNotification() 
+
+            })
+            
+         
+
+
+          
+           // this.getActTabAndRequest(this.state.activeTab) 
+        }
  
     componentWillMount=async()=>  {
         document.title = 'Settings'
@@ -104,13 +158,15 @@ handleUnsavedEdit = () => {
 }
 
 edit = (e, notification) => {
-    
+    debugger;
     if (!$(e.target).is(":checkbox")) {
         const win = window.open(`/notification/${notification.templateName}`, '_this');
 
         win.focus();
     }
 }
+
+
 
 save = async(model) => {
   // this.props.settingActions.save()
@@ -224,16 +280,16 @@ handleCurSeasonOld = event => {
 
 //toogle logic  this is also sent to underlying component Tabs  below  , Tabs is imported above
     toggle = (tab, getData, resetData) => {
-       
+
         if (this.state.activeTab !== tab) {
             //Reset current tab state
             this.state.resetData([])
 
             //Reset filter
            // this.props.filterActions.handleFilter()
-
             //Get tab data
             getData()
+            debugger;
 
             this.setState({
                 activeTab: tab,
@@ -252,13 +308,14 @@ handleCurSeasonOld = event => {
                     toggle={this.toggle}
                     activeTab={this.state.activeTab}
                     getSetting={this.props.settingActions.getSetting}
-                
+                    getKeywords={this.props.keywordsActions.getKeywords}
+                    handleKeywords={this.props.keywordsActions.handleKeywords}
                      handleSetting={this.props.settingActions.handleSetting}
                     getNotification={this.props.notificationActions.getNotification}
                     handleNotification={this.props.notificationActions.handleNotification}
                     options={this.state.options}
                     notification={this.props.notification }
-                  
+                    keywords={this.props.keywords}
                 />
 
                   
@@ -306,10 +363,33 @@ handleCurSeasonOld = event => {
                              getNotification={this.props.notificationActions.getNotification}
                              handleSelectedSetting={this.props.handleSelectedSetting}
                              handleSelectedNotification={this.props.filterActions.handleSelectedNotification}
+                        
+                            
+                             toogleReResignStaffModal={this.toogleReResignStaffModal}
+                         
                             save={this.save}
                             edit={this.edit}
                             
                             />
+                               </TabPane>
+                        <TabPane tabId="keywords">
+                            <Keywords
+                            
+                              keywords={this.props.keywords }
+                             // selectedSetting={this.props.selectedSetting}
+                             getKeywords={this.props.keywordsActions.getKeywords}
+                            //  handleSelectedSetting={this.props.handleSelectedSetting}
+                            //  handleSelectedNotification={this.props.filterActions.handleSelectedNotification}
+                        
+                            
+                            //  toogleReResignStaffModal={this.toogleReResignStaffModal}
+                         
+                            save={this.save}
+                            edit={this.edit}
+                            
+                            />
+                       
+
                         </TabPane>
                    
                     </TabContent>
@@ -327,6 +407,7 @@ function mapStateToProps(state) {
     notification: state.notification.notification,
     selectedNotification: state.notification.notification.selectedNotification,
          selectedApplyOpen:state.setting.setting.selectedApplyOpen,
+      keywords: state.setting.keywords.keywords,
        //  selectedYear:state.report.report.selectedYear,
          //create:state.report.report.create
     }
@@ -336,6 +417,7 @@ function mapDispatchToProps(dispatch) {
     return {
         //positionInfoActions: bindActionCreators(positionInfoActions, dispatch),
         settingActions: bindActionCreators(settingActions, dispatch),
+        keywordsActions: bindActionCreators(keywordsActions, dispatch),
        notificationActions: bindActionCreators(notificationActions, dispatch),
         filterActions: bindActionCreators(filterActions, dispatch)
     }

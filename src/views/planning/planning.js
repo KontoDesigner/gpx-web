@@ -808,6 +808,10 @@ debugger;
                 toogleMarkPositionDeclineModal={
                   this.toogleMarkPositionDeclineModal
                 }
+
+                toogleRemovePositionModal={
+                  this.toogleRemovePositionModal
+                }
                 toogleMarkPositionActingModal={
                   this.toogleMarkPositionActingModal
                 }

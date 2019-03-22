@@ -3,15 +3,15 @@ import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import { Row, Col, Card, CardHeader, CardBody, CardFooter, Button } from 'reactstrap'
 import { LinkContainer } from 'react-router-bootstrap'
-import * as notificationEditActions from '../../../actions/notificationEdit/notificationEditActions'
-import NotificationInfo from './notificationInfo'
+import * as keywordsEditActions from '../../../actions/keywordsEdit/keywordsEditActions'
+import KeywordsInfo from './keywordsInfo'
 
 //import Buttons from '../buttons';
 import $ from 'jquery'
 import { toastr } from 'react-redux-toastr'
 import RestClient from '../../../infrastructure/restClient'
 
-class NotificationEdit extends Component {   //Notification smart component
+class KeywordsEdit extends Component {   //Notification smart component
 
     constructor(props) {
         super()
@@ -142,9 +142,9 @@ class NotificationEdit extends Component {   //Notification smart component
                         <Col>
                            
                                
-                                    <NotificationInfo 
+                                    <KeywordsInfo 
                                         languages={this.state.languages}
-                                        notification={this.props.notification}
+                                        keywords={this.props.keywords}
                                         handleInputField={this.handleInputField}
                                         //handleChange={this.handleChange}
                                         //handleUnsavedEdit={this.handleUnsavedEdit}
@@ -167,7 +167,7 @@ function mapStateToProps(state) {
     
     return {
 
-       notification: state.notificationEdit.notification 
+       keywords: state.keywordsEdit.keywords 
         // notification: state.planningEdit.planningInfo.position,
     }
 }
@@ -175,10 +175,10 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
     return {
         //positionInfoActions: bindActionCreators(positionInfoActions, dispatch),
-        notificationEditActions: bindActionCreators(notificationEditActions, dispatch)
+        keywordsEditActions: bindActionCreators(keywordsEditActions, dispatch)
     }
 }
 export default connect(
     mapStateToProps,
     mapDispatchToProps
-)(NotificationEdit )
+)(KeywordsEdit )

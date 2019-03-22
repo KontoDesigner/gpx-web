@@ -32,7 +32,11 @@ class Notification extends Component {   // This is the Notification view smart 
                 <div className="form-row">
            {<Filter getData={this.props.getNotification} />  }
 
-            { <Action selected={this.props.selectedNotification} /> }
+            { 
+            <Action 
+            selected={this.props.selectedNotification} 
+            /> 
+        }
           </div>
                 {this.props.notification.length > 0 && (
                     <CardBody style={style} className="card-body-table">
@@ -42,7 +46,10 @@ class Notification extends Component {   // This is the Notification view smart 
                             handleSelectedNotification={this.props.handleSelectedNotification}
                              selectedNotification={this.props.selectedNotification}
                            edit={this.props.edit}
-                           
+                          
+                           modal={this.props.reResignStaffModal}
+                           toogleReResignStaffModal={this.props.toogleReResignStaffModal}
+                           templateName={this.props.templateName}
                            selectedSetting={this.props.selectedSetting}
                            handleSelectedSetting={this.props.handleSelectedSetting}
                             maxTableHeight={maxTableHeight}

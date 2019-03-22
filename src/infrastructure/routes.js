@@ -9,6 +9,7 @@ import NotFound from '../views/notFound/notFound';
 import StaffEdit from '../views/staffEdit/staffEdit';
 import PlanningEdit from '../views/planningEdit/planningEdit';
 import NotificationEdit from '../views/settings/notification/notificationEdit';
+import KeywordsEdit from '../views/settings/keywords/keywordsEdit';
 import NewNotification from '../views/settings/notification/notificationEdit';
 import Positions from '../views/new/positions';
 const Routes = () => (
@@ -23,8 +24,7 @@ const Routes = () => (
             <Route path="/reports" component={Reports} />
             <Route path="/settings" component={Settings} />
             <Route exact path="/notification/:templatename" render={(props) => <NotificationEdit {...props} ignoreThis={true} />} />
-             {/* <Route path="/new" component={Positions} />  */}
-             {/* <Route path="/imports" component={Imports} />   */}
+            <Route exact path="/keywords/:keywordname" render={(props) => <KeywordsEdit {...props} ignoreThis={true} />} />
             <Route component={NotFound} />
         </Switch>
     </div>

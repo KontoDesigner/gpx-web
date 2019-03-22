@@ -21,6 +21,7 @@ const Tabs = props => {
                          
 
                         </ListGroupItem> 
+                    
                         <ListGroupItem
                             className={classnames({ active: props.activeTab === 'notification' })}
                             onClick={() => {
@@ -30,16 +31,17 @@ const Tabs = props => {
                             }}>
                           Notifications
                         </ListGroupItem>
-                        {/* <ListGroupItem
-                            className={classnames({ active: props.activeTab === 'profiling' })}
+                        <ListGroupItem
+                            className={classnames({ active: props.activeTab === 'keywords' })}
                             onClick={() => {
-                               
-                                props.toggle('profiling', props.getNotification, props.handleNotification)
-                             
+                      
+                                props.toggle('keywords', props.getKeywords, props.handleKeywords)
+                                
                             }}>
-                         Profilings
-                        </ListGroupItem> */}
-                        
+                            Keywords
+                         
+
+                        </ListGroupItem>
                     </ListGroup>
                 </CardBody>
             </Card>

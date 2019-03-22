@@ -4,17 +4,17 @@ import Table from '../../../components/table.js'
 const columns = [
    
 
-    { label: 'Subject', dataKey: 'subject' },
-    { label: 'Mail Text', dataKey: 'content' },
-    { label: 'Template Name', dataKey: 'templateName' },
-    { label: 'Description', dataKey: 'description' }
+    { label: 'Type', dataKey: 'keywordName' },
+    { label: 'Values', dataKey: 'keywordValues' },
+    { label: 'Comment', dataKey: 'keywordComment' },
+    { label: 'DateModified', dataKey: 'dateModified' }
  //   { label: 'Template Type', dataKey: 'templateType' },
 
   
     //{ label: 'Id', dataKey: 'staffID' }
 ]
 
-const TemplateTable = props => {
+const KeywordsTable = props => {
     function onContextMenuClick(e, data) {
         props.toogleReResignStaffModal(data.templateName) 
     }
@@ -35,15 +35,16 @@ const TemplateTable = props => {
                 </MenuItem> */}
             </ContextMenu> }
             <Table
-                list={props.notification}
+           
+                list={props.keywords}
                 contextMenuId={contextMenuId}
                 columns={columns}
                 checkbox={true}
-                identifier={'templateName'}
-                edit={props.edit}
-                status={props.status }
-               updateSelectedState={props.handleSelectedNotification} 
-                selected={props.selectedNotification}
+                identifier={'keywordName'}
+                 edit={props.edit} 
+                 status={props.status }
+            //    updateSelectedState={props.handleSelectedNotification} 
+            //     selected={props.selectedNotification}
                 //selected={props.selectedSetting}
                 maxTableHeight={props.maxTableHeight}
             />
@@ -51,4 +52,4 @@ const TemplateTable = props => {
     )
 }
 
-export default TemplateTable
+export default KeywordsTable

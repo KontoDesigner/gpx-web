@@ -10,8 +10,9 @@ import notification from './notification/notificationRootReducer'
 import planning from './planning/planningRootReducer'
 import planningEdit from './planningEdit/planningEditRootReducer'
 import notificationEdit from './notificationEdit/notificationEditReducer'
-import report from './report/reportRootReducer'
+import report from './report/reportRootReducer' 
 import user from './userReducer'
+
 
 export default combineReducers({
     ajaxCallsInProgress,
@@ -24,6 +25,7 @@ export default combineReducers({
     planningEdit,
     setting,
     notification,
+
     notificationEdit,
     report,
     user

@@ -1,6 +1,37 @@
 import { ActionTypes as types } from '../../constants/setting/settingConstants'
-import { beginAjaxCall, ajaxCallError } from '../ajaxStatusActions'
+
+
+import { beginAjaxCall, ajaxCallError, endAjaxCall } from '../ajaxStatusActions'
 import RestClient from '../../infrastructure/restClient'
+import { toastr } from 'react-redux-toastr'
+
+
+export function removeTemplate(model) {
+    return async function(dispatch) {
+        dispatch(beginAjaxCall())
+
+        try {
+            debugger;
+           // const res = await RestClient.Post(`staff/removestaff/${model.StaffID}`)
+            const res= await RestClient.Post('mail/removetemplate', model.TemplateName)
+            //const res = await RestClient.Post('abscense/abscenseuser', model)
+      
+            dispatch(endAjaxCall())
+
+            if (res) {
+                toastr.success('Success', `Selected template was Removed`)
+            } else {
+                toastr.error('Error', `Selected template was not Removed: ${res ? res.message : 'Error'}`)
+            }
+        } catch (error) {
+            dispatch(ajaxCallError(error))
+
+            throw error
+        }
+    } 
+}
+
+
 
 export function handleSettingField(field, val) {
     return {
@@ -78,7 +109,6 @@ export function handleSetting(setting) {
   }
 
 
-
 export function getSettingSuccess(setting) {
     return {
         type: types.GET_SETTING_SUCCESS,
@@ -93,7 +123,9 @@ export function getSetting() {
         try {
            
             const setting = await RestClient.Get(`setting/setting`)
-debugger;
+
+
+        
             dispatch(getSettingSuccess(setting))
         } catch (error) {
             dispatch(ajaxCallError(error))
