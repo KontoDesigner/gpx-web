@@ -1,8 +1,8 @@
 import { ActionTypes as types } from '../../constants/setting/keywordsEditConstants';
 
-var defaultState = {
-    keywords: null,
-    
+var defaultState =  {
+    keywords: {},
+    selectedKeyType: ["All Types"]
      
      
 }
@@ -10,6 +10,18 @@ var defaultState = {
 export default function keywordsInfoReducer(state = defaultState, action) {
 
     switch (action.type) {
+
+
+        case (types.HANDLE_KEYVALUE_FIELD):
+        return {
+            ...state, 
+            keywords: {
+                ...state.keywords,
+                [action.data.field]: action.data.val 
+            },
+        }
+  
+    
         
         case (types.HANDLE_INPUT_FIELD):
  

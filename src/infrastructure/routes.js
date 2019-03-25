@@ -11,6 +11,7 @@ import PlanningEdit from '../views/planningEdit/planningEdit';
 import NotificationEdit from '../views/settings/notification/notificationEdit';
 import KeywordsEdit from '../views/settings/keywords/keywordsEdit';
 import NewNotification from '../views/settings/notification/notificationEdit';
+import NewKeyword from '../views/settings/keywords/keywordsEdit';
 import Positions from '../views/new/positions';
 const Routes = () => (
     <div className="container"> 
@@ -21,6 +22,7 @@ const Routes = () => (
             <Route exact path="/planning" component={Planning} />
             <Route exact path="/planning/:mplid" render={(props) => <PlanningEdit {...props} ignoreThis={true} />} />
             <Route exact path="/newNotification" render={(props) => <NewNotification {...props} ignoreThis={true} />} />
+            <Route exact path="/newKeyword" render={(props) => <NewKeyword {...props} ignoreThis={true} />} />
             <Route path="/reports" component={Reports} />
             <Route path="/settings" component={Settings} />
             <Route exact path="/notification/:templatename" render={(props) => <NotificationEdit {...props} ignoreThis={true} />} />

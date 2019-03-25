@@ -45,15 +45,15 @@ class Keywords extends Component {   // This is the Keywords view smart componen
                         <KeywordsTable 
                              index={this.props.index}
                              keywords={this.props.keywords}
-                        //     handleSelectedNotification={this.props.handleSelectedNotification}
-                        //      selectedNotification={this.props.selectedNotification}
-                            edit={this.props.edit}
-                          
+                         handleSelectedKeywords={this.props.handleSelectedKeywords}
+                        selectedKeywords={this.props.selectedKeywords}
+                            edit2={this.props.edit2}
+                           
                         //    modal={this.props.reResignStaffModal}
                         //    toogleReResignStaffModal={this.props.toogleReResignStaffModal}
                         //    templateName={this.props.templateName}
-                        //    selectedSetting={this.props.selectedSetting}
-                        //    handleSelectedSetting={this.props.handleSelectedSetting}
+                          selectedSetting={this.props.selectedSetting}
+                           handleSelectedSetting={this.props.handleSelectedSetting}
                             maxTableHeight={maxTableHeight}
                         />
                     </CardBody>

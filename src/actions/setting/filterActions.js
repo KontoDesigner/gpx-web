@@ -8,7 +8,13 @@ export function handleText(text) {
   }
 }
 
-
+export function handleSelectedKeywords(selectedKeywords) {
+  
+  return {
+    type: types.HANDLE_SELECTEDKEYWORDS,
+    data: { selectedKeywords: selectedKeywords }
+  }
+}
 
 export function handleSelectedNotification(selectedNotification) {
   

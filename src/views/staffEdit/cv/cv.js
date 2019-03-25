@@ -147,6 +147,7 @@ class Cv extends Component {
     }
 
     handleStaffMultiSelect = (field, val) => {
+        debugger;
         if (val) {
             let vals = val.map(function(m) {
                 return m.id

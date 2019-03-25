@@ -2,7 +2,14 @@ import { ActionTypes as types } from '../../constants/setting/keywordsEditConsta
 import { beginAjaxCall, ajaxCallError, endAjaxCall } from '../ajaxStatusActions'
 import RestClient from '../../infrastructure/restClient'
 
- 
+export function handleKeyValueField(field, val) {
+    debugger;
+    return {
+         
+        type: types.HANDLE_KEYVALUE_FIELD,
+        data: { field: field, val: val }
+    }
+}
   
 export function handleInputField(field, val) {
 
@@ -10,7 +17,7 @@ export function handleInputField(field, val) {
         type: types.HANDLE_INPUT_FIELD, 
         data: { field: field, val: val }
     }
-}
+} 
 
 export function handleFilterFromSuccess(from) {
     return {
@@ -38,6 +45,16 @@ export function getKeywordName(keywordname) {
           //  const staff = await RestClient.Get(`staff/${staffId}`)
      
             const keywords = await RestClient.Get(`setting/${keywordname}`)
+            
+            if (keywords) {
+                 keywords.keywordValues = keywords.keywordValues  ?  keywords.keywordValues.split(',') : []
+           
+             }
+                
+          debugger;
+
+
+
             dispatch(endAjaxCall())
            
            

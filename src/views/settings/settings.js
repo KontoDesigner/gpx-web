@@ -62,7 +62,7 @@ class Settings extends Component {
          
             ],
          
-           
+         
             
             unsavedEdit: false,
             setting: null
@@ -167,6 +167,14 @@ edit = (e, notification) => {
 }
 
 
+edit2 = (e, keywords) => {
+    debugger;
+    if (!$(e.target).is(":checkbox")) {
+        const win = window.open(`/keywords/${keywords.keywordName}`, '_this');
+
+        win.focus();
+    }
+}
 
 save = async(model) => {
   // this.props.settingActions.save()
@@ -280,16 +288,17 @@ handleCurSeasonOld = event => {
 
 //toogle logic  this is also sent to underlying component Tabs  below  , Tabs is imported above
     toggle = (tab, getData, resetData) => {
-
+        debugger;
         if (this.state.activeTab !== tab) {
             //Reset current tab state
-            this.state.resetData([])
-
+            debugger;
+           this.state.resetData([])
+            debugger;
             //Reset filter
            // this.props.filterActions.handleFilter()
             //Get tab data
             getData()
-            debugger;
+       
 
             this.setState({
                 activeTab: tab,
@@ -299,8 +308,8 @@ handleCurSeasonOld = event => {
     }
 
     render() {
-
         
+        debugger;
         return (
             <Row>
           
@@ -360,7 +369,7 @@ handleCurSeasonOld = event => {
                             
                               notification={this.props.notification }
                               selectedSetting={this.props.selectedSetting}
-                             getNotification={this.props.notificationActions.getNotification}
+                           //  getNotification={this.props.notificationActions.getNotification}
                              handleSelectedSetting={this.props.handleSelectedSetting}
                              handleSelectedNotification={this.props.filterActions.handleSelectedNotification}
                         
@@ -376,16 +385,16 @@ handleCurSeasonOld = event => {
                             <Keywords
                             
                               keywords={this.props.keywords }
-                             // selectedSetting={this.props.selectedSetting}
-                             getKeywords={this.props.keywordsActions.getKeywords}
-                            //  handleSelectedSetting={this.props.handleSelectedSetting}
-                            //  handleSelectedNotification={this.props.filterActions.handleSelectedNotification}
+                              selectedSetting={this.props.selectedSetting}
+                             //getKeywords={this.props.keywordsActions.getKeywords}
+                             handleSelectedSetting={this.props.handleSelectedSetting}
+                             handleSelectedKeywords={this.props.filterActions.handleSelectedKeywords}
                         
                             
                             //  toogleReResignStaffModal={this.toogleReResignStaffModal}
                          
-                            save={this.save}
-                            edit={this.edit}
+                   
+                            edit2={this.edit2}
                             
                             />
                        
@@ -406,6 +415,7 @@ function mapStateToProps(state) {
         setting: state.setting.setting.setting,
     notification: state.notification.notification,
     selectedNotification: state.notification.notification.selectedNotification,
+    selectedKeywords: state.setting.keywords.keywords.selectedKeywords,
          selectedApplyOpen:state.setting.setting.selectedApplyOpen,
       keywords: state.setting.keywords.keywords,
        //  selectedYear:state.report.report.selectedYear,

@@ -12,7 +12,11 @@ const Action = (props) => {
                 
                 <DropdownMenu>
                 <DropdownItem title="dsds" onClick={() => window.open('newNotification','_blank')}>
-                Create New Notification Template  </DropdownItem>                </DropdownMenu>
+                Create New Notification Template  </DropdownItem>     
+
+                 <DropdownItem title="dsds" onClick={() => window.open('newKeyword','_blank')}>
+                Create New Keyword </DropdownItem>            
+                 </DropdownMenu>
             </UncontrolledDropdown>
         </Col>
     );

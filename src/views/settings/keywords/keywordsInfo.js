@@ -3,15 +3,18 @@ import { Card, CardBody, CardHeader, Col, Button } from 'reactstrap'
 import { Row, Form, FormGroup, Label, Input } from 'reactstrap'
 import TextInput from '../../../components/textInput'
 import Select from 'react-select'
-const KeywordsEdit = props => {
+import CreatableSelect from 'react-select/lib/Creatable';
+const KeywordsInfo = props => {
+
   let model = {
+  
     // to the database
-    TemplateType: props.notification.templateType,
-    TemplateName: props.notification.templateName,
-    Language: props.notification.language,
-    Subject: props.notification.subject,
-    Content: props.notification.content,
-    Description: props.notification.description
+   id: props.keywords.id,
+  KeywordName: props.selectedKeyName ? props.selectedKeyName:null,
+   //  KeywordValues: props.keywords.keywordValues,
+     KeywordValues: props.value ? props.value : null,
+     KeywordComment: props.keywords.keywordComment,
+     
   }
 
   return (
@@ -24,21 +27,54 @@ const KeywordsEdit = props => {
         <div className="form-row">
 
           <Col sm="12" md="6" lg="6" xl="4" className="form-group">
-            <TextInput
-              name="keywordname"
-              label="Type"
-              value={props.keywords.keywordName}
-              onChange={props.handleInputField}
-            />
+          <label htmlFor="keywordName">Types</label>
+          <Select
+         
+                         id="keywordName"
+                         valueKey="name"
+                          labelKey="id"
+                          className="form-control"
+                         
+                          options={props.keywordTypes}
+                           onChange={props.actionChange}
+                           value={props.selectedKeyName}
+                          
+                          placeholder="Select"
+                          className="form-group form-group-select"
+                        />
+                          <b className="card-text text-danger">{props.validKeywordName}</b>
           </Col>
           <Col sm="12" md="6" lg="6" xl="4" className="form-group">
 
-                 <TextInput
+
+          <label htmlFor="keywordValues">Types</label>
+          <Select.Creatable
+                          
+                         id="keywordValues"
+                         valueKey="name"
+                          labelKey="id"
+                          className="form-control"
+                         
+                        // options={props.keywordTypes}
+                         onChange={props.handleChange}
+                      //     onChange={v => {
+                      //      props.handleKeyValuesMultiSelect('keywordValues', v)
+                      //  }}
+                           //value={props.value}
+
+         
+                        value={props.value === '' ? null : props.value}
+                           multi={true}
+                          placeholder="Select"
+                          className="form-group form-group-select"
+                        />
+                 {/* <TextInput
               name="keywordValues"
-              label="Type"
+              label="Value"
               value={props.keywords.keywordValues}
               onChange={props.handleInputField}
-            />
+            /> */}
+            <b className="card-text text-danger">{props.validKeywordValues}</b>
           {/* <label htmlFor="keywordValues">Values</label>
 
 <Select
@@ -60,8 +96,8 @@ const KeywordsEdit = props => {
               required
               type="textarea"
               //maxLength="1000"
-              name="content"
-              id="content"
+              name="keywordComment"
+              id="keywordComment"
               rows={16}
               value={props.keywords.keywordComment}
             
@@ -104,4 +140,4 @@ const KeywordsEdit = props => {
   )
 }
 
-export default KeywordsEdit
+export default KeywordsInfo

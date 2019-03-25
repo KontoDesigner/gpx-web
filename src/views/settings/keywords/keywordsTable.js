@@ -19,7 +19,7 @@ const KeywordsTable = props => {
         props.toogleReResignStaffModal(data.templateName) 
     }
 
-    const contextMenuId = props.index + '-notificationContextMenu'
+    const contextMenuId = props.index + '-keywordsContextMenu'
 
     return (
         <div> 
@@ -41,10 +41,10 @@ const KeywordsTable = props => {
                 columns={columns}
                 checkbox={true}
                 identifier={'keywordName'}
-                 edit={props.edit} 
+                 edit={props.edit2} 
                  status={props.status }
-            //    updateSelectedState={props.handleSelectedNotification} 
-            //     selected={props.selectedNotification}
+               updateSelectedState={props.handleSelectedKeywords} 
+             selected={props.selectedKeywords}
                 //selected={props.selectedSetting}
                 maxTableHeight={props.maxTableHeight}
             />

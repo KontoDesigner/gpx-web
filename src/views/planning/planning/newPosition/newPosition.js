@@ -421,7 +421,9 @@ handleDestinationSelect = (val) => {
           ,{destination: 'Non Spain Destination TBC August'},{destination: 'Non Spain Destination TBC September'},{destination: 'Non Spain Destination TBC October'},{destination: 'Spain Destination TBC Full Season'}
           ,{destination: 'Spain Destination TBC May '},{destination: 'Spain Destination TBC June'},
           ,{destination: 'Spain Destination TBC July'},{destination: 'Spain Destination TBC August'},{destination: 'Spain Destination TBC September'},{destination: 'Spain Destination TBC October'}],...this.props.position]}
-        // options={this.props.position}
+       
+       
+          // options={this.props.position}
           onChange = { this.handleDestinationSelect }
          value={this.props.selectedDestination}
          placeholder="Select Destination"

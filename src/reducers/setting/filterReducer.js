@@ -4,11 +4,17 @@ var defaultState = {
   text: '',
   sourceMarket: null,
   selectedJobFamily: null,
-  selectedNotification: []
+  selectedNotification: [],
+  selectedKeywords: []
 }
 
 export default function filterReducer(state = defaultState, action) {
   switch (action.type) {
+    case types.HANDLE_SELECTEDKEYWORDS:
+    return {
+      ...state,
+      selectedStaff: action.data.selectedKeywords
+    }
     case types.HANDLE_SELECTEDNOTIFICATION:
       return {
         ...state,

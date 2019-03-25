@@ -38,7 +38,7 @@ class Filter extends Component {
     return ([
   
       <Col key={1} sm="12" md="4" lg="3" xl="3" className="form-group">
-        <TextInput name="text" label="Free Text" placeholder="e.g. TemplateName" value={this.props.filter.text} onChange={this.updateTextState} />
+        <TextInput name="text" label="Free Text" placeholder="e.g. TemplateName, KeywordName" value={this.props.filter.text} onChange={this.updateTextState} />
       </Col>
     ]
     )

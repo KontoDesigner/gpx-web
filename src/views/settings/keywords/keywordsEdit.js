@@ -14,88 +14,218 @@ import RestClient from '../../../infrastructure/restClient'
 class KeywordsEdit extends Component {   //Notification smart component
 
     constructor(props) {
-        super()
+        super(props)
 
         const {
             match: { params }
         } = props
-        const templatename = params.templatename 
-       
-        
+
+         const keywordname = {id:params.keywordname,name:params.keywordname}
+         //const keywordvalues = props.keywordsEdit.keywordValues? props.keywordsEdit.keywordValues:null
 
         this.state = {
             languages:"English",
-            templatename: templatename,
+            keywordname: keywordname.name,
+            validKeywordName:'',
+            validKeywordValues:'',
+            value:'',
+       
            // mplID: mplID,
-            notification: null,
+            keywords: null,
+            selectedKeyName: keywordname.name,
+            keywordTypes: [
+                {
+                    id: 'ManagerReasons',
+                    name: 'ManagerReasons'
+                },
+
+                {
+                    id: 'SenderEmail',
+                    name: 'SenderEmail'
+                },
+
+                {
+                    id: 'PositionTypes',
+                    name: 'PositionTypes'
+                },
          
+            ]
+
        
         }
 
-       // this.handleChange = this.handleChange.bind(this);
+       //this.handleChange = this.handleChange.bind(this);
     }
 
+    handleChange = (value) => {
+        debugger;
+        if (value) {
+            let vals = value.map(function(m) {
+                return m.id
+            })
+            debugger;
+       // const keywordname = {id:params.keywordname,name:params.keywordname}
+        this.setState({value});
+      }}
 
+    handleKeyValuesMultiSelect = (field, val) => {
+        debugger;
+        if (val) {
+            let vals = val.map(function(m) {
+                return m.id
+            })
 
+            this.props.keywordsEditActions.handleKeyValueField(field, vals)
+        } else {
+            this.props.keywordsEditActions.handleKeyValueField(field, null)
+        }
+    }
 
+    actionChange = id => {
+        debugger;
 
-   componentWillMount=async()=>  {
-         const _this = this
+        this.setState({
+            validKeywordName: 'Please select a Keyword Type'
+      
+        })
 
-       
-        // this.props.employeeInfoActions.getAvailablePositions(this.props.currentSeason.name, this.props.nextSeason.name, this.props.followingSeason.name)
-        // this.props.employeeInfoActions.getPositionAssigns(this.state.staffId)
+        const selectedKeyName = id ? id.name:null
 
-         this.props.notificationEditActions.getNotification(this.state.templatename).then(function () {
-     
-            if (_this.props.notification != null) { 
-               
-                document.title = `${_this.props.notification.templateName}  `
-           }
-            else {
-                
-               document.title = 'Template not found - GPX'
-           }
-         })
+        this.setState({
+            selectedKeyName,
+            validKeywordName: '',
+            validKeywordValues: ''
+        })
+        debugger
     }
 
 
     save = async(model) => {
         // this.props.settingActions.save()
-      
-      
+        if (model.KeywordValues) {
+        var vals = model.KeywordValues.map(function(m) {
+            return m.id
+        })
+    } else {
+       var vals = null
+    }
+
+        debugger;
+
+    
       try {
-          const res =  await RestClient.Post('mail/updateTemplate', model)
+
+          debugger;
+            const modelclean = {
+                Id: model.id,
+                KeywordName: this.state.selectedKeyName,
+                KeywordValues: vals? vals.join():null,
+                KeywordComment: model.KeywordComment,
+       }
+       debugger;
+       var check=modelclean.KeywordName ? true : false
+       var check2=modelclean.KeywordValues? true : false
+
+       if (!check) {
+        //alert('Please select a Staff to assign');
+  
+        this.setState({
+            validKeywordName: 'Please select a Keyword Type'
       
-     
+        })
+  
+        return false
+      }
+      if (!check2) {
+        //alert('Please select a Staff to assign');
+  
+        this.setState({
+            validKeywordValues: 'Please select a Keyword Value'
+      
+        })
+  
+        return false
+      }
+debugger;
+          const res =  await RestClient.Post('setting/updateKeyword', modelclean)
+    
+       
+
+
       
           if (res) {
-              toastr.success('Success', `Notification Document is updated`)
+              toastr.success('Success', `Keyword Document is updated`)
           } else {
-              toastr.error('Error', `Could not update Notification document: ${res ? res.message : 'Error'}`)
+              toastr.error('Error', `Could not update Keyword document: ${res ? res.message : 'Error'}`)
           }
       } catch (error) {
-     
+         // dispatch(ajaxCallError(error))
       
           throw error
       }
       
-      }
+      }  
 
-    //   handleChange(event) {
 
-    //     this.setState({value: event.target.value});
-    //   }
+   componentWillMount=async()=>  {
+
+
+
+         const _this = this
+
+     
+        // this.props.employeeInfoActions.getAvailablePositions(this.props.currentSeason.name, this.props.nextSeason.name, this.props.followingSeason.name)
+        // this.props.employeeInfoActions.getPositionAssigns(this.state.staffId)
+        
+        try {
+
+        const keywords = await RestClient.Get(`setting/${this.state.keywordname}`)
+
+            
+             if (keywords) {
+                  keywords.keywordValues = keywords.keywordValues  ?  keywords.keywordValues.split(',') : []
+           
+              }
+
+             this.setState({
+                value: keywords.keywordValues.map(k => ({
+                    id: k,
+                    name: k
+                }))
+          
+            })
+
+        } catch (error) {
+         
+
+            throw error
+        }
+            // const keywordname 
+        //  this.props.keywordsEditActions.getKeywordName(this.state.keywordname).then(function () {
+     
+        //     if (_this.props.keywords != null) { 
+               
+        //         document.title = `${_this.props.keywords.keywordName}  `
+        //    }
+        //     else {
+                
+        //        document.title = 'Keyword not found - GPX'
+        //    }
+        //  })
+    }
+
+
+
 
 
 
     handleInputField = event => {
-
+debugger;
         const field = event.target.name
         const val = event.target.value
 
 
-        this.props.notificationEditActions.handleInputField(field, val)
+        this.props.keywordsEditActions.handleInputField(field, val)
  
 
              
@@ -104,19 +234,19 @@ class KeywordsEdit extends Component {   //Notification smart component
 
     render() {
      
-        if (this.props.notification === null) {
+        if (this.props.keywords === null) {
             //Loading
             return ''
-        } else if (this.props.notification === undefined) {
+        } else if (this.props.keywords === undefined) {
             //Not found
             return (
 
                 <Card>
-                    <CardHeader>Could not find notification {this.state.templatename}</CardHeader>
+                    <CardHeader>Could not find keyword {this.state.keywordname}</CardHeader>
 
                     <CardBody>
                         <p className="card-text">
-                           notification with id: <b>{this.state.templatename}</b> was  not found. 
+                           keyword with id: <b>{this.state.keywordname}</b> was  not found. 
                         </p>
                     </CardBody>
 
@@ -141,15 +271,25 @@ class KeywordsEdit extends Component {   //Notification smart component
                     <Row>
                         <Col>
                            
-                               
+         
                                     <KeywordsInfo 
                                         languages={this.state.languages}
                                         keywords={this.props.keywords}
                                         handleInputField={this.handleInputField}
+                                        handleKeyValuesMultiSelect ={this.handleKeyValuesMultiSelect}
                                         //handleChange={this.handleChange}
                                         //handleUnsavedEdit={this.handleUnsavedEdit}
                                         save={this.save}
-                                 
+                                        keywordTypes={this.state.keywordTypes}
+                                        selectedKeyType={this.props.selectedKeyType}
+                                        actionChange={this.actionChange}
+                                        handleChange={this.handleChange}
+                                        value={this.state.value}
+                                        selectedKeyName={this.state.selectedKeyName}
+                                       keywordName={this.state.keywordName}
+                                   
+                                       validKeywordValues={this.state.validKeywordValues}
+                                       validKeywordName={this.state.validKeywordName}
                                     />
                                 
 
@@ -164,10 +304,12 @@ class KeywordsEdit extends Component {   //Notification smart component
 }
 
 function mapStateToProps(state) {
+
+    
     
     return {
 
-       keywords: state.keywordsEdit.keywords 
+       keywords: state.setting.keywordsEdit.keywords 
         // notification: state.planningEdit.planningInfo.position,
     }
 }

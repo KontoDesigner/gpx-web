@@ -124,7 +124,7 @@ export function getSetting() {
            
             const setting = await RestClient.Get(`setting/setting`)
 
-
+            debugger;
         
             dispatch(getSettingSuccess(setting))
         } catch (error) {

@@ -49,6 +49,7 @@ class Table extends Component {
                         {columns}
                     </div>
                 </ContextMenuTrigger>
+               
             </div>
         )
     }

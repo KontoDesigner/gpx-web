@@ -2,7 +2,7 @@ import { ActionTypes as types } from '../../constants/setting/keywordsConstants'
 
 var defaultState = {
   
-    keywords:{},
+    keywords:[]
  
     
 }
@@ -15,7 +15,14 @@ export default function keywordsReducer(state = defaultState, action) {
         return action.data.keywords;
 
 
-          
+        case (types.HANDLE_KEYWORDS_FIELD):
+        return {
+            ...state,
+            keywords: {
+                ...state.setting,
+                [action.data.field]: action.data.val 
+            },
+        }
 
             case types.GET_KEYWORDS_SUCCESS:
             return {

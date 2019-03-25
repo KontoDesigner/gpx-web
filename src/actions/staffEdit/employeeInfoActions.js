@@ -361,6 +361,7 @@ export function getStaff(staffId) {
                 staff.suitable = staff.suitable && staff.suitable !== '' ? staff.suitable.split(',') : []
                 staff.international = staff.international && staff.international !== '' ? staff.international.split(',') : []
                 staff.nationalConcept = staff.nationalConcept && staff.nationalConcept !== '' ? staff.nationalConcept.split(',') : []
+           
             }
 
             dispatch(getStaffSuccess(staff))
