@@ -47,7 +47,7 @@ const KeywordsInfo = props => {
           <Col sm="12" md="6" lg="6" xl="4" className="form-group">
 
 
-          <label htmlFor="keywordValues">Types</label>
+          <label htmlFor="keywordValues">Values</label>
           <Select.Creatable
                           
                          id="keywordValues"

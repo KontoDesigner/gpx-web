@@ -292,7 +292,7 @@ handleCurSeasonOld = event => {
         if (this.state.activeTab !== tab) {
             //Reset current tab state
             debugger;
-           this.state.resetData([])
+          // this.state.resetData([])
             debugger;
             //Reset filter
            // this.props.filterActions.handleFilter()

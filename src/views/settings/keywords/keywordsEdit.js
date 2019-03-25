@@ -48,6 +48,42 @@ class KeywordsEdit extends Component {   //Notification smart component
                     id: 'PositionTypes',
                     name: 'PositionTypes'
                 },
+
+                {
+                    id: 'ReasonForResignment',
+                    name: 'ReasonForResignment'
+                },
+
+                {
+                    id: 'Seasons',
+                    name: 'Seasons'
+                },
+                {
+                    id: 'SuitableToWork',
+                    name: 'SuitableToWork'
+                },
+                {
+                    id: 'InternationConcepts',
+                    name: 'InternationConcepts'
+                },
+                {
+                    id: 'NationalConcepts',
+                    name: 'NationalConcepts'
+                },
+                {
+                    id: 'ChildCareLevels',
+                    name: 'ChildCareLevels'
+                },
+
+                {
+                    id: 'LanguageSkills',
+                    name: 'LanguageSkills'
+                },
+
+                {
+                    id: 'Destinations',
+                    name: 'Destinations'
+                },
          
             ]
 
@@ -186,12 +222,12 @@ debugger;
                   keywords.keywordValues = keywords.keywordValues  ?  keywords.keywordValues.split(',') : []
            
               }
-
+debugger;
              this.setState({
-                value: keywords.keywordValues.map(k => ({
+                value: keywords.keywordValues ? keywords.keywordValues.map(k => ({
                     id: k,
                     name: k
-                }))
+                })):[]
           
             })
 
