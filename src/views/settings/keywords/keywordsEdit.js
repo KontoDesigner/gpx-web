@@ -185,7 +185,7 @@ class KeywordsEdit extends Component {   //Notification smart component
 debugger;
           const res =  await RestClient.Post('setting/updateKeyword', modelclean)
     
-       
+          window.close()
 
 
       
