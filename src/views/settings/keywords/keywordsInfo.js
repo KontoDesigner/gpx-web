@@ -131,7 +131,7 @@ const KeywordsInfo = props => {
               props.save(model)
             }}
           >
-            Save
+            Save & Close
           </Button>
         </div>
         <p />

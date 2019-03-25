@@ -112,7 +112,7 @@ const NotificationEdit = props => {
               props.save(model)
             }}
           >
-            Save
+            Save & Close
           </Button>
         </div>
         <p />

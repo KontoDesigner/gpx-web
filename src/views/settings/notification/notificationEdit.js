@@ -67,7 +67,7 @@ class NotificationEdit extends Component {   //Notification smart component
       try {
           const res =  await RestClient.Post('mail/updateTemplate', model)
       
-     
+          window.close()
       
           if (res) {
               toastr.success('Success', `Notification Document is updated`)
