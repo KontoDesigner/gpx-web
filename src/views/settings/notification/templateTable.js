@@ -16,7 +16,7 @@ const columns = [
 
 const TemplateTable = props => {
     function onContextMenuClick(e, data) {
-        props.toogleReResignStaffModal(data.templateName) 
+        props.toogleRemoveStaffModal(data.templateName) 
     }
 
     const contextMenuId = props.index + '-notificationContextMenu'

@@ -47,8 +47,8 @@ class Notification extends Component {   // This is the Notification view smart 
                              selectedNotification={this.props.selectedNotification}
                            edit={this.props.edit}
                           
-                           modal={this.props.reResignStaffModal}
-                           toogleReResignStaffModal={this.props.toogleReResignStaffModal}
+                           modal={this.props.removeStaffModal}
+                           toogleRemoveStaffModal={this.props.toogleRemoveStaffModal}
                            templateName={this.props.templateName}
                            selectedSetting={this.props.selectedSetting}
                            handleSelectedSetting={this.props.handleSelectedSetting}

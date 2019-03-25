@@ -13,7 +13,7 @@ import Notification from  './notification/cfgNotification'
 import Keywords from './keywords/cfgKeywords'
 import Setting from './setting/cfgSetting'
 import $ from 'jquery' 
-import ReResignStaff from './notification/reResignStaff'
+import RemoveTemplate from './notification/removeTemplate'
 //import Buttons from './buttons'
 
 class Settings extends Component {
@@ -26,7 +26,7 @@ class Settings extends Component {
             templateName:null,
             activeTab: 'settings',
             resetData: this.props.settingActions.handleSetting,
-            reResignStaffModal: false,
+            removeStaffModal: false,
            
        
             sourceMarketId: '',
@@ -71,11 +71,11 @@ class Settings extends Component {
 
     }
 
-    toogleReResignStaffModal = (val) => {
-     
+    toogleRemoveStaffModal = (val) => {
+     debugger;
                 if(val) {
                     this.setState({
-                        reResignStaffModal: !this.state.reResignStaffModal,
+                        removeStaffModal: ! this.state.removeStaffModal,
                         templateName: val
                     })
               
@@ -83,7 +83,7 @@ class Settings extends Component {
                   {
               
                     this.setState({
-                        reResignStaffModal: !this.state.reResignStaffModal,
+                        removeStaffModal: ! this.state.removeStaffModal,
                       selectedStaffID: this.props.selectedStaff
                     }) 
                     
@@ -327,7 +327,19 @@ handleCurSeasonOld = event => {
                     keywords={this.props.keywords}
                 />
 
-                  
+                     <RemoveTemplate 
+       
+       
+       modal={this.state.removeStaffModal}
+          toggle={this.toogleRemoveStaffModal}
+          templateName={this.state.templateName}
+          
+          removeTemplate= {this.removeTemplate}
+
+        //   selectedTitle={this.props.selectedTitle}
+        //   candidate={this.props.candidate}
+        selectedStaffID={this.state.selectedStaffID}
+        />
              
                 <Col sm="12" md="9" lg="9" xl="10">
                     <TabContent activeTab={this.state.activeTab}>
@@ -374,7 +386,7 @@ handleCurSeasonOld = event => {
                              handleSelectedNotification={this.props.filterActions.handleSelectedNotification}
                         
                             
-                             toogleReResignStaffModal={this.toogleReResignStaffModal}
+                             toogleRemoveStaffModal={this.toogleRemoveStaffModal}
                          
                             save={this.save}
                             edit={this.edit}
@@ -391,7 +403,7 @@ handleCurSeasonOld = event => {
                              handleSelectedKeywords={this.props.filterActions.handleSelectedKeywords}
                         
                             
-                            //  toogleReResignStaffModal={this.toogleReResignStaffModal}
+                            // toogleReResignStaffModal={this.toogleReResignStaffModal}
                          
                    
                             edit2={this.edit2}
