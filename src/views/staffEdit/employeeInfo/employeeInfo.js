@@ -94,12 +94,14 @@ class EmployeeInfo extends Component {
     }
     createAcceptStaff = (positionAssign, action) => {
         const model = {
-            Id: this.props.staff.staffID,
-       
+            StaffID: this.props.staff.staffID,
+            MPLID: positionAssign.MPLID,
             Id: positionAssign.PositionAssignId,
+            StartDate:positionAssign.StaffStartDate,
+            EndDate:positionAssign.StaffEndDate,
             Accept:action
         }
-        debugger
+        debugger;
         const _this = this
 
         _this.props.employeeInfoActions.createAcceptStaff(model).then(function() 

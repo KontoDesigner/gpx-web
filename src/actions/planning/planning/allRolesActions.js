@@ -14,7 +14,7 @@ export function getAllRoles(sourcemarket = 'ALL', jobfamily='ALL', criteria = nu
     dispatch(beginAjaxCall())
 debugger;
     try {
-      
+      debugger;
      // const allRoles = await RestClient.Get(`positionassign/GetAllPositionsAssignData`)
       const allRoles = await RestClient.Get(`positionassign/GetAllPositionsAssignData/${sourcemarket}/${jobfamily}/${criteria !== null ? `${criteria}` : ''}`)
       

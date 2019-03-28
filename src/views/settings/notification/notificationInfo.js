@@ -87,9 +87,9 @@ const NotificationEdit = props => {
             />
           </Col>
         </div>
-
+       
         <div className="col-btn-menu">
-          {/* <Button
+          {/* <Buttoning
             onClick={() => {
               window.close()
             }}

@@ -580,7 +580,7 @@ debugger;
   componentDidMount() {
     
     this.props.filterActions.handleFilter() //when page loads
-
+debugger;
     this.props.allRolesActions.getAllRoles(this.props.filter.sourceMarket,this.props.filter.selectedJobFamily,this.props.filter.text)
     
     this.props.planningActions.getStaffCandidate()
