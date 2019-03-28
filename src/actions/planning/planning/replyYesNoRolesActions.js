@@ -7,7 +7,7 @@ export function getreplyYesNoRolesSuccess(replyYesNoRoles) {
         type: types.GET_REPLYYESNOROLES_SUCCESS,
         data: { replyYesNoRoles: replyYesNoRoles }
     }
-}
+} 
 
 export function getReplyYesNoRoles(sourcemarket = 'ALL', jobfamily='ALL', criteria = null) {
     return async function(dispatch) {
