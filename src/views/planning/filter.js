@@ -89,7 +89,7 @@ class Filter extends Component {
     }
 
     render() {
-        return [
+        return [ 
             <Col key={0} sm="12" md="4" lg="3" xl="3" className="form-group form-group-select">
                 <label htmlFor="sourceMarket">Source Market</label>
 

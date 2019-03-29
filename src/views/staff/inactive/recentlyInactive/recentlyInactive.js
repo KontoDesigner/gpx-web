@@ -12,7 +12,7 @@ class RecentlyInactive extends Component {
 
         <CardBody className="no-padding-bottom">
           <div className="form-row">
-            <Filter getData={this.props.getRecentlyInactive} />
+          <Filter getData={this.props.getRecentlyInactive} />
           
             <Action 
             selected={this.props.selectedStaff} 

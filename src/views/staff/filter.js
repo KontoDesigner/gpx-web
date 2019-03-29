@@ -16,6 +16,15 @@ class Filter extends Component {
         this.state = {
             text: this.props.filter.text
         }
+
+        this.state = {
+            sourceMarket: this.props.filter.sourceMarket
+        }
+
+        this.state = {
+            selectedJobFamily: this.props.filter.selectedJobFamily
+        }
+
     }
 
     componentWillReceiveProps(nextProps) {
@@ -39,19 +48,44 @@ class Filter extends Component {
     }
 
     updateSourceMarketState = sourceMarket => {
+        debugger;
         const sourceMarketId = sourceMarket != null ? sourceMarket.id : undefined
+      
+      
 
-        this.props.filterActions.handleSourceMarket(sourceMarketId)
+       const vals = sourceMarket.length !=0 ? sourceMarket.map(function(m) {
+        return m.id
+    }):undefined
 
-        this.props.getData(sourceMarketId, this.props.filter.selectedJobFamily, this.props.filter.text)
+    this.props.filterActions.handleSourceMarket(vals)
+
+    this.setState({
+        sourceMarket: vals
+    })
+    debugger;
+
+       // this.props.getData(sourceMarketId, this.props.filter.selectedJobFamily, this.props.filter.text)
+        this.props.getData(vals, this.props.filter.selectedJobFamily, this.props.filter.text)
     }
 
     updateJobFamilyState = jobFamily => {
+        debugger;
         const jobFamilyId = jobFamily != null ? jobFamily.id : undefined
 
-        this.props.filterActions.handleSelectedJobFamily(jobFamilyId)
+        
 
-        this.props.getData(this.props.filter.sourceMarket, jobFamilyId, this.props.filter.text)
+        let vals = jobFamily.length !=0 ? jobFamily.map(function(m) {
+            return m.id
+        }):undefined
+        this.props.filterActions.handleSelectedJobFamily(vals) 
+        debugger;
+ 
+        this.setState({
+            selectedJobFamily: vals
+        })
+
+        //this.props.getData(this.props.filter.sourceMarket, jobFamilyId, this.props.filter.text)
+        this.props.getData(this.props.filter.sourceMarket, vals, this.props.filter.text)
     }
 
     render() {
@@ -60,6 +94,7 @@ class Filter extends Component {
                 <label htmlFor="sourceMarket">Source Market</label>
 
                 <Select
+                   multi={true}
                     id="sourceMarket"
                     valueKey="id"
                     labelKey="name"
@@ -75,6 +110,7 @@ class Filter extends Component {
                 <label htmlFor="jobFamily">JobFamily</label>
 
                 <Select
+                   multi={true}
                     id="jobFamily"
                     valueKey="id"
                     labelKey="name"

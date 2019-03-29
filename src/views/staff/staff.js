@@ -282,6 +282,7 @@ class Staff extends Component {
        }
 
        getActTabAndRequest = async (actTab) => {
+           debugger;
  
         switch (actTab) {
             case "destination":
@@ -295,6 +296,12 @@ class Staff extends Component {
               case "jobTitle":
            await  this.props.jobTitleActions.getJobTitle(this.props.filter.sourceMarket,this.props.filter.selectedJobFamily,this.props.filter.text)
              this.props.filterActions.handleSelectedStaff([])
+            
+             case "recentlyInactive":
+             await  this.props.recentlyInactiveActions.getRecentlyInactive(this.props.filter.sourceMarket,this.props.filter.selectedJobFamily,this.props.filter.text)
+               this.props.filterActions.handleSelectedStaff([])
+              
+            
              break;
            
            
@@ -448,7 +455,7 @@ debugger;
     }
 
     toggle = (tab, getData, resetData) => {
-        
+        debugger;
         if (this.state.activeTab !== tab) {
             //Reset current tab state
             this.state.resetData([])
@@ -458,7 +465,8 @@ debugger;
 
             //Get tab data
            // getData()
-            getData(  getData(this.props.filter.sourceMarket,this.props.filter.selectedJobFamily,this.props.filter.text))
+           debugger;
+            getData(this.props.filter.sourceMarket,this.props.filter.selectedJobFamily,this.props.filter.text)
  
             this.setState({
                 activeTab: tab,

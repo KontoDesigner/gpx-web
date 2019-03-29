@@ -60,7 +60,10 @@ const Tabs = (props) => {
                         <ListGroupItem
                             className={classnames({ active: props.activeTab === 'recentlyInactive' })}
                             onClick={() => {
+                                debugger;
                                 props.toggle(
+
+                                    
                                     'recentlyInactive',
                                     props.getRecentlyInactive,
                                     props.handleRecentlyInactive
