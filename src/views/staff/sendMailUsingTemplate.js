@@ -23,7 +23,8 @@ class SendMailUsingTemplate extends Component {
         this.state = {
              dateModified: null,
              selectedNotification: null,
-             selectedContent: null
+             selectedContent: null,
+             localValue:null
           
         };
     }
@@ -39,12 +40,43 @@ class SendMailUsingTemplate extends Component {
     }
 
 
+    handleChange= (event) => {
+      debugger;
+
+      this.setState({localValue: event.target.value});
+    }
+
+
+    
+    getSelection=(val)=>{
+
+
+
+      var txtarea = document.getElementById("resignComm");
+  
+  
+       debugger;
+      var start = txtarea.selectionStart;
+  
+      var finish = txtarea.selectionEnd;
+  
+      var allText = txtarea.value;
+  
+      var sel = allText.substring(start, finish);
+  
+      var newText=allText.substring(0, start)+val+allText.substring(finish, allText.length);
+  
+  
+      txtarea.value=newText;
+
+      this.setState({localValue: newText});
+  }
 
 
     notificationChange = notification => {
         const selectedNotification = notification.templateName ;
-        const selectedContent= notification  != null ? notification.content.replace(/\r?\n/g, '<br />'): null
-
+        const selectedContent= notification  != null ? notification.content: null
+        //const selectedContent= notification  != null ? notification.content.replace(/\r?\n/g, '<br />'): null
 
      
         //   var currentdate = new Date(); 
@@ -72,14 +104,16 @@ class SendMailUsingTemplate extends Component {
        var newdatemodified  = currentdate.getFullYear() + "-"
      + (currentdate.getMonth()+1)  + "-" 
       + currentdate.getDate() ; 
-
+debugger;
         let model = {
+        
             // staffID: position.mplid,
             dateModified: newdatemodified ,
              selectedNotification: this.state.selectedNotification,
+             content: this.state.localValue ? this.state.localValue:this.state.selectedContent
            
         }
-
+        debugger;
        this.props.createMail(model);
     }
     
@@ -151,37 +185,37 @@ class SendMailUsingTemplate extends Component {
       </DropdownToggle>
       <DropdownMenu>
 
-      <DropdownItem title="firstName" onClick={() => {this.props.getSelection('<FIRSTNAME>')}}>
+      <DropdownItem title="firstName" onClick={() => {this.p.getSelection('<FIRSTNAME>')}}>
                FirstName  </DropdownItem>
        
-               <DropdownItem title="firstName" onClick={() => {this.props.getSelection('<LASTNAME>')}}>
+               <DropdownItem title="firstName" onClick={() => {this.getSelection('<LASTNAME>')}}>
                LastName  </DropdownItem>
        
-               <DropdownItem title="firstName" onClick={() => {this.props.getSelection('<FORMNAME>')}}>
+               <DropdownItem title="firstName" onClick={() => {this.getSelection('<FORMNAME>')}}>
                FormName  </DropdownItem>
 
-                  <DropdownItem title="firstName" onClick={() => {this.props.getSelection('<NEXTDESTINATION>')}}>
+                  <DropdownItem title="firstName" onClick={() => {this.getSelection('<NEXTDESTINATION>')}}>
                NextDestination  </DropdownItem>
 
-                  <DropdownItem title="firstName" onClick={() => {this.props.getSelection('<NEXTPOSITION>')}}>
+                  <DropdownItem title="firstName" onClick={() => {this.getSelection('<NEXTPOSITION>')}}>
                NextPosition </DropdownItem>
 
-                  <DropdownItem title="firstName" onClick={() => {this.props.getSelection('<PLACEMENTDATE>')}}>
+                  <DropdownItem title="firstName" onClick={() => {this.getSelection('<PLACEMENTDATE>')}}>
                Placement Date </DropdownItem>
 
-                  <DropdownItem title="firstName" onClick={() => {this.props.getSelection('<LASTWORKDATE>')}}>
+                  <DropdownItem title="firstName" onClick={() => {this.getSelection('<LASTWORKDATE>')}}>
                Last Work Date </DropdownItem>
 
-                 <DropdownItem title="firstName" onClick={() => {this.props.getSelection('<CENTRALID>')}}>
+                 <DropdownItem title="firstName" onClick={() => {this.getSelection('<CENTRALID>')}}>
                CentralID </DropdownItem>
 
-                 <DropdownItem title="firstName" onClick={() => {this.props.getSelection('<NATIONALITY>')}}>
+                 <DropdownItem title="firstName" onClick={() => {this.getSelection('<NATIONALITY>')}}>
                Nationality </DropdownItem>
 
-                <DropdownItem title="firstName" onClick={() => {this.props.getSelection('<CURRENTPOSITION>')}}>
+                <DropdownItem title="firstName" onClick={() => {this.getSelection('<CURRENTPOSITION>')}}>
                Current Position</DropdownItem>
 
-                 <DropdownItem title="firstName" onClick={() => {this.props.getSelection('<CURRENTDESTINATION>')}}>
+                 <DropdownItem title="firstName" onClick={() => {this.getSelection('<CURRENTDESTINATION>')}}>
                Current Destination</DropdownItem>
 
                {/* <DropdownItem title="undo" onClick={() => {this.props.undoSelection('<UNDO>')}}>
@@ -197,10 +231,11 @@ class SendMailUsingTemplate extends Component {
                         maxLength="1000"
                         name="resignComm"
                         id="resignComm"
-                        onChange={this.props.handleChange}
+                        onChange={this.handleChange}
                         rows={15}
                         aria-multiline="true"
-                        value={this.state.selectedContent}
+                        value={this.state.localValue}
+                        defaultValue ={this.state.selectedContent} 
                       />
                                
 </Col>

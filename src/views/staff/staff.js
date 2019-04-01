@@ -140,10 +140,10 @@ class Staff extends Component {
 
         };
      
-        this.handleChange = this.handleChange.bind(this);
+       // this.handleChange = this.handleChange.bind(this);
     }
 
-    handleChange(event) {
+    handleChange= (event) => {
         debugger;
 
         this.setState({value: event.target.value});
@@ -189,6 +189,8 @@ class Staff extends Component {
     
     
         txtarea.value=newText;
+
+        this.setState({localValue: newText});
     }
 
 
@@ -200,8 +202,8 @@ class Staff extends Component {
    
            TemplateName:model.selectedNotification,
            StaffID:this.state.selectedStaffID,
-             DateModified:model.dateModified
-      
+             DateModified:model.dateModified,
+             Content:model.content
              
          }
         
