@@ -169,6 +169,29 @@ class Staff extends Component {
         }
     }
 
+    getSelection=(val)=>{
+
+
+
+        var txtarea = document.getElementById("resignComm");
+    
+    
+         debugger;
+        var start = txtarea.selectionStart;
+    
+        var finish = txtarea.selectionEnd;
+    
+        var allText = txtarea.value;
+    
+        var sel = allText.substring(start, finish);
+    
+        var newText=allText.substring(0, start)+val+allText.substring(finish, allText.length);
+    
+    
+        txtarea.value=newText;
+    }
+
+
  
 
     createMail = model => {
@@ -588,6 +611,7 @@ debugger;
                 handleChange={this.handleChange}
                // handleSelect= {this.handleSelect}
                 createMail= {this.createMail}
+                getSelection={this.getSelection}
                 value={this.state.value}
                 notification={this.props.notification }
                 selectedStaffID={this.state.selectedStaffID}

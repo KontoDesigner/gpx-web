@@ -10,7 +10,8 @@ import {
   Col,
   Table,
   //Label,
-  Input
+  Input,ButtonDropdown, UncontrolledDropdown,DropdownToggle, DropdownMenu, DropdownItem 
+
 } from 'reactstrap'
 //import Datetime from 'react-datetime'
 import Select from 'react-select'
@@ -87,6 +88,8 @@ class SendMailUsingTemplate extends Component {
     render() {
   return (
     <div>
+
+      
       <Modal isOpen={this.props.modal} toggle={this.toggle}>
         <ModalHeader toggle={this.toggle}>
           Send Mail Using Template{' '}
@@ -141,7 +144,53 @@ class SendMailUsingTemplate extends Component {
           </Row>
   {this.state.selectedNotification !== null ?
                             <Row>
-                                <Col>
+                                <Col>  
+                                <UncontrolledDropdown>
+      <DropdownToggle caret>
+       Insert Auto-Word
+      </DropdownToggle>
+      <DropdownMenu>
+
+      <DropdownItem title="firstName" onClick={() => {this.props.getSelection('<FIRSTNAME>')}}>
+               FirstName  </DropdownItem>
+       
+               <DropdownItem title="firstName" onClick={() => {this.props.getSelection('<LASTNAME>')}}>
+               LastName  </DropdownItem>
+       
+               <DropdownItem title="firstName" onClick={() => {this.props.getSelection('<FORMNAME>')}}>
+               FormName  </DropdownItem>
+
+                  <DropdownItem title="firstName" onClick={() => {this.props.getSelection('<NEXTDESTINATION>')}}>
+               NextDestination  </DropdownItem>
+
+                  <DropdownItem title="firstName" onClick={() => {this.props.getSelection('<NEXTPOSITION>')}}>
+               NextPosition </DropdownItem>
+
+                  <DropdownItem title="firstName" onClick={() => {this.props.getSelection('<PLACEMENTDATE>')}}>
+               Placement Date </DropdownItem>
+
+                  <DropdownItem title="firstName" onClick={() => {this.props.getSelection('<LASTWORKDATE>')}}>
+               Last Work Date </DropdownItem>
+
+                 <DropdownItem title="firstName" onClick={() => {this.props.getSelection('<CENTRALID>')}}>
+               CentralID </DropdownItem>
+
+                 <DropdownItem title="firstName" onClick={() => {this.props.getSelection('<NATIONALITY>')}}>
+               Nationality </DropdownItem>
+
+                <DropdownItem title="firstName" onClick={() => {this.props.getSelection('<CURRENTPOSITION>')}}>
+               Current Position</DropdownItem>
+
+                 <DropdownItem title="firstName" onClick={() => {this.props.getSelection('<CURRENTDESTINATION>')}}>
+               Current Destination</DropdownItem>
+
+               {/* <DropdownItem title="undo" onClick={() => {this.props.undoSelection('<UNDO>')}}>
+               Undo Last Selection</DropdownItem> */}
+      
+      </DropdownMenu>
+
+    </UncontrolledDropdown>
+  
                                 <Input
                         required
                         type="textarea"
@@ -153,22 +202,13 @@ class SendMailUsingTemplate extends Component {
                         aria-multiline="true"
                         value={this.state.selectedContent}
                       />
-                                {/* {this.state.selectedContent} */}
-                                    {/* <Table striped bordered responsive>
-                                        <thead>
-                                            <tr>
-                                                <th>{this.state.selectedEndDate} </th>
-                                                <th></th>
-                                            </tr>
-                                            </thead>
-                                            <tbody>
-                                              </tbody>
-                                              </Table> */}
+                               
 </Col>
 </Row>
             : ''}
         </ModalBody>
         <ModalFooter>
+          
           <Button
             color="success"
             onClick={() => this.createMail()}

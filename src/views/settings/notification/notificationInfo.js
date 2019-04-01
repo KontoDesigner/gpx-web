@@ -2,8 +2,13 @@ import React from 'react'
 import { Card, CardBody, CardHeader, Col, Button } from 'reactstrap'
 import { Row, Form, FormGroup, Label, Input } from 'reactstrap'
 import TextInput from '../../../components/textInput'
+import Select from 'react-select'
+import { ButtonDropdown, UncontrolledDropdown,DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
 
-const NotificationEdit = props => {
+//import {Editor, EditorState} from 'draft-js';
+
+
+const NotificationInfo = props => {
   let model = {
     // to the database
     TemplateType: props.notification.templateType,
@@ -13,6 +18,8 @@ const NotificationEdit = props => {
     Content: props.notification.content,
     Description: props.notification.description
   }
+
+
 
   return (
 
@@ -62,6 +69,8 @@ const NotificationEdit = props => {
             />
           </Col>
 
+
+        
           <Col sm="12" md="6" lg="6" xl="4" className="form-group">
             <TextInput
               name="description"
@@ -70,9 +79,73 @@ const NotificationEdit = props => {
               onChange={props.handleInputField}
             />
           </Col>
-
+          {/* <Col sm="12" md="6" lg="6" xl="4" className="form-group">
+          <label htmlFor="autoWord">Insert Auto-Word</label>
+          <Select
+        
+                         id="autoWord"
+                         valueKey="name"
+                          labelKey="id"
+                          className="form-control"
+                         
+                          options={props.autoWords}
+                          onChange={props.actionChange}
+                           value={props.selectedNotification}
+                          
+                          placeholder="Select"
+                          className="form-group form-group-select"
+                        />
+                        </Col> */}
+                      
           <Col sm="12" md="12" lg="12" xl="12" className="form-group">
-            <Label for="content">Content</Label>
+            <Label for="content"> </Label>
+            
+      <UncontrolledDropdown>
+      <DropdownToggle caret>
+       Insert Auto-Word
+      </DropdownToggle>
+      <DropdownMenu>
+
+      <DropdownItem title="firstName" onClick={() => {props.getSelection('<FIRSTNAME>')}}>
+               FirstName  </DropdownItem>
+       
+               <DropdownItem title="firstName" onClick={() => {props.getSelection('<LASTNAME>')}}>
+               LastName  </DropdownItem>
+       
+               <DropdownItem title="firstName" onClick={() => {props.getSelection('<FORMNAME>')}}>
+               FormName  </DropdownItem>
+
+                  <DropdownItem title="firstName" onClick={() => {props.getSelection('<NEXTDESTINATION>')}}>
+               NextDestination  </DropdownItem>
+
+                  <DropdownItem title="firstName" onClick={() => {props.getSelection('<NEXTPOSITION>')}}>
+               NextPosition </DropdownItem>
+
+                  <DropdownItem title="firstName" onClick={() => {props.getSelection('<PLACEMENTDATE>')}}>
+               Placement Date </DropdownItem>
+
+                  <DropdownItem title="firstName" onClick={() => {props.getSelection('<LASTWORKDATE>')}}>
+               Last Work Date </DropdownItem>
+
+                 <DropdownItem title="firstName" onClick={() => {props.getSelection('<CENTRALID>')}}>
+               CentralID </DropdownItem>
+
+                 <DropdownItem title="firstName" onClick={() => {props.getSelection('<NATIONALITY>')}}>
+               Nationality </DropdownItem>
+
+                <DropdownItem title="firstName" onClick={() => {props.getSelection('<CURRENTPOSITION>')}}>
+               Current Position</DropdownItem>
+
+                 <DropdownItem title="firstName" onClick={() => {props.getSelection('<CURRENTDESTINATION>')}}>
+               Current Destination</DropdownItem>
+
+               {/* <DropdownItem title="undo" onClick={() => {props.undoSelection('<UNDO>')}}>
+               Undo Last Selection</DropdownItem> */}
+      
+      </DropdownMenu>
+
+    </UncontrolledDropdown>
+    
             <Input
               required
               type="textarea"
@@ -114,6 +187,10 @@ const NotificationEdit = props => {
           >
             Save & Close
           </Button>
+
+     
+
+          
         </div>
         <p />
       </CardBody>
@@ -121,4 +198,4 @@ const NotificationEdit = props => {
   )
 }
 
-export default NotificationEdit
+export default NotificationInfo

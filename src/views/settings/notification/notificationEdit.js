@@ -14,7 +14,7 @@ import RestClient from '../../../infrastructure/restClient'
 class NotificationEdit extends Component {   //Notification smart component
 
     constructor(props) {
-        super()
+        super(props)
 
         const {
             match: { params }
@@ -28,12 +28,120 @@ class NotificationEdit extends Component {   //Notification smart component
             templatename: templatename,
            // mplID: mplID,
             notification: null,
+            selectedNotification:null,
+           // resetContent:document.getElementById("content")       
+       
+ 
+
+            // autoWords: [
+            //     {
+            //         id: 'FirstName',
+            //         name: 'FirstName'
+            //     },
+
+            //     {
+            //         id: 'LastName',
+            //         name: 'LastName'
+            //     },
+
+            
+            //     {
+            //         id: 'FormName',
+            //         name: 'FormName'
+            //     },
+
+            //     {
+            //         id: 'NextDestination',
+            //         name: 'NextDestination'
+            //     },
+            //     {
+            //         id: 'NextResort',
+            //         name: 'NextResort'
+            //     },
+            //     {
+            //         id: 'NextPosition',
+            //         name: 'NextPosition'
+            //     },
+            //     {
+            //         id: 'Placement Effective Date',
+            //         name: 'Placement Effective Date'
+            //     },
+            //     {
+            //         id: 'Last Work Date',
+            //         name: 'Last Work Date'
+            //     },
+
+            //     {
+            //         id: 'CentralID',
+            //         name: 'CentralID'
+            //     },
+
+            //     {
+            //         id: 'Nationality',
+            //         name: 'Nationality'
+            //     },
+
+            //     {
+            //         id: 'Current Position',
+            //         name: 'Current Position'
+            //     },
+
+            //     {
+            //         id: 'Current Destination',
+            //         name: 'Current Destination'
+            //     },
+         
+            // ]
+
          
        
         }
 
-       // this.handleChange = this.handleChange.bind(this);
+    
     }
+
+    undoSelection=()=>{
+        debugger;
+        
+        
+            var txtarea = document.getElementById("content");
+        
+            var start = txtarea.selectionStart;
+        
+            var finish = txtarea.selectionEnd;
+        
+            var allText = txtarea.value;
+        
+            var sel = allText.substring(start, finish);
+        
+            var newText=allText.substring(0, start)+this.state.resetContent+allText.substring(finish, allText.length);
+        
+            console.log(newText);
+        
+            txtarea.value=newText;
+        }
+
+    getSelection=(val)=>{
+
+
+
+    var txtarea = document.getElementById("content");
+
+
+     debugger;
+    var start = txtarea.selectionStart;
+
+    var finish = txtarea.selectionEnd;
+
+    var allText = txtarea.value;
+
+    var sel = allText.substring(start, finish);
+
+    var newText=allText.substring(0, start)+val+allText.substring(finish, allText.length);
+
+
+    txtarea.value=newText;
+}
 
 
 
@@ -100,9 +208,31 @@ class NotificationEdit extends Component {   //Notification smart component
 
              
       
-    }  
+    } 
+
+    
+    actionChange = id => {
+        debugger;
+
+        // this.setState({
+        //     validKeywordName: 'Please select a Keyword Type'
+      
+        // })
+
+        const selectedNotification = id ? id.name:null
+
+        this.setState({
+            selectedNotification ,
+            // validKeywordName: '',
+            // validKeywordValues: ''
+        })
+        debugger
+    }
+
 
     render() {
+
+    
      
         if (this.props.notification === null) {
             //Loading
@@ -140,12 +270,21 @@ class NotificationEdit extends Component {   //Notification smart component
 
                     <Row>
                         <Col>
-                           
+                            
                                
                                     <NotificationInfo 
+                                      
                                         languages={this.state.languages}
                                         notification={this.props.notification}
                                         handleInputField={this.handleInputField}
+                                        actionChange={this.actionChange}
+                                        getSelection={this.getSelection}
+                                        undoSelection={this.undoSelection}
+                                     
+                                        styles={this.styles}
+                                      
+                                        selectedNotification={this.state.selectedNotification}
+                                        
                                         //handleChange={this.handleChange}
                                         //handleUnsavedEdit={this.handleUnsavedEdit}
                                         save={this.save}
