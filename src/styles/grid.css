@@ -1,0 +1,32 @@
+.ag-theme-balham .ag-cell-range-selected-1,
+.ag-theme-balham .ag-cell-range-selected-2:not(.ag-cell-focus) {
+    background-color: #f3838e !important;
+}
+
+.ag-theme-balham .ag-root {
+    border:0;
+}
+
+.ag-body-viewport {
+    background: #f5f7f7;
+}
+
+.custom-cell {
+    display: inline-block;
+    font-weight: 500;
+    color: #333;
+    border-radius: 50%;
+    width: 26px;
+    line-height: 22px;
+}
+
+.ag-theme-balham .ag-cell-range-selected-1,
+.ag-theme-balham .ag-cell-range-selected-2:not(.ag-cell-focus) {
+    background-color: #555 !important;
+    color: #fff;
+}
+
+.ag-theme-balham .ag-status-bar
+{
+    border:0;
+}
