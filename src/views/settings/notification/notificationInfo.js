@@ -145,7 +145,17 @@ const NotificationInfo = props => {
       </DropdownMenu>
 
     </UncontrolledDropdown>
-    
+    <Select
+                                       id="templateName"
+                                       valueKey="templateName"
+                                       labelKey="templateName"
+                                        className="form-control"
+                                        options={this.props.notification}
+                                        onChange={this.notificationChange}
+                                       value={this.state.selectedNotification}
+                                        placeholder="Select"
+                                        className="form-group form-group-select"
+                                    />
             <Input
               required
               type="textarea"

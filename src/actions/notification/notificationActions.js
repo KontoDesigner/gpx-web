@@ -5,6 +5,7 @@ import RestClient from '../../infrastructure/restClient'
 
 
   export function handleNotification(notification) {
+   
     return {
       type: types.HANDLE_NOTIFICATION,
       data: { notification: notification }
@@ -25,7 +26,7 @@ export function getNotification() {
         dispatch(beginAjaxCall())
 debugger;
         try {
-            
+        
             const notification = await RestClient.Get(`mail`)
             dispatch(handleNotification([]))
             dispatch(getNotificationSuccess(notification))

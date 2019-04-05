@@ -5,6 +5,7 @@ import Planning from '../views/planning/planning';
 import Reports from '../views/reports/reports';
 //import Imports from '../views/imports/imports';
 import Settings from '../views/settings/settings';
+
 import NotFound from '../views/notFound/notFound';
 import StaffEdit from '../views/staffEdit/staffEdit';
 import PlanningEdit from '../views/planningEdit/planningEdit';
@@ -25,6 +26,7 @@ const Routes = () => (
             <Route exact path="/newKeyword" render={(props) => <NewKeyword {...props} ignoreThis={true} />} />
             <Route path="/reports" component={Reports} />
             <Route path="/settings" component={Settings} />
+      
             <Route exact path="/notification/:templatename" render={(props) => <NotificationEdit {...props} ignoreThis={true} />} />
             <Route exact path="/keywords/:keywordname" render={(props) => <KeywordsEdit {...props} ignoreThis={true} />} />
             <Route component={NotFound} />

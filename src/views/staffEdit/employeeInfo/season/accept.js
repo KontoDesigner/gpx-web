@@ -32,7 +32,7 @@ class Accept extends Component {
         this.toggle()
 
         let model = {}
-
+debugger;
         this.props.createAcceptStaff(positionAssign, this.state.selectedAction.id)
     }
 

@@ -24,6 +24,7 @@ import * as recentlyInactiveActions from '../../actions/staff/inactive/recentlyI
 import * as nameActions from '../../actions/staff/active/nameActions'
 import * as newEmployeeActions from '../../actions/staff/other/newEmployeeActions'
 import * as notificationActions from '../../actions/notification/notificationActions'
+
 import * as fileImportActions from '../../actions/staff/other/fileImportActions'
 import $ from 'jquery'
 import Tabs from './tabs'
@@ -203,7 +204,8 @@ class Staff extends Component {
            TemplateName:model.selectedNotification,
            StaffID:this.state.selectedStaffID,
              DateModified:model.dateModified,
-             Content:model.content
+             Content:model.content,
+             Email:model.selectedEmail
              
          }
         
@@ -616,6 +618,8 @@ debugger;
                 getSelection={this.getSelection}
                 value={this.state.value}
                 notification={this.props.notification }
+               keywords={this.props.keywords }
+               keywordslookup={this.props.keywordslookup }
                 selectedStaffID={this.state.selectedStaffID}
               
             />
@@ -791,16 +795,19 @@ function mapStateToProps(state) {
        selectedReason:state.staff.modal,
        notification: state.notification.notification,
        fileImport: state.staff.other.imports,
-       filter: state.staff.filter
+       filter: state.staff.filter,
+       keywords: state.setting.keywords.keywords,
+       keywordslookup: state.setting.keywords.keywordslookup
     }
 }
 
 function mapDispatchToProps(dispatch) {
     return {
+    
         staffActions: bindActionCreators(staffActions, dispatch),
         headOfActions: bindActionCreators(headOfActions, dispatch),
        notificationActions: bindActionCreators(notificationActions, dispatch),
-         
+       notificationActions: bindActionCreators(notificationActions, dispatch),
         destinationActions: bindActionCreators(destinationActions, dispatch),
         filterActions: bindActionCreators(filterActions, dispatch),
         jobTitleActions: bindActionCreators(jobTitleActions, dispatch),
