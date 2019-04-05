@@ -30,7 +30,7 @@ import $ from 'jquery'
 import Tabs from './tabs'
 import RestClient from '../../infrastructure/restClient'
 import { toastr } from 'react-redux-toastr'
-import '../../styles/staff.css';
+import '../../styles/staff.css'
 
 class Staff extends Component {
     constructor(props) {
@@ -39,12 +39,12 @@ class Staff extends Component {
         this.state = {
             loaded: false,
             validFileName: '',
-            validImportType:'',
+            validImportType: '',
             valid: '',
             selectedReason: null,
-            fileName:null,
-            importType:'',
-            value:null,
+            fileName: null,
+            importType: '',
+            value: null,
             activeTab: 'destination',
             resetData: this.props.destinationActions.handleDestination,
             absentStaffModal: false,
@@ -52,20 +52,19 @@ class Staff extends Component {
             reResignStaffModal: false,
             removeStaffModal: false,
             sendMailModal: false,
-            selectedStaffID:null,
-            importTypes: [    //not in use  delete
+            selectedStaffID: null,
+            importTypes: [
+                //not in use  delete
                 {
                     id: 'Staff',
-                    name: 'Staff' 
+                    name: 'Staff'
                 },
                 {
                     id: 'Position',
                     name: 'Position'
-                },
-          
+                }
             ],
 
-            
             resignType: [
                 {
                     id: 'Studies',
@@ -94,7 +93,6 @@ class Staff extends Component {
                     name: 'Other (Please Specify)'
                 }
             ],
-            
 
             resignmentReasons: [
                 {
@@ -138,336 +136,264 @@ class Staff extends Component {
                     name: 'Placement Declined'
                 }
             ]
+        }
 
-        };
-     
-       // this.handleChange = this.handleChange.bind(this);
+        // this.handleChange = this.handleChange.bind(this);
     }
 
-    handleChange= (event) => {
-        debugger;
+    handleChange = event => {
+        debugger
 
-        this.setState({value: event.target.value});
-      }
+        this.setState({ value: event.target.value })
+    }
 
-
-      handleSelect = (field, val, selector) => {
+    handleSelect = (field, val, selector) => {
         const id = val != null ? val[selector] : undefined
 
         this.props.staffActions.handleStaffField(field, id)
-
-    
     }
 
+    edit = staff => {
+        const win = window.open(`/staff/${staff.staffID}`, '_blank')
 
-   
-
-    edit = (e, staff) => {
-        if (!$(e.target).is(":checkbox")) {
-            const win = window.open(`/staff/${staff.staffID}`, '_blank');
-
-            win.focus();
-        }
+        win.focus()
     }
 
-    getSelection=(val)=>{
+    getSelection = val => {
+        var txtarea = document.getElementById('resignComm')
 
+        debugger
+        var start = txtarea.selectionStart
 
+        var finish = txtarea.selectionEnd
 
-        var txtarea = document.getElementById("resignComm");
-    
-    
-         debugger;
-        var start = txtarea.selectionStart;
-    
-        var finish = txtarea.selectionEnd;
-    
-        var allText = txtarea.value;
-    
-        var sel = allText.substring(start, finish);
-    
-        var newText=allText.substring(0, start)+val+allText.substring(finish, allText.length);
-    
-    
-        txtarea.value=newText;
+        var allText = txtarea.value
 
-        this.setState({localValue: newText});
+        var sel = allText.substring(start, finish)
+
+        var newText = allText.substring(0, start) + val + allText.substring(finish, allText.length)
+
+        txtarea.value = newText
+
+        this.setState({ localValue: newText })
     }
-
-
- 
 
     createMail = model => {
-      
         let mailmodel = {
-   
-           TemplateName:model.selectedNotification,
-           StaffID:this.state.selectedStaffID,
-             DateModified:model.dateModified,
-             Content:model.content,
-             Email:model.selectedEmail
-             
-         }
-        
-         this.props.staffActions.createMail(mailmodel)
-
-         this.getActTabAndRequest(this.state.activeTab) 
-     }
-
-    createAbscense = model => {
-      
-       let abscensemodel = {
-  
-            ApplicationType:"Abscense",
-            Status:"Abscense",
-       
-             AbsentStart: model.startDate,
-             AbsentReason: model.absentReason,
-             AbsentEnd: model.endDate,
-             AbsentReason2: this.state.value,
-            StaffID:this.state.selectedStaffID,
-            DateModified:model.dateModified
-     
-            
+            TemplateName: model.selectedNotification,
+            StaffID: this.state.selectedStaffID,
+            DateModified: model.dateModified,
+            Content: model.content,
+            Email: model.selectedEmail
         }
-        
-        this.props.staffActions.createAbsense(abscensemodel)
 
-        this.getActTabAndRequest(this.state.activeTab) 
+        this.props.staffActions.createMail(mailmodel)
+
+        this.getActTabAndRequest(this.state.activeTab)
     }
 
+    createAbscense = model => {
+        let abscensemodel = {
+            ApplicationType: 'Abscense',
+            Status: 'Abscense',
 
-    createReResignStaff = model => {
-        debugger; 
-           let staffmodel = {
-      
-            
-                StaffID:this.state.selectedStaffID,
-                DateModified:model.dateModified
-         
-                
-            }
-            debugger; 
-            this.props.staffActions.createReResignStaff(staffmodel)
-    
-            this.getActTabAndRequest(this.state.activeTab) 
+            AbsentStart: model.startDate,
+            AbsentReason: model.absentReason,
+            AbsentEnd: model.endDate,
+            AbsentReason2: this.state.value,
+            StaffID: this.state.selectedStaffID,
+            DateModified: model.dateModified
         }
 
+        this.props.staffActions.createAbsense(abscensemodel)
+
+        this.getActTabAndRequest(this.state.activeTab)
+    }
+
+    createReResignStaff = model => {
+        debugger
+        let staffmodel = {
+            StaffID: this.state.selectedStaffID,
+            DateModified: model.dateModified
+        }
+        debugger
+        this.props.staffActions.createReResignStaff(staffmodel)
+
+        this.getActTabAndRequest(this.state.activeTab)
+    }
 
     createRemoveStaff = model => {
-     debugger; 
+        debugger
         let staffmodel = {
-   
-         
-             StaffID:this.state.selectedStaffID,
-             DateModified:model.dateModified
-      
-             
-         }
-         debugger; 
-         this.props.staffActions.createRemoveStaff(staffmodel)
- 
-         this.getActTabAndRequest(this.state.activeTab) 
-     }
+            StaffID: this.state.selectedStaffID,
+            DateModified: model.dateModified
+        }
+        debugger
+        this.props.staffActions.createRemoveStaff(staffmodel)
 
-    handleFile=(fileName) => {
-        
-   this.setState({
-       
-    fileName,
-    validFileName:''
-})
+        this.getActTabAndRequest(this.state.activeTab)
+    }
 
+    handleFile = fileName => {
+        this.setState({
+            fileName,
+            validFileName: ''
+        })
     }
 
     createResign = model => {
+        const resignmodel = {
+            ApplicationType: 'Resigned',
+            Status: 'Resigned',
+            Comments: this.state.value,
+            FromDate: model.fromDate,
+            StaffID: this.state.selectedStaffID,
+            DateModified: model.dateModified,
 
-           const resignmodel = {
-            ApplicationType:"Resigned",
-            Status:"Resigned",
-               Comments: this.state.value,
-              FromDate: model.fromDate,
-              StaffID:this.state.selectedStaffID,
-               DateModified:model.dateModified,
-            
-               AppDate: model.fromDate,
-               ManagerReason: model.managerReason.name,
-               Signature: model.signature,
-               JobTitleWhenResigned: model.jobTitleWhenResigned.name,
-               ReasonForResignment: model.reasonForResign.name,
-               ResignComm: model.resignComm,
-               Recommend: model.recommend.name
-       
-               
-           }
-           debugger;
-           this.props.staffActions.createResign(resignmodel)
+            AppDate: model.fromDate,
+            ManagerReason: model.managerReason.name,
+            Signature: model.signature,
+            JobTitleWhenResigned: model.jobTitleWhenResigned.name,
+            ReasonForResignment: model.reasonForResign.name,
+            ResignComm: model.resignComm,
+            Recommend: model.recommend.name
+        }
+        debugger
+        this.props.staffActions.createResign(resignmodel)
 
-           this.getActTabAndRequest(this.state.activeTab) 
+        this.getActTabAndRequest(this.state.activeTab)
+    }
 
+    getActTabAndRequest = async actTab => {
+        debugger
 
-       }
-
-       getActTabAndRequest = async (actTab) => {
-           debugger;
- 
         switch (actTab) {
-            case "destination":
-           await this.props.destinationActions.getDestination(this.props.filter.sourceMarket,this.props.filter.selectedJobFamily,this.props.filter.text)
-            this.props.filterActions.handleSelectedStaff([])
-              break;
-             case "name":
-            await  this.props.nameActions.getName(this.props.filter.sourceMarket,this.props.filter.selectedJobFamily,this.props.filter.text)
-              this.props.filterActions.handleSelectedStaff([])
-                break;
-              case "jobTitle":
-           await  this.props.jobTitleActions.getJobTitle(this.props.filter.sourceMarket,this.props.filter.selectedJobFamily,this.props.filter.text)
-             this.props.filterActions.handleSelectedStaff([])
-            
-             case "recentlyInactive":
-             await  this.props.recentlyInactiveActions.getRecentlyInactive(this.props.filter.sourceMarket,this.props.filter.selectedJobFamily,this.props.filter.text)
-               this.props.filterActions.handleSelectedStaff([])
-              
-            
-             break;
-           
-           
-            }
-          }
+            case 'destination':
+                await this.props.destinationActions.getDestination(
+                    this.props.filter.sourceMarket,
+                    this.props.filter.selectedJobFamily,
+                    this.props.filter.text
+                )
+                this.props.filterActions.handleSelectedStaff([])
+                break
+            case 'name':
+                await this.props.nameActions.getName(this.props.filter.sourceMarket, this.props.filter.selectedJobFamily, this.props.filter.text)
+                this.props.filterActions.handleSelectedStaff([])
+                break
+            case 'jobTitle':
+                await this.props.jobTitleActions.getJobTitle(
+                    this.props.filter.sourceMarket,
+                    this.props.filter.selectedJobFamily,
+                    this.props.filter.text
+                )
+                this.props.filterActions.handleSelectedStaff([])
 
-       toogleSendMailModal = (val) => {
+            case 'recentlyInactive':
+                await this.props.recentlyInactiveActions.getRecentlyInactive(
+                    this.props.filter.sourceMarket,
+                    this.props.filter.selectedJobFamily,
+                    this.props.filter.text
+                )
+                this.props.filterActions.handleSelectedStaff([])
 
-        if(val) {
+                break
+        }
+    }
+
+    toogleSendMailModal = val => {
+        if (val) {
             this.setState({
                 sendMailModal: !this.state.sendMailModal,
                 selectedStaffID: [val]
             })
-      
-          }else 
-          {
-      
+        } else {
             this.setState({
                 sendMailModal: !this.state.sendMailModal,
-              selectedStaffID: this.props.selectedStaff
-            }) 
-            
-         
-          }
+                selectedStaffID: this.props.selectedStaff
+            })
+        }
 
         // this.setState({
         //     sendMailModal: !this.state.sendMailModal
         // })
     }
 
-
-    
-
-    toogleAbsentStaffModal = (val) => {
-        
-
-        if(val) {
+    toogleAbsentStaffModal = val => {
+        if (val) {
             this.setState({
                 absentStaffModal: !this.state.absentStaffModal,
                 selectedStaffID: val
             })
-      
-          }else 
-          {
-      
+        } else {
             this.setState({
-              absentStaffModal: !this.state.absentStaffModal,
-              selectedStaffID: this.props.selectedStaff
-            }) 
-            
-         
-          }
-          
-
+                absentStaffModal: !this.state.absentStaffModal,
+                selectedStaffID: this.props.selectedStaff
+            })
+        }
 
         // this.setState({
         //     absentStaffModal: !this.state.absentStaffModal
         // })
 
-
-    //     switch (val) {
-    //     case "1":
-    //     alert('Hello absent');
-    //     break;
-    // case "2":
-    // alert('Hello resign');
-    //     break;
-    // case "3":
-    // alert('Hello template');
-    //     break;
-    //     }
+        //     switch (val) {
+        //     case "1":
+        //     alert('Hello absent');
+        //     break;
+        // case "2":
+        // alert('Hello resign');
+        //     break;
+        // case "3":
+        // alert('Hello template');
+        //     break;
+        //     }
     }
 
-    toogleReResignStaffModal = (val) => {
-        debugger;
-                if(val) {
-                    this.setState({
-                        reResignStaffModal: !this.state.reResignStaffModal,
-                        selectedStaffID: val
-                    })
-              
-                  }else 
-                  {
-              
-                    this.setState({
-                        reResignStaffModal: !this.state.reResignStaffModal,
-                      selectedStaffID: this.props.selectedStaff
-                    }) 
-                    
-                 
-                  }
-        
-            }
+    toogleReResignStaffModal = val => {
+        debugger
+        if (val) {
+            this.setState({
+                reResignStaffModal: !this.state.reResignStaffModal,
+                selectedStaffID: val
+            })
+        } else {
+            this.setState({
+                reResignStaffModal: !this.state.reResignStaffModal,
+                selectedStaffID: this.props.selectedStaff
+            })
+        }
+    }
 
-    toogleRemoveStaffModal = (val) => {
-debugger;
-        if(val) {
+    toogleRemoveStaffModal = val => {
+        debugger
+        if (val) {
             this.setState({
                 removeStaffModal: !this.state.removeStaffModal,
                 selectedStaffID: val
             })
-      
-          }else 
-          {
-      
+        } else {
             this.setState({
                 removeStaffModal: !this.state.removeStaffModal,
-              selectedStaffID: this.props.selectedStaff
-            }) 
-            
-         
-          }
-
+                selectedStaffID: this.props.selectedStaff
+            })
+        }
     }
 
-    toogleResignStaffModal = (val) => {
-
-        if(val) {
+    toogleResignStaffModal = val => {
+        if (val) {
             this.setState({
                 resignStaffModal: !this.state.resignStaffModal,
                 selectedStaffID: val
             })
-      
-          }else 
-          {
-      
+        } else {
             this.setState({
                 resignStaffModal: !this.state.resignStaffModal,
-              selectedStaffID: this.props.selectedStaff
-            }) 
-            
-         
-          }
+                selectedStaffID: this.props.selectedStaff
+            })
+        }
 
-
- 
         // this.setState({
         //     resignStaffModal: !this.state.resignStaffModal
-        
+
         // })
     }
 
@@ -476,25 +402,25 @@ debugger;
     }
 
     componentDidMount() {
-        this.props.filterActions.handleFilter()   //when page loads
+        this.props.filterActions.handleFilter() //when page loads
         this.props.notificationActions.getNotification()
         this.props.destinationActions.getDestination()
     }
 
     toggle = (tab, getData, resetData) => {
-        debugger;
+        debugger
         if (this.state.activeTab !== tab) {
             //Reset current tab state
             this.state.resetData([])
 
             //Reset filter
-           // this.props.filterActions.handleFilter()
+            // this.props.filterActions.handleFilter()
 
             //Get tab data
-           // getData()
-           debugger;
-            getData(this.props.filter.sourceMarket,this.props.filter.selectedJobFamily,this.props.filter.text)
- 
+            // getData()
+            debugger
+            getData(this.props.filter.sourceMarket, this.props.filter.selectedJobFamily, this.props.filter.text)
+
             this.setState({
                 activeTab: tab,
                 resetData: resetData,
@@ -503,78 +429,56 @@ debugger;
         }
     }
 
-    handleImportType = ( val) => {
-       
-this.setState({
-    
-    importType:val ? val.id :'',
-    validImportType:''
+    handleImportType = val => {
+        this.setState({
+            importType: val ? val.id : '',
+            validImportType: ''
+        })
+    }
 
+    handleFile = fileName => {
+        this.setState({ fileName })
+    }
 
-});
-}
+    create = async model => {
+        //alert('This routine will be shut down until Monday 09.00 AM');
+        //return false;
+        // this.props.settingActions.save()
+        debugger
+        var check = this.state.fileName ? true : false
+        var check2 = this.state.importType ? true : false
+        if (!check) {
+            this.setState({
+                validFileName: 'Please select a file to import. You can´t import a file with the same name twice.'
+            })
+            return false
+        }
 
-handleFile=(fileName) => {
-    this.setState({fileName})
- 
-     }
+        if (!check2) {
+            this.setState({
+                validImportType: 'Please select a File Import Type'
+            })
+            return false
+        }
 
-create = async(model) => {
-    //alert('This routine will be shut down until Monday 09.00 AM');
-    //return false;
-// this.props.settingActions.save()
-debugger;
-var check = this.state.fileName ? true : false
-var check2 = this.state.importType ? true : false
-if (!check) {
+        try {
+            const res = await this.props.staffActions.createImport(this.state.importType, this.state.fileName)
+            // const res =  await RestClient.Upload('import/UploadFile/'+ this.state.importType,this.state.fileName)
 
+            this.setState({
+                fileName: null,
 
-  this.setState({
-      validFileName: 'Please select a file to import. You can´t import a file with the same name twice.'
-
-  })
-  return false;
- 
-}
-
-if (!check2) {
-
-
-    this.setState({
-        validImportType: 'Please select a File Import Type'
-  
-    })
-    return false;
-   
-  }
-
-
-try {
-
-  const res =  await this.props.staffActions.createImport(this.state.importType,this.state.fileName)
- // const res =  await RestClient.Upload('import/UploadFile/'+ this.state.importType,this.state.fileName)
-
-this.setState({
-    fileName:null,
-
-    validFileImport:'',
-    validFileName:''
-})
-debugger;
-
-} catch (error) {
-
-
-  throw error
-}
-
-}
+                validFileImport: '',
+                validFileName: ''
+            })
+            debugger
+        } catch (error) {
+            throw error
+        }
+    }
 
     render() {
-
-
         return (
-            
             <Row>
                 <Tabs
                     toggle={this.toggle}
@@ -585,92 +489,90 @@ debugger;
                     getDestination={this.props.destinationActions.getDestination}
                     handleDestination={this.props.destinationActions.handleDestination}
                     getName={this.props.nameActions.getName}
-                   handleName={this.props.nameActions.handleName} 
+                    handleName={this.props.nameActions.handleName}
                     getJobTitle={this.props.jobTitleActions.getJobTitle}
                     handleJobTitle={this.props.jobTitleActions.handleJobTitle}
-                 getRecentlyInactive={this.props.recentlyInactiveActions.getRecentlyInactive}
-                 handleRecentlyInactive={this.props.recentlyInactiveActions.handleRecentlyInactive}
-                getNewEmployee={this.props.newEmployeeActions.getNewEmployee}
-                 handleNewEmployee={this.props.newEmployeeActions.handleNewEmployee}
-                 getFileImport={this.props.fileImportActions.getFileImport}
-                 handleFileImport={this.props.fileImportActions.handleFileImport}
+                    getRecentlyInactive={this.props.recentlyInactiveActions.getRecentlyInactive}
+                    handleRecentlyInactive={this.props.recentlyInactiveActions.handleRecentlyInactive}
+                    getNewEmployee={this.props.newEmployeeActions.getNewEmployee}
+                    handleNewEmployee={this.props.newEmployeeActions.handleNewEmployee}
+                    getFileImport={this.props.fileImportActions.getFileImport}
+                    handleFileImport={this.props.fileImportActions.handleFileImport}
                 />
 
-<AbsentStaff
-                modal={this.state.absentStaffModal}
-                toggle={this.toogleAbsentStaffModal}
-                resignType={this.state.resignType}
-                handleChange={this.handleChange}
-                handleSelect= {this.handleSelect}
-                createAbscense= {this.createAbscense}
-                value={this.state.value}
-                selectedStaffID={this.state.selectedStaffID}
-              
-            />
+                <AbsentStaff
+                    modal={this.state.absentStaffModal}
+                    toggle={this.toogleAbsentStaffModal}
+                    resignType={this.state.resignType}
+                    handleChange={this.handleChange}
+                    handleSelect={this.handleSelect}
+                    createAbscense={this.createAbscense}
+                    value={this.state.value}
+                    selectedStaffID={this.state.selectedStaffID}
+                />
 
-            <SendMail
-                modal={this.state.sendMailModal}
-                toggle={this.toogleSendMailModal}
-                //resignType={this.state.resignType}
-                handleChange={this.handleChange}
-               // handleSelect= {this.handleSelect}
-                createMail= {this.createMail}
-                getSelection={this.getSelection}
-                value={this.state.value}
-                notification={this.props.notification }
-               keywords={this.props.keywords }
-               keywordslookup={this.props.keywordslookup }
-                selectedStaffID={this.state.selectedStaffID}
-              
-            />
-<RemoveStaff
-                modal={this.state.removeStaffModal}
-                toggle={this.toogleRemoveStaffModal}
-                resignType={this.state.resignType}
-                handleChange={this.handleChange}
-                handleSelect= {this.handleSelect}
-                createRemoveStaff= {this.createRemoveStaff}
-                value={this.state.value}
-                createResign= {this.createResign}
-                selectedStaffID={this.state.selectedStaffID}
-                // availablePositions={this.props.availablePositions}
-                // assignRole={this.props.assignRole}
-                // positionAssign={this.props.positionAssign}
-                // season={this.props.season}
-            />
+                <SendMail
+                    modal={this.state.sendMailModal}
+                    toggle={this.toogleSendMailModal}
+                    //resignType={this.state.resignType}
+                    handleChange={this.handleChange}
+                    // handleSelect= {this.handleSelect}
+                    createMail={this.createMail}
+                    getSelection={this.getSelection}
+                    value={this.state.value}
+                    notification={this.props.notification}
+                    keywords={this.props.keywords}
+                    keywordslookup={this.props.keywordslookup}
+                    selectedStaffID={this.state.selectedStaffID}
+                />
+                <RemoveStaff
+                    modal={this.state.removeStaffModal}
+                    toggle={this.toogleRemoveStaffModal}
+                    resignType={this.state.resignType}
+                    handleChange={this.handleChange}
+                    handleSelect={this.handleSelect}
+                    createRemoveStaff={this.createRemoveStaff}
+                    value={this.state.value}
+                    createResign={this.createResign}
+                    selectedStaffID={this.state.selectedStaffID}
+                    // availablePositions={this.props.availablePositions}
+                    // assignRole={this.props.assignRole}
+                    // positionAssign={this.props.positionAssign}
+                    // season={this.props.season}
+                />
 
-            <ReResignStaff
-                modal={this.state.reResignStaffModal}
-                toggle={this.toogleReResignStaffModal}
-                resignType={this.state.resignType}
-                handleChange={this.handleChange}
-                handleSelect= {this.handleSelect}
-                createReResignStaff= {this.createReResignStaff}
-                value={this.state.value}
-               // createResign= {this.createResign}
-                selectedStaffID={this.state.selectedStaffID}
-                // availablePositions={this.props.availablePositions}
-                // assignRole={this.props.assignRole}
-                // positionAssign={this.props.positionAssign}
-                // season={this.props.season}
-            />
-            
-<ResignStaff
-                modal={this.state.resignStaffModal}
-                toggle={this.toogleResignStaffModal}
-                resignType={this.state.resignType}
-                managerReasons={this.state.managerReasons}
-                resignmentReasons={this.state.resignmentReasons}
-                handleChange={this.handleChange}
-                handleSelect= {this.handleSelect}
-                value={this.state.value}
-                createResign= {this.createResign}
-                selectedStaffID={this.state.selectedStaffID}
-                // availablePositions={this.props.availablePositions}
-                // assignRole={this.props.assignRole}
-                // positionAssign={this.props.positionAssign}
-                // season={this.props.season}
-            />
+                <ReResignStaff
+                    modal={this.state.reResignStaffModal}
+                    toggle={this.toogleReResignStaffModal}
+                    resignType={this.state.resignType}
+                    handleChange={this.handleChange}
+                    handleSelect={this.handleSelect}
+                    createReResignStaff={this.createReResignStaff}
+                    value={this.state.value}
+                    // createResign= {this.createResign}
+                    selectedStaffID={this.state.selectedStaffID}
+                    // availablePositions={this.props.availablePositions}
+                    // assignRole={this.props.assignRole}
+                    // positionAssign={this.props.positionAssign}
+                    // season={this.props.season}
+                />
+
+                <ResignStaff
+                    modal={this.state.resignStaffModal}
+                    toggle={this.toogleResignStaffModal}
+                    resignType={this.state.resignType}
+                    managerReasons={this.state.managerReasons}
+                    resignmentReasons={this.state.resignmentReasons}
+                    handleChange={this.handleChange}
+                    handleSelect={this.handleSelect}
+                    value={this.state.value}
+                    createResign={this.createResign}
+                    selectedStaffID={this.state.selectedStaffID}
+                    // availablePositions={this.props.availablePositions}
+                    // assignRole={this.props.assignRole}
+                    // positionAssign={this.props.positionAssign}
+                    // season={this.props.season}
+                />
 
                 <Col sm="12" md="9" lg="9" xl="10">
                     <TabContent activeTab={this.state.activeTab}>
@@ -679,7 +581,7 @@ debugger;
                                 headOf={this.props.headOf}
                                 getHeadOf={this.props.headOfActions.getHeadOf}
                                 handleSelectedStaff={this.props.filterActions.handleSelectedStaff}
-                                selectedStaff={this.props.selectedStaff} 
+                                selectedStaff={this.props.selectedStaff}
                                 edit={this.edit}
                                 toogleAbsentStaffModal={this.toogleAbsentStaffModal}
                                 toogleResignStaffModal={this.toogleResignStaffModal}
@@ -704,8 +606,8 @@ debugger;
                         <TabPane tabId="name">
                             <Name
                                 name={this.props.name}
-                              getName={this.props.nameActions.getName}
-                            handleSelectedStaff={this.props.filterActions.handleSelectedStaff}
+                                getName={this.props.nameActions.getName}
+                                handleSelectedStaff={this.props.filterActions.handleSelectedStaff}
                                 selectedStaff={this.props.selectedStaff}
                                 edit={this.edit}
                                 toogleAbsentStaffModal={this.toogleAbsentStaffModal}
@@ -730,55 +632,48 @@ debugger;
 
                         <TabPane tabId="recentlyInactive">
                             <RecentlyInactive
-                             recentlyInactive={this.props.recentlyInactive}
-                             getRecentlyInactive={this.props.recentlyInactiveActions.getRecentlyInactive}
-                             handleSelectedStaff={this.props.filterActions.handleSelectedStaff}
-                             selectedStaff={this.props.selectedStaff}
-                             edit={this.edit}
-                             toogleAbsentStaffModal={this.toogleAbsentStaffModal}
-                             toogleResignStaffModal={this.toogleResignStaffModal}
-                             toogleSendMailModal={this.toogleSendMailModal}
-                             toogleRemoveStaffModal={this.toogleRemoveStaffModal}
-                             toogleReResignStaffModal={this.toogleReResignStaffModal}
+                                recentlyInactive={this.props.recentlyInactive}
+                                getRecentlyInactive={this.props.recentlyInactiveActions.getRecentlyInactive}
+                                handleSelectedStaff={this.props.filterActions.handleSelectedStaff}
+                                selectedStaff={this.props.selectedStaff}
+                                edit={this.edit}
+                                toogleAbsentStaffModal={this.toogleAbsentStaffModal}
+                                toogleResignStaffModal={this.toogleResignStaffModal}
+                                toogleSendMailModal={this.toogleSendMailModal}
+                                toogleRemoveStaffModal={this.toogleRemoveStaffModal}
+                                toogleReResignStaffModal={this.toogleReResignStaffModal}
                             />
                         </TabPane>
 
                         <TabPane tabId="newEmployee">
-                       
                             <NewEmployee
-                            newEmployee={this.props.newEmployee}
-    
-                            getNewEmployee={this.props.newEmployeeActions.getNewEmployee}
-                          
-                            handleSelectedStaff={this.props.filterActions.handleSelectedStaff}
-                            selectedStaff={this.props.selectedStaff}
-                            toogleAbsentStaffModal={this.toogleAbsentStaffModal}
-                            toogleResignStaffModal={this.toogleResignStaffModal}
-                            edit={this.edit}
-                            toogleSendMailModal={this.toogleSendMailModal}
-                            toogleRemoveStaffModal={this.toogleRemoveStaffModal}
+                                newEmployee={this.props.newEmployee}
+                                getNewEmployee={this.props.newEmployeeActions.getNewEmployee}
+                                handleSelectedStaff={this.props.filterActions.handleSelectedStaff}
+                                selectedStaff={this.props.selectedStaff}
+                                toogleAbsentStaffModal={this.toogleAbsentStaffModal}
+                                toogleResignStaffModal={this.toogleResignStaffModal}
+                                edit={this.edit}
+                                toogleSendMailModal={this.toogleSendMailModal}
+                                toogleRemoveStaffModal={this.toogleRemoveStaffModal}
                             />
                         </TabPane>
 
-                             <TabPane tabId="fileImport">
-                       
-                        <FileImport
-                         importTypes={this.state.importTypes}
-                         //fileimportTypes={this.state.fileimportTypes}
-                         validFileName={this.state.validFileName}
-                         validImportType={this.state.validImportType}
-                         handleFile={this.handleFile}
-                         handleImportType={this.handleImportType}
-                         importType={this.state.importType}
-                         create={this.create}
-                       /> 
-                   </TabPane>
+                        <TabPane tabId="fileImport">
+                            <FileImport
+                                importTypes={this.state.importTypes}
+                                //fileimportTypes={this.state.fileimportTypes}
+                                validFileName={this.state.validFileName}
+                                validImportType={this.state.validImportType}
+                                handleFile={this.handleFile}
+                                handleImportType={this.handleImportType}
+                                importType={this.state.importType}
+                                create={this.create}
+                            />
+                        </TabPane>
                     </TabContent>
                 </Col>
             </Row>
-            
-            
-            
         )
     }
 }
@@ -790,28 +685,27 @@ function mapStateToProps(state) {
         destination: state.staff.active.destination,
         jobTitle: state.staff.active.jobTitle,
         selectedStaff: state.staff.filter.selectedStaff,
-       recentlyInactive: state.staff.inactive.recentlyInactive,
-       newEmployee: state.staff.other.newEmployee,
-       selectedReason:state.staff.modal,
-       notification: state.notification.notification,
-       fileImport: state.staff.other.imports,
-       filter: state.staff.filter,
-       keywords: state.setting.keywords.keywords,
-       keywordslookup: state.setting.keywords.keywordslookup
+        recentlyInactive: state.staff.inactive.recentlyInactive,
+        newEmployee: state.staff.other.newEmployee,
+        selectedReason: state.staff.modal,
+        notification: state.notification.notification,
+        fileImport: state.staff.other.imports,
+        filter: state.staff.filter,
+        keywords: state.setting.keywords.keywords,
+        keywordslookup: state.setting.keywords.keywordslookup
     }
 }
 
 function mapDispatchToProps(dispatch) {
     return {
-    
         staffActions: bindActionCreators(staffActions, dispatch),
         headOfActions: bindActionCreators(headOfActions, dispatch),
-       notificationActions: bindActionCreators(notificationActions, dispatch),
-       notificationActions: bindActionCreators(notificationActions, dispatch),
+        notificationActions: bindActionCreators(notificationActions, dispatch),
+        notificationActions: bindActionCreators(notificationActions, dispatch),
         destinationActions: bindActionCreators(destinationActions, dispatch),
         filterActions: bindActionCreators(filterActions, dispatch),
         jobTitleActions: bindActionCreators(jobTitleActions, dispatch),
-       recentlyInactiveActions: bindActionCreators(recentlyInactiveActions, dispatch),
+        recentlyInactiveActions: bindActionCreators(recentlyInactiveActions, dispatch),
         nameActions: bindActionCreators(nameActions, dispatch),
         newEmployeeActions: bindActionCreators(newEmployeeActions, dispatch),
         fileImportActions: bindActionCreators(fileImportActions, dispatch)

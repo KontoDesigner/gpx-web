@@ -53,6 +53,12 @@ const Table = props => {
         props.updateSelectedState(uniqueSelected)
     }
 
+    const onRowClicked = params => {
+        if (props.edit) {
+            props.edit(params.data)
+        }
+    }
+
     return (
         <div
             className="ag-theme-balham"
@@ -70,7 +76,8 @@ const Table = props => {
                 suppressScrollOnNewData={true}
                 onRowSelected={onRowSelected}
                 rowSelection={'multiple'}
-                // onGridReady={params => props.handleGrid(params)}
+                onRowClicked={e => onRowClicked(e)}
+                suppressRowClickSelection={true}
             />
         </div>
     )
