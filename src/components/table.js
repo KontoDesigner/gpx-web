@@ -16,13 +16,19 @@ const uniqueArray = arrArg => {
 }
 
 const Table = props => {
-    const columnDefs = props.columns.map(c => ({
-        headerName: c.label,
-        field: c.dataKey,
-        resizable: true,
-        checkboxSelection: props.checkbox === true && isFirstColumn,
-        sortable: true
-    }))
+    const columnDefs = props.columns.map(c => {
+        const checkbox = props.checkbox === true && isFirstColumn
+
+        return {
+            headerName: c.label,
+            field: c.dataKey,
+            resizable: true,
+            checkboxSelection: checkbox,
+            headerCheckboxSelection: checkbox,
+            headerCheckboxSelectionFilteredOnly: checkbox,
+            sortable: true
+        }
+    })
 
     const height = 49 + props.list.length * 28
     const defaultMaxTableHeight = props.maxTableHeight ? props.maxTableHeight : 550
