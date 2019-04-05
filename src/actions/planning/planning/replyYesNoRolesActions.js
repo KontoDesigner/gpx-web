@@ -7,9 +7,9 @@ export function getreplyYesNoRolesSuccess(replyYesNoRoles) {
         type: types.GET_REPLYYESNOROLES_SUCCESS,
         data: { replyYesNoRoles: replyYesNoRoles }
     }
-} 
+}
 
-export function getReplyYesNoRoles(sourcemarket = 'ALL', jobfamily='ALL', criteria = null) {
+export function getReplyYesNoRoles(sourcemarket = 'ALL', jobfamily = 'ALL', criteria = null) {
     return async function(dispatch) {
         dispatch(beginAjaxCall())
 
@@ -18,9 +18,6 @@ export function getReplyYesNoRoles(sourcemarket = 'ALL', jobfamily='ALL', criter
             const replyYesNoRoles = await RestClient.Get(`reply/GetReplyYesNo/${sourcemarket}/${jobfamily}/${criteria !== null ? `${criteria}` : ''}`)
 
             //const replyYesNoRoles = await RestClient.Get(`positionassign/GetAllPositionsAssignData`)
-
-            //For some reason we need to reset value here, (bug when loading in new data with filter), don't touch h3h3
-            dispatch(handleReplyYesNoRoles([]))
 
             dispatch(getreplyYesNoRolesSuccess(replyYesNoRoles))
         } catch (error) {

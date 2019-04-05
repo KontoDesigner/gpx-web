@@ -3,35 +3,31 @@ import { beginAjaxCall, ajaxCallError } from '../../ajaxStatusActions'
 import RestClient from '../../../infrastructure/restClient'
 
 export function getDestinationSuccess(destination) {
-  return {
-    type: types.GET_DESTINATION_SUCCESS,
-    data: { destination: destination }
-  }
+    return {
+        type: types.GET_DESTINATION_SUCCESS,
+        data: { destination: destination }
+    }
 }
 
-export function getDestination(sourcemarket = 'ALL', jobfamily='ALL', criteria = null) {
-  return async function (dispatch) {
-    dispatch(beginAjaxCall())
+export function getDestination(sourcemarket = 'ALL', jobfamily = 'ALL', criteria = null) {
+    return async function(dispatch) {
+        dispatch(beginAjaxCall())
 
-    try {
-      debugger;
-      const destination = await RestClient.Get(`staff/destination/${sourcemarket}/${jobfamily}/${criteria !== null ? `${criteria}` : ''}`)
+        try {
+            const destination = await RestClient.Get(`staff/destination/${sourcemarket}/${jobfamily}/${criteria !== null ? `${criteria}` : ''}`)
 
-      //For some reason we need to reset value here, (bug when loading in new data with filter), don't touch h3h3
-      dispatch(handleDestination([]))
+            dispatch(getDestinationSuccess(destination))
+        } catch (error) {
+            dispatch(ajaxCallError(error))
 
-      dispatch(getDestinationSuccess(destination))
-    } catch (error) {
-      dispatch(ajaxCallError(error))
-
-      throw error
+            throw error
+        }
     }
-  }
 }
 
 export function handleDestination(destination) {
-  return {
-    type: types.HANDLE_DESTINATION,
-    data: { destination: destination }
-  }
+    return {
+        type: types.HANDLE_DESTINATION,
+        data: { destination: destination }
+    }
 }

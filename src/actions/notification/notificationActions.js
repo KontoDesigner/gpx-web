@@ -2,15 +2,12 @@ import { ActionTypes as types } from '../../constants/notification/notificationC
 import { beginAjaxCall, ajaxCallError } from '../ajaxStatusActions'
 import RestClient from '../../infrastructure/restClient'
 
-
-
-  export function handleNotification(notification) {
+export function handleNotification(notification) {
     return {
-      type: types.HANDLE_NOTIFICATION,
-      data: { notification: notification }
+        type: types.HANDLE_NOTIFICATION,
+        data: { notification: notification }
     }
-  }
-
+}
 
 export function getNotificationSuccess(notification) {
     return {
@@ -19,13 +16,11 @@ export function getNotificationSuccess(notification) {
     }
 }
 
-
 export function getNotification() {
-    return async function (dispatch) {
+    return async function(dispatch) {
         dispatch(beginAjaxCall())
-debugger;
+
         try {
-            
             const notification = await RestClient.Get(`mail`)
             dispatch(handleNotification([]))
             dispatch(getNotificationSuccess(notification))
@@ -35,7 +30,4 @@ debugger;
             throw error
         }
     }
-
-    
 }
-

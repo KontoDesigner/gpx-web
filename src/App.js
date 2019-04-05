@@ -5,6 +5,8 @@ import Header from './components/header'
 import Footer from './components/footer'
 import { BrowserRouter } from 'react-router-dom'
 import ReduxToastr from 'react-redux-toastr'
+import 'ag-grid-community/dist/styles/ag-grid.css'
+import 'ag-grid-community/dist/styles/ag-theme-balham.css'
 import './styles/site.css'
 import { withRouter } from 'react-router-dom'
 import * as geographyActions from './actions/geographyActions'
@@ -14,6 +16,9 @@ import * as userActions from './actions/userActions'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { UserRoles as userRoles } from './constants/userConstants'
+import { LicenseManager } from 'ag-grid-enterprise'
+
+LicenseManager.setLicenseKey('TUI_Nordic__TPP_1Devs6_March_2020__MTU4MzQ1MjgwMDAwMA==76d945771851586658d23f986e58136d')
 
 class App extends Component {
     constructor() {
@@ -26,7 +31,7 @@ class App extends Component {
 
     async componentWillMount() {
         const _this = this
-debugger;
+
         return Promise.all([
             this.props.geographyActions.getSourceMarkets(),
             this.props.settingActions.getJobFamilies(),

@@ -1,73 +1,53 @@
 import React from 'react'
-import { ContextMenu, MenuItem } from 'react-contextmenu'
 import Table from '../../../../components/table.js'
 
 const columns = [
-  { label: 'Name', dataKey: 'firstNameLastName' },
-  { label: 'SourceMarket', dataKey: 'sourceMarket' },
-  { label: 'PositionType', dataKey: 'positionType' },
-  { label: 'Driver', dataKey: 'driver' },
-  { label: 'Education', dataKey: 'edcuation' },
- // { label: 'Concept Hotel', dataKey: 'concepthotel' }
-];
+    { label: 'Name', dataKey: 'firstNameLastName' },
+    { label: 'SourceMarket', dataKey: 'sourceMarket' },
+    { label: 'PositionType', dataKey: 'positionType' },
+    { label: 'Driver', dataKey: 'driver' },
+    { label: 'Education', dataKey: 'edcuation' }
+    // { label: 'Concept Hotel', dataKey: 'concepthotel' }
+]
 
-const PersonTable = (props) => {
-  function onContextMenuClick(e, data) {
-    
-       //alert(data.mplID)
-     // console.log(data,e,test,hello)
-     
-     props.toogleAbsentStaffModal(data.staffID) 
-       
-     }
-    
-     function onContextMenuClick2(e, data) {
-      
-         //alert(data.mplID)
-       // console.log(data,e,test,hello)
-       
-       props.toogleResignStaffModal(data.staffID) 
-         
-       }
+const PersonTable = props => {
+    const contextMenuItems = params => {
+        const data = params.node.data
 
-       function onContextMenuClick3(e, data) {
-        
-           //alert(data.mplID)
-         // console.log(data,e,test,hello)
-         
-         props.toogleSendMailModal(data.staffID) 
-           
-         }
-  const contextMenuId = props.index + "-nameContextMenu";
+        return [
+            {
+                name: 'Mark As Absent',
+                action: function() {
+                    props.toogleAbsentStaffModal(data.staffID)
+                }
+            },
+            {
+                name: 'Mark As Resign',
+                action: function() {
+                    props.toogleResignStaffModal(data.staffID)
+                }
+            },
+            {
+                name: 'Send Mail Using Template',
+                action: function() {
+                    props.toogleSendMailModal(data.staffID)
+                }
+            }
+        ]
+    }
 
-  return (
-    <div>
-   <ContextMenu id={contextMenuId}>
-      <MenuItem data={{ foo: 'bar' }} onClick={onContextMenuClick}>
-        Mark As Absent
-          </MenuItem>
-      <MenuItem data={{foo: 'bar'}} onClick={onContextMenuClick2}>
-        Mark As Resign
-          </MenuItem>
-   
-        <MenuItem data={{ foo: 'bar' }} onClick={onContextMenuClick3}>
-        Send Mail Using Template
-          </MenuItem>
-
-      </ContextMenu>
-
-      <Table
-        list={props.name}
-        contextMenuId={contextMenuId}
-        columns={columns}
-        checkbox={true}
-        identifier={'staffID'}
-        edit={props.edit}
-        updateSelectedState={props.handleSelectedStaff}
-        selected={props.selectedStaff}
-      />
-    </div >
-  )
+    return (
+        <Table
+            list={props.name}
+            contextMenuItems={contextMenuItems}
+            columns={columns}
+            checkbox={true}
+            identifier={'staffID'}
+            edit={props.edit}
+            updateSelectedState={props.handleSelectedStaff}
+            selected={props.selectedStaff}
+        />
+    )
 }
 
 export default PersonTable

@@ -1,77 +1,58 @@
 import React from 'react'
-import { ContextMenu, MenuItem } from 'react-contextmenu'
-import Table from '../../../../components/table.js';
+import Table from '../../../../components/table.js'
 
 const columns = [
-  { label: 'MPLID', dataKey: 'mplID' },
-  { label: 'Season', dataKey: 'season' }, 
-  { label: 'DL-Req.', dataKey: 'mplDlRequired' },
- 
-  { label: 'ConceptUnit', dataKey: 'concepthotel' },
+    { label: 'MPLID', dataKey: 'mplID' },
+    { label: 'Season', dataKey: 'season' },
+    { label: 'DL-Req.', dataKey: 'mplDlRequired' },
 
-  { label: 'JobTitle', dataKey: 'jobTitle' },
-  { label: 'Profile', dataKey: 'profile' },
+    { label: 'ConceptUnit', dataKey: 'concepthotel' },
 
-  { label: 'Source Market', dataKey: 'mplSourceMarket' },
-  { label: 'Position Type', dataKey: 'mPLPositionType' },
-  //{ label: 'Languages', dataKey: 'languages' },
-  { label: 'HighSeason', dataKey: 'highseason' },
-  { label: 'Position StartDate', dataKey: 'positionStartDate' },
-  { label: 'Position EndDate', dataKey: 'positionEndDate' },
-  //{ label: 'Placed', dataKey: 'firstNameLastName' },
- // { label: 'Id', dataKey: 'staffID' }
-];
+    { label: 'JobTitle', dataKey: 'jobTitle' },
+    { label: 'Profile', dataKey: 'profile' },
 
-const JobTitleTable = (props) => {
-  function onContextMenuClick(e, data) {
-    
-       //alert(data.mplID)
-     // console.log(data,e,test,hello)
-     
-       props.toogleAssignPositionModal(data.mplID) 
-       
-     }
+    { label: 'Source Market', dataKey: 'mplSourceMarket' },
+    { label: 'Position Type', dataKey: 'mPLPositionType' },
+    //{ label: 'Languages', dataKey: 'languages' },
+    { label: 'HighSeason', dataKey: 'highseason' },
+    { label: 'Position StartDate', dataKey: 'positionStartDate' },
+    { label: 'Position EndDate', dataKey: 'positionEndDate' }
+    //{ label: 'Placed', dataKey: 'firstNameLastName' },
+    // { label: 'Id', dataKey: 'staffID' }
+]
 
-     function onContextMenuClick2(e, data) {
-      debugger;  
-           //alert(data.mplID)
-         // console.log(data,e,test,hello)
-         //props.toogleMakePositionVacantModal(data.mplID)
-         props.toogleRemovePositionModal(data.mplID)
-         }
+const JobTitleTable = props => {
+    const contextMenuItems = params => {
+        const data = params.node.data
 
-  const contextMenuId = props.index + "-vacantRoleContextMenu";
+        return [
+            {
+                name: 'Assign Staff To Position',
+                action: function() {
+                    props.toogleAssignPositionModal(data.mplID)
+                }
+            },
+            {
+                name: 'Remove Position',
+                action: function() {
+                    props.toogleRemovePositionModal(data.mplID)
+                }
+            }
+        ]
+    }
 
-  return (
-    <div>
-      <ContextMenu id={contextMenuId}>
-      <MenuItem data={{ foo: 'bar' }} onClick={onContextMenuClick}>
-        Assign Staff To Position
-          </MenuItem>
-          <MenuItem data={{ foo: 'bar' }} onClick={onContextMenuClick2}>
-        Remove Position
-          </MenuItem>
-        {/* <MenuItem data={{ foo: 'bar' }} onClick={onContextMenuClick}>
-          ContextMenu Item 2
-          </MenuItem>
-        <MenuItem data={{ foo: 'bar' }} onClick={onContextMenuClick}>
-          ContextMenu Item 3
-          </MenuItem> */}
-      </ContextMenu> 
-
-      <Table
-       
-        list={props.positions}
-        contextMenuId={contextMenuId}
-        columns={columns}
-        checkbox={true}
-        identifier={'mplID'}
-        edit={props.edit}
-        updateSelectedState={props.handleSelectedTitle}
-        selected={props.selectedTitle}
-      />
-    </div>
-  )
+    return (
+        <Table
+            contextMenuItems={contextMenuItems}
+            list={props.positions}
+            columns={columns}
+            checkbox={true}
+            identifier={'mplID'}
+            edit={props.edit}
+            updateSelectedState={props.handleSelectedTitle}
+            selected={props.selectedTitle}
+        />
+    )
 }
 
 export default JobTitleTable
