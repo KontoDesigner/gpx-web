@@ -11,6 +11,7 @@ import './styles/site.css'
 import { withRouter } from 'react-router-dom'
 import * as geographyActions from './actions/geographyActions'
 import * as settingActions from './actions/setting/settingActions'
+import * as keywordsActions from './actions/setting/keywordsActions'
 import * as footerActions from './actions/footerActions'
 import * as userActions from './actions/userActions'
 import { connect } from 'react-redux'
@@ -36,6 +37,8 @@ class App extends Component {
             this.props.geographyActions.getSourceMarkets(),
             this.props.settingActions.getJobFamilies(),
             this.props.settingActions.getAllJobTitle(),
+            this.props.keywordsActions.getKeywordsLookup(),
+            
             this.props.geographyActions.getSeasons(),
             this.props.footerActions.getVersion(),
             this.props.footerActions.getSupportEmail(),
@@ -103,6 +106,7 @@ function mapDispatchToProps(dispatch) {
     return {
         geographyActions: bindActionCreators(geographyActions, dispatch),
         settingActions: bindActionCreators(settingActions, dispatch),
+        keywordsActions: bindActionCreators(keywordsActions, dispatch),
         footerActions: bindActionCreators(footerActions, dispatch),
         userActions: bindActionCreators(userActions, dispatch)
     }

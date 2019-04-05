@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import AutoWords from '../../components/autoWords'
 import {
   Button,
   Modal,
@@ -19,48 +18,15 @@ import Select from 'react-select'
 
 class SendMailUsingTemplate extends Component {
     constructor() {
-     
         super();
 
         this.state = {
              dateModified: null,
              selectedNotification: null,
-             selectedEmail: null,
              selectedContent: null,
-             localValue:null,
-             senderEmailArr : []
-           
+             localValue:null
           
         };
-    }
-    
-  async componentDidMount() {
-
-const senderEmail= this.props.keywordslookup.filter(ap => ap.ids === 'SenderEmail')[0];
-const senderEmailArr = senderEmail.keywordValues.split(',')
-
-
-
-const senderEmailObjArr = senderEmailArr.map(s => ({
-   ids: s,
-   name: s
-}))
-
-        if (senderEmail !== undefined) {
-
-       
-         this.setState({ senderEmailArr: senderEmailObjArr })
-
-        
-          
-       //}
-      // const _this = this
-      // return Promise.all([
-      //   this.props.reportActions.getReport()
-      //   ]).then(function() {
-      //   _this.setState({ loaded: true })
-      // })
-        }
     }
 
     toggle = () => {
@@ -106,18 +72,7 @@ const senderEmailObjArr = senderEmailArr.map(s => ({
       this.setState({localValue: newText});
   }
 
-  emailChange = email => {
-    debugger;
-    const selectedEmail = email.ids ;
-   
 
-  
-    this.setState({
-      selectedEmail,
-  
-   
-    })
-}
     notificationChange = notification => {
         const selectedNotification = notification.templateName ;
         const selectedContent= notification  != null ? notification.content: null
@@ -155,7 +110,6 @@ debugger;
             // staffID: position.mplid,
             dateModified: newdatemodified ,
              selectedNotification: this.state.selectedNotification,
-             selectedEmail: this.state.selectedEmail,
              content: this.state.localValue ? this.state.localValue:this.state.selectedContent
            
         }
@@ -166,9 +120,7 @@ debugger;
 
 
     render() {
-     
   return (
-    
     <div>
 
       
@@ -177,91 +129,110 @@ debugger;
           Send Mail Using Template{' '}
         </ModalHeader>
         <ModalBody>
-        <Row>
-                            <Col sm="12" md="6" lg="6" xl="6">
-                                <div className="form-group form-group-select">
-                                    <label htmlFor="email">Select Sender Email</label>
+          <Row>
+            <Col>
+              <Table striped bordered responsive>
+             
+                <thead>
+                  <tr>
+                    <th colSpan="2">Select Template</th>
+                  </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td colSpan="2"> 
 
-                               <Select
-                                       id="ids"
-                                       valueKey="ids"
-                                       labelKey="ids"
-                                       options = {this.state.senderEmailArr}
-                                        
-                                        onChange={this.emailChange}
-                                       value={this.state.selectedEmail}
-                                        placeholder="Select"
-                                        className="form-group form-group-select"
-                                    />
-                                </div>
-                            </Col>
-
-                            <Col sm="12" md="6" lg="6" xl="6">
-                                <div className="form-group form-group-select">
-                                <label htmlFor="destination">Select Template</label>
-                               <Select
+                        <Select
                                        id="templateName"
                                        valueKey="templateName"
                                        labelKey="templateName"
-                                    
+                                        className="form-control"
                                         options={this.props.notification}
                                         onChange={this.notificationChange}
-                                      value={this.state.selectedNotification}
+                                       value={this.state.selectedNotification}
                                         placeholder="Select"
                                         className="form-group form-group-select"
                                     />
-                                </div>
-                            </Col>
-                        </Row>
+                  </td></tr> 
+                  {/* <tr>
+                    <td colSpan="2" height="150"> 
+
+                        <Select
+                                       id="templateName"
+                                       valueKey="templateName"
+                                       labelKey="templateName"
+                                        className="form-control"
+                                        options={this.props.notification}
+                                        onChange={this.notificationChange}
+                                       value={this.state.selectedNotification}
+                                        placeholder="Select"
+                                        className="form-group form-group-select"
+                                    />
+
+      
+                    </td>
+              
+                  </tr> */}
+
+
+
+
+                  
+                </tbody>
+              </Table>
+
+
+
+            </Col>
+          </Row>
   {this.state.selectedNotification !== null ?
                             <Row>
                                 <Col>  
                                 <UncontrolledDropdown>
-<DropdownToggle caret>
- Insert Auto-Word 
-</DropdownToggle>
-<DropdownMenu>  
+      <DropdownToggle caret>
+       Insert Auto-Word
+      </DropdownToggle>
+      <DropdownMenu>
 
-<DropdownItem title="firstName" onClick={() => {this.getSelection('<FIRSTNAME>')}}>
-         FirstName  </DropdownItem>
- 
-         <DropdownItem title="firstName" onClick={() => {this.getSelection('<LASTNAME>')}}>
-         LastName  </DropdownItem>
- 
-         <DropdownItem title="firstName" onClick={() => {this.getSelection('<FORMNAME>')}}>
-         FormName  </DropdownItem>
+      <DropdownItem title="firstName" onClick={() => {this.p.getSelection('<FIRSTNAME>')}}>
+               FirstName  </DropdownItem>
+       
+               <DropdownItem title="firstName" onClick={() => {this.getSelection('<LASTNAME>')}}>
+               LastName  </DropdownItem>
+       
+               <DropdownItem title="firstName" onClick={() => {this.getSelection('<FORMNAME>')}}>
+               FormName  </DropdownItem>
 
-            <DropdownItem title="firstName" onClick={() => {this.getSelection('<NEXTDESTINATION>')}}>
-         NextDestination  </DropdownItem>
+                  <DropdownItem title="firstName" onClick={() => {this.getSelection('<NEXTDESTINATION>')}}>
+               NextDestination  </DropdownItem>
 
-            <DropdownItem title="firstName" onClick={() => {this.getSelection('<NEXTPOSITION>')}}>
-         NextPosition </DropdownItem>
+                  <DropdownItem title="firstName" onClick={() => {this.getSelection('<NEXTPOSITION>')}}>
+               NextPosition </DropdownItem>
 
-            <DropdownItem title="firstName" onClick={() => {this.getSelection('<PLACEMENTDATE>')}}>
-         Placement Date </DropdownItem>
+                  <DropdownItem title="firstName" onClick={() => {this.getSelection('<PLACEMENTDATE>')}}>
+               Placement Date </DropdownItem>
 
-            <DropdownItem title="firstName" onClick={() => {this.getSelection('<LASTWORKDATE>')}}>
-         Last Work Date </DropdownItem>
+                  <DropdownItem title="firstName" onClick={() => {this.getSelection('<LASTWORKDATE>')}}>
+               Last Work Date </DropdownItem>
 
-           <DropdownItem title="firstName" onClick={() => {this.getSelection('<CENTRALID>')}}>
-         CentralID </DropdownItem>
+                 <DropdownItem title="firstName" onClick={() => {this.getSelection('<CENTRALID>')}}>
+               CentralID </DropdownItem>
 
-           <DropdownItem title="firstName" onClick={() => {this.getSelection('<NATIONALITY>')}}>
-         Nationality </DropdownItem>
+                 <DropdownItem title="firstName" onClick={() => {this.getSelection('<NATIONALITY>')}}>
+               Nationality </DropdownItem>
 
-          <DropdownItem title="firstName" onClick={() => {this.getSelection('<CURRENTPOSITION>')}}>
-         Current Position</DropdownItem>
+                <DropdownItem title="firstName" onClick={() => {this.getSelection('<CURRENTPOSITION>')}}>
+               Current Position</DropdownItem>
 
-           <DropdownItem title="firstName" onClick={() => {this.getSelection('<CURRENTDESTINATION>')}}>
-         Current Destination</DropdownItem>
+                 <DropdownItem title="firstName" onClick={() => {this.getSelection('<CURRENTDESTINATION>')}}>
+               Current Destination</DropdownItem>
 
-         {/* <DropdownItem title="undo" onClick={() => {this.props.undoSelection('<UNDO>')}}>
-         Undo Last Selection</DropdownItem> */}
+               {/* <DropdownItem title="undo" onClick={() => {this.props.undoSelection('<UNDO>')}}>
+               Undo Last Selection</DropdownItem> */}
+      
+      </DropdownMenu>
 
-</DropdownMenu> 
-
-</UncontrolledDropdown>
-                                
+    </UncontrolledDropdown>
   
                                 <Input
                         required
@@ -270,7 +241,7 @@ debugger;
                         name="resignComm"
                         id="resignComm"
                         onChange={this.handleChange}
-                        rows={20}
+                        rows={15}
                         aria-multiline="true"
                         value={this.state.localValue}
                         defaultValue ={this.state.selectedContent} 

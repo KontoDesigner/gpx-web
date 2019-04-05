@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import { Row, Col, Card, CardHeader, CardBody, CardFooter, Button } from 'reactstrap'
 import { LinkContainer } from 'react-router-bootstrap'
 import * as notificationEditActions from '../../../actions/notificationEdit/notificationEditActions'
+import * as notificationActions from '../../../actions/notification/notificationActions'
 import NotificationInfo from './notificationInfo'
 
 //import Buttons from '../buttons';
@@ -170,9 +171,13 @@ class NotificationEdit extends Component {   //Notification smart component
 
     save = async(model) => {
         // this.props.settingActions.save()
-      
+     
       
       try {
+
+
+
+        
           const res =  await RestClient.Post('mail/updateTemplate', model)
       
           window.close()
@@ -182,11 +187,19 @@ class NotificationEdit extends Component {   //Notification smart component
           } else {
               toastr.error('Error', `Could not update Notification document: ${res ? res.message : 'Error'}`)
           }
+
+
+     
+          
+
+          //await this.props.notificationActions.getNotification()
+         
       } catch (error) {
      
       
           throw error
       }
+
       
       }
 
@@ -314,6 +327,7 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
     return {
         //positionInfoActions: bindActionCreators(positionInfoActions, dispatch),
+        notificationActions: bindActionCreators(notificationActions, dispatch),
         notificationEditActions: bindActionCreators(notificationEditActions, dispatch)
     }
 }

@@ -23,7 +23,11 @@ export default function keywordsReducer(state = defaultState, action) {
                 [action.data.field]: action.data.val 
             },
         }
-
+        case types.GET_KEYWORDSLOOKUP_SUCCESS:
+        return {
+            ...state,
+            keywordslookup: action.data.keywordslookup
+        }
             case types.GET_KEYWORDS_SUCCESS:
             return {
                 ...state,

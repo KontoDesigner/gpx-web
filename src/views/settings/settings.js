@@ -179,7 +179,6 @@ edit2 = (e, keywords) => {
 save = async(model) => {
   // this.props.settingActions.save()
 
-
 try {
     const res =  await RestClient.Post('setting/updateSetting', model)
 
@@ -190,12 +189,16 @@ try {
     } else {
         toastr.error('Error', `Could not update Setting document: ${res ? res.message : 'Error'}`)
     }
+  
+
+
 } catch (error) {
    // dispatch(ajaxCallError(error))
 
     throw error
 }
 
+      
 }
 
 handleYearSelect = (val) => {

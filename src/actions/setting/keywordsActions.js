@@ -17,7 +17,12 @@ export function handleKeywords(keywords) {
         data: { keywords: keywords }
     }
 }
-
+export function getKeywordsLookupSuccess(keywordslookup) {
+    return {
+        type: types.GET_KEYWORDSLOOKUP_SUCCESS,
+        data: { keywordslookup: keywordslookup }
+    }
+}
 // export function handleKeywords(field, val) {
 //     debugger;
 //     return {
@@ -54,6 +59,25 @@ debugger;
 
     
 }
+export function getKeywordsLookup() {
+    return async function (dispatch) {
+        dispatch(beginAjaxCall())
+ 
+        try {
+           
+            const keywordslookup = await RestClient.Get(`setting/keywordslookup`)
+debugger;
 
+        
+            dispatch(getKeywordsLookupSuccess(keywordslookup))
+        } catch (error) {
+            dispatch(ajaxCallError(error))
+
+            throw error
+        }
+    }
+
+    
+}
 
 

@@ -4,7 +4,7 @@ import { Row, Form, FormGroup, Label, Input } from 'reactstrap'
 import TextInput from '../../../components/textInput'
 import Select from 'react-select'
 import { ButtonDropdown, UncontrolledDropdown,DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
-
+import AutoWords from '../../../components/autoWords'
 //import {Editor, EditorState} from 'draft-js';
 
 
@@ -18,6 +18,8 @@ const NotificationInfo = props => {
     Content: props.notification.content,
     Description: props.notification.description
   }
+
+
 
 
 
@@ -100,52 +102,52 @@ const NotificationInfo = props => {
           <Col sm="12" md="12" lg="12" xl="12" className="form-group">
             <Label for="content"> </Label>
             
-      <UncontrolledDropdown>
-      <DropdownToggle caret>
-       Insert Auto-Word
-      </DropdownToggle>
-      <DropdownMenu>
+            <UncontrolledDropdown>
+<DropdownToggle caret>
+ Insert Auto-Word 
+</DropdownToggle>
+<DropdownMenu>  
 
-      <DropdownItem title="firstName" onClick={() => {props.getSelection('<FIRSTNAME>')}}>
-               FirstName  </DropdownItem>
-       
-               <DropdownItem title="firstName" onClick={() => {props.getSelection('<LASTNAME>')}}>
-               LastName  </DropdownItem>
-       
-               <DropdownItem title="firstName" onClick={() => {props.getSelection('<FORMNAME>')}}>
-               FormName  </DropdownItem>
+<DropdownItem title="firstName" onClick={() => {props.getSelection('<FIRSTNAME>')}}>
+         FirstName  </DropdownItem>
+ 
+         <DropdownItem title="firstName" onClick={() => {props.getSelection('<LASTNAME>')}}>
+         LastName  </DropdownItem>
+ 
+         <DropdownItem title="firstName" onClick={() => {props.getSelection('<FORMNAME>')}}>
+         FormName  </DropdownItem>
 
-                  <DropdownItem title="firstName" onClick={() => {props.getSelection('<NEXTDESTINATION>')}}>
-               NextDestination  </DropdownItem>
+            <DropdownItem title="firstName" onClick={() => {props.getSelection('<NEXTDESTINATION>')}}>
+         NextDestination  </DropdownItem>
 
-                  <DropdownItem title="firstName" onClick={() => {props.getSelection('<NEXTPOSITION>')}}>
-               NextPosition </DropdownItem>
+            <DropdownItem title="firstName" onClick={() => {props.getSelection('<NEXTPOSITION>')}}>
+         NextPosition </DropdownItem>
 
-                  <DropdownItem title="firstName" onClick={() => {props.getSelection('<PLACEMENTDATE>')}}>
-               Placement Date </DropdownItem>
+            <DropdownItem title="firstName" onClick={() => {props.getSelection('<PLACEMENTDATE>')}}>
+         Placement Date </DropdownItem>
 
-                  <DropdownItem title="firstName" onClick={() => {props.getSelection('<LASTWORKDATE>')}}>
-               Last Work Date </DropdownItem>
+            <DropdownItem title="firstName" onClick={() => {props.getSelection('<LASTWORKDATE>')}}>
+         Last Work Date </DropdownItem>
 
-                 <DropdownItem title="firstName" onClick={() => {props.getSelection('<CENTRALID>')}}>
-               CentralID </DropdownItem>
+           <DropdownItem title="firstName" onClick={() => {props.getSelection('<CENTRALID>')}}>
+         CentralID </DropdownItem>
 
-                 <DropdownItem title="firstName" onClick={() => {props.getSelection('<NATIONALITY>')}}>
-               Nationality </DropdownItem>
+           <DropdownItem title="firstName" onClick={() => {props.getSelection('<NATIONALITY>')}}>
+         Nationality </DropdownItem>
 
-                <DropdownItem title="firstName" onClick={() => {props.getSelection('<CURRENTPOSITION>')}}>
-               Current Position</DropdownItem>
+          <DropdownItem title="firstName" onClick={() => {props.getSelection('<CURRENTPOSITION>')}}>
+         Current Position</DropdownItem>
 
-                 <DropdownItem title="firstName" onClick={() => {props.getSelection('<CURRENTDESTINATION>')}}>
-               Current Destination</DropdownItem>
+           <DropdownItem title="firstName" onClick={() => {props.getSelection('<CURRENTDESTINATION>')}}>
+         Current Destination</DropdownItem>
 
-               {/* <DropdownItem title="undo" onClick={() => {props.undoSelection('<UNDO>')}}>
-               Undo Last Selection</DropdownItem> */}
-      
-      </DropdownMenu>
+         {/* <DropdownItem title="undo" onClick={() => {this.props.undoSelection('<UNDO>')}}>
+         Undo Last Selection</DropdownItem> */}
 
-    </UncontrolledDropdown>
-    
+</DropdownMenu> 
+
+</UncontrolledDropdown>
+
             <Input
               required
               type="textarea"
