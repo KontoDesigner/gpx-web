@@ -54,3 +54,8 @@ label
 {
     background-color: #fbfbfb;
 }
+
+.Select.has-value.Select--single > .Select-control .Select-value .Select-value-label, .Select.has-value.is-pseudo-focused.Select--single > .Select-control .Select-value .Select-value-label {
+    font-size: 14px;
+    xcolor: #337ab7;
+}
