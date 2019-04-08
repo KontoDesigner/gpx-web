@@ -108,41 +108,77 @@ const NotificationInfo = props => {
 </DropdownToggle>
 <DropdownMenu>  
 
-<DropdownItem title="firstName" onClick={() => {props.getSelection('<FIRSTNAME>')}}>
+<DropdownItem title="firstName" onClick={() => {this.getSelection('<FIRSTNAME>')}}>
          FirstName  </DropdownItem>
  
-         <DropdownItem title="firstName" onClick={() => {props.getSelection('<LASTNAME>')}}>
+         <DropdownItem title="firstName" onClick={() => {this.getSelection('<LASTNAME>')}}>
          LastName  </DropdownItem>
  
-         <DropdownItem title="firstName" onClick={() => {props.getSelection('<FORMNAME>')}}>
-         FormName  </DropdownItem>
+        
 
-            <DropdownItem title="firstName" onClick={() => {props.getSelection('<NEXTDESTINATION>')}}>
-         NextDestination  </DropdownItem>
+            <DropdownItem title="firstName" onClick={() => {this.getSelection('<CENTRALID>')}}>
+         CentralID  </DropdownItem>
 
-            <DropdownItem title="firstName" onClick={() => {props.getSelection('<NEXTPOSITION>')}}>
-         NextPosition </DropdownItem>
+            <DropdownItem title="firstName" onClick={() => {this.getSelection('<MPLID1>')}}>
+         MPLID </DropdownItem>
 
-            <DropdownItem title="firstName" onClick={() => {props.getSelection('<PLACEMENTDATE>')}}>
-         Placement Date </DropdownItem>
+            <DropdownItem title="firstName" onClick={() => {this.getSelection('<DESTINATION1>')}}>
+        Destination 1 </DropdownItem>
 
-            <DropdownItem title="firstName" onClick={() => {props.getSelection('<LASTWORKDATE>')}}>
-         Last Work Date </DropdownItem>
+            <DropdownItem title="firstName" onClick={() => {this.getSelection('<RESORT1>')}}>
+         Resort 1 </DropdownItem>
 
-           <DropdownItem title="firstName" onClick={() => {props.getSelection('<CENTRALID>')}}>
-         CentralID </DropdownItem>
+           <DropdownItem title="firstName" onClick={() => {this.getSelection('<JOBTITLE1>')}}>
+         JobTitle 1 </DropdownItem>
 
-           <DropdownItem title="firstName" onClick={() => {props.getSelection('<NATIONALITY>')}}>
-         Nationality </DropdownItem>
+           <DropdownItem title="firstName" onClick={() => {this.getSelection('<ASSIGNSTARTDATE1>')}}>
+         AssignStartDate 1 </DropdownItem>
 
-          <DropdownItem title="firstName" onClick={() => {props.getSelection('<CURRENTPOSITION>')}}>
-         Current Position</DropdownItem>
+          <DropdownItem title="firstName" onClick={() => {this.getSelection('<ASSIGNENDDATE1>')}}>
+          AssignEndDate 1</DropdownItem>
 
-           <DropdownItem title="firstName" onClick={() => {props.getSelection('<CURRENTDESTINATION>')}}>
-         Current Destination</DropdownItem>
+          <DropdownItem title="firstName" onClick={() => {this.getSelection('<MPLID2>')}}>
+         MPLID 2</DropdownItem>
 
-         {/* <DropdownItem title="undo" onClick={() => {this.props.undoSelection('<UNDO>')}}>
-         Undo Last Selection</DropdownItem> */}
+            <DropdownItem title="firstName" onClick={() => {this.getSelection('<DESTINATION2>')}}>
+        Destination 2 </DropdownItem>
+
+            <DropdownItem title="firstName" onClick={() => {this.getSelection('<RESORT2>')}}>
+         Resort 2 </DropdownItem>
+
+           <DropdownItem title="firstName" onClick={() => {this.getSelection('<JOBTITLE2>')}}>
+         JobTitle 2 </DropdownItem>
+
+           <DropdownItem title="firstName" onClick={() => {this.getSelection('<ASSIGNSTARTDATE2>')}}>
+         AssignStartDate 2 </DropdownItem>
+
+          <DropdownItem title="firstName" onClick={() => {this.getSelection('<ASSIGNENDDATE2>')}}>
+          AssignEndDate 2</DropdownItem>
+          <DropdownItem title="firstName" onClick={() => {this.getSelection('<MPLID3>')}}>
+         MPLID 3 </DropdownItem>
+
+            <DropdownItem title="firstName" onClick={() => {this.getSelection('<DESTINATION3>')}}>
+        Destination 3 </DropdownItem>
+
+            <DropdownItem title="firstName" onClick={() => {this.getSelection('<RESORT3>')}}>
+         Resort 3 </DropdownItem>
+
+           <DropdownItem title="firstName" onClick={() => {this.getSelection('<JOBTITLE3>')}}>
+         JobTitle 3 </DropdownItem>
+
+           <DropdownItem title="firstName" onClick={() => {this.getSelection('<ASSIGNSTARTDATE3>')}}>
+         AssignStartDate 3 </DropdownItem>
+
+          <DropdownItem title="firstName" onClick={() => {this.getSelection('<ASSIGNENDDATE3>')}}>
+          AssignEndDate 3</DropdownItem>
+         <DropdownItem title="firstName" onClick={() => {this.getSelection('<LASTWORKINGDATE>')}}>
+         Last WorkingDate</DropdownItem>
+         <DropdownItem title="firstName" onClick={() => {this.getSelection('<LOAREASON>')}}> 
+         LOA Reason</DropdownItem>
+         <DropdownItem title="firstName" onClick={() => {this.getSelection('<LOASTARTDATE>')}}> 
+         LOA StartDate</DropdownItem>
+         <DropdownItem title="firstName" onClick={() => {this.getSelection('<LOAENDATE>')}}> 
+         LOA EndDate</DropdownItem>
 
 </DropdownMenu> 
 

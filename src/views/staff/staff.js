@@ -154,6 +154,7 @@ class Staff extends Component {
     }
 
     edit = staff => {
+debugger;
         const win = window.open(`/staff/${staff.staffID}`, '_blank')
 
         win.focus()
