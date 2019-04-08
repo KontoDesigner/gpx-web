@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Card, CardBody, CardHeader, Col,Button } from 'reactstrap'
+import { Card, CardBody, CardHeader, Col, Button } from 'reactstrap'
 import TextInput from '../../../components/textInput'
 import Select from 'react-select'
 import KeywordsTable from './keywordsTable'
@@ -7,21 +7,17 @@ import Action from '../action'
 import Filter from '../filter'
 import Datetime from 'react-datetime'
 
-
-class Keywords extends Component {   // This is the Keywords view smart component page
+class Keywords extends Component {
+    // This is the Keywords view smart component page
     toggleCollapse = () => {
         this.setState({ expanded: !this.state.expanded })
     }
 
- 
-
     render() {
-
-         
-       const maxTableHeight = 550
+        const maxTableHeight = 550
 
         const style = {
-            height: `${42 + this.props.keywords.length * 41}px`,
+            height: `${50 + this.props.keywords.length * 28}px`,
             maxHeight: `${maxTableHeight}px`
         }
 
@@ -29,36 +25,30 @@ class Keywords extends Component {   // This is the Keywords view smart componen
             <Card className="card-accordion card-country">
                 <CardHeader>Keywords</CardHeader>
                 <CardBody className="no-padding-bottom">
-                <div className="form-row">
-           {<Filter getData={this.props.getKeywords} />  }
+                    <div className="form-row">
+                        {<Filter getData={this.props.getKeywords} />}
 
-            { 
-            <Action 
-            selected={this.props.selectedKeywords} 
-            /> 
-        }
-          </div>
-      
-                {this.props.keywords.length > 0 && (
-                 
-                    <CardBody style={style} className="card-body-table">
-                        <KeywordsTable 
-                             index={this.props.index}
-                             keywords={this.props.keywords}
-                         handleSelectedKeywords={this.props.handleSelectedKeywords}
-                        selectedKeywords={this.props.selectedKeywords}
-                            edit2={this.props.edit2}
-                           
-                        //    modal={this.props.reResignStaffModal}
-                        //    toogleReResignStaffModal={this.props.toogleReResignStaffModal}
-                        //    templateName={this.props.templateName}
-                          selectedSetting={this.props.selectedSetting}
-                           handleSelectedSetting={this.props.handleSelectedSetting}
-                            maxTableHeight={maxTableHeight}
-                        />
-                    </CardBody>
-                )}
-                 </CardBody>
+                        {<Action selected={this.props.selectedKeywords} />}
+                    </div>
+
+                    {this.props.keywords.length > 0 && (
+                        <CardBody style={style} className="card-body-table">
+                            <KeywordsTable
+                                index={this.props.index}
+                                keywords={this.props.keywords}
+                                handleSelectedKeywords={this.props.handleSelectedKeywords}
+                                selectedKeywords={this.props.selectedKeywords}
+                                edit2={this.props.edit2}
+                                //    modal={this.props.reResignStaffModal}
+                                //    toogleReResignStaffModal={this.props.toogleReResignStaffModal}
+                                //    templateName={this.props.templateName}
+                                selectedSetting={this.props.selectedSetting}
+                                handleSelectedSetting={this.props.handleSelectedSetting}
+                                maxTableHeight={maxTableHeight}
+                            />
+                        </CardBody>
+                    )}
+                </CardBody>
             </Card>
         )
     }

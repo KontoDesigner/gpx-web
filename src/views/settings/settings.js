@@ -9,28 +9,25 @@ import * as keywordsActions from '../../actions/setting/keywordsActions'
 import * as filterActions from '../../actions/setting/filterActions'
 import { toastr } from 'react-redux-toastr'
 import RestClient from '../../infrastructure/restClient'
-import Notification from  './notification/cfgNotification'
+import Notification from './notification/cfgNotification'
 import Keywords from './keywords/cfgKeywords'
 import Setting from './setting/cfgSetting'
-import $ from 'jquery' 
+import $ from 'jquery'
 import RemoveTemplate from './notification/removeTemplate'
 //import Buttons from './buttons'
 
 class Settings extends Component {
-
-
     constructor(props) {
         super(props)
-   
+
         this.state = {
-            templateName:null,
+            templateName: null,
             activeTab: 'settings',
             resetData: this.props.settingActions.handleSetting,
             removeStaffModal: false,
-           
-       
+
             sourceMarketId: '',
-         
+
             options: [
                 {
                     id: 'No',
@@ -40,8 +37,7 @@ class Settings extends Component {
                 {
                     id: 'Yes',
                     name: 'Yes'
-                },
-         
+                }
             ],
 
             seasons: [
@@ -58,250 +54,179 @@ class Settings extends Component {
                 {
                     id: 'W1920',
                     name: 'W1920'
-                },
-         
+                }
             ],
-         
-         
-            
+
             unsavedEdit: false,
             setting: null
         }
-
-
     }
 
-    toogleRemoveStaffModal = (val) => {
-     debugger;
-                if(val) {
-                    this.setState({
-                        removeStaffModal: ! this.state.removeStaffModal,
-                        templateName: val
-                    })
-              
-                  }else 
-                  {
-              
-                    this.setState({
-                        removeStaffModal: ! this.state.removeStaffModal,
-                      selectedStaffID: this.props.selectedStaff
-                    }) 
-                    
-                 
-                  }
-        
-            }
-
-
-            
+    toogleRemoveStaffModal = val => {
+        debugger
+        if (val) {
+            this.setState({
+                removeStaffModal: !this.state.removeStaffModal,
+                templateName: val
+            })
+        } else {
+            this.setState({
+                removeStaffModal: !this.state.removeStaffModal,
+                selectedStaffID: this.props.selectedStaff
+            })
+        }
+    }
 
     removeTemplate = async model => {
-        debugger; 
-           let templateModel = {
-      
-            
-                TemplateName:this.state.templateName,
-                DateModified:model.dateModified
-         
-                
-            }
-          
-            const _this = this
-
-            this.props.settingActions.removeTemplate(templateModel).then(function () {
-  
-         
-                _this.props.notificationActions.getNotification() 
-
-            })
-            
-         
-
-
-          
-           // this.getActTabAndRequest(this.state.activeTab) 
+        debugger
+        let templateModel = {
+            TemplateName: this.state.templateName,
+            DateModified: model.dateModified
         }
- 
-    componentWillMount=async()=>  {
+
+        const _this = this
+
+        this.props.settingActions.removeTemplate(templateModel).then(function() {
+            _this.props.notificationActions.getNotification()
+        })
+
+        // this.getActTabAndRequest(this.state.activeTab)
+    }
+
+    componentWillMount = async () => {
         document.title = 'Settings'
         const _this = this
-  
-       // this.props.notificationActions.getNotification()
-        _this.props.settingActions.getSetting().then(function () {
-            
-         
-      
-            if (_this.props.setting != null) {  
-               
-              // document.title = `Settings   ${_this.props.setting.settingId } `
-               document.title = `Settings   `
-          }
-           else {
-     
-              document.title = 'General Settings not found - GPX'
-          }
-          
-          _this.setState({loaded: true, setting:_this.props.setting})
-        
-        })
 
-   }
+        // this.props.notificationActions.getNotification()
+        _this.props.settingActions.getSetting().then(function() {
+            if (_this.props.setting != null) {
+                // document.title = `Settings   ${_this.props.setting.settingId } `
+                document.title = `Settings   `
+            } else {
+                document.title = 'General Settings not found - GPX'
+            }
 
-  
-//on Demand Call start functions*************************
-handleUnsavedEdit = () => {
-    if (this.state.unsavedEdit === false) {
-        this.setState({
-            unsavedEdit: true
+            _this.setState({ loaded: true, setting: _this.props.setting })
         })
     }
-}
 
-edit = (e, notification) => {
-    debugger;
-    if (!$(e.target).is(":checkbox")) {
-        const win = window.open(`/notification/${notification.templateName}`, '_this');
-
-        win.focus();
+    //on Demand Call start functions*************************
+    handleUnsavedEdit = () => {
+        if (this.state.unsavedEdit === false) {
+            this.setState({
+                unsavedEdit: true
+            })
+        }
     }
-}
 
+    edit = notification => {
+        debugger
+        const win = window.open(`/notification/${notification.templateName}`, '_this')
 
-edit2 = (e, keywords) => {
-    debugger;
-    if (!$(e.target).is(":checkbox")) {
-        const win = window.open(`/keywords/${keywords.keywordName}`, '_this');
-
-        win.focus();
+        win.focus()
     }
-}
 
-save = async(model) => {
-  // this.props.settingActions.save()
+    edit2 = keywords => {
+        debugger
+        const win = window.open(`/keywords/${keywords.keywordName}`, '_this')
 
-try {
-    const res =  await RestClient.Post('setting/updateSetting', model)
-
- 
-
-    if (res) {
-        toastr.success('Success', `Setting Document is updated`)
-    } else {
-        toastr.error('Error', `Could not update Setting document: ${res ? res.message : 'Error'}`)
+        win.focus()
     }
-  
 
+    save = async model => {
+        // this.props.settingActions.save()
 
-} catch (error) {
-   // dispatch(ajaxCallError(error))
+        try {
+            const res = await RestClient.Post('setting/updateSetting', model)
 
-    throw error
-}
+            if (res) {
+                toastr.success('Success', `Setting Document is updated`)
+            } else {
+                toastr.error('Error', `Could not update Setting document: ${res ? res.message : 'Error'}`)
+            }
+        } catch (error) {
+            // dispatch(ajaxCallError(error))
 
-      
-}
+            throw error
+        }
+    }
 
-handleYearSelect = (val) => {
+    handleYearSelect = val => {
+        val = val != null || val != undefined ? val : ''
 
-    val = val != null || val != undefined ? val : ''  
+        this.props.settingActions.handleYearField(val)
+    }
 
-   this.props.settingActions.handleYearField(val)
+    handleApplyOpenSelect = val => {
+        let setting = Object.assign({}, this.state.setting) //creating copy of object
+        setting.applyOpen = val.name //updating value
+        this.setState({ setting })
+    }
 
-} 
+    handleManagerCommentSelect = val => {
+        let setting = Object.assign({}, this.state.setting) //creating copy of object
+        setting.managerComments = val.name //updating value
+        this.setState({ setting })
+    }
 
-  handleApplyOpenSelect = (val) => { 
-     
-    let setting = Object.assign({}, this.state.setting);    //creating copy of object
-    setting.applyOpen = val.name;                        //updating value
-    this.setState({setting});
+    handleStaffApproveSelect = val => {
+        let setting = Object.assign({}, this.state.setting) //creating copy of object
+        setting.staffApprove = val.name //updating value
+        this.setState({ setting })
+    }
 
-} 
+    handleArrivalDateSelect = val => {
+        let setting = Object.assign({}, this.state.setting) //creating copy of object
+        setting.arrivalDateUpdate = val.name //updating value
+        this.setState({ setting })
+    }
 
-handleManagerCommentSelect = (val) => { 
-     
-    let setting = Object.assign({}, this.state.setting);    //creating copy of object
-    setting.managerComments = val.name;                        //updating value
-    this.setState({setting});
+    handleCurSeasonSelect = val => {
+        let setting = Object.assign({}, this.state.setting) //creating copy of object
+        setting.curSeason = val.name //updating value
+        this.setState({ setting })
+    }
 
-} 
+    handleNextSeasonSelect = val => {
+        let setting = Object.assign({}, this.state.setting) //creating copy of object
+        setting.nextSeason = val.name //updating value
+        this.setState({ setting })
+    }
 
+    handleNextNextSeasonSelect = val => {
+        let setting = Object.assign({}, this.state.setting) //creating copy of object
+        setting.nextNextSeason = val.name //updating value
+        this.setState({ setting })
+    }
 
+    handleDepartureDateSelect = val => {
+        let setting = Object.assign({}, this.state.setting) //creating copy of object
+        setting.departureDateUpdate = val.name //updating value
+        this.setState({ setting })
+    }
 
-handleStaffApproveSelect = (val) => { 
-     
-      let setting = Object.assign({}, this.state.setting);    //creating copy of object
-    setting.staffApprove = val.name;                        //updating value
-    this.setState({setting});
+    handleCurSeasonOld = event => {
+        const field = event.target.name
+        const val = event.target.value
 
-}
+        this.props.settingActions.handleSettingField(field, val)
 
-handleArrivalDateSelect = (val) => { 
-     
-    let setting = Object.assign({}, this.state.setting);    //creating copy of object
-    setting.arrivalDateUpdate = val.name;                        //updating value
-    this.setState({setting});
+        //this.props.handleUnsavedEdit()
+    }
+    //on Demand Call functions end*************************
 
-}
-
-handleCurSeasonSelect = (val) => { 
-  
-    let setting = Object.assign({}, this.state.setting);    //creating copy of object
-    setting.curSeason = val.name;                        //updating value
-    this.setState({setting});
-   
-
-}
-
-handleNextSeasonSelect = (val) => { 
-   
-    let setting = Object.assign({}, this.state.setting);    //creating copy of object
-    setting.nextSeason = val.name;                        //updating value
-    this.setState({setting});
-
-}
-
-handleNextNextSeasonSelect = (val) => { 
-     
-    let setting = Object.assign({}, this.state.setting);    //creating copy of object
-    setting.nextNextSeason = val.name;                        //updating value
-    this.setState({setting});
-
-}
-
-
-
-
-handleDepartureDateSelect = (val) => { 
-     
-    let setting = Object.assign({}, this.state.setting);    //creating copy of object
-    setting.departureDateUpdate = val.name;                        //updating value
-    this.setState({setting});
-
-}
-
-handleCurSeasonOld = event => {
-    const field = event.target.name
-    const val = event.target.value
-
-    this.props.settingActions.handleSettingField(field, val)
-
-    //this.props.handleUnsavedEdit()
-} 
-//on Demand Call functions end*************************
-
-//toogle logic  this is also sent to underlying component Tabs  below  , Tabs is imported above
+    //toogle logic  this is also sent to underlying component Tabs  below  , Tabs is imported above
     toggle = (tab, getData, resetData) => {
-        debugger;
+        debugger
         if (this.state.activeTab !== tab) {
             //Reset current tab state
-            debugger;
-          // this.state.resetData([])
-            debugger;
+            debugger
+            // this.state.resetData([])
+            debugger
             //Reset filter
-           // this.props.filterActions.handleFilter()
+            // this.props.filterActions.handleFilter()
             //Get tab data
             getData()
-       
 
             this.setState({
                 activeTab: tab,
@@ -311,130 +236,96 @@ handleCurSeasonOld = event => {
     }
 
     render() {
-        
-        debugger;
+        debugger
         return (
             <Row>
-          
                 <Tabs
                     toggle={this.toggle}
                     activeTab={this.state.activeTab}
                     getSetting={this.props.settingActions.getSetting}
                     getKeywords={this.props.keywordsActions.getKeywords}
                     handleKeywords={this.props.keywordsActions.handleKeywords}
-                     handleSetting={this.props.settingActions.handleSetting}
+                    handleSetting={this.props.settingActions.handleSetting}
                     getNotification={this.props.notificationActions.getNotification}
                     handleNotification={this.props.notificationActions.handleNotification}
                     options={this.state.options}
-                    notification={this.props.notification }
+                    notification={this.props.notification}
                     keywords={this.props.keywords}
                 />
 
-                     <RemoveTemplate 
-       
-       
-       modal={this.state.removeStaffModal}
-          toggle={this.toogleRemoveStaffModal}
-          templateName={this.state.templateName}
-          
-          removeTemplate= {this.removeTemplate}
+                <RemoveTemplate
+                    modal={this.state.removeStaffModal}
+                    toggle={this.toogleRemoveStaffModal}
+                    templateName={this.state.templateName}
+                    removeTemplate={this.removeTemplate}
+                    //   selectedTitle={this.props.selectedTitle}
+                    //   candidate={this.props.candidate}
+                    selectedStaffID={this.state.selectedStaffID}
+                />
 
-        //   selectedTitle={this.props.selectedTitle}
-        //   candidate={this.props.candidate}
-        selectedStaffID={this.state.selectedStaffID}
-        />
-             
                 <Col sm="12" md="9" lg="9" xl="10">
                     <TabContent activeTab={this.state.activeTab}>
-                    {this.state.setting && //if clause  what for load ready
-                        <TabPane tabId="settings">
-                        
-                            <Setting
-                       
-                            setting={this.state.setting }
-                           
-                            handleApplyOpenSelect={this.handleApplyOpenSelect}
-
-                            handleManagerCommentSelect={this.handleManagerCommentSelect}
-                            
-                            handleStaffApproveSelect={this.handleStaffApproveSelect}
-                            
-                            handleArrivalDateSelect={this.handleArrivalDateSelect}
-                           
-                            handleDepartureDateSelect={this.handleDepartureDateSelect}
-                            
-                            handleCurSeasonSelect={this.handleCurSeasonSelect}
-                           
-                            handleNextSeasonSelect={this.handleNextSeasonSelect}
-                            
-                            handleNextNextSeasonSelect={this.handleNextNextSeasonSelect}
-                           
-                            getSetting={this.props.settingActions.getSetting}
- 
-                            options={this.state.options}
-                            seasons={this.state.seasons}
-                         
-                               save={this.save}
-                               unsavedEdit={this.state.unsavedEdit}
-                            />
-                        </TabPane>
-                        } 
+                        {this.state.setting && ( //if clause  what for load ready
+                            <TabPane tabId="settings">
+                                <Setting
+                                    setting={this.state.setting}
+                                    handleApplyOpenSelect={this.handleApplyOpenSelect}
+                                    handleManagerCommentSelect={this.handleManagerCommentSelect}
+                                    handleStaffApproveSelect={this.handleStaffApproveSelect}
+                                    handleArrivalDateSelect={this.handleArrivalDateSelect}
+                                    handleDepartureDateSelect={this.handleDepartureDateSelect}
+                                    handleCurSeasonSelect={this.handleCurSeasonSelect}
+                                    handleNextSeasonSelect={this.handleNextSeasonSelect}
+                                    handleNextNextSeasonSelect={this.handleNextNextSeasonSelect}
+                                    getSetting={this.props.settingActions.getSetting}
+                                    options={this.state.options}
+                                    seasons={this.state.seasons}
+                                    save={this.save}
+                                    unsavedEdit={this.state.unsavedEdit}
+                                />
+                            </TabPane>
+                        )}
                         <TabPane tabId="notification">
                             <Notification
-                            
-                              notification={this.props.notification }
-                              selectedSetting={this.props.selectedSetting}
-                           //  getNotification={this.props.notificationActions.getNotification}
-                             handleSelectedSetting={this.props.handleSelectedSetting}
-                             handleSelectedNotification={this.props.filterActions.handleSelectedNotification}
-                        
-                            
-                             toogleRemoveStaffModal={this.toogleRemoveStaffModal}
-                         
-                            save={this.save}
-                            edit={this.edit}
-                            
+                                notification={this.props.notification}
+                                selectedSetting={this.props.selectedSetting}
+                                //  getNotification={this.props.notificationActions.getNotification}
+                                handleSelectedSetting={this.props.handleSelectedSetting}
+                                handleSelectedNotification={this.props.filterActions.handleSelectedNotification}
+                                toogleRemoveStaffModal={this.toogleRemoveStaffModal}
+                                save={this.save}
+                                edit={this.edit}
                             />
-                               </TabPane>
+                        </TabPane>
                         <TabPane tabId="keywords">
                             <Keywords
-                            
-                              keywords={this.props.keywords }
-                              selectedSetting={this.props.selectedSetting}
-                             //getKeywords={this.props.keywordsActions.getKeywords}
-                             handleSelectedSetting={this.props.handleSelectedSetting}
-                             handleSelectedKeywords={this.props.filterActions.handleSelectedKeywords}
-                        
-                            
-                            // toogleReResignStaffModal={this.toogleReResignStaffModal}
-                         
-                   
-                            edit2={this.edit2}
-                            
-                            />
-                       
+                                keywords={this.props.keywords}
+                                selectedSetting={this.props.selectedSetting}
+                                //getKeywords={this.props.keywordsActions.getKeywords}
+                                handleSelectedSetting={this.props.handleSelectedSetting}
+                                handleSelectedKeywords={this.props.filterActions.handleSelectedKeywords}
+                                // toogleReResignStaffModal={this.toogleReResignStaffModal}
 
+                                edit2={this.edit2}
+                            />
                         </TabPane>
-                   
                     </TabContent>
                 </Col>
-
             </Row>
         )
     }
 }
 
 function mapStateToProps(state) {
-
     return {
         setting: state.setting.setting.setting,
-    notification: state.notification.notification,
-    selectedNotification: state.notification.notification.selectedNotification,
-    selectedKeywords: state.setting.keywords.keywords.selectedKeywords,
-         selectedApplyOpen:state.setting.setting.selectedApplyOpen,
-      keywords: state.setting.keywords.keywords,
-       //  selectedYear:state.report.report.selectedYear,
-         //create:state.report.report.create
+        notification: state.notification.notification,
+        selectedNotification: state.notification.notification.selectedNotification,
+        selectedKeywords: state.setting.keywords.keywords.selectedKeywords,
+        selectedApplyOpen: state.setting.setting.selectedApplyOpen,
+        keywords: state.setting.keywords.keywords
+        //  selectedYear:state.report.report.selectedYear,
+        //create:state.report.report.create
     }
 }
 
@@ -443,9 +334,12 @@ function mapDispatchToProps(dispatch) {
         //positionInfoActions: bindActionCreators(positionInfoActions, dispatch),
         settingActions: bindActionCreators(settingActions, dispatch),
         keywordsActions: bindActionCreators(keywordsActions, dispatch),
-       notificationActions: bindActionCreators(notificationActions, dispatch),
+        notificationActions: bindActionCreators(notificationActions, dispatch),
         filterActions: bindActionCreators(filterActions, dispatch)
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Settings)
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(Settings)
