@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import AutoWords from '../../components/autoWords'
+import TextInput from '../../components/textInput'
 import {
   Button,
   Modal,
@@ -10,6 +11,7 @@ import {
   Row,
   Col,
   Table,
+
   //Label,
   Input,ButtonDropdown, UncontrolledDropdown,DropdownToggle, DropdownMenu, DropdownItem 
 
@@ -25,6 +27,7 @@ class SendMailUsingTemplate extends Component {
         this.state = {
              dateModified: null,
              selectedNotification: null,
+             subject: null,
              selectedEmail: null,
              selectedContent: null,
              localValue:null,
@@ -119,7 +122,9 @@ const senderEmailObjArr = senderEmailArr.map(s => ({
     })
 }
     notificationChange = notification => {
+      debugger;
         const selectedNotification = notification.templateName ;
+        const subject = notification.subject ;
         const selectedContent= notification  != null ? notification.content: null
         //const selectedContent= notification  != null ? notification.content.replace(/\r?\n/g, '<br />'): null
 
@@ -131,7 +136,8 @@ const senderEmailObjArr = senderEmailArr.map(s => ({
       
         this.setState({
           selectedNotification,
-          selectedContent
+          selectedContent,
+          subject
             //dateModified:newdatemodified
        
         })
@@ -195,7 +201,9 @@ debugger;
                                     />
                                 </div>
                             </Col>
+                 
 
+                    </Row><Row>
                             <Col sm="12" md="6" lg="6" xl="6">
                                 <div className="form-group form-group-select">
                                 <label htmlFor="destination">Select Template</label>
@@ -212,7 +220,11 @@ debugger;
                                     />
                                 </div>
                             </Col>
+                            <Col sm="12" md="6" lg="6" xl="6" className="form-group">
+                        <TextInput name="subject" label="Subject" value={this.state.subject?this.state.subject:null}  />
+                    </Col>
                         </Row>
+                        "\r\n                        select \r\n                            s.Id,\r\n                            s.StaffID,\r\nISNULL(NULLIF(s.FirstName,''),'No Name defined') FirstName,\r\n  ISNULL(NULLIF(s.LastName,''),'No Name defined') LastName,\r\n  ISNULL(NULLIF(s.FirstName,'') + ' ' +  NULLIF(s.LastName,''),'No Name defined') FirstNameLastName,\r\n                            ISNULL(p.HeadOf,'Unassigned') HeadOf,\r\n                            ISNULL(p.Destination,'No destination') Destination,\r\n                            ISNULL(p.JobTitle, 'No title assigned') JobTitle,\r\n                            ISNULL(NULLIF(s.Nat,''),'Stateless') Nat,\r\n                            pa.MPLID,\r\n                            pa.StartDate,\r\n                            p.ConceptHotel,\r\n                         \r\n                            p.MPLSourceMarket,\r\n                            p.Season,\r\n                            s.SourceMarket,\r\n        ISNULL(NULLIF(s.Email,''),'No Email') Email,\r\n                            s.PositionType,\r\n                            s.DateJoined,\r\n                            s.Driver,\r\n                            s.DrivingYear,\r\n                            s.DateModified,\r\n                            s.DateCreated,\r\n                            s.Status\r\n                    from Staff s\r\n                    left join PositionAssign pa on pa.StaffID = s.StaffID\r\n                    left join Position p on p.MPLID = pa.MPLID Where  (s.SourceMarket !='ALL' ) AND (p.JobFamily !='ALL' or @jobfamily = 'ALL') AND (s.PositionType = 'SENSIMAR Experience & Activity Host' or @positiontype = 'ALL') And s.Status = 'Active' Order By FirstName"
   {this.state.selectedNotification !== null ?
                             <Row>
                                 <Col>  

@@ -394,7 +394,8 @@ class Planning extends Component {
             MPLID: model.mplid,
             DateModified: model.dateModified
         }
-        debugger
+   
+        
         this.props.planningActions.createRemovePositionSelect(positionmodel)
         this.getActTabAndRequest(this.state.activeTab)
     }
@@ -545,7 +546,7 @@ class Planning extends Component {
     }
 
     toggle = (tab, getData, resetData) => {
-        debugger
+        debugger;
         if (this.state.activeTab !== tab) {
             //Reset current tab state
             this.state.resetData([])

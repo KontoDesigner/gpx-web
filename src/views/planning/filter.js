@@ -35,10 +35,10 @@ class Filter extends Component {
         this.setState({ text: nextProps.filter.text })
     }
 
-    getDataDebouncer = (sourcemarket, jobfamily, criteria) => {
+    getDataDebouncer = (sourcemarket, jobfamily, positiontype, criteria) => {
         this.props.filterActions.handleText(this.state.text)
 
-        this.props.getData(sourcemarket, jobfamily, criteria)
+        this.props.getData(sourcemarket, jobfamily, positiontype,criteria)
     }
 
     updateTextState = event => {
@@ -47,7 +47,7 @@ class Filter extends Component {
         this.setState({
             text: value
         })
-
+debugger;
         this.getData(this.props.filter.sourceMarket, this.props.filter.selectedJobFamily,this.props.filter.selectedPositionType, value)
     }
                     

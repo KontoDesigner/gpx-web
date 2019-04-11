@@ -29,6 +29,7 @@ this.dates=[]
   }
 
   removePosition = val => {
+  
     this.toggle()
 debugger;
     var currentdate = new Date()
@@ -103,7 +104,7 @@ debugger;
           </ModalHeader>
           <ModalBody>
             { <Alert color="danger">
-            Are you sure you want to remove selected position(s)? 
+            Are you sure you want to remove selected position(s)?<p></p>
                         If the position(s) has assignments connected to it. Remove routine will fail.
                     </Alert> }
 

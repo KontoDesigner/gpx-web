@@ -103,7 +103,7 @@ debugger;
           </ModalHeader>
           <ModalBody>
             { <Alert color="danger">
-                        Are you sure you want to remove position? 
+                        Are you sure you want to remove position? <p></p>
                         If the position has assignments connected to it. Remove routine will fail.
                         
                     </Alert> }

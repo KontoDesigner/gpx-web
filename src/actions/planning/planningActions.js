@@ -154,11 +154,11 @@ debugger;
 
             dispatch(endAjaxCall())
 
-            // if (res) {
+            //  if (res) {
             //     toastr.success('Success', `Selected position was deleted`)
-            // } else {
+            //  } else {
             //     toastr.error('Error', `Selected position was not deleted: ${res ? res.message : 'Error'}`)
-            // }
+            //  }
         } catch (error) {
             dispatch(ajaxCallError(error))
 

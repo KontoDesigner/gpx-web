@@ -273,6 +273,7 @@ debugger;
                 await this.props.destinationActions.getDestination(
                     this.props.filter.sourceMarket,
                     this.props.filter.selectedJobFamily,
+                    this.props.filter.selectedPositionType,
                     this.props.filter.text
                 )
                 this.props.filterActions.handleSelectedStaff([])
@@ -285,6 +286,7 @@ debugger;
                 await this.props.jobTitleActions.getJobTitle(
                     this.props.filter.sourceMarket,
                     this.props.filter.selectedJobFamily,
+                    this.props.filter.selectedPositionType,
                     this.props.filter.text
                 )
                 this.props.filterActions.handleSelectedStaff([])
@@ -293,6 +295,7 @@ debugger;
                 await this.props.recentlyInactiveActions.getRecentlyInactive(
                     this.props.filter.sourceMarket,
                     this.props.filter.selectedJobFamily,
+                    this.props.filter.selectedPositionType,
                     this.props.filter.text
                 )
                 this.props.filterActions.handleSelectedStaff([])
@@ -409,7 +412,7 @@ debugger;
     }
 
     toggle = (tab, getData, resetData) => {
-        debugger
+        debugger;
         if (this.state.activeTab !== tab) {
             //Reset current tab state
             this.state.resetData([])
