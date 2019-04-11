@@ -9,13 +9,13 @@ export function getNameSuccess(name) {
     }
 }
 
-export function getName(sourcemarket = 'ALL', jobfamily = 'ALL', criteria = null) {
+export function getName(sourcemarket = 'ALL', jobfamily = 'ALL',positiontype='ALL', criteria = null) {
     return async function(dispatch) {
         dispatch(beginAjaxCall())
 
         try {
             debugger
-            const name = await RestClient.Get(`staff/name/${sourcemarket}/${jobfamily}/${criteria !== null ? `${criteria}` : ''}`)
+            const name = await RestClient.Get(`staff/name/${sourcemarket}/${jobfamily}/${positiontype}/${criteria !== null ? `${criteria}` : ''}`)
 
             dispatch(getNameSuccess(name))
         } catch (error) {

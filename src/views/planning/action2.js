@@ -14,7 +14,8 @@ const Action = (props) => {
                 Assign Staff To Position  </DropdownItem> */}
          
              
-
+         <DropdownItem title="dsds" onClick={() => {props.toogleRemovePositionSelectModal()}}>
+                Remove Position  </DropdownItem>
 
  
                 </DropdownMenu>

@@ -10,6 +10,8 @@ import 'ag-grid-community/dist/styles/ag-theme-balham.css'
 import './styles/site.css'
 import { withRouter } from 'react-router-dom'
 import * as geographyActions from './actions/geographyActions'
+import * as planningActions from './actions/planning/planningActions'
+import * as staffActions from './actions/staff/staffActions'
 import * as settingActions from './actions/setting/settingActions'
 import * as keywordsActions from './actions/setting/keywordsActions'
 import * as footerActions from './actions/footerActions'
@@ -38,7 +40,8 @@ class App extends Component {
             this.props.settingActions.getJobFamilies(),
             this.props.settingActions.getAllJobTitle(),
             this.props.keywordsActions.getKeywordsLookup(),
-            
+            this.props.planningActions.getMPLPositionTypes(),
+            this.props.staffActions.getPositionTypes(),
             this.props.geographyActions.getSeasons(),
             this.props.footerActions.getVersion(),
             this.props.footerActions.getSupportEmail(),
@@ -107,6 +110,8 @@ function mapDispatchToProps(dispatch) {
         geographyActions: bindActionCreators(geographyActions, dispatch),
         settingActions: bindActionCreators(settingActions, dispatch),
         keywordsActions: bindActionCreators(keywordsActions, dispatch),
+        planningActions: bindActionCreators(planningActions, dispatch),
+        staffActions: bindActionCreators(staffActions, dispatch),
         footerActions: bindActionCreators(footerActions, dispatch),
         userActions: bindActionCreators(userActions, dispatch)
     }

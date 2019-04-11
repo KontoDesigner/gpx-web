@@ -9,13 +9,13 @@ export function getVacantRolesSuccess(vacantRoles) {
     }
 }
 
-export function getVacantRoles(sourcemarket = 'ALL', jobfamily = 'ALL', criteria = null) {
+export function getVacantRoles(sourcemarket = 'ALL', jobfamily = 'ALL', positiontype = 'ALL',criteria = null) {
     return async function(dispatch) {
         dispatch(beginAjaxCall())
 
         try {
             const vacantRoles = await RestClient.Get(
-                `positionassign/GetAllUnAssignedPositions/${sourcemarket}/${jobfamily}/${criteria !== null ? `${criteria}` : ''}`
+                `positionassign/GetAllUnAssignedPositions/${sourcemarket}/${jobfamily}/${positiontype}/${criteria !== null ? `${criteria}` : ''}`
             )
 
             dispatch(getVacantRolesSuccess(vacantRoles))

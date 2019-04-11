@@ -7,6 +7,8 @@ export function handleText(text) {
   }
 }
 
+
+
 export function handleSourceMarket(sourceMarket) {
   return {
     type: types.HANDLE_SOURCEMARKET,
@@ -15,13 +17,21 @@ export function handleSourceMarket(sourceMarket) {
 }
 
 export function handleSelectedJobFamily(selectedJobFamily) {
-  
+ 
   return {
+    
     type: types.HANDLE_SELECTEDJOBFAMILY,
     data: { selectedJobFamily: selectedJobFamily }
   }
 }
-
+export function handleSelectedPositionTypes(selectedPositionType) {
+ 
+  return {
+    
+    type: types.HANDLE_SELECTEDPOSITIONTYPES,
+    data: { selectedPositionType: selectedPositionType }
+  }
+}
 export function handleSelectedTitle(selectedTitle) {
   return {
     type: types.HANDLE_SELECTEDTITLE,

@@ -56,6 +56,8 @@ export function handleSelectedSetting(selectedSetting) {
       data: { jobTitle: jobTitle }
     }
   }
+
+
   
 //   export function getJobFamily() {
 //     return async function (dispatch) {
@@ -146,7 +148,6 @@ export function getJobFamiliesSuccess(jobFamilies) {
         data: { jobFamilies: jobFamilies }
     }
 }
-
 
 
 export function getJobFamilies() {

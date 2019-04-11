@@ -4,6 +4,7 @@ var defaultState = {
   text: '',
   sourceMarket: null,
   selectedJobFamily: null,
+  selectedPositionType: null,
   selectedTitle: []
 }
 
@@ -23,9 +24,14 @@ export default function filterReducer(state = defaultState, action) {
         sourceMarket: action.data.sourceMarket
       }
       case types.HANDLE_SELECTEDJOBFAMILY:
+      return {
+          ...state,
+          selectedJobFamily: action.data.selectedJobFamily
+      }
+      case types.HANDLE_SELECTEDPOSITIONTYPES:
       return { 
         ...state,
-        selectedJobFamily: action.data.selectedJobFamily
+        selectedPositionType: action.data.selectedPositionType
       }
     case types.HANDLE_TEXT:
       return {

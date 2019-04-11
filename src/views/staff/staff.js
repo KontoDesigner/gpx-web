@@ -331,7 +331,7 @@ debugger;
                 selectedStaffID: this.props.selectedStaff
             })
         }
-
+ 
         // this.setState({
         //     absentStaffModal: !this.state.absentStaffModal
         // })
@@ -420,7 +420,7 @@ debugger;
             //Get tab data
             // getData()
             debugger
-            getData(this.props.filter.sourceMarket, this.props.filter.selectedJobFamily, this.props.filter.text)
+            getData(this.props.filter.sourceMarket, this.props.filter.selectedJobFamily,this.props.filter.selectedPositionType, this.props.filter.text)
 
             this.setState({
                 activeTab: tab,

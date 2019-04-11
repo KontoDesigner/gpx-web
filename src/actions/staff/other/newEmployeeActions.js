@@ -9,12 +9,12 @@ export function getNewEmployeeSuccess(newEmployee) {
     }
 }
 
-export function getNewEmployee(sourcemarket = 'ALL', jobfamily = 'ALL', criteria = null) {
+export function getNewEmployee(sourcemarket = 'ALL', jobfamily = 'ALL', positiontype='ALL',criteria = null) {
     return async function(dispatch) {
         dispatch(beginAjaxCall())
 
         try {
-            const newEmployee = await RestClient.Get(`staff/newemployee/${sourcemarket}/${jobfamily}${criteria !== null ? `/${criteria}` : ''}`)
+            const newEmployee = await RestClient.Get(`staff/newemployee/${sourcemarket}/${jobfamily}/${positiontype}/${criteria !== null ? `/${criteria}` : ''}`)
 
             dispatch(getNewEmployeeSuccess(newEmployee))
         } catch (error) {

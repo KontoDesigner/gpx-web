@@ -8,7 +8,7 @@ var defaultState = {
     followingSeason: []
 }
 
-export default function filterReducer(state = defaultState, action) {
+export default function geographyReducer(state = defaultState, action) {
     switch (action.type) {
         case types.GET_SOURCEMARKETS_SUCCESS:
             return {

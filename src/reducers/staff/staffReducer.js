@@ -15,6 +15,12 @@ export default function staffReducer(state = defaultState, action) {
 
         }
 
+        case types.GET_POSITIONTYPES_SUCCESS:
+        return {
+            ...state,
+            positiontypes: action.data.positiontypes
+        }
+
         default:
         return state
     }

@@ -9,6 +9,30 @@ export function handleStaffCandidate(candidate) {
     }
 }
 
+export function getMPLPositionTypes() {
+    return async function (dispatch) {
+        dispatch(beginAjaxCall())
+
+        try {
+            const mplpositiontypes = await RestClient.Get(`position/mplpositiontypes`)
+debugger;
+            dispatch(getMPLPositionTypesSuccess(mplpositiontypes))
+        } catch (error) {
+            dispatch(ajaxCallError(error))
+
+            throw error
+        }
+    } 
+
+    
+}
+export function getMPLPositionTypesSuccess(mplpositiontypes) {
+    return {
+      type: types.GET_MPLPOSITIONTYPES_SUCCESS,
+      data: { mplpositiontypes: mplpositiontypes }
+    }
+  }
+
 export function getStaffCandidateSuccess(candidate) {
     return {
         type: types.GET_STAFFCANDIDATE_SUCCESS,
@@ -96,7 +120,7 @@ export function createDecline(model) {
 export function createRemovePosition(model) {
     return async function(dispatch) {
         dispatch(beginAjaxCall())
-
+debugger;
         try {
             // const res = await RestClient.Post(`staff/removestaff/${model.StaffID}`)
             const res = await RestClient.Post('position/removeposition', model.MPLID)
@@ -110,6 +134,31 @@ export function createRemovePosition(model) {
             } else {
                 toastr.error('Error', `Selected position was not deleted: ${res ? res.message : 'Error'}`)
             }
+        } catch (error) {
+            dispatch(ajaxCallError(error))
+
+            throw error
+        }
+    }
+}
+
+export function createRemovePositionSelect(model) {
+    return async function(dispatch) {
+        dispatch(beginAjaxCall())
+debugger;
+        try {
+            // const res = await RestClient.Post(`staff/removestaff/${model.StaffID}`)
+            const res = await RestClient.Post('position/removepositionselect', model.MPLID)
+            debugger;
+            //const res = await RestClient.Post('abscense/abscenseuser', model)
+
+            dispatch(endAjaxCall())
+
+            // if (res) {
+            //     toastr.success('Success', `Selected position was deleted`)
+            // } else {
+            //     toastr.error('Error', `Selected position was not deleted: ${res ? res.message : 'Error'}`)
+            // }
         } catch (error) {
             dispatch(ajaxCallError(error))
 

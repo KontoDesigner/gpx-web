@@ -9,6 +9,7 @@ import MarkPositionActing from './markPositionActing'
 import MarkPositionDecline from './markPositionDecline'
 import ResetPositionAccept from './resetPositionAccept'
 import RemovePosition from './removePosition'
+import RemovePositionSelect from './removePositionSelect'
 import UnmarkPositionActing from './unmarkPositionActing'
 import AllRole from './planning/allRole/allRole'
 import NewPosition from './planning/newPosition/newPosition'
@@ -46,6 +47,7 @@ class Planning extends Component {
             markPositionActingModal: false,
             markPositionDeclineModal: false,
             resetPositionAcceptModal: false,
+            removePositionSelectModal: false,
             removePositionModal: false,
             unmarkPositionActingModal: false,
             assignPositionModal: false,
@@ -148,6 +150,22 @@ class Planning extends Component {
         } else {
             this.setState({
                 markPositionDeclineModal: !this.state.markPositionDeclineModal,
+                selectedMplID: this.props.selectedTitle
+            })
+        }
+    }
+
+    toogleRemovePositionSelectModal = val => {
+        if (val) {
+            this.setState({
+                removePositionSelectModal: !this.state.removePositionSelectModal,
+                // selectedMplID: val[]
+                selectedMplID: val
+            })
+            debugger
+        } else {
+            this.setState({
+                removePositionSelectModal: !this.state.removePositionModal,
                 selectedMplID: this.props.selectedTitle
             })
         }
@@ -370,6 +388,17 @@ class Planning extends Component {
         this.getActTabAndRequest(this.state.activeTab)
     }
 
+    createRemovePositionSelect = model => {
+        debugger
+        let positionmodel = {
+            MPLID: model.mplid,
+            DateModified: model.dateModified
+        }
+        debugger
+        this.props.planningActions.createRemovePositionSelect(positionmodel)
+        this.getActTabAndRequest(this.state.activeTab)
+    }
+
     createDecline = model => {
         debugger
         let declineModel = {
@@ -433,6 +462,7 @@ class Planning extends Component {
                 await this.props.allRolesActions.getAllRoles(
                     this.props.filter.sourceMarket,
                     this.props.filter.selectedJobFamily,
+                    this.props.filter.selectedPositionType,
                     this.props.filter.text
                 )
 
@@ -443,7 +473,8 @@ class Planning extends Component {
 
                 await this.props.placedRolesActions.getPlacedRoles(
                     this.props.filter.sourceMarket,
-                    this.props.filter.selectedJobTitle,
+                    this.props.filter.selectedJobFamily,
+                    this.props.filter.selectedPositionType,
                     this.props.filter.text
                 )
 
@@ -452,7 +483,8 @@ class Planning extends Component {
             case 'vacantRoles':
                 await this.props.vacantRolesActions.getVacantRoles(
                     this.props.filter.sourceMarket,
-                    this.props.filter.selectedJobTitle,
+                    this.props.filter.selectedJobFamily,
+                    this.props.filter.selectedPositionType,
                     this.props.filter.text
                 )
                 this.props.filterActions.handleSelectedTitle([])
@@ -461,7 +493,8 @@ class Planning extends Component {
             case 'replyYesNoRoles':
                 await this.props.replyYesNoRolesActions.getreplyYesNoRoles(
                     this.props.filter.sourceMarket,
-                    this.props.filter.selectedJobTitle,
+                    this.props.filter.selectedJobFamily,
+                    this.props.filter.selectedPositionType,
                     this.props.filter.text
                 )
                 this.props.filterActions.handleSelectedTitle([])
@@ -505,7 +538,7 @@ class Planning extends Component {
     componentDidMount() {
         this.props.filterActions.handleFilter() //when page loads
         debugger
-        this.props.allRolesActions.getAllRoles(this.props.filter.sourceMarket, this.props.filter.selectedJobFamily, this.props.filter.text)
+        this.props.allRolesActions.getAllRoles(this.props.filter.sourceMarket, this.props.filter.selectedJobFamily, this.props.filter.selectedPositionType,this.props.filter.text)
 
         this.props.planningActions.getStaffCandidate()
         //this.getAvailablePositionNew()
@@ -519,9 +552,9 @@ class Planning extends Component {
 
             //Reset filter
             //this.props.filterActions.handleFilter()
-
+debugger;
             //Get tab data
-            getData(this.props.filter.sourceMarket, this.props.filter.selectedJobFamily, this.props.filter.text)
+            getData(this.props.filter.sourceMarket, this.props.filter.selectedJobFamily,this.props.filter.selectedPositionType, this.props.filter.text)
 
             this.setState({
                 activeTab: tab,
@@ -613,6 +646,15 @@ class Planning extends Component {
                     candidate={this.props.candidate}
                     selectedMplID={this.state.selectedMplID}
                 />
+
+                   <RemovePositionSelect
+                    modal={this.state.removePositionSelectModal}
+                    toggle={this.toogleRemovePositionSelectModal}
+                    createRemovePositionSelect={this.createRemovePositionSelect}
+                    selectedTitle={this.props.selectedTitle}
+                    candidate={this.props.candidate}
+                    selectedMplID={this.state.selectedMplID}
+                />
                 <ResetPositionAccept
                     modal={this.state.resetPositionAcceptModal}
                     toggle={this.toogleResetPositionAcceptModal}
@@ -647,6 +689,7 @@ class Planning extends Component {
                                 toogleResetPositionAcceptModal={this.toogleResetPositionAcceptModal}
                                 toogleMarkPositionDeclineModal={this.toogleMarkPositionDeclineModal}
                                 toogleRemovePositionModal={this.toogleRemovePositionModal}
+                                toogleRemovePositionSelectModal={this.toogleRemovePositionSelectModal}
                                 toogleMarkPositionActingModal={this.toogleMarkPositionActingModal}
                                 toogleMarkPositionAcceptModal={this.toogleMarkPositionAcceptModal}
                                 toogleAssignPositionModal={this.toogleAssignPositionModal}
@@ -732,7 +775,7 @@ function mapStateToProps(state) {
         vacantRoles: state.planning.planning.vacantRoles,
         replyYesNoRoles: state.planning.planning.replyYesNoRoles,
         selectedTitle: state.planning.filter.selectedTitle,
-        candidate: state.planning.candidate,
+        candidate: state.planning.candidate.candidate,
         filter: state.planning.filter
     }
 }

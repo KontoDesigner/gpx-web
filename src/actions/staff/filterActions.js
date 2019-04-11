@@ -23,6 +23,15 @@ export function handleSelectedJobFamily(selectedJobFamily) {
   }
 }
 
+export function handleSelectedPositionTypes(selectedPositionType) {
+ 
+  return {
+    
+    type: types.HANDLE_SELECTEDPOSITIONTYPES,
+    data: { selectedPositionType: selectedPositionType }
+  }
+}
+
 export function handleSelectedStaff(selectedStaff) {
   return {
     type: types.HANDLE_SELECTEDSTAFF,

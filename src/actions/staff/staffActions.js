@@ -49,6 +49,31 @@ debugger;
     } 
 }
 
+export function getPositionTypes() {
+    return async function (dispatch) {
+        dispatch(beginAjaxCall())
+
+        try {
+            const positiontypes = await RestClient.Get(`staff/positiontypes`)
+debugger;
+            dispatch(getPositionTypesSuccess(positiontypes))
+        } catch (error) {
+            dispatch(ajaxCallError(error))
+
+            throw error
+        }
+    } 
+
+    
+}
+export function getPositionTypesSuccess(positiontypes) {
+    return {
+      type: types.GET_POSITIONTYPES_SUCCESS,
+      data: { positiontypes: positiontypes }
+    }
+  }
+
+
 
 export function createResign(model) {
     return async function(dispatch) {

@@ -10,12 +10,12 @@ export function getJobTitleSuccess(jobTitle) {
 }
 
 //Obsolete  this call is already done in the setting actions
-export function getJobTitle(sourcemarket = 'ALL', jobfamily = 'ALL', criteria = null) {
+export function getJobTitle(sourcemarket = 'ALL', jobfamily = 'ALL', positiontype='ALL',criteria = null) {
     return async function(dispatch) {
         dispatch(beginAjaxCall())
 
         try {
-            const jobTitle = await RestClient.Get(`staff/jobtitle/${sourcemarket}/${jobfamily}/${criteria !== null ? `${criteria}` : ''}`)
+            const jobTitle = await RestClient.Get(`staff/jobtitle/${sourcemarket}/${jobfamily}/${positiontype}/${criteria !== null ? `${criteria}` : ''}`)
 
             dispatch(getJobTitleSuccess(jobTitle))
         } catch (error) {

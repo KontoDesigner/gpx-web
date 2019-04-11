@@ -9,13 +9,13 @@ export function getreplyYesNoRolesSuccess(replyYesNoRoles) {
     }
 }
 
-export function getReplyYesNoRoles(sourcemarket = 'ALL', jobfamily = 'ALL', criteria = null) {
+export function getReplyYesNoRoles(sourcemarket = 'ALL', jobfamily = 'ALL',  positiontype = 'ALL',criteria = null) {
     return async function(dispatch) {
         dispatch(beginAjaxCall())
 
         try {
             //const replyYesNoRoles = await RestClient.Get(`reply/GetReplyYesNo`)
-            const replyYesNoRoles = await RestClient.Get(`reply/GetReplyYesNo/${sourcemarket}/${jobfamily}/${criteria !== null ? `${criteria}` : ''}`)
+            const replyYesNoRoles = await RestClient.Get(`reply/GetReplyYesNo/${sourcemarket}/${positiontype}/${jobfamily}/${criteria !== null ? `${criteria}` : ''}`)
 
             //const replyYesNoRoles = await RestClient.Get(`positionassign/GetAllPositionsAssignData`)
 

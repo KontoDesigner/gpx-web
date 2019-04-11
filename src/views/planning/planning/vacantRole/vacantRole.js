@@ -17,10 +17,10 @@ class VacantRole extends Component {
           {/* <Action 
             selected={this.props.selectedTitle} 
   
-            toogleAssignPositionModal = {this.props.toogleAssignPositionModal}
-           
+            toogleAssignPositionModal = {this.props.toogleRemovePositionModal}
+   
                              
-            /> */}
+            />  */}
           </div>
 
           {this.props.vacantRoles.map((vacantRole, index) =>

@@ -15,7 +15,7 @@ import {
 import Datetime from 'react-datetime'
 import Select from 'react-select'
 import moment from 'moment'
-class RemovePosition extends Component {
+class RemovePositionSelect extends Component {
   //const ResignStaff = props => {
   constructor(props) {
     super(props)
@@ -42,7 +42,7 @@ debugger;
       oldDate:newdatemodified
     }
 debugger;
-    this.props.createRemovePosition(model)
+    this.props.createRemovePositionSelect(model)
   }
 
   
@@ -99,13 +99,12 @@ debugger;
       <div>
         <Modal isOpen={this.props.modal} toggle={this.toggle}>
           <ModalHeader toggle={this.toggle}>
-            Remove Position - {this.props.selectedTitle + " "}   
+            Remove Selected Position(s) - {this.props.selectedTitle + " "}   
           </ModalHeader>
           <ModalBody>
             { <Alert color="danger">
-                        Are you sure you want to remove position? 
-                        If the position has assignments connected to it. Remove routine will fail.
-                        
+            Are you sure you want to remove selected position(s)? 
+                        If the position(s) has assignments connected to it. Remove routine will fail.
                     </Alert> }
 
             {/* <Row>
@@ -158,4 +157,4 @@ debugger;
   }
 }
 
-export default RemovePosition
+export default RemovePositionSelect
