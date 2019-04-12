@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import SeasonRow from './seasonRow'
 import { Card, CardBody, CardHeader } from 'reactstrap'
 import Filter from '../../filter'
-import Action from '../../action2'
+import Action2 from '../../action2'
 
 class VacantRole extends Component {
   render() {
@@ -14,13 +14,13 @@ class VacantRole extends Component {
           <div className="form-row">
           <Filter getData={this.props.getVacantRoles} />
        
-          {/* <Action 
+          <Action2 
             selected={this.props.selectedTitle} 
   
-            toogleAssignPositionModal = {this.props.toogleRemovePositionModal}
+            toogleRemovePositionSelectModal = {this.props.toogleRemovePositionSelectModal}
    
-                             
-            />  */}
+            
+            />  
           </div>
 
           {this.props.vacantRoles.map((vacantRole, index) =>

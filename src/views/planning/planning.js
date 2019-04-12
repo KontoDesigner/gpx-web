@@ -165,7 +165,7 @@ class Planning extends Component {
             debugger
         } else {
             this.setState({
-                removePositionSelectModal: !this.state.removePositionModal,
+                removePositionSelectModal: !this.state.removePositionSelectModal,
                 selectedMplID: this.props.selectedTitle
             })
         }
@@ -730,6 +730,7 @@ debugger;
                                 toogleResetPositionAcceptModal={this.toogleResetPositionAcceptModal}
                                 toogleMarkPositionDeclineModal={this.toogleMarkPositionDeclineModal}
                                 toogleRemovePositionModal={this.toogleRemovePositionModal}
+                                toogleRemovePositionSelectModal={this.toogleRemovePositionSelectModal}
                                 toogleMarkPositionActingModal={this.toogleMarkPositionActingModal}
                                 toogleMarkPositionAcceptModal={this.toogleMarkPositionAcceptModal}
                                 toogleAssignPositionModal={this.toogleAssignPositionModal}
