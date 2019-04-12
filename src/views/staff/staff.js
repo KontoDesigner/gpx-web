@@ -178,11 +178,12 @@ debugger;
 
         this.setState({ localValue: newText })
     }
-
+ 
     createMail = model => {
         let mailmodel = {
             TemplateName: model.selectedNotification,
             StaffID: this.state.selectedStaffID,
+            Subject: model.selectedSubject,
             DateModified: model.dateModified,
             Content: model.content,
             Email: model.selectedEmail
