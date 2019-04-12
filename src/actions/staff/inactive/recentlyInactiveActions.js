@@ -16,7 +16,7 @@ export function getRecentlyInactive(sourcemarket = 'ALL', jobfamily='ALL', posit
 
     try {
      
-      const recentlyInactive = await RestClient.Get(`staff/inactive/${sourcemarket}/${jobfamily}/${positiontype}/${criteria !== null ? `/${criteria}` : ''}`)
+      const recentlyInactive = await RestClient.Get(`staff/inactive/${sourcemarket}/${jobfamily}/${positiontype}/${criteria !== null ? `${criteria}` : ''}`)
  
       //For some reason we need to reset value here, (bug when loading in new data with filter), don't touch h3h3
       dispatch(handleRecentlyInactive([]))
