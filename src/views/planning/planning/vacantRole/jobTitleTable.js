@@ -15,8 +15,8 @@ const columns = [
     { label: 'Position Type', dataKey: 'mPLPositionType' },
     //{ label: 'Languages', dataKey: 'languages' },
     { label: 'HighSeason', dataKey: 'highseason' },
-    { label: 'Position StartDate', dataKey: 'positionStartDate' },
-    { label: 'Position EndDate', dataKey: 'positionEndDate' }
+    { label: 'Position StartDate', dataKey: 'positionStartDate' ,type: 'datetime', format: 'YYYY-MM-DD' },
+    { label: 'Position EndDate', dataKey: 'positionEndDate' ,type: 'datetime', format: 'YYYY-MM-DD' },
     //{ label: 'Placed', dataKey: 'firstNameLastName' },
     // { label: 'Id', dataKey: 'staffID' }
 ]
