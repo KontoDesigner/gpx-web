@@ -13,6 +13,7 @@ const columns = [
     //         }
     //     }
     // },
+    { label: 'Type Of Flight', dataKey: 'typeOfFlight' },
     { label: 'Direction', dataKey: 'direction' },
     { label: 'Destination', dataKey: 'destination' },
     { label: 'StartDate', dataKey: 'startDate', type: 'datetime', format: 'YYYY-MM-DD' },
