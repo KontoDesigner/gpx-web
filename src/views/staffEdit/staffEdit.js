@@ -9,6 +9,7 @@ import Abscense from './abscense/abscense'
 import Team from './team/team'
 import Applications from './applications/applications'
 import DestinationHistory from './history/destinationHistory'
+import FlightRequestHistory from './history/flightRequestHistory'
 import Revisions from './history/revisions'
 import ConfirmedDates from './history/confirmedDates'
 
@@ -22,6 +23,7 @@ import * as confirmedDatesActions from '../../actions/staffEdit/confirmedDatesAc
 import * as destinationHistoryActions from '../../actions/staffEdit/destinationHistoryActions'
 import * as applicationHistoryActions from '../../actions/staffEdit/applicationHistoryActions'
 import * as abscenseHistoryActions from '../../actions/staffEdit/abscenseHistoryActions'
+import * as flightRequestHistoryActions from '../../actions/staffEdit/flightRequestHistoryActions'
 import '../../styles/staffEdit.css'
 import RestClient from '../../infrastructure/restClient'
 class StaffEdit extends Component {
@@ -199,6 +201,7 @@ class StaffEdit extends Component {
             this.props.confirmedDatesActions.getConfirmedDates(this.state.staffId),
             this.props.destinationHistoryActions.getDestinationHistory(this.state.staffId),
             this.props.abscenseHistoryActions.getAbscenseHistory(this.state.staffId),
+            this.props.flightRequestHistoryActions.getFlightRequestHistory(this.state.staffId),
 
             this.props.employeeInfoActions.getStaff(this.state.staffId).then(function() {
                 if (_this.props.staff != null) {
@@ -346,8 +349,6 @@ class StaffEdit extends Component {
                                         spainRegistred={this.state.spainRegistred}
                                         handleUnsavedEdit={this.handleUnsavedEdit}
                                         send={this.send}
-                                      
-                                        
                                         nowAvailablePositions={this.state.nowAvailablePositions}
                                         getAvailablePositionNew={this.getAvailablePositionNew}
                                     />
@@ -398,6 +399,8 @@ class StaffEdit extends Component {
                                         history={this.props.history}
                                         //destinationHistory={this.props.destinationHistory}
                                     />
+
+                                    <FlightRequestHistory flightRequestHistory={this.props.flightRequestHistory} />
                                 </TabPane>
                             </TabContent>
                         </Col>
@@ -427,7 +430,8 @@ function mapStateToProps(state) {
         history: state.staffEdit.history,
         applicationHistory: state.staffEdit.applicationHistory,
         confirmedDate: state.staffEdit.confirmedDate,
-        resignHistory: state.staffEdit.resignHistory
+        resignHistory: state.staffEdit.resignHistory,
+        flightRequestHistory: state.staffEdit.flightRequestHistory
     }
 }
 
@@ -439,7 +443,8 @@ function mapDispatchToProps(dispatch) {
         destinationHistoryActions: bindActionCreators(destinationHistoryActions, dispatch),
         historyActions: bindActionCreators(historyActions, dispatch),
         applicationHistoryActions: bindActionCreators(applicationHistoryActions, dispatch),
-        abscenseHistoryActions: bindActionCreators(abscenseHistoryActions, dispatch)
+        abscenseHistoryActions: bindActionCreators(abscenseHistoryActions, dispatch),
+        flightRequestHistoryActions: bindActionCreators(flightRequestHistoryActions, dispatch)
     }
 }
 

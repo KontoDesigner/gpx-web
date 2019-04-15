@@ -1,0 +1,29 @@
+import React from 'react'
+import Table from '../../../components/table.js'
+
+const columns = [
+    { label: 'Job Title', dataKey: 'jobTitle' },
+    { label: 'Direction', dataKey: 'direction' },
+    { label: 'Destination', dataKey: 'destination' },
+    { label: 'StartDate', dataKey: 'startDate' },
+    { label: 'EndDate', dataKey: 'endDate' },
+    { label: 'MPL Position Type', dataKey: 'mplPositionType' },
+    { label: 'Created', dataKey: 'created', type: 'datetime', format: 'yyyy-MM-dd hh:mm' }
+]
+
+const FlightRequestHistoryTable = props => {
+    return (
+        <Table
+            list={props.flightRequestHistory}
+            columns={columns}
+            contextMenuItems={[]}
+            checkbox={false}
+            identifier={'Id'}
+            edit={props.edit}
+            updateSelectedState={props.handleSelectedStaff}
+            selected={props.selectedStaff}
+        />
+    )
+}
+
+export default FlightRequestHistoryTable
