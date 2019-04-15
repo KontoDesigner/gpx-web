@@ -1,5 +1,6 @@
 import React from 'react'
 import { AgGridReact } from 'ag-grid-react'
+import moment from 'moment'
 
 const isFirstColumn = params => {
     const displayedColumns = params.columnApi.getAllDisplayedColumns()
@@ -16,6 +17,14 @@ const uniqueArray = arrArg => {
 }
 
 const Table = props => {
+    const cellRenderer = function(params) {
+        if (params.column && params.column.colDef && params.column.colDef.type === 'datetime' && params.column.colDef.format) {
+            return moment(params.value).format(params.column.colDef.format)
+        }
+
+        return params.value
+    }
+
     const columnDefs = props.columns.map(c => {
         const checkbox = props.checkbox === true && isFirstColumn
 
@@ -26,7 +35,10 @@ const Table = props => {
             checkboxSelection: checkbox,
             headerCheckboxSelection: checkbox,
             headerCheckboxSelectionFilteredOnly: checkbox,
-            sortable: true
+            cellRenderer: cellRenderer,
+            sortable: true,
+            type: c.type,
+            format: c.format
         }
     })
 

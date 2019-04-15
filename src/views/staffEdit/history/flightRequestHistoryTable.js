@@ -8,7 +8,7 @@ const columns = [
     { label: 'StartDate', dataKey: 'startDate' },
     { label: 'EndDate', dataKey: 'endDate' },
     { label: 'MPL Position Type', dataKey: 'mplPositionType' },
-    { label: 'Created', dataKey: 'created', type: 'datetime', format: 'yyyy-MM-dd hh:mm' }
+    { label: 'Created', dataKey: 'created', type: 'datetime', format: 'YYYY-MM-DD hh:mm' }
 ]
 
 const FlightRequestHistoryTable = props => {
