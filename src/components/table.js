@@ -18,8 +18,16 @@ const uniqueArray = arrArg => {
 
 const Table = props => {
     const cellRenderer = function(params) {
-        if (params.column && params.column.colDef && params.column.colDef.type === 'datetime' && params.column.colDef.format) {
-            return moment(params.value).format(params.column.colDef.format)
+        if (params.column && params.column.colDef) {
+            if (params.column.colDef.type === 'icon') {
+                const icon = params.column.colDef.icon(params.value)
+
+                return `<i class="${icon}" />`
+            }
+
+            if (params.column.colDef.type === 'datetime' && params.column.colDef.format) {
+                return moment(params.value).format(params.column.colDef.format)
+            }
         }
 
         return params.value
@@ -38,7 +46,8 @@ const Table = props => {
             cellRenderer: cellRenderer,
             sortable: true,
             type: c.type,
-            format: c.format
+            format: c.format,
+            icon: c.icon
         }
     })
 

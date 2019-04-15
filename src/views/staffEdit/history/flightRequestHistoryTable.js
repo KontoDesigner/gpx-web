@@ -3,6 +3,16 @@ import Table from '../../../components/table.js'
 
 const columns = [
     { label: 'Job Title', dataKey: 'jobTitle' },
+    // {
+    //     label: 'Job Title',
+    //     dataKey: 'jobTitle',
+    //     type: 'icon',
+    //     icon: function(val) {
+    //         if (val === 'Airport Service Team Leader') {
+    //             return 'fa fa-share'
+    //         }
+    //     }
+    // },
     { label: 'Direction', dataKey: 'direction' },
     { label: 'Destination', dataKey: 'destination' },
     { label: 'StartDate', dataKey: 'startDate' },
