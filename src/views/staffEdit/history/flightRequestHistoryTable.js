@@ -15,8 +15,8 @@ const columns = [
     // },
     { label: 'Direction', dataKey: 'direction' },
     { label: 'Destination', dataKey: 'destination' },
-    { label: 'StartDate', dataKey: 'startDate' },
-    { label: 'EndDate', dataKey: 'endDate' },
+    { label: 'StartDate', dataKey: 'startDate', type: 'datetime', format: 'YYYY-MM-DD' },
+    { label: 'EndDate', dataKey: 'endDate', type: 'datetime', format: 'YYYY-MM-DD' },
     { label: 'MPL Position Type', dataKey: 'mplPositionType' },
     { label: 'Created', dataKey: 'created', type: 'datetime', format: 'YYYY-MM-DD hh:mm' }
 ]
