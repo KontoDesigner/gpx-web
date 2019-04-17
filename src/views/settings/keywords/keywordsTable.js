@@ -5,7 +5,7 @@ const columns = [
     { label: 'Type', dataKey: 'keywordName' },
     { label: 'Values', dataKey: 'keywordValues' },
     { label: 'Comment', dataKey: 'keywordComment' },
-    { label: 'DateModified', dataKey: 'dateModified' }
+    { label: 'DateModified', dataKey: 'dateModified' ,type: 'datetime', format: 'YYYY-MM-DD' }
     //   { label: 'Template Type', dataKey: 'templateType' },
 
     //{ label: 'Id', dataKey: 'staffID' }
