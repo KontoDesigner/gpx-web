@@ -36,6 +36,16 @@ class StaffEdit extends Component {
         const staffId = params.id
 
         this.state = {
+            positionTypeArr : [],
+            resignTypeArr : [],
+            managerReasonArr : [],
+            nationalConceptArr : [],
+            reasonForResignmentArr : [],
+            childCareLevelArr : [],
+            languageSkillArr : [],
+            suitableArr : [],
+            internationalArr : [],
+            nationalArr : [],
             loaded: false,
             activeTab: 'employeeInfo',
             nowAvailablePositions: [],
@@ -43,72 +53,7 @@ class StaffEdit extends Component {
             newUser: {
                 skills: []
             },
-            positionTypes: [
-                {
-                    id: 'Posted',
-                    name: 'Posted'
-                },
-                {
-                    id: 'Local',
-                    name: 'Local'
-                },
-                {
-                    id: 'Freelance',
-                    name: 'Freelance'
-                },
-                {
-                    id: 'Flexible',
-                    name: 'Flexible'
-                }
-            ],
-
-            resignType: [
-                {
-                    positionTypes: [
-                        {
-                            id: 'Posted',
-                            name: 'Posted'
-                        },
-                        {
-                            id: 'Local',
-                            name: 'Local'
-                        },
-                        {
-                            id: 'Freelance',
-                            name: 'Freelance'
-                        },
-                        {
-                            id: 'Flexible',
-                            name: 'Flexible'
-                        }
-                    ],
-                    id: 'Studies',
-                    name: 'Studies'
-                },
-                {
-                    id: 'Parental Leave',
-                    name: 'Parental Leave'
-                },
-                {
-                    id: 'Other (Please Specify)',
-                    name: 'Other (Please Specify)'
-                }
-            ],
-
-            managerReasons: [
-                {
-                    id: 'Dismissed',
-                    name: 'Dismissed'
-                },
-                {
-                    id: 'Resigned',
-                    name: 'Resigned'
-                },
-                {
-                    id: 'Other (Please Specify)',
-                    name: 'Other (Please Specify)'
-                }
-            ],
+  
 
             spainRegistred: [
                 {
@@ -117,48 +62,7 @@ class StaffEdit extends Component {
                 }
             ],
 
-            resignmentReasons: [
-                {
-                    id: 'Expectations of Job',
-                    name: 'Expectations of Job'
-                },
-                {
-                    id: 'Management',
-                    name: 'Management'
-                },
-                {
-                    id: 'Training',
-                    name: 'Training'
-                },
-                {
-                    id: 'Pay & Reward',
-                    name: 'Pay & Reward'
-                },
-                {
-                    id: 'Working Hours',
-                    name: 'Working Hours'
-                },
-                {
-                    id: 'Personal/Family Reasons',
-                    name: 'Personal/Family Reasons'
-                },
-                {
-                    id: 'Destination',
-                    name: 'Destination'
-                },
-                {
-                    id: 'Returned to School/University',
-                    name: 'Returned to School/University'
-                },
-                {
-                    id: 'Found a new job',
-                    name: 'Found a new job'
-                },
-                {
-                    id: 'Placement Declined',
-                    name: 'Placement Declined'
-                }
-            ],
+       
             skillOptions: ['Programming', 'Development', 'Design', 'Testing'],
 
             unsavedEdit: false
@@ -190,6 +94,11 @@ class StaffEdit extends Component {
         //     throw error
         // }
 
+
+
+
+        
+
         debugger
 
         return Promise.all([
@@ -214,6 +123,140 @@ class StaffEdit extends Component {
             _this.setState({ loaded: true })
         })
     }
+
+    async componentDidMount() {
+        const positionType= this.props.keywordslookup.filter(ap => ap.ids === 'PositionTypes')[0];
+         const positionTypeArr = positionType.keywordValues.split(',')
+         const resignType= this.props.keywordslookup.filter(ap => ap.ids === 'ResignTypes')[0];
+         const resignTypeArr = resignType.keywordValues.split(',')
+         const managerReason= this.props.keywordslookup.filter(ap => ap.ids === 'ManagerReasons')[0];
+         const managerReasonArr = managerReason.keywordValues.split(',')
+         const reasonForResignment= this.props.keywordslookup.filter(ap => ap.ids === 'ReasonForResignment')[0];
+         const reasonForResignmentArr = reasonForResignment.keywordValues.split(',')
+         const childCareLevel= this.props.keywordslookup.filter(ap => ap.ids === 'ChildCareLevels')[0];
+         const childCareLevelArr = childCareLevel.keywordValues.split(',')
+         const languageSkill= this.props.keywordslookup.filter(ap => ap.ids === 'LanguageSkills')[0];
+         const languageSkillArr = languageSkill.keywordValues.split(',')
+         const suitable = this.props.keywordslookup.filter(ap => ap.ids === 'SuitableToWork')[0];
+         const suitableArr = suitable.keywordValues.split(',')
+         const international = this.props.keywordslookup.filter(ap => ap.ids === 'InternationalConcepts')[0];
+         const internationalArr = international.keywordValues.split(',')
+         const national = this.props.keywordslookup.filter(ap => ap.ids === 'NationalConcepts')[0];
+         const nationalArr = national.keywordValues.split(',')
+
+
+        
+         const positionTypeObjArr = positionTypeArr.map(s => ({
+            id: s,
+            name: s
+         }))
+
+         const resignTypeObjArr = resignTypeArr.map(s => ({
+            id: s,
+            name: s
+         }))
+
+         const managerReasonObjArr = managerReasonArr.map(s => ({
+            id: s,
+            name: s
+         }))
+
+         const reasonForResignmentObjArr = reasonForResignmentArr.map(s => ({
+            id: s,
+            name: s
+         }))
+
+         const childCareLevelObjArr = childCareLevelArr.map(s => ({
+            id: s,
+            name: s
+         }))
+        
+
+         const languageSkillObjArr = languageSkillArr.map(s => ({
+            id: s,
+            name: s
+         }))
+         const suitableObjArr = suitableArr.map(s => ({
+            id: s,
+            name: s
+         }))
+         const nationalObjArr = nationalArr.map(s => ({
+            id: s,
+            name: s
+         }))
+         const internationalObjArr = internationalArr.map(s => ({
+            id: s,
+            name: s
+         }))
+         if (positionType !== undefined) {
+        
+               
+            this.setState({positionTypeArr: positionTypeObjArr })
+    }
+
+    if (positionType !== undefined) {
+        
+               
+        this.setState({positionTypeArr: positionTypeObjArr })
+}
+
+if (positionType !== undefined) {
+        
+               
+    this.setState({positionTypeArr: positionTypeObjArr })
+}
+
+
+    if (resignType !== undefined) {
+        
+               
+        this.setState({resignTypeArr: resignTypeObjArr })
+}
+
+if (managerReason !== undefined) {
+        
+               
+    this.setState({managerReasonArr: managerReasonObjArr })
+}
+
+if (reasonForResignment !== undefined) {
+        
+               
+    this.setState({reasonForResignmentArr: reasonForResignmentObjArr })
+}
+
+
+
+
+if (childCareLevel !== undefined) {
+        
+               
+    this.setState({childCareLevelArr: childCareLevelObjArr })
+}
+
+if (languageSkill !== undefined) {
+        
+               
+    this.setState({languageSkillArr: languageSkillObjArr })
+}
+if (suitable !== undefined) {
+        
+               
+    this.setState({suitableArr: suitableObjArr })
+}
+
+if (international !== undefined) {
+        
+               
+    this.setState({internationalArr: internationalObjArr })
+}
+if (national !== undefined) {
+        
+               
+    this.setState({nationalArr: nationalObjArr })
+}
+    }
+
 
     toggle = activeTab => {
         if (this.state.activeTab !== activeTab) {
@@ -345,26 +388,40 @@ class StaffEdit extends Component {
                                         currentSeason={this.props.currentSeason}
                                         nextSeason={this.props.nextSeason}
                                         followingSeason={this.props.followingSeason}
-                                        positionTypes={this.state.positionTypes}
+                                      
                                         spainRegistred={this.state.spainRegistred}
                                         handleUnsavedEdit={this.handleUnsavedEdit}
                                         send={this.send}
                                         nowAvailablePositions={this.state.nowAvailablePositions}
                                         getAvailablePositionNew={this.getAvailablePositionNew}
-                                    />
+                                        keywordslookup={this.props.keywordslookup}
+                                        positionTypeArr={this.state.positionTypeArr}
+                                      
+                                      
+                                    /> 
                                 </TabPane>
-
+                                
                                 <TabPane tabId="cv">
-                                    <Cv staff={this.props.staff} handleUnsavedEdit={this.handleUnsavedEdit} />
+                                    <Cv staff={this.props.staff} 
+                                    handleUnsavedEdit={this.handleUnsavedEdit} 
+                                    languageSkillArr={this.state.languageSkillArr}
+                                    childCareLevelArr={this.state.childCareLevelArr}
+                                    suitableArr={this.state.suitableArr}
+                                   nationalArr={this.state.nationalArr}
+                                    internationalArr={this.state.internationalArr}
+                                    />
                                 </TabPane>
 
                                 <TabPane tabId="abscense">
                                     <Abscense
                                         staff={this.props.staff}
                                         handleUnsavedEdit={this.handleUnsavedEdit}
-                                        resignType={this.state.resignType}
-                                        managerReasons={this.state.managerReasons}
-                                        resignmentReasons={this.state.resignmentReasons}
+                                        resignTypeArr={this.state.resignTypeArr}
+                                        managerReasonArr={this.state.managerReasonArr}
+                                        reasonForResignmentArr={this.state.reasonForResignmentArr}
+                                        jobTitleWhenResignedArr={this.state.jobTitleWhenResignedArr}
+                                     //   managerReasons={this.state.managerReasons}
+                                        //resignmentReasons={this.state.resignmentReasons}
                                         handleChangeMultiple={this.handleChangeMultiple}
                                         allJobTitles={this.props.allJobTitles}
                                         //applicationHistory={this.props.applicationHistory}
@@ -431,7 +488,8 @@ function mapStateToProps(state) {
         applicationHistory: state.staffEdit.applicationHistory,
         confirmedDate: state.staffEdit.confirmedDate,
         resignHistory: state.staffEdit.resignHistory,
-        flightRequestHistory: state.staffEdit.flightRequestHistory
+        flightRequestHistory: state.staffEdit.flightRequestHistory,
+        keywordslookup: state.setting.keywords.keywordslookup
     }
 }
 

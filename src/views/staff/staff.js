@@ -38,6 +38,10 @@ class Staff extends Component {
 
         this.state = {
             loaded: false,
+            resignTypeArr : [],
+            managerReasonArr : [],
+            reasonForResignmentArr : [],
+  
             validFileName: '',
             validImportType: '',
             valid: '',
@@ -65,77 +69,7 @@ class Staff extends Component {
                 }
             ],
 
-            resignType: [
-                {
-                    id: 'Studies',
-                    name: 'Studies'
-                },
-                {
-                    id: 'Parental Leave',
-                    name: 'Parental Leave'
-                },
-                {
-                    id: ' Other (Please Specify)',
-                    name: ' Other (Please Specify)'
-                }
-            ],
-            managerReasons: [
-                {
-                    id: 'Dismissed',
-                    name: 'Dismissed'
-                },
-                {
-                    id: 'Resigned',
-                    name: 'Resigned'
-                },
-                {
-                    id: 'Other (Please Specify)',
-                    name: 'Other (Please Specify)'
-                }
-            ],
 
-            resignmentReasons: [
-                {
-                    id: 'Expectations of Job',
-                    name: 'Expectations of Job'
-                },
-                {
-                    id: 'Management',
-                    name: 'Management'
-                },
-                {
-                    id: 'Training',
-                    name: 'Training'
-                },
-                {
-                    id: 'Pay & Reward',
-                    name: 'Pay & Reward'
-                },
-                {
-                    id: 'Working Hours',
-                    name: 'Working Hours'
-                },
-                {
-                    id: 'Personal/Family Reasons',
-                    name: 'Personal/Family Reasons'
-                },
-                {
-                    id: 'Destination',
-                    name: 'Destination'
-                },
-                {
-                    id: 'Returned to School/University',
-                    name: 'Returned to School/University'
-                },
-                {
-                    id: 'Found a new job',
-                    name: 'Found a new job'
-                },
-                {
-                    id: 'Placement Declined',
-                    name: 'Placement Declined'
-                }
-            ]
         }
 
         // this.handleChange = this.handleChange.bind(this);
@@ -410,6 +344,50 @@ debugger;
         this.props.filterActions.handleFilter() //when page loads
         this.props.notificationActions.getNotification()
         this.props.destinationActions.getDestination()
+
+        const managerReason= this.props.keywordslookup.filter(ap => ap.ids === 'ManagerReasons')[0];
+        const managerReasonArr = managerReason.keywordValues.split(',')
+        const reasonForResignment= this.props.keywordslookup.filter(ap => ap.ids === 'ReasonForResignment')[0];
+        const reasonForResignmentArr = reasonForResignment.keywordValues.split(',')
+
+ 
+
+        const resignType= this.props.keywordslookup.filter(ap => ap.ids === 'ResignTypes')[0];
+        const resignTypeArr = resignType.keywordValues.split(',')
+
+        const resignTypeObjArr = resignTypeArr.map(s => ({
+            id: s,
+            name: s
+         }))
+
+
+        if (resignType !== undefined) {
+
+            this.setState({resignTypeArr: resignTypeObjArr })
+    }
+
+    const managerReasonObjArr = managerReasonArr.map(s => ({
+        id: s,
+        name: s
+     }))
+
+     const reasonForResignmentObjArr = reasonForResignmentArr.map(s => ({
+        id: s,
+        name: s
+     }))
+
+     if (managerReason !== undefined) {
+        
+               
+        this.setState({managerReasonArr: managerReasonObjArr })
+    }
+    
+    if (reasonForResignment !== undefined) {
+            
+                   
+        this.setState({reasonForResignmentArr: reasonForResignmentObjArr })
+    }
+    
     }
 
     toggle = (tab, getData, resetData) => {
@@ -508,7 +486,7 @@ debugger;
                 <AbsentStaff
                     modal={this.state.absentStaffModal}
                     toggle={this.toogleAbsentStaffModal}
-                    resignType={this.state.resignType}
+                    resignTypeArr={this.state.resignTypeArr}
                     handleChange={this.handleChange}
                     handleSelect={this.handleSelect}
                     createAbscense={this.createAbscense}
@@ -566,8 +544,8 @@ debugger;
                     modal={this.state.resignStaffModal}
                     toggle={this.toogleResignStaffModal}
                     resignType={this.state.resignType}
-                    managerReasons={this.state.managerReasons}
-                    resignmentReasons={this.state.resignmentReasons}
+                    managerReasonArr={this.state.managerReasonArr}
+                    reasonForResignmentArr={this.state.reasonForResignmentArr}
                     handleChange={this.handleChange}
                     handleSelect={this.handleSelect}
                     value={this.state.value}
@@ -706,7 +684,7 @@ function mapDispatchToProps(dispatch) {
         staffActions: bindActionCreators(staffActions, dispatch),
         headOfActions: bindActionCreators(headOfActions, dispatch),
         notificationActions: bindActionCreators(notificationActions, dispatch),
-        notificationActions: bindActionCreators(notificationActions, dispatch),
+  
         destinationActions: bindActionCreators(destinationActions, dispatch),
         filterActions: bindActionCreators(filterActions, dispatch),
         jobTitleActions: bindActionCreators(jobTitleActions, dispatch),

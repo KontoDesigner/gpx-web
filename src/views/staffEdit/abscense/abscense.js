@@ -392,7 +392,7 @@ debugger;
               abscenseHistory={this.state.abscenseLocal}
               handleStaffFieldAbscense={this.handleStaffFieldAbscense}
               //handleSelectTypes={this.handleSelectTypes}
-              resignType={this.props.resignType}
+              resignTypeArr={this.props.resignTypeArr}
               validAbsentStart={this.state.validAbsentStart}
               validAbsentEnd={this.state.validAbsentEnd}
               validAbsentReason={this.state.validAbsentReason}
@@ -409,7 +409,7 @@ debugger;
               handleSaveResign={this.handleSaveResign}
               allJobTitles={this.props.allJobTitles}
               handleChangeMultiple={this.props.handleChangeMultiple}
-              resignmentReasons={this.props.resignmentReasons}
+             // resignmentReasons={this.props.resignmentReasons}
               resignHistory={this.state.resignHistoryLocal}
               handleSelectTypes={this.handleSelectTypes}
               managerReasons={this.props.managerReasons}
@@ -422,6 +422,10 @@ debugger;
               validRecommend={this.state.validRecommend}
               validComment={this.state.validComment}
               recommend={this.state.recommend}
+              managerReasonArr={this.props.managerReasonArr}
+              reasonForResignmentArr={this.props.reasonForResignmentArr}
+              jobTitleWhenResignedArr={this.props.jobTitleWhenResignedArr}
+             
               // title={"Skills"}
               // name={"skills"}
               // options={this.props.skillOptions}

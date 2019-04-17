@@ -165,7 +165,7 @@ class AbsentStaff extends Component {
                                        valueKey="id"
                                        labelKey="name"
                                         //className="form-control"
-                                        options={this.props.resignType}
+                                        options={this.props.resignTypeArr}
                                         onChange={this.resignTypeOnChange}
                                         value={this.state.selectedResignType}
                                         placeholder="Select"

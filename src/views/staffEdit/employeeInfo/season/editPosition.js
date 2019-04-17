@@ -22,7 +22,8 @@ class AssignRole extends Component {
             confirmStart:false,
             confirmEnd:false,
             validDate:'',
-            validDate2:''
+            validDate2:'',
+            validDate3:''
            //errorMessage:''
         };
     }
@@ -77,6 +78,7 @@ class AssignRole extends Component {
             positionEndDate: null,
             validDate2:'',
             validDate:'',
+            validDate3:'',
             confirmStart:false,
             confirmEnd:false
             //errorMessage:''
@@ -92,7 +94,8 @@ class AssignRole extends Component {
      
         this.setState({
             selectedConfirmedDate,
-            confirmStart:true
+            confirmStart:true,
+            validDate3:''
            
             
         })
@@ -108,7 +111,8 @@ class AssignRole extends Component {
 
         this.setState({
             selectedConfirmedDepDate,
-            confirmEnd:true
+            confirmEnd:true,
+            validDate3:''
            
             
         })
@@ -190,9 +194,12 @@ debugger;
         var assignCompareEnd  = new Date(model.endDate).setHours(0, 0, 0, 0);
         var positionCompareStart = new Date(this.props.positionAssign.PositionStartDate)
         var positionCompareEnd = new Date(this.props.positionAssign.PositionEndDate)
+        var confirmedCompareStart = new Date(model.confirmedDate).setHours(0, 0, 0, 0);
+        var confirmedCompareEnd = new Date(model.confirmedDateDep).setHours(0, 0, 0, 0);
         debugger;
         var checkok= (assignCompareStart >= positionCompareStart.getTime() && assignCompareEnd <= positionCompareEnd.getTime());
         var checkok2= (assignCompareStart < assignCompareEnd);
+        var checkok3=(confirmedCompareStart >= confirmedCompareEnd);
         
         if(!checkok2){
             this.setState({
@@ -216,7 +223,17 @@ debugger;
                   return false;
     
             }
-            
+            if(!checkok3){
+                
+                this.setState({
+                    validDate3:'Confirm dates does not match',
+              
+    
+                  })
+                  
+                  return false;
+    
+            }
         }
        
       
@@ -341,7 +358,7 @@ debugger;
                             closeOnSelect
                             utc={true}
                             inputProps={{ placeholder: 'YYYY-MM-DD' }} />
-
+  <b className="card-text text-danger">{this.state.validDate3 }</b>
                                              </td> 
                                              <td>
                                              <Datetime  className={'custom-datepicker'}
@@ -354,7 +371,7 @@ debugger;
                             closeOnSelect
                             utc={true}
                             inputProps={{ placeholder: 'YYYY-MM-DD' }} />  
-                
+                  <b className="card-text text-danger">{this.state.validDate3 }</b>
                                               </td>
                                           
                                         

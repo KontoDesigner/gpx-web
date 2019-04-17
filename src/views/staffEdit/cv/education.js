@@ -26,7 +26,7 @@ const Education = (props) => {
                            valueKey="id"
                            labelKey="name"
                            className="form-control"
-                           options={props.childCareLevels}
+                           options={props.childCareLevelArr}
                            onChange={(v) => { props.handleStaffSelect('childCare', v, 'id') }}
                            value={props.staff.childCare === '' ? null : props.staff.childCare}
                            placeholder="Select"
@@ -50,7 +50,7 @@ const Education = (props) => {
                     <Col sm="12" md="12" lg="12" xl="12" className="form-group">
                         {/* <TextInput name="title" label="Title" value={props.staff.title} onChange={props.handleStaffField} /> */}
                         <Label for='comment'>childCareRemarks</Label>
-                <Input required type='textarea' className="form-control" vv maxLength='1000' name='childCareRemarks' id='childCareRemarks' rows={6}  aria-multiline='true'/>
+                <Input required type='textarea' className="form-control" maxLength='1000' name='childCareRemarks' id='childCareRemarks' rows={6}  aria-multiline='true'/>
                     </Col>
               
                 </div>

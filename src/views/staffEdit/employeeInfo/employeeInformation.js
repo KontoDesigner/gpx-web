@@ -11,7 +11,7 @@ const EmployeeInformation = (props) => {
       
      
         <Card>
-            <CardHeader>Employee Information    <div class="pull-right">Status = {props.staff.status=='Active' ? 'Experienced':props.staff.status}</div> </CardHeader>
+            <CardHeader>Employee Information    <div className="pull-right">Status = {props.staff.status=='Active' ? 'Experienced':props.staff.status}</div> </CardHeader>
 
             <CardBody className="no-padding-bottom">
                 <div className="form-row">
@@ -54,13 +54,13 @@ const EmployeeInformation = (props) => {
                         <label htmlFor="positionType">Position Type</label>
 
                         <Select
-              
+               
                             id="positionType"
                          
-                            valueKey="id"
-                            labelKey="name"
-                            className="form-control"
-                            options={props.positionTypes}
+                            valueKey="id" 
+                            labelKey="name" 
+                            className="form-control" 
+                            options={props.positionTypeArr}
                             onChange={(v) => { props.handleStaffSelect('positionType', v, 'id') }}
                             value={props.staff.positionType === '' ? null : props.staff.positionType}
                             placeholder="Position Type"
@@ -140,7 +140,7 @@ const EmployeeInformation = (props) => {
               name="empContent"
               id="empContent"
               rows={3}
-              value={props.staff.empContent}
+              value={props.staff.empContent?props.staff.empContent:''}
               onChange={props.handleStaffField}
               aria-multiline="true"
             />

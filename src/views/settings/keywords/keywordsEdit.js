@@ -50,6 +50,17 @@ class KeywordsEdit extends Component {   //Notification smart component
                 },
 
                 {
+                    id: 'ResignTypes',
+                    name: 'ResignTypes'
+                },
+
+                {
+                    id: 'ChildCareLevels',
+                    name: 'ChildCareLevels'
+                },
+
+
+                {
                     id: 'ReasonForResignment',
                     name: 'ReasonForResignment'
                 },
@@ -63,8 +74,8 @@ class KeywordsEdit extends Component {   //Notification smart component
                     name: 'SuitableToWork'
                 },
                 {
-                    id: 'InternationConcepts',
-                    name: 'InternationConcepts'
+                    id: 'InternationalConcepts',
+                    name: 'InternationalConcepts'
                 },
                 {
                     id: 'NationalConcepts',

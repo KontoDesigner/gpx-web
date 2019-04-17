@@ -183,7 +183,8 @@ class Cv extends Component {
                     <Col sm="12" md="12" lg="4">
                         <Education
                             staff={this.props.staff}
-                            childCareLevels={this.state.childCareLevels}
+                            //childCareLevels={this.state.childCareLevels}
+                            childCareLevelArr={this.props.childCareLevelArr}
                             //handleStaffDatePicker={this.handleStaffDatePicker}
                             handleStaffSelect={this.handleStaffSelect}
                             handleStaffField={this.handleStaffField}
@@ -194,9 +195,11 @@ class Cv extends Component {
                     <Col sm="12" md="12" lg="4">
                         <CvInformation
                             staff={this.props.staff}
-                            languages={this.state.languages}
+                            languages={this.state.languages} 
+                            languageSkillArr={this.props.languageSkillArr}
+                          
                             handleStaffSelect={this.handleStaffSelect}
-
+                            //childCareLevelArr={this.props.childCareLevelArr}
                             //handleStaffDatePicker={this.handleStaffDatePicker}
                             // handleStaffSelect={this.handleStaffSelect}
                             // resignType={this.props.resignType}
@@ -211,9 +214,10 @@ class Cv extends Component {
                             //allJobTitles={this.props.allJobTitles}
                             //handleChangeMultiple={this.props.handleChangeMultiple}
                             // resignmentReasons={this.props.resignmentReasons}
-                            suitable={this.state.suitable}
-                            national={this.state.national}
-                            international={this.state.international}
+                            //suitable={this.state.suitable}
+                            suitableArr={this.props.suitableArr}
+                            nationalArr={this.props.nationalArr}
+                            internationalArr={this.props.internationalArr}
 
                             // title={"Skills"}
                             // name={"skills"}

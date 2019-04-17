@@ -80,7 +80,7 @@ Enable
               valueKey="id"
               labelKey="name"
               className="form-control"
-              options={props.managerReasons}
+              options={props.managerReasonArr}
               onChange={v => {
                 props.handleSelectTypes('managerReason', v, 'id')
               }}
@@ -108,7 +108,7 @@ Enable
               valueKey="id"
               labelKey="name"
               className="form-control"
-              options={props.resignmentReasons}
+              options={props.reasonForResignmentArr}
               onChange={v => {
                 props.handleSelectTypes('reasonForResignment', v, 'id')
               }}

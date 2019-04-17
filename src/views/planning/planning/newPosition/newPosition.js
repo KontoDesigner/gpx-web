@@ -19,7 +19,7 @@ class NewPosition extends Component {
     this.state = {
       selectedStart:null,
       selectedEnd:null,
-
+      destinationArr : [],
 
       value: '',
       value2: '',
@@ -65,34 +65,7 @@ class NewPosition extends Component {
   
     ],
 
-    positionTypes: [    //not in use  delete
-      {
-        id: 'Local',
-        name: 'Local' 
-    },
-    {
-        id: 'Local Agency/Hotel Paid Rep',
-        name: 'Local Agency/Hotel Paid Rep'
-    },
-
-    {
-      id: 'Local Freelance',
-      name: 'Local Freelance'
-  },
-
-  {
-    id: 'Posted',
-    name: 'Posted'
-},
-
-{
-  id: 'Posted Local Contract ',
-  name: 'Posted Local Contract '
-},
-
-
   
-    ],
 
     };
 }
@@ -176,11 +149,37 @@ toggle = () => {
 async componentWillMount() {
   const _this = this
   return Promise.all([
+    
     this.props.reportActions.getReport()
     ]).then(function() {
+      
+
+
     _this.setState({ loaded: true })
+
+
+
+    
   })
 }
+
+async componentDidMount() {
+  const destination= this.props.keywordslookup.filter(ap => ap.ids === 'Destinations')[0];
+ const destinationArr = destination.keywordValues.split(',')
+
+ const destinationObjArr = destinationArr.map(s => ({
+     id: s,
+     name: s
+ }))
+
+ 
+ if (destination !== undefined) {
+        
+               
+   this.setState({destinationArr: destinationObjArr })
+}
+}
+
 
 startChange = start => {
   
@@ -412,15 +411,17 @@ handleDestinationSelect = (val) => {
 
         <Select 
           id="destinations"
-          valueKey="destination"
-          labelKey="destination"
+          valueKey="id"
+          labelKey="name"
           className="form-control"
-          options={[...[{destination: 'Non-Spain Destination TBC'},{destination: 'Spain Destination TBC'},{destination: 'Stand by - Not contracted'}
+          options={this.state.destinationArr}
+          // destinationObjArr
+          // options={[...[{destination: 'Non-Spain Destination TBC'},{destination: 'Spain Destination TBC'},{destination: 'Stand by - Not contracted'}
 
-          ,{destination: 'Non Spain Destination TBC Full Season'},{destination: 'Non Spain Destination TBC May'},{destination: 'Non Spain Destination TBC June'},{destination: 'Non Spain Destination TBC July'}
-          ,{destination: 'Non Spain Destination TBC August'},{destination: 'Non Spain Destination TBC September'},{destination: 'Non Spain Destination TBC October'},{destination: 'Spain Destination TBC Full Season'}
-          ,{destination: 'Spain Destination TBC May '},{destination: 'Spain Destination TBC June'},
-          ,{destination: 'Spain Destination TBC July'},{destination: 'Spain Destination TBC August'},{destination: 'Spain Destination TBC September'},{destination: 'Spain Destination TBC October'}],...this.props.position]}
+          // ,{destination: 'Non Spain Destination TBC Full Season'},{destination: 'Non Spain Destination TBC May'},{destination: 'Non Spain Destination TBC June'},{destination: 'Non Spain Destination TBC July'}
+          // ,{destination: 'Non Spain Destination TBC August'},{destination: 'Non Spain Destination TBC September'},{destination: 'Non Spain Destination TBC October'},{destination: 'Spain Destination TBC Full Season'}
+          // ,{destination: 'Spain Destination TBC May '},{destination: 'Spain Destination TBC June'},
+          // ,{destination: 'Spain Destination TBC July'},{destination: 'Spain Destination TBC August'},{destination: 'Spain Destination TBC September'},{destination: 'Spain Destination TBC October'}],...this.props.position]}
        
        
           // options={this.props.position}
@@ -482,7 +483,7 @@ handleDestinationSelect = (val) => {
           valueKey="id"
           labelKey="name"
           className="form-control"
-         options={this.state.positionTypes}
+          options={this.props.mplpositiontypes}
         //onChange = {this.handleChangeSelect}
          onChange={(v) => {this.handleChangeSelect('positionType', v) }}
          
@@ -508,7 +509,7 @@ handleDestinationSelect = (val) => {
           valueKey="id"
           labelKey="name"
           className="form-control"
-         options={this.state.positionTypes}
+          options={this.props.mplpositiontypes}
         //onChange = {this.handleChangeSelect}
          onChange={(v) => {this.handleChangeSelect('positionType2', v) }}
          
@@ -534,7 +535,7 @@ handleDestinationSelect = (val) => {
           valueKey="id"
           labelKey="name"
           className="form-control"
-         options={this.state.positionTypes}
+          options={this.props.mplpositiontypes}
         //onChange = {this.handleChangeSelect}
          onChange={(v) => {this.handleChangeSelect('positionType3', v) }}
          
@@ -560,7 +561,7 @@ handleDestinationSelect = (val) => {
           valueKey="id"
           labelKey="name"
           className="form-control"
-         options={this.state.positionTypes}
+          options={this.props.mplpositiontypes}
         //onChange = {this.handleChangeSelect}
          onChange={(v) => {this.handleChangeSelect('positionType4', v) }}
          
@@ -586,7 +587,7 @@ handleDestinationSelect = (val) => {
           valueKey="id"
           labelKey="name"
           className="form-control"
-         options={this.state.positionTypes}
+          options={this.props.mplpositiontypes}
         //onChange = {this.handleChangeSelect}
          onChange={(v) => {this.handleChangeSelect('positionType5', v) }}
          
@@ -612,7 +613,7 @@ handleDestinationSelect = (val) => {
           valueKey="id"
           labelKey="name"
           className="form-control"
-         options={this.state.positionTypes}
+          options={this.props.mplpositiontypes}
         //onChange = {this.handleChangeSelect}
          onChange={(v) => {this.handleChangeSelect('positionType6', v) }}
          
@@ -638,7 +639,7 @@ handleDestinationSelect = (val) => {
           valueKey="id"
           labelKey="name"
           className="form-control"
-         options={this.state.positionTypes}
+          options={this.props.mplpositiontypes}
         //onChange = {this.handleChangeSelect}
          onChange={(v) => {this.handleChangeSelect('positionType7', v) }}
          
@@ -664,7 +665,7 @@ handleDestinationSelect = (val) => {
           valueKey="id"
           labelKey="name"
           className="form-control"
-         options={this.state.positionTypes}
+          options={this.props.mplpositiontypes}
         //onChange = {this.handleChangeSelect}
          onChange={(v) => {this.handleChangeSelect('positionType8', v) }}
          
@@ -691,7 +692,7 @@ handleDestinationSelect = (val) => {
           valueKey="id"
           labelKey="name"
           className="form-control"
-         options={this.state.positionTypes}
+          options={this.props.mplpositiontypes}
         //onChange = {this.handleChangeSelect}
          onChange={(v) => {this.handleChangeSelect('positionType9', v) }}
          
@@ -718,7 +719,7 @@ handleDestinationSelect = (val) => {
           valueKey="id"
           labelKey="name"
           className="form-control"
-         options={this.state.positionTypes}
+          options={this.props.mplpositiontypes}
         //onChange = {this.handleChangeSelect}
          onChange={(v) => {this.handleChangeSelect('positionType10', v) }}
          
@@ -745,7 +746,7 @@ handleDestinationSelect = (val) => {
           valueKey="id"
           labelKey="name"
           className="form-control"
-         options={this.state.positionTypes}
+          options={this.props.mplpositiontypes}
         //onChange = {this.handleChangeSelect}
          onChange={(v) => {this.handleChangeSelect('positionType11', v) }}
          
@@ -771,7 +772,7 @@ handleDestinationSelect = (val) => {
           valueKey="id"
           labelKey="name"
           className="form-control"
-         options={this.state.positionTypes}
+          options={this.props.mplpositiontypes}
         //onChange = {this.handleChangeSelect}
          onChange={(v) => {this.handleChangeSelect('positionType12', v) }}
          
@@ -797,7 +798,7 @@ handleDestinationSelect = (val) => {
           valueKey="id"
           labelKey="name"
           className="form-control"
-         options={this.state.positionTypes}
+          options={this.props.mplpositiontypes}
         //onChange = {this.handleChangeSelect}
          onChange={(v) => {this.handleChangeSelect('positionType13', v) }}
          
@@ -814,7 +815,7 @@ handleDestinationSelect = (val) => {
 
    
 
-</div>
+</div> 
             </CardBody>
         </Card>
     </div>
@@ -833,6 +834,8 @@ function mapStateToProps(state) {
       selectedDestination:state.report.report.selectedDestination,
       selectedPositionType:state.report.report.selectedPositionType,
       selectedJobTitle:state.setting.setting.selectedJobTitle,
+      keywordslookup: state.setting.keywords.keywordslookup,
+      mplpositiontypes: state.planning.candidate.mplpositiontypes
      // staff: state.staffEdit.employeeInfo.staff
      // selectedResignDates:state.report.report.selectedResignDates,,
       //selectedYear:state.report.report.selectedYear,

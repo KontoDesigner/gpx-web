@@ -24,7 +24,7 @@ const Profiling = props => {
                             valueKey="id"
                             labelKey="name"
                             className="form-control"
-                            options={props.suitable}
+                            options={props.suitableArr}
                             multi
                             onChange={v => {
                                 props.handleStaffMultiSelect('suitable', v)
@@ -44,7 +44,7 @@ const Profiling = props => {
                             valueKey="id"
                             labelKey="name"
                             className="form-control"
-                            options={props.international}
+                            options={props.internationalArr}
                             multi
                             onChange={v => {
                                 props.handleStaffMultiSelect('international', v)
@@ -63,7 +63,7 @@ const Profiling = props => {
                             valueKey="id"
                             labelKey="name"
                             className="form-control"
-                            options={props.national}
+                            options={props.nationalArr}
                             multi
                             onChange={v => {
                                 props.handleStaffMultiSelect('nationalConcept', v)

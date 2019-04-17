@@ -291,7 +291,7 @@ toggle = () => {
               valueKey="id"
               labelKey="name"
               className="form-group form-group-select"
-              options={this.props.managerReasons}
+              options={this.props.managerReasonArr}
               onChange={this.handleManagerReason }
                 value={this.state.selectedManagerReason}
               placeholder="Select"
@@ -304,7 +304,7 @@ toggle = () => {
               valueKey="id"
               labelKey="name"
               className="form-group form-group-select"
-               options={this.props.resignmentReasons}
+               options={this.props.reasonForResignmentArr}
                onChange={this.handleResonforResign }
                 value={this.state.selectedReasonForResign}
               placeholder="Select"

@@ -99,7 +99,7 @@ const AbscenseInformation = props => {
               valueKey="id"
               labelKey="name"
               className="form-control"
-              options={props.resignType}
+              options={props.resignTypeArr}
               onChange={v => {
                 props.handleStaffSelect('absentReason', v, 'id')
               }}

@@ -12,10 +12,9 @@ import { bindActionCreators } from 'redux'
 
 class EmployeeInfo extends Component {
     
-    async componentWillMount() {
+    async componentDidMount() {
 
     }
-
 
    handleStaffField = event => {
        
@@ -54,6 +53,7 @@ class EmployeeInfo extends Component {
     }
 
     handleStaffSelect = (field, val, selector) => {
+        debugger;
         const id = val != null ? val[selector] : undefined
 
         this.props.employeeInfoActions.handleStaffField(field, id)
@@ -211,6 +211,8 @@ class EmployeeInfo extends Component {
                             handleStaffSelect={this.handleStaffSelect}
                             positionTypes={this.props.positionTypes}
                             spainRegistred={this.props.spainRegistred}
+                            keywordslookup={this.props.keywordslookup}
+                            positionTypeArr={this.props.positionTypeArr}
                             
                         />
                     </Col>
