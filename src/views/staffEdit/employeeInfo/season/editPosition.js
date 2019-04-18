@@ -199,7 +199,7 @@ debugger;
         debugger;
         var checkok= (assignCompareStart >= positionCompareStart.getTime() && assignCompareEnd <= positionCompareEnd.getTime());
         var checkok2= (assignCompareStart < assignCompareEnd);
-        var checkok3=(confirmedCompareStart >= confirmedCompareEnd);
+      //  var checkok3=(confirmedCompareStart >= confirmedCompareEnd);
         
         if(!checkok2){
             this.setState({
@@ -223,17 +223,17 @@ debugger;
                   return false;
     
             }
-            if(!checkok3){
+            //if(!checkok3){
                 
-                this.setState({
-                    validDate3:'Confirm dates does not match',
+               // this.setState({
+                 //   validDate3:'Confirm dates does not match',
               
     
-                  })
+                //  })
                   
-                  return false;
+                  //return false;
     
-            }
+            //}
         }
        
       
@@ -242,7 +242,7 @@ debugger;
         this.toggle();
         
         this.props.editPosition(model);
-
+ 
          
 
    
