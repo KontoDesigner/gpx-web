@@ -269,7 +269,7 @@ debugger;
           <DropdownItem title="firstName" onClick={() => {this.getSelection('<ASSIGNENDDATE1>')}}>
           AssignEndDate 1</DropdownItem>
 
-          {/* <DropdownItem title="firstName" onClick={() => {this.getSelection('<MPLID2>')}}>
+           <DropdownItem title="firstName" onClick={() => {this.getSelection('<MPLID2>')}}>
          MPLID 2</DropdownItem>
 
             <DropdownItem title="firstName" onClick={() => {this.getSelection('<DESTINATION2>')}}>
@@ -303,14 +303,14 @@ debugger;
 
           <DropdownItem title="firstName" onClick={() => {this.getSelection('<ASSIGNENDDATE3>')}}>
           AssignEndDate 3</DropdownItem>
-         <DropdownItem title="firstName" onClick={() => {this.getSelection('<LASTWORKINGDATE>')}}>
+         {/* <DropdownItem title="firstName" onClick={() => {this.getSelection('<LASTWORKINGDATE>')}}>
          Last WorkingDate</DropdownItem>
          <DropdownItem title="firstName" onClick={() => {this.getSelection('<LOAREASON>')}}> 
          LOA Reason</DropdownItem>
          <DropdownItem title="firstName" onClick={() => {this.getSelection('<LOASTARTDATE>')}}> 
          LOA StartDate</DropdownItem>
          <DropdownItem title="firstName" onClick={() => {this.getSelection('<LOAENDATE>')}}> 
-         LOA EndDate</DropdownItem> */}
+         LOA EndDate</DropdownItem>  */}
           
 
          {/* <DropdownItem title="undo" onClick={() => {this.props.undoSelection('<UNDO>')}}>

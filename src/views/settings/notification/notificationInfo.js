@@ -137,7 +137,7 @@ const NotificationInfo = props => {
           <DropdownItem title="firstName" onClick={() => {props.getSelection('<ASSIGNENDDATE1>')}}>
           AssignEndDate 1</DropdownItem>
 
-          {/* <DropdownItem title="firstName" onClick={() => {props.getSelection('<MPLID2>')}}>
+           <DropdownItem title="firstName" onClick={() => {props.getSelection('<MPLID2>')}}>
          MPLID 2</DropdownItem>
 
             <DropdownItem title="firstName" onClick={() => {props.getSelection('<DESTINATION2>')}}>
@@ -165,20 +165,20 @@ const NotificationInfo = props => {
 
            <DropdownItem title="firstName" onClick={() => {props.getSelection('<JOBTITLE3>')}}>
          JobTitle 3 </DropdownItem>
-
+ 
            <DropdownItem title="firstName" onClick={() => {props.getSelection('<ASSIGNSTARTDATE3>')}}>
          AssignStartDate 3 </DropdownItem>
 
           <DropdownItem title="firstName" onClick={() => {props.getSelection('<ASSIGNENDDATE3>')}}>
           AssignEndDate 3</DropdownItem>
-         <DropdownItem title="firstName" onClick={() => {props.getSelection('<LASTWORKINGDATE>')}}>
+         {/* <DropdownItem title="firstName" onClick={() => {props.getSelection('<LASTWORKINGDATE>')}}>
          Last WorkingDate</DropdownItem>
          <DropdownItem title="firstName" onClick={() => {props.getSelection('<LOAREASON>')}}> 
          LOA Reason</DropdownItem>
          <DropdownItem title="firstName" onClick={() => {props.getSelection('<LOASTARTDATE>')}}> 
          LOA StartDate</DropdownItem>
          <DropdownItem title="firstName" onClick={() => {props.getSelection('<LOAENDATE>')}}> 
-         LOA EndDate</DropdownItem> */}
+         LOA EndDate</DropdownItem>  */}
 
 </DropdownMenu> 
 
