@@ -78,7 +78,7 @@ createPosition = async (val) => {
 
   let model = {
 
-    Destination:this.props.selectedDestination.destination,
+    Destination:this.props.selectedDestination.name,
     JobTitle:this.state.selectedJobTitle.name,
     JobFamily:this.state.selectedJobFamily.name,
     StartDate:this.state.selectedStart,
