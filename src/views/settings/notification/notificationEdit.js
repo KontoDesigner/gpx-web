@@ -122,6 +122,7 @@ class NotificationEdit extends Component {   //Notification smart component
             txtarea.value=newText;
         }
 
+
     getSelection=(val)=>{
 
 
@@ -284,7 +285,7 @@ class NotificationEdit extends Component {   //Notification smart component
                     <Row>
                         <Col>
                             
-                               
+                                
                                     <NotificationInfo 
                                       
                                         languages={this.state.languages}
@@ -292,6 +293,7 @@ class NotificationEdit extends Component {   //Notification smart component
                                         handleInputField={this.handleInputField}
                                         actionChange={this.actionChange}
                                         getSelection={this.getSelection}
+                              
                                         undoSelection={this.undoSelection}
                                      
                                         styles={this.styles}

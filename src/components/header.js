@@ -21,6 +21,9 @@ const Header = () => {
                         <NavLink tag={RRNavLink} to="/reports">Reports</NavLink>
                     </NavItem>
                     <NavItem>
+                        <NavLink tag={RRNavLink} to="/application">Application For Work</NavLink>
+                    </NavItem>
+                    <NavItem>
                         <NavLink tag={RRNavLink} to="/settings">Settings</NavLink>
                     </NavItem>
                 </Nav>

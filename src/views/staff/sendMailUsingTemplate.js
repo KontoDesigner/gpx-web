@@ -324,7 +324,7 @@ debugger;
                                 <Input
                         required
                         type="textarea"
-                        maxLength="1000"
+                        maxLength="2000"
                         name="resignComm"
                         id="resignComm"
                         onChange={this.handleChange}
