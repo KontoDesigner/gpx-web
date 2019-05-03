@@ -11,12 +11,12 @@ const Tabs = props => {
                 <CardBody className="no-padding"> 
                     <ListGroup>
                         <ListGroupItem
-                            className={classnames({ active: props.activeTab === 'settings' })}
+                            className={classnames({ active: props.activeTab === 'allApplication' })}
                             onClick={() => {
-                                alert('Yet to be announced');
-                                return false;
-                      
-                                props.toggle('settings', props.getSetting, props.handleSetting)
+                                //alert('Yet to be announced');
+                                //return false;
+                                props.toggle('allApplication', props.getAllRoles, props.handleAllRoles)
+                                //props.toggle('settings', props.getSetting, props.handleSetting)
                                 
                             }}>
                            Applications
@@ -25,21 +25,21 @@ const Tabs = props => {
                         </ListGroupItem> 
                     
                         <ListGroupItem
-                            className={classnames({ active: props.activeTab === 'notification' })}
+                            className={classnames({ active: props.activeTab === 'planToResign' })}
                             onClick={() => {
-                                alert('Yet to be announced');
-                                return false;
-                                props.toggle('notification', props.getNotification, props.handleNotification)
+                               //alert('Yet to be announced');
+                                //return false;
+                                props.toggle('planToResign', props.getAllRoles, props.handleAllRoles)
                              
                             }}>
                           Plan To Resign
                         </ListGroupItem>
                         <ListGroupItem
-                            className={classnames({ active: props.activeTab === 'keywords' })}
+                            className={classnames({ active: props.activeTab === 'missingApplication' })}
                             onClick={() => {
-                                alert('Yet to be announced');
-                                return false;
-                                props.toggle('keywords', props.getKeywords, props.handleKeywords)
+                              //alert('Yet to be announced');
+                                //return false;
+                                props.toggle('missingApplication', props.getAllRoles, props.handleAllRoles)
                                 
                             }}>
                             Missing Applications
@@ -47,11 +47,11 @@ const Tabs = props => {
 
                         </ListGroupItem>
                         <ListGroupItem
-                            className={classnames({ active: props.activeTab === 'keywords' })}
+                            className={classnames({ active: props.activeTab === 'missingManagerComment' })}
                             onClick={() => {
-                                alert('Yet to be announced');
-                                return false;
-                                props.toggle('keywords', props.getKeywords, props.handleKeywords)
+                             //alert('Yet to be announced');
+                                //return false;
+                                props.toggle('missingManagerComment', props.getAllRoles, props.handleAllRoles)
                                 
                             }}>
                             Missing Manager Comments

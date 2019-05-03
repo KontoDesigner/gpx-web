@@ -25,7 +25,7 @@ const Tabs = props => {
                                 const win = window.open(tableau, '_blank')
                                 win.focus()
                             }}>
-                            Tableaux
+                            Tableaux 
                         </ListGroupItem>
                         <ListGroupItem
                             className={classnames({ active: props.activeTab === 'allRole' })}

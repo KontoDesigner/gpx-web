@@ -151,7 +151,7 @@ debugger;
                 />
             </Col>,
                    <Col key={2} sm="12" md="4" lg="2" xl="2" className="form-group form-group-select">
-                   <label htmlFor="mplPositionType">Position Type</label>
+                   <label htmlFor="mplPositionType">Job Title</label>
    
                    <Select
                        multi={true}
@@ -162,11 +162,25 @@ debugger;
                        options={this.props.mplpositiontypes}
                        onChange={this.updateMplPositionTypeState}
                       value={this.props.filter.selectedPositionType}
-                       placeholder="PositionType"
+                       placeholder="JobTitle"
                    />
                </Col>,
+     <Col key={2} sm="12" md="4" lg="1" xl="1" className="form-group form-group-select">
+     <label htmlFor="mplPositionType">Jump (Yes/No)</label>
 
-            <Col key={3} sm="12" md="4" lg="2" xl="2" className="form-group">
+     <Select
+         multi={true}
+         id="mplPositionType"
+         valueKey="id"
+         labelKey="name"
+         className="form-control" 
+         options={this.props.mplpositiontypes}
+         onChange={this.updateMplPositionTypeState}
+        value={this.props.filter.selectedPositionType}
+         placeholder="Jump"
+     />
+ </Col>,
+            <Col key={3} sm="12" md="4" lg="1" xl="1" className="form-group">
                 <TextInput name="text" label="Free Text" placeholder="e.g. Mallorca" value={this.state.text} onChange={this.updateTextState} />
             </Col>
         ]

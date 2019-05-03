@@ -4,12 +4,12 @@ import { Card, CardBody, CardHeader } from 'reactstrap'
 import Filter from '../filter'
 import Action2 from '../action2'
 
-class AllApplication extends Component {
+class PlanToResign extends Component {
 
   render() {
     return (
       <Card>
-        <CardHeader>All Applications</CardHeader>
+        <CardHeader>Plan To Resign</CardHeader>
 
         <CardBody className="no-padding-bottom">
           <div className="form-row">
@@ -61,4 +61,4 @@ class AllApplication extends Component {
   }
 }
 
-export default AllApplication
+export default PlanToResign
