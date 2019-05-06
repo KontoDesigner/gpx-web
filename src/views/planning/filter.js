@@ -136,7 +136,7 @@ debugger;
             <Col key={1} sm="12" md="4" lg="3" xl="3" className="form-group form-group-select">
                 <label htmlFor="jobFamily">JobFamily</label>
 
-                {this.props.filter.selectedJobFamily}
+            
 
                 <Select
                     multi={true}
