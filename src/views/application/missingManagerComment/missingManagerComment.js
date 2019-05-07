@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-//import SeasonRow from './seasonRow'
+import StatusRow from './statusRow'
 import { Card, CardBody, CardHeader } from 'reactstrap'
 import Filter from '../filter'
 import Action2 from '../action2'
@@ -34,27 +34,27 @@ class MissingManagerComment extends Component {
             />  
           </div>
 
-          {/* {this.props.allRoles.map((allRole, index) =>
-            <SeasonRow
+          { this.props.allApplication.map((allApplication, index) =>
+            <StatusRow 
               key={index}
               index={index}
-              allRole={allRole} 
-              handleSelectedTitle={this.props.handleSelectedTitle}
-              selectedTitle={this.props.selectedTitle}
-              edit={this.props.edit}
-              toogleMakePositionVacantModal={this.props.toogleMakePositionVacantModal}
-              toogleUnmarkPositionActingModal ={this.props.toogleUnmarkPositionActingModal}
-              toogleResetPositionAcceptModal  ={this.props.toogleResetPositionAcceptModal}
-              toogleMarkPositionDeclineModal ={this.props.toogleMarkPositionDeclineModal}
-              toogleMarkPositionActingModal ={this.props.toogleMarkPositionActingModal}
-              toogleMarkPositionAcceptModal = {this.props.toogleMarkPositionAcceptModal}
-              toogleAssignPositionModal = {this.props.toogleAssignPositionModal}
-              toogleUpdatePositionModal = {this.props.toogleUpdatePositionModal}
-              toogleRemovePositionModal={this.props.toogleRemovePositionModal  }
+              allApplication={allApplication} 
+              // handleSelectedTitle={this.props.handleSelectedTitle}
+              // selectedTitle={this.props.selectedTitle}
+              // edit={this.props.edit}
+              // toogleMakePositionVacantModal={this.props.toogleMakePositionVacantModal}
+              // toogleUnmarkPositionActingModal ={this.props.toogleUnmarkPositionActingModal}
+              // toogleResetPositionAcceptModal  ={this.props.toogleResetPositionAcceptModal}
+              // toogleMarkPositionDeclineModal ={this.props.toogleMarkPositionDeclineModal}
+              // toogleMarkPositionActingModal ={this.props.toogleMarkPositionActingModal}
+              // toogleMarkPositionAcceptModal = {this.props.toogleMarkPositionAcceptModal}
+              // toogleAssignPositionModal = {this.props.toogleAssignPositionModal}
+              // toogleUpdatePositionModal = {this.props.toogleUpdatePositionModal}
+              // toogleRemovePositionModal={this.props.toogleRemovePositionModal  }
             
             
             />
-          )} */}
+          )} 
         </CardBody>
       </Card>
     )

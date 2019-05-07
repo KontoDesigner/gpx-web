@@ -9,10 +9,7 @@ export default function allApplicationReducer(state = defaultState, action) {
         case types.HANDLE_ALLAPPLICATION:
             return action.data.allApplication;
 
-
-
-
         default:
             return state;
     }
-}
+} 

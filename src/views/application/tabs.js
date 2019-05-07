@@ -15,7 +15,7 @@ const Tabs = props => {
                             onClick={() => {
                                 //alert('Yet to be announced');
                                 //return false;
-                                props.toggle('allApplication', props.getAllRoles, props.handleAllRoles)
+                                props.toggle('allApplication', props.getAllApplication, props.handleAllApplication)
                                 //props.toggle('settings', props.getSetting, props.handleSetting)
                                 
                             }}>
@@ -29,7 +29,7 @@ const Tabs = props => {
                             onClick={() => {
                                //alert('Yet to be announced');
                                 //return false;
-                                props.toggle('planToResign', props.getAllRoles, props.handleAllRoles)
+                                props.toggle('planToResign', props.getAllApplication, props.handleAllApplication)
                              
                             }}>
                           Plan To Resign
@@ -39,7 +39,7 @@ const Tabs = props => {
                             onClick={() => {
                               //alert('Yet to be announced');
                                 //return false;
-                                props.toggle('missingApplication', props.getAllRoles, props.handleAllRoles)
+                                props.toggle('missingApplication', props.getAllApplication, props.handleAllApplication)
                                 
                             }}>
                             Missing Applications
@@ -51,7 +51,7 @@ const Tabs = props => {
                             onClick={() => {
                              //alert('Yet to be announced');
                                 //return false;
-                                props.toggle('missingManagerComment', props.getAllRoles, props.handleAllRoles)
+                                props.toggle('missingManagerComment', props.getAllApplication, props.handleAllApplication)
                                 
                             }}>
                             Missing Manager Comments

@@ -11,7 +11,8 @@ import MissingApplication from './missingApplication/missingApplication'
 import MissingManagerComment from './missingManagerComment/missingManagerComment'
 import PlanToResign from './planToResign/planToResign'
 import * as filterActions from '../../actions/planning/filterActions'
-import * as allRolesActions from '../../actions/planning/planning/allRolesActions'
+import * as allApplicationActions from '../../actions/application/allApplication/allApplicationActions'
+
 class Application extends Component {
     constructor(props) {
         super(props)
@@ -19,7 +20,7 @@ class Application extends Component {
         this.state = {
             loaded: false,
             activeTab: 'allApplication',
-           resetData: this.props.allRolesActions.handleAllRoles, // send to all role view
+           resetData: this.props.allApplicationActions.handleAllApplication, // send to all application view
         }
 
         // this.handleChange = this.handleChange.bind(this);
@@ -28,7 +29,7 @@ class Application extends Component {
     componentDidMount() {
         this.props.filterActions.handleFilter() //when page loads
         debugger
-        this.props.allRolesActions.getAllRoles(this.props.filter.sourceMarket, this.props.filter.selectedJobFamily, this.props.filter.selectedPositionType,this.props.filter.text)
+        this.props.allApplicationActions.getAllApplication(this.props.filter.sourceMarket, this.props.filter.selectedJobFamily, this.props.filter.selectedPositionType,this.props.filter.text)
 
        // this.props.planningActions.getStaffCandidate()
         //this.getAvailablePositionNew()
@@ -58,8 +59,8 @@ debugger;
                 <Tabs
                      toggle={this.toggle}
                     activeTab={this.state.activeTab}
-                    getAllRoles={this.props.allRolesActions.getAllRoles}
-                    handleAllRoles={this.props.allRolesActions.handleAllRoles}
+                    getAllApplication={this.props.allApplicationActions.getAllApplication}
+                    handleAllApplication={this.props.allApplicationActions.handleAllApplication}
                     // getAllRoles={this.props.allRolesActions.getAllRoles}
                     // handleAllRoles={this.props.allRolesActions.handleAllRoles}
                     // getPlacedRoles={this.props.placedRolesActions.getPlacedRoles}
@@ -76,15 +77,16 @@ debugger;
                     <TabContent activeTab={this.state.activeTab}>
                         <TabPane tabId="allApplication">
                             <AllApplication
-                            getAllRoles={this.props.allRolesActions.getAllRoles}
-
+                            getAllApplication={this.props.allApplicationActions.getAllApplication}
+                            allApplication={this.props.allApplication}
                                                            
                                                            
                             />
 </TabPane>
 <TabPane tabId="missingApplication">
                             <MissingApplication
-                            getAllRoles={this.props.allRolesActions.getAllRoles}
+                           getAllApplication={this.props.allApplicationActions.getAllApplication}
+                           allApplication={this.props.allApplication}
 
                                                            
                                                            
@@ -92,7 +94,8 @@ debugger;
 </TabPane>
 <TabPane tabId="missingManagerComment">
                             <MissingManagerComment
-                            getAllRoles={this.props.allRolesActions.getAllRoles}
+                         getAllApplication={this.props.allApplicationActions.getAllApplication}
+                         allApplication={this.props.allApplication}
 
                                                            
                                                            
@@ -100,10 +103,10 @@ debugger;
 </TabPane>
 <TabPane tabId="planToResign">
                             <PlanToResign
-                            getAllRoles={this.props.allRolesActions.getAllRoles}
+            getAllApplication={this.props.allApplicationActions.getAllApplication}
+            allApplication={this.props.allApplication}
 
-                                                           
-                                                           
+          
                             />
 </TabPane>
 </TabContent>
@@ -117,21 +120,21 @@ debugger;
 
 function mapStateToProps(state) {
     return {
-        newPosition: state.planning.planning.newPosition,
-        allRoles: state.planning.planning.allRoles,
-        placedRoles: state.planning.planning.placedRoles,
-        vacantRoles: state.planning.planning.vacantRoles,
-        replyYesNoRoles: state.planning.planning.replyYesNoRoles,
-        selectedTitle: state.planning.filter.selectedTitle,
-        candidate: state.planning.candidate.candidate,
+        // newPosition: state.planning.planning.newPosition,
+        allApplication: state.application.application.allApplication,
+        // placedRoles: state.planning.planning.placedRoles,
+        // vacantRoles: state.planning.planning.vacantRoles,
+        // replyYesNoRoles: state.planning.planning.replyYesNoRoles,
+        // selectedTitle: state.planning.filter.selectedTitle,
+        // candidate: state.planning.candidate.candidate,
         filter: state.planning.filter
     }
-}
+} 
 
 function mapDispatchToProps(dispatch) {
     return {
         // planningActions: bindActionCreators(planningActions, dispatch),
-        allRolesActions: bindActionCreators(allRolesActions, dispatch),
+        allApplicationActions: bindActionCreators(allApplicationActions, dispatch),
         // placedRolesActions: bindActionCreators(placedRolesActions, dispatch),
         // vacantRolesActions: bindActionCreators(vacantRolesActions, dispatch),
         // newPositionActions: bindActionCreators(newPositionActions, dispatch),

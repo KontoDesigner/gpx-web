@@ -14,13 +14,13 @@ export function getAllApplication(sourcemarket = 'ALL', jobfamily = 'ALL',  posi
         dispatch(beginAjaxCall())
         debugger
         try {
-            debugger;
+        
             // const allRoles = await RestClient.Get(`positionassign/GetAllPositionsAssignData`)
             const allApplication = await RestClient.Get(
-                `application/GetAllApplicationData/${sourcemarket}/${jobfamily}/${positiontype}/${criteria !== null ? `${criteria}` : ''}`
-            
+                `application/AllApplicationData/${sourcemarket}/${jobfamily}/${positiontype}/${criteria !== null ? `${criteria}` : ''}`
+                
                 )
-
+                debugger;
             dispatch(getAllApplicationSuccess(allApplication))
         } catch (error) {
             dispatch(ajaxCallError(error))
@@ -40,6 +40,6 @@ export function getAllApplication(sourcemarket = 'ALL', jobfamily = 'ALL',  posi
 export function handleAllApplication(allApplication) {
     return {
         type: types.HANDLE_ALLAPPLICATION,
-        data: { allApplcation: allApplication }
+        data: { allApplication: allApplication }
     }
 }
