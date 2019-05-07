@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { Collapse, Card, CardBody, CardHeader } from 'reactstrap'
 //import PositionRow from './positionRow'
 
-class StatusRow extends Component {
+class ApplicationRow extends Component {
   constructor() {
     super()
 
@@ -26,12 +26,12 @@ class StatusRow extends Component {
       <Card className="card-accordion card-country">
         <CardHeader className="card-header-app" onClick={() => this.toggleCollapse()}>
           {this.props.allApplication.status} {icon}
-        </CardHeader>
+        </CardHeader> 
 
         <Collapse isOpen={this.state.expanded}>
           <CardBody className="no-padding-bottom">
-            {/* {this.props.destination.jobTitles.map((jobTitle, index) => (
-              <PositionRow
+             {/* {this.props.destination.jobTitles.map((jobTitle, index) => (
+              <ApplicationRow
                 key={index}
                 index={this.props.index.toString() + index.toString()}
                 jobTitle={jobTitle}
@@ -42,7 +42,7 @@ class StatusRow extends Component {
                 toogleResignStaffModal={this.props.toogleResignStaffModal}
                 toogleSendMailModal={this.props.toogleSendMailModal}
               />
-            ))} */}
+            ))}  */}
           </CardBody>
         </Collapse>
       </Card>
@@ -50,4 +50,4 @@ class StatusRow extends Component {
   }
 }
 
-export default StatusRow
+export default ApplicationRow

@@ -7,4 +7,5 @@ export var ActionTypes = keyMirror({
     HANDLE_SELECTEDTITLE: null,
     HANDLE_SELECTEDJOBFAMILY:null,
     HANDLE_SELECTEDPOSITIONTYPES:null
+
 });

@@ -17,7 +17,7 @@ class AllApplication extends Component {
           <Filter 
           getData={this.props.getAllApplication}
           />
-            <Action2 
+            {/* <Action2 
               
             //selected={this.props.selectedTitle} 
             //allRoles={this.props.allRoles}
@@ -31,7 +31,7 @@ class AllApplication extends Component {
             // toogleAssignPositionModal = {this.props.toogleAssignPositionModal}
             // toogleRemovePositionModal = {this.props.toogleRemovePositionModal}
            // toogleRemovePositionSelectModal = {this.props.toogleRemovePositionSelectModal}                  
-            />  
+            />   */}
           </div>
 
           { this.props.allApplication.map((allApplication, index) =>

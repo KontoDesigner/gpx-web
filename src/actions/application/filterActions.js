@@ -1,4 +1,4 @@
-import { ActionTypes as types } from '../../constants/planning/planning/filterConstants'
+import { ActionTypes as types } from '../../constants/application/filterConstants'
 
 export function handleText(text) {
   return {
@@ -15,21 +15,28 @@ export function handleSourceMarket(sourceMarket) {
     data: { sourceMarket: sourceMarket }
   } 
 }
-
-export function handleSelectedJobFamily(selectedJobFamily) {
- 
+export function handleSelectedJump(selectedJump) {
+  debugger;
   return {
-    
+ 
+    type: types.HANDLE_SELECTEDJUMP,
+    data: { selectedJump: selectedJump }
+  }
+}
+export function handleSelectedJobFamily(selectedJobFamily) {
+  debugger;
+  return {
+ 
     type: types.HANDLE_SELECTEDJOBFAMILY,
     data: { selectedJobFamily: selectedJobFamily }
   }
 }
-export function handleSelectedPositionTypes(selectedPositionType) {
- 
+export function handleSelectedJobTitle(selectedJobTitle) {
+ debugger;
   return {
     
-    type: types.HANDLE_SELECTEDPOSITIONTYPES,
-    data: { selectedPositionType: selectedPositionType }
+    type: types.HANDLE_SELECTEDJOBTITLE,
+    data: { selectedJobTitle: selectedJobTitle }
   }
 }
 

@@ -3,7 +3,7 @@ import { Col } from 'reactstrap'
 import TextInput from '../../components/textInput'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import * as filterActions from '../../actions/planning/filterActions'
+import * as filterActions from '../../actions/application/filterActions'
 
 import debounce from 'lodash/debounce'
 import Select from 'react-select'
@@ -13,6 +13,8 @@ class Filter extends Component {
         super(props)
 
         this.getData = debounce(this.getDataDebouncer, 500)
+
+  
 
         this.state = {
             text: this.props.filter.text
@@ -27,18 +29,41 @@ class Filter extends Component {
         } 
 
         this.state = {
-            selectedPositionType: this.props.filter.selectedPositionType
+            selectedJobTitle: this.props.filter.selectedJobTitle,
         }
+
+        this.state = {
+            selectedJump: this.props.filter.selectedJump,
+        }
+        this.state = {
+            jump: [    //not in use  delete
+                {
+                    id: 'Yes',
+                    name: 'Yes' 
+                },
+                {
+                    id: 'No',
+                    name: 'No' 
+                }
+          
+            ],
+        }
+
+        
+        
+
+        
     }
 
     componentWillReceiveProps(nextProps) {
         this.setState({ text: nextProps.filter.text })
     }
 
-    getDataDebouncer = (sourcemarket, jobfamily, positiontype, criteria) => {
+    getDataDebouncer = (sourcemarket, jobfamily, jobtitle, criteria) => {
+        debugger;
         this.props.filterActions.handleText(this.state.text)
 
-        this.props.getData(sourcemarket, jobfamily, positiontype,criteria)
+        this.props.getData(sourcemarket, jobfamily, jobtitle,criteria)
     }
 
     updateTextState = event => {
@@ -48,7 +73,7 @@ class Filter extends Component {
             text: value
         })
 debugger;
-        this.getData(this.props.filter.sourceMarket, this.props.filter.selectedJobFamily,this.props.filter.selectedPositionType, value)
+        this.getData(this.props.filter.sourceMarket, this.props.filter.selectedJobFamily,this.props.filter.selectedJobTitle, value)
     }
                     
     
@@ -70,7 +95,7 @@ debugger;
     debugger;
 
        // this.props.getData(sourceMarketId, this.props.filter.selectedJobFamily, this.props.filter.text)
-        this.props.getData(vals, this.props.filter.selectedJobFamily, this.props.filter.selectedPositionType,this.props.filter.text)
+        this.props.getData(vals, this.props.filter.selectedJobFamily, this.props.filter.selectedJobTitle, this.props.filter.selectedJump,this.props.filter.text)
     }
 
     updateJobFamilyState = jobFamily => {
@@ -90,29 +115,49 @@ debugger;
         })
         debugger;
         //this.props.getData(this.props.filter.sourceMarket, jobFamilyId, this.props.filter.text)
-        this.props.getData(this.props.filter.sourceMarket, vals,this.props.filter.selectedPositionType, this.props.filter.text)
+        this.props.getData(this.props.filter.sourceMarket, vals,this.props.filter.selectedJobTitle,this.props.filter.selectedJump,this.props.filter.text)
     }
-
-    updateMplPositionTypeState = mplPositionType => {
+    updateJumpState = jump => {
         debugger;
-        const mplPositionTypeId = mplPositionType != null ? mplPositionType.id : undefined
+        const jumpId = jump != null ? jump.id : undefined
 
         
 
-        let vals = mplPositionType.length !=0 ? mplPositionType.map(function(m) {
+        let vals = jump.length !=0 ? jump.map(function(m) {
             return m.id
         }):undefined
 
-        this.props.filterActions.handleSelectedPositionTypes(vals)
+        this.props.filterActions.handleSelectedJump(vals)
     
- 
+    
         this.setState({ 
-            selectedPositionType: vals 
+            selectedJump: vals 
         })
      
         debugger;
         //this.props.getData(this.props.filter.sourceMarket, jobFamilyId, this.props.filter.text)
-        this.props.getData(this.props.filter.sourceMarket, this.props.filter.selectedJobFamily,vals, this.props.filter.text)
+        this.props.getData(this.props.filter.sourceMarket, this.props.filter.selectedJobFamily,this.props.filter.selectedJobTitle,vals, this.props.filter.text)
+    }
+    updateJobTitleState = jobTitle => {
+        debugger;
+        const jobTitleId = jobTitle != null ? jobTitle.id : undefined
+
+        
+
+        let vals = jobTitle.length !=0 ? jobTitle.map(function(m) {
+            return m.id
+        }):undefined
+
+        this.props.filterActions.handleSelectedJobTitle(vals)
+    
+ 
+        this.setState({ 
+            selectedJobTitle: vals 
+        })
+     
+        debugger;
+        //this.props.getData(this.props.filter.sourceMarket, jobFamilyId, this.props.filter.text)
+        this.props.getData(this.props.filter.sourceMarket, this.props.filter.selectedJobFamily,vals, this.props.filter.selectedJump,this.props.filter.text)
     }
 
     render() {
@@ -136,7 +181,6 @@ debugger;
             <Col key={1} sm="12" md="4" lg="3" xl="3" className="form-group form-group-select">
                 <label htmlFor="jobFamily">JobFamily</label>
 
-                {this.props.filter.selectedJobFamily}
 
                 <Select
                     multi={true}
@@ -150,33 +194,33 @@ debugger;
                     placeholder="JobFamily"
                 />
             </Col>,
-                   <Col key={2} sm="12" md="4" lg="2" xl="2" className="form-group form-group-select">
-                   <label htmlFor="mplPositionType">Job Title</label>
+                   <Col key={2} sm="12" md="4" lg="3" xl="3" className="form-group form-group-select">
+                   <label htmlFor="jobTitle">Job Title</label>
    
                    <Select
                        multi={true}
-                       id="mplPositionType"
+                       id="jobTitle"
                        valueKey="id"
                        labelKey="name"
                        className="form-control" 
-                       options={this.props.mplpositiontypes}
-                       onChange={this.updateMplPositionTypeState}
-                      value={this.props.filter.selectedPositionType}
+                       options={this.props.jobTitles}
+                       onChange={this.updateJobTitleState}
+                      value={this.props.filter.selectedJobTitle}
                        placeholder="JobTitle"
                    />
                </Col>,
-     <Col key={2} sm="12" md="4" lg="1" xl="1" className="form-group form-group-select">
-     <label htmlFor="mplPositionType">Jump (Yes/No)</label>
+     <Col key={2} sm="12" md="4" lg="2" xl="2" className="form-group form-group-select">
+     <label htmlFor="jump">Jump </label>
 
      <Select
          multi={true}
-         id="mplPositionType"
+         id="jump"
          valueKey="id"
          labelKey="name"
          className="form-control" 
-         options={this.props.mplpositiontypes}
-         onChange={this.updateMplPositionTypeState}
-        value={this.props.filter.selectedPositionType}
+         options={this.state.jump}
+         onChange={this.updateJumpState}
+        value={this.props.filter.selectedJump}
          placeholder="Jump"
      />
  </Col>,
@@ -189,9 +233,10 @@ debugger;
 
 function mapStateToProps(state) {
     return {
-        filter: state.planning.filter,
+        filter: state.application.filter,
         sourceMarkets: state.geography.sourceMarkets,
         jobFamilies: state.setting.setting.jobFamilies,
+        jobTitles: state.setting.setting.jobTitle ,
         mplpositiontypes: state.planning.candidate.mplpositiontypes
     }
 }

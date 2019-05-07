@@ -17,7 +17,7 @@ class MissingManagerComment extends Component {
           <Filter 
           getData={this.props.getAllRoles}
           />
-            <Action2 
+            {/* <Action2 
               
             //selected={this.props.selectedTitle} 
             //allRoles={this.props.allRoles}
@@ -31,7 +31,7 @@ class MissingManagerComment extends Component {
             // toogleAssignPositionModal = {this.props.toogleAssignPositionModal}
             // toogleRemovePositionModal = {this.props.toogleRemovePositionModal}
            // toogleRemovePositionSelectModal = {this.props.toogleRemovePositionSelectModal}                  
-            />  
+            />   */}
           </div>
 
           { this.props.allApplication.map((allApplication, index) =>

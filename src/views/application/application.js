@@ -10,7 +10,7 @@ import AllApplication from './allApplication/allApplication'
 import MissingApplication from './missingApplication/missingApplication'
 import MissingManagerComment from './missingManagerComment/missingManagerComment'
 import PlanToResign from './planToResign/planToResign'
-import * as filterActions from '../../actions/planning/filterActions'
+import * as filterActions from '../../actions/application/filterActions'
 import * as allApplicationActions from '../../actions/application/allApplication/allApplicationActions'
 
 class Application extends Component {
@@ -28,8 +28,9 @@ class Application extends Component {
 
     componentDidMount() {
         this.props.filterActions.handleFilter() //when page loads
+       
         debugger
-        this.props.allApplicationActions.getAllApplication(this.props.filter.sourceMarket, this.props.filter.selectedJobFamily, this.props.filter.selectedPositionType,this.props.filter.text)
+        this.props.allApplicationActions.getAllApplication(this.props.filter.sourceMarket, this.props.filter.selectedJobFamily, this.props.filter.selectedJobTitle,this.props.filter.selectedJump,this.props.filter.text)
 
        // this.props.planningActions.getStaffCandidate()
         //this.getAvailablePositionNew()
@@ -44,7 +45,7 @@ class Application extends Component {
             //this.props.filterActions.handleFilter()
 debugger;
             //Get tab data
-            getData(this.props.filter.sourceMarket, this.props.filter.selectedJobFamily,this.props.filter.selectedPositionType, this.props.filter.text)
+            getData(this.props.filter.sourceMarket, this.props.filter.selectedJobFamily,this.props.filter.selectedJobTitle,this.props.filter.selectedJump, this.props.filter.text)
 
             this.setState({
                 activeTab: tab,
@@ -127,7 +128,7 @@ function mapStateToProps(state) {
         // replyYesNoRoles: state.planning.planning.replyYesNoRoles,
         // selectedTitle: state.planning.filter.selectedTitle,
         // candidate: state.planning.candidate.candidate,
-        filter: state.planning.filter
+       filter: state.application.filter
     }
 } 
 

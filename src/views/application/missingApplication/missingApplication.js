@@ -15,9 +15,9 @@ class MissingApplication extends Component {
           <div className="form-row">
           
           <Filter 
-          getData={this.props.getAllRoles}
+       getData={this.props.getAllApplication}
           />
-            <Action2 
+            {/* <Action2 
               
             //selected={this.props.selectedTitle} 
             //allRoles={this.props.allRoles}
@@ -31,7 +31,7 @@ class MissingApplication extends Component {
             // toogleAssignPositionModal = {this.props.toogleAssignPositionModal}
             // toogleRemovePositionModal = {this.props.toogleRemovePositionModal}
            // toogleRemovePositionSelectModal = {this.props.toogleRemovePositionSelectModal}                  
-            />  
+            />   */}
           </div>
 
           { this.props.allApplication.map((allApplication, index) =>
