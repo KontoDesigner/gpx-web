@@ -12,10 +12,11 @@ export function getAllApplicationSuccess(allApplication) {
 export function getAllApplication(sourcemarket = 'ALL', jobfamily = 'ALL',  jobtitle = 'ALL', jump = 'ALL',criteria = null) {
     return async function(dispatch) {
         dispatch(beginAjaxCall())
+        debugger;
         try {
         
             // const allRoles = await RestClient.Get(`positionassign/GetAllPositionsAssignData`)
-            const allApplication = await RestClient.Get(`application/AllApplicationData/${sourcemarket}/${jobfamily}/${jobtitle}/${jump}/${criteria !== null ? `${criteria}` : ''}`)
+            const allApplication = await RestClient.Get(`application/allApplicationData/${sourcemarket}/${jobfamily}/${jobtitle}/${jump}/${criteria !== null ? `${criteria}` : ''}`)
             debugger;
 
                 

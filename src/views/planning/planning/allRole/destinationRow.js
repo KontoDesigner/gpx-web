@@ -12,7 +12,9 @@ class DestinationRow extends Component {
     }
 
     toggleCollapse = () => {
+        debugger;
         this.setState({ expanded: !this.state.expanded })
+        debugger;
     }
 
     render() {

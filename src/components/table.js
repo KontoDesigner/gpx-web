@@ -94,7 +94,7 @@ const Table = props => {
                 maxHeight: '100%'
             }}>
             <AgGridReact
-                 //onGridReady={params => props.handleGrid(params)}
+                //  onGridReady={params => handleGrid(params)}
                 
 
                 columnDefs={columnDefs}
@@ -112,14 +112,16 @@ const Table = props => {
                 
             />
 
+
         </div>
  
 
 
 
+
     )
    
-
+ 
 
 }
 

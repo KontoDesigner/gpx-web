@@ -34,14 +34,14 @@ class AllApplication extends Component {
             />   */}
           </div>
 
-          { this.props.allApplication.map((allApplication, index) =>
+          {this.props.allApplication.map((allApplication, index) =>
             <StatusRow 
               key={index}
               index={index}
               allApplication={allApplication} 
               // handleSelectedTitle={this.props.handleSelectedTitle}
               // selectedTitle={this.props.selectedTitle}
-              // edit={this.props.edit}
+              edit={this.props.edit}
               // toogleMakePositionVacantModal={this.props.toogleMakePositionVacantModal}
               // toogleUnmarkPositionActingModal ={this.props.toogleUnmarkPositionActingModal}
               // toogleResetPositionAcceptModal  ={this.props.toogleResetPositionAcceptModal}
@@ -54,7 +54,7 @@ class AllApplication extends Component {
             
             
             />
-          )} 
+          )}  
         </CardBody>
       </Card>
     )

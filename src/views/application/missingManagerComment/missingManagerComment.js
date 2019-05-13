@@ -34,7 +34,7 @@ class MissingManagerComment extends Component {
             />   */}
           </div>
 
-          { this.props.allApplication.map((allApplication, index) =>
+          {/* { this.props.allApplication.map((allApplication, index) =>
             <StatusRow 
               key={index}
               index={index}
@@ -54,7 +54,7 @@ class MissingManagerComment extends Component {
             
             
             />
-          )} 
+          )}  */}
         </CardBody>
       </Card>
     )

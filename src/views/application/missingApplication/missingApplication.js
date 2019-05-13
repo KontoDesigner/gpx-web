@@ -34,7 +34,7 @@ class MissingApplication extends Component {
             />   */}
           </div>
 
-          { this.props.allApplication.map((allApplication, index) =>
+          {/* { this.props.allApplication.map((allApplication, index) =>
             <StatusRow 
               key={index}
               index={index}
@@ -54,7 +54,7 @@ class MissingApplication extends Component {
             
             
             />
-          )} 
+          )}  */}
         </CardBody>
       </Card>
     )

@@ -35,6 +35,19 @@ class Application extends Component {
        // this.props.planningActions.getStaffCandidate()
         //this.getAvailablePositionNew()
     }
+
+    edit = application => {
+        // alert(position.staffID);
+        debugger;
+        if (application.staffID != null && (application.staffID != 0 && application.staffID != 'No StaffId defined')) {
+            const win = window.open(`/application/${application.staffID}`, '_blank')
+            win.focus()
+        } else {
+            const win2 = window.open(`/application/${application.staffID}`, '_blank')
+            win2.focus()
+        }
+    }
+
     toggle = (tab, getData, resetData) => {
         debugger;
         if (this.state.activeTab !== tab) {
@@ -80,7 +93,7 @@ debugger;
                             <AllApplication
                             getAllApplication={this.props.allApplicationActions.getAllApplication}
                             allApplication={this.props.allApplication}
-                                                           
+                    edit={this.edit}                         
                                                            
                             />
 </TabPane>

@@ -22,8 +22,8 @@ const columns = [
     { label: 'Assign EndDate', dataKey: 'endDate',type: 'datetime', format: 'YYYY-MM-DD' }, 
 
     { label: 'Placed', dataKey: 'firstNameLastName' },
-    { label: 'Action Status', dataKey: 'accept' },
-    { label: 'Action Status', dataKey: 'acting' }
+    { label: 'Accept', dataKey: 'accept' },
+    { label: 'Acting', dataKey: 'acting' }
     // { label: 'Id', dataKey: 'staffID' }
 ]
 
@@ -52,10 +52,10 @@ const JobTitleTable = props => {
             list={props.positions}
             contextMenuItems={contextMenuItems}
             columns={columns}
-            checkbox={true}
-            identifier={'mplID'}
-            edit={props.edit}
-            updateSelectedState={props.handleSelectedTitle}
+             checkbox={true}
+             identifier={'mplID'}
+             edit={props.edit}
+             updateSelectedState={props.handleSelectedTitle}
             selected={props.selectedTitle}
         />
     )
