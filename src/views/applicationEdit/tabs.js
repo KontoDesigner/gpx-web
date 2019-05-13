@@ -9,19 +9,19 @@ const Tabs = (props) => {
                 <Nav className="nav-tab nav-tab-edit" style={{ backgroundColor: '#fff', paddingTop: '0px' }}>
                     <NavItem>
                         <NavLink
-                            className={classnames({ active: props.activeTab === 'employeeInfo' })}
+                            className={classnames({ active: props.activeTab === 'overviewInfo' })}
                             onClick={() => {
-                                props.toggle('employeeInfo')
+                                props.toggle('overviewInfo')
                             }}>
-                         Staff Planning
+                         Overview
                                 </NavLink>
                     </NavItem>
 
                       <NavItem>
                         <NavLink
-                            className={classnames({ active: props.activeTab === 'abscense' })}
+                            className={classnames({ active: props.activeTab === 'applicationformInfo' })}
                             onClick={() => {
-                                props.toggle('abscense')
+                                props.toggle('applicationformInfo')
                             }}>
                           Application Form
                                 </NavLink>
@@ -30,9 +30,9 @@ const Tabs = (props) => {
 
                     <NavItem>
                         <NavLink
-                            className={classnames({ active: props.activeTab === 'cv' })}
+                            className={classnames({ active: props.activeTab === 'managersectionInfo' })}
                             onClick={() => {
-                                props.toggle('cv')
+                                props.toggle('managersectionInfo')
                             }}>
                            Manager Section
                                 </NavLink>

@@ -3,26 +3,26 @@ import { Card, CardBody, CardHeader, Col } from 'reactstrap'
 import TextInput from '../../components/textInput'
 import moment from "moment";
 
-const WorkInfo = (props) => {
+const OverviewInfo = (props) => {
    
     return (
      
         <Card>
-            <CardHeader>{props.application.firstName} {props.application.lastName}</CardHeader>
+
 
             <CardBody className="no-padding-bottom">
                 <div className="form-row">
-
+ 
                           <Col sm="12" md="6" lg="2" xl="2" className="form-group">
-                        <TextInput name="firstName" label="First Name" disabled  value={props.application.firstName}  />
+                        <TextInput name="firstName" label="This employee is planning to resign at the end of summer 2018 season?" disabled  value={props.application.firstName}  />
                     </Col>
-
+ 
                            <Col sm="12" md="2" lg="2" xl="2" className="form-group">
-                        <TextInput name="lastName" label="Last Name" disabled value={props.application.lastName}  />
+                        <TextInput name="lastName" label="Is the employee a member of the JUMP program or will start a program shortly?" disabled value={props.application.lastName}  />
                     </Col>
 
                     <Col sm="12" md="6" lg="2" xl="2" className="form-group">
-                        <TextInput name="nat" label="Nationality" disabled  value={props.application.nat}  />
+                        <TextInput name="nat" label="Has the employee requested a change their jobfamily for next season? For example childcare to rep? " disabled  value={props.application.nat}  />
                     </Col>
 
                     <Col sm="12" md="6" lg="2" xl="2" className="form-group">
@@ -140,4 +140,4 @@ const WorkInfo = (props) => {
     );
 };
 
-export default WorkInfo
+export default OverviewInfo

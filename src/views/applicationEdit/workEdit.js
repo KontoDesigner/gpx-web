@@ -1,10 +1,13 @@
 import React, { Component } from 'react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
-import { Row, Col, Card, CardHeader, CardBody, CardFooter, Button } from 'reactstrap'
+import { TabContent, TabPane, Row, Col, Card, CardHeader, CardBody, CardFooter, Button } from 'reactstrap'
 import { LinkContainer } from 'react-router-bootstrap'
 import * as applicationInfoActions from '../../actions/applicationEdit/applicationInfoActions'
 import WorkInfo from './workInfo'
+import OverviewInfo from './overviewInfo'
+import ApplicationformInfo from './applicationformInfo'
+import ManagersectionInfo from './managersectionInfo'
 import AllRole from '../planning/planning/allRole/allRole';
 import Buttons from './buttons';
 import Tabs from './tabs'
@@ -24,14 +27,15 @@ class WorkEdit extends Component {
         this.state = {
             staffid: id,
            // mplID: mplID,
-            application: null
+            application: null,
+            activeTab: 'overviewInfo',
        
         }
     }
 
    componentWillMount=async()=>  {
          const _this = this
-
+ 
   
         
         // this.props.employeeInfoActions.getAvailablePositions(this.props.currentSeason.name, this.props.nextSeason.name, this.props.followingSeason.name)
@@ -49,6 +53,16 @@ class WorkEdit extends Component {
            }
          })
     }
+
+
+    toggle = activeTab => {
+        if (this.state.activeTab !== activeTab) {
+            this.setState({
+                activeTab
+            })
+        }
+    }
+
 
     save = () => {
         alert('not implemented')
@@ -90,10 +104,6 @@ class WorkEdit extends Component {
              
 
                     <Row>
-                        
-                    </Row>
-
-                    <Row>
                         <Col>
                            
                                
@@ -113,6 +123,40 @@ class WorkEdit extends Component {
                             
                            
                         </Col>
+                    </Row>
+
+                    <Row>
+                        <Col>
+
+                    <TabContent activeTab={this.state.activeTab}>
+                                <TabPane tabId="overviewInfo">
+                                    <OverviewInfo
+
+application={this.props.application}
+
+                                          /> 
+                                             </TabPane>
+                          
+                            
+                                <TabPane tabId="applicationformInfo">
+                                    <ApplicationformInfo
+
+application={this.props.application}
+
+                                          /> 
+                                             </TabPane>
+                         
+                            
+                                <TabPane tabId="managersectionInfo">
+                                    <ManagersectionInfo
+
+application={this.props.application}
+
+                                          /> 
+                                             </TabPane>
+                           
+   </TabContent>
+                    </Col>
                     </Row>
                 </div>
             )

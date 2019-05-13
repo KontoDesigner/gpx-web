@@ -2,16 +2,19 @@ import React from 'react'
 import Table from '../../../components/table.js'
 
 const columns = [
-    { label: 'Rating', dataKey: 'rating' },
+
      { label: 'FirstName', dataKey: 'firstName' },
      { label: 'LastName', dataKey: 'lastName' },
-     { label: 'Email', dataKey: 'email' },
+     { label: 'SourceMarket', dataKey: 'sourceMarket' },
+     { label: 'Current Destination', dataKey: 'destination' },
+     { label: 'Rating', dataKey: 'rating' },
+     { label: 'Driving License', dataKey: 'drivingLicense' },
+     { label: 'Education', dataKey: 'education' },
 
-    { label: 'SourceMarket', dataKey: 'sourceMarket' },
+    //{ label: 'Manager Comments', dataKey: 'managerComments' },
+   // { label: 'Couple Wish', dataKey: 'coupleWish' }
 
-    { label: 'Manager Comments', dataKey: 'managerComments' },
-    { label: 'Couple Wish', dataKey: 'coupleWish' }
-
+    // { label: 'Email', dataKey: 'email' },
     // { label: 'Source Market', dataKey: 'mplSourceMarket' },
     // { label: 'Position Type', dataKey: 'mplPositionType' },
     // //{ label: 'Languages', dataKey: 'languages' },

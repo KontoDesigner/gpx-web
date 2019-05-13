@@ -3,33 +3,33 @@ import { Card, CardBody, CardHeader, Col } from 'reactstrap'
 import TextInput from '../../components/textInput'
 import moment from "moment";
 
-const WorkInfo = (props) => {
+const OverviewInfo = (props) => {
    
     return (
      
         <Card>
-            <CardHeader>{props.application.firstName} {props.application.lastName}</CardHeader>
+  
 
             <CardBody className="no-padding-bottom">
                 <div className="form-row">
-
+ 
                           <Col sm="12" md="6" lg="2" xl="2" className="form-group">
-                        <TextInput name="firstName" label="First Name" disabled  value={props.application.firstName}  />
+                        <TextInput name="firstName" label="Current" disabled  value={props.application.firstName}  />
                     </Col>
-
+ 
                            <Col sm="12" md="2" lg="2" xl="2" className="form-group">
-                        <TextInput name="lastName" label="Last Name" disabled value={props.application.lastName}  />
+                        <TextInput name="lastName" label="Choice" disabled value={props.application.lastName}  />
                     </Col>
 
                     <Col sm="12" md="6" lg="2" xl="2" className="form-group">
-                        <TextInput name="nat" label="Nationality" disabled  value={props.application.nat}  />
+                        <TextInput name="nat" label="Choice" disabled  value={props.application.nat}  />
                     </Col>
 
                     <Col sm="12" md="6" lg="2" xl="2" className="form-group">
-                        <TextInput name="centralID" label="CentralID" disabled   value={props.application.centralID}  />
+                        <TextInput name="centralID" label="Choice" disabled   value={props.application.centralID}  />
                     </Col>
                     <Col sm="12" md="6" lg="2" xl="2" className="form-group">
-                        <TextInput name="destination" label="Current Destination" disabled   value={props.application.destination}  />
+                        <TextInput name="destination" label="Choice" disabled   value={props.application.destination}  />
                     </Col>
                     <Col sm="12" md="6" lg="2" xl="2" className="form-group">
                         <TextInput name="jobtitle" label="Current JobTitle" disabled   value={props.application.jobTitle}  />
@@ -140,4 +140,4 @@ const WorkInfo = (props) => {
     );
 };
 
-export default WorkInfo
+export default OverviewInfo
