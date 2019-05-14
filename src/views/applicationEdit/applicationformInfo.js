@@ -2,7 +2,8 @@ import React from 'react';
 import { Card, CardBody, CardHeader, Col } from 'reactstrap'
 import TextInput from '../../components/textInput'
 import moment from "moment";
-
+import Select from 'react-select'
+import Datetime from 'react-datetime'
 const OverviewInfo = (props) => {
    
     return (
@@ -12,17 +13,58 @@ const OverviewInfo = (props) => {
 
             <CardBody className="no-padding-bottom">
                 <div className="form-row">
+                <Col sm="12" md="6" lg="4" xl="4" className="form-group">
+                <label htmlFor="preferToWork">If applicable to your job role. Indicate what type of guest you are suitable to work with</label>
+
+                        <Select
+                            //  multi={true}
+                            valueKey="id"
+                            labelKey="name"
+                            className="form-control"
+                            options={props.suitableArr}
+                            multi
+                            onChange={v => {
+                                props.handleMultiSelect('preferToWork', v)
+                            }}
+                            //onChange = { this.props.handleStaffField('suitable',v) }
+                            value={props.preferToWork === '' ? null : props.preferToWork}
+                            placeholder="Select"
+                        />
+
+
+
  
-                          <Col sm="12" md="6" lg="2" xl="2" className="form-group">
-                        <TextInput name="firstName" label="I would like to request to work" disabled  value=""  />
+{/*                          
+                        <TextInput name="firstName" label="I would like to request to work"  value=""  /> */}
                     </Col>
  
                            <Col sm="12" md="2" lg="2" xl="2" className="form-group">
-                        <TextInput name="lastName" label="Between dates" disabled value="" />
+                           <label htmlFor="workPeriodStart">From</label>
+            
+                           <Datetime  className={'custom-datepicker'}
+                            id="workPeriodStart"
+                           onChange={props.assignStartChange}
+                        //    defaultValue={moment(this.props.positionAssign.StaffStartDate).format('YYYY-MM-DD')}
+                           value={props.selectedStartDate}
+                            timeFormat={false}
+                            dateFormat="YYYY-MM-DD"
+                            closeOnSelect
+                            utc={true}
+                            inputProps={{ placeholder: 'YYYY-MM-DD' }} />
                     </Col>
-
-                    <Col sm="12" md="6" lg="2" xl="2" className="form-group">
-                        <TextInput name="nat" label="What TUI Destination Services source market are you employed for" disabled  value={props.application.nat}  />
+                    <Col sm="12" md="2" lg="2" xl="2" className="form-group">
+                           <label htmlFor="workPeriodEnd">To</label>
+            
+                           <Datetime  className={'custom-datepicker'}
+                            id="workPeriodEnd"
+                           onChange={props.assignEndChange}
+                        //    defaultValue={moment(this.props.positionAssign.StaffStartDate).format('YYYY-MM-DD')}
+                           value={props.selectedEndDate}
+                            timeFormat={false}
+                            dateFormat="YYYY-MM-DD"
+                            closeOnSelect
+                            utc={true}
+                            inputProps={{ placeholder: 'YYYY-MM-DD' }} />
                     </Col>
 
                     <Col sm="12" md="6" lg="2" xl="2" className="form-group">

@@ -1,4 +1,5 @@
 import { ActionTypes as types } from '../../constants/applicationEdit/applicationInfoConstants';
+                  
 
 var defaultState = {
     // currentAvailablePositions: [],
@@ -7,7 +8,9 @@ var defaultState = {
     // currentPositionAssign: null,
     // nextPositionAssign: null,
     // followingPositionAssign: null,
-    application: null
+    application: null,
+    applicationInfo: [],
+    preferToWork: []
 }
 
 export default function applicationInfoReducer(state = defaultState, action) {
@@ -18,6 +21,13 @@ export default function applicationInfoReducer(state = defaultState, action) {
             return {
                 ...state,
                 application: action.data.application
+            }
+debugger;
+            case (types.HANDLE_APPLICATION_FIELD):
+            return {
+                ...state, 
+                [action.data.field]: action.data.val 
+                
             }
         default:
             return state;

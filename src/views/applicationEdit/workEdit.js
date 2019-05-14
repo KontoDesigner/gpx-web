@@ -29,6 +29,11 @@ class WorkEdit extends Component {
            // mplID: mplID,
             application: null,
             activeTab: 'overviewInfo',
+            selectedStartDate: null,
+            selectedEndDate: null,
+            value:'',
+            suitableArr : []
+
        
         }
     }
@@ -54,6 +59,24 @@ class WorkEdit extends Component {
          })
     }
 
+    async componentDidMount() {
+
+         const suitable = this.props.keywordslookup.filter(ap => ap.ids === 'PreferToWork_Winter')[0];
+         const suitableArr = suitable.keywordValues.split(',')
+
+         const suitableObjArr = suitableArr.map(s => ({
+            id: s,
+            name: s
+         }))
+
+if (suitable !== undefined) {
+        
+               
+    this.setState({suitableArr: suitableObjArr })
+}
+
+
+    }
 
     toggle = activeTab => {
         if (this.state.activeTab !== activeTab) {
@@ -64,9 +87,57 @@ class WorkEdit extends Component {
     }
 
 
-    save = () => {
-        alert('not implemented')
+    save = async (model) => {
+       
+         await this.props.applicationInfoActions.save(model)
+        window.close()
     }
+
+    handleMultiSelect = (field, val) => {
+        debugger;
+        if (val) {
+            let vals = val.map(function(m) {
+                return m.id
+            })
+
+            this.props.applicationInfoActions.handleApplicationField(field, vals)
+        } else {
+            this.props.applicationInfoActions.handleApplicationField(field, null)
+        }
+    }
+
+    handleChange = (value) => {
+        debugger;
+        if (value) {
+            let vals = value.map(function(m) {
+                return m.id
+            })
+            debugger;
+       // const keywordname = {id:params.keywordname,name:params.keywordname}
+        this.setState({value});
+      }}
+
+    assignStartChange = assignStart => {
+        
+        const selectedStartDate = assignStart ;
+     
+        this.setState({
+            selectedStartDate,
+            validDate2:''            
+            
+        })
+      
+    }
+    assignEndChange = assignEnd => {
+      const selectedEndDate = assignEnd ;
+   
+      this.setState({
+        selectedEndDate,
+        validDate2:''
+      
+      })
+    
+  }
 
     render() {
         const buttons = <Buttons
@@ -132,8 +203,8 @@ class WorkEdit extends Component {
                                 <TabPane tabId="overviewInfo">
                                     <OverviewInfo
 
-application={this.props.application}
-
+                                    application={this.props.application}
+                      
                                           /> 
                                              </TabPane>
                           
@@ -141,8 +212,15 @@ application={this.props.application}
                                 <TabPane tabId="applicationformInfo">
                                     <ApplicationformInfo
 
-application={this.props.application}
-
+                                   application={this.props.application}
+                                   assignStartChange={this.assignStartChange}
+                                   assignEndChange={this.assignEndChange}
+                                   handleChange={this.handleChange}
+                                   handleMultiSelect ={this.handleMultiSelect}
+                                   value={this.state.value}
+                                   suitableArr={this.state.suitableArr}
+                                   preferToWork={this.props.preferToWork}
+                                   
                                           /> 
                                              </TabPane>
                          
@@ -150,7 +228,7 @@ application={this.props.application}
                                 <TabPane tabId="managersectionInfo">
                                     <ManagersectionInfo
 
-application={this.props.application}
+                                    application={this.props.application}
 
                                           /> 
                                              </TabPane>
@@ -158,6 +236,7 @@ application={this.props.application}
    </TabContent>
                     </Col>
                     </Row>
+                    
                 </div>
             )
         }
@@ -169,6 +248,8 @@ function mapStateToProps(state) {
     return {
 
         application: state.applicationEdit.applicationInfo.application,
+        keywordslookup: state.setting.keywords.keywordslookup,
+        preferToWork: state.applicationEdit.applicationInfo.preferToWork
     }
 }
 
