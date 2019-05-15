@@ -11,30 +11,15 @@ const Buttons = props => {
                     onClick={() => {
                         window.close()
                     }}
-                    color="danger">
+                    color="danger"
+                    style={{ marginRight: '10px', marginBottom: '10px' }}>
+                    
+                    
                     Close
                 </Button>
-                {/* <Button
-                    onClick={() => {
-                        window.print()
-                    }}
-                    color="primary">
-                    Print
-                </Button> */}
-                {/* <Button
-                   // disabled={props.unsavedEdit === false}
-                   // disabled={props.unsavedEdit === false}
-                    color="success" 
-                    onClick={() => {
-                        props.save()
-                      
-                      
-                    }}>
-                    Save
-                </Button>  */}
+        
                 { <Button
-                   // disabled={props.unsavedEdit === false}
-                   // disabled={props.unsavedEdit === false}
+ 
                     color="success" 
                     onClick={() => {
 
@@ -42,10 +27,12 @@ const Buttons = props => {
                         props.save()
                       
                       
-                    }}>
+                    }}
+                    style={{ marginRight: '10px', marginBottom: '10px' }}>
+                    
                     Save & Close
                 </Button>  }
-                {/* <label>Status = {props.staff.status}</label> */}
+   
             </Col>
             
         </Row>

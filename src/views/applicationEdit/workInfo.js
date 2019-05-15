@@ -11,7 +11,7 @@ const WorkInfo = (props) => {
             <CardHeader>{props.application.firstName} {props.application.lastName}</CardHeader>
 
             <CardBody className="no-padding-bottom">
-                <div className="form-row">
+                <div className="form-row" >
 
                           <Col sm="12" md="6" lg="2" xl="2" className="form-group">
                         <TextInput name="firstName" label="First Name" disabled  value={props.application.firstName}  />
@@ -24,13 +24,18 @@ const WorkInfo = (props) => {
                     <Col sm="12" md="6" lg="2" xl="2" className="form-group">
                         <TextInput name="nat" label="Nationality" disabled  value={props.application.nat}  />
                     </Col>
-
+                    <Col sm="12" md="6" lg="2" xl="2" className="form-group">
+                        <TextInput name="sourceMarket" label="SourceMarket" disabled  value={props.application.sourceMarket}  />
+                    </Col>
                     <Col sm="12" md="6" lg="2" xl="2" className="form-group">
                         <TextInput name="centralID" label="CentralID" disabled   value={props.application.centralID}  />
                     </Col>
                     <Col sm="12" md="6" lg="2" xl="2" className="form-group">
                         <TextInput name="destination" label="Current Destination" disabled   value={props.application.destination}  />
                     </Col>
+                    <Col sm="12" md="6" lg="2" xl="2" className="form-group">
+                        <TextInput name="jobfamily" label="Current JobFamily" disabled   value={props.application.jobFamily}  />
+                    </Col>     
                     <Col sm="12" md="6" lg="2" xl="2" className="form-group">
                         <TextInput name="jobtitle" label="Current JobTitle" disabled   value={props.application.jobTitle}  />
                     </Col>     

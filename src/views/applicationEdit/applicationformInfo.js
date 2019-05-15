@@ -7,13 +7,15 @@ import Datetime from 'react-datetime'
 const OverviewInfo = (props) => {
    
     return (
+
+      
      
         <Card>
         
 
             <CardBody className="no-padding-bottom">
                 <div className="form-row">
-                <Col sm="12" md="6" lg="4" xl="4" className="form-group">
+                <Col sm="12" md="6" lg="4" xl="4" className="form-group form-group-select">
                 <label htmlFor="preferToWork">If applicable to your job role. Indicate what type of guest you are suitable to work with</label>
 
                         <Select
@@ -25,10 +27,15 @@ const OverviewInfo = (props) => {
                             multi
                             onChange={v => {
                                 props.handleMultiSelect('preferToWork', v)
-                            }}
-                            //onChange = { this.props.handleStaffField('suitable',v) }
-                            value={props.preferToWork === '' ? null : props.preferToWork}
+                             }}
+                          //  onChange = {props.handleChange}
+                            //value={props.application.preferToWork}
+                            //defaultValue = {props.preferToWork}
+                    
+                            //value={props.value === '' ? null : props.value}
+                            value={props.application.preferToWork === '' ? null : props.application.preferToWork}
                             placeholder="Select"
+                         
                         />
 
 
@@ -73,9 +80,9 @@ const OverviewInfo = (props) => {
                     <Col sm="12" md="6" lg="2" xl="2" className="form-group">
                         <TextInput name="destination" label="Would you like a non destination position eg. Head Office, Ski UK, Retail UK or Lapland Safari ( see separate application instruction)" disabled   value="" />
                     </Col>
-                    <Col sm="12" md="6" lg="2" xl="2" className="form-group">
+                    {/* <Col sm="12" md="6" lg="2" xl="2" className="form-group">
                         <TextInput name="jobtitle" label="Full name of partner and their role if applying as a couple" disabled   value=""  />
-                    </Col>     
+                    </Col>      */}
                     
 
 

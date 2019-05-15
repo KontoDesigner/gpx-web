@@ -32,14 +32,38 @@ class WorkEdit extends Component {
             selectedStartDate: null,
             selectedEndDate: null,
             value:'',
-            suitableArr : []
+            suitableArr :[ ]
 
        
         }
     }
 
-   componentWillMount=async()=>  {
-         const _this = this
+//    componentWillMount=async()=>  {
+//          const _this = this
+ 
+  
+        
+//         // this.props.employeeInfoActions.getAvailablePositions(this.props.currentSeason.name, this.props.nextSeason.name, this.props.followingSeason.name)
+//         // this.props.employeeInfoActions.getPositionAssigns(this.state.staffId)
+
+//          this.props.applicationInfoActions.getApplication(this.state.staffid).then(function () {
+          
+//             if (_this.props.application != null) { 
+               
+//                 document.title = `${_this.props.application.firstName} - ${_this.props.application.lastName} `
+
+
+
+//            }
+//             else {
+                
+//                document.title = 'Work Application not found - TTP'
+//            }
+//          })
+//     }
+
+    async componentWillMount() {
+        const _this = this
  
   
         
@@ -51,23 +75,36 @@ class WorkEdit extends Component {
             if (_this.props.application != null) { 
                
                 document.title = `${_this.props.application.firstName} - ${_this.props.application.lastName} `
+            
+
+
            }
             else {
                 
                document.title = 'Work Application not found - TTP'
            }
          })
-    }
 
-    async componentDidMount() {
 
+
+ 
          const suitable = this.props.keywordslookup.filter(ap => ap.ids === 'PreferToWork_Winter')[0];
-         const suitableArr = suitable.keywordValues.split(',')
+          const suitableArr = suitable.keywordValues.split(',')
+
+        //  this.setState({
+        //     value: keywords.keywordValues ? keywords.keywordValues.map(k => ({
+        //      id: k,
+        //          name: k
+        //     })):[]
+      
+        //  })
 
          const suitableObjArr = suitableArr.map(s => ({
             id: s,
             name: s
          }))
+        
+        
 
 if (suitable !== undefined) {
         
@@ -87,7 +124,22 @@ if (suitable !== undefined) {
     }
 
 
-    save = async (model) => {
+    save = async () => {
+debugger;
+const preferToWork = this.props.application.preferToWork.map(function(m) {
+    return m.id
+})
+
+        let model = {
+  
+            // to the database
+            //preferToWork:  this.props.application.preferToWork ? this.props.application.preferToWork.join() : null,
+preferToWork:  preferToWork,
+          //preferToWork: this.props.preferToWork,
+          staffID: this.props.application.staffID
+             
+          }
+
        
          await this.props.applicationInfoActions.save(model)
         window.close()
@@ -96,11 +148,9 @@ if (suitable !== undefined) {
     handleMultiSelect = (field, val) => {
         debugger;
         if (val) {
-            let vals = val.map(function(m) {
-                return m.id
-            })
+           
 
-            this.props.applicationInfoActions.handleApplicationField(field, vals)
+            this.props.applicationInfoActions.handleApplicationField(field, val)
         } else {
             this.props.applicationInfoActions.handleApplicationField(field, null)
         }
@@ -140,10 +190,13 @@ if (suitable !== undefined) {
   }
 
     render() {
-        const buttons = <Buttons
-        save={this.save}
-         unsavedEdit={this.state.unsavedEdit}
-     />
+        const buttons = (
+            <Buttons
+                save={this.save}
+                unsavedEdit={this.state.unsavedEdit}
+                // staff={this.props.staff}
+            />
+        )
         if (this.props.application=== null) {
             //Loading
             return ''
@@ -219,7 +272,8 @@ if (suitable !== undefined) {
                                    handleMultiSelect ={this.handleMultiSelect}
                                    value={this.state.value}
                                    suitableArr={this.state.suitableArr}
-                                   preferToWork={this.props.preferToWork}
+                                  // preferToWork={this.props.preferToWork}
+                   
                                    
                                           /> 
                                              </TabPane>
@@ -232,13 +286,20 @@ if (suitable !== undefined) {
 
                                           /> 
                                              </TabPane>
+                                        
                            
    </TabContent>
                     </Col>
                     </Row>
-                    
+                    {buttons}
                 </div>
+
+
+
             )
+
+
+            
         }
     }
 }
@@ -246,10 +307,10 @@ if (suitable !== undefined) {
 function mapStateToProps(state) {
     
     return {
-
+      
         application: state.applicationEdit.applicationInfo.application,
         keywordslookup: state.setting.keywords.keywordslookup,
-        preferToWork: state.applicationEdit.applicationInfo.preferToWork
+       //preferToWork: state.applicationEdit.applicationInfo
     }
 }
 

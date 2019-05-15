@@ -288,7 +288,7 @@ class Season extends Component {
                                             size="sm"
                                             onClick={() => {
 
-                                                
+                                                 
                                                     this.toggleFly2WorkModal()
                 
                                                // this.props.send(this.props.positionAssign)

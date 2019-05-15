@@ -11,6 +11,7 @@ debugger;
     let cleanModel = {}
 
     cleanModel.DateModified = newdatemodified
+    cleanModel.StaffID = model.staffID
 
     //  ProfilingSelect : model.
 
@@ -25,21 +26,22 @@ debugger;
 
     cleanModel.PreferToWork = model.preferToWork ? model.preferToWork.join() : null
 
-
+debugger;
 
 
     return async function(dispatch) {
         dispatch(beginAjaxCall())
 
         try {
-            const res = await RestClient.Post(`staff/updatestaff`, cleanModel)
+            const res = await RestClient.Post(`application/updateapplication`, cleanModel)
 
             dispatch(endAjaxCall())
 
             if (res) {
-                toastr.success('Success', `Staff was saved`)
+               
+                toastr.success('Success', `Application was saved`)
             } else {
-                toastr.error('Error', `Could not save staff: ${res ? res.message : 'Error'}`)
+                toastr.error('Error', `Could not save application: ${res ? res.message : 'Error'}`)
             }
         } catch (error) {
             dispatch(ajaxCallError(error))
@@ -84,10 +86,22 @@ export function getApplication(staffId) {
         try {
         
         //   const staff = await RestClient.Get(`position/${mplID}`)
-  
+        debugger;
             const application = await RestClient.Get(`application/work/${staffId}`)
+           debugger;
+          
+
+            if (application) {
+                application.preferToWork= application.preferToWork && application.preferToWork !== '' ? application.preferToWork.split(',') : []
+            }
+
            
-   
+             application.preferToWork= application.preferToWork ? application.preferToWork.map(k => ({
+                     id: k,
+                     name: k
+                })):[]
+          
+          
 
 
             dispatch(endAjaxCall())
