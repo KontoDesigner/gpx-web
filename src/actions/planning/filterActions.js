@@ -32,6 +32,9 @@ export function handleSelectedPositionTypes(selectedPositionType) {
     data: { selectedPositionType: selectedPositionType }
   }
 }
+
+
+
 export function handleSelectedTitle(selectedTitle) {
   return {
     type: types.HANDLE_SELECTEDTITLE,

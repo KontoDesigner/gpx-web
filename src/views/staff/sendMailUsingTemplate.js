@@ -83,11 +83,11 @@ const senderEmailObjArr = senderEmailArr.map(s => ({
       this.setState({localValue: event.target.value});
     }
 
-    handleChange = event => {
-      debugger
+    handleChangeSubject = event => {
+      debugger;
 
       this.setState({ subject: event.target.value })
-  }
+   }
     
     getSelection=(val)=>{
 
@@ -226,7 +226,7 @@ debugger;
                                 </div>
                             </Col>
                             <Col sm="12" md="6" lg="6" xl="6" className="form-group">
-                        <TextInput name="subject" label="Subject" onChange={this.handleChange} value={this.state.subject?this.state.subject:null}  />
+                        <TextInput name="subject" label="Subject" onChange={this.handleChangeSubject} value={this.state.subject?this.state.subject:null}  />
                     </Col>
                         </Row>
     
@@ -324,7 +324,7 @@ debugger;
                                 <Input
                         required
                         type="textarea"
-                        maxLength="1000"
+                        maxLength="2000"
                         name="resignComm"
                         id="resignComm"
                         onChange={this.handleChange}

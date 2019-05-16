@@ -35,12 +35,16 @@ const NotificationInfo = props => {
         <div className="form-row">
 
           <Col sm="12" md="6" lg="6" xl="4" className="form-group">
+
+
             <TextInput
               name="subject"
+              id="subject"
               label="Subject"
               value={props.notification.subject}
               onChange={props.handleInputField}
             />
+        
           </Col>
           <Col sm="12" md="6" lg="6" xl="4" className="form-group">
             <TextInput
@@ -108,7 +112,7 @@ const NotificationInfo = props => {
 </DropdownToggle>
 <DropdownMenu>  
 
-<DropdownItem title="firstName" onClick={() => {props.getSelection('<FIRSTNAME>')}}>
+<DropdownItem title="firstName" onClick={() => {props.getSelection('<FIRSTNAME>')}}> 
          FirstName  </DropdownItem>
  
          <DropdownItem title="firstName" onClick={() => {props.getSelection('<LASTNAME>')}}>

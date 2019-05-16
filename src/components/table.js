@@ -37,6 +37,7 @@ const Table = props => {
         const checkbox = props.checkbox === true && isFirstColumn
 
         return {
+            
             headerName: c.label,
             field: c.dataKey,
             resizable: true,
@@ -72,7 +73,11 @@ const Table = props => {
         const uniqueSelected = uniqueArray(selected)
 
         props.updateSelectedState(uniqueSelected)
-    }
+    }    
+    
+
+
+
 
     const onRowClicked = params => {
         if (props.edit) {
@@ -89,6 +94,9 @@ const Table = props => {
                 maxHeight: '100%'
             }}>
             <AgGridReact
+                //  onGridReady={params => handleGrid(params)}
+                
+
                 columnDefs={columnDefs}
                 rowData={props.list}
                 getContextMenuItems={props.contextMenuItems}
@@ -99,9 +107,22 @@ const Table = props => {
                 rowSelection={'multiple'}
                 onRowClicked={e => onRowClicked(e)}
                 suppressRowClickSelection={true}
+
+              
+                
             />
+
+
         </div>
+ 
+
+
+
+
     )
+   
+ 
+
 }
 
 export default Table

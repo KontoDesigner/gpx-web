@@ -1,11 +1,11 @@
-import { ActionTypes as types } from '../../constants/planning/filterConstants'
+import { ActionTypes as types } from '../../constants/planning/planning/filterConstants'
 
 var defaultState = {
   text: '',
   sourceMarket: null,
   selectedJobFamily: null,
   selectedPositionType: null,
-  selectedTitle: []
+  selectedTitle: [] 
 }
 
 export default function filterReducer(state = defaultState, action) {
@@ -33,6 +33,9 @@ export default function filterReducer(state = defaultState, action) {
         ...state,
         selectedPositionType: action.data.selectedPositionType
       }
+
+ 
+
     case types.HANDLE_TEXT:
       return {
         ...state,

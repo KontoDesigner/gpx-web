@@ -5,10 +5,12 @@ import Planning from '../views/planning/planning';
 import Reports from '../views/reports/reports';
 //import Imports from '../views/imports/imports';
 import Settings from '../views/settings/settings';
+import Application from '../views/application/application';
 
 import NotFound from '../views/notFound/notFound';
 import StaffEdit from '../views/staffEdit/staffEdit';
 import PlanningEdit from '../views/planningEdit/planningEdit';
+import WorkEdit from '../views/applicationEdit/workEdit';
 import NotificationEdit from '../views/settings/notification/notificationEdit';
 import KeywordsEdit from '../views/settings/keywords/keywordsEdit';
 import NewNotification from '../views/settings/notification/notificationEdit';
@@ -25,8 +27,9 @@ const Routes = () => (
             <Route exact path="/newNotification" render={(props) => <NewNotification {...props} ignoreThis={true} />} />
             <Route exact path="/newKeyword" render={(props) => <NewKeyword {...props} ignoreThis={true} />} />
             <Route path="/reports" component={Reports} />
+            <Route exact path="/application" component={Application} />
             <Route path="/settings" component={Settings} />
-      
+            <Route exact path="/application/:id" render={(props) => <WorkEdit {...props} ignoreThis={true} />} />
             <Route exact path="/notification/:templatename" render={(props) => <NotificationEdit {...props} ignoreThis={true} />} />
             <Route exact path="/keywords/:keywordname" render={(props) => <KeywordsEdit {...props} ignoreThis={true} />} />
             <Route component={NotFound} />

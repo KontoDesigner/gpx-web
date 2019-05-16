@@ -3,6 +3,7 @@ import { ActionTypes as types } from '../../constants/staffEdit/cvConstants';
 var defaultState = [];
 
 export default function cvReducer(state = defaultState, action) {
+
     switch (action.type) {
 
 

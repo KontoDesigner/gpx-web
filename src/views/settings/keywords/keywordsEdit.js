@@ -95,6 +95,20 @@ class KeywordsEdit extends Component {   //Notification smart component
                     id: 'Destinations',
                     name: 'Destinations'
                 },
+
+                {
+                    id: 'PreferToWork_Winter',
+                    name: 'PreferToWork_Winter'
+                },
+                {
+                    id: 'PreferToWork_Summer',
+                    name: 'PreferToWork_Summer'
+                },
+
+                {
+                    id: 'IWantToChangePosition',
+                    name: 'IWantToChangePosition'
+                },
          
             ]
 
