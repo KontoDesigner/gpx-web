@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card, CardBody, CardHeader, Col } from 'reactstrap'
+import { Card, CardBody, CardHeader, Col ,Row} from 'reactstrap'
 import TextInput from '../../components/textInput'
 import moment from "moment";
 import Select from 'react-select'
@@ -162,7 +162,8 @@ const OverviewInfo = (props) => {
                         />
 
                     </Col>
-                    <Col className=".offset-lg-4">    </Col>
+      
+                    <Col sm="12" md="4" lg="3" xl="3" className="form-group"></Col>
 
                 <Col sm="12" md="2" lg="1" xl="1" className="form-group">
                 <label htmlFor="firstDest">Choice</label>
@@ -252,6 +253,7 @@ const OverviewInfo = (props) => {
                         />
 
                     </Col>
+             
 {/* 
                     <Col sm="12" md="6" lg="2" xl="2" className="form-group">
                         <TextInput name="centralID" label="I am interested to change role. The role I am interested to change to is" disabled   value=""  />
