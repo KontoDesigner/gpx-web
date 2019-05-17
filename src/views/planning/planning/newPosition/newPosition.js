@@ -19,6 +19,13 @@ class NewPosition extends Component {
     this.state = {
       validDestination: '',
       validJobTitle: '',
+      validJobFamily: '',
+      validJob: '',
+      validStart: '',
+      validEnd: '',
+      validCountry: '',
+      validPositionType: '',
+      
       selectedStart:null,
       selectedEnd:null,
       destinationArr : [],
@@ -78,6 +85,87 @@ createPosition = async (val) => {
   var newdatemodified = new Date();
   debugger;
 
+//validation
+var check = this.props.selectedDestination.name ? true : false
+
+debugger;
+if (!check) {
+  //alert('Please select a Staff to assign');
+
+  this.setState({
+    validDestination: 'Please select a Destination'
+
+  })
+
+  return false;
+}
+
+
+var check = this.state.selectedJobTitle ? true : false
+debugger;
+if (!check) {
+  //alert('Please select a Staff to assign');
+
+  this.setState({
+    validJobTitle: 'Please select a JobTitle'
+
+  })
+
+  return false;
+}
+
+var check = this.state.selectedJobFamily ? true : false
+debugger;
+if (!check) {
+  //alert('Please select a Staff to assign');
+
+  this.setState({
+    validJobFamily: 'Please select a JobFamily'
+
+  })
+
+  return false;
+}
+
+var check = this.state.selectedStart ? true : false
+debugger;
+if (!check) {
+  //alert('Please select a Staff to assign');
+
+  this.setState({
+    validStart: 'Please select a StartDate'
+
+  })
+
+  return false;
+}
+
+var check = this.state.selectedEnd ? true : false
+debugger;
+if (!check) {
+  //alert('Please select a Staff to assign');
+
+  this.setState({
+    validEnd: 'Please select an EndDate'
+
+  })
+
+  return false;
+}
+var check = this.state.selectedCountry ? true : false
+debugger;
+if (!check) {
+  //alert('Please select a Staff to assign');
+
+  this.setState({
+    validCountry: 'Please select a Country'
+
+  })
+
+  return false;
+}
+
+
   let model = {
 
     Destination:this.props.selectedDestination.name,
@@ -131,33 +219,8 @@ createPosition = async (val) => {
 
    }
 
-   //validation
-   var check = model.Destination ? true : false
+   
 
-   debugger;
-   if (!check) {
-     //alert('Please select a Staff to assign');
-
-     this.setState({
-       validDestination: 'Please select a Destination'
-  
-     })
-
-     return false;
-   }
-
-   var check = model.JobTitle ? true : false
-   debugger;
-   if (!check) {
-     //alert('Please select a Staff to assign');
-
-     this.setState({
-       validJobTitle: 'Please select a JobTitle'
-  
-     })
-
-     return false;
-   }
  
    
 
@@ -216,7 +279,9 @@ startChange = start => {
   const selectedStart = start ;
 
   this.setState({
-    selectedStart
+    selectedStart,
+    validStart:''
+    
  
   })
   
@@ -226,8 +291,8 @@ endChange = end => {
 const selectedEnd = end ;
 
 this.setState({
-  selectedEnd
-
+  selectedEnd,
+  validEnd:''
 })
 
 }
@@ -346,7 +411,8 @@ handleCountrySelect = country => {
   const selectedCountry = country != null ? country: null;
 
   this.setState({
-    selectedCountry
+    selectedCountry,
+    validCountry:''
   })
 }
 
@@ -357,7 +423,8 @@ handleJobTitleSelect = jobTitle => {
   const selectedJobTitle = jobTitle != null ? jobTitle: null;
 
   this.setState({
-    selectedJobTitle
+    selectedJobTitle,
+    validJobTitle:''
   })
 }
 
@@ -367,7 +434,8 @@ handleJobFamilySelect = jobFamily => {
   const selectedJobFamily = jobFamily != null ? jobFamily: null;
 
   this.setState({
-    selectedJobFamily
+    selectedJobFamily,
+    validJobFamily:''
   })
 }
 
@@ -380,7 +448,10 @@ handleDestinationSelect = (val) => {
   
 
  this.props.reportActions.handleDestinationField(val)
-
+ this.setState({
+ 
+  validDestination:''
+})
  //this.props.handleUnsavedEdit()
 } 
 
@@ -407,6 +478,9 @@ handleDestinationSelect = (val) => {
               utc={true}
               inputProps={{ placeholder: 'YYYY-MM-DD' }}
             />
+              <b className="card-text text-danger">
+            {this.state.validStart}
+                        </b>
           </Col>
           <Col sm="12" md="6" lg="6" xl="4" className="form-group">
             <label htmlFor="endDate">End Date</label>
@@ -420,6 +494,9 @@ handleDestinationSelect = (val) => {
               utc={true}
               inputProps={{ placeholder: 'YYYY-MM-DD' }}
             />
+              <b className="card-text text-danger">
+            {this.state.validEnd}
+                        </b>
           </Col>
           <Col sm="12" md="6" lg="6" xl="4" className="form-group form-group-select">
  <label htmlFor="Country">Country</label>
@@ -434,6 +511,9 @@ handleDestinationSelect = (val) => {
           value={this.state.selectedCountry}
          placeholder="All Countries"
         />
+          <b className="card-text text-danger">
+            {this.state.validCountry}
+                        </b>
              </Col> 
 
           <Col sm="12" md="6" lg="6" xl="4" className="form-group form-group-select">
@@ -459,7 +539,10 @@ handleDestinationSelect = (val) => {
          value={this.props.selectedDestination}
          placeholder="Select Destination"
         />
-         {this.state.validDestination}
+            <b className="card-text text-danger">
+            {this.state.validDestination}
+                        </b>
+      
              </Col> 
 
                <Col key={1} sm="12" md="6" lg="6" xl="4" className="form-group form-group-select">
@@ -475,6 +558,9 @@ handleDestinationSelect = (val) => {
           value={this.state.selectedJobFamily}
           placeholder="JobFamily"
         />
+          <b className="card-text text-danger">
+            {this.state.validJobFamily}
+                        </b>
       </Col>
 
 
@@ -491,6 +577,9 @@ handleDestinationSelect = (val) => {
          value={this.state.selectedJobTitle}
          placeholder="Select JobTitle"
         />
+          <b className="card-text text-danger">
+            {this.state.validJobTitle}
+                        </b>
              </Col> 
 
           <Col sm="12" md="12" lg="12" xl="12"><hr></hr></Col>
@@ -521,7 +610,11 @@ handleDestinationSelect = (val) => {
         // value={this.props.selectedPositionType} 
          value={this.state.selectvalue}
          placeholder=""
+         
+         
         />
+
+    
              </Col> 
              <Col sm="12" md="4" lg="4" xl="4" className="form-group">
                         <TextInput name="mplno" label="MPL SM Origin" disabled  value="TUI Norway"  />
