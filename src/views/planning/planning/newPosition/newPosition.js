@@ -17,6 +17,8 @@ class NewPosition extends Component {
     super();
 
     this.state = {
+      validDestination: '',
+      validJobTitle: '',
       selectedStart:null,
       selectedEnd:null,
       destinationArr : [],
@@ -129,7 +131,35 @@ createPosition = async (val) => {
 
    }
 
+   //validation
+   var check = model.Destination ? true : false
 
+   debugger;
+   if (!check) {
+     //alert('Please select a Staff to assign');
+
+     this.setState({
+       validDestination: 'Please select a Destination'
+  
+     })
+
+     return false;
+   }
+
+   var check = model.JobTitle ? true : false
+   debugger;
+   if (!check) {
+     //alert('Please select a Staff to assign');
+
+     this.setState({
+       validJobTitle: 'Please select a JobTitle'
+  
+     })
+
+     return false;
+   }
+ 
+   
 
  //this.props.createPosition(this.state);
  await this.props.createPosition(model);
@@ -429,6 +459,7 @@ handleDestinationSelect = (val) => {
          value={this.props.selectedDestination}
          placeholder="Select Destination"
         />
+         {this.state.validDestination}
              </Col> 
 
                <Col key={1} sm="12" md="6" lg="6" xl="4" className="form-group form-group-select">

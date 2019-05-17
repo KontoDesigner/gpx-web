@@ -32,7 +32,13 @@ const PersonTable = props => {
                 action: function() {
                     props.toogleSendMailModal(data.staffID)
                 }
-            }
+            },
+            {
+                name: 'Move Staff To Archive',
+                action: function() {
+                    props.toogleRemoveStaffModal(data.staffID)
+                }
+            },
         ]
     }
 

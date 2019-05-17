@@ -303,7 +303,7 @@ debugger;
     }
 
     toogleRemoveStaffModal = val => {
-        debugger
+        debugger;
         if (val) {
             this.setState({
                 removeStaffModal: !this.state.removeStaffModal,
@@ -596,6 +596,7 @@ debugger;
                                 toogleAbsentStaffModal={this.toogleAbsentStaffModal}
                                 toogleResignStaffModal={this.toogleResignStaffModal}
                                 toogleSendMailModal={this.toogleSendMailModal}
+                                toogleRemoveStaffModal={this.toogleRemoveStaffModal}
                             />
                         </TabPane>
 

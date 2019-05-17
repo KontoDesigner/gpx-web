@@ -8,7 +8,7 @@ const WorkInfo = (props) => {
     return (
      
         <Card>
-            <CardHeader>{props.application.firstName} {props.application.lastName}</CardHeader>
+               <CardHeader className="card-header-work"> {props.application.firstName} {props.application.lastName}</CardHeader>
 
             <CardBody className="no-padding-bottom">
                 <div className="form-row" >

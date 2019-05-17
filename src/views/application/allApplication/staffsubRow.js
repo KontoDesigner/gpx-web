@@ -30,7 +30,7 @@ render() {
 
     return (
       <Card className="card-accordion card-country">
-        <CardHeader className="card-header-app" onClick={() => this.toggleCollapse()}>
+        <CardHeader className="card-header-work" onClick={() => this.toggleCollapse()}>
         {this.props.staffsubs.staffsub} {icon} 
         </CardHeader> 
 

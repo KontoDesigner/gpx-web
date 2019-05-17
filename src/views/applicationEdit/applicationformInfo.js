@@ -13,9 +13,11 @@ const OverviewInfo = (props) => {
         <Card>
         
 
+      
+            <CardHeader className="card-header-work"> {props.application.season}</CardHeader>
             <CardBody className="no-padding-bottom">
                 <div className="form-row">
-                <Col sm="12" md="6" lg="4" xl="4" className="form-group form-group-select">
+                <Col sm="12" md="6" lg="6" xl="6" >
                 <label htmlFor="preferToWork">If applicable to your job role. Indicate what type of guest you are suitable to work with</label>
 
                         <Select
@@ -28,21 +30,16 @@ const OverviewInfo = (props) => {
                             onChange={v => {
                                 props.handleMultiSelect('preferToWork', v)
                              }}
-                          //  onChange = {props.handleChange}
-                            //value={props.application.preferToWork}
-                            //defaultValue = {props.preferToWork}
-                    
-                            //value={props.value === '' ? null : props.value}
+               
                             value={props.application.preferToWork === '' ? null : props.application.preferToWork}
                             placeholder="Select"
-                         
+                            className="form-group form-group-select"
                         />
 
 
 
  
-{/*                          
-                        <TextInput name="firstName" label="I would like to request to work"  value=""  /> */}
+
                     </Col>
  
                            <Col sm="12" md="2" lg="2" xl="2" className="form-group">
@@ -73,13 +70,195 @@ const OverviewInfo = (props) => {
                             utc={true}
                             inputProps={{ placeholder: 'YYYY-MM-DD' }} />
                     </Col>
+                    <Col sm="12" md="12" lg="12" xl="12" >
+                    <CardHeader className="card-header-subwork"> For season {props.application.season} I wish to work in the following destinations / positions</CardHeader>
+                    <CardBody className="no-padding-bottom"></CardBody>
+                    </Col>
+                    <Col sm="12" md="2" lg="1" xl="1" className="form-group">
+                <label htmlFor="firstDest">Choice</label>
 
+                 
+
+                    </Col>
+                    <Col sm="12" md="2" lg="2" xl="2" className="form-group">
+                <label htmlFor="firstDest">Destination</label>
+
+                        <Select
+                            //  multi={true}
+                            valueKey="id"
+                            labelKey="name"
+                            className="form-control"
+                            options={props.suitableArr}
+                        
+                            onChange={v => {
+                                props.handleMultiSelect('preferToWork', v)
+                             }}
+               
+                            value={props.application.preferToWork === '' ? null : props.application.preferToWork}
+                            placeholder="Select"
+                            className="form-group form-group-select"
+                        />
+
+                    </Col>
+
+                    <Col sm="12" md="2" lg="2" xl="2" className="form-group">
+                <label htmlFor="firstJobTitle">JobTitle</label>
+
+                        <Select
+                            //  multi={true}
+                            valueKey="id"
+                            labelKey="name"
+                            className="form-control"
+                            options={props.suitableArr}
+                        
+                            onChange={v => {
+                                props.handleMultiSelect('preferToWork', v)
+                             }}
+               
+                            value={props.application.preferToWork === '' ? null : props.application.preferToWork}
+                            placeholder="Select"
+                            className="form-group form-group-select"
+                        />
+
+                    </Col>
+                    <Col sm="12" md="2" lg="2" xl="2" className="form-group">
+                <label htmlFor="firstDest">Destination</label>
+
+                        <Select
+                            //  multi={true}
+                            valueKey="id"
+                            labelKey="name"
+                            className="form-control"
+                            options={props.suitableArr}
+                        
+                            onChange={v => {
+                                props.handleMultiSelect('preferToWork', v)
+                             }}
+               
+                            value={props.application.preferToWork === '' ? null : props.application.preferToWork}
+                            placeholder="Select"
+                            className="form-group form-group-select"
+                        />
+
+                    </Col>
+
+                    <Col sm="12" md="2" lg="2" xl="2" className="form-group">
+                <label htmlFor="firstJobTitle">JobTitle</label>
+
+                        <Select
+                            //  multi={true}
+                            valueKey="id"
+                            labelKey="name"
+                            className="form-control"
+                            options={props.suitableArr}
+                        
+                            onChange={v => {
+                                props.handleMultiSelect('preferToWork', v)
+                             }}
+               
+                            value={props.application.preferToWork === '' ? null : props.application.preferToWork}
+                            placeholder="Select"
+                            className="form-group form-group-select"
+                        />
+
+                    </Col>
+                    <Col className=".offset-lg-4">    </Col>
+
+                <Col sm="12" md="2" lg="1" xl="1" className="form-group">
+                <label htmlFor="firstDest">Choice</label>
+
+                 
+
+                    </Col>
+                    <Col sm="12" md="2" lg="2" xl="2" className="form-group">
+                <label htmlFor="firstDest">Destination</label>
+
+                        <Select
+                            //  multi={true}
+                            valueKey="id"
+                            labelKey="name"
+                            className="form-control"
+                            options={props.suitableArr}
+                        
+                            onChange={v => {
+                                props.handleMultiSelect('preferToWork', v)
+                             }}
+               
+                            value={props.application.preferToWork === '' ? null : props.application.preferToWork}
+                            placeholder="Select"
+                            className="form-group form-group-select"
+                        />
+
+                    </Col>
+
+                    <Col sm="12" md="2" lg="2" xl="2" className="form-group">
+                <label htmlFor="firstJobTitle">JobTitle</label>
+
+                        <Select
+                            //  multi={true}
+                            valueKey="id"
+                            labelKey="name"
+                            className="form-control"
+                            options={props.suitableArr}
+                        
+                            onChange={v => {
+                                props.handleMultiSelect('preferToWork', v)
+                             }}
+               
+                            value={props.application.preferToWork === '' ? null : props.application.preferToWork}
+                            placeholder="Select"
+                            className="form-group form-group-select"
+                        />
+
+                    </Col>
+                    <Col sm="12" md="2" lg="2" xl="2" className="form-group">
+                <label htmlFor="firstDest">Destination</label>
+
+                        <Select
+                            //  multi={true}
+                            valueKey="id"
+                            labelKey="name"
+                            className="form-control"
+                            options={props.suitableArr}
+                        
+                            onChange={v => {
+                                props.handleMultiSelect('preferToWork', v)
+                             }}
+               
+                            value={props.application.preferToWork === '' ? null : props.application.preferToWork}
+                            placeholder="Select"
+                            className="form-group form-group-select"
+                        />
+
+                    </Col>
+
+                    <Col sm="12" md="2" lg="2" xl="2" className="form-group">
+                <label htmlFor="firstJobTitle">JobTitle</label>
+
+                        <Select
+                            //  multi={true}
+                            valueKey="id"
+                            labelKey="name"
+                            className="form-control"
+                            options={props.suitableArr}
+                        
+                            onChange={v => {
+                                props.handleMultiSelect('preferToWork', v)
+                             }}
+               
+                            value={props.application.preferToWork === '' ? null : props.application.preferToWork}
+                            placeholder="Select"
+                            className="form-group form-group-select"
+                        />
+
+                    </Col>
+{/* 
                     <Col sm="12" md="6" lg="2" xl="2" className="form-group">
                         <TextInput name="centralID" label="I am interested to change role. The role I am interested to change to is" disabled   value=""  />
                     </Col>
                     <Col sm="12" md="6" lg="2" xl="2" className="form-group">
                         <TextInput name="destination" label="Would you like a non destination position eg. Head Office, Ski UK, Retail UK or Lapland Safari ( see separate application instruction)" disabled   value="" />
-                    </Col>
+                    </Col> */}
                     {/* <Col sm="12" md="6" lg="2" xl="2" className="form-group">
                         <TextInput name="jobtitle" label="Full name of partner and their role if applying as a couple" disabled   value=""  />
                     </Col>      */}
