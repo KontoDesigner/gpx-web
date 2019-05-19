@@ -25,7 +25,7 @@ class NewPosition extends Component {
       validEnd: '',
       validCountry: '',
       validPositionType: '',
-      
+      validGlobalAlert: '',
       selectedStart:null,
       selectedEnd:null,
       destinationArr : [],
@@ -85,6 +85,8 @@ createPosition = async (val) => {
   var newdatemodified = new Date();
   debugger;
 
+
+
 //validation
 var check = this.props.selectedDestination.name ? true : false
 
@@ -93,8 +95,8 @@ if (!check) {
   //alert('Please select a Staff to assign');
 
   this.setState({
-    validDestination: 'Please select a Destination'
-
+    validDestination: 'Please select a Destination',
+    validGlobalAlert: 'Please check form, some mandatory content is missing'
   })
 
   return false;
@@ -107,7 +109,8 @@ if (!check) {
   //alert('Please select a Staff to assign');
 
   this.setState({
-    validJobTitle: 'Please select a JobTitle'
+    validJobTitle: 'Please select a JobTitle',
+       validGlobalAlert: 'Please check form, some mandatory content is missing'
 
   })
 
@@ -120,8 +123,8 @@ if (!check) {
   //alert('Please select a Staff to assign');
 
   this.setState({
-    validJobFamily: 'Please select a JobFamily'
-
+    validJobFamily: 'Please select a JobFamily',
+    validGlobalAlert: 'Please check form, some mandatory content is missing'
   })
 
   return false;
@@ -133,8 +136,8 @@ if (!check) {
   //alert('Please select a Staff to assign');
 
   this.setState({
-    validStart: 'Please select a StartDate'
-
+    validStart: 'Please select a StartDate',
+    validGlobalAlert: 'Please check form, some mandatory content is missing'
   })
 
   return false;
@@ -146,8 +149,8 @@ if (!check) {
   //alert('Please select a Staff to assign');
 
   this.setState({
-    validEnd: 'Please select an EndDate'
-
+    validEnd: 'Please select an EndDate',
+    validGlobalAlert: 'Please check form, some mandatory content is missing'
   })
 
   return false;
@@ -158,7 +161,8 @@ if (!check) {
   //alert('Please select a Staff to assign');
 
   this.setState({
-    validCountry: 'Please select a Country'
+    validCountry: 'Please select a Country',
+    validGlobalAlert: 'Please check form, some mandatory content is missing'
 
   })
 
@@ -220,10 +224,228 @@ if (!check) {
    }
 
    
+   var check = model.Se01 ? true : false
+   var check2=model.PositionTypeSe01  ? true : false
 
- 
+   if (check) {
+
+    if (!check2) {
+
+     this.setState({
+       validPositionType: 'Please select a Position Type',
+       validGlobalAlert: 'Please check form, some mandatory content is missing'
+     })
    
+     return false;
+   }
+  }
+  var check = model.No01 ? true : false
+  var check2=model.PositionTypeNo01  ? true : false
 
+  if (check) {
+
+   if (!check2) {
+
+    this.setState({
+      validPositionType: 'Please select a Position Type',
+      validGlobalAlert: 'Please check form, some mandatory content is missing'
+    })
+  
+    return false;
+  }
+ }
+ var check = model.Dk01 ? true : false
+ var check2=model.PositionTypeDk01  ? true : false
+
+ if (check) {
+
+  if (!check2) {
+
+   this.setState({
+     validPositionType: 'Please select a Position Type',
+     validGlobalAlert: 'Please check form, some mandatory content is missing'
+   })
+ 
+   return false;
+ }
+}
+var check = model.Fi01 ? true : false
+var check2=model.PositionTypeFi01  ? true : false
+
+if (check) {
+
+ if (!check2) {
+
+  this.setState({
+    validPositionType: 'Please select a Position Type',
+    validGlobalAlert: 'Please check form, some mandatory content is missing'
+
+  })
+
+  return false;
+}
+}
+var check = model.Uk01 ? true : false
+var check2=model.PositionTypeUk01  ? true : false
+
+if (check) {
+
+ if (!check2) {
+
+  this.setState({
+    validPositionType: 'Please select a Position Type',
+    validGlobalAlert: 'Please check form, some mandatory content is missing'
+
+  })
+
+  return false;
+}
+}
+var check = model.Fr01 ? true : false
+var check2=model.PositionTypeFr01  ? true : false
+
+if (check) {
+
+ if (!check2) {
+
+  this.setState({
+    validPositionType: 'Please select a Position Type',
+    validGlobalAlert: 'Please check form, some mandatory content is missing'
+
+  })
+
+  return false;
+}
+}
+var check = model.Ne01 ? true : false
+var check2=model.PositionTypeNe01  ? true : false
+
+if (check) {
+
+ if (!check2) {
+
+  this.setState({
+    validPositionType: 'Please select a Position Type',
+    validGlobalAlert: 'Please check form, some mandatory content is missing'
+
+  })
+
+  return false;
+}
+}
+
+var check = model.Be01 ? true : false
+var check2=model.PositionTypeBe01  ? true : false
+
+if (check) {
+
+ if (!check2) {
+
+  this.setState({
+    validPositionType: 'Please select a Position Type',
+    validGlobalAlert: 'Please check form, some mandatory content is missing'
+
+  })
+
+  return false;
+}
+}
+var check = model.Ru01 ? true : false
+var check2=model.PositionTypeRu01  ? true : false
+
+if (check) {
+
+ if (!check2) {
+
+  this.setState({
+    validPositionType: 'Please select a Position Type',
+    validGlobalAlert: 'Please check form, some mandatory content is missing'
+
+  })
+
+  return false;
+}
+}
+var check = model.Po01 ? true : false
+var check2=model.PositionTypePo01 ? true : false
+
+if (check) {
+
+ if (!check2) {
+
+  this.setState({
+    validPositionType: 'Please select a Position Type',
+    validGlobalAlert: 'Please check form, some mandatory content is missing'
+
+  })
+
+  return false;
+}
+}
+var check = model.Gas01 ? true : false
+var check2=model.PositionTypeGas01  ? true : false
+
+if (check) {
+
+ if (!check2) {
+
+  this.setState({
+    validPositionType: 'Please select a Position Type',
+    validGlobalAlert: 'Please check form, some mandatory content is missing'
+
+  })
+
+  return false;
+}
+}
+var check = model.Tur01 ? true : false
+var check2=model.PositionTypeTur01  ? true : false
+
+if (check) {
+
+ if (!check2) {
+
+  this.setState({
+    validPositionType: 'Please select a Position Type',
+    validGlobalAlert: 'Please check form, some mandatory content is missing'
+
+  })
+
+  return false;
+}
+}
+var check = model.Tu01 ? true : false
+var check2=model.PositionTypeTu01  ? true : false
+
+if (check) {
+
+ if (!check2) {
+
+  this.setState({
+    validPositionType: 'Please select a Position Type',
+    validGlobalAlert: 'Please check form, some mandatory content is missing'
+
+  })
+
+  return false;
+}
+}
+var check = model.Be01 ? true : false
+var check2=model.PositionTypeBe01  ? true : false
+
+if (check) {
+
+ if (!check2) {
+
+  this.setState({
+    validPositionType: 'Please select a Position Type',
+    validGlobalAlert: 'Please check form, some mandatory content is missing'
+
+  })
+
+  return false;
+}
+}
  //this.props.createPosition(this.state);
  await this.props.createPosition(model);
  
@@ -280,7 +502,8 @@ startChange = start => {
 
   this.setState({
     selectedStart,
-    validStart:''
+    validStart:'',
+    validGlobalAlert:''
     
  
   })
@@ -292,15 +515,18 @@ const selectedEnd = end ;
 
 this.setState({
   selectedEnd,
-  validEnd:''
+  validEnd:'',
+  validGlobalAlert:''
 })
 
 }
 
 
 handleChange(field,event) {
-  
-  
+  this.setState({
+    
+    validGlobalAlert:''
+  })
   switch (field) {
    case 'se01':
    this.setState({value: event.target.value});
@@ -348,7 +574,10 @@ handleChange(field,event) {
 }
 
 handleChangeSelect= (field, event, ) => {
-  
+  this.setState({
+    
+    validGlobalAlert:''
+  })
    switch (field) {
     case 'positionType':
     this.setState({selectvalue: event});
@@ -412,7 +641,8 @@ handleCountrySelect = country => {
 
   this.setState({
     selectedCountry,
-    validCountry:''
+    validCountry:'',
+    validGlobalAlert:''
   })
 }
 
@@ -424,7 +654,8 @@ handleJobTitleSelect = jobTitle => {
 
   this.setState({
     selectedJobTitle,
-    validJobTitle:''
+    validJobTitle:'',
+    validGlobalAlert:''
   })
 }
 
@@ -435,7 +666,8 @@ handleJobFamilySelect = jobFamily => {
 
   this.setState({
     selectedJobFamily,
-    validJobFamily:''
+    validJobFamily:'',
+    validGlobalAlert:''
   })
 }
 
@@ -450,7 +682,8 @@ handleDestinationSelect = (val) => {
  this.props.reportActions.handleDestinationField(val)
  this.setState({
  
-  validDestination:''
+  validDestination:'',
+  validGlobalAlert:''
 })
  //this.props.handleUnsavedEdit()
 } 
@@ -596,11 +829,13 @@ handleDestinationSelect = (val) => {
 
 
  <Col sm="12" md="4" lg="4" xl="4" className="form-group form-group-select">
- <label htmlFor="positionType">PositionType</label>
+ <label htmlFor="positionType">PositionType <b className="card-text text-danger">
+            {this.state.validPositionType}
+                        </b></label>
 
         <Select 
           id="positionType"
-          valueKey="id"
+          valueKey="id" 
           labelKey="name"
           className="form-control"
           options={this.props.mplpositiontypes}
@@ -626,7 +861,7 @@ handleDestinationSelect = (val) => {
 
 
  <Col sm="12" md="4" lg="4" xl="4" className="form-group form-group-select">
- <label htmlFor="positionType2">PositionType</label>
+ <label htmlFor="positionType2">PositionType </label>
 
         <Select 
           id="positionType2"
@@ -933,8 +1168,11 @@ handleDestinationSelect = (val) => {
              </Col> 
 
     <Col sm="12" md="12" lg="12" xl="12" className="form-group">
+ 
            <Button   color="success" className="float-right" onClick={() => this.createPosition()}>Add Position(s)</Button>
-           {/* <input type="file" /> */}
+           <b className="card-text text-danger float-right">
+            {this.state.validGlobalAlert}
+                        </b>
            </Col>
 
    
