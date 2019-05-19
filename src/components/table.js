@@ -76,7 +76,11 @@ const Table = props => {
     }    
     
 
-
+   const handleGrid = params => {
+        // gridApi = params.api;
+        // gridColumnApi = params.columnApi;
+        params.api.sizeColumnsToFit();
+    }
 
 
     const onRowClicked = params => {
@@ -94,8 +98,8 @@ const Table = props => {
                 maxHeight: '100%'
             }}>
             <AgGridReact
-                //  onGridReady={params => handleGrid(params)}
-                
+                 onGridReady={params => handleGrid(params)}
+             
 
                 columnDefs={columnDefs}
                 rowData={props.list}
@@ -108,10 +112,9 @@ const Table = props => {
                 onRowClicked={e => onRowClicked(e)}
                 suppressRowClickSelection={true}
 
-              
+          
                 
             />
-
 
         </div>
  
@@ -119,9 +122,10 @@ const Table = props => {
 
 
 
+
     )
    
- 
+
 
 }
 
