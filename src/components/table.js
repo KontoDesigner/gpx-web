@@ -82,6 +82,9 @@ const Table = props => {
         params.api.sizeColumnsToFit();
     }
 
+    const onFirstDataRendered = params => {
+        params.api.sizeColumnsToFit();
+      }
 
     const onRowClicked = params => {
         if (props.edit) {
@@ -111,7 +114,7 @@ const Table = props => {
                 rowSelection={'multiple'}
                 onRowClicked={e => onRowClicked(e)}
                 suppressRowClickSelection={true}
-
+                onFirstDataRendered={params => onFirstDataRendered(params)}
           
                 
             />

@@ -307,7 +307,7 @@ preferToWork:  preferToWork,
 function mapStateToProps(state) {
     
     return {
-      
+
         application: state.applicationEdit.applicationInfo.application,
         keywordslookup: state.setting.keywords.keywordslookup,
        //preferToWork: state.applicationEdit.applicationInfo

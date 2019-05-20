@@ -17,7 +17,7 @@ const WorkInfo = (props) => {
                         <TextInput name="firstName" label="First Name" disabled  value={props.application.firstName}  />
                     </Col>
 
-                           <Col sm="12" md="2" lg="2" xl="2" className="form-group">
+                           <Col sm="12" md="6" lg="2" xl="2" className="form-group">
                         <TextInput name="lastName" label="Last Name" disabled value={props.application.lastName}  />
                     </Col>
 

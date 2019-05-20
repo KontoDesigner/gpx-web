@@ -215,7 +215,7 @@ const OverviewInfo = (props) => {
                     <Col sm="12" md="2" lg="2" xl="2" className="form-group">
                 <label htmlFor="firstDest">Destination</label>
 
-                        <Select
+                <Select
                             //  multi={true}
                             valueKey="id"
                             labelKey="name"
