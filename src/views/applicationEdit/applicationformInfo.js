@@ -1,10 +1,11 @@
 import React from 'react';
-import { Card, CardBody, CardHeader, Col ,Row} from 'reactstrap'
+import { Card, CardBody, CardHeader, Col ,Row,Input,Label} from 'reactstrap'
 import TextInput from '../../components/textInput'
 import moment from "moment";
 import Select from 'react-select'
 import Datetime from 'react-datetime'
-const OverviewInfo = (props) => {
+
+const ApplicationFormInfo = (props) => {
    
     return (
 
@@ -14,538 +15,12 @@ const OverviewInfo = (props) => {
         
 
       
-            <CardHeader className="card-header-work"> {props.application.season}</CardHeader>
+            <CardHeader className="card-header-work"> General</CardHeader>
             <CardBody className="no-padding-bottom">
                 <div className="form-row">
                 <Col sm="12" md="6" lg="6" xl="6" >
-                <label htmlFor="preferToWork">If applicable to your job role. Indicate what type of guest you are suitable to work with</label>
-
-                        <Select
-                            //  multi={true}
-                            valueKey="id"
-                            labelKey="name"
-                            className="form-control"
-                            options={props.preferWorkWinterArr}
-                            multi
-                            onChange={v => {
-                                props.handleMultiSelect('preferToWork', v)
-                             }}
-               
-                            value={props.application.preferToWork === '' ? null : props.application.preferToWork}
-                            placeholder="Select"
-                            className="form-group form-group-select"
-                        />
-
-
-
- 
-
-                    </Col>
- 
-                           {/* <Col sm="12" md="2" lg="2" xl="2" className="form-group">
-                           <label htmlFor="workPeriodStart">From</label>
-            
-                           <Datetime  className={'custom-datepicker'}
-                            id="workPeriodStart"
-                           onChange={props.assignStartChange}
-                        //    defaultValue={moment(this.props.positionAssign.StaffStartDate).format('YYYY-MM-DD')}
-                           value={props.selectedStartDate}
-                            timeFormat={false}
-                            dateFormat="YYYY-MM-DD"
-                            closeOnSelect
-                            utc={true}
-                            inputProps={{ placeholder: 'YYYY-MM-DD' }} />
-                    </Col>
-                    <Col sm="12" md="2" lg="2" xl="2" className="form-group">
-                           <label htmlFor="workPeriodEnd">To</label>
-            
-                           <Datetime  className={'custom-datepicker'}
-                            id="workPeriodEnd"
-                           onChange={props.assignEndChange}
-                        //    defaultValue={moment(this.props.positionAssign.StaffStartDate).format('YYYY-MM-DD')}
-                           value={props.selectedEndDate}
-                            timeFormat={false}
-                            dateFormat="YYYY-MM-DD"
-                            closeOnSelect
-                            utc={true}
-                            inputProps={{ placeholder: 'YYYY-MM-DD' }} />
-                    </Col> */}
-                    <Col sm="12" md="12" lg="12" xl="12" >
-                    <CardHeader className="card-header-subwork"> For season {props.application.season} I wish to work in the following destinations / positions</CardHeader>
-                    <CardBody className="no-padding-bottom"></CardBody>
-                    </Col>
-                    <Col sm="12" md="6" lg="6" xl="1" className="form-group">
-                <label htmlFor="Choice">Choice</label>
-
-                 
-
-                    </Col>
-                    <Col sm="12" md="6" lg="6" xl="2" className="form-group">
-                <label htmlFor="firstDest">Destination</label>
-
-                        <Select
-                            //  multi={true}
-                            id="firstDest"
-                            valueKey="id"
-                            labelKey="name"
-                            className="form-control"
-                            options={props.destinations}
-                            //onChange={props.handleAppField}
-                            onChange={v => {
-                                props.handleSelect('firstDest', v)
-                             }}
-                       
-               
-                            value={props.application.firstDest}
-                            placeholder="Select"
-                            className="form-group form-group-select"
-                        />
-
-                    </Col>
- 
-                    <Col sm="12" md="6" lg="6" xl="3" className="form-group">
-                <label htmlFor="firstJobTitle">JobTitle</label>
-
-                        <Select
-                            //  multi={true}
-                            id="firstJobTitle"
-                            valueKey="id"
-                            labelKey="name"
-                            className="form-control"
-                            options={props.jobtitles}
-                        
-                            onChange={v => {
-                                props.handleSelect('firstJobTitle', v)
-                             }}
-                       
-               
-                            value={props.application.firstJobTitle}
-                            placeholder="Select"
-                            className="form-group form-group-select"
-                        />
-
-                    </Col>
-                    <Col sm="12" md="6" lg="6" xl="1" className="form-group">
-                <label htmlFor="Choice">Choice</label>
-
-
-                    </Col>
-                    <Col sm="12" md="6" lg="6" xl="2" className="form-group">
-                <label htmlFor="secondDest">Destination</label>
-
-                
-                <Select
-                            //  multi={true}
-                            id="secondDest"
-                            valueKey="id"
-                            labelKey="name"
-                            className="form-control"
-                            options={props.destinations}
-                            onChange={v => {
-                                props.handleSelect('secondDest', v)
-                             }}
-                       
-               
-                            value={props.application.secondDest}
-                            placeholder="Select"
-                            className="form-group form-group-select"
-                        />
-
-                    </Col>
-
-                    <Col sm="12" md="6" lg="6" xl="3" className="form-group">
-                <label htmlFor="secondJobTitle">JobTitle</label>
-
-                        <Select
-                            //  multi={true}
-                            id="secondJobTitle"
-                            valueKey="id"
-                            labelKey="name"
-                            className="form-control"
-                            options={props.jobtitles}
-                            onChange={v => {
-                                props.handleSelect('secondJobTitle', v)
-                             }}
-                       
-               
-                            value={props.application.secondJobTitle}
-                            placeholder="Select"
-                            className="form-group form-group-select"
-                        />
-
-                    </Col>
-      
-            
-
-                <Col sm="12" md="6" lg="6" xl="1" className="form-group">
-                <label htmlFor="firstDest">Choice</label>
-
-                 
-
-                    </Col>
-                    <Col sm="12" md="6" lg="6" xl="2" className="form-group">
-                <label htmlFor="thirdDest">Destination</label>
-
-                <Select
-                            //  multi={true}
-                            id="thirdDest"
-                            valueKey="id"
-                            labelKey="name"
-                            className="form-control"
-                            options={props.destinations}
-                            onChange={v => {
-                                props.handleSelect('thirdDest', v)
-                             }}
-                       
-               
-                            value={props.application.thirdDest}
-                            placeholder="Select"
-                            className="form-group form-group-select"
-                        />
-
-                    </Col>
-
-                    <Col sm="12" md="6" lg="6" xl="3" className="form-group">
-                <label htmlFor="thirdJobTitle">JobTitle</label>
-
-                        <Select
-                            //  multi={true}
-                            id="thirdJobTitle"
-                            valueKey="id"
-                            labelKey="name"
-                            className="form-control"
-                            options={props.jobtitles}
-                        
-                            onChange={v => {
-                                props.handleSelect('thirdJobTitle', v)
-                             }}
-                       
-               
-                            value={props.application.thirdJobTitle}
-                            placeholder="Select"
-                            className="form-group form-group-select"
-                        />
-
-                    </Col>
-                    <Col sm="12" md="6" lg="6" xl="1" className="form-group">
-                <label htmlFor="Choice">Choice</label>
-
-                 
-
-                    </Col>
-                    <Col sm="12" md="6" lg="6" xl="2" className="form-group">
-                <label htmlFor="fourthDest">Destination</label>
-
-                <Select
-                            //  multi={true}
-                            id="fourthDest"
-                            valueKey="id"
-                            labelKey="name"
-                            className="form-control"
-                            options={props.destinations}
-                            onChange={v => {
-                                props.handleSelect('fourthDest', v)
-                             }}
-                       
-               
-                            value={props.application.fourthDest}
-                            placeholder="Select"
-                            className="form-group form-group-select"
-                        />
-
-                    </Col>
-
-                    <Col sm="12" md="6" lg="6" xl="3" className="form-group">
-                <label htmlFor="fourthJobTitle">JobTitle</label>
-
-                        <Select
-                            //  multi={true}
-                            id="fourthJobTitle"
-                            valueKey="id"
-                            labelKey="name"
-                            className="form-control"
-                            options={props.jobtitles}
-                        
-                            onChange={v => {
-                                props.handleSelect('fourthJobTitle', v)
-                             }}
-                       
-               
-                            value={props.application.fourthJobTitle}
-                            placeholder="Select"
-                            className="form-group form-group-select"
-                        />
-
-                    </Col>
-                    </div>
-              
-
-              </CardBody>
-              <CardHeader className="card-header-work"> S20 </CardHeader>
-              <CardBody className="no-padding-bottom">
-                <div className="form-row">
-
-                <Col sm="12" md="6" lg="6" xl="6" >
-                <label htmlFor="preferToWork">If applicable to your job role. Indicate what type of guest you are suitable to work with</label>
-
-                        <Select
-                            //  multi={true}
-                            valueKey="id"
-                            labelKey="name"
-                            className="form-control"
-                            options={props.preferWorkWinterArr}
-                            multi
-                            onChange={v => {
-                                props.handleMultiSelect('preferToWork', v)
-                             }}
-               
-                            value={props.application.preferToWork === '' ? null : props.application.preferToWork}
-                            placeholder="Select"
-                            className="form-group form-group-select"
-                        />
-
-
-
- 
-
-                    </Col>
- 
-                           <Col sm="12" md="2" lg="2" xl="2" className="form-group">
-                           <label htmlFor="workPeriodStart">From</label>
-            
-                           <Datetime  className={'custom-datepicker'}
-                            id="workPeriodStart"
-                           onChange={props.assignStartChange}
-                        //    defaultValue={moment(this.props.positionAssign.StaffStartDate).format('YYYY-MM-DD')}
-                           value={props.selectedStartDate}
-                            timeFormat={false}
-                            dateFormat="YYYY-MM-DD"
-                            closeOnSelect
-                            utc={true}
-                            inputProps={{ placeholder: 'YYYY-MM-DD' }} />
-                    </Col>
-                    <Col sm="12" md="2" lg="2" xl="2" className="form-group">
-                           <label htmlFor="workPeriodEnd">To</label>
-            
-                           <Datetime  className={'custom-datepicker'}
-                            id="workPeriodEnd"
-                           onChange={props.assignEndChange}
-                        //    defaultValue={moment(this.props.positionAssign.StaffStartDate).format('YYYY-MM-DD')}
-                           value={props.selectedEndDate}
-                            timeFormat={false}
-                            dateFormat="YYYY-MM-DD"
-                            closeOnSelect
-                            utc={true}
-                            inputProps={{ placeholder: 'YYYY-MM-DD' }} />
-                    </Col>
-                    <Col sm="12" md="12" lg="12" xl="12" >
-                    <CardHeader className="card-header-subwork"> For season S20 I wish to work in the following destinations / positions</CardHeader>
-                    <CardBody className="no-padding-bottom"></CardBody>
-                    </Col>
-                    <Col sm="12" md="6" lg="6" xl="1" className="form-group">
-                <label htmlFor="Choice">Choice</label>
-
-                 
-
-                    </Col>
-                    <Col sm="12" md="6" lg="6" xl="2" className="form-group">
-                <label htmlFor="firstDest">Destination</label>
-
-                        <Select
-                            //  multi={true}
-                            id="firstDest"
-                            valueKey="id"
-                            labelKey="name"
-                            className="form-control"
-                            options={props.destinations}
-                            //onChange={props.handleAppField}
-                            onChange={v => {
-                                props.handleSelect('firstDest', v)
-                             }}
-                       
-               
-                            value={props.application.firstDest}
-                            placeholder="Select"
-                            className="form-group form-group-select"
-                        />
-
-                    </Col>
- 
-                    <Col sm="12" md="6" lg="6" xl="3" className="form-group">
-                <label htmlFor="firstJobTitle">JobTitle</label>
-
-                        <Select
-                            //  multi={true}
-                            id="firstJobTitle"
-                            valueKey="id"
-                            labelKey="name"
-                            className="form-control"
-                            options={props.jobtitles}
-                        
-                            onChange={v => {
-                                props.handleSelect('firstJobTitle', v)
-                             }}
-                       
-               
-                            value={props.application.firstJobTitle}
-                            placeholder="Select"
-                            className="form-group form-group-select"
-                        />
-
-                    </Col>
-                    <Col sm="12" md="6" lg="6" xl="1" className="form-group">
-                <label htmlFor="Choice">Choice</label>
-
-
-                    </Col>
-                    <Col sm="12" md="6" lg="6" xl="2" className="form-group">
-                <label htmlFor="secondDest">Destination</label>
-
-                
-                <Select
-                            //  multi={true}
-                            id="secondDest"
-                            valueKey="id"
-                            labelKey="name"
-                            className="form-control"
-                            options={props.destinations}
-                            onChange={v => {
-                                props.handleSelect('secondDest', v)
-                             }}
-                       
-               
-                            value={props.application.secondDest}
-                            placeholder="Select"
-                            className="form-group form-group-select"
-                        />
-
-                    </Col>
-
-                    <Col sm="12" md="6" lg="6" xl="3" className="form-group">
-                <label htmlFor="secondJobTitle">JobTitle</label>
-
-                        <Select
-                            //  multi={true}
-                            id="secondJobTitle"
-                            valueKey="id"
-                            labelKey="name"
-                            className="form-control"
-                            options={props.jobtitles}
-                            onChange={v => {
-                                props.handleSelect('secondJobTitle', v)
-                             }}
-                       
-               
-                            value={props.application.secondJobTitle}
-                            placeholder="Select"
-                            className="form-group form-group-select"
-                        />
-
-                    </Col>
-      
-            
-
-                <Col sm="12" md="6" lg="6" xl="1" className="form-group">
-                <label htmlFor="firstDest">Choice</label>
-
-                 
-
-                    </Col>
-                    <Col sm="12" md="6" lg="6" xl="2" className="form-group">
-                <label htmlFor="thirdDest">Destination</label>
-
-                <Select
-                            //  multi={true}
-                            id="thirdDest"
-                            valueKey="id"
-                            labelKey="name"
-                            className="form-control"
-                            options={props.destinations}
-                            onChange={v => {
-                                props.handleSelect('thirdDest', v)
-                             }}
-                       
-               
-                            value={props.application.thirdDest}
-                            placeholder="Select"
-                            className="form-group form-group-select"
-                        />
-
-                    </Col>
-
-                    <Col sm="12" md="6" lg="6" xl="3" className="form-group">
-                <label htmlFor="thirdJobTitle">JobTitle</label>
-
-                        <Select
-                            //  multi={true}
-                            id="thirdJobTitle"
-                            valueKey="id"
-                            labelKey="name"
-                            className="form-control"
-                            options={props.jobtitles}
-                        
-                            onChange={v => {
-                                props.handleSelect('thirdJobTitle', v)
-                             }}
-                       
-               
-                            value={props.application.thirdJobTitle}
-                            placeholder="Select"
-                            className="form-group form-group-select"
-                        />
-
-                    </Col>
-                    <Col sm="12" md="6" lg="6" xl="1" className="form-group">
-                <label htmlFor="Choice">Choice</label>
-
-                 
-
-                    </Col>
-                    <Col sm="12" md="6" lg="6" xl="2" className="form-group">
-                <label htmlFor="fourthDest">Destination</label>
-
-                <Select
-                            //  multi={true}
-                            id="fourthDest"
-                            valueKey="id"
-                            labelKey="name"
-                            className="form-control"
-                            options={props.destinations}
-                            onChange={v => {
-                                props.handleSelect('fourthDest', v)
-                             }}
-                       
-               
-                            value={props.application.fourthDest}
-                            placeholder="Select"
-                            className="form-group form-group-select"
-                        />
-
-                    </Col>
-
-                    <Col sm="12" md="6" lg="6" xl="3" className="form-group">
-                <label htmlFor="fourthJobTitle">JobTitle</label>
-
-                        <Select
-                            //  multi={true}
-                            id="fourthJobTitle"
-                            valueKey="id"
-                            labelKey="name"
-                            className="form-control"
-                            options={props.jobtitles}
-                        
-                            onChange={v => {
-                                props.handleSelect('fourthJobTitle', v)
-                             }}
-                       
-               
-                            value={props.application.fourthJobTitle}
-                            placeholder="Select"
-                            className="form-group form-group-select"
-                        />
-
-                    </Col>
-                    <Col sm="12" md="6" lg="3" xl="3" className="form-group">
+           
+                   
                            <label htmlFor="changePosition">I am interested to change my position to:</label>
             
                            <Select
@@ -621,15 +96,142 @@ const OverviewInfo = (props) => {
                             className="form-group form-group-select"
                         />
                     </Col>
-         
+                    <Col sm="12" md="6" lg="3" xl="3" className="form-group">
+                           <label htmlFor="sourceMarket">The colleague i'm applying with is recruited for the following SM</label>
+            
+                           <Select
+                            //  multi={true}
+                            id="sourceMarket"
+                            valueKey="id"
+                            labelKey="name"
+                            className="form-control"
+                            options={props.sourceMarkets}
+                        
+                            onChange={v => {
+                                props.handleSelect('sourceMarket', v)
+                             }}
+                       
+               
+                            value={props.application.sourceMarket}
+                            placeholder="Select"
+                            className="form-group form-group-select"
+                        />
+                    </Col>
+                    <Col sm="12" md="6" lg="3" xl="3" className="form-group">
+                           <label htmlFor="mostImportant">What is most important for you?</label>
+            
+                           <Select
+                            //  multi={true}
+                            id="mostImportant"
+                            valueKey="id"
+                            labelKey="name"
+                            className="form-control"
+                             options={props.mostImportantArr}
+                        
+                            onChange={v => {
+                                props.handleSelect('mostImportant', v)
+                             }}
+                       
+               
+                            value={props.application.mostImportant}
+                            placeholder="Select"
+                            className="form-group form-group-select"
+                        />
+                    </Col>
+                    <Col sm="12" md="6" lg="3" xl="3" className="form-group">
+                           <label htmlFor="skiPlacement">UK only – I already have a confirmed Ski Placement</label>
+            
+                           <Select
+                            //  multi={true}
+                            id="skiPlacement"
+                            valueKey="id"
+                            labelKey="name"
+                            className="form-control"
+                             options={props.yesNoOption}
+                        
+                            onChange={v => {
+                                props.handleSelect('skiPlacement', v)
+                             }}
+                       
+               
+                            value={props.application.skiPlacement}
+                            placeholder="Select"
+                            className="form-group form-group-select"
+                        />
+                    </Col>
+                    <Col sm="12" md="6" lg="3" xl="3" className="form-group">
+                           <label htmlFor="fairs">BE only: I want to work on fairs (beurzen) contact Valerie.Timperman@tui.be</label>
+            
+                           <Select
+                            //  multi={true}
+                            id="fairs"
+                            valueKey="id"
+                            labelKey="name"
+                            className="form-control"
+                             options={props.yesNoOption}
+                        
+                            onChange={v => {
+                                props.handleSelect('fairs', v)
+                             }}
+                       
+               
+                            value={props.application.fairs}
+                            placeholder="Select"
+                            className="form-group form-group-select"
+                        />
+                    </Col>
+                    <Col sm="12" md="6" lg="9" xl="9" className="form-group">
+                    <Label for="comments">Any other Comments</Label>
+            <Input
+              required
+              type="textarea"
+              //maxLength="1000"
+              name="comments"
+              id="comments"
+              rows={4}
+              value={props.application.comments}
+            
+              onChange={props.handleInputField}
+              aria-multiline="true"
+            />
+                    </Col>
+                   
                     </div>
               
 
               </CardBody>
-              
+              <CardHeader className="card-header-work"> Confirm</CardHeader>
+            <CardBody className="no-padding-bottom">
+            <div className="form-row">
+            <Col sm="12" md="6" lg="3" xl="3" className="form-group">
+                      
+                      <TextInput
+                       id="signature"
+                name="signature" 
+                label="Signature"
+                value={props.application.signature}
+                onChange={props.handleInputField}
+               
+              />
+                 
+                      </Col>
+                      <Col sm="12" md="6" lg="3" xl="3" className="form-group">
+                      
+                      <TextInput
+                       id="placeDate"
+                name="placeDate" 
+                label="Place & Date"
+                value={props.application.placeDate}
+                onChange={props.handleInputField}
+               
+              />
+                 
+                      </Col>
+            </div>
+            </CardBody>
 
         </Card> 
     );
 };
 
-export default OverviewInfo
+export default ApplicationFormInfo

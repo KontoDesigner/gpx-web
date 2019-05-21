@@ -5,6 +5,7 @@ import { TabContent, TabPane, Row, Col, Card, CardHeader, CardBody, CardFooter, 
 import { LinkContainer } from 'react-router-bootstrap'
 import * as applicationInfoActions from '../../actions/applicationEdit/applicationInfoActions'
 import WorkInfo from './workInfo'
+import Season from './season'
 import OverviewInfo from './overviewInfo'
 import ApplicationformInfo from './applicationformInfo'
 import ManagersectionInfo from './managersectionInfo'
@@ -36,11 +37,11 @@ class WorkEdit extends Component {
             selectedEndDate: null,
             value:'',
             valueSingle:'',
-      
+      loaded:false,
             preferWorkWinterArr :[ ],
             preferWorkSummerArr :[ ],
             changePositionArr :[ ],
-
+            mostImportantArr :[ ],
             yesNoOption: [
                 {
                     id: 'Yes',
@@ -132,12 +133,12 @@ getJobTitles = async (season,jobfamily) => {
 
     async componentDidMount() {
         const _this = this
- 
+ debugger;
   
         
         // this.props.employeeInfoActions.getAvailablePositions(this.props.currentSeason.name, this.props.nextSeason.name, this.props.followingSeason.name)
         // this.props.employeeInfoActions.getPositionAssigns(this.state.staffId)
-
+    
          this.props.applicationInfoActions.getApplication(this.state.staffid).then(function () {
              debugger;
           
@@ -155,19 +156,19 @@ getJobTitles = async (season,jobfamily) => {
                document.title = 'Work Application not found - TTP'
            }
          })
-
-         
+      
  
          const preferWorkWinter = this.props.keywordslookup.filter(ap => ap.ids === 'PreferToWork_Winter')[0];
           const preferWorkWinterArr  = preferWorkWinter.keywordValues.split(',')
 
-          const preferWorkSummer = this.props.keywordslookup.filter(ap => ap.ids === 'PreferToWork_Winter')[0];
+          const preferWorkSummer = this.props.keywordslookup.filter(ap => ap.ids === 'PreferToWork_Summer')[0];
           const preferWorkSummerArr  = preferWorkSummer.keywordValues.split(',')
 
          const changePosition = this.props.keywordslookup.filter(ap => ap.ids === 'IWantToChangePosition')[0];
          const changePositionArr  = changePosition.keywordValues.split(',')
 
-
+         const mostImportant = this.props.keywordslookup.filter(ap => ap.ids === 'MostImportant')[0];
+         const mostImportantArr  = mostImportant.keywordValues.split(',')
         //  this.setState({
         //     value: keywords.keywordValues ? keywords.keywordValues.map(k => ({
         //      id: k,
@@ -190,6 +191,11 @@ getJobTitles = async (season,jobfamily) => {
             id: s,
             name: s
          }))
+
+         const mostImportantObjArr = mostImportantArr.map(s => ({
+            id: s,
+            name: s
+         }))
         
          if (preferWorkSummer!== undefined) {
         
@@ -209,7 +215,11 @@ if (changePosition!== undefined) {
     this.setState({changePositionArr: changePositionObjArr })
 }
 
-
+if (mostImportant!== undefined) {
+        
+               
+    this.setState({mostImportantArr:mostImportantObjArr })
+}
     }
 
     toggle = activeTab => {
@@ -231,7 +241,7 @@ const preferToWork = this.props.application.preferToWork.map(function(m) {
   
             // to the database
             //preferToWork:  this.props.application.preferToWork ? this.props.application.preferToWork.join() : null,
-preferToWork:  preferToWork,
+           preferToWork:  preferToWork,
           //preferToWork: this.props.preferToWork,
           staffID: this.props.application.staffID
              
@@ -380,7 +390,7 @@ preferToWork:  preferToWork,
                           
                             
                                 <TabPane tabId="applicationformInfo">
-                                    <ApplicationformInfo
+                                    <Season
 
                                    application={this.props.application}
                                    destinations={this.state.destinations}
@@ -399,10 +409,62 @@ preferToWork:  preferToWork,
                                    preferWorkWinterArr={this.state.preferWorkWinterArr}
                                    preferWorkSummerArr={this.state.preferWorkSummerArr}
                                    changePositionArr={this.state.changePositionArr}
+                                  
                                   // preferToWork={this.props.preferToWork}
                    
                                    
                                           /> 
+{/* 
+                                           <Season
+
+                                          application={this.props.application}
+                                          destinations={this.state.destinations}
+                                          jobtitles={this.state.jobtitles}
+                                          assignStartChange={this.assignStartChange}
+                                           assignEndChange={this.assignEndChange}
+                                           //handleChange={this.handleChange}
+
+                                       handleAppField={this.handleAppField}
+                                       handleInputField ={this.handleInputField}
+                                          handleMultiSelect ={this.handleMultiSelect}
+                                          handleSelect ={this.handleSelect}
+                                            valueSingle ={this.state.valueSingle}
+                                              yesNoOption ={this.state.yesNoOption} 
+                                                value={this.state.value}
+                                                     preferWorkWinterArr={this.state.preferWorkWinterArr}
+                                                      preferWorkSummerArr={this.state.preferWorkSummerArr}
+                                                          changePositionArr={this.state.changePositionArr}
+                                                                  // preferToWork={this.props.preferToWork}
+
+
+                                                     />  */}
+                                      <ApplicationformInfo
+
+                                    application={this.props.application}
+                                    destinations={this.state.destinations}
+                                      jobtitles={this.state.jobtitles}
+                                  assignStartChange={this.assignStartChange}
+                                   assignEndChange={this.assignEndChange}
+                                  //handleChange={this.handleChange}
+
+                                 handleAppField={this.handleAppField}
+                                 handleInputField ={this.handleInputField}
+                                      handleMultiSelect ={this.handleMultiSelect}
+                                 handleSelect ={this.handleSelect}
+                                valueSingle ={this.state.valueSingle}
+                                yesNoOption ={this.state.yesNoOption} 
+                               value={this.state.value}
+                                    preferWorkWinterArr={this.state.preferWorkWinterArr}
+                                  preferWorkSummerArr={this.state.preferWorkSummerArr}
+                                   changePositionArr={this.state.changePositionArr}
+                                   sourceMarkets={this.props.sourceMarkets}
+                                   mostImportantArr={this.state.mostImportantArr}
+                                   yesNoOption={this.state.yesNoOption}
+                                  // preferToWork={this.props.preferToWork}
+
+
+       /> 
+                                          
                                              </TabPane>
                          
                             
@@ -434,7 +496,7 @@ preferToWork:  preferToWork,
 function mapStateToProps(state) {
     
     return {
-
+        sourceMarkets: state.geography.sourceMarkets,
         application: state.applicationEdit.applicationInfo.application,
         keywordslookup: state.setting.keywords.keywordslookup,
        //preferToWork: state.applicationEdit.applicationInfo

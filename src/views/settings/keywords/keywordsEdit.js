@@ -109,6 +109,11 @@ class KeywordsEdit extends Component {   //Notification smart component
                     id: 'IWantToChangePosition',
                     name: 'IWantToChangePosition'
                 },
+
+                {
+                    id: 'MostImportant',
+                    name: 'MostImportant'
+                },
          
             ]
 

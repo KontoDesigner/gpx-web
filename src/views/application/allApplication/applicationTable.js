@@ -56,7 +56,7 @@ const applicationTable = props => {
             contextMenuItems={contextMenuItems}
             columns={columns}
             // checkbox={true}
-            identifier={'staffID'}
+            identifier={'staffID'} 
             edit={props.edit}
             // updateSelectedState={props.handleSelectedTitle}
             // selected={props.selectedTitle}
