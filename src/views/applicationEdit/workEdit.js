@@ -11,7 +11,8 @@ import ManagersectionInfo from './managersectionInfo'
 import AllRole from '../planning/planning/allRole/allRole';
 import Buttons from './buttons';
 import Tabs from './tabs'
-
+import RestClient from '../../infrastructure/restClient'
+import { beginAjaxCall, ajaxCallError, endAjaxCall } from '../../actions/ajaxStatusActions'
 class WorkEdit extends Component {
 
     constructor(props) {
@@ -28,14 +29,33 @@ class WorkEdit extends Component {
             staffid: id,
            // mplID: mplID,
             application: null,
+            destinations: [],
+            jobtitles: [],
             activeTab: 'overviewInfo',
             selectedStartDate: null,
             selectedEndDate: null,
             value:'',
-            suitableArr :[ ]
+            valueSingle:'',
+      
+            preferWorkWinterArr :[ ],
+            preferWorkSummerArr :[ ],
+            changePositionArr :[ ],
 
+            yesNoOption: [
+                {
+                    id: 'Yes',
+                    name: 'Yes'
+                },
+
+                {
+                    id: 'No',
+                    name: 'No'
+                }
+            ]
        
         }
+        this.handleAppField= this.handleAppField.bind(this);
+
     }
 
 //    componentWillMount=async()=>  {
@@ -62,7 +82,55 @@ class WorkEdit extends Component {
 //          })
 //     }
 
-    async componentWillMount() {
+getDestinations = async (season) => {
+  
+
+        try {
+        
+        //   const staff = await RestClient.Get(`position/${mplID}`)
+        debugger;
+            const destinations = await RestClient.Get(`application/destinations/${season}`)
+            debugger;
+            this.setState({
+                destinations
+            })
+
+
+
+         
+        } catch (error) {
+           
+
+            throw error
+        }
+    
+}
+
+getJobTitles = async (season,jobfamily) => {
+  
+
+    try {
+    
+    //   const staff = await RestClient.Get(`position/${mplID}`)
+    debugger;
+        const jobtitles = await RestClient.Get(`application/jobtitles/${season}/${jobfamily}`)
+        debugger;
+        this.setState({
+            jobtitles
+        })
+
+
+
+     
+    } catch (error) {
+       
+
+        throw error
+    }
+
+}
+
+    async componentDidMount() {
         const _this = this
  
   
@@ -71,12 +139,15 @@ class WorkEdit extends Component {
         // this.props.employeeInfoActions.getPositionAssigns(this.state.staffId)
 
          this.props.applicationInfoActions.getApplication(this.state.staffid).then(function () {
+             debugger;
+          
           
             if (_this.props.application != null) { 
                
                 document.title = `${_this.props.application.firstName} - ${_this.props.application.lastName} `
             
-
+                _this.getDestinations(_this.props.application.season)
+                _this.getJobTitles(_this.props.application.season,_this.props.application.jobFamily)
 
            }
             else {
@@ -85,11 +156,17 @@ class WorkEdit extends Component {
            }
          })
 
-
-
+         
  
-         const suitable = this.props.keywordslookup.filter(ap => ap.ids === 'PreferToWork_Winter')[0];
-          const suitableArr = suitable.keywordValues.split(',')
+         const preferWorkWinter = this.props.keywordslookup.filter(ap => ap.ids === 'PreferToWork_Winter')[0];
+          const preferWorkWinterArr  = preferWorkWinter.keywordValues.split(',')
+
+          const preferWorkSummer = this.props.keywordslookup.filter(ap => ap.ids === 'PreferToWork_Winter')[0];
+          const preferWorkSummerArr  = preferWorkSummer.keywordValues.split(',')
+
+         const changePosition = this.props.keywordslookup.filter(ap => ap.ids === 'IWantToChangePosition')[0];
+         const changePositionArr  = changePosition.keywordValues.split(',')
+
 
         //  this.setState({
         //     value: keywords.keywordValues ? keywords.keywordValues.map(k => ({
@@ -99,17 +176,37 @@ class WorkEdit extends Component {
       
         //  })
 
-         const suitableObjArr = suitableArr.map(s => ({
+         const preferWorkWinterObjArr = preferWorkWinterArr.map(s => ({
             id: s,
             name: s
          }))
         
-        
+         const preferWorkSummerObjArr = preferWorkSummerArr.map(s => ({
+            id: s,
+            name: s
+         }))
 
-if (suitable !== undefined) {
+         const changePositionObjArr = changePositionArr.map(s => ({
+            id: s,
+            name: s
+         }))
+        
+         if (preferWorkSummer!== undefined) {
         
                
-    this.setState({suitableArr: suitableObjArr })
+            this.setState({preferWorkSummerArr: preferWorkSummerObjArr })
+        }
+
+        if (preferWorkWinter!== undefined) {
+        
+               
+            this.setState({preferWorkWinterArr: preferWorkWinterObjArr })
+        }
+
+if (changePosition!== undefined) {
+        
+               
+    this.setState({changePositionArr: changePositionObjArr })
 }
 
 
@@ -145,6 +242,19 @@ preferToWork:  preferToWork,
         window.close()
     }
 
+    handleSelect = (field, val) => {
+        debugger;
+        if (val) {
+           
+
+            this.props.applicationInfoActions.handleApplicationField(field, val.id)
+        } else {
+            this.props.applicationInfoActions.handleApplicationField(field, null)
+        }
+    }
+
+
+
     handleMultiSelect = (field, val) => {
         debugger;
         if (val) {
@@ -156,16 +266,23 @@ preferToWork:  preferToWork,
         }
     }
 
-    handleChange = (value) => {
+    handleAppField(event) {
         debugger;
-        if (value) {
-            let vals = value.map(function(m) {
-                return m.id
-            })
-            debugger;
-       // const keywordname = {id:params.keywordname,name:params.keywordname}
-        this.setState({value});
-      }}
+        this.setState({valueSingle: event.id});
+      }
+    
+
+      handleInputField = event => {
+       
+        const field = event.target.name
+        const val = event.target.value
+
+        this.props.applicationInfoActions.handleApplicationField(field, val)
+
+     
+    }
+
+
 
     assignStartChange = assignStart => {
         
@@ -266,12 +383,22 @@ preferToWork:  preferToWork,
                                     <ApplicationformInfo
 
                                    application={this.props.application}
+                                   destinations={this.state.destinations}
+                                   jobtitles={this.state.jobtitles}
                                    assignStartChange={this.assignStartChange}
                                    assignEndChange={this.assignEndChange}
-                                   handleChange={this.handleChange}
+                                   //handleChange={this.handleChange}
+            
+                                   handleAppField={this.handleAppField}
+                                   handleInputField ={this.handleInputField}
                                    handleMultiSelect ={this.handleMultiSelect}
+                                   handleSelect ={this.handleSelect}
+                                   valueSingle ={this.state.valueSingle}
+                                   yesNoOption ={this.state.yesNoOption} 
                                    value={this.state.value}
-                                   suitableArr={this.state.suitableArr}
+                                   preferWorkWinterArr={this.state.preferWorkWinterArr}
+                                   preferWorkSummerArr={this.state.preferWorkSummerArr}
+                                   changePositionArr={this.state.changePositionArr}
                                   // preferToWork={this.props.preferToWork}
                    
                                    

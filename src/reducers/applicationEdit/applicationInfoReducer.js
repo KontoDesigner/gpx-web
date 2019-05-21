@@ -21,12 +21,7 @@ export default function applicationInfoReducer(state = defaultState, action) {
                 ...state,
                 application: action.data.application
             }
-debugger;
-            // case (types.HANDLE_APPLICATION_FIELD):
-            //  return {
-            //     ...state,
-            //     [action.data.field]: action.data.val 
-            // }
+      
 
 
              case (types.HANDLE_APPLICATION_FIELD):

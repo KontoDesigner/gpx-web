@@ -57,6 +57,7 @@ debugger;
 
 
 export function handleApplicationField(field, val) {
+    debugger;
     return {
         type: types.HANDLE_APPLICATION_FIELD, 
         data: { field: field, val: val }
@@ -78,6 +79,10 @@ export function getApplicationSuccess(application) {
         data: { application:application }
     }
 }
+
+
+ 
+
 
 export function getApplication(staffId) {
     return async function (dispatch) { 

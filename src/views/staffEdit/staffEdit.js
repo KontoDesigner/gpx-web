@@ -277,7 +277,7 @@ if (national !== undefined) {
     getAvailablePositionNew = async () => {
         debugger
         const nowAvailablePositions = await RestClient.Get('positionassign/getallcand')
-
+        debugger;
         this.setState({
             nowAvailablePositions
         })
