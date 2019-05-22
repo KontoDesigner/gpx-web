@@ -111,6 +111,7 @@ class WorkEdit extends Component {
     }
 
     getJobTitlesForDest = async (dest, field) => {
+        debugger;
         const jobtitles = await RestClient.Get(`application/jobtitles/${this.props.application.season}/${this.props.application.jobFamily}/${dest}`)
 
         this.setState({
@@ -119,7 +120,7 @@ class WorkEdit extends Component {
     }
 
     async componentDidMount() {
-        const _this = this
+        const _this = this 
         debugger
 
         // this.props.employeeInfoActions.getAvailablePositions(this.props.currentSeason.name, this.props.nextSeason.name, this.props.followingSeason.name)
@@ -132,7 +133,7 @@ class WorkEdit extends Component {
                 document.title = `${_this.props.application.firstName} - ${_this.props.application.lastName} `
 
                 _this.getDestinations(_this.props.application.season)
-                _this.getJobTitles(_this.props.application.season, _this.props.application.jobFamily)
+               _this.getJobTitlesInitDest(_this.props.application.season, _this.props.application.jobFamily,_this.props.application.destination)
             } else {
                 document.title = 'Work Application not found - TTP'
             }
@@ -223,29 +224,42 @@ class WorkEdit extends Component {
         let model = {
             // to the database
             //preferToWork:  this.props.application.preferToWork ? this.props.application.preferToWork.join() : null,
-<<<<<<< HEAD
-           preferToWork:  preferToWork,
-          //preferToWork: this.props.preferToWork,
-          staffID: this.props.application.staffID,
-          
-             
-          }
-
-       
-         await this.props.applicationInfoActions.save(model)
-=======
             preferToWork: preferToWork,
             //preferToWork: this.props.preferToWork,
-            staffID: this.props.application.staffID
+            staffID: this.props.application.staffID,
+            status: this.props.application.status,
+          firstDest : this.props.application.firstDest,
+            secondDest :this.props.application.secondDest,
+            thirdDest : this.props.application.thirdDest,
+            fourthDest : this.props.application.fourthDest,
+            firstJobTitle : this.props.application.firstJobTitle,
+            secondJobTitle : this.props.application.secondJobTitle,
+            thirdJobTitle : this.props.application.thirdJobTitle,
+           fourthJobTitle : this.props.application.fourthJobTitle,
+
+           couplePosition : this.props.application.couplePosition,
+           changePosition : this.props.application.changePosition,
+           coupleName : this.props.application.coupleName,
+           coupleSourceMarket : this.props.application.coupleSourceMarket,
+           signature : this.props.application.signature,
+           placeDate : this.props.application.placeDate,
+           mostImportant : this.props.application.mostImportant,
+           nonDestinationPosition : this.props.application.nonDestinationPosition,
+           coupleName : this.props.application.coupleName,
+           skiPlacement : this.props.application.skiPlacement,
+           fairs : this.props.application.fairs,
+           comments : this.props.application.comments,
+           season : this.props.application.season
         }
 
         await this.props.applicationInfoActions.save(model)
->>>>>>> fb7b01ee0c198e09c455aae62cd75955a2103e4e
         window.close()
     }
 
     handleSelect = async (field, val) => {
-        debugger
+        if (val==null) {
+            val="";
+        }
         if (val) {
             await this.props.applicationInfoActions.handleApplicationField(field, val.id)
         } else {
@@ -371,7 +385,7 @@ class WorkEdit extends Component {
                                     <Season
                                         application={this.props.application}
                                         destinations={this.state.destinations}
-                                        jobtitles={this.state.jobtitles}
+                                       // jobtitles={this.state.jobtitles}
                                         assignStartChange={this.assignStartChange}
                                         assignEndChange={this.assignEndChange}
                                         //handleChange={this.handleChange}

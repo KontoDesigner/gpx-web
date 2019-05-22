@@ -12,7 +12,33 @@ debugger;
 
     cleanModel.DateModified = newdatemodified
     cleanModel.StaffID = model.staffID
+    cleanModel.Status = model.status
+    cleanModel.FirstDest = model.firstDest
+    cleanModel.SecondDest = model.secondDest
+    cleanModel.ThirdDest = model.thirdDest
+    cleanModel.FourthDest = model.fourthDest
+    cleanModel.FirstJobTitle = model.firstJobTitle
+    cleanModel.SecondJobTitle = model.secondJobTitle
+    cleanModel.ThirdJobTitle = model.thirdJobTitle
+    cleanModel.FourthJobTitle = model.fourthJobTitle
 
+debugger;
+
+    cleanModel.CouplePosition = model.couplePosition,
+    cleanModel.ChangePosition = model.changePosition,
+    cleanModel.CoupleName = model.coupleName,
+    cleanModel.CoupleSourceMarket = model.coupleSourceMarket,
+    cleanModel.Signature =model.signature,
+    cleanModel.PlaceDate = model.placeDate,
+    cleanModel.MostImportant = model.mostImportant,
+    cleanModel.NonDestinationPosition = model.nonDestinationPosition,
+    cleanModel.CoupleName = model.coupleName,
+    cleanModel.SkiPlacement = model.skiPlacement,
+    cleanModel.Fairs = model.fairs,
+    cleanModel.Comments = model.comments,
+    cleanModel.Season =model.season
+
+ 
     //  ProfilingSelect : model.
 
     // International: model.international ? model.international.map(x => {

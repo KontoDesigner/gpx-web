@@ -95,7 +95,7 @@ const Season = props => {
                             id="firstJobTitle"
                             valueKey="id"
                             labelKey="name"
-                            className="form-control"
+                            className="form-control" 
                             options={props.firstJobTitles}
                             onChange={v => {
                                 props.handleSelect('firstJobTitle', v)

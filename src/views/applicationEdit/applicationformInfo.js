@@ -97,22 +97,22 @@ const ApplicationFormInfo = (props) => {
                         />
                     </Col>
                     <Col sm="12" md="6" lg="3" xl="3" className="form-group">
-                           <label htmlFor="sourceMarket">The colleague i'm applying with is recruited for the following SM</label>
+                           <label htmlFor="coupleSourceMarket">The colleague i'm applying with is recruited for the following SM</label>
             
                            <Select
                             //  multi={true}
-                            id="sourceMarket"
+                            id="coupleSourceMarket"
                             valueKey="id"
                             labelKey="name"
                             className="form-control"
                             options={props.sourceMarkets}
                         
                             onChange={v => {
-                                props.handleSelect('sourceMarket', v)
+                                props.handleSelect('coupleSourceMarket', v)
                              }}
                        
                
-                            value={props.application.sourceMarket}
+                            value={props.application.coupleSourceMarket}
                             placeholder="Select"
                             className="form-group form-group-select"
                         />
