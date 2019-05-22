@@ -261,7 +261,8 @@ const preferToWork = this.props.application.preferToWork.map(function(m) {
             //preferToWork:  this.props.application.preferToWork ? this.props.application.preferToWork.join() : null,
            preferToWork:  preferToWork,
           //preferToWork: this.props.preferToWork,
-          staffID: this.props.application.staffID
+          staffID: this.props.application.staffID,
+          
              
           }
 
