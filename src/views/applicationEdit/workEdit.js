@@ -9,13 +9,12 @@ import Season from './season'
 import OverviewInfo from './overviewInfo'
 import ApplicationformInfo from './applicationformInfo'
 import ManagersectionInfo from './managersectionInfo'
-import AllRole from '../planning/planning/allRole/allRole';
-import Buttons from './buttons';
+import AllRole from '../planning/planning/allRole/allRole'
+import Buttons from './buttons'
 import Tabs from './tabs'
 import RestClient from '../../infrastructure/restClient'
 import { beginAjaxCall, ajaxCallError, endAjaxCall } from '../../actions/ajaxStatusActions'
 class WorkEdit extends Component {
-
     constructor(props) {
         super()
 
@@ -24,27 +23,26 @@ class WorkEdit extends Component {
         } = props
         const id = params.id
         const season = params.season
-        
 
         this.state = {
             staffid: id,
-            season:season,
+            season: season,
 
-           // mplID: mplID,
+            // mplID: mplID,
             application: null,
             destinations: [],
             jobtitles: [],
             activeTab: 'overviewInfo',
             selectedStartDate: null,
             selectedEndDate: null,
-            value:'',
-            valueSingle:'',
-      loaded:false,
-            preferWorkWinterArr :[ ],
-            workStatusArr :[ ],
-            preferWorkSummerArr :[ ],
-            changePositionArr :[ ],
-            mostImportantArr :[ ],
+            value: '',
+            valueSingle: '',
+            loaded: false,
+            preferWorkWinterArr: [],
+            workStatusArr: [],
+            preferWorkSummerArr: [],
+            changePositionArr: [],
+            mostImportantArr: [],
             yesNoOption: [
                 {
                     id: 'Yes',
@@ -55,189 +53,157 @@ class WorkEdit extends Component {
                     id: 'No',
                     name: 'No'
                 }
-            ]
-       
+            ],
+            firstJobTitles: [],
+            secondJobTitles: [],
+            thirdJobTitles: [],
+            fourthJobTitles: []
         }
-        this.handleAppField= this.handleAppField.bind(this);
-
+        this.handleAppField = this.handleAppField.bind(this)
     }
 
-//    componentWillMount=async()=>  {
-//          const _this = this
- 
-  
-        
-//         // this.props.employeeInfoActions.getAvailablePositions(this.props.currentSeason.name, this.props.nextSeason.name, this.props.followingSeason.name)
-//         // this.props.employeeInfoActions.getPositionAssigns(this.state.staffId)
+    //    componentWillMount=async()=>  {
+    //          const _this = this
 
-//          this.props.applicationInfoActions.getApplication(this.state.staffid).then(function () {
-          
-//             if (_this.props.application != null) { 
-               
-//                 document.title = `${_this.props.application.firstName} - ${_this.props.application.lastName} `
+    //         // this.props.employeeInfoActions.getAvailablePositions(this.props.currentSeason.name, this.props.nextSeason.name, this.props.followingSeason.name)
+    //         // this.props.employeeInfoActions.getPositionAssigns(this.state.staffId)
 
+    //          this.props.applicationInfoActions.getApplication(this.state.staffid).then(function () {
 
+    //             if (_this.props.application != null) {
 
-//            }
-//             else {
-                
-//                document.title = 'Work Application not found - TTP'
-//            }
-//          })
-//     }
+    //                 document.title = `${_this.props.application.firstName} - ${_this.props.application.lastName} `
 
-getDestinations = async (season) => {
-  
+    //            }
+    //             else {
 
+    //                document.title = 'Work Application not found - TTP'
+    //            }
+    //          })
+    //     }
+
+    getDestinations = async season => {
         try {
-        
-        //   const staff = await RestClient.Get(`position/${mplID}`)
-        debugger;
+            //   const staff = await RestClient.Get(`position/${mplID}`)
+            debugger
             const destinations = await RestClient.Get(`application/destinations/${season}`)
-            debugger;
+            debugger
             this.setState({
                 destinations
             })
-
-
-
-         
         } catch (error) {
-           
-
             throw error
         }
-    
-}
-
-getJobTitles = async (season,jobfamily) => {
-  
-
-    try {
-    
-    //   const staff = await RestClient.Get(`position/${mplID}`)
-    debugger;
-        const jobtitles = await RestClient.Get(`application/jobtitles/${season}/${jobfamily}`)
-        debugger;
-        this.setState({
-            jobtitles
-        })
-
-
-
-     
-    } catch (error) {
-       
-
-        throw error
     }
 
-}
+    getJobTitles = async (season, jobfamily) => {
+        try {
+            //   const staff = await RestClient.Get(`position/${mplID}`)
+            debugger
+            const jobtitles = await RestClient.Get(`application/jobtitles/${season}/${jobfamily}`)
+            debugger
+            this.setState({
+                jobtitles
+            })
+        } catch (error) {
+            throw error
+        }
+    }
+
+    getJobTitlesForDest = async (dest, field) => {
+        const jobtitles = await RestClient.Get(`application/jobtitles/${this.props.application.season}/${this.props.application.jobFamily}/${dest}`)
+
+        this.setState({
+            [field]: jobtitles
+        })
+    }
 
     async componentDidMount() {
         const _this = this
- debugger;
-  
-        
+        debugger
+
         // this.props.employeeInfoActions.getAvailablePositions(this.props.currentSeason.name, this.props.nextSeason.name, this.props.followingSeason.name)
         // this.props.employeeInfoActions.getPositionAssigns(this.state.staffId)
-    
-         this.props.applicationInfoActions.getApplication(this.state.staffid,this.state.season).then(function () {
-             debugger;
-          
-          
-            if (_this.props.application != null) { 
-               
+
+        this.props.applicationInfoActions.getApplication(this.state.staffid, this.state.season).then(function() {
+            debugger
+
+            if (_this.props.application != null) {
                 document.title = `${_this.props.application.firstName} - ${_this.props.application.lastName} `
-            
+
                 _this.getDestinations(_this.props.application.season)
-                _this.getJobTitles(_this.props.application.season,_this.props.application.jobFamily)
+                _this.getJobTitles(_this.props.application.season, _this.props.application.jobFamily)
+            } else {
+                document.title = 'Work Application not found - TTP'
+            }
+        })
 
-           }
-            else {
-                
-               document.title = 'Work Application not found - TTP'
-           }
-         })
-      
- 
-         const preferWorkWinter = this.props.keywordslookup.filter(ap => ap.ids === 'PreferToWork_Winter')[0];
-          const preferWorkWinterArr  = preferWorkWinter.keywordValues.split(',')
+        const preferWorkWinter = this.props.keywordslookup.filter(ap => ap.ids === 'PreferToWork_Winter')[0]
+        const preferWorkWinterArr = preferWorkWinter.keywordValues.split(',')
 
-          const preferWorkSummer = this.props.keywordslookup.filter(ap => ap.ids === 'PreferToWork_Summer')[0];
-          const preferWorkSummerArr  = preferWorkSummer.keywordValues.split(',')
+        const preferWorkSummer = this.props.keywordslookup.filter(ap => ap.ids === 'PreferToWork_Summer')[0]
+        const preferWorkSummerArr = preferWorkSummer.keywordValues.split(',')
 
-         const changePosition = this.props.keywordslookup.filter(ap => ap.ids === 'IWantToChangePosition')[0];
-         const changePositionArr  = changePosition.keywordValues.split(',')
+        const changePosition = this.props.keywordslookup.filter(ap => ap.ids === 'IWantToChangePosition')[0]
+        const changePositionArr = changePosition.keywordValues.split(',')
 
-         const mostImportant = this.props.keywordslookup.filter(ap => ap.ids === 'MostImportant')[0];
-         const mostImportantArr  = mostImportant.keywordValues.split(',')
-         const workStatus = this.props.keywordslookup.filter(ap => ap.ids === 'WorkStatus')[0];
-         const workStatusArr  = workStatus.keywordValues.split(',')
+        const mostImportant = this.props.keywordslookup.filter(ap => ap.ids === 'MostImportant')[0]
+        const mostImportantArr = mostImportant.keywordValues.split(',')
+        const workStatus = this.props.keywordslookup.filter(ap => ap.ids === 'WorkStatus')[0]
+        const workStatusArr = workStatus.keywordValues.split(',')
 
         //  this.setState({
         //     value: keywords.keywordValues ? keywords.keywordValues.map(k => ({
         //      id: k,
         //          name: k
         //     })):[]
-      
+
         //  })
 
         const workStatusObjArr = workStatusArr.map(s => ({
             id: s,
             name: s
-         }))
+        }))
 
-         const preferWorkWinterObjArr = preferWorkWinterArr.map(s => ({
+        const preferWorkWinterObjArr = preferWorkWinterArr.map(s => ({
             id: s,
             name: s
-         }))
-        
-         const preferWorkSummerObjArr = preferWorkSummerArr.map(s => ({
+        }))
+
+        const preferWorkSummerObjArr = preferWorkSummerArr.map(s => ({
             id: s,
             name: s
-         }))
+        }))
 
-         const changePositionObjArr = changePositionArr.map(s => ({
+        const changePositionObjArr = changePositionArr.map(s => ({
             id: s,
             name: s
-         }))
+        }))
 
-         const mostImportantObjArr = mostImportantArr.map(s => ({
+        const mostImportantObjArr = mostImportantArr.map(s => ({
             id: s,
             name: s
-         }))
+        }))
 
-
-         if (workStatus!== undefined) {
-        
-               
-            this.setState({workStatusArr: workStatusObjArr })
-        }
-        
-         if (preferWorkSummer!== undefined) {
-        
-               
-            this.setState({preferWorkSummerArr: preferWorkSummerObjArr })
+        if (workStatus !== undefined) {
+            this.setState({ workStatusArr: workStatusObjArr })
         }
 
-        if (preferWorkWinter!== undefined) {
-        
-               
-            this.setState({preferWorkWinterArr: preferWorkWinterObjArr })
+        if (preferWorkSummer !== undefined) {
+            this.setState({ preferWorkSummerArr: preferWorkSummerObjArr })
         }
 
-if (changePosition!== undefined) {
-        
-               
-    this.setState({changePositionArr: changePositionObjArr })
-}
+        if (preferWorkWinter !== undefined) {
+            this.setState({ preferWorkWinterArr: preferWorkWinterObjArr })
+        }
 
-if (mostImportant!== undefined) {
-        
-               
-    this.setState({mostImportantArr:mostImportantObjArr })
-}
+        if (changePosition !== undefined) {
+            this.setState({ changePositionArr: changePositionObjArr })
+        }
+
+        if (mostImportant !== undefined) {
+            this.setState({ mostImportantArr: mostImportantObjArr })
+        }
     }
 
     toggle = activeTab => {
@@ -248,46 +214,59 @@ if (mostImportant!== undefined) {
         }
     }
 
-
     save = async () => {
-debugger;
-const preferToWork = this.props.application.preferToWork.map(function(m) {
-    return m.id
-})
+        debugger
+        const preferToWork = this.props.application.preferToWork.map(function(m) {
+            return m.id
+        })
 
         let model = {
-  
             // to the database
             //preferToWork:  this.props.application.preferToWork ? this.props.application.preferToWork.join() : null,
-           preferToWork:  preferToWork,
-          //preferToWork: this.props.preferToWork,
-          staffID: this.props.application.staffID
-             
-          }
+            preferToWork: preferToWork,
+            //preferToWork: this.props.preferToWork,
+            staffID: this.props.application.staffID
+        }
 
-       
-         await this.props.applicationInfoActions.save(model)
+        await this.props.applicationInfoActions.save(model)
         window.close()
     }
 
-    handleSelect = (field, val) => {
-        debugger;
+    handleSelect = async (field, val) => {
+        debugger
         if (val) {
-           
-
-            this.props.applicationInfoActions.handleApplicationField(field, val.id)
+            await this.props.applicationInfoActions.handleApplicationField(field, val.id)
         } else {
-            this.props.applicationInfoActions.handleApplicationField(field, null)
+            await this.props.applicationInfoActions.handleApplicationField(field, null)
+        }
+
+        switch (field) {
+            case 'firstDest':
+                this.props.applicationInfoActions.handleApplicationField('firstJobTitle', null)
+
+                this.getJobTitlesForDest(val.id, 'firstJobTitles')
+                break
+            case 'secondDest':
+                this.props.applicationInfoActions.handleApplicationField('secondJobTitle', null)
+
+                this.getJobTitlesForDest(val.id, 'secondJobTitles')
+                break
+            case 'thirdDest':
+                this.props.applicationInfoActions.handleApplicationField('thirdJobTitle', null)
+
+                this.getJobTitlesForDest(val.id, 'thirdJobTitles')
+                break
+            case 'fourthDest':
+                this.props.applicationInfoActions.handleApplicationField('fourthJobTitle', null)
+
+                this.getJobTitlesForDest(val.id, 'fourthJobTitles')
+                break
         }
     }
 
-
-
     handleMultiSelect = (field, val) => {
-        debugger;
+        debugger
         if (val) {
-           
-
             this.props.applicationInfoActions.handleApplicationField(field, val)
         } else {
             this.props.applicationInfoActions.handleApplicationField(field, null)
@@ -295,44 +274,33 @@ const preferToWork = this.props.application.preferToWork.map(function(m) {
     }
 
     handleAppField(event) {
-        debugger;
-        this.setState({valueSingle: event.id});
-      }
-    
+        debugger
+        this.setState({ valueSingle: event.id })
+    }
 
-      handleInputField = event => {
-       
+    handleInputField = event => {
         const field = event.target.name
         const val = event.target.value
 
         this.props.applicationInfoActions.handleApplicationField(field, val)
-
-     
     }
-
-
 
     assignStartChange = assignStart => {
-        
-        const selectedStartDate = assignStart ;
-     
+        const selectedStartDate = assignStart
+
         this.setState({
             selectedStartDate,
-            validDate2:''            
-            
+            validDate2: ''
         })
-      
     }
     assignEndChange = assignEnd => {
-      const selectedEndDate = assignEnd ;
-   
-      this.setState({
-        selectedEndDate,
-        validDate2:''
-      
-      })
-    
-  }
+        const selectedEndDate = assignEnd
+
+        this.setState({
+            selectedEndDate,
+            validDate2: ''
+        })
+    }
 
     render() {
         const buttons = (
@@ -342,19 +310,18 @@ const preferToWork = this.props.application.preferToWork.map(function(m) {
                 // staff={this.props.staff}
             />
         )
-        if (this.props.application=== null) {
+        if (this.props.application === null) {
             //Loading
             return ''
         } else if (this.props.application === undefined) {
             //Not found
             return (
-
                 <Card>
                     <CardHeader>Could not find application {this.state.staffid}</CardHeader>
 
                     <CardBody>
                         <p className="card-text">
-                           Work application with id: <b>{this.state.staffid}</b> was  not found. 
+                            Work application with id: <b>{this.state.staffid}</b> was not found.
                         </p>
                     </CardBody>
 
@@ -368,75 +335,53 @@ const preferToWork = this.props.application.preferToWork.map(function(m) {
         } else {
             //Found
             return (
-            
                 <div>
-             
-
                     <Row>
                         <Col>
-                           
-                               
-                                    <WorkInfo
-                                
-                                        application={this.props.application}
-                                        workStatusArr={this.state.workStatusArr}
-                                        handleSelect ={this.handleSelect}
+                            <WorkInfo
+                                application={this.props.application}
+                                workStatusArr={this.state.workStatusArr}
+                                handleSelect={this.handleSelect}
+                            />
 
-                                    />
-                                
-                                <Tabs
-                        toggle={this.toggle}
-                        activeTab={this.state.activeTab}
-                        save={this.save}
-                        unsavedEdit={this.state.unsavedEdit}
-                     
-                    />
-                            
-                           
+                            <Tabs toggle={this.toggle} activeTab={this.state.activeTab} save={this.save} unsavedEdit={this.state.unsavedEdit} />
                         </Col>
                     </Row>
 
                     <Row>
                         <Col>
-
-                    <TabContent activeTab={this.state.activeTab}>
+                            <TabContent activeTab={this.state.activeTab}>
                                 <TabPane tabId="overviewInfo">
-                                    <OverviewInfo
+                                    <OverviewInfo application={this.props.application} />
+                                </TabPane>
 
-                                    application={this.props.application}
-                                 
-
-                      
-                                          /> 
-                                             </TabPane>
-                          
-                            
                                 <TabPane tabId="applicationformInfo">
                                     <Season
+                                        application={this.props.application}
+                                        destinations={this.state.destinations}
+                                        jobtitles={this.state.jobtitles}
+                                        assignStartChange={this.assignStartChange}
+                                        assignEndChange={this.assignEndChange}
+                                        //handleChange={this.handleChange}
 
-                                   application={this.props.application}
-                                   destinations={this.state.destinations}
-                                   jobtitles={this.state.jobtitles}
-                                   assignStartChange={this.assignStartChange}
-                                   assignEndChange={this.assignEndChange}
-                                   //handleChange={this.handleChange}
-            
-                                   handleAppField={this.handleAppField}
-                                   handleInputField ={this.handleInputField}
-                                   handleMultiSelect ={this.handleMultiSelect}
-                                   handleSelect ={this.handleSelect}
-                                   valueSingle ={this.state.valueSingle}
-                                   yesNoOption ={this.state.yesNoOption} 
-                                   value={this.state.value}
-                                   preferWorkWinterArr={this.state.preferWorkWinterArr}
-                                   preferWorkSummerArr={this.state.preferWorkSummerArr}
-                                   changePositionArr={this.state.changePositionArr}
-                                  
-                                  // preferToWork={this.props.preferToWork}
-                   
-                                   
-                                          /> 
-{/*  
+                                        handleAppField={this.handleAppField}
+                                        handleInputField={this.handleInputField}
+                                        handleMultiSelect={this.handleMultiSelect}
+                                        handleSelect={this.handleSelect}
+                                        valueSingle={this.state.valueSingle}
+                                        yesNoOption={this.state.yesNoOption}
+                                        value={this.state.value}
+                                        preferWorkWinterArr={this.state.preferWorkWinterArr}
+                                        preferWorkSummerArr={this.state.preferWorkSummerArr}
+                                        changePositionArr={this.state.changePositionArr}
+                                        firstJobTitles={this.state.firstJobTitles}
+                                        secondJobTitles={this.state.secondJobTitles}
+                                        thirdJobTitles={this.state.thirdJobTitles}
+                                        fourthJobTitles={this.state.fourthJobTitles}
+
+                                        // preferToWork={this.props.preferToWork}
+                                    />
+                                    {/*  
                                            <Season
 
                                           application={this.props.application}
@@ -460,68 +405,50 @@ const preferToWork = this.props.application.preferToWork.map(function(m) {
 
 
                                                      />   */}
-                                      <ApplicationformInfo
+                                    <ApplicationformInfo
+                                        application={this.props.application}
+                                        destinations={this.state.destinations}
+                                        jobtitles={this.state.jobtitles}
+                                        assignStartChange={this.assignStartChange}
+                                        assignEndChange={this.assignEndChange}
+                                        //handleChange={this.handleChange}
 
-                                    application={this.props.application}
-                                    destinations={this.state.destinations}
-                                      jobtitles={this.state.jobtitles}
-                                  assignStartChange={this.assignStartChange}
-                                   assignEndChange={this.assignEndChange}
-                                  //handleChange={this.handleChange}
+                                        handleAppField={this.handleAppField}
+                                        handleInputField={this.handleInputField}
+                                        handleMultiSelect={this.handleMultiSelect}
+                                        handleSelect={this.handleSelect}
+                                        valueSingle={this.state.valueSingle}
+                                        yesNoOption={this.state.yesNoOption}
+                                        value={this.state.value}
+                                        preferWorkWinterArr={this.state.preferWorkWinterArr}
+                                        preferWorkSummerArr={this.state.preferWorkSummerArr}
+                                        changePositionArr={this.state.changePositionArr}
+                                        sourceMarkets={this.props.sourceMarkets}
+                                        mostImportantArr={this.state.mostImportantArr}
+                                        yesNoOption={this.state.yesNoOption}
+                                        // preferToWork={this.props.preferToWork}
+                                    />
+                                </TabPane>
 
-                                 handleAppField={this.handleAppField}
-                                 handleInputField ={this.handleInputField}
-                                      handleMultiSelect ={this.handleMultiSelect}
-                                 handleSelect ={this.handleSelect}
-                                valueSingle ={this.state.valueSingle}
-                                yesNoOption ={this.state.yesNoOption} 
-                               value={this.state.value}
-                                    preferWorkWinterArr={this.state.preferWorkWinterArr}
-                                  preferWorkSummerArr={this.state.preferWorkSummerArr}
-                                   changePositionArr={this.state.changePositionArr}
-                                   sourceMarkets={this.props.sourceMarkets}
-                                   mostImportantArr={this.state.mostImportantArr}
-                                   yesNoOption={this.state.yesNoOption}
-                                  // preferToWork={this.props.preferToWork}
-
-
-       /> 
-                                          
-                                             </TabPane>
-                         
-                            
                                 <TabPane tabId="managersectionInfo">
-                                    <ManagersectionInfo
-
-                                    application={this.props.application}
-
-                                          /> 
-                                             </TabPane>
-                                        
-                           
-   </TabContent>
-                    </Col>
+                                    <ManagersectionInfo application={this.props.application} />
+                                </TabPane>
+                            </TabContent>
+                        </Col>
                     </Row>
                     {buttons}
                 </div>
-
-
-
             )
-
-
-            
         }
     }
 }
 
 function mapStateToProps(state) {
-    
     return {
         sourceMarkets: state.geography.sourceMarkets,
         application: state.applicationEdit.applicationInfo.application,
-        keywordslookup: state.setting.keywords.keywordslookup,
-       //preferToWork: state.applicationEdit.applicationInfo
+        keywordslookup: state.setting.keywords.keywordslookup
+        //preferToWork: state.applicationEdit.applicationInfo
     }
 }
 
