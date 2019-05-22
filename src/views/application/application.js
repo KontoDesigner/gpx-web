@@ -40,10 +40,10 @@ class Application extends Component {
         // alert(position.staffID);
         debugger;
         if (application.staffID != null && (application.staffID != 0 && application.staffID != 'No StaffId defined')) {
-            const win = window.open(`/application/${application.staffID}`, '_blank')
+            const win = window.open(`/application/${application.staffID}/${application.season}`, '_blank')
             win.focus()
         } else {
-            const win2 = window.open(`/application/${application.staffID}`, '_blank')
+            const win2 = window.open(`/application/${application.staffID}/${application.season}`, '_blank')
             win2.focus()
         }
     }

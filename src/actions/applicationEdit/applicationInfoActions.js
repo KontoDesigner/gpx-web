@@ -51,11 +51,6 @@ debugger;
     }
 }
 
-
-
-
-
-
 export function handleApplicationField(field, val) {
     debugger;
     return {
@@ -84,7 +79,7 @@ export function getApplicationSuccess(application) {
  
 
 
-export function getApplication(staffId) {
+export function getApplication(staffId,season) {
     return async function (dispatch) { 
         dispatch(beginAjaxCall())
 
@@ -92,7 +87,7 @@ export function getApplication(staffId) {
         
         //   const staff = await RestClient.Get(`position/${mplID}`)
         debugger;
-            const application = await RestClient.Get(`application/work/${staffId}`)
+            const application = await RestClient.Get(`application/work/${staffId}/${season}`)
            debugger;
           
 

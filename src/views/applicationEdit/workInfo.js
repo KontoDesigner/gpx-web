@@ -2,7 +2,7 @@ import React from 'react';
 import { Card, CardBody, CardHeader, Col } from 'reactstrap'
 import TextInput from '../../components/textInput'
 import moment from "moment";
-
+import Select from 'react-select'
 const WorkInfo = (props) => {
    
     return (
@@ -40,7 +40,28 @@ const WorkInfo = (props) => {
                         <TextInput name="jobtitle" label="Current JobTitle" disabled   value={props.application.jobTitle}  />
                     </Col>     
                     
+                    <Col sm="12" md="6" lg="2" xl="2" className="form-group">
+                    <label htmlFor="status">Status</label>
+            
+            <Select
+             //  multi={true}
+             id="status"
+             valueKey="id"
+             labelKey="name"
+             className="form-control"
+              options={props.workStatusArr}
+         
+             onChange={v => {
+                 props.handleSelect('status', v)
+              }}
+        
 
+             value={props.application.status}
+             placeholder="Select"
+             className="form-group form-group-select"
+         />
+                    </Col>     
+                    
 
 
 {/* 

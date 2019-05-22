@@ -29,12 +29,15 @@ const Routes = () => (
             <Route path="/reports" component={Reports} />
             <Route exact path="/application" component={Application} />
             <Route path="/settings" component={Settings} />
-            <Route exact path="/application/:id" render={(props) => <WorkEdit {...props} ignoreThis={true} />} />
+         
+            
+            
+            <Route exact path="/application/:id/:season" render={(props) => <WorkEdit {...props} ignoreThis={true} />} />
             <Route exact path="/notification/:templatename" render={(props) => <NotificationEdit {...props} ignoreThis={true} />} />
             <Route exact path="/keywords/:keywordname" render={(props) => <KeywordsEdit {...props} ignoreThis={true} />} />
             <Route component={NotFound} />
         </Switch>
     </div>
 );
-
+{/* <Route exact path="/application/:id" render={(props) => <WorkEdit {...props} ignoreThis={true} />} /> */}
 export default Routes; 

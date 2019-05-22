@@ -23,11 +23,13 @@ class WorkEdit extends Component {
             match: { params }
         } = props
         const id = params.id
-        
+        const season = params.season
         
 
         this.state = {
             staffid: id,
+            season:season,
+
            // mplID: mplID,
             application: null,
             destinations: [],
@@ -39,6 +41,7 @@ class WorkEdit extends Component {
             valueSingle:'',
       loaded:false,
             preferWorkWinterArr :[ ],
+            workStatusArr :[ ],
             preferWorkSummerArr :[ ],
             changePositionArr :[ ],
             mostImportantArr :[ ],
@@ -139,7 +142,7 @@ getJobTitles = async (season,jobfamily) => {
         // this.props.employeeInfoActions.getAvailablePositions(this.props.currentSeason.name, this.props.nextSeason.name, this.props.followingSeason.name)
         // this.props.employeeInfoActions.getPositionAssigns(this.state.staffId)
     
-         this.props.applicationInfoActions.getApplication(this.state.staffid).then(function () {
+         this.props.applicationInfoActions.getApplication(this.state.staffid,this.state.season).then(function () {
              debugger;
           
           
@@ -169,6 +172,9 @@ getJobTitles = async (season,jobfamily) => {
 
          const mostImportant = this.props.keywordslookup.filter(ap => ap.ids === 'MostImportant')[0];
          const mostImportantArr  = mostImportant.keywordValues.split(',')
+         const workStatus = this.props.keywordslookup.filter(ap => ap.ids === 'WorkStatus')[0];
+         const workStatusArr  = workStatus.keywordValues.split(',')
+
         //  this.setState({
         //     value: keywords.keywordValues ? keywords.keywordValues.map(k => ({
         //      id: k,
@@ -176,6 +182,11 @@ getJobTitles = async (season,jobfamily) => {
         //     })):[]
       
         //  })
+
+        const workStatusObjArr = workStatusArr.map(s => ({
+            id: s,
+            name: s
+         }))
 
          const preferWorkWinterObjArr = preferWorkWinterArr.map(s => ({
             id: s,
@@ -196,6 +207,13 @@ getJobTitles = async (season,jobfamily) => {
             id: s,
             name: s
          }))
+
+
+         if (workStatus!== undefined) {
+        
+               
+            this.setState({workStatusArr: workStatusObjArr })
+        }
         
          if (preferWorkSummer!== undefined) {
         
@@ -361,6 +379,8 @@ const preferToWork = this.props.application.preferToWork.map(function(m) {
                                     <WorkInfo
                                 
                                         application={this.props.application}
+                                        workStatusArr={this.state.workStatusArr}
+                                        handleSelect ={this.handleSelect}
 
                                     />
                                 
@@ -384,6 +404,8 @@ const preferToWork = this.props.application.preferToWork.map(function(m) {
                                     <OverviewInfo
 
                                     application={this.props.application}
+                                 
+
                       
                                           /> 
                                              </TabPane>
@@ -414,7 +436,7 @@ const preferToWork = this.props.application.preferToWork.map(function(m) {
                    
                                    
                                           /> 
-{/* 
+{/*  
                                            <Season
 
                                           application={this.props.application}
@@ -422,7 +444,7 @@ const preferToWork = this.props.application.preferToWork.map(function(m) {
                                           jobtitles={this.state.jobtitles}
                                           assignStartChange={this.assignStartChange}
                                            assignEndChange={this.assignEndChange}
-                                           //handleChange={this.handleChange}
+                                           handleChange={this.handleChange}
 
                                        handleAppField={this.handleAppField}
                                        handleInputField ={this.handleInputField}
@@ -434,10 +456,10 @@ const preferToWork = this.props.application.preferToWork.map(function(m) {
                                                      preferWorkWinterArr={this.state.preferWorkWinterArr}
                                                       preferWorkSummerArr={this.state.preferWorkSummerArr}
                                                           changePositionArr={this.state.changePositionArr}
-                                                                  // preferToWork={this.props.preferToWork}
+                                                                  preferToWork={this.props.preferToWork}
 
 
-                                                     />  */}
+                                                     />   */}
                                       <ApplicationformInfo
 
                                     application={this.props.application}
