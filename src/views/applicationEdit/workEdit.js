@@ -133,7 +133,7 @@ class WorkEdit extends Component {
                 document.title = `${_this.props.application.firstName} - ${_this.props.application.lastName} `
 
                 _this.getDestinations(_this.props.application.season)
-               _this.getJobTitlesInitDest(_this.props.application.season, _this.props.application.jobFamily,_this.props.application.destination)
+               _this.getJobTitles(_this.props.application.season, _this.props.application.jobFamily)
             } else {
                 document.title = 'Work Application not found - TTP'
             }
@@ -249,7 +249,11 @@ class WorkEdit extends Component {
            skiPlacement : this.props.application.skiPlacement,
            fairs : this.props.application.fairs,
            comments : this.props.application.comments,
-           season : this.props.application.season
+           season : this.props.application.season,
+           remarksChoice1: this.props.application.remarksChoice1,
+           remarksChoice2: this.props.application.remarksChoice2,
+           remarksChoice3: this.props.application.remarksChoice3,
+           remarksChoice4: this.props.application.remarksChoice4
         }
 
         await this.props.applicationInfoActions.save(model)
@@ -378,7 +382,12 @@ class WorkEdit extends Component {
                         <Col>
                             <TabContent activeTab={this.state.activeTab}>
                                 <TabPane tabId="overviewInfo">
-                                    <OverviewInfo application={this.props.application} />
+                                    <OverviewInfo 
+                                    application={this.props.application}
+                                      handleInputField={this.handleInputField}
+                                    
+                                    
+                                    />
                                 </TabPane>
 
                                 <TabPane tabId="applicationformInfo">
@@ -457,7 +466,15 @@ class WorkEdit extends Component {
                                 </TabPane>
 
                                 <TabPane tabId="managersectionInfo">
-                                    <ManagersectionInfo application={this.props.application} />
+                                    <ManagersectionInfo 
+                                    application={this.props.application} 
+                                    handleInputField={this.handleInputField}
+                                    handleMultiSelect={this.handleMultiSelect}
+                                    handleSelect={this.handleSelect}
+                                
+                                    valueSingle={this.state.valueSingle}
+                                    yesNoOption={this.state.yesNoOption}
+                                    />
                                 </TabPane>
                             </TabContent>
                         </Col>

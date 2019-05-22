@@ -9,34 +9,125 @@ const OverviewInfo = (props) => {
      
         <Card>
   
-
+  <CardHeader className="card-header-work"> Placement {props.application.season}</CardHeader>
             <CardBody className="no-padding-bottom">
                 <div className="form-row">
  
-                          <Col sm="12" md="6" lg="2" xl="2" className="form-group">
-                        <TextInput name="firstName" label="Current" disabled  value={props.application.firstName}  />
-                    </Col>
- 
-                           <Col sm="12" md="2" lg="2" xl="2" className="form-group">
-                        <TextInput name="lastName" label="Choice" disabled value={props.application.lastName}  />
-                    </Col>
-
-                    <Col sm="12" md="6" lg="2" xl="2" className="form-group">
-                        <TextInput name="nat" label="Choice" disabled  value={props.application.nat}  />
-                    </Col>
-
-                    <Col sm="12" md="6" lg="2" xl="2" className="form-group">
-                        <TextInput name="centralID" label="Choice" disabled   value={props.application.centralID}  />
+                          <Col sm="12" md="6" lg="1" xl="1" className="form-group">
+                      Choice
                     </Col>
                     <Col sm="12" md="6" lg="2" xl="2" className="form-group">
-                        <TextInput name="destination" label="Choice" disabled   value={props.application.destination}  />
+                      Destination
+                    </Col>
+                    {/* <Col sm="12" md="6" lg="2" xl="2" className="form-group">
+                     Resort
+                    </Col> */}
+                    <Col sm="12" md="6" lg="2" xl="2" className="form-group">
+                     JobTitle
                     </Col>
                     <Col sm="12" md="6" lg="2" xl="2" className="form-group">
-                        <TextInput name="jobtitle" label="Current JobTitle" disabled   value={props.application.jobTitle}  />
-                    </Col>     
-                    
+                  Remarks
+                    </Col>
+                    </div>
+                    <div className="form-row">
+                    <Col sm="12" md="6" lg="1" xl="1" className="form-group">
+                      
+                    </Col>
+                           <Col sm="12" md="6" lg="2" xl="2" className="form-group">
+                        <TextInput name="firstDest"  placeholder="-Destination-" disabled value={props.application.firstDest}  />
+                    </Col>
+                    {/* <Col sm="12" md="2" lg="2" xl="2" className="form-group">
+                        <TextInput name="lastName"  placeholder="-Resort-" disabled value={props.application.firstDest}  />
+                    </Col> */}
+                    <Col sm="12" md="6" lg="2" xl="2" className="form-group">
+                        <TextInput name="firstJobTitle"  placeholder="-JobTitle-" disabled value={props.application.firstJobTitle}  />
+                    </Col>
+                    <Col sm="12" md="6" lg="7" xl="7" className="form-group">
+                    <TextInput
+                       id="remarksChoice1"
+                name="remarksChoice1" 
+                value={props.application.remarksChoice1}
+                onChange={props.handleInputField}
+              /> 
+                    </Col>
+                    </div>
+                    <div className="form-row">
+
+                    <Col sm="12" md="6" lg="1" xl="1" className="form-group">
+                      
+                      </Col>
+                             <Col sm="12" md="6" lg="2" xl="2" className="form-group">
+                          <TextInput name="lastName"  placeholder="-Destination-" disabled value={props.application.secondDest}  />
+                      </Col>
+                      {/* <Col sm="12" md="2" lg="2" xl="2" className="form-group">
+                          <TextInput name="lastName"  placeholder="-Resort-" disabled value={props.application.firstDest}  />
+                      </Col> */}
+                      <Col sm="12" md="6" lg="2" xl="2" className="form-group">
+                          <TextInput name="lastName"  placeholder="-JobTitle-" disabled value={props.application.secondJobTitle}  />
+                      </Col>
+                      <Col sm="12" md="6" lg="7" xl="7" className="form-group">
+                      <TextInput
+                         id="remarksChoice2"
+                  name="remarksChoice2" 
+                  value={props.application.remarksChoice2}
+                  onChange={props.handleInputField}
+                /> 
+                      </Col>
 
 
+                    </div>
+                  
+                    <div className="form-row">
+
+                    <Col sm="12" md="6" lg="1" xl="1" className="form-group">
+                      
+                      </Col>
+                             <Col sm="12" md="6" lg="2" xl="2" className="form-group">
+                          <TextInput name="lastName"  placeholder="-Destination-" disabled value={props.application.thirdDest}  />
+                      </Col>
+                      {/* <Col sm="12" md="2" lg="2" xl="2" className="form-group">
+                          <TextInput name="lastName"  placeholder="-Resort-" disabled value={props.application.firstDest}  />
+                      </Col> */}
+                      <Col sm="12" md="6" lg="2" xl="2" className="form-group">
+                          <TextInput name="lastName"  placeholder="-JobTitle-" disabled value={props.application.thirdJobTitle}  />
+                      </Col>
+                      <Col sm="12" md="6" lg="7" xl="7" className="form-group">
+                      <TextInput
+                         id="remarksChoice3"
+                  name="remarksChoice3" 
+                  value={props.application.remarksChoice3}
+                  onChange={props.handleInputField}
+                /> 
+                      </Col>
+
+
+                    </div>
+                  
+                    <div className="form-row">
+
+                    <Col sm="12" md="6" lg="1" xl="1" className="form-group">
+                      
+                      </Col>
+                             <Col sm="12" md="6" lg="2" xl="2" className="form-group">
+                          <TextInput name="lastName"  placeholder="-Destination-" disabled value={props.application.fourthDest}  />
+                      </Col>
+                      {/* <Col sm="12" md="2" lg="2" xl="2" className="form-group">
+                          <TextInput name="lastName"  placeholder="-Resort-" disabled value={props.application.firstDest}  />
+                      </Col> */}
+                      <Col sm="12" md="6" lg="2" xl="2" className="form-group">
+                          <TextInput name="lastName"  placeholder="-JobTitle-" disabled value={props.application.fourthJobTitle}  />
+                      </Col>
+                      <Col sm="12" md="6" lg="7" xl="7" className="form-group">
+                      <TextInput
+                         id="remarksChoice4"
+                  name="remarksChoice4" 
+                  value={props.application.remarksChoice4}
+                  onChange={props.handleInputField}
+                /> 
+                      </Col>
+
+
+                    </div>
 
 {/* 
                               <Col sm="12" md="6" lg="6" xl="4" className="form-group">
@@ -134,7 +225,7 @@ const OverviewInfo = (props) => {
                     <Col sm="12" md="6" lg="6" xl="4" className="form-group">
                         <TextInput name="dateModified" label="Position DateModified"  value={props.position.mplDateModified}/>
                     </Col>   */}
-                </div>
+              
             </CardBody>
         </Card> 
     );

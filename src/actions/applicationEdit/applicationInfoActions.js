@@ -36,7 +36,12 @@ debugger;
     cleanModel.SkiPlacement = model.skiPlacement,
     cleanModel.Fairs = model.fairs,
     cleanModel.Comments = model.comments,
-    cleanModel.Season =model.season
+    cleanModel.Season =model.season,
+
+    cleanModel.RemarksChoice1=model.remarksChoice1,
+    cleanModel.RemarksChoice2=model.remarksChoice2,
+    cleanModel.RemarksChoice3=model.remarksChoice3,
+    cleanModel.RemarksChoice4=model.remarksChoice4
 
  
     //  ProfilingSelect : model.

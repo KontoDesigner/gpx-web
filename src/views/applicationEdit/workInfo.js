@@ -39,6 +39,7 @@ const WorkInfo = (props) => {
                     <Col sm="12" md="6" lg="2" xl="2" className="form-group">
                         <TextInput name="jobtitle" label="Current JobTitle" disabled   value={props.application.jobTitle}  />
                     </Col>     
+ 
                     
                     <Col sm="12" md="6" lg="2" xl="2" className="form-group">
                     <label htmlFor="status">Status</label>
