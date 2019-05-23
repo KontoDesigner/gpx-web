@@ -244,7 +244,6 @@ class WorkEdit extends Component {
             //preferToWork: this.props.preferToWork,
             staffID: this.props.application.staffID,
             status: this.props.application.status,
-<<<<<<< HEAD
           firstDest : this.props.application.firstDest,
             secondDest :this.props.application.secondDest,
             thirdDest : this.props.application.thirdDest,
@@ -287,34 +286,6 @@ class WorkEdit extends Component {
            feedBackRequest: this.props.application.FeedBackRequest,
            placeDateMgr: this.props.application.PlaceDateMgr,
            signatureMgr: this.props.application.SignatureMgr,
-=======
-            firstDest: this.props.application.firstDest,
-            secondDest: this.props.application.secondDest,
-            thirdDest: this.props.application.thirdDest,
-            fourthDest: this.props.application.fourthDest,
-            firstJobTitle: this.props.application.firstJobTitle,
-            secondJobTitle: this.props.application.secondJobTitle,
-            thirdJobTitle: this.props.application.thirdJobTitle,
-            fourthJobTitle: this.props.application.fourthJobTitle,
-
-            couplePosition: this.props.application.couplePosition,
-            changePosition: this.props.application.changePosition,
-            coupleName: this.props.application.coupleName,
-            coupleSourceMarket: this.props.application.coupleSourceMarket,
-            signature: this.props.application.signature,
-            placeDate: this.props.application.placeDate,
-            mostImportant: this.props.application.mostImportant,
-            nonDestinationPosition: this.props.application.nonDestinationPosition,
-            coupleName: this.props.application.coupleName,
-            skiPlacement: this.props.application.skiPlacement,
-            fairs: this.props.application.fairs,
-            comments: this.props.application.comments,
-            season: this.props.application.season,
-            remarksChoice1: this.props.application.remarksChoice1,
-            remarksChoice2: this.props.application.remarksChoice2,
-            remarksChoice3: this.props.application.remarksChoice3,
-            remarksChoice4: this.props.application.remarksChoice4
->>>>>>> 3aca94fd6bd97460d1154a2b36bb091730a6f0d3
         }
 
         await this.props.applicationInfoActions.save(model)
