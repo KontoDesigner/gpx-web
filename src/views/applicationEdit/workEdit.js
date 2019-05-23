@@ -111,7 +111,7 @@ class WorkEdit extends Component {
     }
 
     getJobTitlesForDest = async (dest, field) => {
-        debugger;
+        debugger
         const jobtitles = await RestClient.Get(`application/jobtitles/${this.props.application.season}/${this.props.application.jobFamily}/${dest}`)
 
         this.setState({
@@ -120,7 +120,7 @@ class WorkEdit extends Component {
     }
 
     async componentDidMount() {
-        const _this = this 
+        const _this = this
         debugger
 
         // this.props.employeeInfoActions.getAvailablePositions(this.props.currentSeason.name, this.props.nextSeason.name, this.props.followingSeason.name)
@@ -132,8 +132,24 @@ class WorkEdit extends Component {
             if (_this.props.application != null) {
                 document.title = `${_this.props.application.firstName} - ${_this.props.application.lastName} `
 
+                if (_this.props.application.firstJobTitle && _this.props.application.firstJobTitle.length > 0) {
+                    _this.getJobTitlesForDest(_this.props.application.firstDest, 'firstJobTitles')
+                }
+
+                if (_this.props.application.secondJobTitle && _this.props.application.secondJobTitle.length > 0) {
+                    _this.getJobTitlesForDest(_this.props.application.secondDest, 'secondJobTitles')
+                }
+
+                if (_this.props.application.thirdJobTitle && _this.props.application.thirdJobTitle.length > 0) {
+                    _this.getJobTitlesForDest(_this.props.application.thirdDest, 'thirdJobTitles')
+                }
+
+                if (_this.props.application.fourthJobTitle && _this.props.application.fourthJobTitle.length > 0) {
+                    _this.getJobTitlesForDest(_this.props.application.fourthDest, 'fourthJobTitles')
+                }
+
                 _this.getDestinations(_this.props.application.season)
-               _this.getJobTitles(_this.props.application.season, _this.props.application.jobFamily)
+                _this.getJobTitles(_this.props.application.season, _this.props.application.jobFamily)
             } else {
                 document.title = 'Work Application not found - TTP'
             }
@@ -228,32 +244,32 @@ class WorkEdit extends Component {
             //preferToWork: this.props.preferToWork,
             staffID: this.props.application.staffID,
             status: this.props.application.status,
-          firstDest : this.props.application.firstDest,
-            secondDest :this.props.application.secondDest,
-            thirdDest : this.props.application.thirdDest,
-            fourthDest : this.props.application.fourthDest,
-            firstJobTitle : this.props.application.firstJobTitle,
-            secondJobTitle : this.props.application.secondJobTitle,
-            thirdJobTitle : this.props.application.thirdJobTitle,
-           fourthJobTitle : this.props.application.fourthJobTitle,
+            firstDest: this.props.application.firstDest,
+            secondDest: this.props.application.secondDest,
+            thirdDest: this.props.application.thirdDest,
+            fourthDest: this.props.application.fourthDest,
+            firstJobTitle: this.props.application.firstJobTitle,
+            secondJobTitle: this.props.application.secondJobTitle,
+            thirdJobTitle: this.props.application.thirdJobTitle,
+            fourthJobTitle: this.props.application.fourthJobTitle,
 
-           couplePosition : this.props.application.couplePosition,
-           changePosition : this.props.application.changePosition,
-           coupleName : this.props.application.coupleName,
-           coupleSourceMarket : this.props.application.coupleSourceMarket,
-           signature : this.props.application.signature,
-           placeDate : this.props.application.placeDate,
-           mostImportant : this.props.application.mostImportant,
-           nonDestinationPosition : this.props.application.nonDestinationPosition,
-           coupleName : this.props.application.coupleName,
-           skiPlacement : this.props.application.skiPlacement,
-           fairs : this.props.application.fairs,
-           comments : this.props.application.comments,
-           season : this.props.application.season,
-           remarksChoice1: this.props.application.remarksChoice1,
-           remarksChoice2: this.props.application.remarksChoice2,
-           remarksChoice3: this.props.application.remarksChoice3,
-           remarksChoice4: this.props.application.remarksChoice4
+            couplePosition: this.props.application.couplePosition,
+            changePosition: this.props.application.changePosition,
+            coupleName: this.props.application.coupleName,
+            coupleSourceMarket: this.props.application.coupleSourceMarket,
+            signature: this.props.application.signature,
+            placeDate: this.props.application.placeDate,
+            mostImportant: this.props.application.mostImportant,
+            nonDestinationPosition: this.props.application.nonDestinationPosition,
+            coupleName: this.props.application.coupleName,
+            skiPlacement: this.props.application.skiPlacement,
+            fairs: this.props.application.fairs,
+            comments: this.props.application.comments,
+            season: this.props.application.season,
+            remarksChoice1: this.props.application.remarksChoice1,
+            remarksChoice2: this.props.application.remarksChoice2,
+            remarksChoice3: this.props.application.remarksChoice3,
+            remarksChoice4: this.props.application.remarksChoice4
         }
 
         await this.props.applicationInfoActions.save(model)
@@ -261,8 +277,8 @@ class WorkEdit extends Component {
     }
 
     handleSelect = async (field, val) => {
-        if (val==null) {
-            val="";
+        if (val == null) {
+            val = ''
         }
         if (val) {
             await this.props.applicationInfoActions.handleApplicationField(field, val.id)
@@ -382,19 +398,14 @@ class WorkEdit extends Component {
                         <Col>
                             <TabContent activeTab={this.state.activeTab}>
                                 <TabPane tabId="overviewInfo">
-                                    <OverviewInfo 
-                                    application={this.props.application}
-                                      handleInputField={this.handleInputField}
-                                    
-                                    
-                                    />
+                                    <OverviewInfo application={this.props.application} handleInputField={this.handleInputField} />
                                 </TabPane>
 
                                 <TabPane tabId="applicationformInfo">
                                     <Season
                                         application={this.props.application}
                                         destinations={this.state.destinations}
-                                       // jobtitles={this.state.jobtitles}
+                                        // jobtitles={this.state.jobtitles}
                                         assignStartChange={this.assignStartChange}
                                         assignEndChange={this.assignEndChange}
                                         //handleChange={this.handleChange}
@@ -466,14 +477,13 @@ class WorkEdit extends Component {
                                 </TabPane>
 
                                 <TabPane tabId="managersectionInfo">
-                                    <ManagersectionInfo 
-                                    application={this.props.application} 
-                                    handleInputField={this.handleInputField}
-                                    handleMultiSelect={this.handleMultiSelect}
-                                    handleSelect={this.handleSelect}
-                                
-                                    valueSingle={this.state.valueSingle}
-                                    yesNoOption={this.state.yesNoOption}
+                                    <ManagersectionInfo
+                                        application={this.props.application}
+                                        handleInputField={this.handleInputField}
+                                        handleMultiSelect={this.handleMultiSelect}
+                                        handleSelect={this.handleSelect}
+                                        valueSingle={this.state.valueSingle}
+                                        yesNoOption={this.state.yesNoOption}
                                     />
                                 </TabPane>
                             </TabContent>
