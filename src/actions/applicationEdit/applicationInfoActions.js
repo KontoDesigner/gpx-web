@@ -24,24 +24,42 @@ debugger;
 
 debugger;
 
-    cleanModel.CouplePosition = model.couplePosition,
-    cleanModel.ChangePosition = model.changePosition,
-    cleanModel.CoupleName = model.coupleName,
-    cleanModel.CoupleSourceMarket = model.coupleSourceMarket,
-    cleanModel.Signature =model.signature,
-    cleanModel.PlaceDate = model.placeDate,
-    cleanModel.MostImportant = model.mostImportant,
-    cleanModel.NonDestinationPosition = model.nonDestinationPosition,
-    cleanModel.CoupleName = model.coupleName,
-    cleanModel.SkiPlacement = model.skiPlacement,
-    cleanModel.Fairs = model.fairs,
-    cleanModel.Comments = model.comments,
-    cleanModel.Season =model.season,
+    cleanModel.CouplePosition = model.couplePosition
+    cleanModel.ChangePosition = model.changePosition
+    cleanModel.CoupleName = model.coupleName
+    cleanModel.CoupleSourceMarket = model.coupleSourceMarket
+    cleanModel.Signature =model.signature
+    cleanModel.PlaceDate = model.placeDate
+    cleanModel.MostImportant = model.mostImportant
+    cleanModel.NonDestinationPosition = model.nonDestinationPosition
+    cleanModel.CoupleName = model.coupleName
+    cleanModel.SkiPlacement = model.skiPlacement
+    cleanModel.Fairs = model.fairs
+    cleanModel.Comments = model.comments
+    cleanModel.Season =model.season
 
-    cleanModel.RemarksChoice1=model.remarksChoice1,
-    cleanModel.RemarksChoice2=model.remarksChoice2,
-    cleanModel.RemarksChoice3=model.remarksChoice3,
+    cleanModel.RemarksChoice1=model.remarksChoice1
+    cleanModel.RemarksChoice2=model.remarksChoice2
+    cleanModel.RemarksChoice3=model.remarksChoice3
     cleanModel.RemarksChoice4=model.remarksChoice4
+
+
+    cleanModel.PlanToResign=model.planToResign
+    cleanModel.Jump=model.jump
+    cleanModel.ChangeJobFamily= model.changeJobFamily
+    cleanModel.SupportChange= model.supportChange
+    cleanModel.TopStrenghts= model.topStrenghts
+    cleanModel.MidYearReview= model.midYearReview
+    cleanModel.MidYearRating= model.midYearRating
+    cleanModel.OverallRating= model.overallRating
+    cleanModel.LongService= model.longService
+   cleanModel.Disciplinary=model.disciplinary
+   cleanModel.SupportRequest= model.supportRequest
+   cleanModel.SupportRequestComment= model.supportRequestComment
+   cleanModel.ChangesRequest=model.changesRequest
+   cleanModel.FeedBackRequest=model.feedBackRequest
+   cleanModel.PlaceDateMgr= model.placeDateMgr
+   cleanModel.SignatureMgr= model.signatureMgr
 
  
     //  ProfilingSelect : model.

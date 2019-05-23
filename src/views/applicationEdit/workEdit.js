@@ -253,7 +253,23 @@ class WorkEdit extends Component {
            remarksChoice1: this.props.application.remarksChoice1,
            remarksChoice2: this.props.application.remarksChoice2,
            remarksChoice3: this.props.application.remarksChoice3,
-           remarksChoice4: this.props.application.remarksChoice4
+           remarksChoice4: this.props.application.remarksChoice4,
+           planToResign: this.props.application.planToResign,
+           jump: this.props.application.jump,
+           changeJobFamily: this.props.application.changeJobFamily,
+           supportChange: this.props.application.supportChange,
+           topStrenghts: this.props.application.topStrenghts,
+           midYearReview: this.props.application.MidYearReview,
+           midYearRating: this.props.application.MidYearRating,
+           overallRatng: this.props.application.OverallRating,
+           longService: this.props.application.LongService,
+           disciplinary: this.props.application.Disciplinary,
+           supportRequest: this.props.application.SupportRequest,
+           supportRequestComment: this.props.application.SupportRequestComment,
+           changesRequest: this.props.application.ChangesRequest,
+           feedBackRequest: this.props.application.FeedBackRequest,
+           placeDateMgr: this.props.application.PlaceDateMgr,
+           signatureMgr: this.props.application.SignatureMgr,
         }
 
         await this.props.applicationInfoActions.save(model)

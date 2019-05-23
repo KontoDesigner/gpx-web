@@ -16,22 +16,22 @@ const OverviewInfo = (props) => {
  
                           <Col sm="12" md="6" lg="3" xl="3" className="form-group">
                         
-                          <label htmlFor="skiPlacement">This employee is planning to resign at the end of season?</label>
+                          <label htmlFor="planToResign">This employee is planning to resign at the end of season?</label>
             
             <Select
              //  multi={true}
-             id="skiPlacement"
+             id="planToResign"
              valueKey="id"
              labelKey="name"
              className="form-control"
               options={props.yesNoOption}
          
              onChange={v => {
-                 props.handleSelect('skiPlacement', v)
+                 props.handleSelect('planToResign', v)
               }}
         
 
-             value={props.application.skiPlacement}
+             value={props.application.planToResign}
              placeholder="Select"
              className="form-group form-group-select"
          />
@@ -40,22 +40,22 @@ const OverviewInfo = (props) => {
                            <Col sm="12" md="6" lg="3" xl="3" className="form-group">
                         
                                  
-                           <label htmlFor="skiPlacement">Employee is a member of the JUMP program or soon start </label>
+                           <label htmlFor="jump">Employee is a member of the JUMP program or soon start </label>
             
             <Select
              //  multi={true}
-             id="skiPlacement"
+             id="jump"
              valueKey="id"
              labelKey="name"
              className="form-control"
               options={props.yesNoOption}
          
              onChange={v => {
-                 props.handleSelect('skiPlacement', v)
+                 props.handleSelect('jump', v)
               }}
         
 
-             value={props.application.skiPlacement}
+             value={props.application.jump}
              placeholder="Select"
              className="form-group form-group-select"
          />
@@ -65,22 +65,22 @@ const OverviewInfo = (props) => {
                     <Col sm="12" md="6" lg="3" xl="3" className="form-group">
                       
                              
-                    <label htmlFor="skiPlacement">Employee requested a change to their jobfamily? </label>
+                    <label htmlFor="changeJobFamily">Employee requested a change to their jobfamily? </label>
             
             <Select
              //  multi={true}
-             id="skiPlacement"
+             id="changeJobFamily"
              valueKey="id"
              labelKey="name"
              className="form-control"
               options={props.yesNoOption}
          
              onChange={v => {
-                 props.handleSelect('skiPlacement', v)
+                 props.handleSelect('changeJobFamily', v)
               }}
         
 
-             value={props.application.skiPlacement}
+             value={props.application.changeJobFamily}
              placeholder="Select"
              className="form-group form-group-select"
          />
@@ -89,45 +89,45 @@ const OverviewInfo = (props) => {
                     </div>
                     <div className="form-row">
                     <Col sm="12" md="6" lg="3" xl="3" className="form-group">
-                    <Label for="comments">If yes, why do you support the request to change?</Label>
+                    <Label for="supportChange">If yes, why do you support the request to change?</Label>
             <Input
               required
               type="textarea"
               //maxLength="1000"
-              name="comments"
-              id="comments"
+              name="supportChange"
+              id="supportChange"
               rows={10}
-              value={props.application.comments}
+              value={props.application.supportChange}
             
               onChange={props.handleInputField}
               aria-multiline="true"
             />
                     </Col>
                     <Col sm="12" md="6" lg="3" xl="3" className="form-group">
-                    <Label for="comments">The employee's top 3 strengths:</Label>
+                    <Label for="topStrenghts">The employee's top 3 strengths:</Label>
             <Input
               required
               type="textarea"
               //maxLength="1000"
-              name="comments"
-              id="comments"
+              name="topStrenghts"
+              id="topStrenghts"
               rows={10}
-              value={props.application.comments}
+              value={props.application.topStrenghts}
             
               onChange={props.handleInputField}
               aria-multiline="true"
             />
                     </Col>
                     <Col sm="12" md="6" lg="3" xl="3" className="form-group">
-                    <Label for="comments">Any areas of development?</Label>
+                    <Label for="developmentAreas">Any areas of development?</Label>
             <Input
               required
               type="textarea"
               //maxLength="1000"
-              name="comments"
-              id="comments"
+              name="developmentAreas"
+              id="developmentAreas"
               rows={10}
-              value={props.application.comments}
+              value={props.application.developmentAreas}
             
               onChange={props.handleInputField}
               aria-multiline="true"
@@ -138,22 +138,22 @@ const OverviewInfo = (props) => {
                     <Col sm="12" md="6" lg="3" xl="3" className="form-group">
                       
                              
-                      <label htmlFor="skiPlacement">Mid-Year review objective rating: </label>
+                      <label htmlFor="midYearReview">Mid-Year review objective rating: </label>
               
               <Select
                //  multi={true}
-               id="skiPlacement"
+               id="midYearReview"
                valueKey="id"
                labelKey="name"
                className="form-control"
                 options={props.yesNoOption}
            
                onChange={v => {
-                   props.handleSelect('skiPlacement', v)
+                   props.handleSelect('midYearReview', v)
                 }}
           
   
-               value={props.application.skiPlacement}
+               value={props.application.midYearReview}
                placeholder="Select"
                className="form-group form-group-select"
            />
@@ -162,50 +162,50 @@ const OverviewInfo = (props) => {
                       <Col sm="12" md="6" lg="3" xl="3" className="form-group">
                       
                              
-                      <label htmlFor="skiPlacement">Mid-Year TUI values rating </label>
+                      <label htmlFor="midYearRating">Mid-Year TUI values rating </label>
               
               <Select
                //  multi={true}
-               id="skiPlacement"
+               id="midYearRating"
                valueKey="id"
                labelKey="name"
                className="form-control"
                 options={props.yesNoOption}
            
                onChange={v => {
-                   props.handleSelect('skiPlacement', v)
+                   props.handleSelect('midYearRating', v)
                 }}
           
   
-               value={props.application.skiPlacement}
+               value={props.application.midYearRating}
                placeholder="Select"
                className="form-group form-group-select"
            />
              </Col>
                       <Col sm="12" md="6" lg="3" xl="3" className="form-group">
-                             <TextInput name="lastName" label="Overall Placements Rating"  placeholder="-Destination-" disabled value={props.application.thirdDest}  />
+                             <TextInput name="overallRating" label="Overall Placements Rating"  placeholder="-Destination-" disabled value={props.application.overallRating}  />
                       </Col>
                       </div>
                       <div className="form-row">
  
                           <Col sm="12" md="6" lg="3" xl="3" className="form-group">
                         
-                          <label htmlFor="skiPlacement">Long Service, 3rd calendar year or longer in the current job family</label>
+                          <label htmlFor="longService">Long Service, 3rd calendar year or longer in the current job family</label>
             
             <Select
              //  multi={true}
-             id="skiPlacement"
+             id="longService"
              valueKey="id"
              labelKey="name"
              className="form-control"
               options={props.yesNoOption}
          
              onChange={v => {
-                 props.handleSelect('skiPlacement', v)
+                 props.handleSelect('longService', v)
               }}
         
 
-             value={props.application.skiPlacement}
+             value={props.application.longService}
              placeholder="Select"
              className="form-group form-group-select"
          />
@@ -214,22 +214,22 @@ const OverviewInfo = (props) => {
                            <Col sm="12" md="6" lg="3" xl="3" className="form-group">
                         
                                  
-                           <label htmlFor="skiPlacement">Does the employee have a current/valid Disciplinary or Warning? </label>
+                           <label htmlFor="disciplinary">Does the employee have a current/valid Disciplinary or Warning? </label>
             
             <Select
              //  multi={true}
-             id="skiPlacement"
+             id="disciplinary"
              valueKey="id"
              labelKey="name"
              className="form-control"
               options={props.yesNoOption}
          
              onChange={v => {
-                 props.handleSelect('skiPlacement', v)
+                 props.handleSelect('disciplinary', v)
               }}
         
 
-             value={props.application.skiPlacement}
+             value={props.application.disciplinary}
              placeholder="Select"
              className="form-group form-group-select"
          />
@@ -239,22 +239,22 @@ const OverviewInfo = (props) => {
                     <Col sm="12" md="6" lg="3" xl="3" className="form-group">
                       
                              
-                    <label htmlFor="skiPlacement">Do you support the placements request? (if no please specify)</label>
+                    <label htmlFor="supportRequest">Do you support the placements request? (if no please specify)</label>
             
             <Select
              //  multi={true}
-             id="skiPlacement"
+             id="supportRequest"
              valueKey="id"
              labelKey="name"
              className="form-control"
               options={props.yesNoOption}
          
              onChange={v => {
-                 props.handleSelect('skiPlacement', v)
+                 props.handleSelect('supportRequest', v)
               }}
         
 
-             value={props.application.skiPlacement}
+             value={props.application.supportRequest}
              placeholder="Select"
              className="form-group form-group-select"
          />
@@ -263,15 +263,15 @@ const OverviewInfo = (props) => {
                     </div>
                       <div className="form-row">
                     <Col sm="12" md="6" lg="3" xl="3" className="form-group">
-                    <Label for="comments">If you answered no to the above question please provide details</Label>
+                    <Label for="supportRequestComment">If you answered no to the above question please provide details</Label>
             <Input
               required
               type="textarea"
               //maxLength="1000"
-              name="comments"
-              id="comments"
+              name="supportRequestComment"
+              id="supportRequestComment"
               rows={4}
-              value={props.application.comments}
+              value={props.application.supportRequestComment}
             
               onChange={props.handleInputField}
               aria-multiline="true"
@@ -280,22 +280,22 @@ const OverviewInfo = (props) => {
                     <Col sm="12" md="6" lg="3" xl="3" className="form-group">
                         
                                  
-                        <label htmlFor="skiPlacement">In agreement with the employee have you made any changes to their application form? </label>
+                        <label htmlFor="changesRequest">In agreement with the employee have you made any changes to their application form? </label>
          
          <Select
           //  multi={true}
-          id="skiPlacement"
+          id="changesRequest"
           valueKey="id"
           labelKey="name"
           className="form-control"
            options={props.yesNoOption}
       
           onChange={v => {
-              props.handleSelect('skiPlacement', v)
+              props.handleSelect('changesRequest', v)
            }}
      
 
-          value={props.application.skiPlacement}
+          value={props.application.changesRequest}
           placeholder="Select"
           className="form-group form-group-select"
       />
@@ -309,28 +309,29 @@ const OverviewInfo = (props) => {
               
 
               </CardBody>
-              <CardHeader className="card-header-work"> Confirm</CardHeader>
+              <CardHeader className="card-header-work"> Confirm - Please Note!
+Make sure that you print these comments. Once you have informed the employee and pressed the 'Save & Close' button, you cannot go back and modify or read these comments again.</CardHeader>
             <CardBody className="no-padding-bottom">
             <div className="form-row">
             <Col sm="12" md="6" lg="3" xl="3" className="form-group">
                    
                           
-                   <label htmlFor="skiPlacement">I have informed or will inform the employee of my feedback</label>
+                   <label htmlFor="feedBackRequest">I have informed or will inform the employee of my feedback</label>
            
            <Select
             //  multi={true}
-            id="skiPlacement"
+            id="feedBackRequest"
             valueKey="id"
             labelKey="name"
             className="form-control"
              options={props.yesNoOption}
         
             onChange={v => {
-                props.handleSelect('skiPlacement', v)
+                props.handleSelect('feedBackRequest', v)
              }}
        
   
-            value={props.application.skiPlacement}
+            value={props.application.feedBackRequest}
             placeholder="Select"
             className="form-group form-group-select"
         />
@@ -339,10 +340,10 @@ const OverviewInfo = (props) => {
             <Col sm="12" md="6" lg="3" xl="3" className="form-group">
                       
                       <TextInput
-                       id="signature"
-                name="signature" 
-                label="Signature"
-                value={props.application.signature}
+                       id="signatureMgr"
+                name="signatureMgr" 
+                label="signatureMgr"
+                value={props.application.signatureMgr}
                 onChange={props.handleInputField}
                
               />
@@ -351,25 +352,16 @@ const OverviewInfo = (props) => {
                       <Col sm="12" md="6" lg="3" xl="3" className="form-group">
                       
                       <TextInput
-                       id="placeDate"
-                name="placeDate" 
+                       id="placeDateMgr"
+                name="placeDateMgr"  
                 label="Place & Date"
-                value={props.application.placeDate}
+                value={props.application.placeDateMgr}
                 onChange={props.handleInputField}
                
               />
                  
                       </Col>
             </div>
-
-
-
-
-
-
-
-
-
 
 
             </CardBody>
