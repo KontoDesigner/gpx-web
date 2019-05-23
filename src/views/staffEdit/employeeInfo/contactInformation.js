@@ -33,7 +33,7 @@ const ContactInformation = props => {
                     </Col>
 
                     <Col sm="12" md="6" lg="6" xl="4" className="form-group">
-                        <TextInput name="emailWork" label="E-Mail (Work)" value={props.staff.emailWork} onChange={props.handleStaffField} />
+                        <TextInput name="emailWork" label="E-Mail (Private)" value={props.staff.emailWork} onChange={props.handleStaffField} />
                     </Col>
 
                     <Col sm="12" md="6" lg="6" xl="4" className="form-group">
