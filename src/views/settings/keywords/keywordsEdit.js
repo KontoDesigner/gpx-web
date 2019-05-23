@@ -119,6 +119,16 @@ class KeywordsEdit extends Component {   //Notification smart component
                     id: 'WorkStatus',
                     name: 'WorkStatus'
                 },
+                
+                {
+                    id: 'MidYearReview',
+                    name: 'MidYearReview'
+                },
+                
+                {
+                    id: 'MidYearTuiValuesRating',
+                    name: 'MidYearTuiValuesRating'
+                },
          
             ]
 

@@ -43,6 +43,8 @@ class WorkEdit extends Component {
             preferWorkSummerArr: [],
             changePositionArr: [],
             mostImportantArr: [],
+            midYearReviewArr:[],
+            midYearTuiValueArr:[],
             yesNoOption: [
                 {
                     id: 'Yes',
@@ -169,6 +171,12 @@ class WorkEdit extends Component {
         const workStatus = this.props.keywordslookup.filter(ap => ap.ids === 'WorkStatus')[0]
         const workStatusArr = workStatus.keywordValues.split(',')
 
+        const midYearReview = this.props.keywordslookup.filter(ap => ap.ids === 'MidYearReview')[0]
+        const midYearReviewArr = midYearReview.keywordValues.split(',')
+
+        const midYearTuiValue = this.props.keywordslookup.filter(ap => ap.ids === 'MidYearTuiValuesRating')[0]
+        const midYearTuiValueArr = midYearTuiValue.keywordValues.split(',')
+
         //  this.setState({
         //     value: keywords.keywordValues ? keywords.keywordValues.map(k => ({
         //      id: k,
@@ -202,6 +210,15 @@ class WorkEdit extends Component {
             name: s
         }))
 
+        const midYearReviewObjArr = midYearReviewArr.map(s => ({
+            id: s,
+            name: s
+        }))
+
+        const midYearTuiValueObjArr = midYearTuiValueArr.map(s => ({
+            id: s,
+            name: s
+        }))
         if (workStatus !== undefined) {
             this.setState({ workStatusArr: workStatusObjArr })
         }
@@ -220,6 +237,14 @@ class WorkEdit extends Component {
 
         if (mostImportant !== undefined) {
             this.setState({ mostImportantArr: mostImportantObjArr })
+        }
+
+
+        if (midYearReview !== undefined) {
+            this.setState({ midYearReviewArr: midYearReviewObjArr })
+        }
+        if (midYearTuiValue !== undefined) {
+            this.setState({ midYearTuiValueArr: midYearTuiValueObjArr })
         }
     }
 
@@ -487,6 +512,7 @@ class WorkEdit extends Component {
                                         changePositionArr={this.state.changePositionArr}
                                         sourceMarkets={this.props.sourceMarkets}
                                         mostImportantArr={this.state.mostImportantArr}
+                                        midYearReviewArr={this.state.midYearReviewArr}
                                         yesNoOption={this.state.yesNoOption}
                                         // preferToWork={this.props.preferToWork}
                                     />
@@ -500,6 +526,9 @@ class WorkEdit extends Component {
                                         handleSelect={this.handleSelect}
                                         valueSingle={this.state.valueSingle}
                                         yesNoOption={this.state.yesNoOption}
+                                        midYearReviewArr={this.state.midYearReviewArr}
+                                        midYearTuiValueArr={this.state.midYearTuiValueArr}
+                                       
                                     />
                                 </TabPane>
                             </TabContent>

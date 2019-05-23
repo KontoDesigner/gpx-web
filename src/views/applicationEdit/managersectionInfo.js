@@ -146,7 +146,7 @@ const OverviewInfo = (props) => {
                valueKey="id"
                labelKey="name"
                className="form-control"
-                options={props.yesNoOption}
+                options={props.midYearReviewArr}
            
                onChange={v => {
                    props.handleSelect('midYearReview', v)
@@ -170,7 +170,7 @@ const OverviewInfo = (props) => {
                valueKey="id"
                labelKey="name"
                className="form-control"
-                options={props.yesNoOption}
+                options={props.midYearTuiValueArr}
            
                onChange={v => {
                    props.handleSelect('midYearRating', v)
@@ -180,7 +180,7 @@ const OverviewInfo = (props) => {
                value={props.application.midYearRating}
                placeholder="Select"
                className="form-group form-group-select"
-           />
+           />y
              </Col>
                       <Col sm="12" md="6" lg="3" xl="3" className="form-group">
                              <TextInput name="overallRating" label="Overall Placements Rating"  placeholder="-Destination-" disabled value={props.application.overallRating}  />
