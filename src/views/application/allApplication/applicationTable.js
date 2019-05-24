@@ -8,7 +8,7 @@ const columns = [
      { label: 'Season', dataKey: 'season' },
      { label: 'SourceMarket', dataKey: 'sourceMarket' },
      { label: 'Current Destination', dataKey: 'destination' },
-     { label: 'Rating', dataKey: 'rating' },
+     { label: 'Overall Rating', dataKey: 'overallRating' },
      { label: 'Driving License', dataKey: 'drivingLicense' },
      { label: 'Education', dataKey: 'education' },
 

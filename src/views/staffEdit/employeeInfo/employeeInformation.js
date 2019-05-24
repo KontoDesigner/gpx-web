@@ -79,7 +79,7 @@ const EmployeeInformation = (props) => {
                         */}
                         {<Datetime
                     
-                            value={props.staff.dateJoined?moment(props.staff.dateOfBirth).format("YYYY-MM-DD"):null}
+                            value={props.staff.dateOfBirth?moment(props.staff.dateOfBirth).format("YYYY-MM-DD"):null}
                             onChange={(v) => { props.handleStaffDatePicker('dateOfBirth', v) }}
                             timeFormat={false}
                             dateFormat="YYYY-MM-DD"

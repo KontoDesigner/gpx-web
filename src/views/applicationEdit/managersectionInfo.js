@@ -176,11 +176,10 @@ const OverviewInfo = (props) => {
                    props.handleSelect('midYearRating', v)
                 }}
           
-  
                value={props.application.midYearRating}
                placeholder="Select"
                className="form-group form-group-select"
-           />y
+           />
              </Col>
                       <Col sm="12" md="6" lg="3" xl="3" className="form-group">
                              <TextInput name="overallRating" label="Overall Placements Rating"  placeholder="-Destination-" disabled value={props.application.overallRating}  />
