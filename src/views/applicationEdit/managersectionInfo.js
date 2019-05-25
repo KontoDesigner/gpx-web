@@ -104,15 +104,15 @@ const OverviewInfo = (props) => {
             />
                     </Col>
                     <Col sm="12" md="6" lg="3" xl="3" className="form-group">
-                    <Label for="topStrenghts">The employee's top 3 strengths:</Label>
+                    <Label for="topStrengths">The employee's top 3 strengths:</Label>
             <Input
               required
               type="textarea"
               //maxLength="1000"
-              name="topStrenghts"
-              id="topStrenghts"
+              name="topStrengths"
+              id="topStrengths"
               rows={10}
-              value={props.application.topStrenghts}
+              value={props.application.topStrengths}
             
               onChange={props.handleInputField}
               aria-multiline="true"
@@ -182,7 +182,7 @@ const OverviewInfo = (props) => {
            />
              </Col>
                       <Col sm="12" md="6" lg="3" xl="3" className="form-group">
-                             <TextInput name="overallRating" label="Overall Placements Rating"  placeholder="-Destination-" disabled value={props.application.overallRating}  />
+                             <TextInput name="overallRating" label="Overall Placements Rating"  placeholder="-Rating-" disabled value={props.application.overallRating}  />
                       </Col>
                       </div>
                       <div className="form-row">

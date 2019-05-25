@@ -282,6 +282,7 @@ class WorkEdit extends Component {
            changePosition : this.props.application.changePosition,
            coupleName : this.props.application.coupleName,
            coupleSourceMarket : this.props.application.coupleSourceMarket,
+           developmentAreas : this.props.application.developmentAreas,
            signature : this.props.application.signature,
            placeDate : this.props.application.placeDate,
            mostImportant : this.props.application.mostImportant,
@@ -299,20 +300,20 @@ class WorkEdit extends Component {
            jump: this.props.application.jump,
            changeJobFamily: this.props.application.changeJobFamily,
            supportChange: this.props.application.supportChange,
-           topStrenghts: this.props.application.topStrenghts,
-           midYearReview: this.props.application.MidYearReview,
-           midYearRating: this.props.application.MidYearRating,
-           overallRatng: this.props.application.OverallRating,
-           longService: this.props.application.LongService,
-           disciplinary: this.props.application.Disciplinary,
-           supportRequest: this.props.application.SupportRequest,
-           supportRequestComment: this.props.application.SupportRequestComment,
-           changesRequest: this.props.application.ChangesRequest,
-           feedBackRequest: this.props.application.FeedBackRequest,
-           placeDateMgr: this.props.application.PlaceDateMgr,
-           signatureMgr: this.props.application.SignatureMgr,
+           topStrengths: this.props.application.topStrengths,
+           midYearReview: this.props.application.midYearReview,
+           midYearRating: this.props.application.midYearRating,
+           overallRating: this.props.application.overallRating,
+           longService: this.props.application.longService,
+           disciplinary: this.props.application.disciplinary,
+           supportRequest: this.props.application.supportRequest,
+           supportRequestComment: this.props.application.supportRequestComment,
+           changesRequest: this.props.application.changesRequest,
+           feedBackRequest: this.props.application.feedBackRequest,
+           placeDateMgr: this.props.application.placeDateMgr,
+           signatureMgr: this.props.application.signatureMgr,
         }
-
+debugger;
         await this.props.applicationInfoActions.save(model)
         window.close()
     }

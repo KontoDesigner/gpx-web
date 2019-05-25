@@ -48,7 +48,8 @@ debugger;
     cleanModel.Jump=model.jump
     cleanModel.ChangeJobFamily= model.changeJobFamily
     cleanModel.SupportChange= model.supportChange
-    cleanModel.TopStrenghts= model.topStrenghts
+    cleanModel.TopStrengths= model.topStrengths
+    cleanModel.DevelopmentAreas= model.developmentAreas
     cleanModel.MidYearReview= model.midYearReview
     cleanModel.MidYearRating= model.midYearRating
     cleanModel.OverallRating= model.overallRating
