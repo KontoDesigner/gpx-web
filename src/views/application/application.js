@@ -12,6 +12,9 @@ import MissingManagerComment from './missingManagerComment/missingManagerComment
 import PlanToResign from './planToResign/planToResign'
 import * as filterActions from '../../actions/application/filterActions'
 import * as allApplicationActions from '../../actions/application/allApplication/allApplicationActions'
+import * as planToResignApplicationActions from '../../actions/application/planToResignApplication/planToResignApplicationActions'
+import * as missingManagerCommentsApplicationActions from '../../actions/application/missingManagerComments/missingManagerCommentsApplicationActions'
+import * as missingApplicationActions from '../../actions/application/missingApplication/missingApplicationActions'
 
 class Application extends Component {
     constructor(props) {
@@ -75,6 +78,14 @@ debugger;
                     activeTab={this.state.activeTab}
                     getAllApplication={this.props.allApplicationActions.getAllApplication}
                     handleAllApplication={this.props.allApplicationActions.handleAllApplication}
+                    getPlanToResignApplication={this.props.planToResignApplicationActions.getPlanToResignApplication}
+                    handlePlanToResignApplication={this.props.planToResignApplicationActions.handlePlanToResignApplication}
+                    getMissingManagerCommentsApplication={this.props.missingManagerCommentsApplicationActions.getMissingManagerCommentsApplication}
+                    handleMissingManagerCommentsApplication={this.props.missingManagerCommentsApplication.handleMissingManagerCommentsApplication}
+                    getMissingApplication={this.props.missingApplicationActions.getMissingApplication}
+                    handleMissingApplication={this.props.missingApplication.handleMissingApplication} 
+                    
+                    
                     // getAllRoles={this.props.allRolesActions.getAllRoles}
                     // handleAllRoles={this.props.allRolesActions.handleAllRoles}
                     // getPlacedRoles={this.props.placedRolesActions.getPlacedRoles}
@@ -99,29 +110,31 @@ debugger;
 </TabPane>
 <TabPane tabId="missingApplication">
                             <MissingApplication
-                           getAllApplication={this.props.allApplicationActions.getAllApplication}
-                           allApplication={this.props.allApplication}
+                           getMissingApplication={this.props.missingApplicationActions.getMissingApplication}
+                           missingApplication={this.props.missingApplication}
+                           edit={this.edit}  
 
                                                            
                                                            
                             />
 </TabPane>
-<TabPane tabId="missingManagerComment">
+<TabPane tabId="missingManagerComments">
                             <MissingManagerComment
-                         getAllApplication={this.props.allApplicationActions.getAllApplication}
-                         allApplication={this.props.allApplication}
+                                    getMissingManagerCommentsApplication={this.props.missingManagerCommentsApplicationActions.getMissingManagerCommentsApplication}
+                                    missingManagerCommentsApplication={this.props.missingManagerCommentsApplication}
 
-                                                           
+                                    edit={this.edit}  
                                                            
                             />
 </TabPane>
 <TabPane tabId="planToResign">
-                            <PlanToResign
-            getAllApplication={this.props.allApplicationActions.getAllApplication}
-            allApplication={this.props.allApplication}
+                              <PlanToResign
+             getPlanToResignApplication={this.props.planToResignApplicationActions.getPlanToResignApplication}
+            planToResignApplication={this.props.planToResignApplication}
+            edit={this.edit}  
 
           
-                            />
+                            />    
 </TabPane>
 </TabContent>
 </Col>
@@ -136,6 +149,9 @@ function mapStateToProps(state) {
     return {
         // newPosition: state.planning.planning.newPosition,
         allApplication: state.application.application.allApplication,
+        planToResignApplication: state.application.application.planToResignApplication,
+        missingManagerCommentsApplication: state.application.application.missingManagerCommentsApplication,
+        missingApplication: state.application.application.missingApplication,
         // placedRoles: state.planning.planning.placedRoles,
         // vacantRoles: state.planning.planning.vacantRoles,
         // replyYesNoRoles: state.planning.planning.replyYesNoRoles,
@@ -149,7 +165,10 @@ function mapDispatchToProps(dispatch) {
     return {
         // planningActions: bindActionCreators(planningActions, dispatch),
         allApplicationActions: bindActionCreators(allApplicationActions, dispatch),
-        // placedRolesActions: bindActionCreators(placedRolesActions, dispatch),
+        planToResignApplicationActions: bindActionCreators(planToResignApplicationActions, dispatch),
+        missingManagerCommentsApplicationActions: bindActionCreators(missingManagerCommentsApplicationActions, dispatch),
+        missingApplicationActions: bindActionCreators(missingApplicationActions, dispatch),
+        
         // vacantRolesActions: bindActionCreators(vacantRolesActions, dispatch),
         // newPositionActions: bindActionCreators(newPositionActions, dispatch),
         // replyYesNoRolesActions: bindActionCreators(replyYesNoRolesActions, dispatch)

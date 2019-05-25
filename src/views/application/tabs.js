@@ -19,7 +19,7 @@ const Tabs = props => {
                                 //props.toggle('settings', props.getSetting, props.handleSetting)
                                 
                             }}>
-                           Applications
+                           All Applications
                          
 
                         </ListGroupItem> 
@@ -29,7 +29,7 @@ const Tabs = props => {
                             onClick={() => {
                                //alert('Yet to be announced');
                                 //return false;
-                                props.toggle('planToResign', props.getAllApplication, props.handleAllApplication)
+                                props.toggle('planToResign', props.getPlanToResignApplication, props.handlePlanToResignApplication)
                              
                             }}>
                           Plan To Resign
@@ -39,19 +39,18 @@ const Tabs = props => {
                             onClick={() => {
                               //alert('Yet to be announced');
                                 //return false;
-                                props.toggle('missingApplication', props.getAllApplication, props.handleAllApplication)
-                                
+                                props.toggle('missingApplication', props.getMissingApplication, props.handleMissingApplication)
                             }}>
                             Missing Applications
                          
 
                         </ListGroupItem>
                         <ListGroupItem
-                            className={classnames({ active: props.activeTab === 'missingManagerComment' })}
+                            className={classnames({ active: props.activeTab === 'missingManagerComments' })}
                             onClick={() => {
                              //alert('Yet to be announced');
                                 //return false;
-                                props.toggle('missingManagerComment', props.getAllApplication, props.handleAllApplication)
+                                props.toggle('missingManagerComments', props.getMissingManagerCommentsApplication, props.handleMissingManagerCommentsApplication)
                                 
                             }}>
                             Missing Manager Comments
