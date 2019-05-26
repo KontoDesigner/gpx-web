@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card, CardBody, CardHeader, Col } from 'reactstrap'
+import { Card, CardBody, CardHeader, Col,Button } from 'reactstrap'
 import TextInput from '../../components/textInput'
 import moment from "moment";
 import Select from 'react-select'
@@ -8,7 +8,9 @@ const WorkInfo = (props) => {
     return (
      
         <Card>
-               <CardHeader className="card-header-work"> {props.application.firstName} {props.application.lastName}</CardHeader>
+               <CardHeader className="card-header-work"> {props.application.firstName} {props.application.lastName}
+          
+               </CardHeader>
 
             <CardBody className="no-padding-bottom">
                 <div className="form-row" >

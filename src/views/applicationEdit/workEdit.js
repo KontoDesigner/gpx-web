@@ -14,6 +14,8 @@ import Buttons from './buttons'
 import Tabs from './tabs'
 import RestClient from '../../infrastructure/restClient'
 import { beginAjaxCall, ajaxCallError, endAjaxCall } from '../../actions/ajaxStatusActions'
+import AssignRole from './assignRole'
+import * as employeeInfoActions from '../../actions/staffEdit/employeeInfoActions'
 class WorkEdit extends Component {
     constructor(props) {
         super()
@@ -27,7 +29,8 @@ class WorkEdit extends Component {
         this.state = {
             staffid: id,
             season: season,
-
+            assignRoleModal: false,
+            nowAvailablePositions: [],
             // mplID: mplID,
             application: null,
             destinations: [],
@@ -83,6 +86,45 @@ class WorkEdit extends Component {
     //            }
     //          })
     //     }
+    
+    toggleAssignRoleModal = () => {
+        debugger;
+        this.setState({
+            assignRoleModal: !this.state.assignRoleModal
+        })
+    }
+
+
+    assignRole = role => {
+     debugger;
+        const positionAssign = {
+            MPLID: role.mplid,
+            StaffID: this.props.application.staffID,
+            FirstName: this.props.application.firstName,
+            LastName: this.props.application.lastName,
+            Season: role.season,
+          
+            FullName: this.props.application.lastName,
+            StartDate: role.startDate,
+            EndDate: role.endDate,
+            DateModified:role.dateModified
+        }
+ debugger;
+        const _this = this
+
+        _this.props.employeeInfoActions.insertPositionAssign(positionAssign).then(function() 
+        {
+            _this.props.getAvailablePositionNew
+            // _this.props.employeeInfoActions.getAvailablePositions(
+            //     _this.props.currentSeason.name,
+            //     _this.props.nextSeason.name,
+            //     _this.props.followingSeason.name
+            // )
+             _this.props.employeeInfoActions.getPositionAssigns(_this.props.application.staffID)
+        })
+    }
+
+
 
     getDestinations = async season => {
         try {
@@ -121,6 +163,17 @@ class WorkEdit extends Component {
         })
     }
 
+    getAvailablePositionNew = async () => {
+ 
+        const nowAvailablePositions = await RestClient.Get('positionassign/getallcand')
+   
+        this.setState({
+            nowAvailablePositions
+        })
+
+      
+    }
+
     async componentDidMount() {
         const _this = this
         debugger
@@ -132,7 +185,13 @@ class WorkEdit extends Component {
             debugger
 
             if (_this.props.application != null) {
+
+
+
+
                 document.title = `${_this.props.application.firstName} - ${_this.props.application.lastName} `
+
+               
 
                 if (_this.props.application.firstJobTitle && _this.props.application.firstJobTitle.length > 0) {
                     _this.getJobTitlesForDest(_this.props.application.firstDest, 'firstJobTitles')
@@ -149,13 +208,16 @@ class WorkEdit extends Component {
                 if (_this.props.application.fourthJobTitle && _this.props.application.fourthJobTitle.length > 0) {
                     _this.getJobTitlesForDest(_this.props.application.fourthDest, 'fourthJobTitles')
                 }
-
+           
+                
                 _this.getDestinations(_this.props.application.season)
                 _this.getJobTitles(_this.props.application.season, _this.props.application.jobFamily)
+                _this.getAvailablePositionNew()
+            
             } else {
                 document.title = 'Work Application not found - TTP'
             }
-        })
+        }) 
 
         const preferWorkWinter = this.props.keywordslookup.filter(ap => ap.ids === 'PreferToWork_Winter')[0]
         const preferWorkWinterArr = preferWorkWinter.keywordValues.split(',')
@@ -390,14 +452,22 @@ debugger;
         })
     }
 
+
+
     render() {
+
+
         const buttons = (
             <Buttons
                 save={this.save}
                 unsavedEdit={this.state.unsavedEdit}
+                modal={this.state.assignRoleModal}
+                toggleAssignRoleModal={this.toggleAssignRoleModal}
                 // staff={this.props.staff}
             />
         )
+
+
         if (this.props.application === null) {
             //Loading
             return ''
@@ -430,9 +500,17 @@ debugger;
                                 application={this.props.application}
                                 workStatusArr={this.state.workStatusArr}
                                 handleSelect={this.handleSelect}
+                                modal={this.state.assignRoleModal}
+                                toggleAssignRoleModal={this.toggleAssignRoleModal}
+                       
                             />
 
-                            <Tabs toggle={this.toggle} activeTab={this.state.activeTab} save={this.save} unsavedEdit={this.state.unsavedEdit} />
+                            <Tabs 
+                            toggle={this.toggle} 
+                            activeTab={this.state.activeTab} 
+                            save={this.save} 
+                            unsavedEdit={this.state.unsavedEdit} 
+                            />
                         </Col>
                     </Row>
 
@@ -535,7 +613,22 @@ debugger;
                             </TabContent>
                         </Col>
                     </Row>
+            
                     {buttons}
+
+                    <AssignRole
+        modal={this.state.assignRoleModal}
+        application={this.props.application}
+        toggle={this.toggleAssignRoleModal}
+         availablePositions={this.state.nowAvailablePositions}
+         assignRole={this.assignRole}
+        // positionAssign={this.props.positionAssign}
+
+       currentPositionAssign={this.props.currentPositionAssign}
+       // nextPositionAssign={this.props.nextPositionAssign}
+       // followingPositionAssign={this.props.followingPositionAssign}
+        // season={this.props.season}
+    />
                 </div>
             )
         }
@@ -546,7 +639,8 @@ function mapStateToProps(state) {
     return {
         sourceMarkets: state.geography.sourceMarkets,
         application: state.applicationEdit.applicationInfo.application,
-        keywordslookup: state.setting.keywords.keywordslookup
+        keywordslookup: state.setting.keywords.keywordslookup,
+        currentPositionAssign: state.staffEdit.employeeInfo.currentPositionAssign
         //preferToWork: state.applicationEdit.applicationInfo
     }
 }
@@ -554,7 +648,8 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
     return {
         //positionInfoActions: bindActionCreators(positionInfoActions, dispatch),
-        applicationInfoActions: bindActionCreators(applicationInfoActions, dispatch)
+        applicationInfoActions: bindActionCreators(applicationInfoActions, dispatch),
+        employeeInfoActions: bindActionCreators(employeeInfoActions, dispatch)
     }
 }
 export default connect(

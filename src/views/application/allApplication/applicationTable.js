@@ -36,12 +36,12 @@ const applicationTable = props => {
         const data = params.node.data
 
          return [
-             {
-                 name: 'Assign Position To Applicant',
-                action: function() {
-                    props.toogleAssignPositionModal(data.mplID)
-                }
-             },
+            //  {
+            //      name: 'Assign Position To Applicant',
+            //     action: function() {
+            //         props.toogleAssignPositionModal(data.mplID)
+            //     }
+            //  },
         //      {
         //          name: 'Remove Position',
         //          action: function() {

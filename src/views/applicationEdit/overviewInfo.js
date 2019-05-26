@@ -8,8 +8,9 @@ const OverviewInfo = (props) => {
     return (
      
         <Card>
-  
-  <CardHeader className="card-header-work"> Placement {props.application.season} <Button color="primary" className="pull-right" onClick={() => { props.save() }}>Assign Position to Applicant</Button></CardHeader>
+
+  <CardHeader className="card-header-work"> Placement {props.application.season}     
+</CardHeader>
             <CardBody className="no-padding-bottom">
                 <div className="form-row">
  

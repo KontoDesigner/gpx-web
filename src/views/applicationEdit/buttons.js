@@ -7,6 +7,20 @@ const Buttons = props => {
         
             <Col className="col-btn-menu pull-left">
            
+            <Button
+               //className="pull-right"
+                size="sm"
+                onClick={() => { 
+                    props.toggleAssignRoleModal()
+                }}
+                color="primary"
+                style={{ marginRight: '10px', marginBottom: '10px' }}>
+                Assign Applicant To Position
+            </Button>
+
+
+
+
                 <Button
                     onClick={() => {
                         window.close()
