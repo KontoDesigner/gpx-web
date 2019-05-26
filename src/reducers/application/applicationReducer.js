@@ -39,32 +39,32 @@ export default function applicationReducer(state = defaultState, action) {
             ...state,
             allApplication: action.data.allApplication 
         }
-    case types.HANDLE_ALLAPPLICATION:
-        //return action.data.candidate;
-        return {
-            ...state,
-            allApplication: action.data.allApplication
-        }
-        case types.HANDLE_PLANTORESIGNAPPLICATION: 
-        //return action.data.candidate;
-        return {
-            ...state,
-            planToResignApplication: action.data.planToResignApplication
-        }
+    // case types.HANDLE_ALLAPPLICATION:
+    //     //return action.data.candidate;
+    //     return {
+    //         ...state,
+    //         allApplication: action.data.allApplication
+    //     }
+    //     case types.HANDLE_PLANTORESIGNAPPLICATION: 
+    //     //return action.data.candidate;
+    //     return {
+    //         ...state,
+    //         planToResignApplication: action.data.planToResignApplication
+    //     }
 
-        case types.HANDLE_MISSINGAPPLICATION: 
-        //return action.data.candidate;
-        return {
-            ...state,
-            missingApplication: action.data.missingApplication
-        }
+    //     case types.HANDLE_MISSINGAPPLICATION: 
+    //     //return action.data.candidate;
+    //     return {
+    //         ...state,
+    //         missingApplication: action.data.missingApplication
+    //     }
 
-        case types.HANDLE_MISSINGMANAGERCOMMENTSPPLICATION: 
-        //return action.data.candidate;
-        return {
-            ...state, 
-            missingManagerCommentsApplication: action.data.missingManagerCommentsApplication
-        }
+    //     case types.HANDLE_MISSINGMANAGERCOMMENTSAPPLICATION: 
+    //     //return action.data.candidate;
+    //     return {
+    //         ...state, 
+    //         missingManagerCommentsApplication: action.data.missingManagerCommentsApplication
+    //     }
     default:
         return state; 
     }

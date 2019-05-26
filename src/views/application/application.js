@@ -55,7 +55,7 @@ class Application extends Component {
         debugger;
         if (this.state.activeTab !== tab) {
             //Reset current tab state
-            this.state.resetData([])
+           // this.state.resetData([])
 
             //Reset filter
             //this.props.filterActions.handleFilter()

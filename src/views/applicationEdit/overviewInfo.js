@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card, CardBody, CardHeader, Col } from 'reactstrap'
+import { Card, CardBody, CardHeader, Col,Button } from 'reactstrap'
 import TextInput from '../../components/textInput'
 import moment from "moment";
 
@@ -9,7 +9,7 @@ const OverviewInfo = (props) => {
      
         <Card>
   
-  <CardHeader className="card-header-work"> Placement {props.application.season}</CardHeader>
+  <CardHeader className="card-header-work"> Placement {props.application.season} <Button color="primary" className="pull-right" onClick={() => { props.save() }}>Assign Position to Applicant</Button></CardHeader>
             <CardBody className="no-padding-bottom">
                 <div className="form-row">
  

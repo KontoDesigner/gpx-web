@@ -31,7 +31,7 @@ render() {
     return (
       <Card className="card-accordion card-country">
         <CardHeader className="card-header-work" onClick={() => this.toggleCollapse()}>
-        {this.props.staffsubs.staffsub} {icon} 
+        ({this.props.staffsubs.staffsub2.length}) {this.props.staffsubs.staffsub} {icon} 
         </CardHeader> 
 
         <Collapse isOpen={this.state.expanded}>

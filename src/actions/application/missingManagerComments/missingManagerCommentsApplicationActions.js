@@ -4,7 +4,7 @@ import RestClient from '../../../infrastructure/restClient'
 
 export function getMissingManagerCommentsApplicationSuccess(missingManagerCommentsApplication) {
     return { 
-        type: types.GET_MISSINGMANAGERCOMMENTSAPPLICATION_SUCCESS,
+        type: types.GET_MISSINGMANAGERCOMMENTSAPPLICATION_SUCCESS, 
         data: { missingManagerCommentsApplication:missingManagerCommentsApplication }
     }
 }

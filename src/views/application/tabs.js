@@ -27,6 +27,7 @@ const Tabs = props => {
                         <ListGroupItem
                             className={classnames({ active: props.activeTab === 'planToResign' })}
                             onClick={() => {
+                                debugger;
                                //alert('Yet to be announced');
                                 //return false;
                                 props.toggle('planToResign', props.getPlanToResignApplication, props.handlePlanToResignApplication)
@@ -39,6 +40,7 @@ const Tabs = props => {
                             onClick={() => {
                               //alert('Yet to be announced');
                                 //return false;
+                                debugger;
                                 props.toggle('missingApplication', props.getMissingApplication, props.handleMissingApplication)
                             }}>
                             Missing Applications

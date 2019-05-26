@@ -1,13 +1,16 @@
 import React from 'react'
-import { Card, CardBody, CardHeader, Col, Row } from 'reactstrap'
+import { Card, CardBody, CardHeader, Col, Row, Button, } from 'reactstrap'
 import TextInput from '../../components/textInput'
 import moment from 'moment'
 import Select from 'react-select'
 import Datetime from 'react-datetime'
+
+
 const Season = props => {
     return (
+        
         <Card>
-            <CardHeader className="card-header-work"> Placement {props.application.season}</CardHeader>
+            <CardHeader className="card-header-work"> Placement {props.application.season}   </CardHeader>
             <CardBody className="no-padding-bottom">
                 <div className="form-row">
                     <Col sm="12" md="6" lg="6" xl="6">

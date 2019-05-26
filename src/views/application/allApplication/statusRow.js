@@ -25,7 +25,7 @@ class statusRow extends Component {
     return ( 
       <Card className="card-accordion card-country">
         <CardHeader className="card-header-work" onClick={() => this.toggleCollapse()}>
-          {this.props.allApplication.status} {icon}
+         {this.props.allApplication.status} {icon}
         </CardHeader> 
 
         <Collapse isOpen={this.state.expanded}>
