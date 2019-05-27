@@ -55,7 +55,7 @@ class Application extends Component {
         debugger;
         if (this.state.activeTab !== tab) {
             //Reset current tab state
-           // this.state.resetData([])
+            this.state.resetData([])
 
             //Reset filter
             //this.props.filterActions.handleFilter()
@@ -81,9 +81,9 @@ debugger;
                     getPlanToResignApplication={this.props.planToResignApplicationActions.getPlanToResignApplication}
                     handlePlanToResignApplication={this.props.planToResignApplicationActions.handlePlanToResignApplication}
                     getMissingManagerCommentsApplication={this.props.missingManagerCommentsApplicationActions.getMissingManagerCommentsApplication}
-                    handleMissingManagerCommentsApplication={this.props.missingManagerCommentsApplication.handleMissingManagerCommentsApplication}
+                    handleMissingManagerCommentsApplication={this.props.missingManagerCommentsApplicationActions.handleMissingManagerCommentsApplication}
                     getMissingApplication={this.props.missingApplicationActions.getMissingApplication}
-                    handleMissingApplication={this.props.missingApplication.handleMissingApplication} 
+                    handleMissingApplication={this.props.missingApplicationActions.handleMissingApplication} 
                     
                     
                     // getAllRoles={this.props.allRolesActions.getAllRoles}
