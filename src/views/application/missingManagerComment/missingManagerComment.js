@@ -1,23 +1,19 @@
-import React, { Component } from  'react'
+import React, { Component } from 'react'
 import SeasonRow from './seasonRow'
-import { Card, CardBody, CardHeader } from  'reactstrap'
+import { Card, CardBody, CardHeader } from 'reactstrap'
 import Filter from '../filter'
 import Action2 from '../action2'
 
 class MissingManagerComments extends Component {
+    render() {
+        return (
+            <Card>
+                <CardHeader>Missing Manager Comments</CardHeader>
 
-  render() {
-    return (
-      <Card>
-        <CardHeader>Missing Manager Comments</CardHeader>
-
-        <CardBody className="no-padding-bottom">
-          <div className="form-row">
-          
-          <Filter 
-          getData={this.props.getMissingManagerCommentsApplication}
-          />
-            {/* <Action2 
+                <CardBody className="no-padding-bottom">
+                    <div className="form-row">
+                    <Filter getData={this.props.getMissingManagerCommentsApplication} />
+                        {/* <Action2 
               
             //selected={this.props.selectedTitle} 
             //allRoles={this.props.allRoles}
@@ -32,21 +28,31 @@ class MissingManagerComments extends Component {
             // toogleRemovePositionModal = {this.props.toogleRemovePositionModal}
            // toogleRemovePositionSelectModal = {this.props.toogleRemovePositionSelectModal}                  
             />   */}
-          </div>
+                    </div>
 
-            { this.props.missingManagerCommentsApplication.map((missingManagerCommentsApplication, index) =>
-            <SeasonRow 
-              key={index}
-              index={index}
-              missingManagerCommentsApplication={missingManagerCommentsApplication} 
-              edit={this.props.edit}
-            
-            />
-          )}   
-        </CardBody>
-      </Card>
-    )
-  }
+                    {this.props.missingManagerCommentsApplication.map((season, index) => (
+                        <SeasonRow
+                            key={index}
+                            index={index}
+                            season={season}
+                            // handleSelectedTitle={this.props.handleSelectedTitle}
+                            // selectedTitle={this.props.selectedTitle}
+                            edit={this.props.edit}
+                            // toogleMakePositionVacantModal={this.props.toogleMakePositionVacantModal}
+                            // toogleUnmarkPositionActingModal ={this.props.toogleUnmarkPositionActingModal}
+                            // toogleResetPositionAcceptModal  ={this.props.toogleResetPositionAcceptModal}
+                            // toogleMarkPositionDeclineModal ={this.props.toogleMarkPositionDeclineModal}
+                            // toogleMarkPositionActingModal ={this.props.toogleMarkPositionActingModal}
+                            // toogleMarkPositionAcceptModal = {this.props.toogleMarkPositionAcceptModal}
+                            // toogleAssignPositionModal = {this.props.toogleAssignPositionModal}
+                            // toogleUpdatePositionModal = {this.props.toogleUpdatePositionModal}
+                            // toogleRemovePositionModal={this.props.toogleRemovePositionModal  }
+                        />
+                    ))}
+                </CardBody>
+            </Card>
+        )
+    }
 }
 
 export default MissingManagerComments
