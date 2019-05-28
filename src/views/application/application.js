@@ -51,6 +51,18 @@ class Application extends Component {
         }
     }
 
+    edit2 = application => {
+        // alert(position.staffID);
+        debugger;
+        if (application.staffID != null && (application.staffID != 0 && application.staffID != 'No StaffId defined')) {
+            const win = window.open(`/staff/${application.staffID}`, '_blank')
+            win.focus()
+        } else {
+            const win2 = window.open(`/staff/${application.staffID}`, '_blank')
+            win2.focus()
+        }
+    }
+
     toggle = (tab, getData, resetData) => {
         debugger;
         if (this.state.activeTab !== tab) {
@@ -112,8 +124,8 @@ debugger;
                             <MissingApplication
                            getMissingApplication={this.props.missingApplicationActions.getMissingApplication}
                            missingApplication={this.props.missingApplication}
-                           edit={this.edit}  
-
+                           edit={this.edit2}  
+                            
                                                            
                                                            
                             />
