@@ -27,6 +27,7 @@ const Season = props => {
                                 props.handleMultiSelect('preferToWork', v)
                             }}
                             value={props.application.preferToWork === '' ? null : props.application.preferToWork}
+                            
                             placeholder="Select"
                             className="form-group form-group-select"
                         />

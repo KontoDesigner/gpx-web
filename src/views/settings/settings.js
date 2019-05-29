@@ -7,11 +7,13 @@ import * as notificationActions from '../../actions/notification/notificationAct
 import * as settingActions from '../../actions/setting/settingActions'
 import * as keywordsActions from '../../actions/setting/keywordsActions'
 import * as filterActions from '../../actions/setting/filterActions'
+
 import { toastr } from 'react-redux-toastr'
 import RestClient from '../../infrastructure/restClient'
 import Notification from './notification/cfgNotification'
 import Keywords from './keywords/cfgKeywords'
 import Setting from './setting/cfgSetting'
+
 import $ from 'jquery'
 import RemoveTemplate from './notification/removeTemplate'
 //import Buttons from './buttons'
@@ -134,10 +136,25 @@ class Settings extends Component {
     }
 
     save = async model => {
-        // this.props.settingActions.save()
+       
+        const jobFamiliesWork = model.jobFamiliesWork.map(function(m) {
+            return m.id
+        })
+        
+        let cleanModel = {}
 
+        cleanModel.settingid= model.settingId,
+        cleanModel.departureDateUpdate= model.departureDateUpdate,
+        cleanModel.arrivalDateUpdate= model.arrivalDateUpdate,
+        cleanModel.staffApprove= model.staffApprove,
+        cleanModel.curSeason= model.curSeason,
+        cleanModel.nextSeason=model.nextSeason,
+        cleanModel.nextNextSeason=model.nextNextSeason,
+        cleanModel.applyOpen= model.applyOpen,
+        cleanModel.managerComments= model.managerComments,
+        cleanModel.jobFamiliesWork= jobFamiliesWork 
         try {
-            const res = await RestClient.Post('setting/updateSetting', model)
+            const res = await RestClient.Post('setting/updateSetting', cleanModel)
 
             if (res) {
                 toastr.success('Success', `Setting Document is updated`)
@@ -148,6 +165,15 @@ class Settings extends Component {
             // dispatch(ajaxCallError(error))
 
             throw error
+        }
+    }
+
+    handleMultiSelect = (field, val) => {
+        debugger
+        if (val) {
+            this.props.settingActions.handleSettingField2(field, val)
+        } else {
+            this.props.settingActions.handleSettingField2(field, null)
         }
     }
 
@@ -172,6 +198,13 @@ class Settings extends Component {
     handleStaffApproveSelect = val => {
         let setting = Object.assign({}, this.state.setting) //creating copy of object
         setting.staffApprove = val.name //updating value
+        this.setState({ setting })
+    }
+
+    
+    handleJobFamiliesSelect = val => {
+        let setting = Object.assign({}, this.state.setting) //creating copy of object
+        setting.jobFamilies = val.name //updating value
         this.setState({ setting })
     }
 
@@ -268,8 +301,12 @@ class Settings extends Component {
                         {this.state.setting && ( //if clause  what for load ready
                             <TabPane tabId="settings">
                                 <Setting
+                                    handleMultiSelect={this.handleMultiSelect}
                                     setting={this.state.setting}
+                                    jobFamilies={this.props.jobFamilies}
+                                    jobFamiliesWork={this.props.jobFamiliesWork}
                                     handleApplyOpenSelect={this.handleApplyOpenSelect}
+                                    handleJobFamiliesSelect={this.handleJobFamiliesSelect}
                                     handleManagerCommentSelect={this.handleManagerCommentSelect}
                                     handleStaffApproveSelect={this.handleStaffApproveSelect}
                                     handleArrivalDateSelect={this.handleArrivalDateSelect}
@@ -323,7 +360,9 @@ function mapStateToProps(state) {
         selectedNotification: state.notification.notification.selectedNotification,
         selectedKeywords: state.setting.keywords.keywords.selectedKeywords,
         selectedApplyOpen: state.setting.setting.selectedApplyOpen,
-        keywords: state.setting.keywords.keywords
+        keywords: state.setting.keywords.keywords,
+        jobFamilies: state.setting.setting.jobFamilies,
+        jobFamiliesWork: state.setting.setting.jobFamiliesWork,
         //  selectedYear:state.report.report.selectedYear,
         //create:state.report.report.create
     }

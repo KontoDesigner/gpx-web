@@ -17,8 +17,14 @@ const nextNextSeason={id:props.setting.nextNextSeason,name:props.setting.nextNex
 const applyOpen={id:props.setting.applyOpen,name:props.setting.applyOpen}
 const managerComments={id:props.setting.managerComments,name:props.setting.managerComments}
 const staffApprove={id:props.setting.staffApprove,name:props.setting.staffApprove}
+const jobFamilies={id:props.setting.jobFamilies,name:props.setting.jobFamilies}
+//const jobFamiliesWork={id:props.setting.jobFamiliesWork,name:props.setting.jobFamiliesWork}
 const arrivalDateUpdate={id:props.setting.arrivalDateUpdate,name:props.setting.arrivalDateUpdate}
 const departureDateUpdate={id:props.setting.departureDateUpdate,name:props.setting.departureDateUpdate}
+
+
+
+
 let model = {
     
   // to the database
@@ -30,7 +36,8 @@ let model = {
    nextSeason: props.setting.nextSeason,
    nextNextSeason:props.setting.nextNextSeason,
    applyOpen: props.setting.applyOpen,
-   managerComments: props.setting.managerComments
+   managerComments: props.setting.managerComments,
+   jobFamiliesWork: props.setting.jobFamiliesWork
 }
 
     // const buttons = <Buttons save={props.save} unsavedEdit={props.unsavedEdit} />
@@ -72,7 +79,7 @@ let model = {
                        
 </Col>
 <Col sm="12" md="6" lg="6" xl="4" className="form-group">
- <label htmlFor="managerComments">Manager Comments (in applications for work) </label>
+ <label htmlFor="managerComments">Manager Comments (in applications for work) is open </label>
 
 <Select 
   id="managerComments"
@@ -86,8 +93,26 @@ let model = {
 />
                        
 </Col>
-
 <Col sm="12" md="6" lg="6" xl="4" className="form-group">
+<label htmlFor="jobFamiliesWork"> Currently active JobFamilies (in applications for work) </label>
+
+<Select 
+  multi={true}
+  id="jobFamiliesWork"
+  valueKey="id"
+  labelKey="name"
+  className="form-control"
+  options={props.jobFamilies}
+  onChange={v => {
+    props.handleMultiSelect('jobFamiliesWork', v)
+}}
+value={props.setting.jobFamiliesWork === '' ? null : props.setting.jobFamiliesWork}
+                            
+ placeholder=""
+/>
+                       
+</Col>
+{/* <Col sm="12" md="6" lg="6" xl="4" className="form-group">
 <label htmlFor="staffApprove">Staff can approve/reject placement in  profile </label>
 
 <Select 
@@ -101,8 +126,8 @@ let model = {
  placeholder=""
 />
                        
-</Col>
-<Col sm="12" md="6" lg="6" xl="4" className="form-group">
+</Col> */}
+{/* <Col sm="12" md="6" lg="6" xl="4" className="form-group">
 <label htmlFor="arrivalDateUpdate">Arrival Dates &  Gap Description can be updated  </label>
 
 <Select 
@@ -178,7 +203,7 @@ let model = {
  value={nextNextSeason} 
  placeholder=""
 />
-</Col>
+</Col> */}
                   
 </div>
 
