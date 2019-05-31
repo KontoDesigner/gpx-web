@@ -1,4 +1,5 @@
 import { ActionTypes as types } from '../../../constants/application/allApplication/allApplicationConstants'
+
 import { beginAjaxCall, ajaxCallError } from '../../ajaxStatusActions'
 import RestClient from '../../../infrastructure/restClient'
 

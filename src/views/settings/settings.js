@@ -5,6 +5,7 @@ import { TabContent, TabPane, Row, Col } from 'reactstrap'
 import Tabs from './tabs'
 import * as notificationActions from '../../actions/notification/notificationActions'
 import * as settingActions from '../../actions/setting/settingActions'
+//import * as settingWorkActions from '../../actions/setting/settingWorkActions'
 import * as keywordsActions from '../../actions/setting/keywordsActions'
 import * as filterActions from '../../actions/setting/filterActions'
 
@@ -23,6 +24,8 @@ class Settings extends Component {
         super(props)
 
         this.state = {
+            
+            jobFamiliesWork:[],
             templateName: null,
             activeTab: 'settings',
             resetData: this.props.settingActions.handleSetting,
@@ -56,12 +59,17 @@ class Settings extends Component {
                 {
                     id: 'W1920',
                     name: 'W1920'
+                },
+                {
+                    id: 'S20',
+                    name: 'S20'
                 }
             ],
 
             unsavedEdit: false,
             setting: null
         }
+        this.handleChange = this.handleChange.bind(this)
     }
 
     toogleRemoveStaffModal = val => {
@@ -103,14 +111,25 @@ class Settings extends Component {
         _this.props.settingActions.getSetting().then(function() {
             if (_this.props.setting != null) {
                 // document.title = `Settings   ${_this.props.setting.settingId } `
+
+              // const settingWork=state.settingWork.settingWork !== '' ? state.settingWork.settingWork.jobFamiliesWork.split(',') : []
+                debugger;
+
+
+
                 document.title = `Settings   `
             } else {
                 document.title = 'General Settings not found - GPX'
             }
 
             _this.setState({ loaded: true, setting: _this.props.setting })
+            _this.setState({ jobFamiliesWork: _this.props.setting.jobFamiliesWork })
         })
     }
+
+    // componentDidMount() {
+    //     this.setState({ jobFamiliesWork: this.props.setting.jobFamiliesWork })
+    // }
 
     //on Demand Call start functions*************************
     handleUnsavedEdit = () => {
@@ -136,14 +155,14 @@ class Settings extends Component {
     }
 
     save = async model => {
-       
-        const jobFamiliesWork = model.jobFamiliesWork.map(function(m) {
+        debugger;
+        const jobFamiliesWork = this.state.jobFamiliesWork.map(function(m) {
             return m.id
         })
-        
+ 
         let cleanModel = {}
 
-        cleanModel.settingid= model.settingId,
+        cleanModel.settingid= model.settingid,
         cleanModel.departureDateUpdate= model.departureDateUpdate,
         cleanModel.arrivalDateUpdate= model.arrivalDateUpdate,
         cleanModel.staffApprove= model.staffApprove,
@@ -152,7 +171,9 @@ class Settings extends Component {
         cleanModel.nextNextSeason=model.nextNextSeason,
         cleanModel.applyOpen= model.applyOpen,
         cleanModel.managerComments= model.managerComments,
-        cleanModel.jobFamiliesWork= jobFamiliesWork 
+        cleanModel.jobFamiliesWork=jobFamiliesWork? jobFamiliesWork.join():null
+
+        debugger;
         try {
             const res = await RestClient.Post('setting/updateSetting', cleanModel)
 
@@ -238,6 +259,12 @@ class Settings extends Component {
         this.setState({ setting })
     }
 
+    handleChange(event,val) {
+        debugger;
+        this.setState({ jobFamiliesWork: val })
+    }
+    
+
     handleCurSeasonOld = event => {
         const field = event.target.name
         const val = event.target.value
@@ -303,8 +330,11 @@ class Settings extends Component {
                                 <Setting
                                     handleMultiSelect={this.handleMultiSelect}
                                     setting={this.state.setting}
+                                    handleChange = {this.handleChange}
                                     jobFamilies={this.props.jobFamilies}
-                                    jobFamiliesWork={this.props.jobFamiliesWork}
+                                    //settingWork={this.props.settingWork}
+                                    setting2={this.props.setting2}
+                                   jobFamiliesWork={this.state.jobFamiliesWork}
                                     handleApplyOpenSelect={this.handleApplyOpenSelect}
                                     handleJobFamiliesSelect={this.handleJobFamiliesSelect}
                                     handleManagerCommentSelect={this.handleManagerCommentSelect}
@@ -362,7 +392,8 @@ function mapStateToProps(state) {
         selectedApplyOpen: state.setting.setting.selectedApplyOpen,
         keywords: state.setting.keywords.keywords,
         jobFamilies: state.setting.setting.jobFamilies,
-        jobFamiliesWork: state.setting.setting.jobFamiliesWork,
+        //settingWork: state.settingWork.settingWork
+        
         //  selectedYear:state.report.report.selectedYear,
         //create:state.report.report.create
     }
@@ -372,6 +403,7 @@ function mapDispatchToProps(dispatch) {
     return {
         //positionInfoActions: bindActionCreators(positionInfoActions, dispatch),
         settingActions: bindActionCreators(settingActions, dispatch),
+        //settingWorkActions: bindActionCreators(settingWorkActions, dispatch),
         keywordsActions: bindActionCreators(keywordsActions, dispatch),
         notificationActions: bindActionCreators(notificationActions, dispatch),
         filterActions: bindActionCreators(filterActions, dispatch)

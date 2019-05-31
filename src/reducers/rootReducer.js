@@ -6,6 +6,7 @@ import staff from './staff/staffRootReducer'
 import staffEdit from './staffEdit/staffEditRootReducer'
 import geography from './geographyReducer'
 import setting from './setting/settingRootReducer'
+
 import notification from './notification/notificationRootReducer'
 import planning from './planning/planningRootReducer'
 import application from './application/applicationRootReducer'
@@ -28,6 +29,7 @@ export default combineReducers({
     applicationEdit,
     planningEdit,
     setting,
+   
     notification,
 
     notificationEdit,

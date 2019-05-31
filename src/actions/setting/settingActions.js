@@ -1,4 +1,5 @@
 import { ActionTypes as types } from '../../constants/setting/settingConstants'
+
 import { beginAjaxCall, ajaxCallError, endAjaxCall } from '../ajaxStatusActions'
 import RestClient from '../../infrastructure/restClient'
 import { toastr } from 'react-redux-toastr'
@@ -25,11 +26,12 @@ export function removeTemplate(model) {
             dispatch(ajaxCallError(error))
 
             throw error
-        }
+        } 
     } 
 }
 
 export function handleSettingField2(field, val) {
+    debugger;
     return {
         type: types.HANDLE_SETTING_FIELD2,
         data: { field: field, val: val }
@@ -129,7 +131,19 @@ export function getSetting() {
            
             const setting = await RestClient.Get(`setting/setting`)
 
-            debugger;
+ 
+
+            if (setting) {
+                setting.jobFamiliesWork= setting.jobFamiliesWork && setting.jobFamiliesWork !== '' ? setting.jobFamiliesWork.split(',') : []
+            }
+
+           
+            setting.jobFamiliesWork= setting.jobFamiliesWork ? setting.jobFamiliesWork.map(k => ({
+                     id: k,
+                     name: k
+                })):[]
+
+
         
             dispatch(getSettingSuccess(setting))
         } catch (error) {

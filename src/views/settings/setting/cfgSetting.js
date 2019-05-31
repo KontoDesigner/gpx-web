@@ -18,7 +18,7 @@ const applyOpen={id:props.setting.applyOpen,name:props.setting.applyOpen}
 const managerComments={id:props.setting.managerComments,name:props.setting.managerComments}
 const staffApprove={id:props.setting.staffApprove,name:props.setting.staffApprove}
 const jobFamilies={id:props.setting.jobFamilies,name:props.setting.jobFamilies}
-//const jobFamiliesWork={id:props.setting.jobFamiliesWork,name:props.setting.jobFamiliesWork}
+//onst jobFamiliesWork=props.settingWork.jobFamiliesWork
 const arrivalDateUpdate={id:props.setting.arrivalDateUpdate,name:props.setting.arrivalDateUpdate}
 const departureDateUpdate={id:props.setting.departureDateUpdate,name:props.setting.departureDateUpdate}
 
@@ -26,7 +26,7 @@ const departureDateUpdate={id:props.setting.departureDateUpdate,name:props.setti
 
 
 let model = {
-    
+   
   // to the database
    settingid: props.setting.settingId,
    departureDateUpdate: props.setting.departureDateUpdate,
@@ -37,7 +37,7 @@ let model = {
    nextNextSeason:props.setting.nextNextSeason,
    applyOpen: props.setting.applyOpen,
    managerComments: props.setting.managerComments,
-   jobFamiliesWork: props.setting.jobFamiliesWork
+  jobFamiliesWork: props.setting.jobFamiliesWork
 }
 
     // const buttons = <Buttons save={props.save} unsavedEdit={props.unsavedEdit} />
@@ -98,69 +98,24 @@ let model = {
 
 <Select 
   multi={true}
-  id="jobFamiliesWork"
+ id="jobFamiliesWork"
   valueKey="id"
   labelKey="name"
   className="form-control"
   options={props.jobFamilies}
   onChange={v => {
-    props.handleMultiSelect('jobFamiliesWork', v)
+    props.handleChange('jobFamiliesWork', v)
 }}
-value={props.setting.jobFamiliesWork === '' ? null : props.setting.jobFamiliesWork}
+value={props.jobFamiliesWork === '' ? null : props.jobFamiliesWork}
                             
  placeholder=""
 />
                        
 </Col>
-{/* <Col sm="12" md="6" lg="6" xl="4" className="form-group">
-<label htmlFor="staffApprove">Staff can approve/reject placement in  profile </label>
 
-<Select 
-  id="staffApprove"
-  valueKey="id"
-  labelKey="name"
-  className="form-control"
-  options={props.options}
- onChange = { props.handleStaffApproveSelect}
- value={staffApprove}
- placeholder=""
-/>
-                       
-</Col> */}
-{/* <Col sm="12" md="6" lg="6" xl="4" className="form-group">
-<label htmlFor="arrivalDateUpdate">Arrival Dates &  Gap Description can be updated  </label>
-
-<Select 
-  id="arrivalDateUpdate"
-  valueKey="id"
-  labelKey="name"
-  className="form-control"
-  options={props.options}
- onChange = { props.handleArrivalDateSelect}
- value={arrivalDateUpdate}
- placeholder=""
-/>
-                       
-</Col>
-<Col sm="12" md="6" lg="6" xl="4" className="form-group">
- <label htmlFor="departureDateUpdate">Departure Dates &  Gap Description can be updated</label>
-
-<Select 
-  id="departureDateUpdate"
-  valueKey="id"
-  labelKey="name"
-  className="form-control"
-  options={props.options}
- onChange = { props.handleDepartureDateSelect}
- value={departureDateUpdate}
- placeholder=""
-/>
-
-          
-</Col>
 
 <Col sm="12" md="6" lg="6" xl="4" className="form-group">
-<label htmlFor="curSeason">Current Season (obsolete)</label>
+<label htmlFor="curSeason">Current Season </label>
 
 <Select 
   id="curSeason"
@@ -176,7 +131,7 @@ value={props.setting.jobFamiliesWork === '' ? null : props.setting.jobFamiliesWo
 </Col>
 
 <Col sm="12" md="6" lg="6" xl="4" className="form-group">
-<label htmlFor="nextSeason">Next Season (obsolete)</label>
+<label htmlFor="nextSeason">Next Season </label>
 
 <Select 
   id="nextSeason"
@@ -191,7 +146,7 @@ value={props.setting.jobFamiliesWork === '' ? null : props.setting.jobFamiliesWo
 </Col>
 
 <Col sm="12" md="6" lg="6" xl="4" className="form-group">
-<label htmlFor="nextNextSeason">Following Season (obsolete)</label>
+<label htmlFor="nextNextSeason">Following Season</label>
 
 <Select 
   id="nextNextSeason"
@@ -203,7 +158,7 @@ value={props.setting.jobFamiliesWork === '' ? null : props.setting.jobFamiliesWo
  value={nextNextSeason} 
  placeholder=""
 />
-</Col> */}
+</Col> 
                   
 </div>
 

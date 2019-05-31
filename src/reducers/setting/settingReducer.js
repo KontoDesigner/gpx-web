@@ -29,15 +29,24 @@ export default function settingReducer(state = defaultState, action) {
             },
         }
 
+        // case (types.HANDLE_SETTING_FIELD2):
+
         case (types.HANDLE_SETTING_FIELD2):
-    
-        return {
+    //    return {
+    //              ...state,
+    //              jobFamiliesWork: action.data.val 
+    //         }
+      return {
             ...state, 
             setting: {
                 ...state.setting,
-                [action.data.field]: action.data.val 
+               [action.data.field]: action.data.val 
             },
         }
+
+   
+    
+        
 
         case types.HANDLE_SETTING:
         return action.data.setting;

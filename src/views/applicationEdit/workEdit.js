@@ -319,7 +319,7 @@ class WorkEdit extends Component {
     }
 
     save = async () => {
-        debugger
+        debugger;
         const preferToWork = this.props.application.preferToWork.map(function(m) {
             return m.id
         })
