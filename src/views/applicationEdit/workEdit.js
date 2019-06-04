@@ -211,7 +211,7 @@ class WorkEdit extends Component {
            
                 
                 _this.getDestinations(_this.props.application.season)
-                _this.getJobTitles(_this.props.application.season, _this.props.application.jobFamily)
+               // _this.getJobTitles(_this.props.application.season, _this.props.application.jobFamily)
                 _this.getAvailablePositionNew()
             
             } else {
@@ -574,7 +574,7 @@ debugger;
                                     <ApplicationformInfo
                                         application={this.props.application}
                                         destinations={this.state.destinations}
-                                        jobtitles={this.state.jobtitles}
+                                        jobtitles={this.props.jobtitles}
                                         assignStartChange={this.assignStartChange}
                                         assignEndChange={this.assignEndChange}
                                         //handleChange={this.handleChange}
@@ -640,6 +640,7 @@ function mapStateToProps(state) {
         sourceMarkets: state.geography.sourceMarkets,
         application: state.applicationEdit.applicationInfo.application,
         keywordslookup: state.setting.keywords.keywordslookup,
+        jobtitles: state.setting.setting.jobTitle,
         currentPositionAssign: state.staffEdit.employeeInfo.currentPositionAssign
         //preferToWork: state.applicationEdit.applicationInfo
     }
