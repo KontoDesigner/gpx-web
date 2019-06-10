@@ -129,7 +129,6 @@ class WorkEdit extends Component {
             MPLID: role.mplid,
             StaffID: this.props.application.staffID,
             FirstName: this.props.application.firstName,
-            LastName: this.props.application.lastName,
             Season: role.season,
           
             FullName: this.props.application.lastName,

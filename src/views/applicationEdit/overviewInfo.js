@@ -7,7 +7,7 @@ const OverviewInfo = (props) => {
    
     return (
 
-        <Card>
+      
  
 
             <CardBody className="no-padding-bottom">
@@ -132,7 +132,7 @@ const OverviewInfo = (props) => {
 
               
             </CardBody>
-        </Card> 
+    
     );
 };
 
