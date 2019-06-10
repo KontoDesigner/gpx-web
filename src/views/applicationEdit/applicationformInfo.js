@@ -200,7 +200,7 @@ const ApplicationFormInfo = (props) => {
               
 
               </CardBody>
-              <CardHeader className="card-header-work"> Confirm</CardHeader>
+              <CardHeader className="card-header-work-assign"> Confirm</CardHeader>
             <CardBody className="no-padding-bottom">
             <div className="form-row">
             <Col sm="12" md="6" lg="3" xl="3" className="form-group">

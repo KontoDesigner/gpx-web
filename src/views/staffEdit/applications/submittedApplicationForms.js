@@ -20,14 +20,14 @@ const SubmittedApplicationForms = props => {
       <CardBody>
 
          <div className="form-row">
-                    <Col sm="12" md="3" lg="3" xl="3" className="form-group">
+                    <Col sm="12" md="2" lg="2" xl="2" className="form-group">
                    <b>ApplicationType</b>  
                     </Col>
-                    <Col sm="12" md="3" lg="3" xl="3" className="form-group">
-                   <b> StartDate </b>
+                    <Col sm="12" md="4" lg="4" xl="4" className="form-group">
+                   <b> Info </b>
                     </Col>
                     <Col sm="12" md="3" lg="3" xl="3" className="form-group">
-                    <b>Action</b> 
+                    <b>Info </b> 
                     </Col>
                     <Col sm="12" md="3" lg="3" xl="3" className="form-group">
                     <b>Date Modified</b> 
@@ -35,6 +35,30 @@ const SubmittedApplicationForms = props => {
                    
 
                     </div>
+                    {props.applicationHistory.map(ap => (
+ap.applicationType=="Work"?
+<div className="form-row">
+<Col sm="12" md="2" lg="2" xl="2" className="form-group">
+{ap.applicationType=="Work"? ap.applicationType   :"No Work"}{ap.applicationType=="Work"? " (" + ap.season + ")":"Season"}
+</Col>
+<Col sm="12" md="4" lg="4" xl="4" className="form-group">
+{ap.applicationType=="Work"? ap.firstDest.replace('undefined','') +  ", " + ap.secondDest.replace('undefined','') + ", "  + ap.thirdDest.replace('undefined','') + ", " + ap.fourthDest   :"Missing Dest. choices"}
+</Col>
+ <Col sm="12" md="3" lg="3" xl="3" className="form-group">
+   
+{ap.applicationType=="Work"? ap.firstJobTitle + ", " + ap.secondJobTitle + ", " + ap.thirdJobTitle + ", " + ap.fourtJobTitle:"Missing JobTitle choices"}
+</Col> 
+<Col sm="12" md="3" lg="3" xl="3" className="form-group">
+   
+{ap.applicationType=="Work" ?moment(ap.dateModified).format("YYYY-MM-DD"):""}
+</Col>
+
+{/* ap.onclick = props.edit(ap.applicationType); */}
+</div>
+
+      :null        ))}
+
+
                     {props.abscenseHistory.map(h => (
 
                     <div className="form-row">
@@ -61,6 +85,7 @@ const SubmittedApplicationForms = props => {
 
           
               {props.applicationHistory.map(ap => (
+              ap.applicationType=="Resigned"?
 
 <div className="form-row">
 <Col sm="12" md="3" lg="3" xl="3" className="form-group">
@@ -81,7 +106,7 @@ const SubmittedApplicationForms = props => {
 
 </div>
 
-              ))}
+              :null))}
         
 
         {/* <ListGroup>

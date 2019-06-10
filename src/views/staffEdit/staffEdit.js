@@ -24,6 +24,7 @@ import * as destinationHistoryActions from '../../actions/staffEdit/destinationH
 import * as applicationHistoryActions from '../../actions/staffEdit/applicationHistoryActions'
 import * as abscenseHistoryActions from '../../actions/staffEdit/abscenseHistoryActions'
 import * as flightRequestHistoryActions from '../../actions/staffEdit/flightRequestHistoryActions'
+
 import '../../styles/staffEdit.css'
 import RestClient from '../../infrastructure/restClient'
 class StaffEdit extends Component {
@@ -71,7 +72,17 @@ class StaffEdit extends Component {
         this.handleChangeMultiple = this.handleChangeMultiple.bind(this)
         // this.handleCheckBox = this.handleCheckBox.bind(this)
     }
-
+    edit = application => {
+        // alert(position.staffID);
+        debugger;
+        if (application.staffID != null && (application.staffID != 0 && application.staffID != 'No StaffId defined')) {
+            const win = window.open(`/application/${application.staffID}/${application.season}`, '_blank')
+            win.focus()
+        } else {
+            const win2 = window.open(`/application/${application.staffID}/${application.season}`, '_blank')
+            win2.focus()
+        }
+    }
     async componentWillMount() {
         const _this = this
 
@@ -94,7 +105,7 @@ class StaffEdit extends Component {
         //     throw error
         // }
 
-
+  
 
 
         
@@ -105,7 +116,7 @@ class StaffEdit extends Component {
             this.getAvailablePositionNew(),
             this.props.employeeInfoActions.getPositionAssigns(this.state.staffId),
             this.props.applicationHistoryActions.getResignHistory(this.state.staffId),
-
+            this.props.applicationHistoryActions.getApplicationHistory(this.state.staffId),
             this.props.historyActions.getHistory(this.state.staffId),
             this.props.confirmedDatesActions.getConfirmedDates(this.state.staffId),
             this.props.destinationHistoryActions.getDestinationHistory(this.state.staffId),
@@ -438,8 +449,9 @@ if (national !== undefined) {
                                 <TabPane tabId="applications">
                                     <Applications
                                         applicationHistory={this.props.applicationHistory}
+                                        edit={this.edit}
                                         status={this.props.staff.status}
-                                        abscenseHistory={this.props.abscenseHistory}
+                                       abscenseHistory={this.props.abscenseHistory}
                                     />
                                 </TabPane>
 
@@ -501,6 +513,7 @@ function mapDispatchToProps(dispatch) {
         destinationHistoryActions: bindActionCreators(destinationHistoryActions, dispatch),
         historyActions: bindActionCreators(historyActions, dispatch),
         applicationHistoryActions: bindActionCreators(applicationHistoryActions, dispatch),
+   
         abscenseHistoryActions: bindActionCreators(abscenseHistoryActions, dispatch),
         flightRequestHistoryActions: bindActionCreators(flightRequestHistoryActions, dispatch)
     }

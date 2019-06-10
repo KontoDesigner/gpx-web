@@ -20,7 +20,7 @@ const RemoveRole = (props) => {
                     </Alert>
                 </ModalBody>
                 <ModalFooter>
-                    <Button color="success" onClick={() => removeRole(props.positionAssign.MPLID,props.positionAssign.StaffStartDate)}>Remove</Button>{' '}
+                    <Button color="success" onClick={() => removeRole(props.mplid,props.staffStartDate)}>Remove</Button>{' '}
                     <Button color="danger" onClick={props.toggle}>Cancel</Button>
                 </ModalFooter>
             </Modal>

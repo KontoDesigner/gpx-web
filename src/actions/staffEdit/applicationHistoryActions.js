@@ -28,6 +28,30 @@ debugger;
     }
 }
 
+export function getApplicationHistory(staffId) {
+    return async function(dispatch) {
+        dispatch(beginAjaxCall())
+
+        try {
+
+            const applicationHistory = await RestClient.Get(`staff/getStaffApplicationHistory/${staffId}`)
+debugger;
+            dispatch(getApplicationHistorySuccess(applicationHistory))
+        } catch (error) {
+            dispatch(ajaxCallError(error))
+
+            throw error
+        }
+    }
+}
+
+export function getApplicationHistorySuccess(applicationHistory) {
+    return {
+      type: types.GET_APPLICATIONHISTORY_SUCCESS,
+      data: { applicationHistory: applicationHistory }
+    }
+  }
+
 // export function getAbscenseHistorySuccess(abscenseHistory) {
 //     return {
 //       type: types.GET_ABSCENSEHISTORY_SUCCESS,

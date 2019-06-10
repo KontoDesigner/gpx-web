@@ -13,9 +13,9 @@ const AssignmentHeader = (props) => {
 //             <CardBody className="no-padding-bottom">
 <div className="form-row">
  
-<Col sm="12" md="6" lg="1" xl="1" className="form-group">
+{/* <Col sm="12" md="6" lg="1" xl="1" className="form-group">
 Assigned To
-</Col>
+</Col> */}
 <Col sm="12" md="6" lg="2" xl="2" className="form-group">
 Region/Head Of 
 </Col>

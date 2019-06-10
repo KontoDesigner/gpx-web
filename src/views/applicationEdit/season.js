@@ -62,7 +62,7 @@ const Season = props => {
                                 inputProps={{ placeholder: 'YYYY-MM-DD' }} />
                         </Col> */}
                     <Col sm="12" md="12" lg="12" xl="12">
-                        <CardHeader className="card-header-subwork">
+                        <CardHeader className="card-header-work">
                             {' '}
                             For season {props.application.season} I wish to work in the following destinations / positions
                         </CardHeader>

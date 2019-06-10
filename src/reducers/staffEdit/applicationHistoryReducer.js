@@ -8,6 +8,10 @@ export default function applicationHistoryReducer(state = defaultState, action) 
             return action.data.resignHistory;
         case types.GET_RESIGNHISTORY:
             return action.data.resignHistory;
+            case types.GET_APPLICATIONHISTORY_SUCCESS:
+            return action.data.applicationHistory;
+        case types.GET_APPLICATIONHISTORY:
+            return action.data.applicationHistory;
             // case types.GET_ABSCENSEHISTORY_SUCCESS:
             // return action.data.abscenseHistory;
             // case types.GET_ABSCENSEHISTORY:

@@ -31,6 +31,8 @@ class WorkEdit extends Component {
         const season = params.season
 
         this.state = {
+            mplid:null,
+            staffStartDate:null,
             staffid: id,
             season: season,
             assignRoleModal: false,
@@ -95,12 +97,16 @@ class WorkEdit extends Component {
     toggleAssignRoleModal = () => {
         debugger;
         this.setState({
+            
             assignRoleModal: !this.state.assignRoleModal
         })
     }
 
-    toggleRemoveRoleModal = () => {
+    toggleRemoveRoleModal = (positionAssignId,startDate) => {
+        debugger;
         this.setState({
+            mplid: positionAssignId,
+            staffStartDate:startDate,
             removeRoleModal: !this.state.removeRoleModal
         })
     }
@@ -568,18 +574,20 @@ debugger;
                           application={this.props.application} 
                           handleInputField={this.handleInputField} 
                           positionAssign={this.props.currentPositionAssign}
+                          toggleRemoveRoleModal={this.toggleRemoveRoleModal}
                           />
                           <Assignment
                           
                           application={this.props.application} 
                           handleInputField={this.handleInputField} 
                           positionAssign={this.props.nextPositionAssign}
+                          toggleRemoveRoleModal={this.toggleRemoveRoleModal}
                           />
                           <Assignment
-                          
-                          application={this.props.application} 
-                          handleInputField={this.handleInputField} 
-                          positionAssign={this.props.followingPositionAssign}
+                    application={this.props.application} 
+                    handleInputField={this.handleInputField} 
+                    positionAssign={this.props.followingPositionAssign}
+                    toggleRemoveRoleModal={this.toggleRemoveRoleModal}
                           />
                                         {/* <Assignment
                                     application={this.props.application} 
@@ -592,7 +600,7 @@ debugger;
                                     positionAssign={this.props.currentPositionAssign}
                                     /> */}
                                     </CardBody>
-                                     <CardHeader className="card-header-work"> Placement {this.props.application.season} </CardHeader>
+                                     <CardHeader className="card-header-work"> Placement {this.props.application.season} Choices </CardHeader>
                                      <CardBody className="no-padding-bottom">
                                     <OverviewInfo 
                                     application={this.props.application} 
@@ -711,19 +719,22 @@ debugger;
        // followingPositionAssign={this.props.followingPositionAssign}
         // season={this.props.season}
     />
-                        <RemoveRole
+                         <RemoveRole
         modal={this.state.removeRoleModal}
         application={this.props.application}
         toggle={this.toggleRemoveRoleModal}
          availablePositions={this.state.nowAvailablePositions}
          removeRole={this.removeRole}
+         mplid={this.state.mplid}
+         staffStartDate={this.state.staffStartDate}
         //positionAssign={this.props.positionAssign}
 
-       positionAssign={this.props.currentPositionAssign}
-       // nextPositionAssign={this.props.nextPositionAssign}
-       // followingPositionAssign={this.props.followingPositionAssign}
+    //    positionAssign={this.props.currentPositionAssign}
+    //     positionAssign={this.props.nextPositionAssign}
+    //     positionAssign={this.props.followingPositionAssign}
         // season={this.props.season}
-    />
+    />  
+
                 </div>
             )
         }

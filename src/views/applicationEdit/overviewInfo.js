@@ -7,16 +7,14 @@ const OverviewInfo = (props) => {
    
     return (
 
-      
- 
 
             <CardBody className="no-padding-bottom">
          
                 <div className="form-row">
  
-                          <Col sm="12" md="6" lg="1" xl="1" className="form-group">
+                          {/* <Col sm="12" md="6" lg="1" xl="1" className="form-group">
                       Choice
-                    </Col>
+                    </Col> */}
                     <Col sm="12" md="6" lg="2" xl="2" className="form-group">
                       Destination
                     </Col>
@@ -31,9 +29,9 @@ const OverviewInfo = (props) => {
                     </Col>
                     </div>
                     <div className="form-row">
-                    <Col sm="12" md="6" lg="1" xl="1" className="form-group">
+                    {/* <Col sm="12" md="6" lg="1" xl="1" className="form-group">
                       
-                    </Col>
+                    </Col> */}
                            <Col sm="12" md="6" lg="2" xl="2" className="form-group">
                         <TextInput name="firstDest"  placeholder="-Destination-" disabled value={props.application.firstDest}  />
                     </Col>
@@ -53,10 +51,10 @@ const OverviewInfo = (props) => {
                     </Col>
                     </div>
                     <div className="form-row">
-
+{/* 
                     <Col sm="12" md="6" lg="1" xl="1" className="form-group">
                       
-                      </Col>
+                      </Col> */}
                              <Col sm="12" md="6" lg="2" xl="2" className="form-group">
                           <TextInput name="lastName"  placeholder="-Destination-" disabled value={props.application.secondDest}  />
                       </Col>
@@ -80,9 +78,9 @@ const OverviewInfo = (props) => {
                   
                     <div className="form-row">
 
-                    <Col sm="12" md="6" lg="1" xl="1" className="form-group">
+                    {/* <Col sm="12" md="6" lg="1" xl="1" className="form-group">
                       
-                      </Col>
+                      </Col> */}
                              <Col sm="12" md="6" lg="2" xl="2" className="form-group">
                           <TextInput name="lastName"  placeholder="-Destination-" disabled value={props.application.thirdDest}  />
                       </Col>
@@ -106,9 +104,9 @@ const OverviewInfo = (props) => {
                   
                     <div className="form-row">
 
-                    <Col sm="12" md="6" lg="1" xl="1" className="form-group">
+                    {/* <Col sm="12" md="6" lg="1" xl="1" className="form-group">
                       
-                      </Col>
+                      </Col> */}
                              <Col sm="12" md="6" lg="2" xl="2" className="form-group">
                           <TextInput name="lastName"  placeholder="-Destination-" disabled value={props.application.fourthDest}  />
                       </Col>

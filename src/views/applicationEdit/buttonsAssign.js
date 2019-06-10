@@ -31,7 +31,7 @@ const Buttons = props => {
                 
                 Edit Assignment
             </Button> */}
-            <Button
+            {/* <Button
              
                 size="sm"
                 onClick={() => { 
@@ -42,7 +42,7 @@ const Buttons = props => {
                 >
                 
                 Remove Assignment
-            </Button>
+            </Button> */}
 
                
    
