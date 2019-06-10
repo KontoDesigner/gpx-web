@@ -331,7 +331,7 @@ export function getPositionAssignsSuccess(positionAssigns) {
 export function getPositionAssigns(staffId) {
     return async function(dispatch) {
         dispatch(beginAjaxCall())
-
+debugger;
         try {
             const positionAssigns = await RestClient.Get(`positionassign/assignment/${staffId}`)
             debugger

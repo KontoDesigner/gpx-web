@@ -8,7 +8,8 @@ const WorkInfo = (props) => {
     return (
      
         <Card>
-               <CardHeader className="card-header-work"> {props.application.firstName} {props.application.lastName}
+               <CardHeader className="card-header-work"> {props.application.firstName} {props.application.lastName} 
+               {props.buttonsAssign} 
           
                </CardHeader>
 

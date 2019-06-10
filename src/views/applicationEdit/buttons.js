@@ -7,7 +7,7 @@ const Buttons = props => {
         
             <Col className="col-btn-menu pull-left">
            
-            <Button
+            {/* <Button
                //className="pull-right"
                 size="sm"
                 onClick={() => { 
@@ -18,8 +18,26 @@ const Buttons = props => {
                 Assign Applicant To Position
             </Button>
 
-
-
+            <Button
+               //className="pull-right"
+                size="sm"
+                onClick={() => { 
+                    props.toggleAssignRoleModal()
+                }}
+                color="info"
+                style={{ marginRight: '10px', marginBottom: '10px' }}>
+                Edit Assignment
+            </Button>
+            <Button
+               //className="pull-right"
+                size="sm"
+                onClick={() => { 
+                    props.toggleAssignRoleModal()
+                }}
+                color="danger"
+                style={{ marginRight: '10px', marginBottom: '10px' }}>
+                Remove Assignment
+            </Button> */}
 
                 <Button
                     onClick={() => {

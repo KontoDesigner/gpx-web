@@ -11,11 +11,15 @@ import ApplicationformInfo from './applicationformInfo'
 import ManagersectionInfo from './managersectionInfo'
 import AllRole from '../planning/planning/allRole/allRole'
 import Buttons from './buttons'
+import ButtonsAssign from './buttonsAssign'
 import Tabs from './tabs'
 import RestClient from '../../infrastructure/restClient'
 import { beginAjaxCall, ajaxCallError, endAjaxCall } from '../../actions/ajaxStatusActions'
 import AssignRole from './assignRole'
+import RemoveRole from './removeRole'
 import * as employeeInfoActions from '../../actions/staffEdit/employeeInfoActions'
+import Assignment from './assignment';
+import AssignmentHeader from './assignmentHeader';
 class WorkEdit extends Component {
     constructor(props) {
         super()
@@ -30,6 +34,7 @@ class WorkEdit extends Component {
             staffid: id,
             season: season,
             assignRoleModal: false,
+            removeRoleModal:false,
             nowAvailablePositions: [],
             // mplID: mplID,
             application: null,
@@ -94,6 +99,29 @@ class WorkEdit extends Component {
         })
     }
 
+    toggleRemoveRoleModal = () => {
+        this.setState({
+            removeRoleModal: !this.state.removeRoleModal
+        })
+    }
+
+    removeRole = (positionAssignId, startDate) => {
+    
+        const _this = this
+
+        this.props.employeeInfoActions.deletePositionAssign(positionAssignId,startDate,_this.props.application.staffID).then(function() {
+
+        _this.props.getAvailablePositionNew
+   
+
+            // _this.props.employeeInfoActions.getAvailablePositions(
+            //     _this.props.currentSeason.name,
+            //     _this.props.nextSeason.name,
+            //     _this.props.followingSeason.name
+            // )
+            _this.props.employeeInfoActions.getPositionAssigns(_this.props.application.staffID)
+        })
+    }
 
     assignRole = role => {
      debugger;
@@ -114,7 +142,8 @@ class WorkEdit extends Component {
 
         _this.props.employeeInfoActions.insertPositionAssign(positionAssign).then(function() 
         {
-            _this.props.getAvailablePositionNew
+            _this.props.getAvailablePositionNew()
+        
             // _this.props.employeeInfoActions.getAvailablePositions(
             //     _this.props.currentSeason.name,
             //     _this.props.nextSeason.name,
@@ -213,6 +242,7 @@ class WorkEdit extends Component {
                 _this.getDestinations(_this.props.application.season)
                // _this.getJobTitles(_this.props.application.season, _this.props.application.jobFamily)
                 _this.getAvailablePositionNew()
+                _this.props.employeeInfoActions.getPositionAssigns(_this.props.application.staffID)
             
             } else {
                 document.title = 'Work Application not found - TTP'
@@ -467,7 +497,16 @@ debugger;
             />
         )
 
-
+        const buttonsAssign = (
+            <ButtonsAssign
+                // save={this.save}
+                // unsavedEdit={this.state.unsavedEdit}
+                modal={this.state.assignRoleModal}
+                toggleAssignRoleModal={this.toggleAssignRoleModal}
+                toggleRemoveRoleModal={this.toggleRemoveRoleModal}
+                // staff={this.props.staff}
+            />
+        )
         if (this.props.application === null) {
             //Loading
             return ''
@@ -501,8 +540,9 @@ debugger;
                                 workStatusArr={this.state.workStatusArr}
                                 handleSelect={this.handleSelect}
                                 modal={this.state.assignRoleModal}
+                                toggleRemoveRoleModal={this.toggleRemoveRoleModal}
                                 toggleAssignRoleModal={this.toggleAssignRoleModal}
-                       
+                                buttonsAssign={buttonsAssign}
                             />
 
                             <Tabs 
@@ -518,7 +558,50 @@ debugger;
                         <Col>
                             <TabContent activeTab={this.state.activeTab}>
                                 <TabPane tabId="overviewInfo">
-                                    <OverviewInfo application={this.props.application} handleInputField={this.handleInputField} />
+                                <Card>
+
+          <CardHeader className="card-header-work-assign"> Current Assignments </CardHeader>
+          <CardBody className="no-padding-bottom">
+                           
+          <AssignmentHeader></AssignmentHeader>
+<Assignment
+                          
+                          application={this.props.application} 
+                          handleInputField={this.handleInputField} 
+                          positionAssign={this.props.currentPositionAssign}
+                          />
+                          <Assignment
+                          
+                          application={this.props.application} 
+                          handleInputField={this.handleInputField} 
+                          positionAssign={this.props.nextPositionAssign}
+                          />
+                          <Assignment
+                          
+                          application={this.props.application} 
+                          handleInputField={this.handleInputField} 
+                          positionAssign={this.props.followingPositionAssign}
+                          />
+                                        {/* <Assignment
+                                    application={this.props.application} 
+                                    handleInputField={this.handleInputField} 
+                                    positionAssign={this.props.currentPositionAssign}
+                                    />
+                                        <Assignment
+                                    application={this.props.application} 
+                                    handleInputField={this.handleInputField} 
+                                    positionAssign={this.props.currentPositionAssign}
+                                    /> */}
+                                    </CardBody>
+                                     <CardHeader className="card-header-work"> Placement {this.props.application.season} </CardHeader>
+                                     <CardBody className="no-padding-bottom">
+                                    <OverviewInfo 
+                                    application={this.props.application} 
+                                    handleInputField={this.handleInputField} 
+                                    />
+                                 </CardBody>
+                                        </Card> 
+                                    
                                 </TabPane>
 
                                 <TabPane tabId="applicationformInfo">
@@ -529,7 +612,7 @@ debugger;
                                         assignStartChange={this.assignStartChange}
                                         assignEndChange={this.assignEndChange}
                                         //handleChange={this.handleChange}
-
+                                      
                                         handleAppField={this.handleAppField}
                                         handleInputField={this.handleInputField}
                                         handleMultiSelect={this.handleMultiSelect}
@@ -629,6 +712,19 @@ debugger;
        // followingPositionAssign={this.props.followingPositionAssign}
         // season={this.props.season}
     />
+                        <RemoveRole
+        modal={this.state.removeRoleModal}
+        application={this.props.application}
+        toggle={this.toggleRemoveRoleModal}
+         availablePositions={this.state.nowAvailablePositions}
+         removeRole={this.removeRole}
+        //positionAssign={this.props.positionAssign}
+
+       positionAssign={this.props.currentPositionAssign}
+       // nextPositionAssign={this.props.nextPositionAssign}
+       // followingPositionAssign={this.props.followingPositionAssign}
+        // season={this.props.season}
+    />
                 </div>
             )
         }
@@ -641,7 +737,9 @@ function mapStateToProps(state) {
         application: state.applicationEdit.applicationInfo.application,
         keywordslookup: state.setting.keywords.keywordslookup,
         jobtitles: state.setting.setting.jobTitle,
-        currentPositionAssign: state.staffEdit.employeeInfo.currentPositionAssign
+        currentPositionAssign: state.staffEdit.employeeInfo.currentPositionAssign,
+        nextPositionAssign: state.staffEdit.employeeInfo.nextPositionAssign,
+        followingPositionAssign: state.staffEdit.employeeInfo.followingPositionAssign
         //preferToWork: state.applicationEdit.applicationInfo
     }
 }
