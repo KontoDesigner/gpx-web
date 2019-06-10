@@ -142,7 +142,7 @@ class WorkEdit extends Component {
 
         _this.props.employeeInfoActions.insertPositionAssign(positionAssign).then(function() 
         {
-            _this.props.getAvailablePositionNew()
+            _this.props.getAvailablePositionNew
         
             // _this.props.employeeInfoActions.getAvailablePositions(
             //     _this.props.currentSeason.name,
