@@ -452,6 +452,7 @@ if (national !== undefined) {
                                         edit={this.edit}
                                         status={this.props.staff.status}
                                        abscenseHistory={this.props.abscenseHistory}
+                                       resignHistory={this.props.resignHistory}
                                     />
                                 </TabPane>
 
@@ -497,9 +498,9 @@ function mapStateToProps(state) {
         followingSeason: state.geography.followingSeason,
         destinationHistory: state.staffEdit.destinationHistory,
         history: state.staffEdit.history,
-        applicationHistory: state.staffEdit.applicationHistory,
+        applicationHistory: state.staffEdit.applicationHistory.applicationHistory,
         confirmedDate: state.staffEdit.confirmedDate,
-        resignHistory: state.staffEdit.resignHistory,
+        resignHistory: state.staffEdit.applicationHistory.resignHistory,
         flightRequestHistory: state.staffEdit.flightRequestHistory,
         keywordslookup: state.setting.keywords.keywordslookup
     }

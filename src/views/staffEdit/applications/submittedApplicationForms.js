@@ -20,28 +20,30 @@ const SubmittedApplicationForms = props => {
       <CardBody>
 
          <div className="form-row">
-                    <Col sm="12" md="2" lg="2" xl="2" className="form-group">
+              
+         <Col sm="12" md="3" lg="3" xl="3" className="form-group">
                    <b>ApplicationType</b>  
                     </Col>
-                    <Col sm="12" md="4" lg="4" xl="4" className="form-group">
-                   <b> Info </b>
+                    <Col sm="12" md="3" lg="3" xl="3" className="form-group">
+                   <b> Info/StartDate </b>
                     </Col>
                     <Col sm="12" md="3" lg="3" xl="3" className="form-group">
-                    <b>Info </b> 
+                    <b>Info/Action</b> 
                     </Col>
                     <Col sm="12" md="3" lg="3" xl="3" className="form-group">
                     <b>Date Modified</b> 
                     </Col>
+
                    
 
                     </div>
                     {props.applicationHistory.map(ap => (
-ap.applicationType=="Work"?
+
 <div className="form-row">
-<Col sm="12" md="2" lg="2" xl="2" className="form-group">
+<Col sm="12" md="3" lg="3" xl="3" className="form-group">
 {ap.applicationType=="Work"? ap.applicationType   :"No Work"}{ap.applicationType=="Work"? " (" + ap.season + ")":"Season"}
 </Col>
-<Col sm="12" md="4" lg="4" xl="4" className="form-group">
+<Col sm="12" md="3" lg="3" xl="3" className="form-group">
 {ap.applicationType=="Work"? ap.firstDest.replace('undefined','') +  ", " + ap.secondDest.replace('undefined','') + ", "  + ap.thirdDest.replace('undefined','') + ", " + ap.fourthDest   :"Missing Dest. choices"}
 </Col>
  <Col sm="12" md="3" lg="3" xl="3" className="form-group">
@@ -56,7 +58,7 @@ ap.applicationType=="Work"?
 {/* ap.onclick = props.edit(ap.applicationType); */}
 </div>
 
-      :null        ))}
+     ))}
 
 
                     {props.abscenseHistory.map(h => (
@@ -84,8 +86,8 @@ ap.applicationType=="Work"?
         
 
           
-              {props.applicationHistory.map(ap => (
-              ap.applicationType=="Resigned"?
+               {props.resignHistory.map(ap => (
+              // ap.applicationType=="Resigned"?
 
 <div className="form-row">
 <Col sm="12" md="3" lg="3" xl="3" className="form-group">
@@ -106,7 +108,8 @@ ap.applicationType=="Work"?
 
 </div>
 
-              :null))}
+              //  :null
+              ))} 
         
 
         {/* <ListGroup>

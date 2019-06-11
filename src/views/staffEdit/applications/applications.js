@@ -37,6 +37,7 @@ incrementCounter = ( ) => {
                     <SubmittedApplicationForms
                      edit={this.props.edit}
                     applicationHistory={this.props.applicationHistory} 
+                    resignHistory={this.props.resignHistory} 
                     incrementCounter={this.incrementCounter} 
                     lengthOfHistory={this.lengthOfHistory} 
                     abscenseHistory={this.props.abscenseHistory} 

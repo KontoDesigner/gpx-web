@@ -33,9 +33,9 @@ export function getApplicationHistory(staffId) {
         dispatch(beginAjaxCall())
 
         try {
-
+          
             const applicationHistory = await RestClient.Get(`staff/getStaffApplicationHistory/${staffId}`)
-debugger;
+            debugger;
             dispatch(getApplicationHistorySuccess(applicationHistory))
         } catch (error) {
             dispatch(ajaxCallError(error))
