@@ -40,6 +40,7 @@ class App extends Component {
             this.props.geographyActions.getSourceMarkets(),
             this.props.settingActions.getJobFamilies(),
             this.props.settingActions.getAllJobTitle(),
+            this.props.settingActions.getAllCountries(),
             this.props.keywordsActions.getKeywordsLookup(),
             this.props.planningActions.getMPLPositionTypes(),
             this.props.staffActions.getPositionTypes(),

@@ -62,7 +62,29 @@ export function handleSelectedSetting(selectedSetting) {
     }
   }
 
+  export function getAllCountriesSuccess(country) {
+    return {
+      type: types.GET_ALLCOUNTRIES_SUCCESS,
+      data: { country: country }
+    }
+  }
 
+  export function getAllCountries() {
+    return async function (dispatch) {
+      dispatch(beginAjaxCall())
+  
+      try {
+        const country = await RestClient.Get(`setting/country`)
+  
+       
+        dispatch(getAllCountriesSuccess(country))
+      } catch (error) {
+        dispatch(ajaxCallError(error))
+  
+        throw error
+      }
+    }
+  }
   
 //   export function getJobFamily() {
 //     return async function (dispatch) {
@@ -130,19 +152,34 @@ export function getSetting() {
         try {
            
             const setting = await RestClient.Get(`setting/setting`)
-
+ 
  
 
             if (setting) {
                 setting.jobFamiliesWork= setting.jobFamiliesWork && setting.jobFamiliesWork !== '' ? setting.jobFamiliesWork.split(',') : []
-            }
-
+                setting.jobTitlesWork= setting.jobTitlesWork && setting.jobTitlesWork !== '' ? setting.jobTitlesWork.split(',') : []
+                setting.acceptDeclineCountry= setting.acceptDeclineCountry && setting.acceptDeclineCountry !== '' ? setting.acceptDeclineCountry.split(',') : []
+                setting.acceptDeclineSeason= setting.acceptDeclineSeason && setting.acceptDeclineSeason !== '' ? setting.acceptDeclineSeason.split(',') : []
            
+                setting.jobTitlesWork= setting.jobTitlesWork ? setting.jobTitlesWork.map(k => ({
+                    id: k,
+                    name: k
+               })):[]
+
+               setting.acceptDeclineCountry= setting.acceptDeclineCountry ? setting.acceptDeclineCountry.map(k => ({
+                id: k,
+                name: k
+           })):[]
+
+           setting.acceptDeclineSeason= setting.acceptDeclineSeason ? setting.acceptDeclineSeason.map(k => ({
+            id: k,
+            name: k
+       })):[]
             setting.jobFamiliesWork= setting.jobFamiliesWork ? setting.jobFamiliesWork.map(k => ({
                      id: k,
                      name: k
                 })):[]
-
+            }
 
         
             dispatch(getSettingSuccess(setting))
@@ -184,3 +221,4 @@ export function getJobFamilies() {
 
     
 }
+

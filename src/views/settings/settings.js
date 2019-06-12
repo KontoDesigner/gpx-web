@@ -131,6 +131,9 @@ class Settings extends Component {
 
             _this.setState({ loaded: true, setting: _this.props.setting })
             _this.setState({ jobFamiliesWork: _this.props.setting.jobFamiliesWork })
+            _this.setState({ acceptDeclineSeason: _this.props.setting.acceptDeclineSeason })
+            _this.setState({ acceptDeclineCountry: _this.props.setting.acceptDeclineCountry })
+            _this.setState({ jobTitlesWork: _this.props.setting.jobTitlesWork })
         })
     }
 
@@ -166,6 +169,23 @@ class Settings extends Component {
         const jobFamiliesWork = this.state.jobFamiliesWork.map(function(m) {
             return m.id
         })
+
+
+      
+
+        const acceptDeclineCountry = this.state.acceptDeclineCountry.map(function(m) {
+            return m.id
+        })
+
+        const acceptDeclineSeason = this.state.acceptDeclineSeason.map(function(m) {
+            return m.id
+        })
+
+  
+
+        const jobTitlesWork = this.state.jobTitlesWork.map(function(m) {
+            return m.id
+        })
  
         let cleanModel = {}
 
@@ -178,7 +198,11 @@ class Settings extends Component {
         cleanModel.nextNextSeason=model.nextNextSeason,
         cleanModel.applyOpen= model.applyOpen,
         cleanModel.managerComments= model.managerComments,
-        cleanModel.jobFamiliesWork=jobFamiliesWork? jobFamiliesWork.join():null
+        cleanModel.acceptDeclineOpen= model.acceptDeclineOpen,
+        cleanModel.jobFamiliesWork=jobFamiliesWork? jobFamiliesWork.join():null,
+        cleanModel.jobTitlesWork=jobTitlesWork? jobTitlesWork.join():null,
+        cleanModel.acceptDeclineSeason=acceptDeclineSeason? acceptDeclineSeason.join():null,
+        cleanModel.acceptDeclineCountry=acceptDeclineCountry? acceptDeclineCountry.join():null
 
         debugger;
         try {
@@ -361,6 +385,8 @@ class Settings extends Component {
                                     handleChange3 = {this.handleChange3}
                                     handleChange4 = {this.handleChange4}
                                     jobFamilies={this.props.jobFamilies}
+                                    jobTitles={this.props.jobTitles}
+                                    countries={this.props.countries}
                                     //settingWork={this.props.settingWork}
                                     setting2={this.props.setting2}
                                    jobFamiliesWork={this.state.jobFamiliesWork}
@@ -426,6 +452,8 @@ function mapStateToProps(state) {
         selectedApplyOpen: state.setting.setting.selectedApplyOpen,
         keywords: state.setting.keywords.keywords,
         jobFamilies: state.setting.setting.jobFamilies,
+        jobTitles: state.setting.setting.jobTitle,
+        countries: state.setting.setting.country
         //settingWork: state.settingWork.settingWork
         
         //  selectedYear:state.report.report.selectedYear,

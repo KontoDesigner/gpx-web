@@ -151,7 +151,7 @@ value={props.acceptDeclineSeason === '' ? null : props.acceptDeclineSeason}
   valueKey="id"
   labelKey="name"
   className="form-control"
-  options={props.jobFamilies}
+  options={props.countries}
   onChange={v => {
     props.handleChange3('acceptDeclineCountry', v)
 }}
@@ -193,7 +193,7 @@ value={props.jobFamiliesWork === '' ? null : props.jobFamiliesWork}
   valueKey="id"
   labelKey="name"
   className="form-control" 
-  options={props.jobFamilies}
+  options={props.jobTitles}
   onChange={v => {
     props.handleChange4('jobTitlesWork', v)
 }}

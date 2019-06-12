@@ -7,7 +7,7 @@ var defaultState = {
     jobFamilies: [],
     jobFamiliesWork: [],
     jobTitle: [],
-
+    country: [],
     
 }
 
@@ -65,7 +65,11 @@ export default function settingReducer(state = defaultState, action) {
                 ...state,
                 jobTitle: action.data.jobTitle
             }
-
+            case types.GET_ALLCOUNTRIES_SUCCESS:
+            return {
+                ...state,
+                country: action.data.country
+            }
             case types.GET_SETTING_SUCCESS:
             return {
                 ...state,
