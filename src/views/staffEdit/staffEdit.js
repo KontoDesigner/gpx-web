@@ -74,7 +74,7 @@ class StaffEdit extends Component {
     }
     edit = application => {
         // alert(position.staffID);
-        debugger;
+     
         if (application.staffID != null && (application.staffID != 0 && application.staffID != 'No StaffId defined')) {
             const win = window.open(`/application/${application.staffID}/${application.season}`, '_blank')
             win.focus()
@@ -326,7 +326,7 @@ if (national !== undefined) {
             PositionAssignId: positionAssign.PositionAssignId,
             Direction: direction
         }
-        debugger
+        debugger;
         this.props.employeeInfoActions.sendToCtx(model)
     }
 

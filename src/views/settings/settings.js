@@ -26,7 +26,11 @@ class Settings extends Component {
         this.state = {
             
             jobFamiliesWork:[],
+            acceptDeclineSeason:[],
+            acceptDeclineCountry:[],
+            jobTitlesWork:[],
             templateName: null,
+            
             activeTab: 'settings',
             resetData: this.props.settingActions.handleSetting,
             removeStaffModal: false,
@@ -70,6 +74,9 @@ class Settings extends Component {
             setting: null
         }
         this.handleChange = this.handleChange.bind(this)
+        this.handleChange2 = this.handleChange2.bind(this)
+        this.handleChange3 = this.handleChange3.bind(this)
+        this.handleChange4 = this.handleChange4.bind(this)
     }
 
     toogleRemoveStaffModal = val => {
@@ -210,6 +217,12 @@ class Settings extends Component {
         this.setState({ setting })
     }
 
+    handleAcceptDeclineOpenSelect = val => {
+        let setting = Object.assign({}, this.state.setting) //creating copy of object
+        setting.acceptDeclineOpen = val.name //updating value
+        this.setState({ setting })
+    }
+
     handleManagerCommentSelect = val => {
         let setting = Object.assign({}, this.state.setting) //creating copy of object
         setting.managerComments = val.name //updating value
@@ -263,7 +276,20 @@ class Settings extends Component {
         debugger;
         this.setState({ jobFamiliesWork: val })
     }
-    
+
+    handleChange2(event,val) {
+        debugger;
+        this.setState({ acceptDeclineSeason: val })
+    }
+
+    handleChange3(event,val) {
+        debugger;
+        this.setState({ acceptDeclineCountry: val })
+    }
+    handleChange4(event,val) {
+        debugger;
+        this.setState({ jobTitlesWork: val })
+    }
 
     handleCurSeasonOld = event => {
         const field = event.target.name
@@ -331,10 +357,16 @@ class Settings extends Component {
                                     handleMultiSelect={this.handleMultiSelect}
                                     setting={this.state.setting}
                                     handleChange = {this.handleChange}
+                                    handleChange2 = {this.handleChange2}
+                                    handleChange3 = {this.handleChange3}
+                                    handleChange4 = {this.handleChange4}
                                     jobFamilies={this.props.jobFamilies}
                                     //settingWork={this.props.settingWork}
                                     setting2={this.props.setting2}
                                    jobFamiliesWork={this.state.jobFamiliesWork}
+                                   jobTitlesWork={this.state.jobTitlesWork}
+                                   acceptDeclineSeason={this.state.acceptDeclineSeason}
+                                   acceptDeclineCountry={this.state.acceptDeclineCountry}
                                     handleApplyOpenSelect={this.handleApplyOpenSelect}
                                     handleJobFamiliesSelect={this.handleJobFamiliesSelect}
                                     handleManagerCommentSelect={this.handleManagerCommentSelect}
@@ -344,6 +376,8 @@ class Settings extends Component {
                                     handleCurSeasonSelect={this.handleCurSeasonSelect}
                                     handleNextSeasonSelect={this.handleNextSeasonSelect}
                                     handleNextNextSeasonSelect={this.handleNextNextSeasonSelect}
+                                    handleAcceptDeclineOpenSelect={this.handleAcceptDeclineOpenSelect}
+                                
                                     getSetting={this.props.settingActions.getSetting}
                                     options={this.state.options}
                                     seasons={this.state.seasons}

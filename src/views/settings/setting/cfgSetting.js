@@ -15,6 +15,7 @@ const curSeason={id:props.setting.curSeason,name:props.setting.curSeason}
 const nextSeason={id:props.setting.nextSeason,name:props.setting.nextSeason}
 const nextNextSeason={id:props.setting.nextNextSeason,name:props.setting.nextNextSeason}
 const applyOpen={id:props.setting.applyOpen,name:props.setting.applyOpen}
+const acceptDeclineOpen={id:props.setting.applyOpen,name:props.setting.acceptDeclineOpen}
 const managerComments={id:props.setting.managerComments,name:props.setting.managerComments}
 const staffApprove={id:props.setting.staffApprove,name:props.setting.staffApprove}
 const jobFamilies={id:props.setting.jobFamilies,name:props.setting.jobFamilies}
@@ -37,7 +38,12 @@ let model = {
    nextNextSeason:props.setting.nextNextSeason,
    applyOpen: props.setting.applyOpen,
    managerComments: props.setting.managerComments,
-  jobFamiliesWork: props.setting.jobFamiliesWork
+  jobFamiliesWork: props.setting.jobFamiliesWork,
+  acceptDeclineOpen: props.setting.acceptDeclineOpen,
+  jobTitlesWork: props.setting.jobTitlesWork,
+  acceptDeclineSeason: props.setting.acceptDeclineSeason,
+  acceptDeclineCountry: props.setting.acceptDeclineCountry
+  
 }
 
     // const buttons = <Buttons save={props.save} unsavedEdit={props.unsavedEdit} />
@@ -79,7 +85,7 @@ let model = {
                        
 </Col>
 <Col sm="12" md="6" lg="6" xl="4" className="form-group">
- <label htmlFor="managerComments">Manager Comments (in applications for work) is open </label>
+ <label htmlFor="managerComments">Manager Comments (in application for work) is open </label>
 
 <Select 
   id="managerComments"
@@ -91,10 +97,73 @@ let model = {
  value={managerComments}
  placeholder=""
 />
+
+
+                       
+</Col>
+
+<Col sm="12" md="6" lg="6" xl="4" className="form-group">
+ <label htmlFor="acceptDeclineOpen">Accept / Decline (in application for work) is open </label>
+
+<Select 
+  id="acceptDeclineOpen"
+  valueKey="id"
+  labelKey="name"
+  className="form-control"
+  options={props.options}
+  onChange = { props.handleAcceptDeclineOpenSelect}
+ value={acceptDeclineOpen}
+ placeholder=""
+/>
+
+
+                       
+</Col>
+
+
+
+<Col sm="12" md="6" lg="6" xl="4" className="form-group">
+<label htmlFor="acceptDeclineSeason"> Accept / Decline Season(s) (in application for work) </label>
+
+<Select 
+  multi={true}
+  id="acceptDeclineSeason"
+  valueKey="id"
+  labelKey="name"
+  className="form-control"
+  options={props.seasons}
+
+  onChange={v => {
+    props.handleChange2('acceptDeclineSeason', v)
+}}
+value={props.acceptDeclineSeason === '' ? null : props.acceptDeclineSeason}
+                            
+ placeholder=""
+/>
                        
 </Col>
 <Col sm="12" md="6" lg="6" xl="4" className="form-group">
-<label htmlFor="jobFamiliesWork"> Currently active JobFamilies (in applications for work) </label>
+<label htmlFor="acceptDeclineCountry"> Accept / Decline Country (in application for work) </label>
+
+<Select 
+  multi={true}
+ id="acceptDeclineCountry"
+  valueKey="id"
+  labelKey="name"
+  className="form-control"
+  options={props.jobFamilies}
+  onChange={v => {
+    props.handleChange3('acceptDeclineCountry', v)
+}}
+value={props.acceptDeclineCountry === '' ? null : props.acceptDeclineCountry}
+                            
+ placeholder=""
+/>
+                       
+</Col>
+
+<Col sm="12" md="6" lg="6" xl="4" className="form-group">
+<label htmlFor="jobFamiliesWork"> Accept / Decline JobFamilies (in application for work) </label>
 
 <Select 
   multi={true}
@@ -114,6 +183,28 @@ value={props.jobFamiliesWork === '' ? null : props.jobFamiliesWork}
 </Col>
 
 
+
+<Col sm="12" md="6" lg="6" xl="4" className="form-group">
+<label htmlFor="jobTitlesWork"> Accept / Decline JobTitles (in application for work) </label>
+
+<Select 
+  multi={true}
+ id="jobTitlesWork"
+  valueKey="id"
+  labelKey="name"
+  className="form-control" 
+  options={props.jobFamilies}
+  onChange={v => {
+    props.handleChange4('jobTitlesWork', v)
+}}
+value={props.jobTitlesWork === '' ? null : props.jobTitlesWork}
+                            
+ placeholder=""
+/>
+                       
+</Col>
+
+<Col sm="12" md="12" lg="12" xl="12" className="form-group"></Col>
 <Col sm="12" md="6" lg="6" xl="4" className="form-group">
 <label htmlFor="curSeason">Current Season </label>
 

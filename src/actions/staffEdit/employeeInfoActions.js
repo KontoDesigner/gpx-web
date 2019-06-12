@@ -119,12 +119,15 @@ export function save(model) {
 }
 
 export function sendToCtx(model) {
+    
     return async function(dispatch) {
         dispatch(beginAjaxCall())
 
         try {
-            const res = await RestClient.Post('ctx/send', model)
 
+      
+            const res = await RestClient.Post('ctx/send', model)
+            debugger;
             dispatch(endAjaxCall())
 
             if (res && res.ok) {
