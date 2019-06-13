@@ -284,6 +284,7 @@ class Reports extends Component {
                                 createOnboard={this.createOnboard}
                             />
                         </TabPane>
+                 
                     </TabContent>
                 </Col>
             </Row>

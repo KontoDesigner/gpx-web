@@ -409,6 +409,17 @@ class WorkEdit extends Component {
            feedBackRequest: this.props.application.feedBackRequest,
            placeDateMgr: this.props.application.placeDateMgr,
            signatureMgr: this.props.application.signatureMgr,
+
+           
+           firstName: this.props.application.firstName,
+           lastName: this.props.application.lastName,
+           nat: this.props.application.nat,
+           sourceMarket: this.props.application.sourceMarket,
+           centralID: this.props.application.centralID,
+
+           destination: this.props.application.destination,
+           jobFamily: this.props.application.jobFamily,
+           jobTitle: this.props.application.jobTitle
         }
 debugger;
         await this.props.applicationInfoActions.save(model)
@@ -548,6 +559,7 @@ debugger;
                                 toggleRemoveRoleModal={this.toggleRemoveRoleModal}
                                 toggleAssignRoleModal={this.toggleAssignRoleModal}
                                 buttonsAssign={buttonsAssign}
+                                handleInputField={this.handleInputField} 
                             />
 
                             <Tabs 

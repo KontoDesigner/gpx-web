@@ -17,30 +17,30 @@ const WorkInfo = (props) => {
                 <div className="form-row" >
 
                           <Col sm="12" md="6" lg="2" xl="2" className="form-group">
-                        <TextInput name="firstName" label="First Name" disabled  value={props.application.firstName}  />
+                        <TextInput name="firstName" label="First Name"  disabled   value={props.application.firstName}  onChange={props.handleInputField}  />
                     </Col>
 
                            <Col sm="12" md="6" lg="2" xl="2" className="form-group">
-                        <TextInput name="lastName" label="Last Name" disabled value={props.application.lastName}  />
+                        <TextInput name="lastName" label="Last Name"   disabled value={props.application.lastName}  onChange={props.handleInputField} />
                     </Col>
 
                     <Col sm="12" md="6" lg="2" xl="2" className="form-group">
-                        <TextInput name="nat" label="Nationality" disabled  value={props.application.nat}  />
+                        <TextInput name="nat" label="Nationality"  disabled  value={props.application.nat}  onChange={props.handleInputField} />
                     </Col>
                     <Col sm="12" md="6" lg="2" xl="2" className="form-group">
-                        <TextInput name="sourceMarket" label="SourceMarket" disabled  value={props.application.sourceMarket}  />
+                        <TextInput name="sourceMarket" label="SourceMarket"  disabled value={props.application.sourceMarket}  onChange={props.handleInputField}  />
                     </Col>
                     <Col sm="12" md="6" lg="2" xl="2" className="form-group">
-                        <TextInput name="centralID" label="CentralID" disabled   value={props.application.centralID}  />
+                        <TextInput name="centralID" label="CentralID"  disabled  value={props.application.centralID}  onChange={props.handleInputField} />
                     </Col>
                     <Col sm="12" md="6" lg="2" xl="2" className="form-group">
-                        <TextInput name="destination" label="Current Destination" disabled   value={props.application.destination}  />
+                        <TextInput name="destination" label="Current Destination"  disabled   value={props.application.destination}  onChange={props.handleInputField} />
                     </Col>
                     <Col sm="12" md="6" lg="2" xl="2" className="form-group">
-                        <TextInput name="jobfamily" label="Current JobFamily" disabled   value={props.application.jobFamily}  />
+                        <TextInput name="jobfamily" label="Current JobFamily"  disabled  value={props.application.jobFamily}  onChange={props.handleInputField} />
                     </Col>     
                     <Col sm="12" md="6" lg="2" xl="2" className="form-group">
-                        <TextInput name="jobtitle" label="Current JobTitle" disabled   value={props.application.jobTitle}  />
+                        <TextInput name="jobtitle" label="Current JobTitle"  disabled  value={props.application.jobTitle}   onChange={props.handleInputField}/>
                     </Col>     
  
                     

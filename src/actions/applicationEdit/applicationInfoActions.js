@@ -62,6 +62,16 @@ debugger;
    cleanModel.PlaceDateMgr= model.placeDateMgr
    cleanModel.SignatureMgr= model.signatureMgr
 
+   cleanModel.FirstName=model.firstName,
+   cleanModel.LastName=model.lastName,
+   cleanModel.Nat= model.nat,
+   cleanModel.SourceMarket=model.sourceMarket,
+   cleanModel.CentralID= model.centralID,
+
+   cleanModel.Destination=model.destination,
+   cleanModel.JobFamily=model.jobFamily,
+   cleanModel. JobTitle=model.jobTitle
+
  
     //  ProfilingSelect : model.
 
