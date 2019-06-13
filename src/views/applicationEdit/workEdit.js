@@ -208,6 +208,18 @@ class WorkEdit extends Component {
       
     }
 
+    edit = application => {
+        // alert(position.staffID);
+        debugger;
+        if (application.staffID != null && (application.staffID != 0 && application.staffID != 'No StaffId defined')) {
+            const win = window.open(`/staff/${application.staffID}`, '_blank')
+            win.focus()
+        } else {
+            const win2 = window.open(`/staff/${application.staffID}`, '_blank')
+            win2.focus()
+        }
+    }
+
     async componentDidMount() {
         const _this = this
         debugger
@@ -434,7 +446,7 @@ debugger;
             await this.props.applicationInfoActions.handleApplicationField(field, val.id)
         } else {
             await this.props.applicationInfoActions.handleApplicationField(field, null)
-        }
+        } 
 
         switch (field) {
             case 'firstDest':
@@ -560,6 +572,7 @@ debugger;
                                 toggleAssignRoleModal={this.toggleAssignRoleModal}
                                 buttonsAssign={buttonsAssign}
                                 handleInputField={this.handleInputField} 
+                                edit={this.edit} 
                             />
 
                             <Tabs 
