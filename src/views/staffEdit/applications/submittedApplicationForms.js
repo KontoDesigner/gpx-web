@@ -39,12 +39,16 @@ const SubmittedApplicationForms = props => {
 
 <div className="form-row">
 <Col sm="12" md="3" lg="3" xl="3" className="form-group">
-{ap.applicationType=="Work"?<a href="#" onClick={() => props.edit('application')}>
-{ap.applicationType} </a>  :"No Work"}
-{ap.applicationType=="Work"? " (" + ap.season + ")":"No Season"}
+{ap.applicationType=="Work" ? ap.applicationType  :"No Work"}
+{ap.applicationType=="Work" ? " (" + ap.season + ")":"No Season"} 
+
+
+ {/* {ap.applicationType=="Work"?<a href="#" onClick={() => props.edit('application')}>
+ {ap.applicationType} </a>  :"No Work"}
+ {ap.applicationType=="Work"? " (" + ap.season + ")":"No Season"} */}
 </Col>
 <Col sm="12" md="3" lg="3" xl="3" className="form-group">
-{ap.applicationType="Wor=k"? ap.firstDest.replace('undefined','') +  ", " + ap.secondDest.replace('undefined','') + ", "  + ap.thirdDest.replace('undefined','') + ", " + ap.fourthDest   :"Missing Dest. choices"}
+{ap.applicationType="Work"? ap.firstDest +  ", " + ap.secondDest + ", "  + ap.thirdDest + ", " + ap.fourthDest   :"Missing Dest. choices"}
 </Col>
  <Col sm="12" md="3" lg="3" xl="3" className="form-group">
    
