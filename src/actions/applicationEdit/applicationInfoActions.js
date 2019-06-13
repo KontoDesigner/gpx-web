@@ -70,8 +70,8 @@ debugger;
 
    cleanModel.Destination=model.destination,
    cleanModel.JobFamily=model.jobFamily,
-   cleanModel. JobTitle=model.jobTitle
-
+   cleanModel.JobTitle=model.jobTitle,
+   cleanModel.EarlyPerformanceCheck=model.earlyPerformanceCheck 
  
     //  ProfilingSelect : model.
 

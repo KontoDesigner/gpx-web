@@ -55,6 +55,7 @@ class WorkEdit extends Component {
             mostImportantArr: [],
             midYearReviewArr:[],
             midYearTuiValueArr:[],
+            earlyPerformanceArr:[],
             yesNoOption: [
                 {
                     id: 'Yes',
@@ -266,6 +267,10 @@ class WorkEdit extends Component {
             }
         }) 
 
+
+        const earlyPerformance = this.props.keywordslookup.filter(ap => ap.ids === 'EarlyPerformanceCheck')[0]
+        const earlyPerformanceArr = earlyPerformance.keywordValues.split(',')
+
         const preferWorkWinter = this.props.keywordslookup.filter(ap => ap.ids === 'PreferToWork_Winter')[0]
         const preferWorkWinterArr = preferWorkWinter.keywordValues.split(',')
 
@@ -293,6 +298,12 @@ class WorkEdit extends Component {
         //     })):[]
 
         //  })
+
+
+        const earlyPerformanceObjArr = earlyPerformanceArr.map(s => ({
+            id: s,
+            name: s
+        }))
 
         const workStatusObjArr = workStatusArr.map(s => ({
             id: s,
@@ -328,6 +339,10 @@ class WorkEdit extends Component {
             id: s,
             name: s
         }))
+
+        if (earlyPerformance !== undefined) {
+            this.setState({ earlyPerformanceArr: earlyPerformanceObjArr })
+        }
         if (workStatus !== undefined) {
             this.setState({ workStatusArr: workStatusObjArr })
         }
@@ -431,7 +446,8 @@ class WorkEdit extends Component {
 
            destination: this.props.application.destination,
            jobFamily: this.props.application.jobFamily,
-           jobTitle: this.props.application.jobTitle
+           jobTitle: this.props.application.jobTitle,
+           earlyPerformanceCheck: this.props.application.earlyPerformanceCheck
         }
 debugger;
         await this.props.applicationInfoActions.save(model)
@@ -722,7 +738,8 @@ debugger;
                                         yesNoOption={this.state.yesNoOption}
                                         midYearReviewArr={this.state.midYearReviewArr}
                                         midYearTuiValueArr={this.state.midYearTuiValueArr}
-                                       
+                                        earlyPerformanceArr={this.state.earlyPerformanceArr}
+                                        
                                     />
                                 </TabPane>
                             </TabContent>
