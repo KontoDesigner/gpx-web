@@ -7,6 +7,7 @@ var defaultState = {
     // currentPositionAssign: null,
     // nextPositionAssign: null,
    selectedDestination: ["All Destinations"], 
+   selectedSeason: [], 
    selectedPositionType: null, 
 //    resigndates:null, 
    selectedYear: null,
@@ -22,6 +23,13 @@ export default function reportReducer(state = defaultState, action) {
         return {
             ...state,
             selectedDestination:action.data.val
+
+        }
+
+        case (types.HANDLE_SEASON_FIELD):
+        return {
+            ...state,
+            selectedSeason:action.data.val
 
         }
         case (types.HANDLE_CHANGE_FIELD):

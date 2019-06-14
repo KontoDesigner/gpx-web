@@ -19,7 +19,7 @@ const Report = (props) => {
                 <div className="form-row">
 
                        <Col key={0} sm="12" md="4" lg="3" xl="3" className="form-group form-group-select">
-                       <label htmlFor="year">Year</label>
+                       {/* <label htmlFor="year">Year</label>
 
 <Select
     id="years"
@@ -31,19 +31,21 @@ const Report = (props) => {
      value={props.selectedYear}
     placeholder="Select Year"
 />
-<p></p>           
+<p></p>            */}
                        
-                       <label htmlFor="destination">Destination</label>
+<label htmlFor="applySeason">Apply Season(s)</label>
 
         <Select 
-          id="destinations"
-          valueKey="destination"
-          labelKey="destination"
+        multi={true}
+          id="applySeason"
+          valueKey="id"
+          labelKey="name"
           className="form-control"
-          options={props.position}
-         onChange = { props.handleDestinationSelect }
-         value={props.selectedDestination}
-         placeholder="All Destinations"
+        //options={[...[{season: 'All Seasons"'}],...props.seasons]}
+          options={props.seasons}  
+         onChange = {props.handleSeasonSelect }
+         value={props.selectedSeason}
+         placeholder="Select Season(s)"
         />
         <p></p>
            <Button   color="success"  onClick={() => { props.create() }}>Create Report</Button>

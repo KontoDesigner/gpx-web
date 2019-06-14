@@ -18,6 +18,13 @@ export function handleDestinationField(val) {
     }
 }
 
+export function handleSeasonField(val) {
+    return {
+        type: types.HANDLE_SEASON_FIELD,
+        data: { val: val }
+    }
+}
+
 export function handleChangeField(field, val) {
     return {
         type: types.HANDLE_CHANGE_FIELD,

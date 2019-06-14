@@ -97,6 +97,14 @@ class Reports extends Component {
 
         //this.props.handleUnsavedEdit()
     }
+
+    handleSeasonSelect = val => {
+        val = val != null || val != undefined ? val : ''
+
+        this.props.reportActions.handleSeasonField(val)
+
+        //this.props.handleUnsavedEdit()
+    }
     create = async destination => {
         var currentdate = new Date()
         var newdatemodified = currentdate.getFullYear() + '-' + (currentdate.getMonth() + 1) + '-' + currentdate.getDate()
@@ -288,8 +296,11 @@ class Reports extends Component {
                         <TabPane tabId="placementRequestReport">
                             <PlacementReport
                                 position={this.props.position}
+                                seasons={this.props.seasons} 
                                 selectedDestination={this.props.selectedDestination}
                                 handleDestinationSelect={this.handleDestinationSelect}
+                                selectedSeason={this.props.selectedSeason}
+                                handleSeasonSelect={this.handleSeasonSelect}
                                 years={this.state.years}
                                 selectedYear={this.props.selectedYear}
                                 handleYearSelect={this.handleYearSelect}
@@ -297,7 +308,7 @@ class Reports extends Component {
                                 createOnboard={this.createOnboard}
                             />
                         </TabPane>
-                 
+                  
                     </TabContent>
                 </Col>
             </Row>
@@ -310,9 +321,11 @@ function mapStateToProps(state) {
         resigndate: state.report.report.resigndates,
         position: state.report.report.report,
         selectedDestination: state.report.report.selectedDestination,
+        selectedSeason: state.report.report.selectedSeason,
         selectedResignDates: state.report.report.selectedResignDates,
         //selectedYear:state.report.report.selectedYear,
-        create: state.report.report.create
+        create: state.report.report.create,
+        seasons: state.geography.seasons 
     }
 }
 
