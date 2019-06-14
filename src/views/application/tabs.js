@@ -20,7 +20,7 @@ const Tabs = props => {
                                 
                             }}>
                            All Applications
-                         
+                          
 
                         </ListGroupItem> 
                     
@@ -59,6 +59,7 @@ const Tabs = props => {
                          
 
                         </ListGroupItem>
+                      
                     </ListGroup>
                 </CardBody>
             </Card>

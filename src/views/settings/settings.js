@@ -406,7 +406,7 @@ class Settings extends Component {
                                 
                                     getSetting={this.props.settingActions.getSetting}
                                     options={this.state.options}
-                                    seasons={this.state.seasons}
+                                    seasons={this.props.seasons}
                                     save={this.save}
                                     unsavedEdit={this.state.unsavedEdit}
                                 />
@@ -453,6 +453,7 @@ function mapStateToProps(state) {
         keywords: state.setting.keywords.keywords,
         jobFamilies: state.setting.setting.jobFamilies,
         jobTitles: state.setting.setting.jobTitle,
+        seasons: state.geography.seasons,
         countries: state.setting.setting.country
         //settingWork: state.settingWork.settingWork
         

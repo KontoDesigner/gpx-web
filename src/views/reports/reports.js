@@ -284,6 +284,19 @@ class Reports extends Component {
                                 createOnboard={this.createOnboard}
                             />
                         </TabPane>
+
+                        <TabPane tabId="placementRequestReport">
+                            <PlacementReport
+                                position={this.props.position}
+                                selectedDestination={this.props.selectedDestination}
+                                handleDestinationSelect={this.handleDestinationSelect}
+                                years={this.state.years}
+                                selectedYear={this.props.selectedYear}
+                                handleYearSelect={this.handleYearSelect}
+                                create={this.create}
+                                createOnboard={this.createOnboard}
+                            />
+                        </TabPane>
                  
                     </TabContent>
                 </Col>

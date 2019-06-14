@@ -148,6 +148,15 @@ debugger;
           
                             />    
 </TabPane>
+<TabPane tabId="placementRequestReport">
+                              <PlanToResign
+             getPlanToResignApplication={this.props.planToResignApplicationActions.getPlanToResignApplication}
+            planToResignApplication={this.props.planToResignApplication}
+            edit={this.edit}  
+
+          
+                            />    
+</TabPane>
 </TabContent>
 </Col>
 

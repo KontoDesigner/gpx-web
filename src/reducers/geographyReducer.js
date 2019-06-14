@@ -2,6 +2,7 @@ import { ActionTypes as types } from '../constants/geographyConstants'
 
 var defaultState = {
     sourceMarkets: [],
+    seasons: [],
     jobTitles: [],
     currentSeason: [],
     nextSeason: [],
@@ -22,11 +23,17 @@ export default function geographyReducer(state = defaultState, action) {
                 jobTitles: action.data.jobTitles
             }
         case types.GET_SEASONS_SUCCESS:
+            // return {
+            //     ...state,
+            //     currentSeason: action.data.seasons.currentSeason,
+            //     nextSeason: action.data.seasons.nextSeason,
+            //     followingSeason: action.data.seasons.followingSeason
+            // }
+
             return {
                 ...state,
-                currentSeason: action.data.seasons.currentSeason,
-                nextSeason: action.data.seasons.nextSeason,
-                followingSeason: action.data.seasons.followingSeason
+                seasons: action.data.seasons
+             
             }
         default:
             return state

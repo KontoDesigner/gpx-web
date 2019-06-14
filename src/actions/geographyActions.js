@@ -14,7 +14,13 @@ export function getSeasons() {
         dispatch(beginAjaxCall())
 
         try {
-            const seasons = await RestClient.Get(`geography/seasons`);
+            const seasonstmp = await RestClient.Get(`geography/seasons`);
+
+
+            const seasons = seasonstmp.filter(function (el) {
+                return el.id != null;
+              });
+
 
             dispatch(getSeasonsSuccess(seasons))
         } catch (error) {

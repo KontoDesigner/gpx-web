@@ -30,7 +30,8 @@ const Tabs = props => {
                                 props.toggle('onboardReport', props.getReport, props.handleReport)
                             }}>
                             Onboard Report
-                        </ListGroupItem>  <ListGroupItem
+                        </ListGroupItem>  
+                        <ListGroupItem
                             className={classnames({ active: props.activeTab === 'vacantReport' })}
                             onClick={() => {
                                 props.toggle('vacantReport', props.getReport, props.handleReport)
@@ -38,7 +39,13 @@ const Tabs = props => {
                            Vacant Report
                         </ListGroupItem>
 
-
+                        <ListGroupItem
+                            className={classnames({ active: props.activeTab === 'placementRequestReport' })}
+                            onClick={() => {
+                                props.toggle('placementRequestReport', props.getReport, props.handleReport)
+                            }}>
+                           Placement Request Report
+                        </ListGroupItem>
                         
                     </ListGroup>
                 </CardBody>
