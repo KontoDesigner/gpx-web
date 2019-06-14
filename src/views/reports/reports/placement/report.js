@@ -48,7 +48,7 @@ const Report = (props) => {
          placeholder="Select Season(s)"
         />
         <p></p>
-           <Button   color="success"  onClick={() => { props.create() }}>Create Report</Button>
+           <Button   color="success"  onClick={() => { props.createPlacement() }}>Create Report</Button>
            {/* <input type="file" /> */}
       </Col>
 </div>

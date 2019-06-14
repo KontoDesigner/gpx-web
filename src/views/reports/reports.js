@@ -115,16 +115,31 @@ class Reports extends Component {
               })
             : []
 
-        //var model = [];
-        // const model= {
-        //    // resignDate:newdatemodified,
-        //    destination:destination?[destination.destination]:[]
 
-        //     //destination: [destination.destination]
-
-        // }
 
        await this.props.reportActions.createReport(model)
+    }
+
+
+    createPlacement = async season => {
+        var currentdate = new Date()
+        var newdatemodified = currentdate.getFullYear() + '-' + (currentdate.getMonth() + 1) + '-' + currentdate.getDate()
+
+        let model = season
+            ? season.map(x => {
+                  return { season: x.season }
+              })
+            : []
+
+        // const model= {
+        //   //resignDate: newdatemodified,
+        //  destination:destination?[destination.destination]:[]
+
+        //   //destination: [destination.destination]
+
+        // }
+        debugger;
+        const res = await  this.props.reportActions.createPlacementReport(model)
     }
 
     createOnboard = async destination => {
@@ -305,7 +320,7 @@ class Reports extends Component {
                                 selectedYear={this.props.selectedYear}
                                 handleYearSelect={this.handleYearSelect}
                                 create={this.create}
-                                createOnboard={this.createOnboard}
+                                createPlacement={this.createPlacement}
                             />
                         </TabPane>
                   

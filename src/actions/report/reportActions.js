@@ -122,6 +122,44 @@ export function createResignReport(model) {
     }
 }
 
+export function createPlacementReport(model) {
+    return async function(dispatch) {
+          dispatch(beginAjaxCall())
+
+        try {
+            var currentdate = new Date()
+
+            var newdatemodified = moment(currentdate).format('YYYY-MM-DD HH:mm:ss')
+
+            //   const req = {
+            //       resignDate: appDate.appDate,
+            //       destination: ['ACE']
+            //   }
+
+            //await RestClient.Download(`resign/GetResignReports?datetime=2018-10-02`,null,'ResignReport.xlsx')
+            const res =  await RestClient.Download(`report/GetPlacementReports`, model, 'PlacementReport_' + newdatemodified + '.xlsx')
+
+            dispatch(endAjaxCall())
+
+            if (res) {
+                toastr.success('Success', `TPP - Report Placement Request  routine finished`)
+          } else {
+                toastr.error('Error', `TPP - Could not create Report Placement Request: ${res ? res.message : 'Error'}`)
+            }
+
+            //const replyYesNoRoles = await RestClient.Get(`positionassign/GetAllPositionsAssignData`)
+
+            //For some reason we need to reset value here, (bug when loading in new data with filter), don't touch h3h3
+            // dispatch(handleCreateReport([]))
+
+        } catch (error) {
+            dispatch(ajaxCallError(error))
+
+            throw error
+        }
+    }
+}
+
 export function createOnboardReport(model) {
     return async function(dispatch) {
           dispatch(beginAjaxCall())
