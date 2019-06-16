@@ -436,7 +436,8 @@ class WorkEdit extends Component {
            feedBackRequest: this.props.application.feedBackRequest,
            placeDateMgr: this.props.application.placeDateMgr,
            signatureMgr: this.props.application.signatureMgr,
-
+           workPeriodStart: this.props.application.workPeriodStart,
+           workPeriodEnd: this.props.application.workPeriodEnd,
            
            firstName: this.props.application.firstName,
            lastName: this.props.application.lastName,
