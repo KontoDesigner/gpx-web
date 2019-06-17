@@ -33,14 +33,14 @@ const Season = props => {
                         />
                     </Col>
 
-                    {/* <Col sm="12" md="2" lg="2" xl="2" className="form-group">
+                     <Col sm="12" md="2" lg="2" xl="2" className="form-group">
                                <label htmlFor="workPeriodStart">From</label>
                 
                                <Datetime  className={'custom-datepicker'}
                                 id="workPeriodStart"
                                onChange={props.assignStartChange}
-                            //    defaultValue={moment(this.props.positionAssign.StaffStartDate).format('YYYY-MM-DD')}
-                               value={props.selectedStartDate}
+                            //    defaultValue={moment(props.application.workPeriodStart).format('YYYY-MM-DD')}
+                               value={props.application.workPeriodStart}
                                 timeFormat={false}
                                 dateFormat="YYYY-MM-DD"
                                 closeOnSelect
@@ -50,17 +50,17 @@ const Season = props => {
                         <Col sm="12" md="2" lg="2" xl="2" className="form-group">
                                <label htmlFor="workPeriodEnd">To</label>
                 
-                               <Datetime  className={'custom-datepicker'}
+                               <Datetime  className={'custom-datepicker'} 
                                 id="workPeriodEnd"
                                onChange={props.assignEndChange}
-                            //    defaultValue={moment(this.props.positionAssign.StaffStartDate).format('YYYY-MM-DD')}
-                               value={props.selectedEndDate}
+                               // defaultValue={moment(props.application.workPeriodEnd).format('YYYY-MM-DD')}
+                               value={props.application.workPeriodEnd}
                                 timeFormat={false}
                                 dateFormat="YYYY-MM-DD"
                                 closeOnSelect
                                 utc={true}
                                 inputProps={{ placeholder: 'YYYY-MM-DD' }} />
-                        </Col> */}
+                        </Col> 
                     <Col sm="12" md="12" lg="12" xl="12">
                         <CardHeader className="card-header-work">
                             {' '}
