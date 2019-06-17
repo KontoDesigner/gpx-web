@@ -21,27 +21,21 @@ class Reports extends Component {
             activeTab: 'planningReport',
             validDate: '',
             vacantDisabled: false,
-
+            yearsArr : [],
+            valueSingle: '',
             resetData: this.props.reportActions.handleReport,
             sourceMarketId: '',
-            years: [
+            details: [
                 //not in use  delete
                 {
-                    id: '2018',
-                    name: '2018'
+                    id: 'MissingMgrComments',
+                    name: 'MissingMgrComments'
                 },
                 {
-                    id: '2019',
-                    name: '2019'
-                },
-                {
-                    id: '2020',
-                    name: '2020'
-                },
-                {
-                    id: '2021',
-                    name: '2021'
+                    id: 'MissingApplications',
+                    name: 'MissingApplications'
                 }
+            
             ],
             unsavedEdit: false,
             position: null
@@ -52,8 +46,25 @@ class Reports extends Component {
 
         //  resetData: this.props.reportActions.handleReport
         // }
+
+        this.handleChangeSelect = this.handleChangeSelect.bind(this)
     }
     componentDidMount = async () => {
+        const years= this.props.keywordslookup.filter(ap => ap.ids === 'Years')[0];
+         const yearsArr = years.keywordValues.split(',')
+
+        const yearsObjArr = yearsArr.map(s => ({
+            id: s,
+            name: s
+         }))
+
+         if (years !== undefined) {
+        
+               
+            this.setState({yearsArr: yearsObjArr })
+     }
+
+
         document.title = 'Reports'
         const _this = this
 
@@ -83,6 +94,18 @@ class Reports extends Component {
     //         })
     //     })
     //   }
+
+    handleChangeSelect(event) {
+        debugger;
+       if(event==null){
+        this.setState({ valueSingle: '' })
+        return false;
+       }
+
+        debugger
+        this.setState({ valueSingle: event.id })
+    }
+
 
     handleMonthSelect = val => {
         val = val != null || val != undefined ? val : ''
@@ -121,28 +144,21 @@ class Reports extends Component {
     }
 
 
-    createPlacement = async season => {
+    createPlacement = async (season, details) => {
+        debugger;
         var currentdate = new Date()
         var newdatemodified = currentdate.getFullYear() + '-' + (currentdate.getMonth() + 1) + '-' + currentdate.getDate()
 
         let model = season
-            ? season.map(x => {
-                  return { season: x.season }
-              })
-            : []
-
-        // const model= {
-        //   //resignDate: newdatemodified,
-        //  destination:destination?[destination.destination]:[]
-
-        //   //destination: [destination.destination]
-
-        // }
-        debugger;
+        ? season.map(x => {
+              return { season: x.id, details: details }
+          }) 
+        : []
         const res = await  this.props.reportActions.createPlacementReport(model)
     }
 
     createOnboard = async destination => {
+        debugger
         var currentdate = new Date()
         var newdatemodified = currentdate.getFullYear() + '-' + (currentdate.getMonth() + 1) + '-' + currentdate.getDate()
 
@@ -151,7 +167,7 @@ class Reports extends Component {
                   return { destination: x.destination }
               })
             : []
-
+debugger;
         // const model= {
         //   //resignDate: newdatemodified,
         //  destination:destination?[destination.destination]:[]
@@ -252,7 +268,8 @@ class Reports extends Component {
                     getReport={this.props.reportActions.getReport}
                     getResignDates={this.props.reportActions.getResignDates}
                     handleReport={this.props.reportActions.handleReport}
-                    years={this.state.years}
+                      //years={this.state.years}
+                      years={this.state.yearsArr}
                 />
                 <Col sm="12" md="9" lg="9" xl="10">
                     <TabContent activeTab={this.state.activeTab}>
@@ -261,12 +278,13 @@ class Reports extends Component {
                                 position={this.props.position}
                                 selectedDestination={this.props.selectedDestination}
                                 handleDestinationSelect={this.handleDestinationSelect}
-                                years={this.state.years}
+                              //years={this.state.years}
+                              years={this.state.yearsArr}
                                 // selectedYear={this.props.selectedYear}
                                 handleMonthSelect={this.handleMonthSelect}
                                 create={this.create}
                             />
-                        </TabPane>
+                        </TabPane> 
                         <TabPane tabId="resignReport">
                             <ResignReport
                                 position={this.props.position}
@@ -274,7 +292,8 @@ class Reports extends Component {
                                 selectedDestination={this.props.selectedDestination}
                                 selectedResignDates={this.props.selectedResignDates}
                                 handleDestinationSelect={this.handleDestinationSelect}
-                                years={this.state.years}
+                                 //years={this.state.years}
+                                 years={this.state.yearsArr}
                                 // selectedYear={this.props.selectedYear}
                                 handleMonthSelect={this.handleMonthSelect}
                                 // getResignDates={this.props.reportActions.getResignDates}
@@ -287,7 +306,8 @@ class Reports extends Component {
                                 position={this.props.position}
                                 selectedDestination={this.props.selectedDestination}
                                 handleDestinationSelect={this.handleDestinationSelect}
-                                years={this.state.years}
+                                 //years={this.state.years}
+                                 years={this.state.yearsArr}
                                 selectedYear={this.props.selectedYear}
                                 handleYearSelect={this.handleYearSelect}
                                 create={this.create}
@@ -300,7 +320,8 @@ class Reports extends Component {
                                 position={this.props.position}
                                 selectedDestination={this.props.selectedDestination}
                                 handleDestinationSelect={this.handleDestinationSelect}
-                                years={this.state.years}
+                                  //years={this.state.years}
+                                  years={this.state.yearsArr}
                                 selectedYear={this.props.selectedYear}
                                 handleYearSelect={this.handleYearSelect}
                                 create={this.create}
@@ -316,7 +337,11 @@ class Reports extends Component {
                                 handleDestinationSelect={this.handleDestinationSelect}
                                 selectedSeason={this.props.selectedSeason}
                                 handleSeasonSelect={this.handleSeasonSelect}
-                                years={this.state.years}
+                                handleChangeSelect={this.handleChangeSelect}
+                                //years={this.state.years}
+                               years={this.state.yearsArr}
+                               details={this.state.details}
+                               valueSingle={this.state.valueSingle}
                                 selectedYear={this.props.selectedYear}
                                 handleYearSelect={this.handleYearSelect}
                                 create={this.create}
@@ -326,7 +351,7 @@ class Reports extends Component {
                   
                     </TabContent>
                 </Col>
-            </Row>
+            </Row> 
         )
     }
 }
@@ -340,7 +365,8 @@ function mapStateToProps(state) {
         selectedResignDates: state.report.report.selectedResignDates,
         //selectedYear:state.report.report.selectedYear,
         create: state.report.report.create,
-        seasons: state.geography.seasons 
+        seasons: state.geography.seasons,
+        keywordslookup: state.setting.keywords.keywordslookup
     }
 }
 

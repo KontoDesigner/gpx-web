@@ -1,7 +1,6 @@
 
-
 import React, { Component } from 'react'
-import { Card, CardBody, CardHeader, Col,Button } from 'reactstrap'
+import { Card, CardBody, CardHeader, Col,Button,Row } from 'reactstrap'
 import TextInput from '../../../../components/textInput'
 import Select from 'react-select'
 
@@ -19,19 +18,7 @@ const Report = (props) => {
                 <div className="form-row">
 
                        <Col key={0} sm="12" md="4" lg="3" xl="3" className="form-group form-group-select">
-                       {/* <label htmlFor="year">Year</label>
 
-<Select
-    id="years"
-    valueKey="id"
-    labelKey="name"
-    className="form-control"
-    options={props.years}
-    onChange = { props.handleYearSelect }
-     value={props.selectedYear}
-    placeholder="Select Year"
-/>
-<p></p>            */}
                        
 <label htmlFor="applySeason">Apply Season(s)</label>
 
@@ -47,11 +34,37 @@ const Report = (props) => {
          value={props.selectedSeason}
          placeholder="Select Season(s)"
         />
-        <p></p>
-           <Button   color="success"  onClick={() => { props.createPlacement() }}>Create Report</Button>
+       
+      </Col>
+     </div>
+     <div className="form-row">
+     <Col key={0} sm="12" md="4" lg="3" xl="3" className="form-group form-group-select">
+                       
+<label htmlFor="managerApplication">Show Only</label>
+
+        <Select 
+        //multi={true}
+          id="managerApplication"
+          valueKey="id"
+          labelKey="name"
+          className="form-control"
+        //options={[...[{season: 'All Seasons"'}],...props.seasons]}
+          options={props.details}  
+         onChange = {props.handleChangeSelect }
+         value={props.valueSingle}
+         placeholder="Select"
+        />
+    
+      </Col>
+      </div>
+      <div className="form-row">
+      <Col key={0} sm="12" md="4" lg="3" xl="3" className="form-group form-group-select">
+    
+           <Button   color="success"  onClick={() => { props.createPlacement(props.selectedSeason,props.valueSingle) }}>Create Report</Button>
            {/* <input type="file" /> */}
       </Col>
-</div>
+      </div>
+
             </CardBody>
         </Card>
     );

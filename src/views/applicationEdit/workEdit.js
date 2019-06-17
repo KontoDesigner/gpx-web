@@ -499,6 +499,12 @@ debugger;
     }
 
     handleAppField(event) {
+        if(event==null){
+            this.setState({ valueSingle: '' })
+            return false;
+           }
+
+
         debugger
         this.setState({ valueSingle: event.id })
     }

@@ -123,6 +123,7 @@ export function createResignReport(model) {
 }
 
 export function createPlacementReport(model) {
+    debugger;
     return async function(dispatch) {
           dispatch(beginAjaxCall())
 
