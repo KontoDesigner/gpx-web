@@ -13,12 +13,17 @@ const Education = (props) => {
             <CardBody className="no-padding-bottom">
                 <div className="form-row">
     
-                <Col sm="12" md="6" lg="6" xl="6" className="form-group">
+                <Col sm="12" md="12" lg="12" xl="12" className="form-group">
+
+                <Label for='education'>Education</Label>
+                <Input required type='textarea' className="form-control" maxLength='1000' name='education' id='education' rows={6} value={props.staff.education} onChange={props.handleStaffField} aria-multiline='true'/>
+{/*                    
+                   
              
-             <TextInput name="education" label="Education"  value={props.staff.education} onChange={props.handleStaffField}/>
+             <TextInput name="education" label="Education"  value={props.staff.education} onChange={props.handleStaffField}/> */}
          </Col>
 
-         <Col sm="12" md="6" lg="6" xl="6" className="form-group form-group-select">
+          <Col sm="12" md="6" lg="6" xl="6" className="form-group form-group-select">
                         <label htmlFor="childCare">Childcare Level</label>
 
                         <Select 
@@ -33,7 +38,7 @@ const Education = (props) => {
 
 
                         //    id="childCare"
-                            
+                             
                         //    valueKey="id"
                         //    labelKey="name"
                         //    className="form-control"
@@ -45,13 +50,9 @@ const Education = (props) => {
                            
                             
                         />
-                    </Col>
+                    </Col> 
 
-                    <Col sm="12" md="12" lg="12" xl="12" className="form-group">
-                        {/* <TextInput name="title" label="Title" value={props.staff.title} onChange={props.handleStaffField} /> */}
-                        <Label for='comment'>childCareRemarks</Label>
-                <Input required type='textarea' className="form-control" maxLength='1000' name='childCareRemarks' id='childCareRemarks' rows={6}  aria-multiline='true'/>
-                    </Col>
+           
               
                 </div>
             </CardBody>

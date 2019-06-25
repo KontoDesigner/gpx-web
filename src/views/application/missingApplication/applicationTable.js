@@ -9,7 +9,7 @@ const columns = [
      { label: 'SourceMarket', dataKey: 'sourceMarket' },
      { label: 'Current Destination', dataKey: 'destination' },
      { label: 'Overall Rating', dataKey: 'overallRating' },
-     { label: 'Driving License', dataKey: 'drivingLicense' },
+     { label: 'Driver', dataKey: 'driver' },
      { label: 'Education', dataKey: 'education' },
 
     //{ label: 'Manager Comments', dataKey: 'managerComments' },
