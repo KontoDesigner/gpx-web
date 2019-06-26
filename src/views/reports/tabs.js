@@ -44,7 +44,7 @@ const Tabs = props => {
                             onClick={() => {
                                 props.toggle('placementRequestReport', props.getReport, props.handleReport)
                             }}>
-                           Placement Request Report
+                           Placement Reports
                         </ListGroupItem>
                         
                     </ListGroup>
