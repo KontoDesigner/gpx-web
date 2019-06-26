@@ -169,10 +169,10 @@ debugger;
 function mapStateToProps(state) {
     return {
         // newPosition: state.planning.planning.newPosition,
-        allApplication: state.application.application.allApplication,
-        planToResignApplication: state.application.application.planToResignApplication,
-        missingManagerCommentsApplication: state.application.application.missingManagerCommentsApplication,
-        missingApplication: state.application.application.missingApplication,
+        allApplication: state.application.allApplication,
+        planToResignApplication: state.application.planToResignApplication,
+        missingManagerCommentsApplication: state.application.missingManagerCommentsApplication,
+        missingApplication: state.application.missingApplication,
         // placedRoles: state.planning.planning.placedRoles,
         // vacantRoles: state.planning.planning.vacantRoles,
         // replyYesNoRoles: state.planning.planning.replyYesNoRoles,

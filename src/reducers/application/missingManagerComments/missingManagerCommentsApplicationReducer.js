@@ -1,4 +1,4 @@
-import { ActionTypes as types } from '../../../constants/application/missingManagerCommentsApplication/missingManagerCommentsApplicationConstants';
+import { ActionTypes as types } from '../../../constants/application/missingManagerComments/missingManagerCommentsApplicationConstants';
 
 var defaultState = [];
 
