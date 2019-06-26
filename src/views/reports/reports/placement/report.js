@@ -12,7 +12,7 @@ const Report = (props) => {
     return (
  
         <Card>
-            <CardHeader>Reports: Placement Request Report</CardHeader>
+            <CardHeader>Reports: Placement Reports</CardHeader>
 
             <CardBody className="no-padding-bottom">
                 <div className="form-row">

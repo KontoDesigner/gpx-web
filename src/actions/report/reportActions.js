@@ -123,12 +123,26 @@ export function createResignReport(model) {
 }
 
 export function createPlacementReport(model) {
-    debugger;
+
     return async function(dispatch) {
           dispatch(beginAjaxCall())
-
+debugger;
         try {
             var currentdate = new Date()
+
+        
+          if(model[0].details=="") {
+
+           var dynamicName="Placement_Request"
+          }
+          if(model[0].details=="MissingMgrComments") {
+
+            var dynamicName="MissingMgrComments"
+           }
+           if(model[0].details=="MissingApplications") {
+
+            var dynamicName="MissingApplications"
+           }
 
             var newdatemodified = moment(currentdate).format('YYYY-MM-DD HH:mm:ss')
 
@@ -136,16 +150,16 @@ export function createPlacementReport(model) {
             //       resignDate: appDate.appDate,
             //       destination: ['ACE']
             //   }
-
+            debugger;
             //await RestClient.Download(`resign/GetResignReports?datetime=2018-10-02`,null,'ResignReport.xlsx')
-            const res =  await RestClient.Download(`report/GetPlacementReports`, model, 'PlacementReport_' + newdatemodified + '.xlsx')
+            const res =  await RestClient.Download(`report/GetPlacementReports`, model, dynamicName + "_" + newdatemodified + '.xlsx')
 
             dispatch(endAjaxCall())
 
             if (res) {
-                toastr.success('Success', `TPP - Report Placement Request  routine finished`)
+                toastr.success('Success', `TPP - Report  routine finished`)
           } else {
-                toastr.error('Error', `TPP - Could not create Report Placement Request: ${res ? res.message : 'Error'}`)
+                toastr.error('Error', `TPP - Could not create Report : ${res ? res.message : 'Error'}`)
             }
 
             //const replyYesNoRoles = await RestClient.Get(`positionassign/GetAllPositionsAssignData`)
