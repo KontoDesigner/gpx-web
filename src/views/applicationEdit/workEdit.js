@@ -9,6 +9,7 @@ import Season from './season'
 import OverviewInfo from './overviewInfo'
 import ApplicationformInfo from './applicationformInfo'
 import ManagersectionInfo from './managersectionInfo'
+
 import AllRole from '../planning/planning/allRole/allRole'
 import Buttons from './buttons'
 import ButtonsAssign from './buttonsAssign'
@@ -137,6 +138,7 @@ class WorkEdit extends Component {
             StaffID: this.props.application.staffID,
             FirstName: this.props.application.firstName,
             Season: role.season,
+            Accept: role.accept,
           
             FullName: this.props.application.lastName,
             StartDate: role.startDate,

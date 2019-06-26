@@ -122,6 +122,7 @@ debugger;
             mplid: position.mplid,
             season: this.props.application.season,
             dateModified: newdatemodified ,
+            accept: "Pending" ,
     
             startDate: this.state.selectedStartDate
             ? this.state.selectedStartDate
@@ -179,7 +180,7 @@ debugger;
 
 
         this.toggle();
-        
+        debugger;
         this.props.assignRole(model);
 
          
