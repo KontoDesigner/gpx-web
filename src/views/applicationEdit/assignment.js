@@ -46,6 +46,10 @@ Resort
 <Col sm="12" md="6" lg="1" xl="1" className="form-group">
 {props.positionAssign.StaffEndDate? moment(props.positionAssign.StaffEndDate).format("YYYY-MM-DD"):""}
 </Col>
+
+<Col sm="12" md="6" lg="1" xl="1" className="form-group">
+{props.positionAssign.Accept}
+</Col>
 <Col sm="12" md="6" lg="2" xl="2" className="form-group" > 
 <Button
            
