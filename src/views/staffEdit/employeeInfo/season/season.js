@@ -278,7 +278,7 @@ class Season extends Component {
                                             }}
                                             color="success"
                                             style={{ marginRight: '10px', marginBottom: '10px' }}>
-                                         Accept/Decline/Reset Position
+                                         Accept/Decline/Pending/Reset Assignment
                                         </Button>
                                      {/* )} */}
                                 

@@ -21,6 +21,11 @@ class Accept extends Component {
                 },
 
                 {
+                    id: 'Pending',
+                    name: 'Pending'
+                },
+
+                {
                     id: 'Reset',
                     name: 'Reset'
                 }
@@ -57,7 +62,7 @@ debugger;
         return (
             <div>
                 <Modal isOpen={this.props.modal} toggle={this.toggle} >
-                    <ModalHeader toggle={this.toggle}>Accept/Decline/Reset </ModalHeader>
+                    <ModalHeader toggle={this.toggle}>Accept/Decline/Pending/Reset </ModalHeader>
                     <ModalBody > 
      
 
@@ -66,12 +71,12 @@ debugger;
                                 <Table striped bordered responsive>
                                     <thead>
                                         <tr>
-                                            <th colSpan="2">Select Action</th>
+                                            <th colSpan="2">Select Action ('Pending' for Placement offerings)</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <tr>
-                                            <td colSpan="2" height="150">
+                                            <td colSpan="2" height="200">
                                                 { <Select
  
                                                     id="id"
