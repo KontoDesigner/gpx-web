@@ -97,17 +97,7 @@ debugger;
                     getMissingApplication={this.props.missingApplicationActions.getMissingApplication}
                     handleMissingApplication={this.props.missingApplicationActions.handleMissingApplication} 
                     
-                    
-                    // getAllRoles={this.props.allRolesActions.getAllRoles}
-                    // handleAllRoles={this.props.allRolesActions.handleAllRoles}
-                    // getPlacedRoles={this.props.placedRolesActions.getPlacedRoles}
-                    // handlePlacedRoles={this.props.placedRolesActions.handlePlacedRoles}
-                    // getVacantRoles={this.props.vacantRolesActions.getVacantRoles}
-                    // handleVacantRoles={this.props.vacantRolesActions.handleVacantRoles}
-                    // getReplyYesNoRoles={this.props.replyYesNoRolesActions.getReplyYesNoRoles}
-                    // handleReplyYesNoRoles={this.props.replyYesNoRolesActions.handleReplyYesNoRoles}
-                    // getNewPosition={this.props.newPositionActions.getNewPosition}
-                    // handleNewPosition={this.props.newPositionActions.handleNewPosition}
+               
                 />
 
 <Col sm="12" md="9" lg="9" xl="10">

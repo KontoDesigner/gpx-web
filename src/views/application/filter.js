@@ -59,11 +59,11 @@ class Filter extends Component {
         this.setState({ text: nextProps.filter.text })
     }
 
-    getDataDebouncer = (sourcemarket, jobfamily, jobtitle, criteria) => {
+    getDataDebouncer = (sourcemarket, jobfamily, jobtitle, jump, criteria) => {
         debugger;
         this.props.filterActions.handleText(this.state.text)
 
-        this.props.getData(sourcemarket, jobfamily, jobtitle,criteria)
+        this.props.getData(sourcemarket, jobfamily, jobtitle,jump,criteria)
     }
 
     updateTextState = event => {
@@ -73,7 +73,7 @@ class Filter extends Component {
             text: value
         })
 debugger;
-        this.getData(this.props.filter.sourceMarket, this.props.filter.selectedJobFamily,this.props.filter.selectedJobTitle, value)
+        this.getData(this.props.filter.sourceMarket, this.props.filter.selectedJobFamily,this.props.filter.selectedJobTitle, this.props.filter.selectedJump, value)
     }
                     
     
