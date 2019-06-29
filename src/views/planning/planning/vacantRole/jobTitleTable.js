@@ -26,7 +26,7 @@ const JobTitleTable = props => {
         const data = params.node.data
 
         return [
-            {
+            { 
                 name: 'Assign Staff To Position',
                 action: function() {
                     props.toogleAssignPositionModal(data.mplID)

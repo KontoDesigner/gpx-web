@@ -19,8 +19,35 @@ const columns = [
     { label: 'Assign StartDate', dataKey: 'startDate' ,type: 'datetime', format: 'YYYY-MM-DD' },
     { label: 'Assign EndDate', dataKey: 'endDate' ,type: 'datetime', format: 'YYYY-MM-DD' },
     { label: 'Placed', dataKey: 'firstNameLastName' },
-    { label: 'Accept', dataKey: 'accept' },
-    { label: 'Acting', dataKey: 'acting' }
+    {  label: '',
+    dataKey: 'accept',
+     type: 'icon',
+     
+    icon: function(val) {
+        if (val === 'Pending') {
+            return 'fa fa-spinner fa-spin'
+        }
+        if (val === 'Accepted') {
+            return 'fa fa-thumbs-up'
+        }
+        if (val === 'Declined') {
+            return 'fa fa-thumbs-down'
+        }
+    
+    }
+},
+{  label: '',
+dataKey: 'acting',
+ type: 'icon',
+ 
+icon: function(val) {
+    if (val === 'Yes') {
+        return 'fa fa-star'
+    }
+
+
+}
+},
     // { label: '', dataKey: 'acting',iconClass:'fa fa-thumbs-up',iconValue:'Y' }
     //  { label: 'Acting', dataKey: 'acting' }
 ]

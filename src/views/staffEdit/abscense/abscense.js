@@ -17,6 +17,7 @@ class Abscense extends Component {
     //*************** */add a local state for the resign part since that is not part of the staff object*********************
     let abscenseLocal = this.props.abscenseHistory[0]?this.props.abscenseHistory[0]:{};
     let resignHistoryLocal = this.props.resignHistory?this.props.resignHistory[0]:{};
+    debugger;
     
     this.state = {
       value: '',   
@@ -410,7 +411,8 @@ debugger;
               allJobTitles={this.props.allJobTitles}
               handleChangeMultiple={this.props.handleChangeMultiple}
              // resignmentReasons={this.props.resignmentReasons}
-              resignHistory={this.state.resignHistoryLocal}
+             resignHistory={this.state.resignHistoryLocal}
+              //resignHistory={this.props.applicationHistory}
               handleSelectTypes={this.handleSelectTypes}
               managerReasons={this.props.managerReasons}
               validLastWorking={this.state.validLastWorking}

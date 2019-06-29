@@ -436,7 +436,7 @@ if (national !== undefined) {
                                         handleChangeMultiple={this.handleChangeMultiple}
                                         allJobTitles={this.props.allJobTitles}
                                         //applicationHistory={this.props.applicationHistory}
-                                        resignHistory={this.props.applicationHistory}
+                                        resignHistory={this.props.resignHistory}
                                         abscenseHistory={this.props.abscenseHistory}
                                         // title={"Skills"}
                                         // name={"skills"}
