@@ -68,6 +68,21 @@ class WorkEdit extends Component {
                     name: 'No'
                 }
             ],
+            yesNoOptionNonDest: [
+                {
+                    id: 'Yes',
+                    name: 'Yes'
+                },
+
+                {
+                    id: 'No',
+                    name: 'No'
+                },
+                {
+                    id: 'Yes - Retail position',
+                    name: 'Yes - Retail position'
+                }
+            ],
             firstJobTitles: [],
             secondJobTitles: [],
             thirdJobTitles: [],
@@ -676,6 +691,7 @@ debugger;
                                         handleSelect={this.handleSelect}
                                         valueSingle={this.state.valueSingle}
                                         yesNoOption={this.state.yesNoOption}
+                                        
                                         value={this.state.value}
                                         preferWorkWinterArr={this.state.preferWorkWinterArr}
                                         preferWorkSummerArr={this.state.preferWorkSummerArr}
@@ -718,7 +734,7 @@ debugger;
                                         assignStartChange={this.assignStartChange}
                                         assignEndChange={this.assignEndChange}
                                         //handleChange={this.handleChange}
-
+                                        yesNoOptionNonDest={this.state.yesNoOptionNonDest}
                                         handleAppField={this.handleAppField}
                                         handleInputField={this.handleInputField}
                                         handleMultiSelect={this.handleMultiSelect}

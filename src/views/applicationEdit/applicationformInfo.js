@@ -50,7 +50,7 @@ const ApplicationFormInfo = (props) => {
                             valueKey="id"
                             labelKey="name"
                             className="form-control"
-                            options={props.yesNoOption}
+                            options={props.yesNoOptionNonDest}
                            
                             onChange={v => {
                                 props.handleSelect('nonDestinationPosition', v)
@@ -138,7 +138,7 @@ const ApplicationFormInfo = (props) => {
                             className="form-group form-group-select"
                         />
                     </Col>
-                    <Col sm="12" md="6" lg="3" xl="3" className="form-group">
+                    {/* <Col sm="12" md="6" lg="3" xl="3" className="form-group">
                            <label htmlFor="skiPlacement">UK only – I already have a confirmed Ski Placement</label>
             
                            <Select
@@ -158,7 +158,7 @@ const ApplicationFormInfo = (props) => {
                             placeholder="Select"
                             className="form-group form-group-select"
                         />
-                    </Col>
+                    </Col> */}
                     <Col sm="12" md="6" lg="3" xl="3" className="form-group">
                            <label htmlFor="fairs">BE only: I want to work on fairs (beurzen) contact Valerie.Timperman@tui.be</label>
             
