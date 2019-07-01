@@ -2,14 +2,18 @@ import React, { Component } from 'react'
 import { Collapse, Card, CardBody, CardHeader } from 'reactstrap'
 import JobTitleTable from './jobTitleTable'
 
+
 class DestinationRow extends Component {
     constructor() {
         super()
 
         this.state = {
             expanded: false
+     
         }
     }
+
+ 
 
     toggleCollapse = () => {
         debugger;

@@ -29,13 +29,13 @@ const columns = [
          
         icon: function(val) {
             if (val === 'Pending') {
-                return 'fa fa-spinner fa-spin'
+                return 'fa fa-clock-o'
             }
             if (val === 'Accepted') {
-                return 'fa fa-thumbs-up'
+                return 'fa fa-thumbs-o-up'
             }
             if (val === 'Declined') {
-                return 'fa fa-thumbs-down'
+                return 'fa fa-thumbs-o-down'
             }
         
         }
