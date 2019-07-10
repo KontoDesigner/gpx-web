@@ -330,9 +330,8 @@ const OverviewInfo = (props) => {
               
 
               </CardBody>
-              <CardHeader className="card-header-work-assign"> Confirm - Please Note!
-Make sure that you print these comments. Once you have informed the employee and pressed the 'Save & Close' button, you cannot go back and modify or read these comments again.</CardHeader>
-            <CardBody className="no-padding-bottom">
+              <CardHeader className="card-header-work-assign"> Confirm</CardHeader>
+            <CardBody className="no-padding-bottom"> 
             <div className="form-row">
             <Col sm="12" md="6" lg="3" xl="3" className="form-group">
                    

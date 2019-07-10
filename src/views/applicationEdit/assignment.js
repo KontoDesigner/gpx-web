@@ -50,6 +50,15 @@ Resort
 <Col sm="12" md="6" lg="1" xl="1" className="form-group">
 {props.positionAssign.Accept}
 </Col>
+
+{/* 
+<Col sm="12" md="6" lg="1" xl="1" className="form-group">
+{props.positionAssign.AcceptDeclineReason}
+</Col>
+<Col sm="12" md="6" lg="1" xl="1" className="form-group">
+{props.positionAssign.AcceptDeclineComment}
+</Col> */}
+
 <Col sm="12" md="6" lg="2" xl="2" className="form-group" > 
 <Button
            

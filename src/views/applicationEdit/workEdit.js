@@ -7,6 +7,7 @@ import * as applicationInfoActions from '../../actions/applicationEdit/applicati
 import WorkInfo from './workInfo'
 import Season from './season'
 import OverviewInfo from './overviewInfo'
+import AssignHistory from './assignHistory'
 import ApplicationformInfo from './applicationformInfo'
 import ManagersectionInfo from './managersectionInfo'
 
@@ -755,6 +756,21 @@ debugger;
 
                                 <TabPane tabId="managersectionInfo">
                                     <ManagersectionInfo
+                                        application={this.props.application}
+                                        handleInputField={this.handleInputField}
+                                        handleMultiSelect={this.handleMultiSelect}
+                                        handleSelect={this.handleSelect}
+                                        valueSingle={this.state.valueSingle}
+                                        yesNoOption={this.state.yesNoOption}
+                                        midYearReviewArr={this.state.midYearReviewArr}
+                                        midYearTuiValueArr={this.state.midYearTuiValueArr}
+                                        earlyPerformanceArr={this.state.earlyPerformanceArr}
+                                        
+                                    />
+                                </TabPane>
+
+                                <TabPane tabId="assignHistory">
+                                    <AssignHistory
                                         application={this.props.application}
                                         handleInputField={this.handleInputField}
                                         handleMultiSelect={this.handleMultiSelect}

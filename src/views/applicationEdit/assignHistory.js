@@ -3,7 +3,7 @@ import { Card, CardBody, CardHeader, Col,Button } from 'reactstrap'
 import TextInput from '../../components/textInput'
 import moment from "moment";
 
-const OverviewInfo = (props) => {
+const AssignHistory = (props) => {
    
     return (
 
@@ -16,17 +16,20 @@ const OverviewInfo = (props) => {
                       Choice
                     </Col> */}
                     <Col sm="12" md="6" lg="2" xl="2" className="form-group">
-                      Destination
+                      Hist.Date
                     </Col>
                     {/* <Col sm="12" md="6" lg="2" xl="2" className="form-group">
                      Resort
                     </Col> */}
                     <Col sm="12" md="6" lg="2" xl="2" className="form-group">
-                     JobTitle
+                     Hist.Who
                     </Col>
-                    {/* <Col sm="12" md="6" lg="2" xl="2" className="form-group">
-                  Remarks
-                    </Col> */}
+                     <Col sm="12" md="6" lg="6" xl="6" className="form-group">
+                  Hist.Content
+                    </Col> 
+                    <Col sm="12" md="3" lg="2" xl="2" className="form-group">
+                   <b>Date Modified </b>
+                    </Col>
                     </div>
                     <div className="form-row">
                     {/* <Col sm="12" md="6" lg="1" xl="1" className="form-group">
@@ -38,7 +41,7 @@ const OverviewInfo = (props) => {
                     {/* <Col sm="12" md="2" lg="2" xl="2" className="form-group">
                         <TextInput name="lastName"  placeholder="-Resort-" disabled value={props.application.firstDest}  />
                     </Col> */}
-                    <Col sm="12" md="6" lg="4" xl="4" className="form-group">
+                    <Col sm="12" md="6" lg="2" xl="2" className="form-group">
                         <TextInput name="firstJobTitle"  placeholder="-JobTitle-" disabled value={props.application.firstJobTitle}  />
                     </Col>
                     {/* <Col sm="12" md="6" lg="7" xl="7" className="form-group">
@@ -56,14 +59,14 @@ const OverviewInfo = (props) => {
                       
                       </Col> */}
                              <Col sm="12" md="6" lg="2" xl="2" className="form-group">
-                          <TextInput name="secondDest"  placeholder="-Destination-" disabled value={props.application.secondDest}  />
+                          <TextInput name="lastName"  placeholder="-Destination-" disabled value={props.application.secondDest}  />
                       </Col>
                       {/* <Col sm="12" md="2" lg="2" xl="2" className="form-group">
                           <TextInput name="lastName"  placeholder="-Resort-" disabled value={props.application.firstDest}  />
                       </Col> */}
-                      <Col sm="12" md="6" lg="4" xl="4" className="form-group">
-                          <TextInput name="secondJobTitle"  placeholder="-JobTitle-" disabled value={props.application.secondJobTitle}  />
-                      </Col> 
+                      <Col sm="12" md="6" lg="2" xl="2" className="form-group">
+                          <TextInput name="lastName"  placeholder="-JobTitle-" disabled value={props.application.secondJobTitle}  />
+                      </Col>
                       {/* <Col sm="12" md="6" lg="7" xl="7" className="form-group">
                       <TextInput
                          id="remarksChoice2"
@@ -82,13 +85,13 @@ const OverviewInfo = (props) => {
                       
                       </Col> */}
                              <Col sm="12" md="6" lg="2" xl="2" className="form-group">
-                          <TextInput name="thirdDest"  placeholder="-Destination-" disabled value={props.application.thirdDest}  />
+                          <TextInput name="lastName"  placeholder="-Destination-" disabled value={props.application.thirdDest}  />
                       </Col>
                       {/* <Col sm="12" md="2" lg="2" xl="2" className="form-group">
                           <TextInput name="lastName"  placeholder="-Resort-" disabled value={props.application.firstDest}  />
                       </Col> */}
-                      <Col sm="12" md="6" lg="4" xl="4" className="form-group">
-                          <TextInput name="fourthDest"  placeholder="-JobTitle-" disabled value={props.application.thirdJobTitle}  />
+                      <Col sm="12" md="6" lg="2" xl="2" className="form-group">
+                          <TextInput name="lastName"  placeholder="-JobTitle-" disabled value={props.application.thirdJobTitle}  />
                       </Col>
                       {/* <Col sm="12" md="6" lg="7" xl="7" className="form-group">
                       <TextInput
@@ -108,13 +111,13 @@ const OverviewInfo = (props) => {
                       
                       </Col> */}
                              <Col sm="12" md="6" lg="2" xl="2" className="form-group">
-                          <TextInput name="fourthDest"  placeholder="-Destination-" disabled value={props.application.fourthDest}  />
+                          <TextInput name="lastName"  placeholder="-Destination-" disabled value={props.application.fourthDest}  />
                       </Col>
                       {/* <Col sm="12" md="2" lg="2" xl="2" className="form-group">
                           <TextInput name="lastName"  placeholder="-Resort-" disabled value={props.application.firstDest}  />
                       </Col> */}
-                      <Col sm="12" md="6" lg="4" xl="4" className="form-group">
-                          <TextInput name="fourthJobTitle"  placeholder="-JobTitle-" disabled value={props.application.fourthJobTitle}  />
+                      <Col sm="12" md="6" lg="2" xl="2" className="form-group">
+                          <TextInput name="lastName"  placeholder="-JobTitle-" disabled value={props.application.fourthJobTitle}  />
                       </Col>
                       {/* <Col sm="12" md="6" lg="7" xl="7" className="form-group">
                       <TextInput
@@ -134,4 +137,4 @@ const OverviewInfo = (props) => {
     );
 };
 
-export default OverviewInfo
+export default AssignHistory

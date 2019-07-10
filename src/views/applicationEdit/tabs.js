@@ -37,6 +37,16 @@ const Tabs = (props) => {
                            Manager Section
                                 </NavLink>
                     </NavItem>
+
+                    <NavItem>
+                        <NavLink
+                            className={classnames({ active: props.activeTab === 'assignHistory' })}
+                            onClick={() => {
+                                props.toggle('assignHistory')
+                            }}>
+                           History
+                                </NavLink>
+                    </NavItem>
                  
                     {/* <NavItem>
                         <NavLink

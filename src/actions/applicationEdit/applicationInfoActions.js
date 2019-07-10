@@ -95,10 +95,10 @@ debugger;
 
         try {
             const res = await RestClient.Post(`application/updateapplication`, cleanModel)
-
+debugger;
             dispatch(endAjaxCall())
 
-            if (res) {
+            if (res==true) {
                
                 toastr.success('Success', `Application was saved`)
             } else {
