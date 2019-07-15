@@ -3,7 +3,7 @@ const hostName = window.location.hostname
 
 //LOCAL
 if (hostName === 'localhost') {
-    baseUrl = 'http://localhost:5000'
+    baseUrl = 'http://localhost:5001'
     // baseUrl = 'https://gpx-api-uat.tuinordic.net'
 }
 //

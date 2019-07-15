@@ -1,4 +1,5 @@
 import { ActionTypes as types } from '../../constants/applicationEdit/applicationInfoConstants'
+
 import { beginAjaxCall, ajaxCallError, endAjaxCall } from '../ajaxStatusActions'
 import RestClient from '../../infrastructure/restClient'
 import { toastr } from 'react-redux-toastr'
@@ -136,8 +137,35 @@ export function getApplicationSuccess(application) {
     }
 }
 
+export function getWorkHistorySuccess(workHistory) {
+    return {
+        type: types.GET_WORKHISTORY_SUCCESS,
+        data: { workHistory:workHistory }
+    }
+}
+export function getWorkHistory(staffId) {
+    debugger;
+    return async function (dispatch) { 
+        dispatch(beginAjaxCall())
 
- 
+        try {
+        
+        //   const staff = await RestClient.Get(`position/${mplID}`)
+        debugger;
+            const workHistory = await RestClient.Get(`application/getWorkHistory/${staffId}`)
+           debugger;
+
+
+            dispatch(endAjaxCall())
+
+            dispatch(getWorkHistorySuccess(workHistory))
+        } catch (error) {
+            dispatch(ajaxCallError(error))
+
+            throw error
+        }
+    }
+}
 
 
 export function getApplication(staffId,season) {

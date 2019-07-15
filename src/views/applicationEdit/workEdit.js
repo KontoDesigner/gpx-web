@@ -155,6 +155,7 @@ class WorkEdit extends Component {
             FirstName: this.props.application.firstName,
             Season: role.season,
             Accept: role.accept,
+         
           
             FullName: this.props.application.lastName,
             StartDate: role.startDate,
@@ -279,7 +280,7 @@ class WorkEdit extends Component {
                // _this.getJobTitles(_this.props.application.season, _this.props.application.jobFamily)
                 _this.getAvailablePositionNew()
                 _this.props.employeeInfoActions.getPositionAssigns(_this.props.application.staffID)
-            
+                _this.props.applicationInfoActions.getWorkHistory(_this.props.application.staffID)
             } else {
                 document.title = 'Work Application not found - TTP'
             }
@@ -772,14 +773,15 @@ debugger;
                                 <TabPane tabId="assignHistory">
                                     <AssignHistory
                                         application={this.props.application}
-                                        handleInputField={this.handleInputField}
-                                        handleMultiSelect={this.handleMultiSelect}
-                                        handleSelect={this.handleSelect}
-                                        valueSingle={this.state.valueSingle}
-                                        yesNoOption={this.state.yesNoOption}
-                                        midYearReviewArr={this.state.midYearReviewArr}
-                                        midYearTuiValueArr={this.state.midYearTuiValueArr}
-                                        earlyPerformanceArr={this.state.earlyPerformanceArr}
+                                        workHistory={this.props.workHistory}
+                                        // handleInputField={this.handleInputField}
+                                        // handleMultiSelect={this.handleMultiSelect}
+                                        // handleSelect={this.handleSelect}
+                                        // valueSingle={this.state.valueSingle}
+                                        // yesNoOption={this.state.yesNoOption}
+                                        // midYearReviewArr={this.state.midYearReviewArr}
+                                        // midYearTuiValueArr={this.state.midYearTuiValueArr}
+                                        // earlyPerformanceArr={this.state.earlyPerformanceArr}
                                         
                                     />
                                 </TabPane>
@@ -828,6 +830,8 @@ function mapStateToProps(state) {
     return {
         sourceMarkets: state.geography.sourceMarkets,
         application: state.applicationEdit.applicationInfo.application,
+        workHistory: state.applicationEdit.applicationInfo.workHistory,
+
         keywordslookup: state.setting.keywords.keywordslookup,
         jobtitles: state.setting.setting.jobTitle,
         currentPositionAssign: state.staffEdit.employeeInfo.currentPositionAssign,

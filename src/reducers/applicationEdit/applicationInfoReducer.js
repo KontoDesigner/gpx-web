@@ -1,17 +1,17 @@
 import { ActionTypes as types } from '../../constants/applicationEdit/applicationInfoConstants';
-var defaultState = [];          
+//var defaultState = [];          
 
-// var defaultState = {
+ var defaultState = {
 // // currentAvailablePositions: [],
 // // nextAvailablePositions: [],
 // //     // followingAvailablePositions: [],
 // //     // currentPositionAssign: null,
 // //     // nextPositionAssign: null,
 // //     // followingPositionAssign: null,
-//      application: null,
-//      applicationInfo: [],
-//      preferToWork: []
-//  }
+     application: [],
+    //applicationInfo: [],
+     workHistory: []
+ }
 export default function applicationInfoReducer(state = defaultState, action) {
 
     switch (action.type) {
@@ -22,7 +22,12 @@ export default function applicationInfoReducer(state = defaultState, action) {
                 application: action.data.application
             }
       
-
+            case types.GET_WORKHISTORY_SUCCESS:
+                return {
+                    ...state,
+                    workHistory: action.data.workHistory
+                }
+      
 
              case (types.HANDLE_APPLICATION_FIELD):
              console.log(action.data);
