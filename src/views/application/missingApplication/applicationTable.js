@@ -10,7 +10,7 @@ const columns = [
      { label: 'Current Destination', dataKey: 'destination' },
      { label: 'Overall Rating', dataKey: 'overallRating' },
      { label: 'Driver', dataKey: 'driver' },
-     { label: 'Education', dataKey: 'education' },
+     { label: 'Education', dataKey: 'education' }, 
 
     //{ label: 'Manager Comments', dataKey: 'managerComments' },
    // { label: 'Couple Wish', dataKey: 'coupleWish' }
