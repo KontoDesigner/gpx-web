@@ -189,6 +189,13 @@ export function handleFollowingPositionAssignField(field, val) {
     }
 }
 
+export function handleNextFollowingPositionAssignField(field, val) {
+    return {
+        type: types.HANDLE_NEXTFOLLOWINGPOSITIONASSIGN_FIELD,
+        data: { field: field, val: val }
+    }
+}
+
 export function handleStaffField(field, val) {
     return {
         type: types.HANDLE_STAFF_FIELD,
@@ -302,7 +309,7 @@ export function getAvailablePositionsSuccess(availablePositions) {
     }
 }
 
-export function getAvailablePositions(currentSeason, nextSeason, followingSeason) {
+export function getAvailablePositions(currentSeason, nextSeason, followingSeason,nextFollowingSeason) {
     return async function(dispatch) {
         dispatch(beginAjaxCall())
 
@@ -310,7 +317,8 @@ export function getAvailablePositions(currentSeason, nextSeason, followingSeason
             const data = {
                 CurrentSeason: currentSeason,
                 NextSeason: nextSeason,
-                FollowingSeason: followingSeason
+                FollowingSeason: followingSeason,
+                nextFollowingSeason: nextFollowingSeason
             }
 
             const availablePositions = await RestClient.Post('positionassign/getavailablepositions', data)
@@ -337,7 +345,7 @@ export function getPositionAssigns(staffId) {
 debugger;
         try {
             const positionAssigns = await RestClient.Get(`positionassign/assignment/${staffId}`)
-            debugger
+            debugger;
             dispatch(getPositionAssignsSuccess(positionAssigns))
         } catch (error) {
             dispatch(ajaxCallError(error))

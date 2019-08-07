@@ -396,6 +396,7 @@ if (national !== undefined) {
                                         currentPositionAssign={this.props.currentPositionAssign}
                                         nextPositionAssign={this.props.nextPositionAssign}
                                         followingPositionAssign={this.props.followingPositionAssign}
+                                        nextFollowingPositionAssign={this.props.nextFollowingPositionAssign}
                                         currentSeason={this.props.currentSeason}
                                         nextSeason={this.props.nextSeason}
                                         followingSeason={this.props.followingSeason}
@@ -478,7 +479,7 @@ if (national !== undefined) {
                 </div>
             )
         }
-    }
+    } 
 }
 
 function mapStateToProps(state) {
@@ -492,6 +493,7 @@ function mapStateToProps(state) {
         currentPositionAssign: state.staffEdit.employeeInfo.currentPositionAssign,
         nextPositionAssign: state.staffEdit.employeeInfo.nextPositionAssign,
         followingPositionAssign: state.staffEdit.employeeInfo.followingPositionAssign,
+        nextFollowingPositionAssign: state.staffEdit.employeeInfo.nextFollowingPositionAssign,
         currentSeason: state.geography.currentSeason,
         abscenseHistory: state.staffEdit.abscenseHistory,
         nextSeason: state.geography.nextSeason,

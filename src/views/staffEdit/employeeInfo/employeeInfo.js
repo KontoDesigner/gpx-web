@@ -225,6 +225,7 @@ class EmployeeInfo extends Component {
                             currentPositionAssign={this.props.currentPositionAssign}
                             nextPositionAssign={this.props.nextPositionAssign}
                             followingPositionAssign={this.props.followingPositionAssign}
+                            nextfollowingPositionAssign={this.props.nextfollowingPositionAssign}
                             nowAvailablePositions={this.props.nowAvailablePositions}
                             assignRole={this.assignRole}
                             editPosition={this.editPosition}
@@ -249,6 +250,7 @@ class EmployeeInfo extends Component {
                             currentPositionAssign={this.props.currentPositionAssign}
                             nextPositionAssign={this.props.nextPositionAssign}
                             followingPositionAssign={this.props.followingPositionAssign}
+                            nextfollowingPositionAssign={this.props.nextfollowingPositionAssign}
                             nowAvailablePositions={this.props.nowAvailablePositions}
                             assignRole={this.assignRole}
                             editPosition={this.editPosition}
@@ -269,6 +271,28 @@ class EmployeeInfo extends Component {
                             currentPositionAssign={this.props.currentPositionAssign}
                         nextPositionAssign={this.props.nextPositionAssign}
                             followingPositionAssign={this.props.followingPositionAssign}
+                            nextfollowingPositionAssign={this.props.nextfollowingPositionAssign}
+                            nowAvailablePositions={this.props.nowAvailablePositions}
+                            assignRole={this.assignRole}
+                            editPosition={this.editPosition}
+                            removeRole={this.removeRole}
+                            moveRole={this.moveRole}
+                            season={this.props.nextSeason}
+                            handleUnsavedEdit={this.props.handleUnsavedEdit}
+                            handlePositionAssignField={(field, val) => this.props.employeeInfoActions.handleNextPositionAssignField(field, val)}
+                            send={this.props.send}
+                            createAcceptStaff ={this.createAcceptStaff}
+                        />
+                        </Col>
+
+                        <Col sm="12" md="12" lg="12">
+                        <Season
+                            title={'Assignment 4'}
+                            positionAssign={this.props.nextFollowingPositionAssign}
+                            currentPositionAssign={this.props.currentPositionAssign}
+                        nextPositionAssign={this.props.nextPositionAssign}
+                            followingPositionAssign={this.props.followingPositionAssign}
+                            nextfollowingPositionAssign={this.props.nextfollowingPositionAssign}
                             nowAvailablePositions={this.props.nowAvailablePositions}
                             assignRole={this.assignRole}
                             editPosition={this.editPosition}

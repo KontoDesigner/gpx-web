@@ -656,6 +656,12 @@ debugger;
                     positionAssign={this.props.followingPositionAssign}
                     toggleRemoveRoleModal={this.toggleRemoveRoleModal}
                           />
+                                 <Assignment
+                    application={this.props.application} 
+                    handleInputField={this.handleInputField} 
+                    positionAssign={this.props.nextFollowingPositionAssign}
+                    toggleRemoveRoleModal={this.toggleRemoveRoleModal}
+                          />
                                         {/* <Assignment
                                     application={this.props.application} 
                                     handleInputField={this.handleInputField} 
@@ -836,7 +842,8 @@ function mapStateToProps(state) {
         jobtitles: state.setting.setting.jobTitle,
         currentPositionAssign: state.staffEdit.employeeInfo.currentPositionAssign,
         nextPositionAssign: state.staffEdit.employeeInfo.nextPositionAssign,
-        followingPositionAssign: state.staffEdit.employeeInfo.followingPositionAssign
+        followingPositionAssign: state.staffEdit.employeeInfo.followingPositionAssign,
+        nextFollowingPositionAssign: state.staffEdit.employeeInfo.nextFollowingPositionAssign
         //preferToWork: state.applicationEdit.applicationInfo
     }
 }
