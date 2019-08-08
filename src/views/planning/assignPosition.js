@@ -38,7 +38,7 @@ class AssignPosition extends Component {
       placementDynamicPeriods: [],
       count: 0,
       selectedPlacementPeriod: null,
-      managerReasons: [
+      managerReasons: [   //obsolete
         {
           id: 'Dismissed',
           name: 'Dismissed'
@@ -53,7 +53,7 @@ class AssignPosition extends Component {
         }
       ],
 
-      placementPeriods: [
+      placementPeriods: [  //obsolete
         {
           id: 'Assign New',
           name: 'Assign New'
@@ -188,7 +188,7 @@ class AssignPosition extends Component {
   checkAssignmentLength = () => {
     debugger;
     if (this.state.selectedPlacementPeriod == 'Add New') {
-      if (this.state.dates.length > 3) {
+      if (this.state.dates.length > 4) {
         return false
       } else {
         return true
