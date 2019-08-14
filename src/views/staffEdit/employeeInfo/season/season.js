@@ -314,6 +314,7 @@ class Season extends Component {
                 availablePositions={this.props.nowAvailablePositions}
                 editPosition={this.props.editPosition}
                 positionAssign={this.props.positionAssign}
+            
                 season={this.props.season}
             />
 
