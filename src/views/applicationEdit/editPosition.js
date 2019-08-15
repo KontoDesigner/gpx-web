@@ -1,10 +1,9 @@
 import React, { Component } from 'react'
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter, Row, Col, Table } from 'reactstrap'
-import TextInput from '../../../../components/textInput'
 import Select from 'react-select'
 import Datetime from 'react-datetime'
 import moment from "moment";
-
+import TextInput from '../../components/textInput'
 class EditPosition extends Component {
     constructor() {
         super();
@@ -34,14 +33,14 @@ class EditPosition extends Component {
     }
   
     
-    //     componentDidMount=async()=>  {
+    //    componentDidMount=async()=>  {
 
-    
-    //   this.setState({
-    //      selectedDestination:this.props.positionAssign.Destination, 
+       
+    //  this.setState({
+    //     selectedDestination:this.props.positionAssign.Destination, 
     //     selectedJobTitle: { jobTitle: this.props.positionAssign.JobTitle, jobTitle: this.props.positionAssign.JobTitle }
         
-    //  })
+    // })
     
  
     //       }
@@ -286,11 +285,12 @@ class EditPosition extends Component {
                                         valueKey="destination"
                                         labelKey="destination"
                                         className="form-control"
-                                       
+                                    
                                         options={this.props.availablePositions}
                                         onChange={this.destinationOnChange}
-                                  
-                                        value={this.state.selectedDestination}
+                                        
+                                       value={this.state.selectedDestination}
+                                        //value={this.props.positionAssign.Destination}
                                         placeholder="Destination"
                                     />
                                 </div> 
@@ -308,7 +308,7 @@ class EditPosition extends Component {
                             
                                         
                                         onChange={this.jobTitleOnChange}
-                             
+                                       // value={this.props.positionAssign.JobTitle}
                                         value={this.state.selectedJobTitle}
                                   
                                         placeholder="Position"
@@ -334,7 +334,7 @@ class EditPosition extends Component {
                                             <Datetime  className={'custom-datepicker'}
                                         id="assignStart"
                            onChange={this.assignStartChange}
-                           defaultValue={moment(this.props.positionAssign.StaffStartDate).format('YYYY-MM-DD')}
+                          defaultValue={moment(this.props.positionAssign.StaffStartDate).format('YYYY-MM-DD')}
                            value={this.state.selectedStartDate}
                             timeFormat={false}
                             dateFormat="YYYY-MM-DD"
@@ -347,7 +347,7 @@ class EditPosition extends Component {
                                              <Datetime  className={'custom-datepicker'}
                                            
                                               onChange={this.assignEndChange}
-                                              defaultValue={   moment(this.props.positionAssign.StaffEndDate).format('YYYY-MM-DD')}
+                                             defaultValue={   moment(this.props.positionAssign.StaffEndDate).format('YYYY-MM-DD')}
                                               value={this.state.selectedEndDate}
                             timeFormat={false}
                             dateFormat="YYYY-MM-DD"
@@ -439,13 +439,13 @@ class EditPosition extends Component {
        'djdjdjdjdjdjjd'
                 
                 : 
-                ''} */}
+                ''} */} 
 
                     </ModalBody>
 
                     <ModalFooter>
                         <Button disabled={this.props.positionAssign.StaffStartDate === null} onClick={() => this.editPosition(this.props.positionAssign.MPLID , moment(this.props.positionAssign.StaffStartDate).format('YYYY-MM-DD'),
-                  moment(this.props.positionAssign.StaffEndDate).format('YYYY-MM-DD'), this.props.positionAssign.ConfirmedDate, this.props.positionAssign.ConfirmedDepDate, this.state.selectedJobTitle)} color="success">Assign</Button>{' '}
+                  moment(this.props.positionAssign.StaffEndDate).format('YYYY-MM-DD'), this.props.positionAssign.ConfirmedDate, this.props.positionAssign.ConfirmedDepDate)} color="success">Assign</Button>{' '}
                         <Button color="danger" onClick={this.toggle}>Cancel</Button>
                     </ModalFooter>
                 </Modal>

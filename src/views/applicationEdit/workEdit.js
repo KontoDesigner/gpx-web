@@ -18,6 +18,7 @@ import Tabs from './tabs'
 import RestClient from '../../infrastructure/restClient'
 import { beginAjaxCall, ajaxCallError, endAjaxCall } from '../../actions/ajaxStatusActions'
 import AssignRole from './assignRole'
+//import EditPosition from './editPosition'
 import RemoveRole from './removeRole'
 import * as employeeInfoActions from '../../actions/staffEdit/employeeInfoActions'
 import Assignment from './assignment';
@@ -38,6 +39,7 @@ class WorkEdit extends Component {
             staffid: id,
             season: season,
             assignRoleModal: false,
+            //editPositionModal:false,
             removeRoleModal:false,
             nowAvailablePositions: [],
             // mplID: mplID,
@@ -120,10 +122,20 @@ class WorkEdit extends Component {
         })
     }
 
+    // toggleEditPositionModal = (positionAssignId,startDate) => {
+        
+    //     this.setState({
+    //         mplid: positionAssignId,
+    //         staffStartDate:startDate,
+    //         editPositionModal: !this.state.editPositionModal
+    //     })
+    //     debugger;
+    // }
+
     toggleRemoveRoleModal = (positionAssignId,startDate) => {
         debugger;
         this.setState({
-            mplid: positionAssignId,
+            mplid: positionAssignId, 
             staffStartDate:startDate,
             removeRoleModal: !this.state.removeRoleModal
         })
@@ -178,7 +190,47 @@ class WorkEdit extends Component {
         })
     }
 
-
+    editPosition = role => {
+        debugger;
+           const positionAssign = {
+               MPLID: role.mplid,
+               StaffID: this.props.staff.staffID,
+               PositionAssignID: role.positionAssignId,
+             
+               
+               StartDate: role.startDate,
+               EndDate: role.endDate,
+               ConfirmedDate: role.confirmedDate,
+               ConfirmedDepDate: role.confirmedDepDate,
+               DateModified:role.dateModified
+               
+           
+   
+   
+   
+           }
+   
+           const _this = this
+   
+           _this.props.employeeInfoActions.updatePositionAssign(positionAssign).then(function() 
+           {
+               _this.props.getAvailablePositionNew
+               // _this.props.employeeInfoActions.getAvailablePositions(
+               //     _this.props.currentSeason.name,
+               //     _this.props.nextSeason.name,
+               //     _this.props.followingSeason.name
+               // )
+                _this.props.employeeInfoActions.getPositionAssigns(_this.props.staff.staffID)
+           })
+   
+   
+   
+   
+          
+   
+          
+        
+       }
 
     getDestinations = async season => {
         try {
@@ -563,6 +615,7 @@ debugger;
                 unsavedEdit={this.state.unsavedEdit}
                 modal={this.state.assignRoleModal}
                 toggleAssignRoleModal={this.toggleAssignRoleModal}
+                toggleEditPositionModal={this.toggleEditPositionModal}
                 // staff={this.props.staff}
             />
         )
@@ -574,6 +627,7 @@ debugger;
                 modal={this.state.assignRoleModal}
                 toggleAssignRoleModal={this.toggleAssignRoleModal}
                 toggleRemoveRoleModal={this.toggleRemoveRoleModal}
+                toggleEditPositionModal={this.toggleEditPositionModal}
                 // staff={this.props.staff}
             />
         )
@@ -612,6 +666,7 @@ debugger;
                                 modal={this.state.assignRoleModal}
                                 toggleRemoveRoleModal={this.toggleRemoveRoleModal}
                                 toggleAssignRoleModal={this.toggleAssignRoleModal}
+                                toggleEditPositionModal={this.toggleEditPositionModal}
                                 buttonsAssign={buttonsAssign}
                                 handleInputField={this.handleInputField} 
                                 edit={this.edit} 
@@ -642,25 +697,44 @@ debugger;
                           handleInputField={this.handleInputField} 
                           positionAssign={this.props.currentPositionAssign}
                           toggleRemoveRoleModal={this.toggleRemoveRoleModal}
+                         // toggleEditPositionModal={this.toggleEditPositionModal}
+
+                          modal={this.editPositionModal}
+                        
+                      
+                          nowAvailablePositions={this.state.nowAvailablePositions}
+                           editPosition={this.editPosition}
+                          staffStartDate={this.state.staffStartDate}
+                           mplid={this.state.mplid}
+                        
+                  
+                       
+
+
                           />
                           <Assignment
-                          
+                        nowAvailablePositions={this.state.nowAvailablePositions}
                           application={this.props.application} 
                           handleInputField={this.handleInputField} 
                           positionAssign={this.props.nextPositionAssign}
                           toggleRemoveRoleModal={this.toggleRemoveRoleModal}
+                         editPosition={this.editPosition}
                           />
                           <Assignment
+                            nowAvailablePositions={this.state.nowAvailablePositions}
                     application={this.props.application} 
                     handleInputField={this.handleInputField} 
                     positionAssign={this.props.followingPositionAssign}
                     toggleRemoveRoleModal={this.toggleRemoveRoleModal}
+                    //toggleEditPositionModal={this.toggleEditPositionModal}
                           />
                                  <Assignment
+                                   nowAvailablePositions={this.state.nowAvailablePositions}
                     application={this.props.application} 
                     handleInputField={this.handleInputField} 
                     positionAssign={this.props.nextFollowingPositionAssign}
                     toggleRemoveRoleModal={this.toggleRemoveRoleModal}
+                    //toggleEditPositionModal={this.toggleEditPositionModal}
                           />
                                         {/* <Assignment
                                     application={this.props.application} 
@@ -810,6 +884,7 @@ debugger;
        // followingPositionAssign={this.props.followingPositionAssign}
         // season={this.props.season}
     />
+      
                          <RemoveRole
         modal={this.state.removeRoleModal}
         application={this.props.application}
