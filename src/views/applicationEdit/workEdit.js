@@ -194,7 +194,7 @@ class WorkEdit extends Component {
         debugger;
            const positionAssign = {
                MPLID: role.mplid,
-               StaffID: this.props.staff.staffID,
+               StaffID: this.props.application.staffID,
                PositionAssignID: role.positionAssignId,
              
                
@@ -220,7 +220,7 @@ class WorkEdit extends Component {
                //     _this.props.nextSeason.name,
                //     _this.props.followingSeason.name
                // )
-                _this.props.employeeInfoActions.getPositionAssigns(_this.props.staff.staffID)
+                _this.props.employeeInfoActions.getPositionAssigns(_this.props.application.staffID)
            })
    
    

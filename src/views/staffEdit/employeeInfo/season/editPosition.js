@@ -75,10 +75,10 @@ class EditPosition extends Component {
     }
 
     jobTitleOnChange = jobTitle => {
-        
+        debugger;
         const selectedJobTitle = jobTitle != null ? jobTitle.mplid : null;
-        const positionStartDate = jobTitle != null ? jobTitle.positionStartDate: null;
-        const positionEndDate = jobTitle != null ? jobTitle.positionEndDate: null
+        const positionStartDate = jobTitle != null ? moment(jobTitle.positionStartDate).format('YYYY-MM-DD'): null;
+        const positionEndDate = jobTitle != null ? moment(jobTitle.positionEndDate).format('YYYY-MM-DD'): null
         this.setState({
             selectedJobTitle,
             positionStartDate ,
@@ -162,7 +162,7 @@ class EditPosition extends Component {
 
 
  
-    editPosition = (mplid,val,val2,val3,val4) => {
+    editPosition = (mplid,val,val2,val3,val4,val5) => {
    
 
        // const destination = this.props.availablePositions.filter(ap => ap.destination === this.state.selectedDestination)[0];
@@ -193,6 +193,12 @@ class EditPosition extends Component {
         var currentdate = new Date()
 
         var newdatemodified=moment(currentdate).format("YYYY-MM-DD HH:mm:ss")
+
+        if(val5!=mplid && val5!=null){
+     
+            mplid=val5
+            
+         }
 
         const model = {
             mplid: mplid,
@@ -361,10 +367,6 @@ class EditPosition extends Component {
                                             </tr>
                                             </tbody>
 
-
-
-
-
                                             <thead>
                                             <tr>
                                                 <th>Confirmed Staff Arrival</th> <th> Confirmed Staff Departure</th>
@@ -417,11 +419,42 @@ class EditPosition extends Component {
                                             </thead>
                                             <tbody>
                                             <tr>
-                                            <td>    {moment(this.props.positionAssign.PositionStartDate).format('YYYY-MM-DD') }
+                                                
+                                            <td>    
+                                            <Datetime  
+                                              id="positionStartDate"
+                                              //onChange={this.confirmedEndChange}
+                                            defaultValue= {moment(this.props.positionAssign.PositionStartDate).format('YYYY-MM-DD') }
+                                              value={this.state.positionStartDate}
+                            timeFormat={false}
+                          //  disabled={true}
+                            inputProps={{ disabled: true }}
+                            dateFormat="YYYY-MM-DD"
+                            //closeOnSelect 
+                            utc={true}  
+                           // inputProps={{ placeholder: 'YYYY-MM-DD' }}
+                             />  
+                                            
+                                            
+                                            {/* {moment(this.props.positionAssign.PositionStartDate).format('YYYY-MM-DD') } */}
                                             <b className="card-text text-danger">{this.state.validDate }</b>
                                              </td> 
                                        
-                                             <td>    {moment(this.props.positionAssign.PositionEndDate).format('YYYY-MM-DD') }
+                                             <td>    <Datetime  
+                                              id="positionEndDate"
+                                              //onChange={this.confirmedEndChange}
+                                            defaultValue= {moment(this.props.positionAssign.PositionEndDate).format('YYYY-MM-DD') }
+                                              value={this.state.positionEndDate}
+                            timeFormat={false}
+                            //disabled={true}
+                            inputProps={{ disabled: true }}
+                            dateFormat="YYYY-MM-DD"
+                            closeOnSelect 
+                            utc={true}
+                            //inputProps={{ placeholder: 'YYYY-MM-DD' }} 
+                            />  
+                                                 
+                                                  {/* {moment(this.props.positionAssign.PositionEndDate).format('YYYY-MM-DD') } */}
                                              <b className="card-text text-danger">{this.state.validDate }</b>
                                                 </td>
                                         

@@ -74,10 +74,10 @@ class EditPosition extends Component {
     }
 
     jobTitleOnChange = jobTitle => {
-        
+        debugger;
         const selectedJobTitle = jobTitle != null ? jobTitle.mplid : null;
-        const positionStartDate = jobTitle != null ? jobTitle.positionStartDate: null;
-        const positionEndDate = jobTitle != null ? jobTitle.positionEndDate: null
+        const positionStartDate = jobTitle != null ? moment(jobTitle.positionStartDate).format('YYYY-MM-DD'): null;
+        const positionEndDate = jobTitle != null ? moment(jobTitle.positionEndDate).format('YYYY-MM-DD'): null
         this.setState({
             selectedJobTitle,
             positionStartDate ,
@@ -161,9 +161,8 @@ class EditPosition extends Component {
 
 
  
-    editPosition = (mplid,val,val2,val3,val4) => {
-   
-
+    editPosition = (mplid,val,val2,val3,val4,val5) => {
+ debugger;
        // const destination = this.props.availablePositions.filter(ap => ap.destination === this.state.selectedDestination)[0];
         
         const position = this.props.positionAssign.MPLID
@@ -192,11 +191,18 @@ class EditPosition extends Component {
         var currentdate = new Date()
 
         var newdatemodified=moment(currentdate).format("YYYY-MM-DD HH:mm:ss")
+        debugger;
+     if(val5!=mplid && val5!=null){
+     
+        mplid=val5
+        
+     }
+
 
         const model = {
             mplid: mplid,
             positionAssignId: positionAssignId,
-            season: this.props.season.name,
+           //season: this.props.season.name,
             dateModified: newdatemodified ,
             startDate: this.state.selectedStartDate
             ? this.state.selectedStartDate
@@ -208,7 +214,7 @@ class EditPosition extends Component {
             confirmedDepDate: editconfirmDepDate
         
         }
-
+        debugger;
         var assignCompareStart = new Date(model.startDate).setHours(0, 0, 0, 0);
         var assignCompareEnd  = new Date(model.endDate).setHours(0, 0, 0, 0);
         var positionCompareStart = new Date(this.props.positionAssign.PositionStartDate)
@@ -417,11 +423,41 @@ class EditPosition extends Component {
                                             </thead>
                                             <tbody>
                                             <tr>
-                                            <td>    {moment(this.props.positionAssign.PositionStartDate).format('YYYY-MM-DD') }
+                                            <td>    
+                                            <Datetime  
+                                              id="positionStartDate"
+                                              //onChange={this.confirmedEndChange}
+                                            defaultValue= {moment(this.props.positionAssign.PositionStartDate).format('YYYY-MM-DD') }
+                                              value={this.state.positionStartDate}
+                            timeFormat={false}
+                          //  disabled={true}
+                            inputProps={{ disabled: true }}
+                            dateFormat="YYYY-MM-DD"
+                            //closeOnSelect 
+                            utc={true}  
+                           // inputProps={{ placeholder: 'YYYY-MM-DD' }}
+                             />  
+                                            
+                                            
+                                            {/* {moment(this.props.positionAssign.PositionStartDate).format('YYYY-MM-DD') } */}
                                             <b className="card-text text-danger">{this.state.validDate }</b>
                                              </td> 
                                        
-                                             <td>    {moment(this.props.positionAssign.PositionEndDate).format('YYYY-MM-DD') }
+                                             <td>    <Datetime  
+                                              id="positionEndDate"
+                                              //onChange={this.confirmedEndChange}
+                                            defaultValue= {moment(this.props.positionAssign.PositionEndDate).format('YYYY-MM-DD') }
+                                              value={this.state.positionEndDate}
+                            timeFormat={false}
+                            //disabled={true}
+                            inputProps={{ disabled: true }}
+                            dateFormat="YYYY-MM-DD"
+                            closeOnSelect 
+                            utc={true}
+                            //inputProps={{ placeholder: 'YYYY-MM-DD' }} 
+                            />  
+                                                 
+                                                  {/* {moment(this.props.positionAssign.PositionEndDate).format('YYYY-MM-DD') } */}
                                              <b className="card-text text-danger">{this.state.validDate }</b>
                                                 </td>
                                         
@@ -445,7 +481,7 @@ class EditPosition extends Component {
 
                     <ModalFooter>
                         <Button disabled={this.props.positionAssign.StaffStartDate === null} onClick={() => this.editPosition(this.props.positionAssign.MPLID , moment(this.props.positionAssign.StaffStartDate).format('YYYY-MM-DD'),
-                  moment(this.props.positionAssign.StaffEndDate).format('YYYY-MM-DD'), this.props.positionAssign.ConfirmedDate, this.props.positionAssign.ConfirmedDepDate)} color="success">Assign</Button>{' '}
+                  moment(this.props.positionAssign.StaffEndDate).format('YYYY-MM-DD'), this.props.positionAssign.ConfirmedDate, this.props.positionAssign.ConfirmedDepDate,this.state.selectedJobTitle)} color="success">Assign</Button>{' '}
                         <Button color="danger" onClick={this.toggle}>Cancel</Button>
                     </ModalFooter>
                 </Modal>

@@ -17,16 +17,12 @@ class Assignment extends Component {
         }
     }
 
-    toggleEditPositionModal = (positionAssignId,startDate) => {
-        
+    toggleEditPositionModal = () => {
         this.setState({
-            mplid: positionAssignId,
-            staffStartDate:startDate,
-            editPositionModal: !this.state.editPositionModal,
-        
+            editPositionModal: !this.state.editPositionModal
         })
-        debugger;
     }
+    
 
 
     render() {
@@ -117,7 +113,7 @@ Resort
            
              size="sm"
              onClick={() => { 
-                 this.toggleEditPositionModal(this.props.positionAssign.MPLID,this.props.positionAssign.StaffStartDate) 
+                this.toggleEditPositionModal()
              }}
              color="info"
               style={{ marginRight: '2px', marginTop: '1px',  marginBottom: '1px' }}
