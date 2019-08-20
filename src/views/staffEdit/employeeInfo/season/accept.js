@@ -23,12 +23,12 @@ class Accept extends Component {
                 {
                     id: 'Pending',
                     name: 'Pending'
-                },
-
-                {
-                    id: 'Reset',
-                    name: 'Reset'
                 }
+
+                // {
+                //     id: 'Reset',
+                //     name: 'Reset'
+                // }
             ]
         }
     }

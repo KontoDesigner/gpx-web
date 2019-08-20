@@ -4,6 +4,7 @@ import AbscenseInformation from './abscenseInformation'
 import ResignInformation from './resignInformation'
 import * as employeeInfoActions from '../../../actions/staffEdit/employeeInfoActions'
 import * as abscenseActions from '../../../actions/staffEdit/abscenseActions'
+import * as applicationHistoryActions from '../../../actions/staffEdit/applicationHistoryActions'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 //import restClientConfig from '../../../infrastructure/restClientConfig'
@@ -31,6 +32,7 @@ class Abscense extends Component {
       validAbsentReason:'',
       validRecommend:'',
       validComment:'',
+      coupleName:'',
       resignHistoryLocal: Object.assign({}, resignHistoryLocal ? resignHistoryLocal : {}),
       abscenseLocal: Object.assign({}, abscenseLocal ? abscenseLocal : {}),
       recommend: [    //not in use  delete
@@ -249,6 +251,165 @@ debugger;
     }
   }
 
+  handleDisableResign = async () => {
+    // this.props.settingActions.save()
+    var currentdate = new Date()
+
+    var newdatemodified=moment(currentdate).format("YYYY-MM-DD HH:mm:ss")
+
+      var check= this.state.resignHistoryLocal.appDate ?  true: false
+      var check2= this.state.resignHistoryLocal.managerReason ? true: false
+      var check3= this.state.resignHistoryLocal.reasonForResignment ? true: false
+      var check4= this.state.resignHistoryLocal.jobTitleWhenResigned ? true: false
+      var check6= this.state.resignHistoryLocal.recommend ? true: false
+      var check5= this.state.resignHistoryLocal.signature ? true: false
+ 
+  
+      if(!check){  
+        this.setState({
+          validLastWorking:'Date´s missing'
+        })
+        return false;
+      }
+      this.setState({
+        validLastWorking:''
+      })
+
+      if(!check2){  
+        this.setState({
+          validMgrReason:'Select a manager reason'
+        })
+        return false;
+      }
+      this.setState({
+         validMgrReason:''
+       })
+
+
+      if(!check3){  
+        this.setState({
+          validReasonFor:'Select a reason for resignment'
+        })
+        return false;
+      }
+      this.setState({
+        validReasonFor:''
+      })
+
+      if(!check4){  
+        this.setState({
+          validJobTitleWhen:'Select a Jobtitle'
+        })
+        return false;
+      }
+      this.setState({
+        validJobTitleWhen:''
+      })
+      debugger;
+      if(!check6){ 
+        this.setState({
+          validRecommend:'Select recommendation'
+        })
+        return false;
+      }
+      this.setState({
+        validRecommend:''
+      })
+
+      var resignCompareStart = new Date(this.state.resignHistoryLocal.appDate).setHours(0, 0, 0, 0);
+      var resignCompareToday  = new Date(currentdate).setHours(0, 0, 0, 0);
+
+
+      var checkokDate= (resignCompareStart >= resignCompareToday);
+      debugger;
+      if(!checkokDate){  
+        this.setState({
+          validLastWorking:'Staff are resigned. Use the re-activate function instead'
+        })
+        return false;
+      }
+      this.setState({
+        validLastWorking:''
+      })
+//       if((this.state.resignHistoryLocal.recommend=='No') && (this.state.resignHistoryLocal.resignComm=='') ){ 
+//         debugger;
+
+//    this.setState({
+//      validComment:'Enter comment'
+//    })
+//    return false;
+//  }
+  // this.setState({
+  //   resignHistoryLocal:{}
+  // })
+
+
+      if(!check5){  
+        this.setState({
+          validSignature:'Enter a signature'
+        })
+        return false;
+      }
+      this.setState({
+        validSignature:''
+      })
+    
+debugger;
+    let model = {
+      // to the database
+      ApplicationType: this.state.resignHistoryLocal.applicationType,
+      FromDate: this.state.resignHistoryLocal.appDate, // this is wrong
+      AppDate: this.state.resignHistoryLocal.appDate,
+      ManagerReason: this.state.resignHistoryLocal.managerReason,
+      Signature: this.state.resignHistoryLocal.signature,
+      JobTitleWhenResigned: this.state.resignHistoryLocal.jobTitleWhenResigned,
+      ReasonForResignment: this.state.resignHistoryLocal.reasonForResignment,
+      ResignComm: this.state.resignHistoryLocal.resignComm,
+      Recommend: this.state.resignHistoryLocal.recommend,
+      DateModified: newdatemodified,
+      // //EmpID: this.state.resignHistory.empID,
+      StaffID: this.props.staff.staffID
+    } 
+
+    debugger;
+    try {
+
+       
+ 
+      
+      const res = await RestClient.Post('resign/disableresignUser', model)
+      debugger;
+
+      if (res) {
+        toastr.success('Success', `Resign Document is Disabled`)
+
+        this.setState({
+          resignHistoryLocal:{},
+         
+        })
+
+       // this.setState = {
+        //this.setState({coupleName:'Nothing' })
+        //this.props.applicationHistoryActions.handleApplicationHistory({})
+
+         //let resignHistory={}
+      //}
+
+      } else {
+        toastr.error(
+          'Error',
+          `Could not disable Resign document: ${res ? res.message : 'Error'}`
+        )
+      }
+      //this.props.applicationHistoryActions.getResignHistory(this.state.staffId)
+
+
+
+    } catch (error) {
+      throw error
+    }
+  }
+
   handleResignDatePicker = (field, date) => {
     let val = ''
     //debugger
@@ -353,6 +514,7 @@ debugger;
     let resignHistoryLocal = Object.assign({}, this.state.resignHistoryLocal)
     resignHistoryLocal[field] = val
 
+
     this.setState({ resignHistoryLocal })
     //this.props.abscenseActions.handleStaffField(field, val)
 
@@ -381,6 +543,7 @@ debugger;
   // }
 
   render() {
+    console.log (this.state.coupleName);
     return (
       <div>
         <Row className="row-panel-4">
@@ -408,6 +571,7 @@ debugger;
               handleStaffSelect={this.handleStaffSelect}
               handleStaffField={this.handleStaffField}
               handleSaveResign={this.handleSaveResign}
+              handleDisableResign={this.handleDisableResign}
               allJobTitles={this.props.allJobTitles}
               handleChangeMultiple={this.props.handleChangeMultiple}
              // resignmentReasons={this.props.resignmentReasons}
@@ -424,6 +588,7 @@ debugger;
               validRecommend={this.state.validRecommend}
               validComment={this.state.validComment}
               recommend={this.state.recommend}
+              coupleName={this.state.coupleName}
               managerReasonArr={this.props.managerReasonArr}
               reasonForResignmentArr={this.props.reasonForResignmentArr}
               jobTitleWhenResignedArr={this.props.jobTitleWhenResignedArr}
@@ -444,6 +609,7 @@ debugger;
 function mapDispatchToProps(dispatch) {
   return {
     employeeInfoActions: bindActionCreators(employeeInfoActions, dispatch),
+    applicationHistoryActions: bindActionCreators(applicationHistoryActions, dispatch),
     abscenseActions: bindActionCreators(abscenseActions, dispatch)
   }
 }

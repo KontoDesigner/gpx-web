@@ -10,15 +10,16 @@ const resignInformation = props => {
   const enableResignBtn = (
 
     <Button
-      // disabled={this.props.abscense === undefined && this.props.abscense === null}
+     //  disabled={props.resignHistory.recommend === undefined && props.resignHistory.recommend === null}
+     disabled={props.resignHistory.managerReason != undefined || props.resignHistory.managerReason != null}
       size="sm"
       className="pull-right"
       onClick={() => {
         
         props.handleSaveResign()
       }} 
-      color="warning"
-      // style={{ marginRight: '2px', marginBottom: '2px' }}
+      color="success"
+     style={{ marginRight: '2px', marginBottom: '2px' }}
     >
 Enable
     </Button>
@@ -26,15 +27,16 @@ Enable
 
   const disableResignBtn = (
     <Button
-      // disabled={this.props.abscense !== undefined && this.props.abscense !== null}
+    disabled={props.resignHistory.managerReason === undefined || props.resignHistory.managerReason === null}
       size="sm"
+      className="pull-right"
       onClick={() => {
-        // this.props.handleAbscense('0',props.staffID)
+         props.handleDisableResign('0',props.staffID)
       }}
-      color="default"
-      // style={{ marginRight: '2px', marginBottom: '2px' }}
+      color="primary"
+      style={{ marginRight: '2px', marginBottom: '2px' }}
     >
-      Back again
+      Disable
     </Button>
   )
 
@@ -63,10 +65,14 @@ Enable
               closeOnSelect
               utc={true}
               inputProps={{ placeholder: 'YYYY-MM-DD' }}
+              
             />
               <b className="card-text text-danger">{props.validLastWorking }</b>
-          </Col>
+       
+        
 
+          </Col>
+    
           <Col
             sm="12"
             md="6"
@@ -217,7 +223,7 @@ Enable
           <Col>
             {' '}
             {enableResignBtn}
-            {/* {disableResignBtn } */}
+            {disableResignBtn } 
           </Col>
         </Row>
       </CardFooter>
