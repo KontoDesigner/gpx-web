@@ -72,7 +72,7 @@ class EmployeeInfo extends Component {
             FirstName: this.props.staff.firstName,
             LastName: this.props.staff.lastName,
             Season: role.season,
-          
+            Accept: role.accept,
             FullName: this.props.staff.fullName,
             StartDate: role.startDate,
             EndDate: role.endDate,

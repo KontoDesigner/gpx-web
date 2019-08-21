@@ -53,7 +53,7 @@ class AssignRole extends Component {
     }
 
     jobTitleOnChange = jobTitle => {
-        debugger;
+     
         const selectedJobTitle = jobTitle != null ? jobTitle.mplid : null;
         const positionStartDate = jobTitle != null ? jobTitle.positionStartDate: null;
         const positionEndDate = jobTitle != null ? jobTitle.positionEndDate: null
@@ -126,13 +126,14 @@ debugger;
             startDate: this.state.selectedStartDate
             ? this.state.selectedStartDate
             : val,
+            accept: "Pending" ,
           endDate: this.state.selectedEndDate
             ? this.state.selectedEndDate
             : val2,
 
 
         }
-
+debugger;
 
         var assignCompareStart = new Date(model.startDate).setHours(0, 0, 0, 0);
         var assignCompareEnd  = new Date(model.endDate).setHours(0, 0, 0, 0);
