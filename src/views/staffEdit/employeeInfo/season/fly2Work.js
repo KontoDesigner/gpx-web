@@ -28,7 +28,7 @@ class Fly2Work extends Component {
 
         let model = {}
 
-        this.props.send(positionAssign, this.state.selectedDirection.id)
+        this.props.send(positionAssign, this.state.selectedDirection.id, this.props.season)
     }
 
     directionChange = id => {

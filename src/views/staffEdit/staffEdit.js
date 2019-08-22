@@ -37,16 +37,16 @@ class StaffEdit extends Component {
         const staffId = params.id
 
         this.state = {
-            positionTypeArr : [],
-            resignTypeArr : [],
-            managerReasonArr : [],
-            nationalConceptArr : [],
-            reasonForResignmentArr : [],
-            childCareLevelArr : [],
-            languageSkillArr : [],
-            suitableArr : [],
-            internationalArr : [],
-            nationalArr : [],
+            positionTypeArr: [],
+            resignTypeArr: [],
+            managerReasonArr: [],
+            nationalConceptArr: [],
+            reasonForResignmentArr: [],
+            childCareLevelArr: [],
+            languageSkillArr: [],
+            suitableArr: [],
+            internationalArr: [],
+            nationalArr: [],
             loaded: false,
             activeTab: 'employeeInfo',
             nowAvailablePositions: [],
@@ -54,7 +54,6 @@ class StaffEdit extends Component {
             newUser: {
                 skills: []
             },
-  
 
             spainRegistred: [
                 {
@@ -63,7 +62,6 @@ class StaffEdit extends Component {
                 }
             ],
 
-       
             skillOptions: ['Programming', 'Development', 'Design', 'Testing'],
 
             unsavedEdit: false
@@ -74,7 +72,7 @@ class StaffEdit extends Component {
     }
     edit = application => {
         // alert(position.staffID);
-     
+
         if (application.staffID != null && (application.staffID != 0 && application.staffID != 'No StaffId defined')) {
             const win = window.open(`/application/${application.staffID}/${application.season}`, '_blank')
             win.focus()
@@ -105,11 +103,6 @@ class StaffEdit extends Component {
         //     throw error
         // }
 
-  
-
-
-        
-
         debugger
 
         return Promise.all([
@@ -136,138 +129,108 @@ class StaffEdit extends Component {
     }
 
     async componentDidMount() {
-        const positionType= this.props.keywordslookup.filter(ap => ap.ids === 'PositionTypes')[0];
-         const positionTypeArr = positionType.keywordValues.split(',')
-         const resignType= this.props.keywordslookup.filter(ap => ap.ids === 'ResignTypes')[0];
-         const resignTypeArr = resignType.keywordValues.split(',')
-         const managerReason= this.props.keywordslookup.filter(ap => ap.ids === 'ManagerReasons')[0];
-         const managerReasonArr = managerReason.keywordValues.split(',')
-         const reasonForResignment= this.props.keywordslookup.filter(ap => ap.ids === 'ReasonForResignment')[0];
-         const reasonForResignmentArr = reasonForResignment.keywordValues.split(',')
-         const childCareLevel= this.props.keywordslookup.filter(ap => ap.ids === 'ChildCareLevels')[0];
-         const childCareLevelArr = childCareLevel.keywordValues.split(',')
-         const languageSkill= this.props.keywordslookup.filter(ap => ap.ids === 'LanguageSkills')[0];
-         const languageSkillArr = languageSkill.keywordValues.split(',')
-         const suitable = this.props.keywordslookup.filter(ap => ap.ids === 'SuitableToWork')[0];
-         const suitableArr = suitable.keywordValues.split(',')
-         const international = this.props.keywordslookup.filter(ap => ap.ids === 'InternationalConcepts')[0];
-         const internationalArr = international.keywordValues.split(',')
-         const national = this.props.keywordslookup.filter(ap => ap.ids === 'NationalConcepts')[0];
-         const nationalArr = national.keywordValues.split(',')
+        const positionType = this.props.keywordslookup.filter(ap => ap.ids === 'PositionTypes')[0]
+        const positionTypeArr = positionType.keywordValues.split(',')
+        const resignType = this.props.keywordslookup.filter(ap => ap.ids === 'ResignTypes')[0]
+        const resignTypeArr = resignType.keywordValues.split(',')
+        const managerReason = this.props.keywordslookup.filter(ap => ap.ids === 'ManagerReasons')[0]
+        const managerReasonArr = managerReason.keywordValues.split(',')
+        const reasonForResignment = this.props.keywordslookup.filter(ap => ap.ids === 'ReasonForResignment')[0]
+        const reasonForResignmentArr = reasonForResignment.keywordValues.split(',')
+        const childCareLevel = this.props.keywordslookup.filter(ap => ap.ids === 'ChildCareLevels')[0]
+        const childCareLevelArr = childCareLevel.keywordValues.split(',')
+        const languageSkill = this.props.keywordslookup.filter(ap => ap.ids === 'LanguageSkills')[0]
+        const languageSkillArr = languageSkill.keywordValues.split(',')
+        const suitable = this.props.keywordslookup.filter(ap => ap.ids === 'SuitableToWork')[0]
+        const suitableArr = suitable.keywordValues.split(',')
+        const international = this.props.keywordslookup.filter(ap => ap.ids === 'InternationalConcepts')[0]
+        const internationalArr = international.keywordValues.split(',')
+        const national = this.props.keywordslookup.filter(ap => ap.ids === 'NationalConcepts')[0]
+        const nationalArr = national.keywordValues.split(',')
 
+        const positionTypeObjArr = positionTypeArr.map(s => ({
+            id: s,
+            name: s
+        }))
 
-        
-         const positionTypeObjArr = positionTypeArr.map(s => ({
+        const resignTypeObjArr = resignTypeArr.map(s => ({
             id: s,
             name: s
-         }))
+        }))
 
-         const resignTypeObjArr = resignTypeArr.map(s => ({
+        const managerReasonObjArr = managerReasonArr.map(s => ({
             id: s,
             name: s
-         }))
+        }))
 
-         const managerReasonObjArr = managerReasonArr.map(s => ({
+        const reasonForResignmentObjArr = reasonForResignmentArr.map(s => ({
             id: s,
             name: s
-         }))
+        }))
 
-         const reasonForResignmentObjArr = reasonForResignmentArr.map(s => ({
+        const childCareLevelObjArr = childCareLevelArr.map(s => ({
             id: s,
             name: s
-         }))
+        }))
 
-         const childCareLevelObjArr = childCareLevelArr.map(s => ({
+        const languageSkillObjArr = languageSkillArr.map(s => ({
             id: s,
             name: s
-         }))
-        
+        }))
+        const suitableObjArr = suitableArr.map(s => ({
+            id: s,
+            name: s
+        }))
+        const nationalObjArr = nationalArr.map(s => ({
+            id: s,
+            name: s
+        }))
+        const internationalObjArr = internationalArr.map(s => ({
+            id: s,
+            name: s
+        }))
+        if (positionType !== undefined) {
+            this.setState({ positionTypeArr: positionTypeObjArr })
+        }
 
-         const languageSkillObjArr = languageSkillArr.map(s => ({
-            id: s,
-            name: s
-         }))
-         const suitableObjArr = suitableArr.map(s => ({
-            id: s,
-            name: s
-         }))
-         const nationalObjArr = nationalArr.map(s => ({
-            id: s,
-            name: s
-         }))
-         const internationalObjArr = internationalArr.map(s => ({
-            id: s,
-            name: s
-         }))
-         if (positionType !== undefined) {
-        
-               
-            this.setState({positionTypeArr: positionTypeObjArr })
+        if (positionType !== undefined) {
+            this.setState({ positionTypeArr: positionTypeObjArr })
+        }
+
+        if (positionType !== undefined) {
+            this.setState({ positionTypeArr: positionTypeObjArr })
+        }
+
+        if (resignType !== undefined) {
+            this.setState({ resignTypeArr: resignTypeObjArr })
+        }
+
+        if (managerReason !== undefined) {
+            this.setState({ managerReasonArr: managerReasonObjArr })
+        }
+
+        if (reasonForResignment !== undefined) {
+            this.setState({ reasonForResignmentArr: reasonForResignmentObjArr })
+        }
+
+        if (childCareLevel !== undefined) {
+            this.setState({ childCareLevelArr: childCareLevelObjArr })
+        }
+
+        if (languageSkill !== undefined) {
+            this.setState({ languageSkillArr: languageSkillObjArr })
+        }
+        if (suitable !== undefined) {
+            this.setState({ suitableArr: suitableObjArr })
+        }
+
+        if (international !== undefined) {
+            this.setState({ internationalArr: internationalObjArr })
+        }
+        if (national !== undefined) {
+            this.setState({ nationalArr: nationalObjArr })
+        }
     }
-
-    if (positionType !== undefined) {
-        
-               
-        this.setState({positionTypeArr: positionTypeObjArr })
-}
-
-if (positionType !== undefined) {
-        
-               
-    this.setState({positionTypeArr: positionTypeObjArr })
-}
-
-
-    if (resignType !== undefined) {
-        
-               
-        this.setState({resignTypeArr: resignTypeObjArr })
-}
-
-if (managerReason !== undefined) {
-        
-               
-    this.setState({managerReasonArr: managerReasonObjArr })
-}
-
-if (reasonForResignment !== undefined) {
-        
-               
-    this.setState({reasonForResignmentArr: reasonForResignmentObjArr })
-}
-
-
-
-
-if (childCareLevel !== undefined) {
-        
-               
-    this.setState({childCareLevelArr: childCareLevelObjArr })
-}
-
-if (languageSkill !== undefined) {
-        
-               
-    this.setState({languageSkillArr: languageSkillObjArr })
-}
-if (suitable !== undefined) {
-        
-               
-    this.setState({suitableArr: suitableObjArr })
-}
-
-if (international !== undefined) {
-        
-               
-    this.setState({internationalArr: internationalObjArr })
-}
-if (national !== undefined) {
-        
-               
-    this.setState({nationalArr: nationalObjArr })
-}
-    }
-
 
     toggle = activeTab => {
         if (this.state.activeTab !== activeTab) {
@@ -288,7 +251,7 @@ if (national !== undefined) {
     getAvailablePositionNew = async () => {
         debugger
         const nowAvailablePositions = await RestClient.Get('positionassign/getallcand')
-        debugger;
+        debugger
         this.setState({
             nowAvailablePositions
         })
@@ -309,7 +272,7 @@ if (national !== undefined) {
     }
     //************************************************************************** */
 
-    send = (positionAssign, direction) => {
+    send = (positionAssign, direction, season) => {
         const model = {
             Id: this.props.staff.staffID,
             FirstName: this.props.staff.firstName,
@@ -324,9 +287,10 @@ if (national !== undefined) {
             JobTitle: positionAssign.JobTitle,
             IataCode: positionAssign.IataCode,
             PositionAssignId: positionAssign.PositionAssignId,
-            Direction: direction
+            Direction: direction,
+            Season: season
         }
-        debugger;
+        debugger
         this.props.employeeInfoActions.sendToCtx(model)
     }
 
@@ -400,7 +364,6 @@ if (national !== undefined) {
                                         currentSeason={this.props.currentSeason}
                                         nextSeason={this.props.nextSeason}
                                         followingSeason={this.props.followingSeason}
-                                      
                                         spainRegistred={this.state.spainRegistred}
                                         handleUnsavedEdit={this.handleUnsavedEdit}
                                         send={this.send}
@@ -408,19 +371,18 @@ if (national !== undefined) {
                                         getAvailablePositionNew={this.getAvailablePositionNew}
                                         keywordslookup={this.props.keywordslookup}
                                         positionTypeArr={this.state.positionTypeArr}
-                                      
-                                      
-                                    /> 
+                                    />
                                 </TabPane>
-                                
+
                                 <TabPane tabId="cv">
-                                    <Cv staff={this.props.staff} 
-                                    handleUnsavedEdit={this.handleUnsavedEdit} 
-                                    languageSkillArr={this.state.languageSkillArr}
-                                    childCareLevelArr={this.state.childCareLevelArr}
-                                    suitableArr={this.state.suitableArr}
-                                   nationalArr={this.state.nationalArr}
-                                    internationalArr={this.state.internationalArr}
+                                    <Cv
+                                        staff={this.props.staff}
+                                        handleUnsavedEdit={this.handleUnsavedEdit}
+                                        languageSkillArr={this.state.languageSkillArr}
+                                        childCareLevelArr={this.state.childCareLevelArr}
+                                        suitableArr={this.state.suitableArr}
+                                        nationalArr={this.state.nationalArr}
+                                        internationalArr={this.state.internationalArr}
                                     />
                                 </TabPane>
 
@@ -432,7 +394,7 @@ if (national !== undefined) {
                                         managerReasonArr={this.state.managerReasonArr}
                                         reasonForResignmentArr={this.state.reasonForResignmentArr}
                                         jobTitleWhenResignedArr={this.state.jobTitleWhenResignedArr}
-                                     //   managerReasons={this.state.managerReasons}
+                                        //   managerReasons={this.state.managerReasons}
                                         //resignmentReasons={this.state.resignmentReasons}
                                         handleChangeMultiple={this.handleChangeMultiple}
                                         allJobTitles={this.props.allJobTitles}
@@ -452,8 +414,8 @@ if (national !== undefined) {
                                         applicationHistory={this.props.applicationHistory}
                                         edit={this.edit}
                                         status={this.props.staff.status}
-                                       abscenseHistory={this.props.abscenseHistory}
-                                       resignHistory={this.props.resignHistory}
+                                        abscenseHistory={this.props.abscenseHistory}
+                                        resignHistory={this.props.resignHistory}
                                     />
                                 </TabPane>
 
@@ -479,7 +441,7 @@ if (national !== undefined) {
                 </div>
             )
         }
-    } 
+    }
 }
 
 function mapStateToProps(state) {
@@ -516,7 +478,7 @@ function mapDispatchToProps(dispatch) {
         destinationHistoryActions: bindActionCreators(destinationHistoryActions, dispatch),
         historyActions: bindActionCreators(historyActions, dispatch),
         applicationHistoryActions: bindActionCreators(applicationHistoryActions, dispatch),
-   
+
         abscenseHistoryActions: bindActionCreators(abscenseHistoryActions, dispatch),
         flightRequestHistoryActions: bindActionCreators(flightRequestHistoryActions, dispatch)
     }
