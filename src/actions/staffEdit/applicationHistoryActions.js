@@ -16,7 +16,7 @@ export function getResignHistory(staffId) {
         dispatch(beginAjaxCall())
 
         try {
-
+            
             const resignHistory = await RestClient.Get(`staff/getStaffResignHistory/${staffId}`)
 debugger;
             dispatch(getResignHistorySuccess(resignHistory))
@@ -27,6 +27,7 @@ debugger;
         }
     }
 }
+
 
 export function getApplicationHistory(staffId) {
     return async function(dispatch) {

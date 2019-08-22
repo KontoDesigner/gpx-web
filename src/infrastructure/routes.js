@@ -29,7 +29,7 @@ const Routes = () => (
             <Route path="/reports" component={Reports} />
             <Route exact path="/application" component={Application} />
             <Route path="/settings" component={Settings} />
-         
+           
             
             
             <Route exact path="/application/:id/:season" render={(props) => <WorkEdit {...props} ignoreThis={true} />} />

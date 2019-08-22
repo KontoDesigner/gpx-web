@@ -248,7 +248,8 @@ class Season extends Component {
                 disabled={this.props.positionAssign === undefined && this.props.positionAssign === null}
                 size="sm"
                 onClick={() => {
-                    this.toggleEditPositionModal()
+         
+               this.toggleEditPositionModal()
                 }}
                color="info"
                 style={{ marginRight: '10px', marginBottom: '10px' }}>
@@ -271,7 +272,7 @@ class Season extends Component {
                                             size="sm"
                                             onClick={() => {
 
-                                                
+                                                 
                                                     this.toggleAcceptModal()
                 
                                                // this.props.send(this.props.positionAssign)
