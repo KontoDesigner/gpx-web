@@ -8,7 +8,7 @@ import EditPosition from './editPosition'
 import Fly2Work from './fly2Work'
 import Accept from './accept'
 import Datetime from 'react-datetime'
-import moment from "moment";
+import moment from 'moment'
 class Season extends Component {
     constructor() {
         super()
@@ -19,12 +19,7 @@ class Season extends Component {
             removeRoleModal: false,
             fly2WorkModal: false,
             acceptModal: false,
-            editPositionModal:false
-
-        
-
-
-
+            editPositionModal: false
         }
     }
 
@@ -34,13 +29,11 @@ class Season extends Component {
         })
     }
 
-
     toggleEditPositionModal = () => {
         this.setState({
             editPositionModal: !this.state.editPositionModal
         })
     }
-    
 
     toggleMoveRoleModal = () => {
         this.setState({
@@ -54,15 +47,13 @@ class Season extends Component {
         })
     }
 
-    toggleFly2WorkModal = (positionAssign) => {
-        
+    toggleFly2WorkModal = positionAssign => {
         this.setState({
             fly2WorkModal: !this.state.fly2WorkModal
         })
     }
 
-    toggleAcceptModal = (positionAssign) => {
-        
+    toggleAcceptModal = positionAssign => {
         this.setState({
             acceptModal: !this.state.acceptModal
         })
@@ -94,15 +85,12 @@ class Season extends Component {
                 availablePositions={this.props.nowAvailablePositions}
                 assignRole={this.props.assignRole}
                 positionAssign={this.props.positionAssign}
-
-               // currentPositionAssign={this.props.currentPositionAssign}
-               // nextPositionAssign={this.props.nextPositionAssign}
-               // followingPositionAssign={this.props.followingPositionAssign}
+                // currentPositionAssign={this.props.currentPositionAssign}
+                // nextPositionAssign={this.props.nextPositionAssign}
+                // followingPositionAssign={this.props.followingPositionAssign}
                 season={this.props.season}
             />
         )
-
-      
 
         const assignBtn = (
             <Button
@@ -119,16 +107,13 @@ class Season extends Component {
 
         if (this.props.positionAssign === undefined || this.props.positionAssign === null) {
             return (
-              
                 <div>
                     <Card>
                         <CardHeader>{this.props.title}</CardHeader>
 
                         <CardBody>
                             <Row>
-                                <Col>
-                                    {/* <b className="card-text text-danger">No {this.props.title.toLowerCase()} found.</b> */}
-                                </Col>
+                                <Col>{/* <b className="card-text text-danger">No {this.props.title.toLowerCase()} found.</b> */}</Col>
                             </Row>
                         </CardBody>
 
@@ -140,17 +125,16 @@ class Season extends Component {
                     </Card>
 
                     {assignModal}
-                    
-                   
                 </div>
             )
         } else {
             return (
                 <div>
-                                          {/* {this.props.positionAssign.StaffStartDate} */}
+                    {/* {this.props.positionAssign.StaffStartDate} */}
                     <Card>
-                        <CardHeader>{this.props.title} {this.props.positionAssign.Accept? " - " + this.props.positionAssign.Accept:""} 
-                                </CardHeader>
+                        <CardHeader>
+                            {this.props.title} {this.props.positionAssign.Accept ? ' - ' + this.props.positionAssign.Accept : ''}
+                        </CardHeader>
 
                         <CardBody className="no-padding-bottom">
                             <div className="form-row">
@@ -173,9 +157,7 @@ class Season extends Component {
                                             ' ' +
                                             this.props.positionAssign.Destination +
                                             ' ' +
-                                            this.props.positionAssign.ConceptHotel 
-
-                                          
+                                            this.props.positionAssign.ConceptHotel
                                         }
                                     />
                                 </Col>
@@ -185,22 +167,23 @@ class Season extends Component {
                                 </Col>
 
                                 <Col sm="12" md="6" lg="6" xl="6" className="form-group">
-                                    <TextInput name="jobTitle" label="Job Title" disabled={true} value=
-                                    
-                                    {this.props.positionAssign.JobTitle +
-                                    
-                                        ' ' +
-                                        this.props.positionAssign.MPLID
-                                    
-                                    
-                                    } />
+                                    <TextInput
+                                        name="jobTitle"
+                                        label="Job Title"
+                                        disabled={true}
+                                        value={this.props.positionAssign.JobTitle + ' ' + this.props.positionAssign.MPLID}
+                                    />
                                 </Col>
 
                                 <Col sm="12" md="6" lg="6" xl="6" className="form-group">
                                     <label htmlFor="StaffStartDate">Planned Staff Arrival</label>
 
                                     <Datetime
-                                        value={this.props.positionAssign !== null ? moment(this.props.positionAssign.StaffStartDate).format("YYYY-MM-DD") : ''}
+                                        value={
+                                            this.props.positionAssign !== null
+                                                ? moment(this.props.positionAssign.StaffStartDate).format('YYYY-MM-DD')
+                                                : ''
+                                        }
                                         onChange={v => {
                                             this.handlePositionAssignDatePicker('StaffStartDate', v, this.props.title)
                                         }}
@@ -214,9 +197,13 @@ class Season extends Component {
 
                                 <Col sm="12" md="6" lg="6" xl="6" className="form-group">
                                     <label htmlFor="StaffEndDate">Planned Staff Departure</label>
-                                
+
                                     <Datetime
-                                        value={this.props.positionAssign !== null ? moment(this.props.positionAssign.StaffEndDate).format("YYYY-MM-DD") : ''}
+                                        value={
+                                            this.props.positionAssign !== null
+                                                ? moment(this.props.positionAssign.StaffEndDate).format('YYYY-MM-DD')
+                                                : ''
+                                        }
                                         onChange={v => {
                                             this.handlePositionAssignDatePicker('StaffEndDate', v, this.props.title)
                                         }}
@@ -228,14 +215,30 @@ class Season extends Component {
                                     />
                                 </Col>
                                 <Col sm="12" md="6" lg="6" xl="6" className="form-group">
-                                    <TextInput name="ConfirmedDate" label="Confirmed Staff Arrival" disabled={true} value={this.props.positionAssign.ConfirmedDate? moment(this.props.positionAssign.ConfirmedDate).format("YYYY-MM-DD"):""} />
+                                    <TextInput
+                                        name="ConfirmedDate"
+                                        label="Confirmed Staff Arrival"
+                                        disabled={true}
+                                        value={
+                                            this.props.positionAssign.ConfirmedDate
+                                                ? moment(this.props.positionAssign.ConfirmedDate).format('YYYY-MM-DD')
+                                                : ''
+                                        }
+                                    />
                                 </Col>
 
-                                     <Col sm="12" md="6" lg="6" xl="6" className="form-group">
-                                    <TextInput name="ConfirmedDepDate" label="Confirmed Staff Departure" disabled={true} value={this.props.positionAssign.ConfirmedDepDate? moment(this.props.positionAssign.ConfirmedDepDate).format("YYYY-MM-DD"):""} />
+                                <Col sm="12" md="6" lg="6" xl="6" className="form-group">
+                                    <TextInput
+                                        name="ConfirmedDepDate"
+                                        label="Confirmed Staff Departure"
+                                        disabled={true}
+                                        value={
+                                            this.props.positionAssign.ConfirmedDepDate
+                                                ? moment(this.props.positionAssign.ConfirmedDepDate).format('YYYY-MM-DD')
+                                                : ''
+                                        }
+                                    />
                                 </Col>
-
-                               
                             </div>
                         </CardBody>
 
@@ -244,95 +247,83 @@ class Season extends Component {
                                 <Col>
                                     {assignBtn}
 
-                                         <Button
-                disabled={this.props.positionAssign === undefined && this.props.positionAssign === null}
-                size="sm"
-                onClick={() => {
-         
-               this.toggleEditPositionModal()
-                }}
-               color="info"
-                style={{ marginRight: '10px', marginBottom: '10px' }}>
-                Edit Assignment
-            </Button>
-                              
+                                    <Button
+                                        disabled={this.props.positionAssign === undefined && this.props.positionAssign === null}
+                                        size="sm"
+                                        onClick={() => {
+                                            this.toggleEditPositionModal()
+                                        }}
+                                        color="info"
+                                        style={{ marginRight: '10px', marginBottom: '10px' }}>
+                                        Edit Assignment
+                                    </Button>
+
                                     <Button
                                         size="sm"
                                         onClick={() => {
-                                            
                                             this.toggleRemoveRoleModal()
                                         }}
                                         color="danger"
                                         style={{ marginRight: '10px', marginBottom: '10px' }}>
                                         Remove Assignment
                                     </Button>
-                         
-                                         {/* {this.props.accept !== null && ( */}
+
+                                    {/* {this.props.accept !== null && ( */}
+                                    <Button
+                                        size="sm"
+                                        onClick={() => {
+                                            this.toggleAcceptModal()
+
+                                            // this.props.send(this.props.positionAssign)
+                                        }}
+                                        color="success"
+                                        style={{ marginRight: '10px', marginBottom: '10px' }}>
+                                        Accept/Decline/Pending/Reset Assignment
+                                    </Button>
+                                    {/* )} */}
+
+                                    {this.props.send !== null && (
                                         <Button
                                             size="sm"
                                             onClick={() => {
+                                                this.toggleFly2WorkModal()
 
-                                                 
-                                                    this.toggleAcceptModal()
-                
-                                               // this.props.send(this.props.positionAssign)
-                                            }}
-                                            color="success"
-                                            style={{ marginRight: '10px', marginBottom: '10px' }}>
-                                         Accept/Decline/Pending/Reset Assignment
-                                        </Button>
-                                     {/* )} */}
-                                
-                               
-                                           {this.props.send !== null && (
-                                        <Button
-                                            size="sm"
-                                            onClick={() => {
-
-                                                 
-                                                    this.toggleFly2WorkModal()
-                
-                                               // this.props.send(this.props.positionAssign)
+                                                // this.props.send(this.props.positionAssign)
                                             }}
                                             color="warning"
                                             style={{ marginBottom: '10px' }}>
                                             Send to Fly2Work
                                         </Button>
                                     )}
-                                    </Col>
+                                </Col>
                             </Row>
                         </CardFooter>
                     </Card>
 
-               
-
                     {assignModal}
 
+                    <EditPosition
+                        modal={this.state.editPositionModal}
+                        toggle={this.toggleEditPositionModal}
+                        availablePositions={this.props.nowAvailablePositions}
+                        editPosition={this.props.editPosition}
+                        positionAssign={this.props.positionAssign}
+                        season={this.props.season}
+                    />
 
-       <EditPosition
-                modal={this.state.editPositionModal}
-                toggle={this.toggleEditPositionModal}
-                availablePositions={this.props.nowAvailablePositions}
-                editPosition={this.props.editPosition}
-                positionAssign={this.props.positionAssign}
-            
-                season={this.props.season}
-            />
-
-            <Fly2Work
-                modal={this.state.fly2WorkModal}
-                toggle={this.toggleFly2WorkModal}
-                positionAssign={this.props.positionAssign}
-                send={this.props.send}
-               
-            />
-             <Accept
-                modal={this.state.acceptModal}
-                toggle={this.toggleAcceptModal}
-                positionAssign={this.props.positionAssign}
-                createAcceptStaff ={this.props.createAcceptStaff}
-               
-            />
+                    <Fly2Work
+                        modal={this.state.fly2WorkModal}
+                        toggle={this.toggleFly2WorkModal}
+                        positionAssign={this.props.positionAssign}
+                        send={this.props.send}
+                        season={this.props.season}
+                    />
+                    <Accept
+                        modal={this.state.acceptModal}
+                        toggle={this.toggleAcceptModal}
+                        positionAssign={this.props.positionAssign}
+                        createAcceptStaff={this.props.createAcceptStaff}
+                    />
 
                     <MoveRole
                         modal={this.state.moveRoleModal}
