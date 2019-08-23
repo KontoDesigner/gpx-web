@@ -287,8 +287,8 @@ class StaffEdit extends Component {
             JobTitle: positionAssign.JobTitle,
             IataCode: positionAssign.IataCode,
             PositionAssignId: positionAssign.PositionAssignId,
-            Direction: direction,
-            Season: season
+            Direction: direction
+            // Season: season
         }
         debugger
         this.props.employeeInfoActions.sendToCtx(model)
