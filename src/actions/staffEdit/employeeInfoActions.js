@@ -263,8 +263,9 @@ export function updatePositionAssign(positionAssign) {
         dispatch(beginAjaxCall()) 
 
         try {
-            const res = await RestClient.Post('positionassign/updatepositionassign', positionAssign)
             debugger;
+            const res = await RestClient.Post('positionassign/updatepositionassign', positionAssign)
+           
             dispatch(endAjaxCall())
 
             if (res && res.ok) {

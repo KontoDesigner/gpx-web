@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import { Row, Col } from 'reactstrap'
 import AbscenseInformation from './abscenseInformation'
 import ResignInformation from './resignInformation'
+import DisableResign from './disableResign'
+import EnableResign from './enableResign'
 import * as employeeInfoActions from '../../../actions/staffEdit/employeeInfoActions'
 import * as abscenseActions from '../../../actions/staffEdit/abscenseActions'
 import * as applicationHistoryActions from '../../../actions/staffEdit/applicationHistoryActions'
@@ -11,7 +13,7 @@ import { bindActionCreators } from 'redux'
 import { toastr } from 'react-redux-toastr'
 import RestClient from '../../../infrastructure/restClient'
 import moment from "moment";
-class Abscense extends Component {
+class Abscense extends Component {  
   constructor(props) {
     super(props)
 
@@ -33,6 +35,8 @@ class Abscense extends Component {
       validRecommend:'',
       validComment:'',
       coupleName:'',
+      disableResign:false,
+      enableResign:false,
       resignHistoryLocal: Object.assign({}, resignHistoryLocal ? resignHistoryLocal : {}),
       abscenseLocal: Object.assign({}, abscenseLocal ? abscenseLocal : {}),
       recommend: [    //not in use  delete
@@ -49,6 +53,18 @@ class Abscense extends Component {
 
     }
   } 
+
+  toggleDisableResignModal = () => {
+    this.setState({
+        disableResign: !this.state.disableResign
+    })
+}
+
+toggleEnableResignModal = () => {
+  this.setState({
+      enableResign: !this.state.enableResign
+  })
+}
 
   //**************************************************************************************************
   handleSaveAbscense = async () => {
@@ -106,7 +122,7 @@ class Abscense extends Component {
       StaffID: this.props.staff.staffID
     }
 
-    
+
 
     try {
       const res = await RestClient.Post('abscense/abscenseUser', model)
@@ -240,6 +256,7 @@ debugger;
 
       if (res) {
         toastr.success('Success', `Resign Document is updated`)
+        this.props.applicationHistoryActions.getResignHistory(this.props.staff.staffID)
       } else {
         toastr.error(
           'Error',
@@ -252,7 +269,7 @@ debugger;
   }
 
   handleDisableResign = async () => {
-    // this.props.settingActions.save()
+    // this.props.settingActions.save() 
     var currentdate = new Date()
 
     var newdatemodified=moment(currentdate).format("YYYY-MM-DD HH:mm:ss")
@@ -382,26 +399,25 @@ debugger;
 
       if (res) {
         toastr.success('Success', `Resign Document is Disabled`)
+      
+        const resignHistoryTmp = {
+          signature: '',
+          resignComm: ''
+        }
 
         this.setState({
-          resignHistoryLocal:{},
-         
+          resignHistoryLocal:resignHistoryTmp
         })
-
-       // this.setState = {
-        //this.setState({coupleName:'Nothing' })
-        //this.props.applicationHistoryActions.handleApplicationHistory({})
-
-         //let resignHistory={}
-      //}
-
+        this.props.applicationHistoryActions.getResignHistory(this.props.staff.staffID)
+    
+    
       } else {
         toastr.error(
           'Error',
           `Could not disable Resign document: ${res ? res.message : 'Error'}`
         )
       }
-      //this.props.applicationHistoryActions.getResignHistory(this.state.staffId)
+      
 
 
 
@@ -543,7 +559,7 @@ debugger;
   // }
 
   render() {
-    console.log (this.state.coupleName);
+   
     return (
       <div>
         <Row className="row-panel-4">
@@ -592,7 +608,8 @@ debugger;
               managerReasonArr={this.props.managerReasonArr}
               reasonForResignmentArr={this.props.reasonForResignmentArr}
               jobTitleWhenResignedArr={this.props.jobTitleWhenResignedArr}
-             
+              toggleEnableResignModal={this.toggleEnableResignModal}
+              toggleDisableResignModal={this.toggleDisableResignModal}
               // title={"Skills"}
               // name={"skills"}
               // options={this.props.skillOptions}
@@ -601,6 +618,24 @@ debugger;
             />
           </Col>
         </Row>
+
+        <EnableResign
+                        modal={this.state.enableResign} 
+                        toggle={this.toggleEnableResignModal}
+                        handleSaveResign={this.handleSaveResign}
+                       // positionAssign={this.props.positionAssign}
+                       // season={this.props.season} 
+                      //  removeRole={this.props.removeRole}
+                    />
+        <DisableResign
+                        modal={this.state.disableResign}
+                        toggle={this.toggleDisableResignModal}
+                        handleDisableResign={this.handleDisableResign}
+                       // positionAssign={this.props.positionAssign}
+                       // season={this.props.season}
+                      //  removeRole={this.props.removeRole}
+                    />
+
       </div>
     )
   }

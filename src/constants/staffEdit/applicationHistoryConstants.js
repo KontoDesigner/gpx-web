@@ -7,4 +7,5 @@ export var ActionTypes = keyMirror({
     GET_APPLICATIONHISTORY: null,
     // GET_ABSCENSEHISTORY_SUCCESS: null,
     // GET_ABSCENSEHISTORY: null,
+   
 })

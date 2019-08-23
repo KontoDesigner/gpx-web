@@ -10,13 +10,14 @@ const resignInformation = props => {
   const enableResignBtn = (
 
     <Button
-     //  disabled={props.resignHistory.recommend === undefined && props.resignHistory.recommend === null}
-     disabled={props.resignHistory.managerReason != undefined || props.resignHistory.managerReason != null}
+      //disabled={props.resignHistory.staffID == undefined || props.resignHistory.staffID == null || props.resignHistory.staffID == ''}
+      disabled={props.resignHistory.staffID != undefined }
       size="sm"
-      className="pull-right"
+      className="pull-right" 
       onClick={() => {
         
-        props.handleSaveResign()
+        //props.handleSaveResign() 
+        props.toggleEnableResignModal(props.staffID)
       }} 
       color="success"
      style={{ marginRight: '2px', marginBottom: '2px' }}
@@ -27,12 +28,17 @@ Enable
 
   const disableResignBtn = (
     <Button
-    disabled={props.resignHistory.managerReason === undefined || props.resignHistory.managerReason === null}
+    disabled={props.resignHistory.staffID === undefined }
+    //disabled={props.resignHistory.managerReason === undefined || props.resignHistory.managerReason === null}
       size="sm"
       className="pull-right"
       onClick={() => {
-         props.handleDisableResign('0',props.staffID)
-      }}
+        
+        props.toggleDisableResignModal(props.staffID)
+    }} 
+      // onClick={() => {
+      //    props.handleDisableResign('0',props.staffID)
+      // }}
       color="primary"
       style={{ marginRight: '2px', marginBottom: '2px' }}
     >
@@ -186,6 +192,7 @@ Enable
 
 
                <Col sm="12" md="6" lg="6" xl="4" className="form-group">
+    
             <TextInput
               name="signature" 
               label="Signature"
@@ -200,6 +207,7 @@ Enable
 
           <Col sm="12" md="12" lg="12" xl="12" className="form-group">
             {/* {<TextInput name="title" label="Title" value={props.staff.title} onChange={props.handleStaffField} /> } */}
+            {props.resignHistory.staffID}
             <Label for="resignComm">Comments</Label>
             <Input
               required

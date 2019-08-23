@@ -16,7 +16,7 @@ const AbscenseInformation = props => {
         
          props.handleSaveAbscense()
       }}
-      color="warning"
+      color="success"
       // style={{ marginRight: '2px', marginBottom: '2px' }}
     >
      Enable
