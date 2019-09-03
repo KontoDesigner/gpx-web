@@ -427,7 +427,7 @@ class Planning extends Component {
 
             StaffID: model.candidate,
             MPLID: this.state.selectedMplID,
-
+            Accept: model.accept,
             StartDate: model.startDate,
             EndDate: model.endDate,
             OldDate: model.oldDate

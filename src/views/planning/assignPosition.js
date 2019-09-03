@@ -252,9 +252,11 @@ class AssignPosition extends Component {
       startDate: this.state.selectedAssignStart
         ? this.state.selectedAssignStart
         : val,
+        accept: "Pending" ,
       endDate: this.state.selectedAssignEnd
         ? this.state.selectedAssignEnd
         : val2,
+
       selectedTitle: this.props.selectedMplID,
       oldDate: this.state.selectedPlacementPeriod.substr(0, 10)
     }
