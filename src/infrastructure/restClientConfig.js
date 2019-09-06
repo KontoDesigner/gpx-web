@@ -17,6 +17,10 @@ else if (hostName === 'gpx-web-uat.tuinordic.net' || hostName === 'gpx-web.uat.t
 //PROD
 else if (hostName === 'gpx-web.tuinordic.net') {
     baseUrl = 'https://gpx-api.tuinordic.net'
+}
+//PROD
+else if (hostName === 'gpx-web.tpp-project.local') {
+    baseUrl = 'https://gpx-api.tpp-project.local'
 } else {
     console.warn(`could not identify hostname: ${hostName}.`)
 }
