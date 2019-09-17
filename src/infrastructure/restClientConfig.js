@@ -4,7 +4,7 @@ const hostName = window.location.hostname
 //LOCAL
 if (hostName === 'localhost') {
     baseUrl = 'http://localhost:5001'
-    // baseUrl = 'https://gpx-api-uat.tuinordic.net'
+    // baseUrl = 'https://gpx-api.tpp-project.local'
 }
 //
 else if (hostName === 'gpx-web.dev.tuinordic.com') {
