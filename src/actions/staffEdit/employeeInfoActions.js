@@ -38,6 +38,7 @@ export function save(model) {
     cleanModel.CentralID = model.centralID
 
     cleanModel.Email = model.email
+    cleanModel.Gender = model.gender
     cleanModel.EmailWork = model.emailWork
 
     cleanModel.Education = model.education
