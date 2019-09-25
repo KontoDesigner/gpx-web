@@ -1,15 +1,7 @@
 import React from 'react'
 import { Card, Col, CardBody, CardHeader, ListGroup, ListGroupItem } from 'reactstrap'
 import classnames from 'classnames'
-
-const hostName = window.location.hostname
-let tableau = ''
-
-if (hostName === 'localhost' || hostName === 'gpx-web-uat.tuinordic.net' || hostName === 'gpx-web.uat.tuinordic.net') {
-    tableau = 'https://gpx-tableau-uat.tuinordic.net'
-} else if (hostName === 'gpx-web.tuinordic.net') {
-    tableau = 'https://gpx-tableau.tuinordic.net'
-}
+import config from '../../infrastructure/restClientConfig'
 
 const Tabs = props => {
     return (
@@ -22,10 +14,10 @@ const Tabs = props => {
                         <ListGroupItem
                             className={classnames({ active: props.activeTab === 'tableaux' })}
                             onClick={() => {
-                                const win = window.open(tableau, '_blank')
+                                const win = window.open(config.tableau, '_blank')
                                 win.focus()
                             }}>
-                            Tableaux 
+                            Tableaux
                         </ListGroupItem>
                         <ListGroupItem
                             className={classnames({ active: props.activeTab === 'allRole' })}
