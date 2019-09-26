@@ -129,7 +129,7 @@ const EmployeeInformation = (props) => {
                         />
                     </Col>
                     <Col sm="12" md="6" lg="6" xl="4" className="form-group form-group-select">
-                        <label htmlFor="chrystalOrigin">Chrystal Origin</label>
+                        <label htmlFor="chrystalOrigin">Crystal Origin</label>
 
                         <Select
               
