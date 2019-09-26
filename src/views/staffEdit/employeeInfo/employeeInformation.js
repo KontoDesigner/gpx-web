@@ -112,7 +112,7 @@ const EmployeeInformation = (props) => {
                         <TextInput name="drivingYear" label="Driving Year" value={props.staff.drivingYear} onChange={props.handleStaffField} />
                     </Col>
                     <Col sm="12" md="6" lg="6" xl="4" className="form-group form-group-select">
-                        <label htmlFor="spain registred">Spain Registred</label>
+                        <label htmlFor="spainRegistred">Spain Registred</label>
 
                         <Select
               
@@ -124,6 +124,23 @@ const EmployeeInformation = (props) => {
                             options={props.spainRegistred}
                             onChange={(v) => { props.handleStaffSelect('spainRegistred', v, 'id') }}
                             value={props.staff.spainRegistred === '' ? null : props.staff.spainRegistred}
+                            placeholder=""
+                            
+                        />
+                    </Col>
+                    <Col sm="12" md="6" lg="6" xl="4" className="form-group form-group-select">
+                        <label htmlFor="chrystalOrigin">Chrystal Origin</label>
+
+                        <Select
+              
+                            id="chrystalOrigin"
+                         
+                            valueKey="id"
+                            labelKey="name"
+                            className="form-control"
+                            options={props.spainRegistred}
+                            onChange={(v) => { props.handleStaffSelect('chrystalOrigin', v, 'id') }}
+                            value={props.staff.chrystalOrigin === '' ? null : props.staff.chrystalOrigin}
                             placeholder=""
                             
                         />

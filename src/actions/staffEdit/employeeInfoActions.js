@@ -4,6 +4,7 @@ import RestClient from '../../infrastructure/restClient'
 import { toastr } from 'react-redux-toastr'
 import moment from 'moment'
 export function save(model) {
+    
     var currentdate = new Date()
 
     var newdatemodified = moment(currentdate).format('YYYY-MM-DD HH:mm:ss')
@@ -33,6 +34,7 @@ export function save(model) {
     cleanModel.LastName2 = model.lastName2
     cleanModel.CostCenter = model.costCenter
     cleanModel.SpainRegistred = model.spainRegistred
+    cleanModel.ChrystalOrigin = model.chrystalOrigin
     cleanModel.SapID = model.sapID
     cleanModel.MopedID = model.mopedID
     cleanModel.CentralID = model.centralID
@@ -97,7 +99,7 @@ export function save(model) {
     cleanModel.Spanish = model.spanish ? model.spanish : null
     cleanModel.Turkish = model.turkish ? model.turkish : null
     cleanModel.Swedish = model.swedish ? model.swedish : null
-
+debugger;
     return async function(dispatch) {
         dispatch(beginAjaxCall())
 
