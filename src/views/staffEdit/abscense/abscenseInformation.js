@@ -8,8 +8,9 @@ import moment from "moment";
 const AbscenseInformation = props => {
   const enableAbscenseBtn = (
     <Button
-    disabled={props.abscenseHistory.absentReason != undefined || props.abscenseHistory.absentReason != null}
+    //disabled={props.abscenseHistory.absentReason != undefined || props.abscenseHistory.absentReason != null}
       // disabled={this.props.abscense === undefined && this.props.abscense === null}
+      disabled={props.abscenseHistory.staffID != undefined }
       size="sm"
       className="pull-right"
       onClick={() => {
